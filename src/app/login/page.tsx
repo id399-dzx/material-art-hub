@@ -102,7 +102,7 @@ export default function LoginPage() {
                                 </div>
 
                                 <div className="auth-field">
-                                    <label htmlFor="auth-password">安全密码</label>
+                                    <div className="auth-label-row"><label htmlFor="auth-password">安全密码</label>{isLogin && <Link href="/forgot-password">忘记密码？</Link>}</div>
                                     <div className="auth-input-wrap"><LockKeyhole size={18} aria-hidden="true" /><input id="auth-password" type={showPassword ? "text" : "password"} autoComplete={isLogin ? "current-password" : "new-password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="至少 6 个字符" minLength={isLogin ? undefined : 6} required /><button type="button" className="auth-password-toggle" onClick={() => setShowPassword((current) => !current)} aria-label={showPassword ? "隐藏密码" : "显示密码"}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div>
                                 </div>
 

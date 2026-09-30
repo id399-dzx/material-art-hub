@@ -1,0 +1,174 @@
+.glass-button {
+  --glass-ink: #263f49;
+  --glass-tint-top: rgb(255 255 255 / 77%);
+  --glass-tint-bottom: rgb(230 244 244 / 60%);
+  --glass-edge: rgb(255 255 255 / 90%);
+  --glass-shadow: rgb(27 74 83 / 12%);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid var(--glass-edge);
+  border-radius: 13px;
+  background:
+    radial-gradient(circle at 15% -45%, rgb(255 255 255 / 82%), transparent 56%),
+    linear-gradient(165deg, var(--glass-tint-top), var(--glass-tint-bottom));
+  color: var(--glass-ink);
+  box-shadow:
+    0 7px 18px -8px var(--glass-shadow),
+    0 2px 4px rgb(31 65 72 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 85%),
+    inset 0 -1px 0 rgb(68 111 118 / 15%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 680;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.glass-button::before,
+.glass-button::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.glass-button::before {
+  inset: 1px 1px 48%;
+  border-radius: 12px 12px 48% 48%;
+  background: linear-gradient(180deg, rgb(255 255 255 / 35%), transparent);
+}
+
+.glass-button::after {
+  top: -50%;
+  left: -36%;
+  width: 42%;
+  height: 200%;
+  transform: rotate(21deg) translateX(-130%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 30%), transparent);
+  transition: transform 340ms ease;
+}
+
+.glass-button__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.glass-button[data-size="sm"] {
+  min-height: 34px;
+  padding: 7px 13px;
+  font-size: 12px;
+}
+
+.glass-button[data-size="md"] {
+  min-height: 40px;
+  padding: 10px 17px;
+}
+
+.glass-button[data-size="lg"] {
+  min-height: 46px;
+  padding: 12px 22px;
+  font-size: 14px;
+}
+
+.glass-button[data-variant="primary"] {
+  --glass-ink: #fff;
+  --glass-tint-top: rgb(58 150 159 / 84%);
+  --glass-tint-bottom: rgb(21 100 112 / 89%);
+  --glass-edge: rgb(207 255 255 / 58%);
+  --glass-shadow: rgb(17 92 103 / 33%);
+  text-shadow: 0 1px 1px rgb(5 62 70 / 25%);
+  box-shadow:
+    0 9px 20px -8px var(--glass-shadow),
+    0 2px 5px rgb(24 88 96 / 17%),
+    inset 0 1px 0 rgb(255 255 255 / 51%),
+    inset 0 -1px 0 rgb(4 53 63 / 22%);
+}
+
+.glass-button[data-variant="danger"] {
+  --glass-ink: #8d3634;
+  --glass-tint-top: rgb(255 255 255 / 83%);
+  --glass-tint-bottom: rgb(255 219 215 / 71%);
+  --glass-edge: rgb(255 255 255 / 90%);
+  --glass-shadow: rgb(141 54 52 / 17%);
+}
+
+.glass-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.055);
+  box-shadow:
+    0 12px 25px -9px var(--glass-shadow),
+    0 3px 7px rgb(31 65 72 / 10%),
+    inset 0 1px 0 rgb(255 255 255 / 88%),
+    inset 0 -1px 0 rgb(68 111 118 / 16%);
+}
+
+.glass-button:hover:not(:disabled)::after {
+  transform: rotate(21deg) translateX(480%);
+}
+
+.glass-button:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+  filter: brightness(0.97);
+  box-shadow:
+    0 2px 6px -2px var(--glass-shadow),
+    inset 0 2px 4px rgb(25 66 73 / 16%);
+}
+
+.glass-button:focus-visible {
+  outline: 3px solid rgb(24 119 128 / 46%);
+  outline-offset: 3px;
+}
+
+.glass-button:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-button {
+    background: linear-gradient(165deg, #f4fcfc, #daeaea);
+  }
+
+  .glass-button[data-variant="primary"] {
+    background: linear-gradient(165deg, #4a9ca4, #176774);
+  }
+
+  .glass-button[data-variant="danger"] {
+    background: linear-gradient(165deg, #fff9f8, #f7d8d5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-button,
+  .glass-button::after {
+    transition: none;
+  }
+
+  .glass-button:hover:not(:disabled),
+  .glass-button:active:not(:disabled) {
+    transform: none;
+  }
+}

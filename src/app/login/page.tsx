@@ -1,174 +1,119 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
-import { Lock, Mail, ArrowLeft, Loader2, KeyRound, Box } from "lucide-react";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight, BarChart3, Database, Eye, EyeOff, Loader2, LockKeyhole, Mail, ShieldCheck } from "lucide-react";
+import { isSupabaseConnectionError, supabase } from "@/lib/supabase";
+import "./login.css";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [notice, setNotice] = useState<{ type: "error" | "success"; message: string } | null>(null);
     const [isLogin, setIsLogin] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
 
-    const handleAuth = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleAuth = async (event: React.FormEvent) => {
+        event.preventDefault();
         setLoading(true);
-        setError(null);
+        setNotice(null);
 
         try {
             if (isLogin) {
-                const { error: authError } = await supabase.auth.signInWithPassword({
-                    email,
-                    password,
-                });
-                if (authError) throw authError;
+                const { error } = await supabase.auth.signInWithPassword({ email, password });
+                if (error) throw error;
             } else {
-                const { error: authError, data } = await supabase.auth.signUp({
-                    email,
-                    password,
-                });
-                if (authError) throw authError;
+                const { error, data } = await supabase.auth.signUp({ email, password });
+                if (error) throw error;
                 if (data.user && data.session === null) {
-                    // Optional: handle email confirmation case if configured in Supabase
-                    setError("注册成功！请检查您的邮箱进行验证。");
-                    setLoading(false);
+                    setNotice({ type: "success", message: "注册成功，请检查邮箱并完成验证。" });
                     return;
                 }
             }
 
-            // Redirect on success
             window.location.href = "/";
-
-        } catch (err: any) {
-            console.error("Auth Error:", err);
-            // Translate common error messages
-            if (err.message?.includes("Invalid login")) {
-                setError("邮箱或密码错误，请重新输入。");
-            } else if (err.message?.includes("User already registered")) {
-                setError("该邮箱已被注册，请直接登录。");
-            } else if (err.message?.includes("Password should be at least")) {
-                setError("密码长度至少需要 6 个字符。");
+        } catch (error) {
+            const message = error instanceof Error ? error.message : "";
+            if (isSupabaseConnectionError(error)) {
+                setNotice({ type: "error", message: "账号服务暂时无法连接，请稍后重试；若持续出现，请联系管理员。" });
+            } else if (message.includes("Invalid login")) {
+                setNotice({ type: "error", message: "邮箱或密码错误，请重新输入。" });
+            } else if (message.includes("User already registered")) {
+                setNotice({ type: "error", message: "该邮箱已被注册，请直接登录。" });
+            } else if (message.includes("Password should be at least")) {
+                setNotice({ type: "error", message: "密码长度至少需要 6 个字符。" });
             } else {
-                setError(err.message || (isLogin ? "登录失败，请稍后重试。" : "注册失败，请检查输入或稍后重试。"));
+                setNotice({ type: "error", message: message || (isLogin ? "登录失败，请稍后重试。" : "注册失败，请稍后重试。") });
             }
         } finally {
             setLoading(false);
         }
     };
 
+    const changeMode = () => {
+        setIsLogin((current) => !current);
+        setNotice(null);
+    };
+
     return (
-        <div className="min-h-screen bg-slate-950 font-sans flex flex-col relative overflow-hidden">
+        <main className="auth-workbench">
+            <div className="auth-shell">
+                <Link href="/" className="auth-back"><ArrowLeft size={17} /> 返回首页</Link>
 
-            {/* Background Decorations */}
-            <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/10 blur-[100px] pointer-events-none" />
+                <div className="auth-layout">
+                    <section className="auth-intro" aria-label="工作台介绍">
+                        <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> MATERIALART HUB / RESEARCH WORKSPACE</span>
+                        <h1>让灵感与数据，<br /><span>在同一处生长。</span></h1>
+                        <p>登录后继续管理你的科研素材。数据处理工作台也随时可用，让图表和研究过程保持清晰。</p>
 
-            {/* Navbar Area (Simple) */}
-            <div className="w-full h-20 flex items-center px-8 relative z-10">
-                <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group p-2 -ml-2 rounded-xl hover:bg-slate-900/50">
-                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                    <span className="text-sm font-bold tracking-widest uppercase">返回系统</span>
-                </Link>
-            </div>
-
-            {/* Login Card Container */}
-            <div className="flex-1 flex items-center justify-center p-6 relative z-10">
-                <div className="w-full max-w-md bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-
-                    {/* Inner glowing rim */}
-                    <div className="absolute inset-0 border border-white/5 rounded-[2rem] pointer-events-none" />
-
-                    {/* Logo/Header */}
-                    <div className="flex flex-col items-center mb-10">
-                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
-                            <Box size={32} className="text-white drop-shadow-md" />
-                        </div>
-                        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-2">
-                            {isLogin ? "用户登录" : "创建账号"}
-                        </h1>
-                        <p className="text-slate-400 text-sm font-medium tracking-wide">
-                            MaterialArt Hub • {isLogin ? "安全验证" : "欢迎加入"}
-                        </p>
-                    </div>
-
-                    <form onSubmit={handleAuth} className="space-y-6">
-
-                        {/* Error Message */}
-                        {error && (
-                            <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium flex items-start gap-3 animate-in fade-in slide-in-from-top-2">
-                                <KeyRound size={18} className="shrink-0 mt-0.5" />
-                                {error}
+                        <div className="auth-showcase" aria-hidden="true">
+                            <div className="auth-showcase-top">
+                                <span className="auth-showcase-icon"><BarChart3 size={20} /></span>
+                                <span>研究工作台</span>
+                                <span className="auth-showcase-sparkle">✦</span>
                             </div>
-                        )}
-
-                        {/* Email Input */}
-                        <div className="space-y-2">
-                            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">账号邮箱</label>
-                            <div className="relative">
-                                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    placeholder="admin@example.com"
-                                    className="w-full bg-slate-950/60 border border-slate-700/50 rounded-2xl py-3.5 pl-12 pr-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all shadow-inner"
-                                />
+                            <div className="auth-showcase-chart">
+                                <i /><i /><i /><i /><i /><i /><i />
                             </div>
+                            <div className="auth-showcase-bottom"><span>数据可视化</span><span>素材归档</span><span>清晰呈现</span></div>
                         </div>
+                    </section>
 
-                        {/* Password Input */}
-                        <div className="space-y-2">
-                            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">安全密码</label>
-                            <div className="relative">
-                                <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
-                                <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                    placeholder="••••••••"
-                                    className="w-full bg-slate-950/60 border border-slate-700/50 rounded-2xl py-3.5 pl-12 pr-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all shadow-inner"
-                                />
+                    <section className="auth-panel" aria-labelledby="auth-heading">
+                        <div className="auth-panel-ornament" aria-hidden="true" />
+                        <div className="auth-panel-content">
+                            <div className="auth-panel-icon"><Database size={23} strokeWidth={1.9} /></div>
+                            <span className="auth-panel-kicker">欢迎来到 MaterialArt Hub</span>
+                            <h2 id="auth-heading">{isLogin ? "登录工作台" : "创建账号"}</h2>
+                            <p className="auth-panel-description">{isLogin ? "输入账号信息，继续你的研究整理。" : "填写邮箱和密码，即可开始使用。"}</p>
+
+                            <div className="auth-mode-switch" role="group" aria-label="账号操作">
+                                <button type="button" className={isLogin ? "is-active" : ""} onClick={() => { setIsLogin(true); setNotice(null); }} aria-pressed={isLogin}>登录</button>
+                                <button type="button" className={!isLogin ? "is-active" : ""} onClick={() => { setIsLogin(false); setNotice(null); }} aria-pressed={!isLogin}>注册</button>
                             </div>
-                        </div>
 
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className={`w-full py-4 mt-2 rounded-2xl font-bold text-white transition-all duration-300 relative overflow-hidden
-                                ${loading
-                                    ? 'bg-slate-800 cursor-not-allowed text-slate-400 border border-slate-700'
-                                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5'
-                                }`}
-                        >
-                            {loading ? (
-                                <div className="flex items-center justify-center gap-2">
-                                    <Loader2 size={18} className="animate-spin" />
-                                    <span>处理中...</span>
+                            <form onSubmit={handleAuth} className="auth-form">
+                                {notice && <div className={"auth-notice auth-notice--" + notice.type} role={notice.type === "error" ? "alert" : "status"}><ShieldCheck size={18} />{notice.message}</div>}
+
+                                <div className="auth-field">
+                                    <label htmlFor="auth-email">账号邮箱</label>
+                                    <div className="auth-input-wrap"><Mail size={18} aria-hidden="true" /><input id="auth-email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="name@example.com" required /></div>
                                 </div>
-                            ) : (
-                                <span>{isLogin ? "安全登录" : "立即注册"}</span>
-                            )}
-                        </button>
-                    </form>
 
-                    <div className="mt-6 text-center">
-                        <button
-                            onClick={() => {
-                                setIsLogin(!isLogin);
-                                setError(null);
-                            }}
-                            className="text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors"
-                        >
-                            {isLogin ? "没有账号？点击注册新用户" : "已有账号？点击此处登录"}
-                        </button>
-                    </div>
+                                <div className="auth-field">
+                                    <label htmlFor="auth-password">安全密码</label>
+                                    <div className="auth-input-wrap"><LockKeyhole size={18} aria-hidden="true" /><input id="auth-password" type={showPassword ? "text" : "password"} autoComplete={isLogin ? "current-password" : "new-password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="至少 6 个字符" minLength={isLogin ? undefined : 6} required /><button type="button" className="auth-password-toggle" onClick={() => setShowPassword((current) => !current)} aria-label={showPassword ? "隐藏密码" : "显示密码"}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div>
+                                </div>
+
+                                <button type="submit" className="auth-submit" disabled={loading}>{loading ? <><Loader2 size={18} className="auth-spin" /> 处理中...</> : <>{isLogin ? "登录工作台" : "创建账号"}<ArrowRight size={18} /></>}</button>
+                            </form>
+
+                            <p className="auth-footnote">{isLogin ? "还没有账号？" : "已有账号？"} <button type="button" onClick={changeMode}>{isLogin ? "立即注册" : "返回登录"}</button></p>
+                        </div>
+                    </section>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

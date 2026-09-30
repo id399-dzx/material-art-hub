@@ -1,6 +1,18 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/utils/supabase/client';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
+// Share the SSR cookie session with the callback route and server helpers.
+// A separate supabase-js browser client would keep a second session in localStorage.
+export const supabase = createClient();
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export function getSupabaseErrorMessage(error: unknown): string | null {
+    if (error instanceof Error) return error.message;
+    if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') {
+        return error.message;
+    }
+    return null;
+}
+
+export function isSupabaseConnectionError(error: unknown): boolean {
+    const message = getSupabaseErrorMessage(error);
+    return message !== null && /failed to fetch|fetch failed|network request failed|networkerror|load failed|enotfound|err_name_not_resolved/i.test(message);
+}

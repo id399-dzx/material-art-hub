@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { ArrowLeft, Download, Image as ImageIcon, Box, Layers, Zap, Activity, Trash2, Loader2 } from "lucide-react";
-import Link from "next/link";
+import { ArrowLeft, Download, Image as ImageIcon, Box, Layers, Zap, Activity, Trash2, Loader2, LockKeyhole, CalendarDays } from "lucide-react";
+import "./asset-detail.css";
 
 interface AssetDetails {
     id: string;
@@ -25,6 +25,7 @@ export default function AssetDetailsPage() {
     const [asset, setAsset] = useState<AssetDetails | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [loadAttempt, setLoadAttempt] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -33,6 +34,9 @@ export default function AssetDetailsPage() {
         async function fetchAssetDetails() {
             if (!params?.id) return;
 
+            setLoading(true);
+            setError(null);
+            setAsset(null);
             try {
                 // 1. Fetch Auth Session
                 const { data: { session } } = await supabase.auth.getSession();
@@ -57,16 +61,17 @@ export default function AssetDetailsPage() {
                 if (data) {
                     setAsset(data as AssetDetails);
                 }
-            } catch (err: any) {
-                console.error("Error fetching asset details:", err);
-                setError(err.message || "无法加载素材数据");
+            } catch (err: unknown) {
+                console.warn("Error fetching asset details:", err);
+                const isMissing = typeof err === "object" && err !== null && "code" in err && err.code === "PGRST116";
+                if (!isMissing) setError("连接素材库时遇到问题，请稍后重试。");
             } finally {
                 setLoading(false);
             }
         }
 
         fetchAssetDetails();
-    }, [params?.id]);
+    }, [params?.id, loadAttempt]);
 
     const handleDownload = () => {
         if (!asset) return;
@@ -132,209 +137,137 @@ export default function AssetDetailsPage() {
             // 3. Redirect home
             router.push('/');
 
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Delete failed:", error);
-            alert(`删除失败: ${error.message}`);
+            alert(`删除失败: ${error instanceof Error ? error.message : "请稍后重试"}`);
             setIsDeleting(false);
         }
     };
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center space-y-4">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-                <p className="text-slate-400 font-medium tracking-wider animate-pulse">加载高清素材中...</p>
-            </div>
+            <main className="asset-detail asset-detail--centered">
+                <div className="asset-detail__state-card" role="status" aria-live="polite">
+                    <span className="asset-detail__state-icon"><Loader2 size={26} className="asset-detail__spinner" /></span>
+                    <span className="asset-detail__eyebrow">MATERIAL ARCHIVE</span>
+                    <h1>正在读取素材</h1>
+                    <p>高清图像与资料即将呈现</p>
+                </div>
+            </main>
         );
     }
 
     if (error || !asset) {
         return (
-            <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center space-y-6">
-                <Box size={64} className="text-slate-700 opacity-50" />
-                <h2 className="text-2xl font-bold text-slate-300">未找到该素材</h2>
-                <p className="text-slate-500">{error || "该素材可能已被删除或链接无效。"}</p>
-                <button
-                    onClick={() => router.push("/")}
-                    className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)]"
-                >
-                    返回首页
-                </button>
-            </div>
+            <main className="asset-detail asset-detail--centered">
+                <div className="asset-detail__state-card">
+                    <span className="asset-detail__state-icon"><Box size={30} /></span>
+                    <span className="asset-detail__eyebrow">MATERIAL ARCHIVE</span>
+                    <h1>{error ? "素材暂时无法加载" : "未找到该素材"}</h1>
+                    <p>{error || "该素材可能已被删除或链接无效。"}</p>
+                    {error ? (
+                        <button className="asset-detail__button asset-detail__button--dark" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>
+                            重新加载素材
+                        </button>
+                    ) : (
+                        <button className="asset-detail__button asset-detail__button--dark" onClick={() => router.push("/")}>
+                            <ArrowLeft size={17} /> 返回发现页
+                        </button>
+                    )}
+                </div>
+            </main>
         );
     }
 
+    const tagGroups = [
+        { title: "应用领域", icon: Zap, tags: asset.tags_application, theme: "peach" },
+        { title: "材料体系", icon: Layers, tags: asset.tags_material, theme: "lilac" },
+        { title: "演化过程", icon: Activity, tags: asset.tags_process, theme: "rose" },
+        { title: "视觉封装", icon: ImageIcon, tags: asset.tags_style, theme: "blue" },
+    ].filter(group => group.tags?.length > 0);
+
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-200 font-sans pb-20">
-            {/* Navigation Bar */}
-            <div className="bg-transparent border-b border-slate-800/60 px-6 py-4">
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <button
-                        onClick={() => router.push("/")}
-                        className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group px-2 py-1 -ml-2 rounded-lg hover:bg-slate-800/50"
-                    >
-                        <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                        <span className="font-medium">返回发现页</span>
+        <main className="asset-detail">
+            <div className="asset-detail__shell">
+                <div className="asset-detail__topline">
+                    <button className="asset-detail__back" onClick={() => router.push("/")}>
+                        <ArrowLeft size={17} /> 返回发现页
                     </button>
-                    <div className="flex items-center gap-2 text-sm font-bold tracking-widest text-slate-500 uppercase">
-                        <Box size={16} className="text-blue-500" />
-                        MaterialArt Details
-                    </div>
+                    <span className="asset-detail__location"><Box size={15} /> 科研素材库 <span>/</span> 素材档案</span>
                 </div>
-            </div>
 
-            <div className="max-w-7xl mx-auto px-6 mt-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-                    {/* Left Column: HD Image Viewer */}
-                    <div className="lg:col-span-8 flex flex-col space-y-6">
-                        <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800/80 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] group h-[60vh] lg:h-[80vh]">
-                            {/* Inner Glow */}
-                            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none z-10" />
-
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                                src={asset.image_url}
-                                alt={asset.title}
-                                className="w-full h-full object-contain bg-black/40 backdrop-blur-sm transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                            />
-                        </div>
+                <header className="asset-detail__intro">
+                    <div>
+                        <span className="asset-detail__eyebrow"><span className="asset-detail__eyebrow-dot" /> MATERIAL ARCHIVE <span>/</span> 素材档案</span>
+                        <h1>{asset.title}</h1>
+                        {asset.description && <p>{asset.description}</p>}
                     </div>
+                    <div className="asset-detail__intro-mark" aria-hidden="true"><ImageIcon size={33} strokeWidth={1.4} /></div>
+                </header>
 
-                    {/* Right Column: Details & Actions */}
-                    <div className="lg:col-span-4 flex flex-col space-y-10 lg:sticky lg:top-28">
-
-                        <div className="space-y-6">
-                            <h1 className="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
-                                {asset.title}
-                            </h1>
-
-                            {asset.description && (
-                                <div className="prose prose-invert prose-slate">
-                                    <p className="text-slate-400 text-lg leading-relaxed font-light">
-                                        {asset.description}
-                                    </p>
-                                </div>
-                            )}
+                <div className="asset-detail__layout">
+                    <section className="asset-detail__preview-card" aria-label="素材图像预览">
+                        <div className="asset-detail__card-header">
+                            <div><span className="asset-detail__card-kicker">PREVIEW</span><h2>图像预览</h2></div>
+                            <span className="asset-detail__format-pill"><ImageIcon size={14} /> 高清图像</span>
                         </div>
+                        <div className="asset-detail__image-frame">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={asset.image_url} alt={asset.title} />
+                        </div>
+                        <div className="asset-detail__image-caption">
+                            <span>原图比例展示</span>
+                            {asset.created_at && <span><CalendarDays size={14} /> {new Date(asset.created_at).toLocaleDateString("zh-CN")}</span>}
+                        </div>
+                    </section>
 
-                        {/* Call to Action */}
-                        <div className="pt-2 pb-6 border-b border-slate-800/60 flex flex-col gap-4">
+                    <aside className="asset-detail__aside">
+                        <section className="asset-detail__action-card">
+                            <div className="asset-detail__card-header">
+                                <div><span className="asset-detail__card-kicker">RESOURCE</span><h2>获取素材</h2></div>
+                                <span className="asset-detail__sparkle" aria-hidden="true" />
+                            </div>
+                            <p className="asset-detail__action-copy">{asset.source_file_url ? "提供源文件附件，可用于进一步编辑与展示。" : "获取该素材的高清原图。"}</p>
                             {!isLoggedIn ? (
-                                <button
-                                    onClick={() => router.push('/login')}
-                                    className="w-full py-4 px-6 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-inner"
-                                >
-                                    🔒 登录后下载
+                                <button className="asset-detail__button asset-detail__button--dark" onClick={() => router.push('/login')}>
+                                    <LockKeyhole size={18} /> 登录后下载
                                 </button>
                             ) : (
-                                <button
-                                    onClick={handleDownload}
-                                    className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_40px_rgba(37,99,235,0.5)] hover:-translate-y-1 group"
-                                >
-                                    <Download size={22} className="group-hover:animate-bounce" />
-                                    {asset.source_file_url ? "获取附件源文件 (C4D/ZIP)" : "获取高清原图 (Image)"}
+                                <button className="asset-detail__button asset-detail__button--dark" onClick={handleDownload}>
+                                    <Download size={18} /> {asset.source_file_url ? "下载附件源文件" : "下载高清原图"}
                                 </button>
                             )}
-
+                            <p className="asset-detail__usage-note">获准用于学术交流、论文配图及科普展示</p>
                             {isAdmin && (
-                                <button
-                                    onClick={handleDelete}
-                                    disabled={isDeleting}
-                                    className={`w-full py-3 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 border
-                                        ${isDeleting
-                                            ? 'bg-slate-800/50 border-slate-700 text-slate-500 cursor-not-allowed'
-                                            : 'bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]'
-                                        }
-                                    `}
-                                >
-                                    {isDeleting ? <Loader2 size={16} className="animate-spin" /> : <Trash2 size={16} />}
-                                    {isDeleting ? "正在粉碎数据..." : "危险操作：彻底删除该素材"}
+                                <button className="asset-detail__button asset-detail__button--danger" onClick={handleDelete} disabled={isDeleting}>
+                                    {isDeleting ? <Loader2 size={16} className="asset-detail__spinner" /> : <Trash2 size={16} />}
+                                    {isDeleting ? "正在删除素材..." : "彻底删除该素材"}
                                 </button>
                             )}
+                        </section>
 
-                            <p className="text-center text-xs text-slate-500 mt-2 font-medium tracking-wide">
-                                获准用于学术交流、论文配图及科普展示
-                            </p>
-                        </div>
-
-                        {/* Tag Categories */}
-                        <div className="space-y-8 pt-4">
-                            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-[0.2em] flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                                多维属性解析
-                            </h3>
-
-                            <div className="grid grid-cols-1 gap-6">
-                                {/* Application Tags */}
-                                {asset.tags_application?.length > 0 && (
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-2 text-xs font-semibold text-yellow-500/80 uppercase">
-                                            <Zap size={14} /> 应用领域
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {asset.tags_application.map(tag => (
-                                                <span key={tag} className="px-3 py-1.5 text-xs font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 rounded-lg">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Material Tags */}
-                                {asset.tags_material?.length > 0 && (
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-2 text-xs font-semibold text-purple-500/80 uppercase">
-                                            <Layers size={14} /> 材料体系
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {asset.tags_material.map(tag => (
-                                                <span key={tag} className="px-3 py-1.5 text-xs font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-lg">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Process Tags */}
-                                {asset.tags_process?.length > 0 && (
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-2 text-xs font-semibold text-red-500/80 uppercase">
-                                            <Activity size={14} /> 演化过程
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {asset.tags_process.map(tag => (
-                                                <span key={tag} className="px-3 py-1.5 text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 rounded-lg">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Style Tags */}
-                                {asset.tags_style?.length > 0 && (
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-2 text-xs font-semibold text-green-500/80 uppercase">
-                                            <ImageIcon size={14} /> 视觉封装
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {asset.tags_style.map(tag => (
-                                                <span key={tag} className="px-3 py-1.5 text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20 rounded-lg">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
+                        <section className="asset-detail__tags-card">
+                            <div className="asset-detail__card-header">
+                                <div><span className="asset-detail__card-kicker">ATTRIBUTES</span><h2>素材属性</h2></div>
+                                <span className="asset-detail__count-pill">{tagGroups.length} 组标签</span>
                             </div>
-                        </div>
-
-                    </div>
+                            {tagGroups.length > 0 ? (
+                                <div className="asset-detail__tag-groups">
+                                    {tagGroups.map(group => {
+                                        const Icon = group.icon;
+                                        return (
+                                            <div className={`asset-detail__tag-group asset-detail__tag-group--${group.theme}`} key={group.title}>
+                                                <h3><Icon size={15} /> {group.title}</h3>
+                                                <div>{group.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : <p className="asset-detail__no-tags">该素材暂未添加属性标签。</p>}
+                        </section>
+                    </aside>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

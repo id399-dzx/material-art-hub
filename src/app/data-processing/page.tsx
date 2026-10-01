@@ -10,9 +10,9 @@ import SafeReport from "@/components/data-processing/SafeReport";
 import DataAdvisor from "@/components/data-processing/DataAdvisor";
 import PublicationExport from "@/components/data-processing/PublicationExport";
 import { initialExportSettings } from "@/lib/data-processing/publication";
+import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import { parseTemplateTable } from "@/lib/data-processing/templates";
 import TemplateStudio, { type TemplateStudioHandle } from "@/components/data-processing/TemplateStudio";
-import PaperFigureStudio from "@/components/data-processing/PaperFigureStudio";
 import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
 
@@ -110,7 +110,7 @@ const subscribeWorkspace = (callback: () => void) => {
     window.addEventListener("hashchange", callback);
     return () => window.removeEventListener("hashchange", callback);
 };
-const getWorkspace = () => window.location.hash === "#paper-figures" ? "papers" : window.location.hash === "#data-templates" ? "templates" : "processing";
+const getWorkspace = () => ["#paper-figures", "#data-templates"].includes(window.location.hash) ? "templates" : "processing";
 const getServerWorkspace = () => "processing";
 
 export default function DataProcessingPage() {
@@ -590,7 +590,7 @@ export default function DataProcessingPage() {
                 try {
                     const buffer = evt.target?.result;
                     if (!(buffer instanceof ArrayBuffer)) throw new Error('文件读取失败');
-                    const workbook = xlsx.read(buffer, { type: "array" });
+                    const workbook = readWorkbook(buffer, file.name);
                     const firstSheetName = workbook.SheetNames[0];
                     const worksheet = workbook.Sheets[firstSheetName];
                     if (!worksheet) throw new Error('文件中没有可读取的工作表');
@@ -978,8 +978,7 @@ export default function DataProcessingPage() {
                     <div className="workbench-appbar-actions">
                         <nav className="workbench-pill-nav" aria-label="工作台区域">
                             <a className={workspace === "processing" ? "is-active" : ""} aria-current={workspace === "processing" ? "page" : undefined} href="#data-source">数据处理</a>
-                            <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#data-templates">基础绘图</a>
-                            <a className={workspace === "papers" ? "is-active" : ""} aria-current={workspace === "papers" ? "page" : undefined} href="#paper-figures">论文图例模板</a>
+                            <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#paper-figures">论文图例模板</a>
                             <a href="#chart-preview">图表画布</a>
                             <a href="#analysis">辅助解读</a>
                         </nav>
@@ -1303,7 +1302,7 @@ export default function DataProcessingPage() {
                     <div id="main-publication-export"><PublicationExport width={Math.max(200, chartWidth || 600)} height={Math.max(200, chartHeight || 400)} settings={exportSettings} onChange={setExportSettings} getSvg={exportMainSvg} filename={fileName || "实验曲线"} disabled={!appliedOptions || isLoading} onBusy={setFigureExporting} revision={appliedOptions} /></div>
                 </section>
 
-                {fileChunks1.length > 0 && <div className="workbench-data-advisor"><p>下方检查当前已解析的主样品 XY 数据；原始导入中的跳过行见上传提示。</p><DataAdvisor key={`${fileName}-${fileChunks1.length}`} table={processedTable} mapping={{ x: 1, ys: [2], errors: {} }} initialGoal="trend" initialGroup={-1} demo={false} disabled={figureExporting} onApply={(id, mapping) => { templateStudioRef.current?.loadData(fileName || "已处理实验数据", processedMatrix, id, mapping); window.location.hash = "data-templates"; }} /></div>}
+                {fileChunks1.length > 0 && <div className="workbench-data-advisor"><p>下方检查当前已解析的主样品 XY 数据；原始导入中的跳过行见上传提示。</p><DataAdvisor key={`${fileName}-${fileChunks1.length}`} table={processedTable} mapping={{ x: 1, ys: [2], errors: {} }} initialGoal="trend" initialGroup={-1} demo={false} disabled={figureExporting} onApply={(id, mapping) => { templateStudioRef.current?.loadData(fileName || "已处理实验数据", processedMatrix, id, mapping); window.location.hash = "paper-figures"; }} /></div>}
                 <div className="workbench-settings-zone" id="chart-settings">
                     <div className="workbench-settings-heading">
                         <span className="workbench-card-eyebrow">CUSTOMIZE</span>
@@ -1703,7 +1702,6 @@ export default function DataProcessingPage() {
                     </section>
                 </div>
                 <TemplateStudio ref={templateStudioRef} active={workspace === "templates"} />
-                <PaperFigureStudio active={workspace === "papers"} />
             </div>
         </main>
     );

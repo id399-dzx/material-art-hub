@@ -47,7 +47,7 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
             xAxis: { type: "category", data: data.series.map(item => item.name), axisLabel: { ...axisText, hideOverlap: true }, splitArea: { show: false } },
             yAxis: { type: "category", data: data.x, inverse: true, axisLabel: axisText, splitArea: { show: false } },
             visualMap: { min, max: max === min ? min + 1 : max, calculable: false, orient: "horizontal", left: "center", bottom: 22, textStyle: axisText,
-                inRange: { color: style.palette === "mono" ? ["#f4f4f4", "#313131"] : ["#f4eff9", "#acb9d3", palette[0]] } },
+                inRange: { color: style.customColors?.length ? palette : style.palette === "mono" ? ["#f4f4f4", "#313131"] : ["#f4eff9", "#acb9d3", palette[0]] } },
             series: [{ type: "heatmap", data: data.series.flatMap((item, col) => item.values.map((value, row) => [col, row, value])),
                 label: { show: true, fontSize: Math.max(10, style.fontSize - 1), formatter: p => Number((p.value as number[])[2]).toLocaleString(undefined, { maximumFractionDigits: 3 }) },
                 itemStyle: { borderColor: "#fff", borderWidth: 2 }, emphasis: { itemStyle: { borderColor: "#51446e", borderWidth: 2 } },
@@ -76,6 +76,7 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
         return { ...option, legend: { ...(option.legend as object), selectedMode: false },
             yAxis: { ...(option.yAxis as YAXisComponentOption), ...(normalized ? { max: 100, name: "占比 (%)" } : {}) },
             series: bars.map((item, i) => ({ ...item, stack: "composition", barGap: "0%", data: normalized ? data.series[i].values.map((value, row) => value / totals[row] * 100) : data.series[i].values,
+                ...(style.hatching ? {itemStyle:{...item.itemStyle,decal:{symbol:"rect",dashArrayX:[1,0],dashArrayY:[2,4+i*2],rotation:i%2?Math.PI/4:-Math.PI/4,color:"rgba(30,30,30,.45)"}}} : {}),
                 label: { ...item.label, position: "inside", formatter: (p: DefaultLabelFormatterCallbackParams) => `${Number(p.value).toFixed(1)}${normalized ? "%" : ""}` },
             })),
         };
@@ -87,7 +88,7 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
     if (template === "trend") return { ...option,
         title: { ...(option.title as object), text: style.title + (style.cumulative ? " · 累计" : "") },
         xAxis: { type: "category", data: data.x, boundaryGap: false, name: style.xLabel, nameLocation: "middle", nameGap: 42, axisLabel: { ...axisText, hideOverlap: true } },
-        series: lines.map((item, i) => { let sum = 0; return { ...item, data: data.series[i].values.map(value => style.cumulative ? sum += value : value), areaStyle: { opacity: 0.09 } }; }),
+        series: lines.map((item, i) => { let sum = 0; return { ...item, ...(style.stackedArea ? {stack:"area-composition",symbol:"none"} : {}), data: data.series[i].values.map(value => style.cumulative ? sum += value : value), areaStyle: { opacity: style.stackedArea ? 0.65 : 0.09 } }; }),
     };
     if (template === "dual-axis") return { ...option, grid: { left: 78, right: 86, top: 92, bottom: 74 },
         yAxis: [{ ...(option.yAxis as YAXisComponentOption), name: style.yLabel }, { ...(option.yAxis as YAXisComponentOption), name: style.secondaryYLabel || data.series[1].name, position: "right", splitLine: { show: false } }],

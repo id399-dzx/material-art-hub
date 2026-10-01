@@ -157,3 +157,28 @@
 
 /* The gallery is the entire browsing page; editing opens in a dialog. */
 .template-studio .template-gallery { max-height:none; overflow:visible; }
+
+/* One template library, grouped by the shape of the result. */
+.drawing-library .template-catalog-toolbar { display: block; }
+.drawing-library .template-category-tabs { flex-wrap: wrap; overflow: visible; }
+.drawing-library-tools { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 10px 0 20px; }
+.drawing-source-filter { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #786781; }
+.drawing-source-filter select { border: 1px solid #e5ddec; border-radius: 99px; background: #ffffffcc; padding: 9px 13px; color: #594b67; }
+.drawing-type-group { margin: 26px 0 34px; }
+.drawing-type-heading { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.drawing-type-heading h3 { color: #44374d; font-size: 19px; font-weight: 650; margin: 0; }
+.drawing-type-heading span { color: #8c7d96; font-size: 11px; }
+.template-card-art--paper { background: linear-gradient(130deg,#f1eef7,#f9eff4); padding: 40px 12px 12px; }
+.template-card-art--paper img { object-fit: contain; border-radius: 10px; background: white; }
+.template-reference { border: 1px solid #e7ddec; border-radius: 12px; padding: 12px; margin-bottom: 18px; color: #796687; font-size: 11px; }
+.template-reference summary { cursor: pointer; font-weight: 600; }
+.template-reference img { width: 100%; height: auto; margin-top: 12px; border-radius: 8px; }
+.template-reference p { line-height: 1.8; }
+.template-reference a { text-decoration: underline; }
+.single-image-editor fieldset { min-width: 0; border: 0; margin: 0; padding: 0; }
+.single-image-canvas { background: white; border-radius: 14px; overflow: auto; margin: 16px 0; }
+.single-image-canvas svg { display: block; width: 100%; max-height: 520px; }
+.single-image-project { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; font-size: 12px; color: #796687; }
+.single-image-project button,.single-image-project label { cursor: pointer; padding: 9px 12px; border: 1px solid #e5ddec; border-radius: 99px; background: white; }
+.single-image-project input { display: none; }
+@media(max-width:620px) { .drawing-library-tools { align-items: stretch; flex-direction: column; }.drawing-type-group { margin-top: 22px; }.drawing-library .template-category-tabs button { padding: 8px 11px; font-size: 11px; } }

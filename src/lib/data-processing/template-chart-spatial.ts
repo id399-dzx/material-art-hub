@@ -25,7 +25,7 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     const points: Point[] = data.x.map((x, i) => [Number(x), data.series[0].values[i], data.series[1].values[i]]);
     const yaw = style.yaw ?? 35, pitch = style.pitch ?? 25, width = style.width ?? 680, height = style.height ?? 420;
     const wires: Point[][] = [];
-    if (template === "sphere") {
+    if (template === "sphere" && style.sphereGuide !== false) {
         for (const lat of [-60, -30, 0, 30, 60]) {
             const a = lat * Math.PI / 180;
             wires.push(Array.from({ length: 73 }, (_, i) => { const t = i / 72 * 2 * Math.PI; return [Math.cos(a) * Math.cos(t), Math.cos(a) * Math.sin(t), Math.sin(a)]; }));
@@ -42,10 +42,10 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     const scale = Math.min((width - 140) / Math.max(0.1, extents[1] - extents[0]), (height - 155) / Math.max(0.1, extents[3] - extents[2]));
     const project = (p: Point): [number, number] => { const [x, y] = rotatePoint(p, yaw, pitch); return [width / 2 + (x - (extents[0] + extents[1]) / 2) * scale, 90 + (height - 145) / 2 - (y - (extents[2] + extents[3]) / 2) * scale]; };
     const graphic: GraphicComponentOption[] = [];
-    if (template === "sphere") {
+    if (template === "sphere" && style.sphereGuide !== false) {
         graphic.push({ type: "circle", shape: { cx: project([0, 0, 0])[0], cy: project([0, 0, 0])[1], r: scale }, style: { fill: { type: "radial", x: 0.35, y: 0.3, r: 0.7, colorStops: [{ offset: 0, color: "#f8f6fc" }, { offset: 1, color: "#e4e1ef" }] }, stroke: "#d7d3e2", opacity: 0.65 } });
         wires.forEach(line => graphic.push({ type: "polyline", shape: { points: line.map(project) }, style: { stroke: "#b9b3cb", lineWidth: 0.7, opacity: 0.6, fill: "none" } }));
-    } else {
+    } else if (template === "surface") {
         const zmin = Math.min(...points.map(p => p[2])), zmax = Math.max(...points.map(p => p[2]));
         const base = palette[0].replace("#", "");
         surfaceFaces(points).sort((a, b) => a.reduce((sum, p) => sum + rotatePoint(p, yaw, pitch)[2], 0) - b.reduce((sum, p) => sum + rotatePoint(p, yaw, pitch)[2], 0)).forEach(face => {
@@ -64,6 +64,6 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
         graphic.push({ type: "line", shape: { x1: origin[0], y1: origin[1], x2: to[0], y2: to[1] }, style: { stroke: palette[0], lineWidth: 1, opacity: front ? 0.65 : 0.25 } });
         graphic.push({ type: "circle", shape: { cx: to[0], cy: to[1], r: 4.5 }, style: { fill: front ? palette[0] : palette[1], stroke: "#fff", lineWidth: 1, opacity: front ? 1 : 0.6 } });
     });
-    graphic.push({ type: "text", left: "center", bottom: 16, style: { text: `正交投影 · 方位 ${yaw}° / 仰角 ${pitch}°${template === "sphere" ? " · 参考球 R = 1" : " · 仅连接完整网格"}`, fill: "#787580", font: `11px ${style.fontFamily}` } });
+    graphic.push({ type: "text", left: "center", bottom: 16, style: { text: `正交投影 · 方位 ${yaw}° / 仰角 ${pitch}°${template === "sphere" ? style.sphereGuide === false ? " · 空间向量" : " · 参考球 R = 1" : " · 仅连接完整网格"}`, fill: "#787580", font: `11px ${style.fontFamily}` } });
     return { ...shell, graphic, series: [] };
 }

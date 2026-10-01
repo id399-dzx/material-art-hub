@@ -165,7 +165,7 @@ export default function TemplateStudio({ active }: { active: boolean }) {
     return (
         <section id="data-templates" className="template-studio" hidden={!active} aria-labelledby="template-studio-title">
             <div className="template-intro">
-                <div><span className="template-eyebrow"><Layers3 size={14} /> TEMPLATE COLLECTION / 数据模板</span><h2 id="template-studio-title">从一个好模板开始<span>。</span></h2><p>选择图表，绑定数据，让实验结果拥有清晰的表达。</p></div>
+                <div><span className="template-eyebrow"><Layers3 size={14} /> BASIC CHARTS / 基础绘图</span><h2 id="template-studio-title">从一个好模板开始<span>。</span></h2><p>选择通用图表并绑定数据；按具体论文图例替换数据，请进入“论文图例模板”。</p></div>
                 <div className="template-intro-note"><span><Sparkles size={15} /> 为科研表达而设计</span><p>{CHART_TEMPLATES.length} 类科研模板<br />真实数据由你提供</p></div>
             </div>
 

@@ -2,6 +2,11 @@
 
 科研数据处理工作台与素材库。数据处理页面位于 `/data-processing`，可导入实验表格、绘制图表并导出图片；素材探索、账号和素材上传使用 Supabase。
 
+## 绘图入口
+
+- [基础绘图说明](docs/data-templates.md)：18 类通用科研图表。
+- [论文图例模板说明](docs/paper-figure-templates.md)：逐张对应 figures4papers 首页的 17 张具体图例，可按面板替换数据、文字和插图。原图保留为位图底板，替换图表与文字为矢量；原图资源遵循 CC BY-NC 4.0。
+
 ## 本地运行
 
 ```bash

@@ -8,6 +8,7 @@ import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Tras
 import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/parse";
 import SafeReport from "@/components/data-processing/SafeReport";
 import TemplateStudio from "@/components/data-processing/TemplateStudio";
+import PaperFigureStudio from "@/components/data-processing/PaperFigureStudio";
 import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
 
@@ -105,7 +106,7 @@ const subscribeWorkspace = (callback: () => void) => {
     window.addEventListener("hashchange", callback);
     return () => window.removeEventListener("hashchange", callback);
 };
-const getWorkspace = () => window.location.hash === "#data-templates" ? "templates" : "processing";
+const getWorkspace = () => window.location.hash === "#paper-figures" ? "papers" : window.location.hash === "#data-templates" ? "templates" : "processing";
 const getServerWorkspace = () => "processing";
 
 export default function DataProcessingPage() {
@@ -970,17 +971,18 @@ export default function DataProcessingPage() {
                     <div className="workbench-appbar-actions">
                         <nav className="workbench-pill-nav" aria-label="工作台区域">
                             <a className={workspace === "processing" ? "is-active" : ""} aria-current={workspace === "processing" ? "page" : undefined} href="#data-source">数据处理</a>
-                            <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#data-templates">数据模板</a>
+                            <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#data-templates">基础绘图</a>
+                            <a className={workspace === "papers" ? "is-active" : ""} aria-current={workspace === "papers" ? "page" : undefined} href="#paper-figures">论文图例模板</a>
                             <a href="#chart-preview">图表画布</a>
                             <a href="#analysis">辅助解读</a>
                         </nav>
-                        <button type="button" className="workbench-top-upload" onClick={() => workspace === "templates" ? document.getElementById("template-data-upload")?.click() : mainFileInputRef.current?.click()}>
+                        <button type="button" className="workbench-top-upload" onClick={() => workspace === "papers" ? (document.getElementById("paper-figure-image-upload") || document.getElementById("paper-figure-data-upload"))?.click() : workspace === "templates" ? document.getElementById("template-data-upload")?.click() : mainFileInputRef.current?.click()}>
                             <UploadCloud size={16} /> 导入文件
                         </button>
                     </div>
                 </div>
 
-                <div hidden={workspace === "templates"}>
+                <div hidden={workspace !== "processing"}>
                 <div className="workbench-quick-stats" aria-label="当前数据概览">
                     <div className="workbench-stat">
                         <span>已导入文件</span>
@@ -1692,6 +1694,7 @@ export default function DataProcessingPage() {
                     </section>
                 </div>
                 <TemplateStudio active={workspace === "templates"} />
+                <PaperFigureStudio active={workspace === "papers"} />
             </div>
         </main>
     );

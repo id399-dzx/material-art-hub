@@ -1,0 +1,68 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420">
+<rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
+<text dominant-baseline="central" text-anchor="start" style="font: 11px Arial" y="5.5" transform="translate(279.5 393)" fill="#787580">箭头对应输入的步骤连接</text>
+<path d="M0 0Q65.7 -10.5 131.5 -5.7" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.75L-6 9L0 0Z" transform="matrix(-0.074,2.885,-0.997,-0.213,162.2569,209.74)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M180 0Q245.7 -10.5 311.5 -5.7" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.75L-6 9L0 0Z" transform="matrix(-0.074,2.885,-0.997,-0.213,302.2569,209.74)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M360 0Q423.7 -29.2 491.7 -42.6" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.8L-6 9L0 0Z" transform="matrix(0.193,2.838,-0.981,0.558,442.4442,126.7589)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M360 0Q429.6 7.8 494.8 31.5" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.75L-6 9L0 0Z" transform="matrix(-0.341,2.72,-0.94,-0.986,444.8368,293.324)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M540 -50Q609.6 -42.2 674.8 -18.5" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.75L-6 9L0 0Z" transform="matrix(-0.341,2.72,-0.94,-0.986,584.8368,180.824)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M540 50Q603.7 20.8 671.7 7.4" transform="matrix(0.778,0,0,2.25,60,222.5)" fill="none" pointer-events="visible" stroke="#9893ad" stroke-width="1.5118578920369088" stroke-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr17-cls-124"></path>
+<path d="M0 0L6 9L0 6.8L-6 9L0 0Z" transform="matrix(0.193,2.838,-0.981,0.558,582.4442,239.2589)" fill="#9893ad" fill-opacity="0.5" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr17-cls-125"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,60,222.5)" fill="#788bcc" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr17-cls-126"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,200,222.5)" fill="#d69baf" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr17-cls-127"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,340,222.5)" fill="#7dafb1" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr17-cls-128"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,480,110)" fill="#b4a0ce" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr17-cls-129"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,480,335)" fill="#ceaa78" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr17-cls-130"></path>
+<path d="M-0.5 -1L0.5 -1A0.5 0.5 0 0 1 1 -0.5L1 0.5A0.5 0.5 0 0 1 0.5 1L-0.5 1A0.5 0.5 0 0 1 -1 0.5L-1 -0.5A0.5 0.5 0 0 1 -0.5 -1" transform="matrix(56,0,0,57.857,620,222.5)" fill="#89a3ba" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr17-cls-131"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" transform="translate(60 222.5)" fill="#fff">实验数据</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" transform="translate(200 222.5)" fill="#fff">质量检查</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" transform="translate(340 222.5)" fill="#fff">特征提取</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" xml:space="preserve" transform="translate(480 110)" fill="#fff">分析 A</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" xml:space="preserve" transform="translate(480 335)" fill="#fff">分析 B</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Arial;" transform="translate(620 222.5)" fill="#fff">结果核验</text>
+<path d="M-5 -5l10 0l0 10l-10 0Z" transform="translate(340 21)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr17-cls-132"></path>
+<style ><![CDATA[
+.zr17-cls-124:hover {
+cursor:pointer;
+}
+.zr17-cls-125:hover {
+cursor:pointer;
+fill:rgba(167,161,190,1);
+}
+.zr17-cls-126:hover {
+cursor:pointer;
+fill:rgba(132,152,224,1);
+}
+.zr17-cls-127:hover {
+cursor:pointer;
+fill:rgba(235,170,192,1);
+}
+.zr17-cls-128:hover {
+cursor:pointer;
+fill:rgba(137,192,194,1);
+}
+.zr17-cls-129:hover {
+cursor:pointer;
+fill:rgba(198,176,226,1);
+}
+.zr17-cls-130:hover {
+cursor:pointer;
+fill:rgba(226,187,132,1);
+}
+.zr17-cls-131:hover {
+cursor:pointer;
+fill:rgba(150,179,204,1);
+}
+.zr17-cls-132:hover {
+pointer-events:none;
+}
+
+]]>
+
+</style>
+</svg>

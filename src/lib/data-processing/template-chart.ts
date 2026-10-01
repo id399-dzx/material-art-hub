@@ -1,10 +1,12 @@
 import type { CustomSeriesOption, EChartsOption, SeriesOption } from "echarts";
-import type { ErrorMeasure, TemplateData, TemplateId } from "./templates";
+import { createExtendedTemplateOption } from "./template-chart-extended.ts";
+import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 
 export type PublicationStyle = "journal" | "soft" | "mono";
 export type TemplateChartStyle = {
     title: string; xLabel: string; yLabel: string; fontFamily: string; fontSize: number;
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
+    panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
 };
 
 const colors: Record<PublicationStyle, string[]> = {
@@ -15,6 +17,7 @@ const colors: Record<PublicationStyle, string[]> = {
 
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const palette = colors[style.palette];
+    if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => createTemplateOption(data, id, style));
     const isLine = template === "line";
     const series: SeriesOption[] = data.series.map((item, index) => {
         const color = palette[index % palette.length];

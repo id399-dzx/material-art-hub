@@ -63,6 +63,7 @@ test('every template produces a real SVG with its own demonstration data', () =>
             assert.match(svg, /<svg/);
             assert.match(svg, /<path/);
             assert.match(svg, /示例数据/);
+            assert.doesNotMatch(svg, /NaN|Infinity/);
             if (template.id === 'error-bar') {
                 assert.match(svg, /±SD/);
                 assert.equal(option.series.filter(series => series.type === 'custom').length, 1);
@@ -87,4 +88,62 @@ test('black and white styling retains visible error caps at the grouped bar cent
 
 test('CSV demonstrations quote commas and embedded double quotes correctly', () => {
     assert.equal(matrixToCsv([['a,b', 'a"b'], [0, null]]), '\uFEFF"a,b","a""b"\r\n0,');
+});
+
+test('the catalog covers all audited figure families with examples and data instructions', () => {
+    assert.equal(CHART_TEMPLATES.length, 18);
+    assert.equal(new Set(CHART_TEMPLATES.map(item => item.id)).size, 18);
+    for (const item of CHART_TEMPLATES) { assert.ok(item.guide); assert.ok(item.reference); assert.ok(item.demo.length > 1); }
+});
+
+const chartStyle = { title: 'QA', xLabel: 'x', yLabel: 'y', fontFamily: 'Arial', fontSize: 13, palette: 'journal', showGrid: false, showValues: false, errorMeasure: 'SD' };
+const demoData = id => {
+    const template = CHART_TEMPLATES.find(item => item.id === id), table = parseTemplateTable(template.demo);
+    return buildTemplateData(table, suggestMapping(table, id), id).data;
+};
+test('percent composition totals 100 per row while leaving source values unchanged', () => {
+    const data = demoData('percent-bar'), original = structuredClone(data);
+    const option = createTemplateOption(data, 'percent-bar', chartStyle);
+    data.x.forEach((_, row) => assert.ok(Math.abs(option.series.reduce((sum, series) => sum + series.data[row], 0) - 100) < 1e-10));
+    assert.deepEqual(data, original);
+    const zero = parseTemplateTable([['condition', 'a', 'b'], ['A', 0, 0]]);
+    assert.match(buildTemplateData(zero, suggestMapping(zero, 'percent-bar'), 'percent-bar').error, /大于零/);
+});
+test('cumulative trends, dual axes and radar preserve their stated data semantics', () => {
+    const trend = demoData('trend');
+    assert.deepEqual(createTemplateOption(trend, 'trend', { ...chartStyle, cumulative: true }).series[0].data, [5, 13, 19, 31, 46, 64]);
+    assert.deepEqual(createTemplateOption(trend, 'trend', chartStyle).series[0].data, trend.series[0].values);
+    const dual = createTemplateOption(demoData('dual-axis'), 'dual-axis', chartStyle);
+    assert.deepEqual(dual.series.map(series => series.yAxisIndex), [0, 1]);
+    const radar = demoData('radar'), option = createTemplateOption(radar, 'radar', chartStyle);
+    assert.deepEqual(option.series[0].data[0].value, radar.series[0].values);
+    assert.ok(option.radar.indicator.every(item => item.name.includes('上限')));
+});
+test('surface grids keep holes and reject duplicate coordinates instead of interpolating', async () => {
+    const { surfaceFaces, rotatePoint } = await import('./template-chart-spatial.ts');
+    const points = Array.from({ length: 3 }, (_, x) => Array.from({ length: 3 }, (_, y) => [x, y, x + y])).flat();
+    assert.equal(surfaceFaces(points).length, 4);
+    assert.equal(surfaceFaces(points.slice(1)).length, 3);
+    assert.deepEqual(rotatePoint([2, 3, 4], 0, 0), [2, 4, 3]);
+    const table = parseTemplateTable([['x', 'y', 'z'], [0, 0, 1], [0, 0, 2], [1, 1, 3]]);
+    assert.match(buildTemplateData(table, suggestMapping(table, 'surface'), 'surface').error, /重复/);
+});
+test('graph input retains named nodes, zero weights and explicitly supplied edges', () => {
+    const table = parseTemplateTable([['source', 'target', 'weight'], ['A', 'B', 0], ['B', 'C', 2], ['C', '', 1], ['C', 'D', -1]]);
+    const result = buildTemplateData(table, suggestMapping(table, 'network'), 'network');
+    assert.deepEqual(result.data.edges, [{ source: 'A', target: 'B', weight: 0 }, { source: 'B', target: 'C', weight: 2 }]);
+    assert.deepEqual(result.data.x, ['A', 'B', 'C']);
+    assert.equal(result.data.skipped, 2);
+});
+
+test('parameter panels use numeric X and retain paired row order in every independent axis', () => {
+    const table = parseTemplateTable([['parameter', 'accuracy', 'cost'], [2, 90, 8], [1, 85, 4], [3, null, 10]]);
+    const mapping = suggestMapping(table, 'multi-panel', 'line');
+    const { data } = buildTemplateData(table, mapping, 'multi-panel', 'replicates', 'SD', 'line');
+    assert.deepEqual(data.x, [2, 1]);
+    assert.equal(data.skipped, 1);
+    const option = createTemplateOption(data, 'multi-panel', { ...chartStyle, panelChart: 'line' });
+    assert.deepEqual(option.xAxis.map(axis => axis.type), ['value', 'value']);
+    assert.deepEqual(option.series.map(series => series.data), [[[2, 90], [1, 85]], [[2, 8], [1, 4]]]);
+    assert.deepEqual(option.series.map(series => series.yAxisIndex), [0, 1]);
 });

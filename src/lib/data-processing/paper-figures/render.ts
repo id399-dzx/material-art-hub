@@ -154,7 +154,7 @@ export function renderPaperFigure(figure:PaperFigure,changes:PaperChanges,backgr
   if(image && /^data:image\/(png|jpeg|webp);base64,/.test(image)) {const [x,y,w,h]=region.rect;layers+=`<rect x="${f(x*1000)}" y="${f(y*height)}" width="${f(w*1000)}" height="${f(h*height)}" fill="white"/><image href="${escapeXml(image)}" x="${f(x*1000)}" y="${f(y*height)}" width="${f(w*1000)}" height="${f(h*height)}" preserveAspectRatio="xMidYMid meet"/>`;}
   if(data && region.retainedRects) region.retainedRects.forEach(([rx,ry,rw,rh],i)=>{const clip=`${region.id}-structure-${i}`;layers+=`<defs><clipPath id="${clip}"><rect x="${f(rx*1000)}" y="${f(ry*height)}" width="${f(rw*1000)}" height="${f(rh*height)}"/></clipPath></defs><image href="${escapeXml(backgroundHref)}" width="1000" height="${f(height)}" clip-path="url(#${clip})"/>`;});
   if(data && region.annotationsInside) {
-   const texts=figure.texts.filter(text=>(region.id!=='training'||/VIGIL|leverage/.test(text.text))&&text.x>=region.rect[0] && text.y>=region.rect[1] && text.x+text.w<=region.rect[0]+region.rect[2] && text.y+text.h<=region.rect[1]+region.rect[3]);
+   const texts=figure.texts.filter(text=>(region.id!=='training'||/VIGIL|leverage/.test(text.text))&&text.x+text.w/2>=region.rect[0] && text.y+text.h/2>=region.rect[1] && text.x+text.w/2<=region.rect[0]+region.rect[2] && text.y+text.h/2<=region.rect[1]+region.rect[3]);
    texts.forEach(text=>{const clip=`${region.id}-${text.id}-retained`;layers+=`<defs><clipPath id="${clip}"><rect x="${f(text.x*1000)}" y="${f(text.y*height)}" width="${f(text.w*1000)}" height="${f(text.h*height)}"/></clipPath></defs><image href="${escapeXml(backgroundHref)}" width="1000" height="${f(height)}" clip-path="url(#${clip})"/>`;});
   }
  }

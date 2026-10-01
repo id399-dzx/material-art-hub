@@ -5,3 +5,6 @@
 
 /* Keep small controls and figure instructions readable against the frosted background. */
 .paper-intro p,.paper-card-body p,.paper-control-intro p,.paper-help,.paper-notes p{color:#766c81}.paper-card-body footer,.paper-source-status,.paper-field,.paper-schema,.paper-table,.paper-ranges{color:#786781}.paper-small-actions button,.paper-reset-region,.paper-project-actions button,.paper-project-actions>label{color:#806b91}.paper-attribution{color:#82728c}.paper-card-body p{font-size:11px}.paper-schema,.paper-table{font-size:11px}
+
+/* Use page scrolling for the catalog; keep editing inside its dialog. */
+.paper-studio .paper-gallery { max-height:none; overflow:visible; }

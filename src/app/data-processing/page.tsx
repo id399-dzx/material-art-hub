@@ -983,9 +983,9 @@ export default function DataProcessingPage() {
                             <a href="#chart-preview">图表画布</a>
                             <a href="#analysis">辅助解读</a>
                         </nav>
-                        <button type="button" className="workbench-top-upload" onClick={() => workspace === "papers" ? (document.getElementById("paper-figure-image-upload") || document.getElementById("paper-figure-data-upload"))?.click() : workspace === "templates" ? document.getElementById("template-data-upload")?.click() : mainFileInputRef.current?.click()}>
+                        {workspace === "processing" && <button type="button" className="workbench-top-upload" onClick={() => mainFileInputRef.current?.click()}>
                             <UploadCloud size={16} /> 导入文件
-                        </button>
+                        </button>}
                     </div>
                 </div>
 

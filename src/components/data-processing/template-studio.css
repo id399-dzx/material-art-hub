@@ -154,3 +154,6 @@
 .template-preview-controls span { margin-left:auto; }
 .template-studio .template-style-presets { grid-template-columns:repeat(4,minmax(0,1fr)); }
 @media(max-width:620px) { .template-studio .template-style-presets { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+/* The gallery is the entire browsing page; editing opens in a dialog. */
+.template-studio .template-gallery { max-height:none; overflow:visible; }

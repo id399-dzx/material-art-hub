@@ -8,6 +8,7 @@ import { PAPER_FIGURES, PAPER_SOURCE, type FigureRegion } from '@/lib/data-proce
 import { emptyPaperChanges, paperDemoPoints, paperExampleCsv, parsePaperData, type PaperChanges, type PaperPanelData } from '@/lib/data-processing/paper-figures/data';
 import { renderPaperFigure } from '@/lib/data-processing/paper-figures/render';
 import PublicationExport from './PublicationExport';
+import TemplateEditorDialog from './TemplateEditorDialog';
 import { initialExportSettings, type ExportSettings } from '@/lib/data-processing/publication';
 import './paper-figure-studio.css';
 
@@ -18,6 +19,7 @@ async function inlineBackground(id:string) {const response=await fetch(`/paper-f
 function validRange(values:unknown): values is [number,number] {return Array.isArray(values)&&values.length===2&&values.every(v=>typeof v==='number'&&Number.isFinite(v))&&values[0]<values[1];}
 
 export default function PaperFigureStudio({active}:{active:boolean}) {
+ const [editorOpen,setEditorOpen]=useState(false),[hasOpened,setHasOpened]=useState(false);
  const [selected,setSelected]=useState(PAPER_FIGURES[0].id),[search,setSearch]=useState(''),[filter,setFilter]=useState('全部');
  const [states,setStates]=useState<Record<string,PaperChanges>>({}),[history,setHistory]=useState<Record<string,PaperChanges>>({});
  const [regionId,setRegionId]=useState(PAPER_FIGURES[0].regions[0].id),[mode,setMode]=useState<'data'|'text'|'image'>('data');
@@ -37,7 +39,7 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
  const textBox=label?`${Math.round(label.x*100)}%, ${Math.round(label.y*100)}%`:'';
 
  function mutate(next:PaperChanges) {setHistory(current=>({...current,[selected]:changes}));setStates(current=>({...current,[selected]:next}));setReference(false);setError('');}
- function chooseFigure(id:string) {if(busy||id===selected)return;const next=PAPER_FIGURES.find(item=>item.id===id)!;setSelected(id);setRegionId(next.regions[0].id);setMode(next.regions[0].kind==='image'?'image':'data');setLabelId('');setTextSearch('');setReference(false);setZoom(100);setError('');setWarnings([]);}
+ function chooseFigure(id:string) {if(busy)return;setEditorOpen(true);setHasOpened(true);if(id===selected)return;const next=PAPER_FIGURES.find(item=>item.id===id)!;setSelected(id);setRegionId(next.regions[0].id);setMode(next.regions[0].kind==='image'?'image':'data');setLabelId('');setTextSearch('');setReference(false);setZoom(100);setError('');setWarnings([]);}
  function chooseMode(next:'data'|'text'|'image') {if(busy)return;setMode(next);if(next!=='text'&&((next==='image')!==(region.kind==='image'))){const first=figure.regions.find(item=>(item.kind==='image')===(next==='image'));if(first)setRegionId(first.id);}setError('');}
  function chooseRegion(item:FigureRegion) {if(busy)return;setRegionId(item.id);setMode(item.kind==='image'?'image':'data');setReference(false);setError('');setWarnings([]);}
  function resetRegion() {const panels={...changes.panels},images={...changes.images};delete panels[region.id];delete images[region.id];mutate({...changes,panels,images});setWarnings([]);}
@@ -95,12 +97,13 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
  }
 
  return <section id="paper-figures" className="paper-studio" hidden={!active} aria-labelledby="paper-studio-title">
-  <input id="paper-figure-data-upload" type="file" accept=".csv,.xls,.xlsx" hidden disabled={busy} onChange={importData}/>
-  <header className="paper-intro"><div><span className="paper-eyebrow"><Layers3 size={14}/> PAPER FIGURE COLLECTION / 论文图例模板</span><h2 id="paper-studio-title">从论文的完整表达开始<span>。</span></h2><p>沿用具体图例的编排、结构与标注，把你的数据放回对应面板。</p></div><div className="paper-intro-count"><strong>17</strong><span>原项目首页图例<br/>逐张对应 · 可对照原图</span></div></header>
+  <header className="paper-intro"><div><span className="paper-eyebrow"><Layers3 size={14}/> PAPER FIGURE COLLECTION / 论文图例模板</span><h2 id="paper-studio-title">从论文的完整表达开始<span>。</span></h2><p>点击图例，打开编辑工作台；沿用原图编排、结构与标注，替换对应面板。</p></div><div className="paper-intro-count"><strong>17</strong><span>原项目首页图例<br/>逐张对应 · 可对照原图</span></div></header>
   <div className="paper-toolbar"><div className="paper-filters">{['全部','统计图例','复合图例'].map(item=><button type="button" key={item} aria-pressed={filter===item} onClick={()=>setFilter(item)}>{item}<small>{item==='全部'?17:item==='统计图例'?7:10}</small></button>)}</div><label className="paper-search"><Search size={15}/><input aria-label="搜索论文图例" value={search} placeholder="搜索项目或图例" onChange={event=>setSearch(event.target.value)}/></label></div>
-  <div className="paper-catalog-caption"><span>{filtered.length} / 17 张图例</span><a href={PAPER_SOURCE} target="_blank" rel="noreferrer">查看原项目 <ExternalLink size={12}/></a></div>
-  <div className="paper-gallery" aria-label="选择论文图例">{filtered.map(item=><button type="button" key={item.id} disabled={busy} className={item.id===selected?'is-selected':''} aria-pressed={item.id===selected} onClick={()=>chooseFigure(item.id)}><div className="paper-card-image"><Image src={`/paper-figures/${item.id}-preview.webp`} width={600} height={390} alt={`${item.name}原图预览`}/><span>{String(PAPER_FIGURES.indexOf(item)+1).padStart(2,'0')}</span></div><div className="paper-card-body"><small>{item.project}</small><h3>{item.name}</h3><p>{item.description}</p><footer><span>{item.regions.filter(region=>region.kind!=='image').length} 个数据区 · {item.regions.filter(region=>region.kind==='image').length} 个插图区</span>{item.id===selected?<Check size={15}/>:<span>选择 →</span>}</footer></div></button>)}</div>
+  <div className="paper-catalog-caption"><span>{filtered.length} / 17 张图例 · 点击卡片开始编辑</span><a href={PAPER_SOURCE} target="_blank" rel="noreferrer">查看原项目 <ExternalLink size={12}/></a></div>
+  <div className="paper-gallery" aria-label="选择论文图例">{filtered.map(item=><button type="button" key={item.id} disabled={busy} className={hasOpened&&item.id===selected?'is-selected':''} aria-haspopup="dialog" aria-pressed={hasOpened&&item.id===selected} onClick={()=>chooseFigure(item.id)}><div className="paper-card-image"><Image src={`/paper-figures/${item.id}-preview.webp`} width={600} height={390} alt={`${item.name}原图预览`}/><span>{String(PAPER_FIGURES.indexOf(item)+1).padStart(2,'0')}</span></div><div className="paper-card-body"><small>{item.project}</small><h3>{item.name}</h3><p>{item.description}</p><footer><span>{item.regions.filter(region=>region.kind!=='image').length} 个数据区 · {item.regions.filter(region=>region.kind==='image').length} 个插图区</span>{hasOpened&&item.id===selected?<span>继续编辑 →</span>:<span>使用图例 →</span>}</footer></div></button>)}</div>
   {!filtered.length&&<p className="paper-empty">没有匹配的图例，请更换关键词。</p>}
+  <TemplateEditorDialog open={active&&editorOpen} title={figure.name} eyebrow="PAPER FIGURE EDITOR / 论文图例编辑" description="选择面板，替换数据、文字或插图；可对照原图并保存编辑工程。" busy={busy} onClose={()=>setEditorOpen(false)}>
+  <input id="paper-figure-data-upload" type="file" accept=".csv,.xls,.xlsx" hidden disabled={busy} onChange={importData}/>
   <div className="paper-editor-heading"><div><span className="paper-eyebrow">FIGURE EDITOR / 图例编辑</span><h3>{figure.name}</h3></div><div className="paper-editor-actions"><button type="button" disabled={busy||!history[selected]} onClick={()=>{const previous=history[selected];setStates(current=>({...current,[selected]:previous}));setHistory(current=>({...current,[selected]:changes}));setError('');setWarnings([]);setReference(false);}}><Undo2 size={14}/>撤销上一步</button><button type="button" disabled={busy} onClick={()=>{mutate(emptyPaperChanges());setWarnings([]);}}>恢复整图</button></div></div>
   <div className="paper-editor">
    <aside className="paper-controls"><fieldset disabled={busy}>
@@ -126,5 +129,6 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
     ]} />
    </div><div className="paper-notes"><h4>这张图保留了什么</h4><p>{figure.description}</p><p>原图底板保留作者的布局、插图和标注；替换的数据区独立绘制。原图的 P 值、公式与结论不会根据新数据自动更新，请用文字编辑逐项核对。</p><div className="paper-project-actions"><button type="button" onClick={()=>download(new Blob([JSON.stringify({version:1,figureId:selected,changes},null,2)],{type:'application/json'}),`${selected}.paper-figure.json`)}>保存可继续编辑的工程</button><label>打开已保存工程<input type="file" accept=".json" disabled={busy} onChange={restoreProject}/></label></div></div><div className="paper-attribution"><a href={`${PAPER_SOURCE}/blob/main/${figure.source}`} target="_blank" rel="noreferrer">原始图例 <ExternalLink size={12}/></a><span>Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> · 已添加编辑图层</span></div></div>
   </div>
+  </TemplateEditorDialog>
  </section>;
 }

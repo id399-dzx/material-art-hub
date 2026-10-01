@@ -9,6 +9,7 @@ import { buildTemplateData, CHART_TEMPLATES, PANEL_SWEEP_DEMO, TEMPLATE_CATEGORI
 import { createTemplateOption, type PublicationStyle } from "@/lib/data-processing/template-chart";
 import DataAdvisor from "./DataAdvisor";
 import PublicationExport from "./PublicationExport";
+import TemplateEditorDialog from "./TemplateEditorDialog";
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import "./template-studio.css";
 
@@ -29,6 +30,8 @@ function downloadBlob(blob: Blob, filename: string) {
 
 export type TemplateStudioHandle = { loadData: (name: string, matrix: unknown[][], id: TemplateId, mapping: ColumnMapping) => void };
 export default function TemplateStudio({ active, ref }: { active: boolean; ref?: Ref<TemplateStudioHandle> }) {
+    const [editorOpen, setEditorOpen] = useState(false);
+    const [hasOpened, setHasOpened] = useState(false);
     const [category, setCategory] = useState<TemplateCategory | "全部">("全部");
     const [search, setSearch] = useState("");
     const [panelChart, setPanelChart] = useState<"bar" | "line">("bar");
@@ -79,21 +82,21 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }) : null, [result.data, selected, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight]);
 
     useEffect(() => {
-        if (!active) return;
+        if (!active || !editorOpen) return;
         const frame = requestAnimationFrame(() => chartRef.current?.getEchartsInstance()?.resize({ width: chartWidth, height: chartHeight }));
         return () => cancelAnimationFrame(frame);
-    }, [active, chartWidth, chartHeight]);
+    }, [active, editorOpen, chartWidth, chartHeight]);
 
     useEffect(() => {
         const element = previewRef.current;
-        if (!active || !element) return;
+        if (!active || !editorOpen || !element) return;
         const observer = new ResizeObserver(entries => {
             const available = entries[0]?.contentRect.width;
             if (available && available > 0) setPreviewWidth(available);
         });
         observer.observe(element);
         return () => observer.disconnect();
-    }, [active]);
+    }, [active, editorOpen]);
     const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth - 24) / chartWidth);
 
     function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart) {
@@ -116,6 +119,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }
 
     function chooseTemplate(id: TemplateId) {
+        setEditorOpen(true); setHasOpened(true);
         if (id === selected) return;
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         setSelected(id);
@@ -160,9 +164,10 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         setYLabel(id === "histogram" ? "样本数" : table.columns[nextMapping.ys[0]] || next.yLabel);
         setTitle(source.kind === "file" ? source.name.replace(/\.[^.]+$/, "") : next.name);
         setFileError(""); setExportError("");
-        requestAnimationFrame(() => document.getElementById("template-editor")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+        requestAnimationFrame(() => document.getElementById("template-editor")?.closest(".template-dialog-content")?.scrollTo({ top: 0, behavior: "smooth" }));
     }
     useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
+        setEditorOpen(true); setHasOpened(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id);
         setSelected(id); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
@@ -180,25 +185,24 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     return (
         <section id="data-templates" className="template-studio" hidden={!active} aria-labelledby="template-studio-title">
             <div className="template-intro">
-                <div><span className="template-eyebrow"><Layers3 size={14} /> BASIC CHARTS / 基础绘图</span><h2 id="template-studio-title">从一个好模板开始<span>。</span></h2><p>选择通用图表并绑定数据；按具体论文图例替换数据，请进入“论文图例模板”。</p></div>
+                <div><span className="template-eyebrow"><Layers3 size={14} /> BASIC CHARTS / 基础绘图</span><h2 id="template-studio-title">从一个好模板开始<span>。</span></h2><p>点击模板，打开编辑工作台并替换数据；完整论文排版请进入“论文图例模板”。</p></div>
                 <div className="template-intro-note"><span><Sparkles size={15} /> 为科研表达而设计</span><p>{CHART_TEMPLATES.length} 类科研模板<br />真实数据由你提供</p></div>
             </div>
 
-            <div className="template-advisor-upload"><label htmlFor="template-data-upload"><UploadCloud size={16} />{loading ? "正在读取…" : "上传数据，获得绘图建议"}</label><span>{source.kind === "demo" ? "当前使用演示数据" : source.name} · 下方可切换工作表与列名设置</span></div>
-            <DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} />
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="模板分类">{(["全部", ...TEMPLATE_CATEGORIES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={category === item ? "is-active" : ""} onClick={() => setCategory(item)}>{item}<small>{item === "全部" ? CHART_TEMPLATES.length : CHART_TEMPLATES.filter(template => template.category === item).length}</small></button>)}</div>
                 <label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索图表或用途" value={search} onChange={event => setSearch(event.target.value)} /></label>
             </div>
-            <div className="template-catalog-meta"><span>显示 {filtered.length} / {CHART_TEMPLATES.length} 类模板</span><span>下滑浏览全部模板 · 当前选择：{template.name}</span></div>
+            <div className="template-catalog-meta"><span>显示 {filtered.length} / {CHART_TEMPLATES.length} 类模板</span><span>点击任一模板，弹出编辑工作台</span></div>
             <div className="template-gallery" aria-label="选择图表模板">
-                {filtered.map(item => <button key={item.id} type="button" className={`template-card${selected === item.id ? " is-selected" : ""}`} aria-pressed={selected === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading}>
+                {filtered.map(item => <button key={item.id} type="button" className={`template-card${hasOpened && selected === item.id ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={hasOpened && selected === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
                     <div className={`template-card-art template-card-art--${item.id}`}><span className="template-card-number">{String(CHART_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={`/data-templates/${item.id}.svg`} width={340} height={210} alt={`${item.name}示例预览`} /></div>
-                    <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{selected === item.id ? <><Check size={14} /> 已选择</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
+                    <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && selected === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
                 </button>)}
             </div>
 
             {!filtered.length && <p className="template-search-empty">没有匹配的模板，请换个关键词或选择“全部”。</p>}
+            <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow="BASIC CHART EDITOR / 基础绘图编辑" description="导入数据、绑定字段，右侧即时预览；完成后检查并导出图表。" busy={loading || exporting} onClose={() => setEditorOpen(false)}>
             <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} /> 01 选择模板</span><i /><span><FileSpreadsheet size={14} /> 02 导入与绑定</span><i /><span><ArrowDownToLine size={14} /> 03 预览与导出</span></div>
 
             <div id="template-editor" className="template-editor">
@@ -232,7 +236,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                 <div className="template-output-column">
                     <section className="template-preview-panel template-glass" aria-labelledby="template-preview-title">
                         <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
-                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && option ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={option} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
+                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && option ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={option} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
                         <p className="template-chart-mobile-hint">预览自动适应窗口；切换原始尺寸可滑动查看细节。</p>
                         <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
                         <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading} onBusy={setExporting} revision={option} extraIssues={[
@@ -257,6 +261,8 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                     </section>
                 </div>
             </div>
+            <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
+            </TemplateEditorDialog>
             <p className="template-bottom-note">图表模板参考通用科研绘图方法独立实现。示例数据仅用于演示布局，不代表真实实验结果。</p>
         </section>
     );

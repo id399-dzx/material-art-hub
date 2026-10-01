@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useImperativeHandle, type Ref } from "react";
 import Image from "next/image";
 import ReactECharts from "echarts-for-react";
 import * as XLSX from "xlsx";
 import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search } from "lucide-react";
-import { GlassButton } from "@/components/ui/GlassButton";
 import { buildTemplateData, CHART_TEMPLATES, PANEL_SWEEP_DEMO, TEMPLATE_CATEGORIES, isNumericX, isSpatial, isGraph, isBar, matrixToCsv, numericCell, parseTemplateTable, suggestMapping, type ColumnMapping, type ErrorInput, type ErrorMeasure, type TemplateId, type TemplateCategory } from "@/lib/data-processing/templates";
 import { createTemplateOption, type PublicationStyle } from "@/lib/data-processing/template-chart";
+import DataAdvisor from "./DataAdvisor";
+import PublicationExport from "./PublicationExport";
+import { initialExportSettings } from "@/lib/data-processing/publication";
 import "./template-studio.css";
 
 type Sheet = { name: string; matrix: unknown[][] };
 type Source = { name: string; kind: "demo" | "file"; sheets: Sheet[] };
-const initial = CHART_TEMPLATES[0];
+const initial = CHART_TEMPLATES.find(item => item.id === "line")!;
 
 function downloadBlob(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
@@ -25,7 +27,8 @@ function downloadBlob(blob: Blob, filename: string) {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export default function TemplateStudio({ active }: { active: boolean }) {
+export type TemplateStudioHandle = { loadData: (name: string, matrix: unknown[][], id: TemplateId, mapping: ColumnMapping) => void };
+export default function TemplateStudio({ active, ref }: { active: boolean; ref?: Ref<TemplateStudioHandle> }) {
     const [category, setCategory] = useState<TemplateCategory | "全部">("全部");
     const [search, setSearch] = useState("");
     const [panelChart, setPanelChart] = useState<"bar" | "line">("bar");
@@ -47,16 +50,21 @@ export default function TemplateStudio({ active }: { active: boolean }) {
     const [yLabel, setYLabel] = useState(initial.yLabel);
     const [palette, setPalette] = useState<PublicationStyle>("journal");
     const [fontFamily, setFontFamily] = useState("Arial");
-    const [fontSize, setFontSize] = useState(13);
+    const [fontSize, setFontSize] = useState(8);
     const [width, setWidth] = useState(680);
     const [height, setHeight] = useState(420);
     const [showGrid, setShowGrid] = useState(false);
     const [showValues, setShowValues] = useState(false);
     const [loading, setLoading] = useState(false);
     const [exporting, setExporting] = useState(false);
+    const [exportSettings, setExportSettings] = useState(initialExportSettings);
+    const [caption, setCaption] = useState("");
     const [fileError, setFileError] = useState("");
     const [exportError, setExportError] = useState("");
     const chartRef = useRef<ReactECharts>(null);
+    const previewRef = useRef<HTMLDivElement>(null);
+    const [previewWidth, setPreviewWidth] = useState(680);
+    const [actualPreview, setActualPreview] = useState(false);
     const template = CHART_TEMPLATES.find(item => item.id === selected)!;
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
     const filtered = CHART_TEMPLATES.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description}`.toLowerCase().includes(search.trim().toLowerCase()));
@@ -64,16 +72,29 @@ export default function TemplateStudio({ active }: { active: boolean }) {
     const result = useMemo(() => buildTemplateData(table, mapping, selected, errorInput, errorMeasure, panelChart), [table, mapping, selected, errorInput, errorMeasure, panelChart]);
     const chartWidth = Number.isFinite(width) && width >= 420 && width <= 1600 ? width : 680;
     const chartHeight = Number.isFinite(height) && height >= 320 && height <= 1000 ? height : 420;
-    const safeFontSize = Number.isFinite(fontSize) && fontSize >= 10 && fontSize <= 22 ? fontSize : 13;
+    const safeFontSize = Number.isFinite(fontSize) && fontSize >= 5 && fontSize <= 16 ? fontSize : 8;
+    const canvasFontSize = safeFontSize * 25.4 / 72 * chartWidth / exportSettings.widthMm;
     const option = useMemo(() => result.data ? createTemplateOption(result.data, selected, {
-        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: safeFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
-    }) : null, [result.data, selected, title, source.kind, xLabel, yLabel, fontFamily, safeFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight]);
+        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
+    }) : null, [result.data, selected, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight]);
 
     useEffect(() => {
         if (!active) return;
         const frame = requestAnimationFrame(() => chartRef.current?.getEchartsInstance()?.resize({ width: chartWidth, height: chartHeight }));
         return () => cancelAnimationFrame(frame);
     }, [active, chartWidth, chartHeight]);
+
+    useEffect(() => {
+        const element = previewRef.current;
+        if (!active || !element) return;
+        const observer = new ResizeObserver(entries => {
+            const available = entries[0]?.contentRect.width;
+            if (available && available > 0) setPreviewWidth(available);
+        });
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [active]);
+    const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth - 24) / chartWidth);
 
     function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart) {
         const nextTable = parseTemplateTable(next.sheets[nextSheet]?.matrix ?? [], headers);
@@ -128,38 +149,32 @@ export default function TemplateStudio({ active }: { active: boolean }) {
     }
 
     function toggleY(index: number) {
-        setMapping(current => ({ ...current, ys: current.ys.includes(index) ? current.ys.filter(y => y !== index) : [...current.ys, index].sort((a, b) => a - b) }));
+        setMapping(current => ({ ...current, ys: selected === "box" || selected === "violin" ? current.ys.includes(index) ? [] : [index] : current.ys.includes(index) ? current.ys.filter(y => y !== index) : [...current.ys, index].sort((a, b) => a - b) }));
         setExportError("");
     }
 
-    async function exportChart(format: "svg" | "png") {
-        if (!chartRef.current || !result.data || exporting) return;
-        setExporting(true);
-        setExportError("");
-        try {
-            const svg = chartRef.current.getEchartsInstance().renderToSVGString();
-            const filename = (title.trim() || template.name).replace(/[\\/:*?"<>|]/g, "_") + (source.kind === "demo" ? "-示例" : "");
-            const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-            if (format === "svg") downloadBlob(blob, `${filename}.svg`);
-            else {
-                const svgUrl = URL.createObjectURL(blob);
-                try {
-                    const image = new window.Image();
-                    await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error("图表转换失败，请尝试 SVG 导出。")); image.src = svgUrl; });
-                    const canvas = document.createElement("canvas");
-                    canvas.width = chartWidth * 3;
-                    canvas.height = chartHeight * 3;
-                    const context = canvas.getContext("2d");
-                    if (!context) throw new Error("浏览器无法生成 PNG，请使用 SVG 导出。");
-                    context.fillStyle = "#fff";
-                    context.fillRect(0, 0, canvas.width, canvas.height);
-                    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-                    const png = await new Promise<Blob>((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("PNG 导出失败。")), "image/png"));
-                    downloadBlob(png, `${filename}.png`);
-                } finally { URL.revokeObjectURL(svgUrl); }
-            }
-        } catch (error) { setExportError(error instanceof Error ? error.message : "导出失败，请重试。"); }
-        finally { setExporting(false); }
+    function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
+        const next = CHART_TEMPLATES.find(item => item.id === id)!;
+        setSelected(id); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        setXLabel(table.columns[nextMapping.x] || next.xLabel);
+        setYLabel(id === "histogram" ? "样本数" : table.columns[nextMapping.ys[0]] || next.yLabel);
+        setTitle(source.kind === "file" ? source.name.replace(/\.[^.]+$/, "") : next.name);
+        setFileError(""); setExportError("");
+        requestAnimationFrame(() => document.getElementById("template-editor")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    }
+    useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
+        const next = CHART_TEMPLATES.find(item => item.id === id)!;
+        bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id);
+        setSelected(id); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        setTitle(name); setXLabel(String(matrix[0]?.[nextMapping.x] ?? next.xLabel));
+        setYLabel(id === "histogram" ? "样本数" : String(matrix[0]?.[nextMapping.ys[0]] ?? next.yLabel));
+    } }));
+    function exportSvg() {
+        if (!chartRef.current) throw new Error("请先完成数据绑定，等待图表呈现。");
+        const svg = chartRef.current.getEchartsInstance().renderToSVGString();
+        const desc = document.createElementNS("http://www.w3.org/2000/svg", "desc");
+        desc.textContent = `${source.kind === "demo" ? "演示数据；" : "用户提供数据；"}${caption || "统计图注由用户核对。"}`;
+        return svg.replace(/(<svg\b[^>]*>)/, root => root + new XMLSerializer().serializeToString(desc));
     }
 
     return (
@@ -169,6 +184,8 @@ export default function TemplateStudio({ active }: { active: boolean }) {
                 <div className="template-intro-note"><span><Sparkles size={15} /> 为科研表达而设计</span><p>{CHART_TEMPLATES.length} 类科研模板<br />真实数据由你提供</p></div>
             </div>
 
+            <div className="template-advisor-upload"><label htmlFor="template-data-upload"><UploadCloud size={16} />{loading ? "正在读取…" : "上传数据，获得绘图建议"}</label><span>{source.kind === "demo" ? "当前使用演示数据" : source.name} · 下方可切换工作表与列名设置</span></div>
+            <DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} />
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="模板分类">{(["全部", ...TEMPLATE_CATEGORIES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={category === item ? "is-active" : ""} onClick={() => setCategory(item)}>{item}<small>{item === "全部" ? CHART_TEMPLATES.length : CHART_TEMPLATES.filter(template => template.category === item).length}</small></button>)}</div>
                 <label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索图表或用途" value={search} onChange={event => setSearch(event.target.value)} /></label>
@@ -184,7 +201,7 @@ export default function TemplateStudio({ active }: { active: boolean }) {
             {!filtered.length && <p className="template-search-empty">没有匹配的模板，请换个关键词或选择“全部”。</p>}
             <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} /> 01 选择模板</span><i /><span><FileSpreadsheet size={14} /> 02 导入与绑定</span><i /><span><ArrowDownToLine size={14} /> 03 预览与导出</span></div>
 
-            <div className="template-editor">
+            <div id="template-editor" className="template-editor">
                 <section className="template-input-panel template-glass" aria-labelledby="template-data-title">
                     <div className="template-section-heading"><span className="template-section-icon"><FileSpreadsheet size={18} /></span><div><h3 id="template-data-title">让模板读懂你的数据</h3><p>当前模板：{template.name}</p></div></div>
                     <p className="template-input-guide">{template.guide}</p>
@@ -200,12 +217,13 @@ export default function TemplateStudio({ active }: { active: boolean }) {
                     <div className="template-table-wrap" tabIndex={0} aria-label="数据预览，可横向滚动"><table><thead><tr><th scope="col">行</th>{table.columns.map((name, index) => <th scope="col" key={index}>{name}</th>)}</tr></thead><tbody>{table.rows.slice(0, 4).map((row, index) => <tr key={index}><td>{table.firstDataRow + index}</td>{row.map((value, column) => <td key={column}>{value ?? "—"}</td>)}</tr>)}</tbody></table></div>
 
                     <div className="template-binding-heading"><SlidersHorizontal size={15} /><h4>数据列绑定</h4><span>即时预览</span></div>
-                    <label className="template-field">{isGraph(selected) ? "起点 / 起始步骤列" : (isNumericX(selected) || selected === "multi-panel" && panelChart === "line") ? "X 轴数值列" : selected === "radar" ? "指标名称列" : selected === "trend" ? "时间标签列" : "类别 / 行名称列"}<div className="template-select-wrap"><select value={mapping.x} onChange={event => { const x = Number(event.target.value); setMapping(current => ({ ...current, x, ys: isSpatial(selected) || isGraph(selected) ? current.ys.map(y => y === x ? -1 : y) : current.ys.filter(y => y !== x) })); setXLabel(table.columns[x]); }}>{table.columns.map((name, index) => <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>
+                    <label className="template-field">{selected === "histogram" ? "原始样本数值列" : isGraph(selected) ? "起点 / 起始步骤列" : (isNumericX(selected) || selected === "multi-panel" && panelChart === "line") ? "X 轴数值列" : selected === "radar" ? "指标名称列" : selected === "trend" ? "时间标签列" : "类别 / 行名称列"}<div className="template-select-wrap"><select value={mapping.x} onChange={event => { const x = Number(event.target.value); setMapping(current => ({ ...current, x, ys: isSpatial(selected) || isGraph(selected) ? current.ys.map(y => y === x ? -1 : y) : current.ys.filter(y => y !== x) })); setXLabel(table.columns[x]); }}>{table.columns.map((name, index) => <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>
+                    {selected === "histogram" && <p className="template-hint">当前列为原始样本数值；直方图不需要绑定 Y 列。</p>}
                     {selected === "multi-panel" && <div className="template-segment" role="group" aria-label="分面图形">{(["bar", "line"] as const).map(kind => <button type="button" key={kind} aria-pressed={panelChart === kind} className={panelChart === kind ? "is-active" : ""} onClick={() => { setPanelChart(kind); if (source.kind === "demo") bindTable({ name: kind === "line" ? "参数扫描示例" : "分面比较示例", kind: "demo", sheets: [{ name: "示例数据", matrix: kind === "line" ? PANEL_SWEEP_DEMO : template.demo }] }, 0, true, selected, kind); else bindTable(source, sheetIndex, hasHeader, selected, kind); }}>{kind === "bar" ? "柱状比较" : "参数扫描折线"}</button>)}</div>}
                     {selected === "error-bar" && <><div className="template-segment" role="group" aria-label="误差数据格式"><button type="button" aria-pressed={errorInput === "replicates"} className={errorInput === "replicates" ? "is-active" : ""} onClick={() => setErrorInput("replicates")}>重复实验列</button><button type="button" aria-pressed={errorInput === "summary"} className={errorInput === "summary" ? "is-active" : ""} onClick={() => setErrorInput("summary")}>均值＋误差列</button></div><label className="template-field">误差条含义<div className="template-select-wrap"><select value={errorMeasure} onChange={event => setErrorMeasure(event.target.value as ErrorMeasure)}><option value="SD">SD · 样本标准差</option><option value="SEM">SEM · 均值标准误</option></select><ChevronDown size={14} /></div></label><p className="template-hint">{errorInput === "replicates" ? "每行代表一个样品，选择至少 2 列独立重复实验。SD 使用 n−1 分母；SEM = SD / √n。" : "每行代表一个样品。误差列应填写所选 SD 或 SEM 的非负数值，此处不进行自动换算。"}</p></>}
                     {isSpatial(selected) || isGraph(selected) ? <div>
                         {(isSpatial(selected) ? ["Y 坐标列", "Z 坐标列"] : selected === "network" ? ["终点列", "权重列（可选）"] : ["后续步骤列"]).map((label, position) => <label className="template-field" key={label}>{label}<div className="template-select-wrap"><select value={mapping.ys[position] === -1 ? "" : mapping.ys[position] ?? ""} onChange={event => { const value = event.target.value; setMapping(current => { const ys = [...current.ys]; if (!value && selected === "network" && position === 1) ys.splice(position, 1); else ys[position] = value === "" ? -1 : Number(value); return { ...current, ys }; }); }}><option value="">{position === 1 && selected === "network" ? "无权重 · 每条连接等宽" : "请选择数据列"}</option>{table.columns.map((name, index) => index !== mapping.x && !mapping.ys.some((y, i) => y === index && i !== position) && <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>)}
-                    </div> : <fieldset className="template-y-fields"><legend>{selected === "error-bar" ? errorInput === "replicates" ? "重复实验列" : "均值列" : selected === "radar" ? "方法 / 样品数值列" : selected === "heatmap" ? "矩阵数值列" : "Y 数据列（可多选）"}</legend>{table.columns.map((name, index) => index !== mapping.x && <label key={index} className="template-column-choice"><span><input type="checkbox" checked={mapping.ys.includes(index)} onChange={() => toggleY(index)} />{name}</span><small>{table.rows.some(row => numericCell(row[index]) !== null) ? "数值" : "文本"}</small></label>)}</fieldset>}
+                    </div> : <fieldset className="template-y-fields" hidden={selected === "histogram"}><legend>{selected === "box" || selected === "violin" ? "原始样本 Y 列（选择一列）" : selected === "error-bar" ? errorInput === "replicates" ? "重复实验列" : "均值列" : selected === "radar" ? "方法 / 样品数值列" : selected === "heatmap" ? "矩阵数值列" : "Y 数据列（可多选）"}</legend>{table.columns.map((name, index) => index !== mapping.x && <label key={index} className="template-column-choice"><span><input type="checkbox" checked={mapping.ys.includes(index)} onChange={() => toggleY(index)} />{name}</span><small>{table.rows.some(row => numericCell(row[index]) !== null) ? "数值" : "文本"}</small></label>)}</fieldset>}
                     {selected === "error-bar" && errorInput === "summary" && mapping.ys.map(y => <label className="template-field" key={y}>{table.columns[y]} · 误差列<div className="template-select-wrap"><select value={mapping.errors[y] ?? ""} onChange={event => setMapping(current => ({ ...current, errors: { ...current.errors, [y]: Number(event.target.value) } }))}><option value="" disabled>请选择误差列</option>{table.columns.map((name, index) => index !== mapping.x && !mapping.ys.includes(index) && <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>)}
                     {result.error && <p className="template-notice template-notice--error" role="alert">{result.error}</p>}
                     {!!result.data?.skipped && <div className="template-notice" role="status"><strong>已跳过 {result.data.skipped} 行不完整数据</strong>{result.data.warnings.map(message => <p key={message}>{message}</p>)}</div>}
@@ -214,17 +232,23 @@ export default function TemplateStudio({ active }: { active: boolean }) {
                 <div className="template-output-column">
                     <section className="template-preview-panel template-glass" aria-labelledby="template-preview-title">
                         <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
-                        <div className="template-chart-frame"><div className="template-chart-scroll">{active && option ? <ReactECharts ref={chartRef} option={option} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} notMerge /> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
-                        <p className="template-chart-mobile-hint">画布可左右滑动查看，导出尺寸保持不变。</p>
-                        <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
-                        <div className="template-export-row"><p><strong>准备好分享了吗？</strong><span>SVG 保留矢量路径与文字；PNG 导出 3 倍尺寸。</span></p><div><GlassButton variant="secondary" size="sm" disabled={!result.data || exporting || loading} onClick={() => exportChart("png")}><ArrowDownToLine size={14} /> PNG</GlassButton><GlassButton variant="primary" size="sm" disabled={!result.data || exporting || loading} onClick={() => exportChart("svg")}>{exporting ? <Loader2 size={14} className="animate-spin" /> : <ArrowDownToLine size={14} />} 导出 SVG</GlassButton></div></div>
+                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && option ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={option} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
+                        <p className="template-chart-mobile-hint">预览自动适应窗口；切换原始尺寸可滑动查看细节。</p>
+                        <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
+                        <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading} onBusy={setExporting} revision={option} extraIssues={[
+                            ...(source.kind === "demo" ? [{ level: "warning" as const, message: "当前为演示数据，不是真实实验结果。" }] : []),
+                            ...(selected === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
+                            ...(selected === "error-bar" && !caption.trim() ? [{ level: "warning" as const, message: "请补充统计图注：独立样本量、误差含义和实验重复类型。" }] : []),
+                            ...(result.data?.skipped ? [{ level: "warning" as const, message: `绘图跳过 ${result.data.skipped} 行，请对照原始数据检查。` }] : []),
+                        ]} />
                         {exportError && <p className="template-notice template-notice--error" role="alert">{exportError}</p>}
                     </section>
 
                     <section className="template-style-panel template-glass" aria-labelledby="template-style-title">
                         <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3 id="template-style-title">最后一点，按你的风格</h3><p>样式调整会立即同步到预览和导出文件。</p></div></div>
-                        <div className="template-style-presets" role="group" aria-label="论文图表样式">{([{ id: "journal", name: "期刊简洁", colors: ["#38679b", "#c77972", "#64958c"] }, { id: "soft", name: "柔和对比", colors: ["#788bcc", "#d69baf", "#7dafb1"] }, { id: "mono", name: "黑白打印", colors: ["#282828", "#696969", "#a0a0a0"] }] as const).map(item => <button type="button" key={item.id} aria-pressed={palette === item.id} className={palette === item.id ? "is-active" : ""} onClick={() => setPalette(item.id)}><span>{item.colors.map(color => <i key={color} style={{ backgroundColor: color }} />)}</span>{item.name}{palette === item.id && <Check size={13} />}</button>)}</div>
-                        <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">字号 (px)<input type="number" min={10} max={22} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
+                        <div className="template-style-presets" role="group" aria-label="论文图表样式">{([{ id: "accessible", name: "色觉友好", colors: ["#0072B2", "#D55E00", "#009E73"] }, { id: "journal", name: "期刊简洁", colors: ["#38679b", "#c77972", "#64958c"] }, { id: "soft", name: "柔和对比", colors: ["#788bcc", "#d69baf", "#7dafb1"] }, { id: "mono", name: "黑白打印", colors: ["#282828", "#696969", "#a0a0a0"] }] as const).map(item => <button type="button" key={item.id} aria-pressed={palette === item.id} className={palette === item.id ? "is-active" : ""} onClick={() => setPalette(item.id)}><span>{item.colors.map(color => <i key={color} style={{ backgroundColor: color }} />)}</span>{item.name}{palette === item.id && <Check size={13} />}</button>)}</div>
+                        <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
+                        <label className="template-field">统计图注（保存在 SVG 描述中）<input value={caption} maxLength={300} onChange={event => setCaption(event.target.value)} placeholder="如：n=6 独立实验；误差条为 SD；单位见轴标题" /></label>
                         {selected === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}
                         {selected === "concept" && <div className="template-style-grid"><label className="template-field">标注位置 X<input type="number" step="any" value={annotationX} onChange={event => setAnnotationX(Number(event.target.value))} /></label><label className="template-field">标注文字<input value={annotationText} onChange={event => setAnnotationText(event.target.value)} maxLength={40} /></label></div>}
                         {isSpatial(selected) && <div className="template-camera"><label>方位角 {yaw}°<input type="range" min={-180} max={180} value={yaw} onChange={event => setYaw(Number(event.target.value))} /></label><label>仰角 {pitch}°<input type="range" min={-80} max={80} value={pitch} onChange={event => setPitch(Number(event.target.value))} /></label><p>三维坐标以正交投影呈现，导出保留当前视角。</p></div>}

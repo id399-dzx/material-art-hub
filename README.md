@@ -4,8 +4,10 @@
 
 ## 绘图入口
 
-- [基础绘图说明](docs/data-templates.md)：18 类通用科研图表。
+- [基础绘图说明](docs/data-templates.md)：21 类通用科研图表，含数据检查、绘图建议和物理规格导出。
 - [论文图例模板说明](docs/paper-figure-templates.md)：逐张对应 figures4papers 首页的 17 张具体图例，可按面板替换数据、文字和插图。原图保留为位图底板，替换图表与文字为矢量；原图资源遵循 CC BY-NC 4.0。
+
+- [两项目对比与优化记录](docs/research-workbench-comparison.md)：实际覆盖、验证结果与剩余能力差距。
 
 ## 本地运行
 

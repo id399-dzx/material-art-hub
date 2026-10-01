@@ -1,8 +1,9 @@
 import type { CustomSeriesOption, EChartsOption, SeriesOption } from "echarts";
+import { createDistributionOption } from "./template-chart-distribution.ts";
 import { createExtendedTemplateOption } from "./template-chart-extended.ts";
 import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 
-export type PublicationStyle = "journal" | "soft" | "mono";
+export type PublicationStyle = "journal" | "soft" | "mono" | "accessible";
 export type TemplateChartStyle = {
     title: string; xLabel: string; yLabel: string; fontFamily: string; fontSize: number;
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
@@ -10,6 +11,7 @@ export type TemplateChartStyle = {
 };
 
 const colors: Record<PublicationStyle, string[]> = {
+    accessible: ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#56B4E9", "#000000"],
     journal: ["#38679b", "#c77972", "#64958c", "#9783b6", "#c29b57", "#7c919f"],
     soft: ["#788bcc", "#d69baf", "#7dafb1", "#b4a0ce", "#ceaa78", "#89a3ba"],
     mono: ["#282828", "#696969", "#a0a0a0", "#c9c9c9", "#4b4b4b", "#888888"],
@@ -17,6 +19,7 @@ const colors: Record<PublicationStyle, string[]> = {
 
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const palette = colors[style.palette];
+    if (template === "box" || template === "violin" || template === "histogram") return createDistributionOption(data, template, style, palette);
     if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => createTemplateOption(data, id, style));
     const isLine = template === "line";
     const series: SeriesOption[] = data.series.map((item, index) => {
@@ -24,7 +27,7 @@ export function createTemplateOption(data: TemplateData, template: TemplateId, s
         if (isLine) return {
             name: item.name, type: "line", data: data.x.map((x, row) => [x, item.values[row]]),
             smooth: false, connectNulls: false, symbol: ["circle", "rect", "triangle", "diamond"][index % 4],
-            symbolSize: 5, showSymbol: data.x.length <= 50, lineStyle: { width: 2, type: style.palette === "mono" ? ["solid", "dashed", "dotted"][index % 3] as "solid" | "dashed" | "dotted" : "solid" },
+            symbolSize: 5, showSymbol: data.x.length <= 50, lineStyle: { width: 2, type: (style.palette === "mono" || style.palette === "accessible") ? ["solid", "dashed", "dotted"][index % 3] as "solid" | "dashed" | "dotted" : "solid" },
             itemStyle: { color }, emphasis: { focus: "series" },
         };
         return {

@@ -91,8 +91,8 @@ test('CSV demonstrations quote commas and embedded double quotes correctly', () 
 });
 
 test('the catalog covers all audited figure families with examples and data instructions', () => {
-    assert.equal(CHART_TEMPLATES.length, 18);
-    assert.equal(new Set(CHART_TEMPLATES.map(item => item.id)).size, 18);
+    assert.equal(CHART_TEMPLATES.length, 21);
+    assert.equal(new Set(CHART_TEMPLATES.map(item => item.id)).size, 21);
     for (const item of CHART_TEMPLATES) { assert.ok(item.guide); assert.ok(item.reference); assert.ok(item.demo.length > 1); }
 });
 

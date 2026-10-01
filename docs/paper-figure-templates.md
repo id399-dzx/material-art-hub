@@ -4,7 +4,7 @@
 
 ## 覆盖范围与来源
 
-逐张对应 [figures4papers](https://github.com/ChenLiu-1996/figures4papers) README 展示的 **17 张具体图例**，核对版本 `f0bb7559abe90f5e1828797126d4d133c1bd47d7`。这不是仓库所有输出图片的清单，也不是原有 18 类基础绘图的缩略示例。
+逐张对应 [figures4papers](https://github.com/ChenLiu-1996/figures4papers) README 展示的 **17 张具体图例**，核对版本 `f0bb7559abe90f5e1828797126d4d133c1bd47d7`。这不是仓库所有输出图片的清单，也不是现有 21 类基础绘图的缩略示例。
 
 | 序号 | 具体图例 | 数据区 | 插图区 |
 | --- | --- | ---: | ---: |
@@ -37,7 +37,7 @@
 3. 选择「文字标注」，搜索或点击原图文字，修改标题、指标、方法名、统计值、说明和结论。竖向轴标题保留竖向排版。文字来自 OCR，公式、上下标和识别结果需要人工核对。
 4. 选择「插图」，上传自己的 PNG / JPEG / WebP（10 MB 内），在既定模块区域等比例放置。
 5. 用「原图对照」切换检查，按需放大到 300%；可撤销最近一次操作、恢复单个区域或整图。
-6. 导出内嵌底图的 SVG，或 2400 像素宽 PNG。保存 `.paper-figure.json` 工程，之后选中同一图例并打开工程继续编辑。
+6. 在「导出与图形检查」选择物理栏宽与 PNG DPI，导出内嵌底图的 SVG、彩色 / 灰度 PNG，或打印存为 PDF。默认 180 mm / 300 DPI，高度保留原图比例及来源声明。保存 `.paper-figure.json` 工程，之后选中同一图例并打开工程继续编辑。
 
 切换导航或图例会保留本次页面中的编辑；刷新页面不会自动恢复，请先保存工程。所有数据读取与导出在浏览器完成，不调用 AI，不上传实验数据到服务器。
 
@@ -73,8 +73,10 @@ auroc,value,Prime-2.1,0.73,,0.02
 
 ```bash
 npx tsc --noEmit
-node --experimental-strip-types --test src/lib/data-processing/templates.test.mjs src/lib/data-processing/paper-figures/paper-figures.test.mjs
+node --experimental-strip-types --test src/lib/data-processing/templates.test.mjs src/lib/data-processing/paper-figures/paper-figures.test.mjs src/lib/data-processing/research-tools.test.mjs
 npm run build
 ```
 
-25 项数据 / 渲染回归测试覆盖全部数值区、整图 CSV、缺失值、重复键、组成比例、雷达范围、色标、固定基线、竖向标题、XML 转义和来源声明。另对 17 张全数据替换图进行整图视觉检查，并实际验证浏览器 CSV 导入、中文标注、PNG / 自包含 SVG 导出和工程恢复。
+35 项数据 / 渲染回归测试覆盖全部数值区、整图 CSV、缺失值、重复键、组成比例、雷达范围、色标、固定基线、竖向标题、XML 转义和来源声明。另对 17 张全数据替换图进行整图视觉检查，并实际验证浏览器 CSV 导入、中文标注、PNG / 自包含 SVG 导出和工程恢复。
+
+图形检查会提示仍含原作者数据的数值区、不会自动重算的 P 值 / 公式 / 结论，以及位图文字无法逐字检查。布局检查只测矢量文字，不会把混合位图的模板标为完全矢量。

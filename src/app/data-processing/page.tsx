@@ -1,13 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef, useSyncExternalStore } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore, useMemo } from "react";
 import Image from "next/image";
 import * as xlsx from "xlsx";
 import ReactECharts from 'echarts-for-react';
 import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight } from "lucide-react";
 import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/parse";
 import SafeReport from "@/components/data-processing/SafeReport";
-import TemplateStudio from "@/components/data-processing/TemplateStudio";
+import DataAdvisor from "@/components/data-processing/DataAdvisor";
+import PublicationExport from "@/components/data-processing/PublicationExport";
+import { initialExportSettings } from "@/lib/data-processing/publication";
+import { parseTemplateTable } from "@/lib/data-processing/templates";
+import TemplateStudio, { type TemplateStudioHandle } from "@/components/data-processing/TemplateStudio";
 import PaperFigureStudio from "@/components/data-processing/PaperFigureStudio";
 import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
@@ -111,6 +115,9 @@ const getServerWorkspace = () => "processing";
 
 export default function DataProcessingPage() {
     const workspace = useSyncExternalStore(subscribeWorkspace, getWorkspace, getServerWorkspace);
+    const templateStudioRef = useRef<TemplateStudioHandle>(null);
+    const [exportSettings, setExportSettings] = useState(initialExportSettings);
+    const [figureExporting, setFigureExporting] = useState(false);
     const [dataType, setDataType] = useState<string>('GCD');
     const [dataOrientation, setDataOrientation] = useState<XYOrientationChoice>('auto');
     const [importWarnings, setImportWarnings] = useState<string[]>([]);
@@ -132,8 +139,8 @@ export default function DataProcessingPage() {
     const [error, setError] = useState<string | null>(null);
     const [lineWidth, setLineWidth] = useState<number>(2);
     const [fontFamily, setFontFamily] = useState<string>("Times New Roman");
-    const [titleSize, setTitleSize] = useState<number>(16);
-    const [labelSize, setLabelSize] = useState<number>(14);
+    const [titleSize, setTitleSize] = useState<number>(18);
+    const [labelSize, setLabelSize] = useState<number>(16);
     const [chartWidth, setChartWidth] = useState<number>(600);
     const [chartHeight, setChartHeight] = useState<number>(400);
 
@@ -770,6 +777,7 @@ export default function DataProcessingPage() {
                             { bottom: '20%', left: '18%' }),
                 textStyle: {
                     fontFamily: fontFamily,
+                    fontSize: labelSize,
                     color: '#000'
                 }
             },
@@ -947,17 +955,16 @@ export default function DataProcessingPage() {
 
     const mainPointCount = fileChunks1.reduce((sum, chunk) => sum + chunk.x.length, 0);
 
-    const downloadChart = () => {
-        if (!chartRef.current || fileChunks1.length === 0 || !appliedOptions) return;
-        const chart = chartRef.current.getEchartsInstance();
-        const url = chart.getDataURL({ type: "png", pixelRatio: 4, backgroundColor: "#ffffff" });
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `${fileChunks1[0]?.name.replace(/\.[^.]+$/, "") || "科研图表"}-图表.png`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-    };
+    const processedMatrix = useMemo(() => [["来源文件", xAxisName || "X", yAxisName || "Y"], ...fileChunks1.flatMap(chunk => chunk.x.map((x, i) => [chunk.name, x, chunk.y[i]]))], [fileChunks1, xAxisName, yAxisName]);
+    const processedTable = useMemo(() => parseTemplateTable(processedMatrix), [processedMatrix]);
+    async function exportMainSvg() {
+        if (!chartRef.current || !appliedOptions) throw new Error("请先导入数据并更新图表。");
+        const currentOptions = chartRef.current.getEchartsInstance().getOption();
+        const echarts = await import('echarts');
+        const chart = echarts.init(null, undefined, { renderer: 'svg', ssr: true, width: Math.max(200, chartWidth || 600), height: Math.max(200, chartHeight || 400) });
+        try { chart.setOption({ ...currentOptions, animation: false }); return chart.renderToSVGString(); }
+        finally { chart.dispose(); }
+    }
 
     return (
         <main className="data-workbench min-h-[calc(100vh-4rem)]">
@@ -1230,7 +1237,7 @@ export default function DataProcessingPage() {
                         <div>
                             <span className="workbench-card-eyebrow">VISUAL CANVAS</span>
                             <h2 id="workbench-preview-title">图表画布 <ArrowUpRight size={18} aria-hidden="true" /></h2>
-                            <p>核对曲线，调整参数，导出可用于汇报的 PNG 图像。</p>
+                            <p>核对曲线，调整参数，设置物理尺寸，检查并导出 PNG、SVG 或打印 PDF。</p>
                         </div>
                         <div className="workbench-chart-toolbar">
                             <GlassButton
@@ -1246,11 +1253,11 @@ export default function DataProcessingPage() {
                             <GlassButton
                                 variant="primary"
                                 size="sm"
-                                onClick={downloadChart}
+                                onClick={() => document.getElementById("main-publication-export")?.scrollIntoView({ behavior: "smooth", block: "center" })}
                                 disabled={fileChunks1.length === 0 || !appliedOptions}
                                 className="workbench-export"
                             >
-                                <Download size={15} /> 导出 PNG
+                                <Download size={15} /> 检查与导出
                             </GlassButton>
                         </div>
                     </div>
@@ -1293,8 +1300,10 @@ export default function DataProcessingPage() {
                         )}
                     </div>
                     {fileChunks1.length > 0 && <p className="workbench-chart-pan-hint">左右滑动图表，可查看完整曲线</p>}
+                    <div id="main-publication-export"><PublicationExport width={Math.max(200, chartWidth || 600)} height={Math.max(200, chartHeight || 400)} settings={exportSettings} onChange={setExportSettings} getSvg={exportMainSvg} filename={fileName || "实验曲线"} disabled={!appliedOptions || isLoading} onBusy={setFigureExporting} revision={appliedOptions} /></div>
                 </section>
 
+                {fileChunks1.length > 0 && <div className="workbench-data-advisor"><p>下方检查当前已解析的主样品 XY 数据；原始导入中的跳过行见上传提示。</p><DataAdvisor key={`${fileName}-${fileChunks1.length}`} table={processedTable} mapping={{ x: 1, ys: [2], errors: {} }} initialGoal="trend" initialGroup={-1} demo={false} disabled={figureExporting} onApply={(id, mapping) => { templateStudioRef.current?.loadData(fileName || "已处理实验数据", processedMatrix, id, mapping); window.location.hash = "data-templates"; }} /></div>}
                 <div className="workbench-settings-zone" id="chart-settings">
                     <div className="workbench-settings-heading">
                         <span className="workbench-card-eyebrow">CUSTOMIZE</span>
@@ -1693,7 +1702,7 @@ export default function DataProcessingPage() {
                         </div>
                     </section>
                 </div>
-                <TemplateStudio active={workspace === "templates"} />
+                <TemplateStudio ref={templateStudioRef} active={workspace === "templates"} />
                 <PaperFigureStudio active={workspace === "papers"} />
             </div>
         </main>

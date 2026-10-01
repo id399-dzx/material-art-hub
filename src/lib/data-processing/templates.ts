@@ -1,4 +1,6 @@
-export type TemplateId = "line" | "grouped-bar" | "error-bar" | "horizontal-bar" | "stacked-bar" | "percent-bar" | "radar" | "heatmap" | "scatter" | "trend" | "dual-axis" | "multi-panel" | "concept" | "sphere" | "surface" | "trajectory" | "network" | "schematic";
+import { buildDistributionData, type SampleGroup } from './distributions.ts';
+
+export type TemplateId = "line" | "grouped-bar" | "error-bar" | "horizontal-bar" | "stacked-bar" | "percent-bar" | "radar" | "heatmap" | "scatter" | "trend" | "dual-axis" | "multi-panel" | "concept" | "sphere" | "surface" | "trajectory" | "network" | "schematic" | "box" | "violin" | "histogram";
 export type TemplateCategory = "比较" | "组成" | "曲线" | "矩阵" | "空间" | "示意";
 export const TEMPLATE_CATEGORIES: TemplateCategory[] = ["比较", "组成", "曲线", "矩阵", "空间", "示意"];
 export const isNumericX = (id: TemplateId) => ["line", "scatter", "dual-axis", "concept", "sphere", "surface", "trajectory"].includes(id);
@@ -11,13 +13,17 @@ export type TableCell = string | number | null;
 export type DataTable = { columns: string[]; rows: TableCell[][]; firstDataRow: number };
 export type ColumnMapping = { x: number; ys: number[]; errors: Record<number, number> };
 export type TemplateSeries = { name: string; values: number[]; errors?: number[]; sampleSizes?: number[] };
-export type TemplateData = { x: (number | string)[]; series: TemplateSeries[]; skipped: number; warnings: string[]; edges?: { source: string; target: string; weight: number }[] };
+export type TemplateData = { x: (number | string)[]; series: TemplateSeries[]; skipped: number; warnings: string[]; samples?: SampleGroup[]; edges?: { source: string; target: string; weight: number }[] };
 export type TemplateResult = { data: TemplateData | null; error: string | null };
 
 export const CHART_TEMPLATES: {
     id: TemplateId; name: string; english: string; description: string; requirement: string;
     tag: string; category: TemplateCategory; guide: string; reference: string; xLabel: string; yLabel: string; demo: TableCell[][];
 }[] = [
+    { id: "box", name: "箱线与原始样本", english: "BOX & OBSERVATIONS", tag: "真实样本", category: "比较", description: "展示四分位、中位数和每个真实观测点。", requirement: "类别列 ＋ 一列样本数值（长表）", guide: "同一类别可有多行；每行一个真实样本。n<3 仅显示原始点，不补样本、不计算显著性。", reference: "SciPilot chart_selection / distribution methods", xLabel: "样品组", yLabel: "测量值", demo: [["组别","测量值"],["A",3],["A",4],["A",5],["A",6],["A",12],["B",5],["B",7],["B",8],["B",9],["B",10]] },
+    { id: "violin", name: "小提琴与原始样本", english: "VIOLIN & OBSERVATIONS", tag: "分布形状", category: "比较", description: "用核密度轮廓呈现样本分布，叠加原始点。", requirement: "类别列 ＋ 一列样本数值（长表）", guide: "每行一个真实样本；n<5 或常量组不绘制密度轮廓。密度采用高斯核，Silverman 带宽，范围限于观测值。", reference: "SciPilot plot_recipes / distribution methods", xLabel: "样品组", yLabel: "测量值", demo: [["组别","测量值"],["A",3],["A",4],["A",5],["A",6],["A",7],["A",5.5],["B",6],["B",7],["B",8],["B",10],["B",11],["B",8.5]] },
+    { id: "histogram", name: "样本频率直方图", english: "SAMPLE HISTOGRAM", tag: "频率分布", category: "曲线", description: "按等宽区间统计真实样本数，查看数值分布。", requirement: "一列原始样本数值", guide: "绑定样本数值列。使用 Freedman–Diaconis 分箱，IQR 为零时采用 Sturges；最多 60 个区间。没有拟合或自动剔除异常值。", reference: "SciPilot chart_selection / distribution methods", xLabel: "测量值", yLabel: "样本数", demo: [["测量值"],[0],[1],[1.5],[2],[2.2],[2.5],[3],[3.2],[4],[5],[6]] },
+
     {
         id: "line", name: "多组折线图", english: "MULTI-SERIES LINE", tag: "趋势与曲线", category: "曲线", guide: "一列数值 X 对应多列 Y，按原始点顺序连接，不平滑或插值。", reference: "figure_VIGIL/plot_posttraining.py",
         description: "让变化有迹可循，清晰比较不同样品的实验曲线。",
@@ -161,9 +167,11 @@ export function parseTemplateTable(matrix: unknown[][], hasHeader = true): DataT
 
 export function suggestMapping(table: DataTable, template: TemplateId, panelChart: "bar" | "line" = "bar"): ColumnMapping {
     const numeric = table.columns.map((_, index) => index).filter(index => table.rows.some(row => numericCell(row[index]) !== null));
+    if (template === "histogram") return { x: numeric[0] ?? 0, ys: [], errors: {} };
     const x = (isNumericX(template) || template === "multi-panel" && panelChart === "line") ? numeric[0] ?? 0 : 0;
     const errorIndices = table.columns.map((name, index) => /\b(?:sd|sem|std|error)\b|标准差|标准误|误差/i.test(name) ? index : -1).filter(index => index >= 0);
     const ys = numeric.filter(index => index !== x && !errorIndices.includes(index));
+    if (template === "box" || template === "violin") return { x, ys: ys.slice(0, 1), errors: {} };
     if (isGraph(template)) return { x: 0, ys: [1, ...(template === "network" && numeric.includes(2) ? [2] : [])], errors: {} };
     if (isSpatial(template)) return { x, ys: numeric.filter(index => index !== x).slice(0, 2), errors: {} };
     if (template === "dual-axis") return { x, ys: ys.slice(0, 2), errors: {} };
@@ -184,6 +192,7 @@ export function buildTemplateData(table: DataTable, mapping: ColumnMapping, temp
     const numericX = isNumericX(template) || template === "multi-panel" && panelChart === "line";
     if (!table.rows.length) return fail("表格中没有数据，请导入文件或载入示例。");
     if (!Number.isInteger(mapping.x) || !table.columns[mapping.x]) return fail("请选择有效的 X 轴或类别列。");
+    if (["box", "violin", "histogram"].includes(template)) return buildDistributionData(table, mapping, template as "box" | "violin" | "histogram");
     if (!mapping.ys.length) return fail("至少选择 1 列 Y 数据。");
     if (new Set(mapping.ys).size !== mapping.ys.length || mapping.ys.some(index => !Number.isInteger(index) || !table.columns[index] || index === mapping.x)) return fail("X 列和 Y 列需要分别选择，且 Y 列不能重复。");
     if (isGraph(template)) return buildGraphData(table, mapping, template);

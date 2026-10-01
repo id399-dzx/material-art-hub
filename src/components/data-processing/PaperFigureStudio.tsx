@@ -3,10 +3,12 @@
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import * as XLSX from 'xlsx';
-import { ArrowDownToLine, Check, ExternalLink, FileSpreadsheet, Layers3, Loader2, Search, UploadCloud, Undo2, ZoomIn, ZoomOut, Type, ImageIcon } from 'lucide-react';
+import { ArrowDownToLine, Check, ExternalLink, FileSpreadsheet, Layers3, Search, UploadCloud, Undo2, ZoomIn, ZoomOut, Type, ImageIcon } from 'lucide-react';
 import { PAPER_FIGURES, PAPER_SOURCE, type FigureRegion } from '@/lib/data-processing/paper-figures/catalog';
 import { emptyPaperChanges, paperDemoPoints, paperExampleCsv, parsePaperData, type PaperChanges, type PaperPanelData } from '@/lib/data-processing/paper-figures/data';
 import { renderPaperFigure } from '@/lib/data-processing/paper-figures/render';
+import PublicationExport from './PublicationExport';
+import { initialExportSettings, type ExportSettings } from '@/lib/data-processing/publication';
 import './paper-figure-studio.css';
 
 const KIND_NAMES: Record<string,string> = {bars:'柱状与误差',horizontal:'横向比较',stacked:'组成堆叠',line:'折线',area:'累计面积',scatter:'散点',heatmap:'矩阵/密度',radar:'雷达',sphere:'球面与向量',vectors:'空间向量',surface:'曲面',violin:'样本分布',box:'样本箱线',image:'插图模块'};
@@ -21,8 +23,9 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
  const [regionId,setRegionId]=useState(PAPER_FIGURES[0].regions[0].id),[mode,setMode]=useState<'data'|'text'|'image'>('data');
  const [labelId,setLabelId]=useState(''),[textSearch,setTextSearch]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[warnings,setWarnings]=useState<string[]>([]);
  const [reference,setReference]=useState(false),[outlines,setOutlines]=useState(true),[zoom,setZoom]=useState(100);
+ const [exportSettings,setExportSettings]=useState<ExportSettings>(()=>({...initialExportSettings(),preset:"double",widthMm:180}));
  const figure=PAPER_FIGURES.find(item=>item.id===selected)!;
- const changes=states[selected]||emptyPaperChanges();
+ const changes=useMemo(()=>states[selected]||emptyPaperChanges(),[states,selected]);
  const region=figure.regions.find(item=>item.id===regionId)||figure.regions[0];
  const label=figure.texts.find(item=>item.id===labelId);
  const filtered=PAPER_FIGURES.filter((item,index)=>(filter==='全部'||(filter==='统计图例'?index<7:index>=7))&&`${item.name} ${item.description}`.toLowerCase().includes(search.toLowerCase().trim()));
@@ -68,19 +71,9 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
   if(!value.trim()||!validRange(next)){setError('坐标范围须为有限数值，且最小值小于最大值。');return;}
   mutate({...changes,panels:{...changes.panels,[region.id]:{...regionData,[axis==='x'?'xRange':'yRange']:next}}});
  }
- async function exportFigure(format:'svg'|'png') {
-  setBusy(true);setError('');
-  try {
-   const background=await inlineBackground(figure.id),svg=renderPaperFigure(figure,changes,background),blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
-   if(format==='svg')download(blob,`${figure.id}-论文图例.svg`);
-   else {
-    const url=URL.createObjectURL(blob);try {
-     const image=new window.Image();await new Promise<void>((resolve,reject)=>{image.onload=()=>resolve();image.onerror=()=>reject(new Error('图例转换失败，请尝试 SVG。'));image.src=url;});
-     const canvas=document.createElement('canvas');canvas.width=2400;canvas.height=Math.round((canvasHeight+40)*2.4);const context=canvas.getContext('2d');if(!context)throw new Error('浏览器无法导出 PNG。');context.fillStyle='#fff';context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(image,0,0,canvas.width,canvas.height);
-     const png=await new Promise<Blob>((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error('PNG 转换失败。')),'image/png'));download(png,`${figure.id}-论文图例.png`);
-    } finally {URL.revokeObjectURL(url);}
-   }
-  }catch(error){setError(error instanceof Error?error.message:'导出失败。');}finally{setBusy(false);}
+ async function exportSvg() {
+  const background=await inlineBackground(figure.id);
+  return renderPaperFigure(figure,changes,background);
  }
  async function restoreProject(event:React.ChangeEvent<HTMLInputElement>) {
   const file=event.target.files?.[0];event.target.value='';if(!file)return;setBusy(true);setError('');
@@ -126,7 +119,11 @@ export default function PaperFigureStudio({active}:{active:boolean}) {
     <div className="paper-preview-toolbar"><div className="paper-preview-switch"><button type="button" aria-pressed={!reference} onClick={()=>setReference(false)}>我的图例</button><button type="button" aria-pressed={reference} onClick={()=>setReference(true)}>原图对照</button></div><div className="paper-zoom"><button aria-label="缩小图例" type="button" onClick={()=>setZoom(Math.max(100,zoom-50))}><ZoomOut size={15}/></button><span>{zoom}%</span><button aria-label="放大图例" type="button" onClick={()=>setZoom(Math.min(300,zoom+50))}><ZoomIn size={15}/></button></div></div>
     <div className="paper-canvas-scroll"><div className="paper-canvas" style={{width:`${zoom}%`}}><div className="paper-canvas-art" dangerouslySetInnerHTML={{__html:svg}}/>{!reference&&outlines&&<svg className="paper-canvas-targets" viewBox={`0 0 1000 ${canvasHeight}`} aria-label="图例可编辑区域">{mode==='text'?figure.texts.map(text=><rect key={text.id} x={text.x*1000} y={text.y*canvasHeight} width={text.w*1000} height={text.h*canvasHeight} className={labelId===text.id?'is-active':''} onClick={()=>setLabelId(text.id)}><title>{changes.labels[text.id]??text.text}</title></rect>):figure.regions.filter(item=>mode==='image'?item.kind==='image':item.kind!=='image').map(item=><rect key={item.id} x={item.rect[0]*1000} y={item.rect[1]*canvasHeight} width={item.rect[2]*1000} height={item.rect[3]*canvasHeight} className={region.id===item.id?'is-active':''} onClick={()=>chooseRegion(item)}><title>{item.name}</title></rect>)}</svg>}</div></div>
     <div className="paper-preview-status"><span>{reference?'原图示例':counts?`已替换 ${counts} / ${figure.regions.length} 个图形区域`:'原图示例 · 尚未替换数据'} · 已改 {Object.keys(changes.labels).length} 处文字</span><label><input type="checkbox" checked={outlines} onChange={event=>setOutlines(event.target.checked)}/>显示编辑区域</label></div>
-    <div className="paper-export-row"><div><strong>保留整张图的表达</strong><p>SVG 内嵌位图底板，替换图表和文字为矢量。导出不包含编辑框。</p></div><button type="button" disabled={busy} onClick={()=>exportFigure('png')}><ArrowDownToLine size={14}/>PNG</button><button className="is-primary" type="button" disabled={busy} onClick={()=>exportFigure('svg')}>{busy?<Loader2 size={14} className="animate-spin"/>:<ArrowDownToLine size={14}/>}导出 SVG</button></div>
+    <PublicationExport key={selected} width={1000} height={canvasHeight+40} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${figure.id}-论文图例`} disabled={busy} onBusy={setBusy} revision={changes} extraIssues={[
+     ...(figure.regions.filter(item=>item.kind!=='image'&&!changes.panels[item.id]).length?[{level:'warning' as const,message:`还有 ${figure.regions.filter(item=>item.kind!=='image'&&!changes.panels[item.id]).length} 个数据区保留原作者示例，请核对后用于自己的论文。`}]:[]),
+     {level:'warning' as const,message:'原图的 P 值、公式和结论不会随新数据自动重算；请用文字标注逐项核对。'},
+     {level:'info' as const,message:'SVG 内嵌原图底板；新数据和修改文字为矢量。打印 PDF 同样保留位图与矢量混合结构。'},
+    ]} />
    </div><div className="paper-notes"><h4>这张图保留了什么</h4><p>{figure.description}</p><p>原图底板保留作者的布局、插图和标注；替换的数据区独立绘制。原图的 P 值、公式与结论不会根据新数据自动更新，请用文字编辑逐项核对。</p><div className="paper-project-actions"><button type="button" onClick={()=>download(new Blob([JSON.stringify({version:1,figureId:selected,changes},null,2)],{type:'application/json'}),`${selected}.paper-figure.json`)}>保存可继续编辑的工程</button><label>打开已保存工程<input type="file" accept=".json" disabled={busy} onChange={restoreProject}/></label></div></div><div className="paper-attribution"><a href={`${PAPER_SOURCE}/blob/main/${figure.source}`} target="_blank" rel="noreferrer">原始图例 <ExternalLink size={12}/></a><span>Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> · 已添加编辑图层</span></div></div>
   </div>
  </section>;

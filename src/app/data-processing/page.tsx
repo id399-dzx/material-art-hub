@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import * as xlsx from "xlsx";
 import ReactECharts from 'echarts-for-react';
 import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight } from "lucide-react";
 import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/parse";
 import SafeReport from "@/components/data-processing/SafeReport";
+import TemplateStudio from "@/components/data-processing/TemplateStudio";
 import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
 
@@ -100,7 +101,15 @@ const clearDataFromDB = async () => {
 };
 // ----------------------------------------------------
 
+const subscribeWorkspace = (callback: () => void) => {
+    window.addEventListener("hashchange", callback);
+    return () => window.removeEventListener("hashchange", callback);
+};
+const getWorkspace = () => window.location.hash === "#data-templates" ? "templates" : "processing";
+const getServerWorkspace = () => "processing";
+
 export default function DataProcessingPage() {
+    const workspace = useSyncExternalStore(subscribeWorkspace, getWorkspace, getServerWorkspace);
     const [dataType, setDataType] = useState<string>('GCD');
     const [dataOrientation, setDataOrientation] = useState<XYOrientationChoice>('auto');
     const [importWarnings, setImportWarnings] = useState<string[]>([]);
@@ -110,6 +119,11 @@ export default function DataProcessingPage() {
     const analysisRequestRef = useRef(0);
     const mainFileInputRef = useRef<HTMLInputElement>(null);
     const chartRef = useRef<ReactECharts>(null);
+    useEffect(() => {
+        if (workspace !== "processing") return;
+        const frame = requestAnimationFrame(() => chartRef.current?.getEchartsInstance()?.resize());
+        return () => cancelAnimationFrame(frame);
+    }, [workspace]);
     const [fileName, setFileName] = useState<string | null>(null);
     const [fileChunks1, setFileChunks1] = useState<DataChunk[]>([]);
     const [fileChunks2, setFileChunks2] = useState<DataChunk[]>([]);
@@ -955,16 +969,18 @@ export default function DataProcessingPage() {
                     </header>
                     <div className="workbench-appbar-actions">
                         <nav className="workbench-pill-nav" aria-label="工作台区域">
-                            <a className="is-active" href="#data-source">工作台</a>
+                            <a className={workspace === "processing" ? "is-active" : ""} aria-current={workspace === "processing" ? "page" : undefined} href="#data-source">数据处理</a>
+                            <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#data-templates">数据模板</a>
                             <a href="#chart-preview">图表画布</a>
                             <a href="#analysis">辅助解读</a>
                         </nav>
-                        <button type="button" className="workbench-top-upload" onClick={() => mainFileInputRef.current?.click()}>
+                        <button type="button" className="workbench-top-upload" onClick={() => workspace === "templates" ? document.getElementById("template-data-upload")?.click() : mainFileInputRef.current?.click()}>
                             <UploadCloud size={16} /> 导入文件
                         </button>
                     </div>
                 </div>
 
+                <div hidden={workspace === "templates"}>
                 <div className="workbench-quick-stats" aria-label="当前数据概览">
                     <div className="workbench-stat">
                         <span>已导入文件</span>
@@ -1674,6 +1690,8 @@ export default function DataProcessingPage() {
                             )}
                         </div>
                     </section>
+                </div>
+                <TemplateStudio active={workspace === "templates"} />
             </div>
         </main>
     );

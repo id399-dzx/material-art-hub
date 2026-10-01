@@ -115,8 +115,8 @@
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
-.data-workbench .workbench-pill-nav a:first-child,
-.data-workbench .workbench-pill-nav button:first-child,
+.data-workbench .workbench-pill-nav a.is-active,
+.data-workbench .workbench-pill-nav button.is-active,
 .data-workbench .workbench-top-upload {
   border-color: #1d1c22;
   background: #1d1c22;

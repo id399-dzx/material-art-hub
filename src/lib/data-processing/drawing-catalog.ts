@@ -1,13 +1,16 @@
 import { CHART_TEMPLATES, type TemplateId, type TableCell } from './templates.ts';
 import { PAPER_FIGURES, type FigureRegion } from './paper-figures/catalog.ts';
 import { paperDemoPoints } from './paper-figures/data.ts';
+import { ELECTROCHEMICAL_TEMPLATES } from './electrochemical-templates.ts';
+import type { ElectrochemicalChartSpec } from './electrochemistry.ts';
 
-export const DRAWING_TYPES = ['柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程'] as const;
+export const DRAWING_TYPES = ['电化学测试', '柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程'] as const;
 export type DrawingType = typeof DRAWING_TYPES[number];
 export type DrawingTemplate = {
     id: string; chartId: TemplateId; name: string; english: string; category: DrawingType;
     description: string; requirement: string; tag: string; guide: string; xLabel: string; yLabel: string;
     demo: TableCell[][]; preview: string;
+    electrochemical?: ElectrochemicalChartSpec;
     paper?: { figureId: string; regionId: string; project: string; figureName: string; source: string; region: FigureRegion };
 };
 const TYPES: Record<TemplateId, DrawingType> = {
@@ -75,6 +78,7 @@ const paperTemplates: DrawingTemplate[] = PAPER_FIGURES.flatMap(figure => figure
 }));
 const replacedEngines = new Set<string>(REPRESENTATIVES.map(item => item.engine));
 export const DRAWING_TEMPLATES: DrawingTemplate[] = [
+    ...ELECTROCHEMICAL_TEMPLATES,
     ...CHART_TEMPLATES.filter(template => !replacedEngines.has(template.id)).map(template => ({
         ...template, chartId: template.id, category: TYPES[template.id], preview: `/drawing-previews/${template.id}.svg`,
     })),

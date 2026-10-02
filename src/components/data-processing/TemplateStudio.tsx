@@ -4,10 +4,12 @@ import { useEffect, useMemo, useRef, useState, useImperativeHandle, type Ref } f
 import Image from "next/image";
 import ReactECharts from "echarts-for-react";
 import * as XLSX from "xlsx";
-import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search } from "lucide-react";
+import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search, Zap } from "lucide-react";
 import { buildTemplateData, CHART_TEMPLATES, PANEL_SWEEP_DEMO, isNumericX, isSpatial, isGraph, isBar, matrixToCsv, numericCell, parseTemplateTable, suggestMapping, type ColumnMapping, type ErrorInput, type ErrorMeasure, type TemplateId } from "@/lib/data-processing/templates";
 import { createTemplateOption, type PublicationStyle } from "@/lib/data-processing/template-chart";
-import { DRAWING_TEMPLATES, DRAWING_TYPES, drawingTemplateForChart, type DrawingType } from "@/lib/data-processing/drawing-catalog";
+import { DRAWING_TEMPLATES, DRAWING_TYPES, drawingTemplateForChart, type DrawingType, type DrawingTemplate } from "@/lib/data-processing/drawing-catalog";
+import { prepareElectrochemicalData, type ImaginaryMode } from "@/lib/data-processing/electrochemistry";
+import { suggestElectrochemicalMapping } from "@/lib/data-processing/electrochemical-mapping";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import DataAdvisor from "./DataAdvisor";
 import PublicationExport from "./PublicationExport";
@@ -37,6 +39,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [category, setCategory] = useState<DrawingType | "全部">("全部");
     const [search, setSearch] = useState("");
     const [sourceFilter, setSourceFilter] = useState("全部来源");
+    const [imaginaryMode, setImaginaryMode] = useState<ImaginaryMode | "">("negative-imaginary");
     const [presetId, setPresetId] = useState(initial.id);
     const [referenceColors, setReferenceColors] = useState(!!initial.paper);
     const [hatching, setHatching] = useState(false);
@@ -78,11 +81,17 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [actualPreview, setActualPreview] = useState(false);
     const template = DRAWING_TEMPLATES.find(item => item.id === presetId)!;
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
-    const catalog = DRAWING_TEMPLATES.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : !item.paper));
+    const catalog = DRAWING_TEMPLATES.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical));
     const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
     const table = useMemo(() => parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader), [source, sheetIndex, hasHeader]);
-    const drawingId = selected === "error-bar" && !showUncertainty ? template.paper?.region.kind === "horizontal" ? "horizontal-bar" : "grouped-bar" : selected;
-    const result = useMemo(() => buildTemplateData(table, mapping, drawingId, errorInput, errorMeasure, panelChart), [table, mapping, drawingId, errorInput, errorMeasure, panelChart]);
+    const drawingId = template.electrochemical?.kind === "cycle" && mapping.ys.length === 1 ? "line" : selected === "error-bar" && !showUncertainty ? template.paper?.region.kind === "horizontal" ? "horizontal-bar" : "grouped-bar" : selected;
+    const boundResult = useMemo(() => buildTemplateData(table, mapping, drawingId, errorInput, errorMeasure, panelChart), [table, mapping, drawingId, errorInput, errorMeasure, panelChart]);
+    const result = useMemo(() => {
+        if (!boundResult.data || !template.electrochemical) return boundResult;
+        if (template.electrochemical.kind === "nyquist" && !imaginaryMode) return { data: null, error: "请确认虚部列的符号约定，再生成 Nyquist 图。" };
+        const prepared = prepareElectrochemicalData(boundResult.data, template.electrochemical, imaginaryMode || "negative-imaginary");
+        return { data: prepared.data ?? null, error: prepared.error ?? null };
+    }, [boundResult, template.electrochemical, imaginaryMode]);
     const chartWidth = Number.isFinite(width) && width >= 420 && width <= 1600 ? width : 680;
     const chartHeight = Number.isFinite(height) && height >= 320 && height <= 1000 ? height : 420;
     const safeFontSize = Number.isFinite(fontSize) && fontSize >= 5 && fontSize <= 16 ? fontSize : 8;
@@ -93,7 +102,27 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         horizontal: template.paper?.region.kind === "horizontal", colorByCategory: referenceColors && template.paper?.region.kind === "bars",
         stackedArea: template.paper?.region.kind === "area", hatching,
         fillLines: template.paper?.region.fillSeries, sphereGuide,
-    }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper]);
+        xLog: template.electrochemical?.xLog, yLog: template.electrochemical?.yLog, equalAxes: template.electrochemical?.equalAxes,
+    }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper, template.electrochemical]);
+
+    useEffect(() => {
+        if (active && new URLSearchParams(window.location.search).get("templates") === "electrochem") setCategory("电化学测试");
+    }, [active]);
+
+    function chooseCategory(next: DrawingType | "全部") {
+        setCategory(next);
+        if (next === "电化学测试" || sourceFilter === "电化学专栏") setSourceFilter("全部来源");
+        const url = new URL(window.location.href);
+        if (next === "电化学测试") url.searchParams.set("templates", "electrochem");
+        else url.searchParams.delete("templates");
+        window.history.replaceState(null, "", url);
+    }
+
+    function chooseSource(next: string) {
+        if (next === "电化学专栏") chooseCategory("电化学测试");
+        else if (category === "电化学测试" && next !== "全部来源") chooseCategory("全部");
+        setSourceFilter(next);
+    }
 
     useEffect(() => {
         if (!active || !editorOpen) return;
@@ -113,16 +142,17 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }, [active, editorOpen]);
     const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth - 24) / chartWidth);
 
-    function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart) {
+    function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart, preset: DrawingTemplate = template) {
         const nextTable = parseTemplateTable(next.sheets[nextSheet]?.matrix ?? [], headers);
-        const nextMapping = suggestMapping(nextTable, id, panelMode);
+        const nextMapping = preset.electrochemical ? suggestElectrochemicalMapping(nextTable, preset.electrochemical) : suggestMapping(nextTable, id, panelMode);
         setSource(next);
         setSheetIndex(nextSheet);
         setHasHeader(headers);
         setMapping(nextMapping);
         setXLabel(nextTable.columns[nextMapping.x] || "X");
-        setYLabel(isSpatial(id) ? nextTable.columns[nextMapping.ys[0]] || "Y" : next.kind === "demo" ? CHART_TEMPLATES.find(item => item.id === id)!.yLabel : "数值");
-        setSecondaryYLabel(nextTable.columns[nextMapping.ys[1]] || "右轴指标");
+        setYLabel(isSpatial(id) ? nextTable.columns[nextMapping.ys[0]] || "Y" : preset.electrochemical ? next.kind === "demo" ? preset.yLabel : nextTable.columns[nextMapping.ys[0]] || preset.yLabel : next.kind === "demo" ? CHART_TEMPLATES.find(item => item.id === id)!.yLabel : "数值");
+        setSecondaryYLabel(next.kind === "demo" && preset.electrochemical?.secondaryYLabel || nextTable.columns[nextMapping.ys[1]] || "右轴指标");
+        if (preset.electrochemical?.kind === "nyquist") setImaginaryMode(next.kind === "demo" ? "negative-imaginary" : "");
         const middleX = numericCell(nextTable.rows[Math.floor(nextTable.rows.length / 2)]?.[nextMapping.x]);
         setAnnotationX(middleX ?? 0.6);
         const errorColumns = Object.values(nextMapping.errors).map(index => nextTable.columns[index]);
@@ -145,8 +175,8 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         setWidth(id === "multi-panel" || id === "schematic" ? 900 : 680);
         setHeight(id === "multi-panel" ? 620 : 420);
         setTitle(next.name);
-        if (source.kind === "demo") bindTable({ name: `${next.name}示例`, kind: "demo", sheets: [{ name: "示例数据", matrix: next.demo }] }, 0, true, id, "bar");
-        else bindTable(source, sheetIndex, hasHeader, id, "bar");
+        if (source.kind === "demo") bindTable({ name: `${next.name}示例`, kind: "demo", sheets: [{ name: "示例数据", matrix: next.demo }] }, 0, true, id, "bar", next);
+        else bindTable(source, sheetIndex, hasHeader, id, "bar", next);
     }
 
     async function importFile(event: React.ChangeEvent<HTMLInputElement>) {
@@ -174,6 +204,15 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         setExportError("");
     }
 
+    function bindElectrochemicalY(axis: 0 | 1, value: string) {
+        const index = value === "" ? undefined : Number(value);
+        const ys = axis === 0 ? index === undefined ? [] : [index, ...mapping.ys.slice(1).filter(y => y !== index)] : index === undefined ? mapping.ys.slice(0, 1) : [mapping.ys[0], index];
+        setMapping(current => ({ ...current, ys }));
+        if (axis === 0 && index !== undefined) setYLabel(table.columns[index]);
+        if (axis === 1 && index !== undefined) setSecondaryYLabel(table.columns[index]);
+        setExportError("");
+    }
+
     function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
         const representative = drawingTemplateForChart(id);
         setPresetId(representative.id); setReferenceColors(!!representative.paper);
@@ -192,7 +231,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(!!representative.paper);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
-        bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id);
+        bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id, "bar", representative);
         setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
         if (id === "horizontal-bar") setShowUncertainty(false);
         setTitle(name); setXLabel(String(matrix[0]?.[nextMapping.x] ?? next.xLabel));
@@ -202,7 +241,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         if (!chartRef.current) throw new Error("请先完成数据绑定，等待图表呈现。");
         const svg = chartRef.current.getEchartsInstance().renderToSVGString();
         const desc = document.createElementNS("http://www.w3.org/2000/svg", "desc");
-        desc.textContent = `${template.paper ? `Single-chart reference: Chen Liu et al., figures4papers, CC BY-NC 4.0; ${template.paper.source}; ${template.paper.regionId}. ` : ""}${source.kind === "demo" ? "演示数据；" : "用户提供数据；"}${caption || "统计图注由用户核对。"}`;
+        desc.textContent = `${template.paper ? `Single-chart reference: Chen Liu et al., figures4papers, CC BY-NC 4.0; ${template.paper.source}; ${template.paper.regionId}. ` : ""}${source.kind === "demo" ? "演示数据；" : "用户提供数据；"}${template.electrochemical ? `电化学图式：${template.name}；${template.electrochemical.kind === "nyquist" ? imaginaryMode === "raw-imaginary" ? "原始 Im(Z) 乘以 −1，未取绝对值；" : "输入 −Im(Z)，保持原值；" : template.electrochemical.kind === "bode" ? "原始频率和阻抗模值使用对数轴，相位使用线性轴；" : "保留采集顺序；"}` : ""}${caption || "统计图注由用户核对。"}`;
         return svg.replace(/(<svg\b[^>]*>)/, root => root + new XMLSerializer().serializeToString(desc));
     }
 
@@ -211,20 +250,20 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
                 <div><span className="template-eyebrow"><Layers3 size={14} /> PAPER DRAWING LIBRARY / 论文图例模板</span><h2 id="template-studio-title">从一张图开始<span>。</span></h2><p>按图形类型选择模板，上传你的数据生成独立图表；组数、名称和范围由你的数据决定。</p></div>
-                <div className="template-intro-note"><span><Sparkles size={15} /> 每种图式，保留代表</span><p>{DRAWING_TEMPLATES.length} 个精选数据模板<br />按图形结构去重 · 小提琴全部保留</p></div>
+                <div className="template-intro-note"><span><Sparkles size={15} /> 每种图式，保留代表</span><p>{DRAWING_TEMPLATES.length} 个精选数据模板<br />新增电化学专栏 · 小提琴全部保留</p></div>
             </div>
             <div className="template-catalog-toolbar">
-                <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...DRAWING_TYPES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={category === item ? "is-active" : ""} onClick={() => setCategory(item)}>{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
+                <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...DRAWING_TYPES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
-            <div className="drawing-library-tools"><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>setSourceFilter(e.target.value)}>{["全部来源","通用模板","论文图式"].map(item=><option key={item}>{item}</option>)}</select></label><label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索图形、用途或论文项目" value={search} onChange={event => setSearch(event.target.value)} /></label></div>
+            <div className="drawing-library-tools"><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label><label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索 CV、阻抗、图形或用途" value={search} onChange={event => setSearch(event.target.value)} /></label></div>
             <div className="template-catalog-meta"><span>显示 {filtered.length} / {DRAWING_TEMPLATES.length} 个模板</span><span>点击任一模板，弹出单图编辑工作台</span></div>
             {(category === "全部" ? DRAWING_TYPES : [category]).map(kind => {
                 const items = filtered.filter(item => item.category === kind);
                 if (!items.length) return null;
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
-                    {category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
+                    {kind === "电化学测试" ? <div className="electrochemical-column-heading"><span className="electrochemical-column-icon"><Zap size={22} /></span><div><span className="template-eyebrow">ELECTROCHEMISTRY / 专栏</span><h3>电化学测试图</h3><p>伏安 · 充放电 · 性能 · 阻抗谱，选择图式后替换实验数据。</p></div><span className="electrochemical-column-count">{items.length} 个模板</span></div> : category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
                     <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${hasOpened && presetId === item.id ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(DRAWING_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(DRAWING_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
                         <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && presetId === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
                     </button>)}</div>
                 </section>;
@@ -255,12 +294,17 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                     {selected === "multi-panel" && <div className="template-segment" role="group" aria-label="分面图形">{(["bar", "line"] as const).map(kind => <button type="button" key={kind} aria-pressed={panelChart === kind} className={panelChart === kind ? "is-active" : ""} onClick={() => { setPanelChart(kind); if (source.kind === "demo") bindTable({ name: kind === "line" ? "参数扫描示例" : "分面比较示例", kind: "demo", sheets: [{ name: "示例数据", matrix: kind === "line" ? PANEL_SWEEP_DEMO : template.demo }] }, 0, true, selected, kind); else bindTable(source, sheetIndex, hasHeader, selected, kind); }}>{kind === "bar" ? "柱状比较" : "参数扫描折线"}</button>)}</div>}
                     {selected === "error-bar" && <><label className="template-checkbox"><input type="checkbox" checked={showUncertainty} onChange={e=>setShowUncertainty(e.target.checked)} />绘制误差条</label>{!showUncertainty && <p className="template-hint">当前只绘制数值，不自动生成误差。提供独立重复实验或误差列后，可勾选绘制误差条。</p>}</>}
                     {selected === "error-bar" && showUncertainty && <><div className="template-segment" role="group" aria-label="误差数据格式"><button type="button" aria-pressed={errorInput === "replicates"} className={errorInput === "replicates" ? "is-active" : ""} onClick={() => setErrorInput("replicates")}>重复实验列</button><button type="button" aria-pressed={errorInput === "summary"} className={errorInput === "summary" ? "is-active" : ""} onClick={() => setErrorInput("summary")}>均值＋误差列</button></div><label className="template-field">误差条含义<div className="template-select-wrap"><select value={errorMeasure} onChange={event => setErrorMeasure(event.target.value as ErrorMeasure)}><option value="SD">SD · 样本标准差</option><option value="SEM">SEM · 均值标准误</option></select><ChevronDown size={14} /></div></label><p className="template-hint">{errorInput === "replicates" ? "每行代表一个样品，选择至少 2 列独立重复实验。SD 使用 n−1 分母；SEM = SD / √n。" : "每行代表一个样品。误差列应填写所选 SD 或 SEM 的非负数值，此处不进行自动换算。"}</p></>}
-                    {isSpatial(selected) || isGraph(selected) ? <div>
+                    {template.electrochemical && selected === "dual-axis" ? <div className="electrochemical-axis-bindings">
+                        {([0, 1] as const).map(axis => <label className="template-field" key={axis}>{axis === 0 ? template.electrochemical?.kind === "bode" ? "左轴 · 阻抗模值 |Z| 列" : "左轴 · 容量 / 保持率列" : template.electrochemical?.kind === "bode" ? "右轴 · 相位角列" : "右轴 · 库仑效率列（可选）"}<div className="template-select-wrap"><select value={mapping.ys[axis] ?? ""} onChange={event => bindElectrochemicalY(axis, event.target.value)}><option value="">{axis === 1 && template.electrochemical?.kind === "cycle" ? "不显示库仑效率" : "请选择数据列"}</option>{table.columns.map((name, index) => index !== mapping.x && index !== mapping.ys[axis === 0 ? 1 : 0] && <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>)}
+                    </div> : isSpatial(selected) || isGraph(selected) ? <div>
                         {(isSpatial(selected) ? ["Y 坐标列", "Z 坐标列"] : selected === "network" ? ["终点列", "权重列（可选）"] : ["后续步骤列"]).map((label, position) => <label className="template-field" key={label}>{label}<div className="template-select-wrap"><select value={mapping.ys[position] === -1 ? "" : mapping.ys[position] ?? ""} onChange={event => { const value = event.target.value; setMapping(current => { const ys = [...current.ys]; if (!value && selected === "network" && position === 1) ys.splice(position, 1); else ys[position] = value === "" ? -1 : Number(value); return { ...current, ys }; }); }}><option value="">{position === 1 && selected === "network" ? "无权重 · 每条连接等宽" : "请选择数据列"}</option>{table.columns.map((name, index) => index !== mapping.x && !mapping.ys.some((y, i) => y === index && i !== position) && <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>)}
                     </div> : <fieldset className="template-y-fields" hidden={selected === "histogram"}><legend>{selected === "box" || selected === "violin" ? "原始样本 Y 列（选择一列）" : selected === "error-bar" && showUncertainty ? errorInput === "replicates" ? "重复实验列" : "均值列" : selected === "radar" ? "方法 / 样品数值列" : selected === "heatmap" ? "矩阵数值列" : "Y 数据列（可多选）"}</legend>{table.columns.map((name, index) => index !== mapping.x && <label key={index} className="template-column-choice"><span><input type="checkbox" checked={mapping.ys.includes(index)} onChange={() => toggleY(index)} />{name}</span><small>{table.rows.some(row => numericCell(row[index]) !== null) ? "数值" : "文本"}</small></label>)}</fieldset>}
+                    {template.electrochemical?.kind === "nyquist" && <><label className="template-field">虚部列输入约定<div className="template-select-wrap"><select value={imaginaryMode} onChange={event => { const mode = event.target.value as ImaginaryMode | ""; setImaginaryMode(mode); const name = table.columns[mapping.ys[0]] || template.yLabel; setYLabel(mode === "raw-imaginary" ? `−(${name})` : name); }}><option value="">请确认虚部的符号</option><option value="negative-imaginary">已经是 −Im(Z) · 保持原值</option><option value="raw-imaginary">原始 Im(Z) · 虚部取负</option></select><ChevronDown size={14} /></div></label><p className="template-hint">取负只乘以 −1，不取绝对值。实部与虚部请使用相同单位；两轴单位长度相同。</p></>}
+                    {template.electrochemical?.kind === "bode" && <p className="template-hint">绑定原始频率与 |Z|，两者使用对数坐标；相位保留正负号，使用右侧线性坐标。</p>}
                     {selected === "error-bar" && showUncertainty && errorInput === "summary" && mapping.ys.map(y => <label className="template-field" key={y}>{table.columns[y]} · 误差列<div className="template-select-wrap"><select value={mapping.errors[y] ?? ""} onChange={event => setMapping(current => ({ ...current, errors: { ...current.errors, [y]: Number(event.target.value) } }))}><option value="" disabled>请选择误差列</option>{table.columns.map((name, index) => index !== mapping.x && !mapping.ys.includes(index) && <option key={index} value={index}>{name}</option>)}</select><ChevronDown size={14} /></div></label>)}
                     {result.error && <p className="template-notice template-notice--error" role="alert">{result.error}</p>}
                     {!!result.data?.skipped && <div className="template-notice" role="status"><strong>已跳过 {result.data.skipped} 行不完整数据</strong>{result.data.warnings.map(message => <p key={message}>{message}</p>)}</div>}
+                    {!!result.data?.warnings.length && !result.data.skipped && <div className="template-notice" role="status">{result.data.warnings.map(message => <p key={message}>{message}</p>)}</div>}
                 </section>
 
                 <div className="template-output-column">
@@ -271,7 +315,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                         <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && showUncertainty && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
                         <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading} onBusy={setExporting} revision={option} extraIssues={[
                             ...(source.kind === "demo" ? [{ level: "warning" as const, message: "当前为演示数据，不是真实实验结果。" }] : []),
-                            ...(selected === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
+                            ...(drawingId === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
                             ...(selected === "error-bar" && showUncertainty && !caption.trim() ? [{ level: "warning" as const, message: "请补充统计图注：独立样本量、误差含义和实验重复类型。" }] : []),
                             ...(result.data?.skipped ? [{ level: "warning" as const, message: `绘图跳过 ${result.data.skipped} 行，请对照原始数据检查。` }] : []),
                         ]} />
@@ -283,7 +327,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                         <div className="template-style-presets" role="group" aria-label="论文图表样式">{template.paper && <button type="button" aria-pressed={referenceColors} className={referenceColors ? "is-active" : ""} onClick={()=>setReferenceColors(true)}><span>{(template.paper.region.colors??["#38679b"]).slice(0,3).map((color,i)=><i key={i} style={{backgroundColor:color}}/>)}</span>图例配色{referenceColors&&<Check size={13}/>}</button>}{([{ id: "accessible", name: "色觉友好", colors: ["#0072B2", "#D55E00", "#009E73"] }, { id: "journal", name: "期刊简洁", colors: ["#38679b", "#c77972", "#64958c"] }, { id: "soft", name: "柔和对比", colors: ["#788bcc", "#d69baf", "#7dafb1"] }, { id: "mono", name: "黑白打印", colors: ["#282828", "#696969", "#a0a0a0"] }] as const).map(item => <button type="button" key={item.id} aria-pressed={!referenceColors && palette === item.id} className={!referenceColors && palette === item.id ? "is-active" : ""} onClick={() => {setPalette(item.id);setReferenceColors(false);}}><span>{item.colors.map(color => <i key={color} style={{ backgroundColor: color }} />)}</span>{item.name}{!referenceColors && palette === item.id && <Check size={13} />}</button>)}</div>
                         <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
                         <label className="template-field">统计图注（保存在 SVG 描述中）<input value={caption} maxLength={300} onChange={event => setCaption(event.target.value)} placeholder="如：n=6 独立实验；误差条为 SD；单位见轴标题" /></label>
-                        {selected === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}
+                        {drawingId === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}
                         {selected === "concept" && <div className="template-style-grid"><label className="template-field">标注位置 X<input type="number" step="any" value={annotationX} onChange={event => setAnnotationX(Number(event.target.value))} /></label><label className="template-field">标注文字<input value={annotationText} onChange={event => setAnnotationText(event.target.value)} maxLength={40} /></label></div>}
                         {isSpatial(selected) && <div className="template-camera"><label>方位角 {yaw}°<input type="range" min={-180} max={180} value={yaw} onChange={event => setYaw(Number(event.target.value))} /></label><label>仰角 {pitch}°<input type="range" min={-80} max={80} value={pitch} onChange={event => setPitch(Number(event.target.value))} /></label><p>三维坐标以正交投影呈现，导出保留当前视角。</p></div>}
                         <div className="template-style-switches"><label className="template-checkbox"><input type="checkbox" checked={showGrid} onChange={event => setShowGrid(event.target.checked)} /> 显示参考网格</label>{(isBar(selected) || selected === "network") && <label className="template-checkbox"><input type="checkbox" checked={showValues} onChange={event => setShowValues(event.target.checked)} /> 标注数值</label>}</div>
@@ -295,7 +339,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
             </div>
             <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
             </TemplateEditorDialog>
-            <p className="template-bottom-note">同结构模板保留一个代表，小提琴图全部保留。全部预览由绘图引擎完整生成，示例非真实实验结果。论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
+            <p className="template-bottom-note">通用图形按结构去重，电化学专栏按测试用途分类，小提琴图全部保留。全部预览由绘图引擎完整生成，示例非真实实验结果。论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
         </section>
     );
 }

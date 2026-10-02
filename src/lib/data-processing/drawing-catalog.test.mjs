@@ -11,11 +11,13 @@ const structure = template => template.chartId === 'error-bar'
     : template.chartId === 'trend' && template.paper?.region.kind === 'area' ? 'stacked-area' : template.chartId;
 
 test('curated library keeps one representative per chart structure and removes image-only templates', () => {
-    assert.equal(DRAWING_TEMPLATES.length, 23);
-    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 23);
-    assert.equal(DRAWING_TYPES.length, 9);
+    assert.equal(DRAWING_TEMPLATES.length, 31);
+    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 31);
+    assert.equal(DRAWING_TYPES.length, 10);
     assert.equal(DRAWING_TEMPLATES.filter(t => t.paper).length, 6);
-    const groups = Map.groupBy(DRAWING_TEMPLATES, structure);
+    assert.equal(DRAWING_TEMPLATES.filter(t => t.electrochemical).length, 8);
+    // The dedicated electrochemical workflows share curve engines, with distinct axes and conventions.
+    const groups = Map.groupBy(DRAWING_TEMPLATES.filter(t => !t.electrochemical), structure);
     for (const [kind, templates] of groups) assert.equal(templates.length, kind === 'violin' ? 2 : 1, kind);
     for (const template of DRAWING_TEMPLATES) {
         assert.ok(template.chartId);

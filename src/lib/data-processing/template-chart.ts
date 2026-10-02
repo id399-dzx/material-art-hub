@@ -1,4 +1,4 @@
-import type { CustomSeriesOption, EChartsOption, SeriesOption } from "echarts";
+import type { CustomSeriesOption, EChartsOption, GridComponentOption, SeriesOption, XAXisComponentOption, YAXisComponentOption } from "echarts";
 import { createDistributionOption } from "./template-chart-distribution.ts";
 import { createExtendedTemplateOption } from "./template-chart-extended.ts";
 import { fitTemplateLayout } from "./chart-layout.ts";
@@ -10,6 +10,7 @@ export type TemplateChartStyle = {
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
     panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
+    xLog?: boolean; yLog?: boolean; equalAxes?: boolean;
 };
 
 const colors: Record<PublicationStyle, string[]> = {
@@ -20,7 +21,67 @@ const colors: Record<PublicationStyle, string[]> = {
 };
 
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
-    return fitTemplateLayout(buildTemplateOption(data, template, style), data, template, style);
+    const option = buildTemplateOption(data, template, style);
+    applyCartesianScales(option, data, style);
+    fitTemplateLayout(option, data, template, style);
+    if (style.equalAxes) fitEqualUnitGrid(option, style);
+    return option;
+}
+
+function components<T>(value: T | T[] | undefined): T[] {
+    return value ? Array.isArray(value) ? value : [value] : [];
+}
+
+function formatLogTick(value: string | number): string {
+    const number = Number(value), exponent = Math.log10(number), integer = Math.round(exponent);
+    if (number > 0 && Number.isFinite(exponent) && Math.abs(exponent - integer) < 1e-8) {
+        const superscript: Record<string, string> = { "-": "⁻", "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹" };
+        return "10" + String(integer).split("").map(character => superscript[character]).join("");
+    }
+    return Number.isFinite(number) ? String(Number(number.toPrecision(3))) : String(value);
+}
+
+function logarithmicAxis(axis: XAXisComponentOption | YAXisComponentOption): void {
+    Object.assign(axis, { type: "log", logBase: 10, scale: true });
+    // Compact decade labels fit the complete frequency range between the two Y axes.
+    axis.axisLabel = { ...axis.axisLabel, formatter: formatLogTick, showMinLabel: true, showMaxLabel: true, hideOverlap: false };
+}
+
+function applyCartesianScales(option: EChartsOption, data: TemplateData, style: TemplateChartStyle): void {
+    const xAxes = components(option.xAxis), yAxes = components(option.yAxis);
+    if (style.xLog) xAxes.forEach(axis => {
+        if (axis.type !== "value") return;
+        logarithmicAxis(axis);
+    });
+    if (style.yLog && yAxes[0]?.type === "value") logarithmicAxis(yAxes[0]);
+    if (!style.equalAxes || style.xLog || style.yLog || xAxes.length !== 1 || yAxes.length !== 1 || xAxes[0].type !== "value" || yAxes[0].type !== "value") return;
+    const values = [...data.x.filter((value): value is number => typeof value === "number"), ...data.series.flatMap(series => series.values)].filter(Number.isFinite);
+    if (!values.length) return;
+    let minimum = 0, maximum = 0;
+    for (const value of values) { minimum = Math.min(minimum, value); maximum = Math.max(maximum, value); }
+    const range = maximum - minimum || 1;
+    const min = minimum < 0 ? minimum - range * .05 : 0;
+    const max = maximum > 0 ? maximum + range * .05 : maximum === 0 && minimum === 0 ? 1 : 0;
+    // Identical domains and a square *inner* plot ensure one ohm has the same pixel length on each axis.
+    for (const axis of [...xAxes, ...yAxes]) Object.assign(axis, { min, max, scale: true, splitNumber: 5 });
+}
+
+function fitEqualUnitGrid(option: EChartsOption, style: TemplateChartStyle): void {
+    const grids = components(option.grid), xAxes = components<XAXisComponentOption>(option.xAxis), yAxes = components<YAXisComponentOption>(option.yAxis);
+    if (grids.length !== 1 || xAxes.length !== 1 || yAxes.length !== 1 || xAxes[0].type !== "value" || yAxes[0].type !== "value") return;
+    const width = style.width ?? 680, height = style.height ?? 420;
+    const grid = grids[0] as GridComponentOption;
+    const left = Number(grid.left), right = Number(grid.right), top = Number(grid.top), bottom = Number(grid.bottom);
+    if (![left, right, top, bottom].every(Number.isFinite)) return;
+    const availableWidth = width - left - right, availableHeight = height - top - bottom;
+    const side = Math.min(availableWidth, availableHeight);
+    if (side <= 0) return;
+    Object.assign(grid, {
+        left: left + (availableWidth - side) / 2,
+        top: top + (availableHeight - side) / 2,
+        width: side, height: side, right: undefined, bottom: undefined,
+        containLabel: false, outerBoundsMode: "none",
+    });
 }
 
 function buildTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {

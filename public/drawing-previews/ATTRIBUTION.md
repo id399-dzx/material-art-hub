@@ -6,6 +6,13 @@ These previews include the complete chart canvas, axes, legends, and labels.
 They contain no cropped publication image, image backplate, or original mechanism
 illustration. The demonstration values are examples, not reported paper results.
 
+The current library contains 31 rendered previews: 17 general templates, six
+paper-style references, and eight independently authored electrochemical presets.
+The `electrochem-*` tables and templates contain no imported publication artwork
+or experimental measurements. Adding these examples introduces no external
+image-license restrictions; the source-reference license below applies to the
+six `paper-*` references.
+
 The six `paper-*` templates retain selected chart structures and palette references
 from Chen Liu and collaborators' [figures4papers](https://github.com/ChenLiu-1996/figures4papers),
 revision `f0bb7559abe90f5e1828797126d4d133c1bd47d7`:

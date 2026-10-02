@@ -168,6 +168,15 @@
 .drawing-type-heading { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
 .drawing-type-heading h3 { color: #44374d; font-size: 19px; font-weight: 650; margin: 0; }
 .drawing-type-heading span { color: #8c7d96; font-size: 11px; }
+.template-category-tabs .electrochemical-tab { display: inline-flex; align-items: center; gap: 6px; border-color: #cfdcd6; }
+.electrochemical-column-heading { display: flex; align-items: center; gap: 16px; padding: 20px 24px; margin-bottom: 18px; border: 1px solid #dce7e1; border-radius: 22px; background: linear-gradient(120deg, #edf5f0d9, #f5f0fad9); }
+.electrochemical-column-icon { display: grid; place-items: center; flex: none; width: 46px; height: 46px; border: 1px solid #c9ded1; border-radius: 15px; background: #ffffffb3; color: #5a8977; }
+.electrochemical-column-heading h3 { margin: 3px 0 6px; color: #3f594e; font-size: 20px; font-weight: 650; }
+.electrochemical-column-heading p { margin: 0; color: #77877f; font-size: 12px; line-height: 1.7; }
+.electrochemical-column-count { margin-left: auto; color: #667e70; font-size: 12px; white-space: nowrap; }
+.template-card-art--electrochemical { background: linear-gradient(135deg, #edf4ef, #f2f1f8); }
+.electrochemical-axis-bindings { margin-top: 16px; }
+@media (max-width: 620px) { .electrochemical-column-heading { padding: 16px; gap: 12px; } .electrochemical-column-count { display: none; } .electrochemical-column-heading h3 { font-size: 18px; } }
 .template-card-art--paper { background: linear-gradient(130deg,#f1eef7,#f9eff4); padding: 40px 12px 12px; }
 .template-card-art--paper img { object-fit: contain; border-radius: 10px; background: white; }
 .template-reference { border: 1px solid #e7ddec; border-radius: 12px; padding: 12px; margin-bottom: 18px; color: #796687; font-size: 11px; }

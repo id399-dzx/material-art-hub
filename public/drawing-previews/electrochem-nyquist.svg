@@ -1,0 +1,92 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>阻抗谱 · Nyquist; independently rendered demonstration data; MaterialArtHub data template</desc>
+<rect width="680" height="420" x="0" y="0" fill="#ffffff"></rect>
+<path d="M-51.4 -26.2l102.7 0l0 26.2l-102.7 0Z" transform="matrix(0,-1,1,0,189.3827,221.2244)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="-13.095111111111109" transform="matrix(0,-1,1,0,189.3827,221.2244)" fill="#383842">−Z″ (Ω)</text>
+<path d="M277.5 327.6L277.5 114.8" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr5-cls-29"></path>
+<path d="M-40.1 0l80.2 0l0 26.2l-80.2 0Z" transform="translate(383.3173 384.9049)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(383.3173 384.9049)" fill="#383842">Z′ (Ω)</text>
+<path d="M276.9 327.5L489.7 327.5" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr5-cls-29"></path>
+<path d="M276.9 327.5L281.9 327.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M276.9 280.5L281.9 280.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M276.9 232.5L281.9 232.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M276.9 184.5L281.9 184.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M276.9 137.5L281.9 137.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M277.5 327.6L277.5 322.6" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M324.5 327.6L324.5 322.6" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M372.5 327.6L372.5 322.6" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M420.5 327.6L420.5 322.6" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M467.5 327.6L467.5 322.6" fill="none" pointer-events="visible" stroke="#42424b" class="zr5-cls-29"></path>
+<path d="M-12.6 -13.1l12.6 0l0 26.2l-12.6 0Z" transform="translate(266.9222 327.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(266.9222 327.6196)" fill="#383842">0</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(266.9222 279.9355)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(266.9222 279.9355)" fill="#383842">20</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(266.9222 232.2514)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(266.9222 232.2514)" fill="#383842">40</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(266.9222 184.5673)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(266.9222 184.5673)" fill="#383842">60</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(266.9222 136.8832)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(266.9222 136.8832)" fill="#383842">80</text>
+<path d="M-6.3 0l12.6 0l0 26.2l-12.6 0Z" transform="translate(276.9222 337.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(276.9222 337.6196)" fill="#383842">0</text>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(324.6063 337.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(324.6063 337.6196)" fill="#383842">20</text>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(372.2904 337.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(372.2904 337.6196)" fill="#383842">40</text>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(419.9745 337.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(419.9745 337.6196)" fill="#383842">60</text>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(467.6586 337.6196)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(467.6586 337.6196)" fill="#383842">80</text>
+<g clip-path="url(#zr5-c0)">
+<path d="M281.7 326.4L286.5 313.3L296 301.4L307.9 294.2L324.6 289.5L343.7 294.2L362.8 303.8L379.4 315.7L393.7 325.2L408.1 315.7L427.1 299L451 277.6L479.6 246.6" fill="none" pointer-events="visible" stroke="#38679b" stroke-width="2" stroke-linejoin="bevel" class="zr5-cls-31"></path>
+</g>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,281.6906,326.4275)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,286.459,313.3143)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,295.9958,301.3933)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,307.9169,294.2407)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,324.6063,289.4723)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,343.6799,294.2407)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,362.7536,303.7775)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,379.443,315.6985)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,393.7482,325.2354)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,408.0535,315.6985)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,427.1271,299.0091)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,450.9691,277.5513)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,479.5796,246.5566)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr5-cls-32"></path>
+<path d="M0 0l120.2 0l0 25l-120.2 0Z" transform="translate(279.9106 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr5-cls-29"></path>
+<path d="M0 4L16 4" transform="translate(280.9106 67.0253)" fill="#000" stroke="#38679b" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr5-cls-29"></path>
+<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(280.9106 67.0253)" fill="#38679b" class="zr5-cls-29"></path>
+<path d="M21 -8.5l98.2 0l0 25l-98.2 0Z" transform="translate(280.9106 67.0253)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(280.9106 67.0253)" fill="#383842">−Z″ (Ω)</text>
+<path d="M-1 -8.5l120.2 0l0 25l-120.2 0Z" transform="translate(280.9106 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr5-cls-33"></path>
+<path d="M-165.4 0l330.8 0l0 28.5l-330.8 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr5-cls-29"></path>
+<path d="M-165.4 0l330.8 0l0 28.5l-330.8 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr5-cls-29"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">阻抗谱 · Nyquist · 示例数据</text>
+<defs >
+<clipPath id="zr5-c0">
+<path d="M275 113.8l216 0l0 214.8l-216 0Z" fill="#000" class="zr5-cls-30"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr5-cls-29:hover {
+pointer-events:none;
+}
+.zr5-cls-30:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr5-cls-31:hover {
+cursor:pointer;
+}
+.zr5-cls-32:hover {
+cursor:pointer;
+fill:rgba(61,113,170,1);
+}
+.zr5-cls-33:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>

@@ -7,8 +7,7 @@ import * as XLSX from "xlsx";
 import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search } from "lucide-react";
 import { buildTemplateData, CHART_TEMPLATES, PANEL_SWEEP_DEMO, isNumericX, isSpatial, isGraph, isBar, matrixToCsv, numericCell, parseTemplateTable, suggestMapping, type ColumnMapping, type ErrorInput, type ErrorMeasure, type TemplateId } from "@/lib/data-processing/templates";
 import { createTemplateOption, type PublicationStyle } from "@/lib/data-processing/template-chart";
-import { DRAWING_TEMPLATES, DRAWING_TYPES, type DrawingType, type DrawingTemplate } from "@/lib/data-processing/drawing-catalog";
-import PaperPanelImageEditor from "./PaperPanelImageEditor";
+import { DRAWING_TEMPLATES, DRAWING_TYPES, drawingTemplateForChart, type DrawingType } from "@/lib/data-processing/drawing-catalog";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import DataAdvisor from "./DataAdvisor";
 import PublicationExport from "./PublicationExport";
@@ -18,7 +17,7 @@ import "./template-studio.css";
 
 type Sheet = { name: string; matrix: unknown[][] };
 type Source = { name: string; kind: "demo" | "file"; sheets: Sheet[] };
-const initial = CHART_TEMPLATES.find(item => item.id === "line")!;
+const initial = drawingTemplateForChart("line");
 
 function downloadBlob(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
@@ -38,9 +37,10 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [category, setCategory] = useState<DrawingType | "全部">("全部");
     const [search, setSearch] = useState("");
     const [sourceFilter, setSourceFilter] = useState("全部来源");
-    const [presetId, setPresetId] = useState("line");
-    const [imageTemplate, setImageTemplate] = useState<DrawingTemplate | null>(null);
-    const [referenceColors, setReferenceColors] = useState(false);
+    const [presetId, setPresetId] = useState(initial.id);
+    const [referenceColors, setReferenceColors] = useState(!!initial.paper);
+    const [hatching, setHatching] = useState(false);
+    const [sphereGuide, setSphereGuide] = useState(true);
     const [panelChart, setPanelChart] = useState<"bar" | "line">("bar");
     const [cumulative, setCumulative] = useState(false);
     const [secondaryYLabel, setSecondaryYLabel] = useState("");
@@ -56,7 +56,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [showUncertainty, setShowUncertainty] = useState(true);
     const [errorInput, setErrorInput] = useState<ErrorInput>("replicates");
     const [errorMeasure, setErrorMeasure] = useState<ErrorMeasure>("SD");
-    const [title, setTitle] = useState("循环性能比较");
+    const [title, setTitle] = useState(initial.name);
     const [xLabel, setXLabel] = useState(initial.xLabel);
     const [yLabel, setYLabel] = useState(initial.yLabel);
     const [palette, setPalette] = useState<PublicationStyle>("journal");
@@ -78,7 +78,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [actualPreview, setActualPreview] = useState(false);
     const template = DRAWING_TEMPLATES.find(item => item.id === presetId)!;
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
-    const catalog = DRAWING_TEMPLATES.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文单图" ? !!item.paper : !item.paper));
+    const catalog = DRAWING_TEMPLATES.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : !item.paper));
     const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
     const table = useMemo(() => parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader), [source, sheetIndex, hasHeader]);
     const drawingId = selected === "error-bar" && !showUncertainty ? template.paper?.region.kind === "horizontal" ? "horizontal-bar" : "grouped-bar" : selected;
@@ -91,9 +91,9 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
         customColors: referenceColors ? template.paper?.region.colors : undefined,
         horizontal: template.paper?.region.kind === "horizontal", colorByCategory: referenceColors && template.paper?.region.kind === "bars",
-        stackedArea: template.paper?.region.kind === "area", hatching: referenceColors && !!template.paper?.region.hatching,
-        fillLines: template.paper?.region.fillSeries, sphereGuide: template.paper?.region.kind !== "vectors",
-    }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, template.paper]);
+        stackedArea: template.paper?.region.kind === "area", hatching,
+        fillLines: template.paper?.region.fillSeries, sphereGuide,
+    }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper]);
 
     useEffect(() => {
         if (!active || !editorOpen) return;
@@ -135,11 +135,11 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
 
     function chooseTemplate(preset: string) {
         const next = DRAWING_TEMPLATES.find(item => item.id === preset)!;
-        if (!next.chartId) { setImageTemplate(next); return; }
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
         const id = next.chartId;
         setPresetId(preset); setSelected(id); setReferenceColors(!!next.paper); if(next.paper)setPalette("journal");
+        setHatching(!!next.paper?.region.hatching); setSphereGuide(true);
         setCumulative(false);
         setPanelChart("bar");
         setWidth(id === "multi-panel" || id === "schematic" ? 900 : 680);
@@ -175,9 +175,12 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }
 
     function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
-        setPresetId(id); setReferenceColors(false);
+        const representative = drawingTemplateForChart(id);
+        setPresetId(representative.id); setReferenceColors(!!representative.paper);
+        setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
-        setSelected(id); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        if (id === "horizontal-bar") setShowUncertainty(false);
         setXLabel(table.columns[nextMapping.x] || next.xLabel);
         setYLabel(id === "histogram" ? "样本数" : table.columns[nextMapping.ys[0]] || next.yLabel);
         setTitle(source.kind === "file" ? source.name.replace(/\.[^.]+$/, "") : next.name);
@@ -185,10 +188,13 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         requestAnimationFrame(() => document.getElementById("template-editor")?.closest(".template-dialog-content")?.scrollTo({ top: 0, behavior: "smooth" }));
     }
     useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
-        setEditorOpen(true); setHasOpened(true); setPresetId(id); setReferenceColors(false);
+        const representative = drawingTemplateForChart(id);
+        setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(!!representative.paper);
+        setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id);
-        setSelected(id); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
+        if (id === "horizontal-bar") setShowUncertainty(false);
         setTitle(name); setXLabel(String(matrix[0]?.[nextMapping.x] ?? next.xLabel));
         setYLabel(id === "histogram" ? "样本数" : String(matrix[0]?.[nextMapping.ys[0]] ?? next.yLabel));
     } }));
@@ -205,12 +211,12 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
                 <div><span className="template-eyebrow"><Layers3 size={14} /> PAPER DRAWING LIBRARY / 论文图例模板</span><h2 id="template-studio-title">从一张图开始<span>。</span></h2><p>按图形类型选择模板，上传你的数据生成独立图表；组数、名称和范围由你的数据决定。</p></div>
-                <div className="template-intro-note"><span><Sparkles size={15} /> 一张模板，一张自己的图</span><p>{DRAWING_TEMPLATES.length} 个独立模板<br />通用绘图 + 论文单图 + 机制插图</p></div>
+                <div className="template-intro-note"><span><Sparkles size={15} /> 每种图式，保留代表</span><p>{DRAWING_TEMPLATES.length} 个精选数据模板<br />按图形结构去重 · 小提琴全部保留</p></div>
             </div>
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...DRAWING_TYPES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={category === item ? "is-active" : ""} onClick={() => setCategory(item)}>{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
-            <div className="drawing-library-tools"><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>setSourceFilter(e.target.value)}>{["全部来源","通用模板","论文单图"].map(item=><option key={item}>{item}</option>)}</select></label><label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索图形、用途或论文项目" value={search} onChange={event => setSearch(event.target.value)} /></label></div>
+            <div className="drawing-library-tools"><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>setSourceFilter(e.target.value)}>{["全部来源","通用模板","论文图式"].map(item=><option key={item}>{item}</option>)}</select></label><label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索图形、用途或论文项目" value={search} onChange={event => setSearch(event.target.value)} /></label></div>
             <div className="template-catalog-meta"><span>显示 {filtered.length} / {DRAWING_TEMPLATES.length} 个模板</span><span>点击任一模板，弹出单图编辑工作台</span></div>
             {(category === "全部" ? DRAWING_TYPES : [category]).map(kind => {
                 const items = filtered.filter(item => item.category === kind);
@@ -218,8 +224,8 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
                     {category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
                     <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${hasOpened && presetId === item.id ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(DRAWING_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={600} height={360} alt={`${item.name}${item.paper ? "原图风格参考" : "示例预览"}`} /></div>
-                        <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && presetId === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> {item.chartId ? "使用模板" : "编辑插图"}</>}</span></div></div>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(DRAWING_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
+                        <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && presetId === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
                     </button>)}</div>
                 </section>;
             })}
@@ -231,7 +237,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                 <section className="template-input-panel template-glass" aria-labelledby="template-data-title">
                     <div className="template-section-heading"><span className="template-section-icon"><FileSpreadsheet size={18} /></span><div><h3 id="template-data-title">让模板读懂你的数据</h3><p>当前模板：{template.name}</p></div></div>
                     <p className="template-input-guide">{template.guide}</p>
-                    {template.paper && <details className="template-reference"><summary>查看此单图的原图风格与来源</summary><Image src={template.preview} width={600} height={360} alt={`${template.name}原图风格参考`} /><p>{template.paper.figureName} · {template.paper.region.name}。预览为原图裁出的风格参考；新图仅包含上传数据，坐标、图例与组数重新生成。</p><a href={`https://github.com/ChenLiu-1996/figures4papers/blob/main/${template.paper.source}`} target="_blank" rel="noreferrer">Chen Liu 与合作者 · figures4papers · CC BY-NC 4.0</a></details>}
+                    {template.paper && <details className="template-reference"><summary>查看图式来源与完整预览</summary><Image src={template.preview} width={680} height={420} alt={`${template.name}完整图表预览`} /><p>图式参考：{template.paper.figureName} · {template.paper.region.name}。预览由同一绘图引擎和演示数据完整生成；上传后按你的数据重新绘制。</p><a href={`https://github.com/ChenLiu-1996/figures4papers/blob/main/${template.paper.source}`} target="_blank" rel="noreferrer">Chen Liu 与合作者 · figures4papers · CC BY-NC 4.0</a></details>}
                     <label className={`template-upload${loading ? " is-loading" : ""}`} htmlFor="template-data-upload">
                         <input id="template-data-upload" type="file" accept=".csv,.xlsx,.xls" onChange={importFile} disabled={loading} className="sr-only" />
                         {loading ? <Loader2 size={24} className="animate-spin" /> : <UploadCloud size={24} />}<strong>{loading ? "正在读取表格…" : "导入自己的实验数据"}</strong><span>CSV / Excel · 最大 10 MB</span>
@@ -282,13 +288,14 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                         {isSpatial(selected) && <div className="template-camera"><label>方位角 {yaw}°<input type="range" min={-180} max={180} value={yaw} onChange={event => setYaw(Number(event.target.value))} /></label><label>仰角 {pitch}°<input type="range" min={-80} max={80} value={pitch} onChange={event => setPitch(Number(event.target.value))} /></label><p>三维坐标以正交投影呈现，导出保留当前视角。</p></div>}
                         <div className="template-style-switches"><label className="template-checkbox"><input type="checkbox" checked={showGrid} onChange={event => setShowGrid(event.target.checked)} /> 显示参考网格</label>{(isBar(selected) || selected === "network") && <label className="template-checkbox"><input type="checkbox" checked={showValues} onChange={event => setShowValues(event.target.checked)} /> 标注数值</label>}</div>
                         {selected === "trend" && <label className="template-checkbox"><input type="checkbox" checked={cumulative} onChange={event => setCumulative(event.target.checked)} />按输入时间顺序计算累计量</label>}
+                        {(selected === "stacked-bar" || selected === "percent-bar") && <label className="template-checkbox"><input type="checkbox" checked={hatching} onChange={event => setHatching(event.target.checked)} />使用纹理区分组成</label>}
+                        {selected === "sphere" && <label className="template-checkbox"><input type="checkbox" checked={sphereGuide} onChange={event => setSphereGuide(event.target.checked)} />显示单位参考球（关闭后仅展示空间向量）</label>}
                     </section>
                 </div>
             </div>
             <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
             </TemplateEditorDialog>
-            <PaperPanelImageEditor template={imageTemplate} active={active && !!imageTemplate} onClose={()=>setImageTemplate(null)} />
-            <p className="template-bottom-note">21 个通用模板、69 个论文数据单图、28 个独立插图，统一按图形类型选择。论文预览来源：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。示例数据用于演示；导出只含所选单图。</p>
+            <p className="template-bottom-note">同结构模板保留一个代表，小提琴图全部保留。全部预览由绘图引擎完整生成，示例非真实实验结果。论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
         </section>
     );
 }

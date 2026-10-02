@@ -1,0 +1,94 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>分组柱状图; independently rendered demonstration data; MaterialArtHub data template</desc>
+<rect width="680" height="420" x="0" y="0" fill="#ffffff"></rect>
+<path d="M-77.2 -26.2l154.4 0l0 26.2l-154.4 0Z" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="-13.095111111111109" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="#383842">比容量 (mAh/g)</text>
+<path d="M137.5 319.5L137.5 116.6" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr3-cls-7"></path>
+<path d="M-45.2 0l90.3 0l0 26.2l-90.3 0Z" transform="translate(388.8649 376.8098)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(388.8649 376.8098)" fill="#383842">测试条件</text>
+<path d="M137.7 319.5L640 319.5" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr3-cls-7"></path>
+<path d="M137.7 319.5L142.7 319.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 285.5L142.7 285.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 252.5L142.7 252.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 218.5L142.7 218.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 184.5L142.7 184.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 150.5L142.7 150.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M137.7 116.5L142.7 116.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M200.5 319.5L200.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M326.5 319.5L326.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M451.5 319.5L451.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M577.5 319.5L577.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr3-cls-7"></path>
+<path d="M-12.6 -13.1l12.6 0l0 26.2l-12.6 0Z" transform="translate(127.7298 319.5244)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 319.5244)" fill="#383842">0</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 285.7096)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 285.7096)" fill="#383842">30</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 251.8948)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 251.8948)" fill="#383842">60</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 218.08)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 218.08)" fill="#383842">90</text>
+<path d="M-37.9 -13.1l37.9 0l0 26.2l-37.9 0Z" transform="translate(127.7298 184.2652)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 184.2652)" fill="#383842">120</text>
+<path d="M-37.9 -13.1l37.9 0l0 26.2l-37.9 0Z" transform="translate(127.7298 150.4504)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 150.4504)" fill="#383842">150</text>
+<path d="M-37.9 -13.1l37.9 0l0 26.2l-37.9 0Z" transform="translate(127.7298 116.6356)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 116.6356)" fill="#383842">180</text>
+<path d="M-27.1 0l54.2 0l0 26.2l-54.2 0Z" transform="translate(200.5136 329.5244)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(200.5136 329.5244)" fill="#383842">0.2 C</text>
+<path d="M-27.1 0l54.2 0l0 26.2l-54.2 0Z" transform="translate(326.0811 329.5244)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(326.0811 329.5244)" fill="#383842">0.5 C</text>
+<path d="M-17.6 0l35.2 0l0 26.2l-35.2 0Z" transform="translate(451.6487 329.5244)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(451.6487 329.5244)" fill="#383842">1 C</text>
+<path d="M-17.6 0l35.2 0l0 26.2l-35.2 0Z" transform="translate(577.2162 329.5244)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(577.2162 329.5244)" fill="#383842">2 C</text>
+<path d="M162.8 319.5l21.5 0l0 -178.1l-21.5 0Z" fill="#38679b" stroke="#38679b" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr3-cls-8"></path>
+<path d="M288.4 319.5l21.5 0l0 -164.6l-21.5 0Z" fill="#38679b" stroke="#38679b" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr3-cls-8"></path>
+<path d="M414 319.5l21.5 0l0 -148.8l-21.5 0Z" fill="#38679b" stroke="#38679b" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr3-cls-8"></path>
+<path d="M539.5 319.5l21.5 0l0 -129.6l-21.5 0Z" fill="#38679b" stroke="#38679b" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr3-cls-8"></path>
+<path d="M189.8 319.5l21.5 0l0 -161.2l-21.5 0Z" fill="#c77972" stroke="#c77972" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr3-cls-9"></path>
+<path d="M315.3 319.5l21.5 0l0 -147.7l-21.5 0Z" fill="#c77972" stroke="#c77972" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr3-cls-9"></path>
+<path d="M440.9 319.5l21.5 0l0 -129.6l-21.5 0Z" fill="#c77972" stroke="#c77972" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr3-cls-9"></path>
+<path d="M566.5 319.5l21.5 0l0 -110.5l-21.5 0Z" fill="#c77972" stroke="#c77972" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr3-cls-9"></path>
+<path d="M216.7 319.5l21.5 0l0 -145.4l-21.5 0Z" fill="#64958c" stroke="#64958c" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr3-cls-10"></path>
+<path d="M342.2 319.5l21.5 0l0 -131.9l-21.5 0Z" fill="#64958c" stroke="#64958c" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr3-cls-10"></path>
+<path d="M467.8 319.5l21.5 0l0 -116.1l-21.5 0Z" fill="#64958c" stroke="#64958c" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr3-cls-10"></path>
+<path d="M593.4 319.5l21.5 0l0 -94.7l-21.5 0Z" fill="#64958c" stroke="#64958c" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr3-cls-10"></path>
+<path d="M0 0l283 0l0 25l-283 0Z" transform="translate(198.4789 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr3-cls-7"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(198.4789 67.0253)" fill="#38679b" stroke="#38679b" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr3-cls-7"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(198.4789 67.0253)" fill="#383842">样品 A</text>
+<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr3-cls-11"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(297.1333 67.0253)" fill="#c77972" stroke="#c77972" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr3-cls-7"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(297.1333 67.0253)" fill="#383842">样品 B</text>
+<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr3-cls-11"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(395.7878 67.0253)" fill="#64958c" stroke="#64958c" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr3-cls-7"></path>
+<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(395.7878 67.0253)" fill="#383842">样品 C</text>
+<path d="M0 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" class="zr3-cls-11"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr3-cls-7"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr3-cls-7"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">分组柱状图 · 示例数据</text>
+<style ><![CDATA[
+.zr3-cls-7:hover {
+pointer-events:none;
+}
+.zr3-cls-8:hover {
+cursor:pointer;
+fill:rgba(61,113,170,1);
+}
+.zr3-cls-9:hover {
+cursor:pointer;
+fill:rgba(218,133,125,1);
+}
+.zr3-cls-10:hover {
+cursor:pointer;
+fill:rgba(110,163,154,1);
+}
+.zr3-cls-11:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>

@@ -1,0 +1,88 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>多指标雷达图; independently rendered demonstration data; MaterialArtHub data template</desc>
+<rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
+<path d="M340 255.8M340 237.7L322.8 250.2L329.4 270.4L350.6 270.4L357.2 250.2L340 237.7M340 219.7L305.7 244.6L318.8 284.9L361.2 284.9L374.3 244.6L340 219.7M340 201.7L288.5 239.1L308.2 299.5L371.8 299.5L391.5 239.1L340 201.7M340 183.6L271.4 233.5L297.6 314.1L382.4 314.1L408.6 233.5L340 183.6M340 165.6L254.2 227.9L287 328.7L393 328.7L425.8 227.9L340 165.6" fill="none" pointer-events="visible" stroke="#e0dfe8" class="zr5-cls-16"></path>
+<path d="M340.5 255.8L340.5 165.6" fill="none" pointer-events="visible" stroke="#d4d2de" stroke-linecap="round" class="zr5-cls-16"></path>
+<path d="M-42.7 -50.1l85.4 0l0 50.1l-85.4 0Z" transform="translate(340 155.6009)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" y="-37.545333333333325" transform="translate(340 155.6009)" fill="#383842">准确率</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" y="-12.515111111111107" transform="translate(340 155.6009)" fill="#383842">上限 100</text>
+<path d="M340 255.8L254.2 227.9" fill="none" pointer-events="visible" stroke="#d4d2de" stroke-linecap="round" class="zr5-cls-16"></path>
+<path d="M-85.4 -25l85.4 0l0 50.1l-85.4 0Z" transform="translate(244.7333 224.8162)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:21.577777777777776px;font-family:Arial;" y="-12.515111111111109" transform="translate(244.7333 224.8162)" fill="#383842">召回率</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" y="12.515111111111109" transform="translate(244.7333 224.8162)" fill="#383842">上限 100</text>
+<path d="M340 255.8L287 328.7" fill="none" pointer-events="visible" stroke="#d4d2de" stroke-linecap="round" class="zr5-cls-16"></path>
+<path d="M-85.4 -25l85.4 0l0 50.1l-85.4 0Z" transform="translate(281.1219 336.8089)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:21.577777777777776px;font-family:Arial;" y="-12.515111111111109" transform="translate(281.1219 336.8089)" fill="#383842">稳定性</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" y="12.515111111111109" transform="translate(281.1219 336.8089)" fill="#383842">上限 100</text>
+<path d="M340 255.8L393 328.7" fill="none" pointer-events="visible" stroke="#d4d2de" stroke-linecap="round" class="zr5-cls-16"></path>
+<path d="M0 -25l85.4 0l0 50.1l-85.4 0Z" transform="translate(398.8781 336.8089)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" y="-12.515111111111109" transform="translate(398.8781 336.8089)" fill="#383842">效率</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" y="12.515111111111109" transform="translate(398.8781 336.8089)" fill="#383842">上限 100</text>
+<path d="M340 255.8L425.8 227.9" fill="none" pointer-events="visible" stroke="#d4d2de" stroke-linecap="round" class="zr5-cls-16"></path>
+<path d="M0 -25l85.4 0l0 50.1l-85.4 0Z" transform="translate(435.2667 224.8162)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" y="-12.515111111111109" transform="translate(435.2667 224.8162)" fill="#383842">鲁棒性</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" y="12.515111111111109" transform="translate(435.2667 224.8162)" fill="#383842">上限 100</text>
+<polyline points="340 180.9 274.8 234.6 292.8 320.7 376 305.4 410.3 232.9 340 180.9" fill="none" pointer-events="visible" stroke="#38679b" stroke-width="2" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-17"></polyline>
+<polygon points="340 180.9 274.8 234.6 292.8 320.7 376 305.4 410.3 232.9 340 180.9" fill="#38679b" fill-opacity="0.08" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></polygon>
+<polyline points="340 188.1 270.5 233.2 301.8 308.3 388.2 322.2 400 236.3 340 188.1" fill="none" pointer-events="visible" stroke="#c77972" stroke-width="2" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-17"></polyline>
+<polygon points="340 188.1 270.5 233.2 301.8 308.3 388.2 322.2 400 236.3 340 188.1" fill="#c77972" fill-opacity="0.08" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></polygon>
+<polyline points="340 174.6 265.4 231.5 291.8 322.2 380.8 311.9 415.5 231.3 340 174.6" fill="none" pointer-events="visible" stroke="#64958c" stroke-width="2" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-17"></polyline>
+<polygon points="340 174.6 265.4 231.5 291.8 322.2 380.8 311.9 415.5 231.3 340 174.6" fill="#64958c" fill-opacity="0.08" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></polygon>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,340,180.9297)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,274.8253,234.5937)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,292.8298,320.6944)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,376.0401,305.3752)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,410.32,232.9219)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-18"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,340,188.1432)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,270.5375,233.2005)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,301.8399,308.2932)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,388.2302,322.1534)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,400.0293,236.2655)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-19"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,340,174.6178)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,265.3922,231.5287)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,291.7698,322.1534)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,380.8102,311.9406)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,415.4654,231.25)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr5-cls-20"></path>
+<path d="M0 0l283 0l0 25l-283 0Z" transform="translate(198.4789 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr5-cls-16"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(198.4789 67.0253)" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr5-cls-16"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(198.4789 67.0253)" fill="#383842">方法 A</text>
+<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr5-cls-21"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(297.1333 67.0253)" fill="#c77972" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr5-cls-16"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(297.1333 67.0253)" fill="#383842">方法 B</text>
+<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr5-cls-21"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(395.7878 67.0253)" fill="#64958c" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr5-cls-16"></path>
+<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(395.7878 67.0253)" fill="#383842">方法 C</text>
+<path d="M0 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" class="zr5-cls-21"></path>
+<path d="M-142.1 0l284.1 0l0 28.5l-284.1 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr5-cls-16"></path>
+<path d="M-142.1 0l284.1 0l0 28.5l-284.1 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr5-cls-16"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">多指标雷达图 · 示例数据</text>
+<style ><![CDATA[
+.zr5-cls-16:hover {
+pointer-events:none;
+}
+.zr5-cls-17:hover {
+cursor:pointer;
+}
+.zr5-cls-18:hover {
+cursor:pointer;
+fill:rgba(61,113,170,1);
+}
+.zr5-cls-19:hover {
+cursor:pointer;
+fill:rgba(218,133,125,1);
+}
+.zr5-cls-20:hover {
+cursor:pointer;
+fill:rgba(110,163,154,1);
+}
+.zr5-cls-21:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>

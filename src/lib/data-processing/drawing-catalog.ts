@@ -2,10 +2,10 @@ import { CHART_TEMPLATES, type TemplateId, type TableCell } from './templates.ts
 import { PAPER_FIGURES, type FigureRegion } from './paper-figures/catalog.ts';
 import { paperDemoPoints } from './paper-figures/data.ts';
 
-export const DRAWING_TYPES = ['柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程', '机制插图'] as const;
+export const DRAWING_TYPES = ['柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程'] as const;
 export type DrawingType = typeof DRAWING_TYPES[number];
 export type DrawingTemplate = {
-    id: string; chartId: TemplateId | null; name: string; english: string; category: DrawingType;
+    id: string; chartId: TemplateId; name: string; english: string; category: DrawingType;
     description: string; requirement: string; tag: string; guide: string; xLabel: string; yLabel: string;
     demo: TableCell[][]; preview: string;
     paper?: { figureId: string; regionId: string; project: string; figureName: string; source: string; region: FigureRegion };
@@ -19,10 +19,6 @@ const TYPES: Record<TemplateId, DrawingType> = {
 const CHART_KIND: Record<FigureRegion['kind'], TemplateId | null> = {
     bars: 'error-bar', horizontal: 'error-bar', stacked: 'percent-bar', line: 'line', area: 'trend', scatter: 'scatter',
     heatmap: 'heatmap', radar: 'radar', sphere: 'sphere', vectors: 'sphere', surface: 'surface', violin: 'violin', box: 'box', image: null,
-};
-const NAMES: Record<FigureRegion['kind'], string> = {
-    bars: '柱状与误差', horizontal: '横向比较与误差', stacked: '纹理组成', line: '趋势曲线', area: '堆叠面积', scatter: '散点关系',
-    heatmap: '矩阵热图', radar: '多指标雷达', sphere: '三维球面', vectors: '空间向量', surface: '三维曲面', violin: '小提琴分布', box: '样本箱线', image: '机制 / 结构插图',
 };
 export function panelTemplateId(figureId: string, regionId: string) { return `paper-${figureId}-${regionId}`; }
 
@@ -46,19 +42,49 @@ export function panelDemoMatrix(region: FigureRegion): TableCell[][] {
     ])];
 }
 
+// One representative per usable chart structure; source metrics are not new types.
+const REPRESENTATIVES = [
+    { engine: 'error-bar', id: 'paper-immuno-comparison-auroc' },
+    { engine: 'horizontal-bar', id: 'paper-immuno-iedb-results-ablation-1' },
+    { engine: 'percent-bar', id: 'paper-brainteaser-composition-composition-1' },
+    { engine: 'line', id: 'paper-vigil-training-training' },
+] as const;
+const RETAINED_PAPER_IDS = new Set<string>([
+    ...REPRESENTATIVES.map(item => item.id),
+    'paper-ophthal-trend-text-trend',
+    'paper-immuno-iedb-results-distribution',
+]);
+const paperTemplates: DrawingTemplate[] = PAPER_FIGURES.flatMap(figure => figure.regions.flatMap(region => {
+    const id = panelTemplateId(figure.id, region.id), chartId = CHART_KIND[region.kind];
+    if (!chartId || !RETAINED_PAPER_IDS.has(id)) return [];
+    const replacement = REPRESENTATIVES.find(item => item.id === id);
+    const base = CHART_TEMPLATES.find(item => item.id === (replacement?.engine ?? chartId))!;
+    const area = region.kind === 'area', horizontal = region.kind === 'horizontal', violin = region.kind === 'violin';
+    return [{
+        id, chartId, category: TYPES[chartId], english: base.english,
+        name: area ? '堆叠面积图' : horizontal ? '横向柱状与误差条' : violin ? '双组小提琴分布' : base.name,
+        tag: '论文图式', description: area ? '用堆叠面积同时呈现各组变化与合计规模。' : horizontal ? '横向比较类别，可按数据需要开启或关闭误差条。' : violin ? '保留论文小提琴配色，展示两组或多组真实样本分布。' : base.description,
+        requirement: region.kind === 'bars' || horizontal ? '类别 ＋ 数值列，误差可选' : base.requirement,
+        guide: `${region.kind === 'bars' || horizontal ? '每行一个类别，每列一个系列。可以只提供数值；需要误差条时，选择独立重复实验或已计算的均值与误差列。' : base.guide} 不要求沿用原论文的组数、名称或数值范围。${area ? '面积按组堆叠；默认不对输入值再做累计。' : ''}`,
+        xLabel: base.xLabel, yLabel: base.yLabel,
+        // Compact, independently authored demos show reusable structure instead of paper-specific labels.
+        demo: replacement && !horizontal ? base.demo : area ? CHART_TEMPLATES.find(item => item.id === 'trend')!.demo : panelDemoMatrix(region),
+        preview: `/drawing-previews/${id}.svg`,
+        paper: { figureId: figure.id, regionId: region.id, project: figure.project, figureName: figure.name, source: figure.source, region },
+    }];
+}));
+const replacedEngines = new Set<string>(REPRESENTATIVES.map(item => item.engine));
 export const DRAWING_TEMPLATES: DrawingTemplate[] = [
-    ...CHART_TEMPLATES.map(template => ({ ...template, chartId: template.id, category: TYPES[template.id], preview: `/data-templates/${template.id}.svg` })),
-    ...PAPER_FIGURES.flatMap(figure => figure.regions.map(region => {
-        const chartId = CHART_KIND[region.kind], base = CHART_TEMPLATES.find(t => t.id === chartId);
-        const id = panelTemplateId(figure.id, region.id);
-        return {
-            id, chartId, name: `${NAMES[region.kind]} · ${region.name.replace(/^[a-z] · /, '')}`, english: figure.project.toUpperCase(),
-            category: chartId ? TYPES[chartId] : '机制插图' as DrawingType, tag: chartId ? '论文单图' : '独立插图',
-            description: chartId ? `取自「${figure.name}」中的单个绘图区，系列与类别由你的数据决定。` : `取自「${figure.name}」的独立插图，可单独替换图片与标注。`,
-            requirement: ['bars','horizontal'].includes(region.kind) ? '类别 ＋ 数值列，误差可选' : base?.requirement ?? 'PNG / JPEG / WebP 图片',
-            guide: chartId ? `${['bars','horizontal'].includes(region.kind) ? '每行一个类别，每列一个系列。可以只提供数值；需要误差条时，明确选择独立重复实验或已计算的均值与误差列。' : base!.guide} 不要求沿用原论文的组数、名称或数值范围。${region.kind === 'area' ? '输入各组已累计的数值，不自动累加；面积按组堆叠。' : ''}` : '此模板是机制或结构插图，使用图片和文字编辑。',
-            xLabel: base?.xLabel ?? '', yLabel: base?.yLabel ?? '', demo: panelDemoMatrix(region), preview: `/paper-panels/${id}-preview.webp`,
-            paper: { figureId: figure.id, regionId: region.id, project: figure.project, figureName: figure.name, source: figure.source, region },
-        };
+    ...CHART_TEMPLATES.filter(template => !replacedEngines.has(template.id)).map(template => ({
+        ...template, chartId: template.id, category: TYPES[template.id], preview: `/drawing-previews/${template.id}.svg`,
     })),
+    ...paperTemplates,
 ];
+
+/** Advisor and main-data import still use chart engine IDs, including replaced cards. */
+export function drawingTemplateForChart(chartId: TemplateId): DrawingTemplate {
+    const representative = REPRESENTATIVES.find(item => item.engine === chartId);
+    const template = DRAWING_TEMPLATES.find(item => item.id === (representative?.id ?? chartId));
+    if (!template) throw new Error(`Missing representative for ${chartId}`);
+    return template;
+}

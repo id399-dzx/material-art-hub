@@ -1,6 +1,7 @@
 import type { EChartsOption, GraphicComponentOption } from "echarts";
 import type { TemplateData } from "./templates";
 import type { TemplateChartStyle } from "./template-chart";
+import { textWidth, wrapChartText } from "./chart-layout.ts";
 
 type Point = [number, number, number];
 export function rotatePoint([x, y, z]: Point, yaw: number, pitch: number): Point {
@@ -24,6 +25,13 @@ export function surfaceFaces(points: Point[]): Point[][] {
 export function createSpatialOption(data: TemplateData, template: "sphere" | "surface", style: TemplateChartStyle, palette: string[], shell: EChartsOption): EChartsOption {
     const points: Point[] = data.x.map((x, i) => [Number(x), data.series[0].values[i], data.series[1].values[i]]);
     const yaw = style.yaw ?? 35, pitch = style.pitch ?? 25, width = style.width ?? 680, height = style.height ?? 420;
+    const labels = [style.xLabel || "X", style.yLabel || "Y", data.series[1].name].map(label => wrapChartText(label, Math.min(150, width * .23), style.fontSize, style.fontFamily));
+    const labelWidth = Math.max(...labels.map(label => textWidth(label, style.fontSize, style.fontFamily)));
+    const labelHeight = Math.max(...labels.map(label => label.split("\n").length * style.fontSize * 1.16));
+    const title = wrapChartText(style.title, width - 64, style.fontSize + 2, style.fontFamily);
+    const top = 12 + title.split("\n").length * (style.fontSize + 2) * 1.16 + 18;
+    const bottom = Math.max(45, labelHeight + 20);
+    const side = Math.max(45, labelWidth + 14);
     const wires: Point[][] = [];
     if (template === "sphere" && style.sphereGuide !== false) {
         for (const lat of [-60, -30, 0, 30, 60]) {
@@ -39,8 +47,8 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     const axes: Point[] = [[bounds[0] * 1.2, 0, 0], [0, bounds[1] * 1.2, 0], [0, 0, bounds[2] * 1.2]];
     const projected = [...points, ...wires.flat(), [0, 0, 0] as Point, ...axes].map(p => rotatePoint(p, yaw, pitch));
     const extents = projected.reduce((e, p) => [Math.min(e[0], p[0]), Math.max(e[1], p[0]), Math.min(e[2], p[1]), Math.max(e[3], p[1])], [Infinity, -Infinity, Infinity, -Infinity]);
-    const scale = Math.min((width - 140) / Math.max(0.1, extents[1] - extents[0]), (height - 155) / Math.max(0.1, extents[3] - extents[2]));
-    const project = (p: Point): [number, number] => { const [x, y] = rotatePoint(p, yaw, pitch); return [width / 2 + (x - (extents[0] + extents[1]) / 2) * scale, 90 + (height - 145) / 2 - (y - (extents[2] + extents[3]) / 2) * scale]; };
+    const scale = Math.min((width - side * 2) / Math.max(0.1, extents[1] - extents[0]), (height - top - bottom - labelHeight) / Math.max(0.1, extents[3] - extents[2]));
+    const project = (p: Point): [number, number] => { const [x, y] = rotatePoint(p, yaw, pitch); return [width / 2 + (x - (extents[0] + extents[1]) / 2) * scale, top + labelHeight + (height - top - bottom - labelHeight) / 2 - (y - (extents[2] + extents[3]) / 2) * scale]; };
     const graphic: GraphicComponentOption[] = [];
     if (template === "sphere" && style.sphereGuide !== false) {
         graphic.push({ type: "circle", shape: { cx: project([0, 0, 0])[0], cy: project([0, 0, 0])[1], r: scale }, style: { fill: { type: "radial", x: 0.35, y: 0.3, r: 0.7, colorStops: [{ offset: 0, color: "#f8f6fc" }, { offset: 1, color: "#e4e1ef" }] }, stroke: "#d7d3e2", opacity: 0.65 } });
@@ -57,7 +65,7 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     axes.forEach((end, i) => {
         const origin = project([0, 0, 0]), to = project(end);
         graphic.push({ type: "line", shape: { x1: origin[0], y1: origin[1], x2: to[0], y2: to[1] }, style: { stroke: "#827d90", lineWidth: 1 } });
-        graphic.push({ type: "text", x: to[0] + 4, y: to[1] - 10, style: { text: [style.xLabel || "X", style.yLabel || "Y", data.series[1].name][i], fill: "#48404f", font: `${style.fontSize}px ${style.fontFamily}` } });
+        graphic.push({ type: "text", x: to[0] + 4, y: to[1] - style.fontSize / 2, style: { text: labels[i], fill: "#48404f", font: `${style.fontSize}px ${style.fontFamily}`, lineHeight: style.fontSize * 1.16 } });
     });
     if (template === "sphere") points.slice().sort((a, b) => rotatePoint(a, yaw, pitch)[2] - rotatePoint(b, yaw, pitch)[2]).forEach(p => {
         const origin = project([0, 0, 0]), to = project(p), front = rotatePoint(p, yaw, pitch)[2] >= 0;

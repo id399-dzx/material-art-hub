@@ -175,10 +175,10 @@
 .template-reference img { width: 100%; height: auto; margin-top: 12px; border-radius: 8px; }
 .template-reference p { line-height: 1.8; }
 .template-reference a { text-decoration: underline; }
-.single-image-editor fieldset { min-width: 0; border: 0; margin: 0; padding: 0; }
-.single-image-canvas { background: white; border-radius: 14px; overflow: auto; margin: 16px 0; }
-.single-image-canvas svg { display: block; width: 100%; max-height: 520px; }
-.single-image-project { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; font-size: 12px; color: #796687; }
-.single-image-project button,.single-image-project label { cursor: pointer; padding: 9px 12px; border: 1px solid #e5ddec; border-radius: 99px; background: white; }
-.single-image-project input { display: none; }
+.drawing-library .template-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.drawing-library .template-card-art { padding: 42px 14px 14px; }
+.drawing-library .template-card-art img { height: auto; aspect-ratio: 680 / 420; object-fit: contain; mix-blend-mode: normal; background: white; border-radius: 10px; }
+.drawing-library .template-card-bottom > small { white-space: normal; overflow: visible; text-overflow: clip; flex: 1 1 140px; }
+@media(max-width:850px) { .drawing-library .template-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(max-width:620px) { .drawing-library .template-gallery { grid-template-columns: 1fr; }.drawing-library .template-card { display: block; }.drawing-library .template-card-art { display: block; } }
 @media(max-width:620px) { .drawing-library-tools { align-items: stretch; flex-direction: column; }.drawing-type-group { margin-top: 22px; }.drawing-library .template-category-tabs button { padding: 8px 11px; font-size: 11px; } }

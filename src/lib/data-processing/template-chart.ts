@@ -1,6 +1,7 @@
 import type { CustomSeriesOption, EChartsOption, SeriesOption } from "echarts";
 import { createDistributionOption } from "./template-chart-distribution.ts";
 import { createExtendedTemplateOption } from "./template-chart-extended.ts";
+import { fitTemplateLayout } from "./chart-layout.ts";
 import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 
 export type PublicationStyle = "journal" | "soft" | "mono" | "accessible";
@@ -19,10 +20,14 @@ const colors: Record<PublicationStyle, string[]> = {
 };
 
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
+    return fitTemplateLayout(buildTemplateOption(data, template, style), data, template, style);
+}
+
+function buildTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const custom = style.customColors?.filter(color => /^#[a-f\d]{6}$/i.test(color));
     const palette = custom?.length ? custom : colors[style.palette];
     if (template === "box" || template === "violin" || template === "histogram") return createDistributionOption(data, template, style, palette);
-    if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => createTemplateOption(data, id, style));
+    if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => buildTemplateOption(data, id, style));
     const isLine = template === "line";
     const horizontal = !!style.horizontal && template === "error-bar";
     const series: SeriesOption[] = data.series.map((item, index) => {

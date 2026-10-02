@@ -1,0 +1,81 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>双组小提琴分布; independently rendered demonstration data; source style: assets/ImmunoStruct_results_IEDB.png; Chen Liu et al., figures4papers, CC BY-NC 4.0</desc>
+<rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l475.8 0l0 23.9l-475.8 0Z" transform="translate(102.1209 388.1298)" fill="none" pointer-events="visible" class="zr22-cls-151"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.577777777777776px Arial" xml:space="preserve" y="11.935111111111109" transform="translate(102.1209 388.1298)" fill="#555">原始点 + 核密度；n&lt;5 或常量组仅显示原始点与摘要</text>
+<path d="M-33.9 -26.2l67.7 0l0 26.2l-67.7 0Z" transform="matrix(0,-1,1,0,50.1902,154.5364)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="-13.095111111111109" transform="matrix(0,-1,1,0,50.1902,154.5364)" fill="#33333d">测量值</text>
+<path d="M-33.9 0l67.7 0l0 26.2l-67.7 0Z" transform="translate(401.7342 348.9396)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(401.7342 348.9396)" fill="#33333d">样品组</text>
+<path d="M163.5 239.5L640 239.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr22-cls-152"></path>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 218.0894)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 218.0894)" fill="#33333d">0.3</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 196.9051)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 196.9051)" fill="#33333d">0.4</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 175.7208)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 175.7208)" fill="#33333d">0.5</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 154.5364)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 154.5364)" fill="#33333d">0.6</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 133.3521)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 133.3521)" fill="#33333d">0.7</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 112.1678)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 112.1678)" fill="#33333d">0.8</text>
+<path d="M-31.6 -13.1l31.6 0l0 26.2l-31.6 0Z" transform="translate(153.4684 90.9834)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(153.4684 90.9834)" fill="#33333d">0.9</text>
+<path d="M-78 0l156 0l0 78.6l-156 0Z" transform="translate(282.6013 249.2738)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(282.6013 249.2738)" fill="#33333d">Non-Immunoge</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="39.28533333333333" transform="translate(282.6013 249.2738)" fill="#33333d">nic</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="65.47555555555554" transform="translate(282.6013 249.2738)" fill="#33333d">n=12</text>
+<path d="M-68 0l135.9 0l0 52.4l-135.9 0Z" transform="translate(520.8671 249.2738)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(520.8671 249.2738)" fill="#33333d">Immunogenic</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="39.28533333333333" transform="translate(520.8671 249.2738)" fill="#33333d">n=12</text>
+<polygon points="253.7 232.9 252.9 231 252.2 229.1 251.6 227.1 251.1 225.2 250.6 223.3 250.1 221.3 249.8 219.4 249.4 217.5 249.1 215.5 248.9 213.6 248.7 211.7 248.5 209.7 248.3 207.8 248.2 205.8 248 203.9 247.9 202 247.9 200 247.8 198.1 247.7 196.2 247.7 194.2 247.6 192.3 247.6 190.4 247.6 188.4 247.6 186.5 247.6 184.6 247.6 182.6 247.6 180.7 247.6 178.8 247.6 176.8 247.6 174.9 247.6 173 247.6 171 247.6 169.1 247.6 167.2 247.6 165.2 247.6 163.3 247.6 161.4 247.6 159.4 247.6 157.5 247.6 155.6 247.6 153.6 247.6 151.7 247.7 149.8 247.7 147.8 247.8 145.9 247.9 144 247.9 142 248 140.1 248.2 138.2 248.3 136.2 248.5 134.3 248.7 132.4 248.9 130.4 249.1 128.5 249.4 126.6 249.8 124.6 250.1 122.7 250.6 120.8 251.1 118.8 251.6 116.9 252.2 115 252.9 113 253.7 111.1 311.5 111.1 312.3 113 313 115 313.6 116.9 314.1 118.8 314.6 120.8 315.1 122.7 315.4 124.6 315.8 126.6 316.1 128.5 316.3 130.4 316.5 132.4 316.7 134.3 316.9 136.2 317 138.2 317.2 140.1 317.3 142 317.3 144 317.4 145.9 317.5 147.8 317.5 149.8 317.6 151.7 317.6 153.6 317.6 155.6 317.6 157.5 317.6 159.4 317.6 161.4 317.6 163.3 317.6 165.2 317.6 167.2 317.6 169.1 317.6 171 317.6 173 317.6 174.9 317.6 176.8 317.6 178.8 317.6 180.7 317.6 182.6 317.6 184.6 317.6 186.5 317.6 188.4 317.6 190.4 317.6 192.3 317.5 194.2 317.5 196.2 317.4 198.1 317.3 200 317.3 202 317.2 203.9 317 205.8 316.9 207.8 316.7 209.7 316.5 211.7 316.3 213.6 316.1 215.5 315.8 217.5 315.4 219.4 315.1 221.3 314.6 223.3 314.1 225.2 313.6 227.1 313 229.1 312.3 231 311.5 232.9" fill="#a1df9c" fill-opacity="0.3" stroke="#a1df9c" stroke-opacity="0.3" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></polygon>
+<path d="M282.6 232.9L282.6 111.1" fill="#000" stroke="#a1df9c" stroke-width="1.4" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M268.6 141.6l28 0l0 60.9l-28 0Z" fill="#ffffffaa" stroke="#a1df9c" stroke-width="1.4" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M268.6 232.9L296.6 232.9" fill="#000" stroke="#a1df9c" stroke-width="1.4" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M268.6 172L296.6 172" fill="#000" stroke="#a1df9c" stroke-width="1.4" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M268.6 111.1L296.6 111.1" fill="#000" stroke="#a1df9c" stroke-width="1.4" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<circle cx="260.7" cy="232.9" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="276.9" cy="111.1" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="293.1" cy="151.7" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="265.1" cy="192.3" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="281.3" cy="232.9" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="297.5" cy="111.1" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="269.5" cy="151.7" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="285.7" cy="192.3" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="301.9" cy="232.9" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="273.9" cy="111.1" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="290" cy="151.7" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="262" cy="192.3" r="2.5" fill="#a1df9c" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<polygon points="491.9 212.6 491.2 210.7 490.5 208.8 489.9 206.8 489.3 204.9 488.8 203 488.4 201 488 199.1 487.7 197.1 487.4 195.2 487.1 193.3 486.9 191.3 486.7 189.4 486.6 187.5 486.4 185.5 486.3 183.6 486.2 181.7 486.1 179.7 486 177.8 486 175.9 485.9 173.9 485.9 172 485.9 170.1 485.9 168.1 485.9 166.2 485.9 164.3 485.9 162.3 485.9 160.4 485.9 158.5 485.9 156.5 485.9 154.6 485.9 152.7 485.9 150.7 485.9 148.8 485.9 146.9 485.9 144.9 485.9 143 485.9 141.1 485.9 139.1 485.9 137.2 485.9 135.3 485.9 133.3 485.9 131.4 485.9 129.5 486 127.5 486 125.6 486.1 123.7 486.2 121.7 486.3 119.8 486.4 117.9 486.6 115.9 486.7 114 486.9 112.1 487.1 110.1 487.4 108.2 487.7 106.3 488 104.3 488.4 102.4 488.8 100.5 489.3 98.5 489.9 96.6 490.5 94.7 491.2 92.7 491.9 90.8 549.8 90.8 550.6 92.7 551.2 94.7 551.9 96.6 552.4 98.5 552.9 100.5 553.3 102.4 553.7 104.3 554 106.3 554.3 108.2 554.6 110.1 554.8 112.1 555 114 555.2 115.9 555.3 117.9 555.4 119.8 555.5 121.7 555.6 123.7 555.7 125.6 555.7 127.5 555.8 129.5 555.8 131.4 555.8 133.3 555.9 135.3 555.9 137.2 555.9 139.1 555.9 141.1 555.9 143 555.9 144.9 555.8 146.9 555.8 148.8 555.8 150.7 555.8 152.7 555.8 154.6 555.8 156.5 555.9 158.5 555.9 160.4 555.9 162.3 555.9 164.3 555.9 166.2 555.9 168.1 555.8 170.1 555.8 172 555.8 173.9 555.7 175.9 555.7 177.8 555.6 179.7 555.5 181.7 555.4 183.6 555.3 185.5 555.2 187.5 555 189.4 554.8 191.3 554.6 193.3 554.3 195.2 554 197.1 553.7 199.1 553.3 201 552.9 203 552.4 204.9 551.9 206.8 551.2 208.8 550.6 210.7 549.8 212.6" fill="#39acd0" fill-opacity="0.3" stroke="#39acd0" stroke-opacity="0.3" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></polygon>
+<path d="M520.9 212.6L520.9 90.8" fill="#000" stroke="#39acd0" stroke-width="1.4" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M506.9 121.3l28 0l0 60.9l-28 0Z" fill="#ffffffaa" stroke="#39acd0" stroke-width="1.4" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M506.9 212.6L534.9 212.6" fill="#000" stroke="#39acd0" stroke-width="1.4" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M506.9 151.7L534.9 151.7" fill="#000" stroke="#39acd0" stroke-width="1.4" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<path d="M506.9 90.8L534.9 90.8" fill="#000" stroke="#39acd0" stroke-width="1.4" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></path>
+<circle cx="499" cy="172" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="515.2" cy="212.6" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="531.4" cy="90.8" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="503.4" cy="131.4" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="519.6" cy="172" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="535.7" cy="212.6" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="507.7" cy="90.8" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="523.9" cy="131.4" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="540.1" cy="172" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="512.1" cy="212.6" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="528.3" cy="90.8" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<circle cx="500.3" cy="131.4" r="2.5" fill="#39acd0" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" ecmeta_silent="true" class="zr22-cls-152"></circle>
+<path d="M-154.3 0l308.7 0l0 28.5l-308.7 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr22-cls-152"></path>
+<path d="M-154.3 0l308.7 0l0 28.5l-308.7 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr22-cls-152"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#33333d">双组小提琴分布 · 示例数据</text>
+<style ><![CDATA[
+.zr22-cls-151:hover {
+cursor:pointer;
+}
+.zr22-cls-152:hover {
+pointer-events:none;
+}
+
+]]>
+
+</style>
+</svg>

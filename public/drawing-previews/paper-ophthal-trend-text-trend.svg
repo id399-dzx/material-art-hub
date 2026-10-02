@@ -1,0 +1,109 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>堆叠面积图; independently rendered demonstration data; source style: figure_ophthal_review/figures/trend_by_month.png; Chen Liu et al., figures4papers, CC BY-NC 4.0</desc>
+<rect width="680" height="420" x="0" y="0" fill="#ffffff"></rect>
+<path d="M-22.6 -26.2l45.2 0l0 26.2l-45.2 0Z" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="-13.095111111111109" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="#383842">数量</text>
+<path d="M137.5 319.5L137.5 116.6" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr20-cls-142"></path>
+<path d="M-22.6 0l45.2 0l0 26.2l-45.2 0Z" transform="translate(388.8649 376.8098)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(388.8649 376.8098)" fill="#383842">月份</text>
+<path d="M137.7 319.5L640 319.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr20-cls-142"></path>
+<path d="M137.7 319.5L142.7 319.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 285.5L142.7 285.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 252.5L142.7 252.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 218.5L142.7 218.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 184.5L142.7 184.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 150.5L142.7 150.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.7 116.5L142.7 116.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr20-cls-142"></path>
+<path d="M137.5 319.5L137.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M238.5 319.5L238.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M338.5 319.5L338.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M439.5 319.5L439.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M539.5 319.5L539.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M640.5 319.5L640.5 324.5" fill="none" pointer-events="visible" stroke="#54555a" class="zr20-cls-142"></path>
+<path d="M-12.6 -13.1l12.6 0l0 26.2l-12.6 0Z" transform="translate(127.7298 319.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 319.5244)" fill="#383842">5</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 285.7096)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 285.7096)" fill="#383842">10</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 251.8948)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 251.8948)" fill="#383842">15</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 218.08)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 218.08)" fill="#383842">20</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 184.2652)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 184.2652)" fill="#383842">25</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 150.4504)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 150.4504)" fill="#383842">30</text>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 116.6356)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 116.6356)" fill="#383842">35</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(137.7298 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(137.7298 329.5244)" fill="#383842">1 月</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(238.1838 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(238.1838 329.5244)" fill="#383842">2 月</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(338.6379 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(338.6379 329.5244)" fill="#383842">3 月</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(439.0919 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(439.0919 329.5244)" fill="#383842">4 月</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(539.546 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(539.546 329.5244)" fill="#383842">5 月</text>
+<path d="M-20.8 0l41.5 0l0 26.2l-41.5 0Z" transform="translate(640 329.5244)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(640 329.5244)" fill="#383842">6 月</text>
+<g clip-path="url(#zr20-c0)">
+<path d="M137.7 319.5L238.2 299.2L338.6 312.8L439.1 272.2L539.5 251.9L640 231.6L640 319.5L539.5 319.5L439.1 319.5L338.6 319.5L238.2 319.5L137.7 319.5Z" fill="#98c6fa" fill-opacity="0.65" class="zr20-cls-144"></path>
+</g>
+<g clip-path="url(#zr20-c1)">
+<path d="M137.7 299.2L238.2 265.4L338.6 265.4L439.1 218.1L539.5 177.5L640 143.7L640 231.6L539.5 251.9L439.1 272.2L338.6 312.8L238.2 299.2L137.7 319.5Z" fill="#ffaaaa" fill-opacity="0.65" class="zr20-cls-145"></path>
+</g>
+<g clip-path="url(#zr20-c0)">
+<path d="M137.7 319.5L238.2 299.2L338.6 312.8L439.1 272.2L539.5 251.9L640 231.6" fill="none" pointer-events="visible" stroke="#98c6fa" stroke-width="2" stroke-linejoin="bevel" class="zr20-cls-146"></path>
+</g>
+<g clip-path="url(#zr20-c1)">
+<path d="M137.7 299.2L238.2 265.4L338.6 265.4L439.1 218.1L539.5 177.5L640 143.7" fill="none" pointer-events="visible" stroke="#ffaaaa" stroke-width="2" stroke-linejoin="bevel" class="zr20-cls-146"></path>
+</g>
+<path d="M0 0l185.3 0l0 25l-185.3 0Z" transform="translate(247.3456 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr20-cls-142"></path>
+<path d="M0 4L16 4" transform="translate(248.3456 67.0253)" fill="#000" stroke="#98c6fa" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr20-cls-142"></path>
+<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(248.3456 67.0253)" fill="#98c6fa" class="zr20-cls-142"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(248.3456 67.0253)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(248.3456 67.0253)" fill="#383842">类别 A</text>
+<path d="M-1 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(248.3456 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr20-cls-147"></path>
+<path d="M0 4L16 4" transform="translate(348 67.0253)" fill="#000" stroke="#ffaaaa" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr20-cls-142"></path>
+<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(348 67.0253)" fill="#ffaaaa" class="zr20-cls-142"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(348 67.0253)" fill="#383842">类别 B</text>
+<path d="M-1 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr20-cls-147"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr20-cls-142"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr20-cls-142"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">堆叠面积图 · 示例数据</text>
+<defs >
+<clipPath id="zr20-c0">
+<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr20-cls-143"></path>
+</clipPath>
+<clipPath id="zr20-c1">
+<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr20-cls-143"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr20-cls-142:hover {
+pointer-events:none;
+}
+.zr20-cls-143:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr20-cls-144:hover {
+cursor:pointer;
+fill:rgba(167,217,255,1);
+}
+.zr20-cls-145:hover {
+cursor:pointer;
+fill:rgba(255,187,187,1);
+}
+.zr20-cls-146:hover {
+cursor:pointer;
+}
+.zr20-cls-147:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>

@@ -1,58 +1,64 @@
 <svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>矩阵热图; independently rendered demonstration data; MaterialArtHub data template</desc>
-<rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
-<path d="M110.5 69.8L110.5 289.2" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr6-cls-22"></path>
-<path d="M110.6 289.5L640 289.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr6-cls-22"></path>
-<path d="M-45.2 -13.1l45.2 0l0 26.2l-45.2 0Z" transform="translate(100.6044 106.3713)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(100.6044 106.3713)" fill="#383842">对照</text>
-<path d="M-66.6 -13.1l66.6 0l0 26.2l-66.6 0Z" transform="translate(100.6044 179.5156)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" transform="translate(100.6044 179.5156)" fill="#383842">方案 A</text>
-<path d="M-66.6 -13.1l66.6 0l0 26.2l-66.6 0Z" transform="translate(100.6044 252.6599)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" transform="translate(100.6044 252.6599)" fill="#383842">方案 B</text>
-<path d="M-33.3 0l66.6 0l0 26.2l-66.6 0Z" transform="translate(176.7789 299.232)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(176.7789 299.232)" fill="#383842">指标 A</text>
-<path d="M-33.3 0l66.6 0l0 26.2l-66.6 0Z" transform="translate(309.1278 299.232)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(309.1278 299.232)" fill="#383842">指标 B</text>
-<path d="M-33.9 0l67.7 0l0 26.2l-67.7 0Z" transform="translate(441.4767 299.232)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(441.4767 299.232)" fill="#383842">指标 C</text>
-<path d="M-33.9 0l67.7 0l0 26.2l-67.7 0Z" transform="translate(573.8256 299.232)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(573.8256 299.232)" fill="#383842">指标 D</text>
-<path d="M110.4 69.5l132.8 0l0 73.6l-132.8 0Z" fill="rgb(230,228,241)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr6-cls-23"></path>
-<path d="M110.4 142.7l132.8 0l0 73.6l-132.8 0Z" fill="rgb(155,173,203)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr6-cls-24"></path>
-<path d="M110.4 215.8l132.8 0l0 73.6l-132.8 0Z" fill="rgb(79,119,166)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr6-cls-25"></path>
-<path d="M242.7 69.5l132.8 0l0 73.6l-132.8 0Z" fill="rgb(197,204,224)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr6-cls-26"></path>
-<path d="M242.7 142.7l132.8 0l0 73.6l-132.8 0Z" fill="rgb(172,185,211)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr6-cls-27"></path>
-<path d="M242.7 215.8l132.8 0l0 73.6l-132.8 0Z" fill="rgb(108,140,180)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr6-cls-28"></path>
-<path d="M375.1 69.5l132.8 0l0 73.6l-132.8 0Z" fill="rgb(244,239,249)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr6-cls-29"></path>
-<path d="M375.1 142.7l132.8 0l0 73.6l-132.8 0Z" fill="rgb(131,156,191)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr6-cls-30"></path>
-<path d="M375.1 215.8l132.8 0l0 73.6l-132.8 0Z" fill="rgb(56,103,155)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr6-cls-31"></path>
-<path d="M507.4 69.5l132.8 0l0 73.6l-132.8 0Z" fill="rgb(219,220,236)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr6-cls-32"></path>
-<path d="M507.4 142.7l132.8 0l0 73.6l-132.8 0Z" fill="rgb(166,181,208)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr6-cls-33"></path>
-<path d="M507.4 215.8l132.8 0l0 73.6l-132.8 0Z" fill="rgb(97,132,175)" stroke="#fff" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr6-cls-34"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(176.7789 106.3713)" fill="#333">0.52</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(176.7789 179.5156)" fill="#333">0.71</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(176.7789 252.6599)" fill="#eee" stroke="rgb(79,119,166)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.84</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(309.1278 106.3713)" fill="#333">0.61</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(309.1278 179.5156)" fill="#333">0.68</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(309.1278 252.6599)" fill="#333">0.79</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(441.4767 106.3713)" fill="#333">0.48</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(441.4767 179.5156)" fill="#333">0.75</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(441.4767 252.6599)" fill="#eee" stroke="rgb(56,103,155)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.88</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(573.8256 106.3713)" fill="#333">0.55</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(573.8256 179.5156)" fill="#333">0.69</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(573.8256 252.6599)" fill="#eee" stroke="rgb(97,132,175)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.81</text>
-<path d="M-15 -35l170 0l0 50l-170 0Z" transform="translate(270 383)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#cfd2d7" stroke-width="0" class="zr6-cls-22"></path>
-<g clip-path="url(#zr6-c0)">
-<polygon points="0 0 20 0 20 140 0 140" transform="matrix(0,-1,1,0,270,383)" fill="url(#zr6-g0)" class="zr6-cls-36"></polygon>
-<polygon points="0 0 20 0 20 140 0 140" transform="matrix(0,-1,1,0,270,383)" fill="url(#zr6-g1)" class="zr6-cls-37"></polygon>
+<rect width="680" height="420" x="0" y="0" fill="#ffffff"></rect>
+<path d="M-22.6 -26.2l45.2 0l0 26.2l-45.2 0Z" transform="matrix(0,-1,1,0,50.1902,164.3729)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="-13.095111111111109" transform="matrix(0,-1,1,0,50.1902,164.3729)" fill="#383842">方法</text>
+<path d="M148.5 69.8L148.5 258.9" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr14-cls-68"></path>
+<path d="M-22.6 0l45.2 0l0 26.2l-45.2 0Z" transform="translate(393.9449 316.232)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(393.9449 316.232)" fill="#383842">指标</text>
+<path d="M147.9 259.5L640 259.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr14-cls-68"></path>
+<path d="M-45.2 -13.1l45.2 0l0 26.2l-45.2 0Z" transform="translate(137.8898 101.3237)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(137.8898 101.3237)" fill="#383842">对照</text>
+<path d="M-66.6 -13.1l66.6 0l0 26.2l-66.6 0Z" transform="translate(137.8898 164.3729)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" transform="translate(137.8898 164.3729)" fill="#383842">方案 A</text>
+<path d="M-66.6 -13.1l66.6 0l0 26.2l-66.6 0Z" transform="translate(137.8898 227.4221)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" transform="translate(137.8898 227.4221)" fill="#383842">方案 B</text>
+<path d="M-33.3 0l66.6 0l0 26.2l-66.6 0Z" transform="translate(209.4036 268.9467)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(209.4036 268.9467)" fill="#383842">指标 A</text>
+<path d="M-33.3 0l66.6 0l0 26.2l-66.6 0Z" transform="translate(332.4311 268.9467)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(332.4311 268.9467)" fill="#383842">指标 B</text>
+<path d="M-33.9 0l67.7 0l0 26.2l-67.7 0Z" transform="translate(455.4587 268.9467)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(455.4587 268.9467)" fill="#383842">指标 C</text>
+<path d="M-33.9 0l67.7 0l0 26.2l-67.7 0Z" transform="translate(578.4862 268.9467)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(578.4862 268.9467)" fill="#383842">指标 D</text>
+<path d="M147.6 69.5l123.5 0l0 63.5l-123.5 0Z" fill="rgb(230,228,241)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr14-cls-69"></path>
+<path d="M270.7 69.5l123.5 0l0 63.5l-123.5 0Z" fill="rgb(197,204,224)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr14-cls-70"></path>
+<path d="M393.7 69.5l123.5 0l0 63.5l-123.5 0Z" fill="rgb(244,239,249)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr14-cls-71"></path>
+<path d="M516.7 69.5l123.5 0l0 63.5l-123.5 0Z" fill="rgb(219,220,236)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr14-cls-72"></path>
+<path d="M147.6 132.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(155,173,203)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr14-cls-73"></path>
+<path d="M270.7 132.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(172,185,211)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr14-cls-74"></path>
+<path d="M393.7 132.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(131,156,191)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr14-cls-75"></path>
+<path d="M516.7 132.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(166,181,208)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr14-cls-76"></path>
+<path d="M147.6 195.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(79,119,166)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr14-cls-77"></path>
+<path d="M270.7 195.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(108,140,180)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr14-cls-78"></path>
+<path d="M393.7 195.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(56,103,155)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr14-cls-79"></path>
+<path d="M516.7 195.6l123.5 0l0 63.5l-123.5 0Z" fill="rgb(97,132,175)" stroke="#ffffff" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr14-cls-80"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(209.4036 101.3237)" fill="#333">0.52</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(332.4311 101.3237)" fill="#333">0.61</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(455.4587 101.3237)" fill="#333">0.48</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(578.4862 101.3237)" fill="#333">0.55</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(209.4036 164.3729)" fill="#333">0.71</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(332.4311 164.3729)" fill="#333">0.68</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(455.4587 164.3729)" fill="#333">0.75</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(578.4862 164.3729)" fill="#333">0.69</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(209.4036 227.4221)" fill="#eee" stroke="rgb(79,119,166)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.84</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(332.4311 227.4221)" fill="#333">0.79</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(455.4587 227.4221)" fill="#eee" stroke="rgb(56,103,155)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.88</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:21.577777777777776px;font-family:Arial;" transform="translate(578.4862 227.4221)" fill="#eee" stroke="rgb(97,132,175)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">0.81</text>
+<path d="M-69.3 -36.3l278.5 0l0 52.6l-278.5 0Z" transform="translate(270 381.7111)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#cfd2d7" stroke-width="0" class="zr14-cls-68"></path>
+<g clip-path="url(#zr14-c0)">
+<polygon points="0 0 20 0 20 140 0 140" transform="matrix(0,-1,1,0,270,381.7111)" fill="url(#zr14-g0)" class="zr14-cls-82"></polygon>
+<polygon points="0 0 20 0 20 140 0 140" transform="matrix(0,-1,1,0,270,381.7111)" fill="url(#zr14-g1)" class="zr14-cls-83"></polygon>
 </g>
-<path d="M-117.5 0l235 0l0 28.5l-235 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr6-cls-22"></path>
-<path d="M-117.5 0l235 0l0 28.5l-235 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr6-cls-22"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" x="-10" y="-10" transform="translate(270 381.7111)" fill="#383842">0.48</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:22.577777777777776px;font-family:Arial;" x="150" y="-9.99999999999999" transform="translate(270 381.7111)" fill="#383842">0.88</text>
+<path d="M-117.5 0l235 0l0 28.5l-235 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr14-cls-68"></path>
+<path d="M-117.5 0l235 0l0 28.5l-235 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr14-cls-68"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">矩阵热图 · 示例数据</text>
 <defs >
-<clipPath id="zr6-c0">
-<path d="M3 0L17 0A3 3 0 0 1 20 3L20 137A3 3 0 0 1 17 140L3 140A3 3 0 0 1 0 137L0 3A3 3 0 0 1 3 0" transform="matrix(0,-1,1,0,270,383)" fill="#000" class="zr6-cls-35"></path>
+<clipPath id="zr14-c0">
+<path d="M3 0L17 0A3 3 0 0 1 20 3L20 137A3 3 0 0 1 17 140L3 140A3 3 0 0 1 0 137L0 3A3 3 0 0 1 3 0" transform="matrix(0,-1,1,0,270,381.7111)" fill="#000" class="zr14-cls-81"></path>
 </clipPath>
-<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr6-g0">
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr14-g0">
 <stop offset="0%" stop-color="rgb(207,210,215)"></stop>
 <stop offset="1%" stop-color="rgb(207,210,215)"></stop>
 <stop offset="2%" stop-color="rgb(207,210,215)"></stop>
@@ -155,7 +161,7 @@
 <stop offset="99%" stop-color="rgb(207,210,215)"></stop>
 <stop offset="100%" stop-color="rgb(207,210,215)"></stop>
 </linearGradient>
-<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr6-g1">
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr14-g1">
 <stop offset="0%" stop-color="rgb(244,239,249)"></stop>
 <stop offset="1%" stop-color="rgb(243,238,248)"></stop>
 <stop offset="2%" stop-color="rgb(241,237,247)"></stop>
@@ -260,90 +266,90 @@
 </linearGradient>
 </defs>
 <style ><![CDATA[
-.zr6-cls-22:hover {
+.zr14-cls-68:hover {
 pointer-events:none;
 }
-.zr6-cls-23:hover {
+.zr14-cls-69:hover {
 cursor:pointer;
 fill:rgba(253,250,255,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-24:hover {
-cursor:pointer;
-fill:rgba(170,190,223,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-25:hover {
-cursor:pointer;
-fill:rgba(86,130,182,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-26:hover {
+.zr14-cls-70:hover {
 cursor:pointer;
 fill:rgba(216,224,246,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-27:hover {
-cursor:pointer;
-fill:rgba(189,203,232,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-28:hover {
-cursor:pointer;
-fill:rgba(118,154,198,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-29:hover {
+.zr14-cls-71:hover {
 cursor:pointer;
 fill:rgba(255,255,255,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-30:hover {
-cursor:pointer;
-fill:rgba(144,171,210,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-31:hover {
-cursor:pointer;
-fill:rgba(61,113,170,1);
-stroke:#51446e;
-stroke-width:2;
-}
-.zr6-cls-32:hover {
+.zr14-cls-72:hover {
 cursor:pointer;
 fill:rgba(240,242,255,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-33:hover {
+.zr14-cls-73:hover {
+cursor:pointer;
+fill:rgba(170,190,223,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-74:hover {
+cursor:pointer;
+fill:rgba(189,203,232,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-75:hover {
+cursor:pointer;
+fill:rgba(144,171,210,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-76:hover {
 cursor:pointer;
 fill:rgba(182,199,228,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-34:hover {
+.zr14-cls-77:hover {
+cursor:pointer;
+fill:rgba(86,130,182,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-78:hover {
+cursor:pointer;
+fill:rgba(118,154,198,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-79:hover {
+cursor:pointer;
+fill:rgba(61,113,170,1);
+stroke:#51446e;
+stroke-width:1;
+}
+.zr14-cls-80:hover {
 cursor:pointer;
 fill:rgba(106,145,192,1);
 stroke:#51446e;
-stroke-width:2;
+stroke-width:1;
 }
-.zr6-cls-35:hover {
+.zr14-cls-81:hover {
 cursor:pointer;
 fill:rgba(0,0,0,1);
 }
-.zr6-cls-36:hover {
+.zr14-cls-82:hover {
 cursor:pointer;
 fill:[object Object];
 }
-.zr6-cls-37:hover {
+.zr14-cls-83:hover {
 cursor:pointer;
 fill:[object Object];
 }

@@ -1,0 +1,54 @@
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>三维坐标向量; independently rendered demonstration data; source style: figure_Dispersion/figures/illustration.png; Chen Liu et al., figures4papers, CC BY-NC 4.0</desc>
+<rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
+<path d="M338.4 262.7L471 302" fill="none" pointer-events="visible" stroke="#827d90" class="zr28-cls-187"></path>
+<path d="M0 0l15.1 0l0 26.2l-15.1 0Z" transform="translate(474.9571 290.6733)" fill="none" pointer-events="visible" class="zr28-cls-187"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.577777777777776px Arial" y="13.095111111111109" transform="translate(474.9571 290.6733)" fill="#48404f">X</text>
+<path d="M338.4 262.7L245.6 318.8" fill="none" pointer-events="visible" stroke="#827d90" class="zr28-cls-187"></path>
+<path d="M0 0l15.1 0l0 26.2l-15.1 0Z" transform="translate(249.6372 307.4639)" fill="none" pointer-events="visible" class="zr28-cls-187"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.577777777777776px Arial" y="13.095111111111109" transform="translate(249.6372 307.4639)" fill="#48404f">Y</text>
+<path d="M338.4 262.7L338.4 84.7" fill="none" pointer-events="visible" stroke="#827d90" class="zr28-cls-187"></path>
+<path d="M0 0l13.8 0l0 26.2l-13.8 0Z" transform="translate(342.4321 73.4116)" fill="none" pointer-events="visible" class="zr28-cls-187"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.577777777777776px Arial" y="13.095111111111109" transform="translate(342.4321 73.4116)" fill="#48404f">Z</text>
+<path d="M338.4 262.7L290.3 187.5" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.25" class="zr28-cls-187"></path>
+<polygon points="290.3 187.5 291.9 196 297.3 192.6" fill="#38679b" fill-opacity="0.6" class="zr28-cls-188"></polygon>
+<circle cx="290.3" cy="187.5" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr28-cls-189"></circle>
+<path d="M338.4 262.7L455.2 262.7" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.25" class="zr28-cls-187"></path>
+<polygon points="455.2 262.7 447.2 259.5 447.2 265.9" fill="#38679b" fill-opacity="0.6" class="zr28-cls-188"></polygon>
+<circle cx="455.2" cy="262.7" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr28-cls-189"></circle>
+<path d="M338.4 262.7L292.7 373.8" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.25" class="zr28-cls-187"></path>
+<polygon points="292.7 373.8 298.7 367.6 292.8 365.2" fill="#38679b" fill-opacity="0.6" class="zr28-cls-188"></polygon>
+<circle cx="292.7" cy="373.8" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr28-cls-189"></circle>
+<path d="M338.4 262.7L209 205.5" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.65" class="zr28-cls-187"></path>
+<polygon points="209 205.5 215.1 211.7 217.7 205.8" fill="#38679b" class="zr28-cls-188"></polygon>
+<circle cx="209" cy="205.5" r="4.5" fill="#38679b" stroke="#fff" class="zr28-cls-188"></circle>
+<path d="M338.4 262.7L432.3 253.1" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.65" class="zr28-cls-187"></path>
+<polygon points="432.3 253.1 424 250.7 424.7 257.1" fill="#38679b" class="zr28-cls-188"></polygon>
+<circle cx="432.3" cy="253.1" r="4.5" fill="#38679b" stroke="#fff" class="zr28-cls-188"></circle>
+<path d="M338.4 262.7L321.1 139" fill="none" pointer-events="visible" stroke="#38679b" stroke-opacity="0.65" class="zr28-cls-187"></path>
+<polygon points="321.1 139 319 147.4 325.3 146.5" fill="#38679b" class="zr28-cls-188"></polygon>
+<circle cx="321.1" cy="139" r="4.5" fill="#38679b" stroke="#fff" class="zr28-cls-188"></circle>
+<path d="M0 0l283.4 0l0 12.8l-283.4 0Z" transform="translate(198.32 391.24)" fill="none" pointer-events="visible" class="zr28-cls-187"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 11px Arial" xml:space="preserve" y="6.38" transform="translate(198.32 391.24)" fill="#787580">正交投影 · 方位 35° / 仰角 25° · 原点向量，未单位化</text>
+<path d="M-142.1 0l284.1 0l0 28.5l-284.1 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr28-cls-190"></path>
+<path d="M-142.1 0l284.1 0l0 28.5l-284.1 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr28-cls-190"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">三维坐标向量 · 示例数据</text>
+<style ><![CDATA[
+.zr28-cls-187:hover {
+cursor:pointer;
+}
+.zr28-cls-188:hover {
+cursor:pointer;
+fill:rgba(61,113,170,1);
+}
+.zr28-cls-189:hover {
+cursor:pointer;
+fill:rgba(218,133,125,1);
+}
+.zr28-cls-190:hover {
+pointer-events:none;
+}
+
+]]>
+
+</style>
+</svg>

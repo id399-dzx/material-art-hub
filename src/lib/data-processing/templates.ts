@@ -11,9 +11,15 @@ export type ErrorMeasure = "SD" | "SEM";
 export type ErrorInput = "replicates" | "summary";
 export type TableCell = string | number | null;
 export type DataTable = { columns: string[]; rows: TableCell[][]; firstDataRow: number };
-export type ColumnMapping = { x: number; ys: number[]; errors: Record<number, number> };
+export type ColumnMapping = { x: number; ys: number[]; errors: Record<number, number>; group?: number };
 export type TemplateSeries = { name: string; values: number[]; errors?: number[]; sampleSizes?: number[] };
-export type TemplateData = { x: (number | string)[]; series: TemplateSeries[]; skipped: number; warnings: string[]; samples?: SampleGroup[]; edges?: { source: string; target: string; weight: number }[] };
+export type TemplateData = {
+    x: (number | string)[]; series: TemplateSeries[]; skipped: number; warnings: string[];
+    samples?: SampleGroup[]; edges?: { source: string; target: string; weight: number }[];
+    matrixCells?: [number, number, number][]; skippedCells?: number;
+    pointGroups?: { name: string; points: [number | string, number][] }[];
+    comparisonGroups?: { name: string; x: (number | string)[]; series: TemplateSeries[] }[];
+};
 export type TemplateResult = { data: TemplateData | null; error: string | null };
 
 export const CHART_TEMPLATES: {
@@ -71,7 +77,7 @@ export const CHART_TEMPLATES: {
         id: "heatmap", name: "矩阵热图", english: "MATRIX HEATMAP", tag: "二维数值", category: "矩阵",
         description: "用色阶与数值标签呈现矩阵差异。", requirement: "行标签 ＋ 多列数值",
         guide: "首列是行名称，其余列是矩阵列。色阶采用全部选中数值的统一范围，支持负数。", reference: "figure_RNAGenScape/plot_comparison.py; figure_ophthal_review/plot_composition.py",
-        xLabel: "方法", yLabel: "指标", demo: [["方法", "指标 A", "指标 B", "指标 C", "指标 D"], ["对照", 0.52, 0.61, 0.48, 0.55], ["方案 A", 0.71, 0.68, 0.75, 0.69], ["方案 B", 0.84, 0.79, 0.88, 0.81]],
+        xLabel: "指标", yLabel: "方法", demo: [["方法", "指标 A", "指标 B", "指标 C", "指标 D"], ["对照", 0.52, 0.61, 0.48, 0.55], ["方案 A", 0.71, 0.68, 0.75, 0.69], ["方案 B", 0.84, 0.79, 0.88, 0.81]],
     },
     {
         id: "scatter", name: "多组散点图", english: "SCATTER COMPARISON", tag: "数据分布", category: "空间",

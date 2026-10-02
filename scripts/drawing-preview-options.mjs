@@ -1,19 +1,20 @@
 import * as echarts from 'echarts';
-import { CHART_TEMPLATES, parseTemplateTable, suggestMapping, buildTemplateData, numericCell, isSpatial } from '../src/lib/data-processing/templates.ts';
+import { CHART_TEMPLATES, parseTemplateTable, numericCell, isSpatial } from '../src/lib/data-processing/templates.ts';
 import { createTemplateOption } from '../src/lib/data-processing/template-chart.ts';
 import { suggestElectrochemicalMapping } from '../src/lib/data-processing/electrochemical-mapping.ts';
 import { prepareElectrochemicalData } from '../src/lib/data-processing/electrochemistry.ts';
+import { buildDrawingData, suggestDrawingMapping } from '../src/lib/data-processing/drawing-data.ts';
 
 /** Mirror the editor's initial demo binding. Never extract pixels from a paper figure. */
 export function drawingPreviewOption(template) {
     if (!template.chartId) throw new Error(`${template.id}: no numerical chart engine`);
     const id = template.chartId;
     const table = parseTemplateTable(template.demo);
-    const mapping = template.electrochemical ? suggestElectrochemicalMapping(table, template.electrochemical) : suggestMapping(table, id, 'bar');
+    const mapping = template.electrochemical ? suggestElectrochemicalMapping(table, template.electrochemical) : suggestDrawingMapping(table, id, template.variant, 'bar');
     const errors = Object.values(mapping.errors).map(index => table.columns[index]);
     const errorMeasure = errors.length && errors.every(name => /sem|标准误|standard.?error/i.test(name)) ? 'SEM' : 'SD';
     const errorInput = errors.length ? 'summary' : 'replicates';
-    const result = buildTemplateData(table, mapping, id, errorInput, errorMeasure, 'bar');
+    const result = buildDrawingData(table, mapping, id, template.variant, errorInput, errorMeasure, 'bar');
     if (!result.data) throw new Error(`${template.id}: ${result.error}`);
     if (template.electrochemical) {
         const prepared = prepareElectrochemicalData(result.data, template.electrochemical);
@@ -26,8 +27,8 @@ export function drawingPreviewOption(template) {
     const region = template.paper?.region;
     const style = {
         title: `${template.name} · 示例数据`,
-        xLabel: table.columns[mapping.x] || 'X',
-        yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.electrochemical ? template.yLabel : base.yLabel,
+        xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
+        yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
         palette: 'journal', showGrid: false, showValues: false,
         errorMeasure, panelChart: 'bar', cumulative: false,
@@ -39,6 +40,7 @@ export function drawingPreviewOption(template) {
         colorByCategory: region?.kind === 'bars',
         stackedArea: region?.kind === 'area', hatching: !!region?.hatching,
         fillLines: region?.fillSeries, sphereGuide: region?.kind !== 'vectors',
+        variant: template.variant,
         xLog: template.electrochemical?.xLog, yLog: template.electrochemical?.yLog, equalAxes: template.electrochemical?.equalAxes,
     };
     return { option: createTemplateOption(result.data, id, style), width, height, table, mapping, data: result.data, style };

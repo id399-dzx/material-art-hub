@@ -1,127 +1,127 @@
 <svg width="900" height="620" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 900 620"><desc>多指标分面比较; independently rendered demonstration data; MaterialArtHub data template</desc>
 <rect width="900" height="620" x="0" y="0" fill="#fff"></rect>
-<path d="M-72.2 -34.7l144.3 0l0 34.7l-144.3 0Z" transform="matrix(0,-1,1,0,51.6635,163.98)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-72.2 -34.7l144.3 0l0 34.7l-144.3 0Z" transform="matrix(0,-1,1,0,51.6635,163.98)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:29.882352941176464px;font-family:Arial;" xml:space="preserve" y="-17.33176470588235" transform="matrix(0,-1,1,0,51.6635,163.98)" fill="#383842">准确率 (%)</text>
-<path d="M-72.2 -34.7l144.3 0l0 34.7l-144.3 0Z" transform="matrix(0,-1,1,0,485.6635,163.98)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-72.2 -34.7l144.3 0l0 34.7l-144.3 0Z" transform="matrix(0,-1,1,0,485.6635,163.98)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:29.882352941176464px;font-family:Arial;" xml:space="preserve" y="-17.33176470588235" transform="matrix(0,-1,1,0,485.6635,163.98)" fill="#383842">召回率 (%)</text>
-<path d="M-70.5 -34.7l141 0l0 34.7l-141 0Z" transform="matrix(0,-1,1,0,51.6635,433.3729)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-70.5 -34.7l141 0l0 34.7l-141 0Z" transform="matrix(0,-1,1,0,51.6635,433.3729)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:29.882352941176464px;font-family:Arial;" xml:space="preserve" y="-17.33176470588235" transform="matrix(0,-1,1,0,51.6635,433.3729)" fill="#383842">效率 (次/s)</text>
-<path d="M-59.8 -34.7l119.5 0l0 34.7l-119.5 0Z" transform="matrix(0,-1,1,0,485.6635,434.4882)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-59.8 -34.7l119.5 0l0 34.7l-119.5 0Z" transform="matrix(0,-1,1,0,485.6635,434.4882)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:29.882352941176464px;font-family:Arial;" y="-17.33176470588235" transform="matrix(0,-1,1,0,485.6635,434.4882)" fill="#383842">稳健得分</text>
-<path d="M156.7 245.5L426 245.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr10-cls-54"></path>
-<path d="M590.7 245.5L860 245.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr10-cls-54"></path>
-<path d="M156.7 515.5L426 515.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr10-cls-54"></path>
-<path d="M590.7 515.5L860 515.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr10-cls-54"></path>
-<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(146.7012 244.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M156.7 245.5L426 245.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr18-cls-100"></path>
+<path d="M590.7 245.5L860 245.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr18-cls-100"></path>
+<path d="M156.7 515.5L426 515.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr18-cls-100"></path>
+<path d="M590.7 515.5L860 515.5" fill="none" pointer-events="visible" stroke="#54555a" stroke-linecap="round" class="zr18-cls-100"></path>
+<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(146.7012 244.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 244.8047)" fill="#383842">0</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 212.4748)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 212.4748)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 212.4748)" fill="#383842">20</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 180.1449)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 180.1449)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 180.1449)" fill="#383842">40</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 147.8151)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 147.8151)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 147.8151)" fill="#383842">60</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 115.4852)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 115.4852)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 115.4852)" fill="#383842">80</text>
-<path d="M-46.8 -16.2l46.8 0l0 32.3l-46.8 0Z" transform="translate(146.7012 83.1553)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-46.8 -16.2l46.8 0l0 32.3l-46.8 0Z" transform="translate(146.7012 83.1553)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 83.1553)" fill="#383842">100</text>
-<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 244.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 244.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 244.8047)" fill="#383842">0</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 212.4748)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 212.4748)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 212.4748)" fill="#383842">20</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 180.1449)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 180.1449)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 180.1449)" fill="#383842">40</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 147.8151)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 147.8151)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 147.8151)" fill="#383842">60</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 115.4852)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(580.7012 115.4852)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 115.4852)" fill="#383842">80</text>
-<path d="M-46.8 -16.2l46.8 0l0 32.3l-46.8 0Z" transform="translate(580.7012 83.1553)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-46.8 -16.2l46.8 0l0 32.3l-46.8 0Z" transform="translate(580.7012 83.1553)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 83.1553)" fill="#383842">100</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 487.9996)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 487.9996)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 487.9996)" fill="#383842">10</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 460.6863)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 460.6863)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 460.6863)" fill="#383842">20</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 433.3729)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 433.3729)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 433.3729)" fill="#383842">30</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 406.0596)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 406.0596)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 406.0596)" fill="#383842">40</text>
-<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 378.7463)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-31.2 -16.2l31.2 0l0 32.3l-31.2 0Z" transform="translate(146.7012 378.7463)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(146.7012 378.7463)" fill="#383842">50</text>
-<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 515.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 515.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 515.3129)" fill="#383842">0</text>
-<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 482.9831)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 482.9831)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 482.9831)" fill="#383842">0.2</text>
-<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 450.6532)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 450.6532)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 450.6532)" fill="#383842">0.4</text>
-<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 418.3233)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 418.3233)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 418.3233)" fill="#383842">0.6</text>
-<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 385.9934)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-39 -16.2l39 0l0 32.3l-39 0Z" transform="translate(580.7012 385.9934)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 385.9934)" fill="#383842">0.8</text>
-<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 353.6635)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-15.6 -16.2l15.6 0l0 32.3l-15.6 0Z" transform="translate(580.7012 353.6635)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:27.882352941176464px;font-family:Arial;" transform="translate(580.7012 353.6635)" fill="#383842">1</text>
-<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(201.5843 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(201.5843 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(201.5843 254.8047)" fill="#383842">对照</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(291.3506 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(291.3506 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(291.3506 254.8047)" fill="#383842">去除模</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" xml:space="preserve" y="48.515294117647045" transform="translate(291.3506 254.8047)" fill="#383842">块 A</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(381.1169 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(381.1169 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(381.1169 254.8047)" fill="#383842">完整方</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="48.515294117647045" transform="translate(381.1169 254.8047)" fill="#383842">法</text>
-<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(635.5843 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(635.5843 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(635.5843 254.8047)" fill="#383842">对照</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(725.3506 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(725.3506 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(725.3506 254.8047)" fill="#383842">去除模</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" xml:space="preserve" y="48.515294117647045" transform="translate(725.3506 254.8047)" fill="#383842">块 A</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(815.1169 254.8047)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(815.1169 254.8047)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(815.1169 254.8047)" fill="#383842">完整方</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="48.515294117647045" transform="translate(815.1169 254.8047)" fill="#383842">法</text>
-<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(201.5843 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(201.5843 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(201.5843 525.3129)" fill="#383842">对照</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(291.3506 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(291.3506 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(291.3506 525.3129)" fill="#383842">去除模</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" xml:space="preserve" y="48.515294117647045" transform="translate(291.3506 525.3129)" fill="#383842">块 A</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(381.1169 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(381.1169 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(381.1169 525.3129)" fill="#383842">完整方</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="48.515294117647045" transform="translate(381.1169 525.3129)" fill="#383842">法</text>
-<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(635.5843 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-27.9 0l55.8 0l0 32.3l-55.8 0Z" transform="translate(635.5843 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(635.5843 525.3129)" fill="#383842">对照</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(725.3506 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(725.3506 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(725.3506 525.3129)" fill="#383842">去除模</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" xml:space="preserve" y="48.515294117647045" transform="translate(725.3506 525.3129)" fill="#383842">块 A</text>
-<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(815.1169 525.3129)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M-41.8 0l83.6 0l0 64.7l-83.6 0Z" transform="translate(815.1169 525.3129)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="16.17176470588235" transform="translate(815.1169 525.3129)" fill="#383842">完整方</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:27.882352941176464px;font-family:Arial;" y="48.515294117647045" transform="translate(815.1169 525.3129)" fill="#383842">法</text>
-<path d="M183.6 244.8l36 0l0 -116.4l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr10-cls-55"></path>
-<path d="M273.4 244.8l36 0l0 -127.7l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr10-cls-55"></path>
-<path d="M363.1 244.8l36 0l0 -140.6l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr10-cls-55"></path>
-<path d="M617.6 244.8l36 0l0 -105.1l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr10-cls-56"></path>
-<path d="M707.4 244.8l36 0l0 -118l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr10-cls-56"></path>
-<path d="M797.1 244.8l36 0l0 -132.6l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr10-cls-56"></path>
-<path d="M183.6 515.3l36 0l0 -109.3l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr10-cls-57"></path>
-<path d="M273.4 515.3l36 0l0 -131.1l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr10-cls-57"></path>
-<path d="M363.1 515.3l36 0l0 -150.2l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr10-cls-57"></path>
-<path d="M617.6 515.3l36 0l0 -98.6l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr10-cls-58"></path>
-<path d="M707.4 515.3l36 0l0 -119.6l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr10-cls-58"></path>
-<path d="M797.1 515.3l36 0l0 -143.9l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr10-cls-58"></path>
-<path d="M-200.2 0l400.4 0l0 37l-400.4 0Z" transform="translate(450 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr10-cls-54"></path>
-<path d="M-200.2 0l400.4 0l0 37l-400.4 0Z" transform="translate(450 12)" fill="none" pointer-events="visible" class="zr10-cls-54"></path>
+<path d="M183.6 244.8l36 0l0 -116.4l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr18-cls-101"></path>
+<path d="M273.4 244.8l36 0l0 -127.7l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr18-cls-101"></path>
+<path d="M363.1 244.8l36 0l0 -140.6l-36 0Z" fill="#38679b" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr18-cls-101"></path>
+<path d="M617.6 244.8l36 0l0 -105.1l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr18-cls-102"></path>
+<path d="M707.4 244.8l36 0l0 -118l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr18-cls-102"></path>
+<path d="M797.1 244.8l36 0l0 -132.6l-36 0Z" fill="#c77972" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr18-cls-102"></path>
+<path d="M183.6 515.3l36 0l0 -109.3l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr18-cls-103"></path>
+<path d="M273.4 515.3l36 0l0 -131.1l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr18-cls-103"></path>
+<path d="M363.1 515.3l36 0l0 -150.2l-36 0Z" fill="#64958c" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr18-cls-103"></path>
+<path d="M617.6 515.3l36 0l0 -98.6l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr18-cls-104"></path>
+<path d="M707.4 515.3l36 0l0 -119.6l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr18-cls-104"></path>
+<path d="M797.1 515.3l36 0l0 -143.9l-36 0Z" fill="#9783b6" ecmeta_series_index="3" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr18-cls-104"></path>
+<path d="M-200.2 0l400.4 0l0 37l-400.4 0Z" transform="translate(450 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr18-cls-100"></path>
+<path d="M-200.2 0l400.4 0l0 37l-400.4 0Z" transform="translate(450 12)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:31.882352941176464px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="18.491764705882346" transform="translate(450 12)" fill="#383842">多指标分面比较 · 示例数据</text>
 <style ><![CDATA[
-.zr10-cls-54:hover {
+.zr18-cls-100:hover {
 pointer-events:none;
 }
-.zr10-cls-55:hover {
+.zr18-cls-101:hover {
 cursor:pointer;
 fill:rgba(61,113,170,1);
 }
-.zr10-cls-56:hover {
+.zr18-cls-102:hover {
 cursor:pointer;
 fill:rgba(218,133,125,1);
 }
-.zr10-cls-57:hover {
+.zr18-cls-103:hover {
 cursor:pointer;
 fill:rgba(110,163,154,1);
 }
-.zr10-cls-58:hover {
+.zr18-cls-104:hover {
 cursor:pointer;
 fill:rgba(166,144,200,1);
 }

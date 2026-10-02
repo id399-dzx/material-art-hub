@@ -3,6 +3,8 @@ import { createDistributionOption } from "./template-chart-distribution.ts";
 import { createExtendedTemplateOption } from "./template-chart-extended.ts";
 import { fitTemplateLayout } from "./chart-layout.ts";
 import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
+import type { PaperChartVariant } from "./drawing-spec.ts";
+import { createPairedCorrelationOption, observedCurveDifference } from "./template-chart-variants.ts";
 
 export type PublicationStyle = "journal" | "soft" | "mono" | "accessible";
 export type TemplateChartStyle = {
@@ -11,6 +13,7 @@ export type TemplateChartStyle = {
     panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
     xLog?: boolean; yLog?: boolean; equalAxes?: boolean;
+    variant?: PaperChartVariant;
 };
 
 const colors: Record<PublicationStyle, string[]> = {
@@ -87,19 +90,25 @@ function fitEqualUnitGrid(option: EChartsOption, style: TemplateChartStyle): voi
 function buildTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const custom = style.customColors?.filter(color => /^#[a-f\d]{6}$/i.test(color));
     const palette = custom?.length ? custom : colors[style.palette];
+    if (style.variant === "paired-correlation") return createPairedCorrelationOption(data, style, palette);
     if (template === "box" || template === "violin" || template === "histogram") return createDistributionOption(data, template, style, palette);
     if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => buildTemplateOption(data, id, style));
     const isLine = template === "line";
-    const horizontal = !!style.horizontal && template === "error-bar";
+    const horizontal = (!!style.horizontal || style.variant === "horizontal-error") && template === "error-bar";
     const series: SeriesOption[] = data.series.map((item, index) => {
         const color = palette[index % palette.length];
-        if (isLine) return {
-            name: item.name, type: "line", data: data.x.map((x, row) => [x, item.values[row]]),
-            smooth: false, connectNulls: false, symbol: ["circle", "rect", "triangle", "diamond"][index % 4],
-            symbolSize: 5, showSymbol: data.x.length <= 50, lineStyle: { width: 2, type: (style.palette === "mono" || style.palette === "accessible") ? ["solid", "dashed", "dotted"][index % 3] as "solid" | "dashed" | "dotted" : "solid" },
+        if (isLine) {
+            const baseline = style.variant === "baseline-line" && item.values.length > 0 && item.values.every(value => value === item.values[0]);
+            const stacked = style.variant === "stacked-area";
+            return {
+            name: item.name, type: "line", data: data.x.map((x, row) => stacked ? [item.values[row], x] : [x, item.values[row]]),
+            smooth: false, connectNulls: false, symbol: stacked ? "none" : ["circle", "rect", "triangle", "diamond"][index % 4],
+            symbolSize: 5, showSymbol: !baseline && !stacked && data.x.length <= 50, lineStyle: { width: 2, type: baseline ? "dashed" : (style.palette === "mono" || style.palette === "accessible") ? ["solid", "dashed", "dotted"][index % 3] as "solid" | "dashed" | "dotted" : "solid" },
             itemStyle: { color }, emphasis: { focus: "series" },
-            ...(style.fillLines ? { areaStyle: { opacity: 0.12 } } : {}),
+            ...(stacked ? { dimensions: ["Value", "X"], encode: { x: 1, y: 0, tooltip: [1, 0] }, stack: "area-composition", areaStyle: { opacity: .7, ...(style.hatching ? { decal: { symbol: "rect", dashArrayX: [1, 0], dashArrayY: [2, 5 + index * 2], rotation: index % 2 ? -Math.PI / 4 : Math.PI / 4, color: "rgba(40,40,40,.35)" } } : {}) } } : style.fillLines || style.variant === "filled-distribution" ? { areaStyle: { opacity: 0.12 } } : {}),
+            ...(style.variant === "filled-distribution" && index === 0 && Number.isFinite(style.annotationX) ? { markLine: { symbol: ["none", "none"], silent: true, lineStyle: { type: "dashed", color: "#6a6478" }, label: { formatter: style.annotationText || "参考位置", position: "insideEndTop", fontSize: Math.max(10, style.fontSize - 2) }, data: [{ xAxis: style.annotationX }] } } : {}),
         };
+        }
         return {
             name: item.name, type: "bar", data: style.colorByCategory && data.series.length === 1 ? item.values.map((value,i) => ({value,itemStyle:{color:palette[i%palette.length]}})) : item.values, barMaxWidth: 40, barGap: "25%", barCategoryGap: "40%",
             itemStyle: {
@@ -110,6 +119,11 @@ function buildTemplateOption(data: TemplateData, template: TemplateId, style: Te
             emphasis: { focus: "series" },
         };
     });
+
+    if (style.variant === "filled-distribution") {
+        const difference = observedCurveDifference(data, style);
+        if (difference) series.push(difference);
+    }
 
     if (template === "error-bar") data.series.forEach((item, seriesIndex) => {
         if (!item.errors) return;
@@ -170,7 +184,7 @@ function buildTemplateOption(data: TemplateData, template: TemplateId, style: Te
             axisLabel: { ...xAxisStyle.axisLabel, formatter: (value: string) => value.length > 14 ? value.slice(0, 13) + "…" : value },
         },
         yAxis: horizontal ? {type:"category",data:data.x,inverse:true,name:style.xLabel,nameLocation:"middle",nameGap:110,axisLabel:axisText,axisLine:{show:true},axisTick:{show:true,inside:true}} : {
-            type: "value", scale: isLine, name: style.yLabel, nameLocation: "middle", nameGap: 53, nameTextStyle: axisText,
+            type: "value", scale: isLine && style.variant !== "stacked-area", name: style.yLabel, nameLocation: "middle", nameGap: 53, nameTextStyle: axisText,
             axisLine: { show: true, lineStyle: { color: "#42424b", width: 1.2 } }, axisTick: { show: true, inside: true },
             axisLabel: axisText, splitLine: { show: style.showGrid, lineStyle: { color: "#eeedf2", type: "dashed" } },
         },

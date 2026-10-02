@@ -33,7 +33,9 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     const bottom = Math.max(45, labelHeight + 20);
     const side = Math.max(45, labelWidth + 14);
     const wires: Point[][] = [];
-    if (template === "sphere" && style.sphereGuide !== false) {
+    const vectors = style.variant === "spatial-vectors", pointsOnly = style.variant === "sphere-points";
+    const referenceSphere = template === "sphere" && !vectors && style.sphereGuide !== false;
+    if (referenceSphere) {
         for (const lat of [-60, -30, 0, 30, 60]) {
             const a = lat * Math.PI / 180;
             wires.push(Array.from({ length: 73 }, (_, i) => { const t = i / 72 * 2 * Math.PI; return [Math.cos(a) * Math.cos(t), Math.cos(a) * Math.sin(t), Math.sin(a)]; }));
@@ -50,7 +52,7 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     const scale = Math.min((width - side * 2) / Math.max(0.1, extents[1] - extents[0]), (height - top - bottom - labelHeight) / Math.max(0.1, extents[3] - extents[2]));
     const project = (p: Point): [number, number] => { const [x, y] = rotatePoint(p, yaw, pitch); return [width / 2 + (x - (extents[0] + extents[1]) / 2) * scale, top + labelHeight + (height - top - bottom - labelHeight) / 2 - (y - (extents[2] + extents[3]) / 2) * scale]; };
     const graphic: GraphicComponentOption[] = [];
-    if (template === "sphere" && style.sphereGuide !== false) {
+    if (referenceSphere) {
         graphic.push({ type: "circle", shape: { cx: project([0, 0, 0])[0], cy: project([0, 0, 0])[1], r: scale }, style: { fill: { type: "radial", x: 0.35, y: 0.3, r: 0.7, colorStops: [{ offset: 0, color: "#f8f6fc" }, { offset: 1, color: "#e4e1ef" }] }, stroke: "#d7d3e2", opacity: 0.65 } });
         wires.forEach(line => graphic.push({ type: "polyline", shape: { points: line.map(project) }, style: { stroke: "#b9b3cb", lineWidth: 0.7, opacity: 0.6, fill: "none" } }));
     } else if (template === "surface") {
@@ -69,9 +71,16 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
     });
     if (template === "sphere") points.slice().sort((a, b) => rotatePoint(a, yaw, pitch)[2] - rotatePoint(b, yaw, pitch)[2]).forEach(p => {
         const origin = project([0, 0, 0]), to = project(p), front = rotatePoint(p, yaw, pitch)[2] >= 0;
-        graphic.push({ type: "line", shape: { x1: origin[0], y1: origin[1], x2: to[0], y2: to[1] }, style: { stroke: palette[0], lineWidth: 1, opacity: front ? 0.65 : 0.25 } });
+        if (!pointsOnly) graphic.push({ type: "line", shape: { x1: origin[0], y1: origin[1], x2: to[0], y2: to[1] }, style: { stroke: palette[0], lineWidth: 1, opacity: front ? 0.65 : 0.25 } });
+        if (vectors) {
+            const dx = to[0] - origin[0], dy = to[1] - origin[1], length = Math.hypot(dx, dy);
+            if (length > .1) {
+                const ux = dx / length, uy = dy / length, head = Math.min(8, length / 3);
+                graphic.push({ type: "polygon", shape: { points: [to, [to[0] - ux * head + uy * head * .4, to[1] - uy * head - ux * head * .4], [to[0] - ux * head - uy * head * .4, to[1] - uy * head + ux * head * .4]] }, style: { fill: palette[0], opacity: front ? 1 : .6 } });
+            }
+        }
         graphic.push({ type: "circle", shape: { cx: to[0], cy: to[1], r: 4.5 }, style: { fill: front ? palette[0] : palette[1], stroke: "#fff", lineWidth: 1, opacity: front ? 1 : 0.6 } });
     });
-    graphic.push({ type: "text", left: "center", bottom: 16, style: { text: `正交投影 · 方位 ${yaw}° / 仰角 ${pitch}°${template === "sphere" ? style.sphereGuide === false ? " · 空间向量" : " · 参考球 R = 1" : " · 仅连接完整网格"}`, fill: "#787580", font: `11px ${style.fontFamily}` } });
+    graphic.push({ type: "text", left: "center", bottom: 16, style: { text: `正交投影 · 方位 ${yaw}° / 仰角 ${pitch}°${template === "sphere" ? vectors ? " · 原点向量，未单位化" : pointsOnly ? referenceSphere ? " · 三维点；参考球 R = 1" : " · 三维点" : style.sphereGuide === false ? " · 空间向量" : " · 参考球 R = 1" : " · 仅连接完整网格"}`, fill: "#787580", font: `11px ${style.fontFamily}` } });
     return { ...shell, graphic, series: [] };
 }

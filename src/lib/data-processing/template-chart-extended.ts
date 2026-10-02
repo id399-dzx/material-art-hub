@@ -2,6 +2,7 @@ import type { BarSeriesOption, DefaultLabelFormatterCallbackParams, CustomSeries
 import type { TemplateChartStyle } from "./template-chart";
 import type { TemplateData, TemplateId } from "./templates.ts";
 import { createSpatialOption } from "./template-chart-spatial.ts";
+import { createGroupedScatterOption, createVariantHeatmapOption, localRadarBounds } from "./template-chart-variants.ts";
 
 type BaseFactory = (id: "line" | "grouped-bar") => EChartsOption;
 
@@ -24,6 +25,8 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
         }], graphic: [{ type: "text", bottom: 16, left: "center", style: { text: template === "schematic" ? "箭头对应输入的步骤连接" : "圆形布局不代表节点距离", fill: "#787580", font: `11px ${style.fontFamily}` } }] };
     }
     if (template === "radar") {
+        const local = style.variant === "local-range-radar";
+        const ranges = data.x.map((_, row) => localRadarBounds(data.series.map(item => item.values[row])));
         const maxima = data.x.map((_, row) => {
             const maximum = Math.max(...data.series.map(item => item.values[row])) || 1;
             const target = maximum / 5;
@@ -33,25 +36,19 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
         });
         return { ...shell, legend: { type: "scroll", top: 49, left: "center", textStyle: axisText },
             radar: { center: ["50%", "57%"], radius: "57%", splitNumber: 5,
-                indicator: data.x.map((name, i) => ({ name: `${name}\n上限 ${Number(maxima[i].toPrecision(3))}`, min: 0, max: maxima[i] })),
+                indicator: data.x.map((name, i) => local ? ({ name: `${name}\n范围 ${ranges[i][0]}–${ranges[i][1]}`, min: 0, max: 1 }) : ({ name: `${name}\n上限 ${Number(maxima[i].toPrecision(3))}`, min: 0, max: maxima[i] })),
                 axisName: { ...axisText, fontSize: Math.max(10, style.fontSize - 1) }, splitArea: { show: false },
                 splitLine: { lineStyle: { color: "#e0dfe8" } }, axisLine: { lineStyle: { color: "#d4d2de" } },
-            }, series: [{ type: "radar", symbolSize: 5, data: data.series.map((item, i) => ({ name: item.name, value: item.values,
+            }, ...(local ? { tooltip: { renderMode: "richText" as const, confine: true, formatter: (params: unknown) => {
+                const name = (params as { name?: string }).name, series = data.series.find(item => item.name === name);
+                return series ? `${series.name}\n${data.x.map((indicator, row) => `${indicator}: ${series.values[row]}`).join("\n")}` : "";
+            } } } : {}), series: [{ type: "radar", symbolSize: 5, data: data.series.map((item, i) => ({ name: item.name, value: local ? item.values.map((value, row) => (value - ranges[row][0]) / (ranges[row][1] - ranges[row][0])) : item.values,
                 lineStyle: { color: palette[i % palette.length], width: 2, type: style.palette === "mono" && i % 2 ? "dashed" : "solid" },
                 areaStyle: { color: palette[i % palette.length], opacity: 0.08 },
             })) }] };
     }
     if (template === "heatmap") {
-        const values = data.series.flatMap(item => item.values), min = values.reduce((a, b) => Math.min(a, b), Infinity), max = values.reduce((a, b) => Math.max(a, b), -Infinity);
-        return { ...shell, grid: { left: 100, right: 48, top: 80, bottom: 104 },
-            xAxis: { type: "category", data: data.series.map(item => item.name), axisLabel: { ...axisText, hideOverlap: true }, splitArea: { show: false } },
-            yAxis: { type: "category", data: data.x, inverse: true, axisLabel: axisText, splitArea: { show: false } },
-            visualMap: { min, max: max === min ? min + 1 : max, calculable: false, orient: "horizontal", left: "center", bottom: 22, textStyle: axisText,
-                inRange: { color: style.customColors?.length ? palette : style.palette === "mono" ? ["#f4f4f4", "#313131"] : ["#f4eff9", "#acb9d3", palette[0]] } },
-            series: [{ type: "heatmap", data: data.series.flatMap((item, col) => item.values.map((value, row) => [col, row, value])),
-                label: { show: true, fontSize: Math.max(10, style.fontSize - 1), formatter: p => Number((p.value as number[])[2]).toLocaleString(undefined, { maximumFractionDigits: 3 }) },
-                itemStyle: { borderColor: "#fff", borderWidth: 2 }, emphasis: { itemStyle: { borderColor: "#51446e", borderWidth: 2 } },
-            }] };
+        return createVariantHeatmapOption(data, style, palette);
     }
     if (template === "multi-panel") {
         const linePanels = style.panelChart === "line";
@@ -81,6 +78,7 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
             })),
         };
     }
+    if (template === "scatter" && (style.variant === "embedding-scatter" || style.variant === "position-scatter" || data.pointGroups)) return createGroupedScatterOption(data, style, palette);
     const option = base("line"), lines = option.series as LineSeriesOption[];
     if (template === "scatter") return { ...option, tooltip: { trigger: "item", renderMode: "richText" },
         series: data.series.map((item, i) => ({ type: "scatter", name: item.name, data: data.x.map((x, row) => [x, item.values[row]]), symbolSize: 8, symbol: ["circle", "rect", "triangle", "diamond"][i % 4], itemStyle: { color: palette[i % palette.length], opacity: 0.8 } })),

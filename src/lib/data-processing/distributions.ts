@@ -1,7 +1,7 @@
 import { numericCell, type ColumnMapping, type DataTable, type TemplateResult } from './templates.ts';
 import { quantile } from './profile.ts';
 
-export type SampleGroup = { name: string; values: number[] };
+export type SampleGroup = { name: string; values: number[]; category?: string; series?: string };
 export function sampleBox(values: number[]) {
     const sorted = [...values].sort((a, b) => a - b), q1 = quantile(sorted, .25), median = quantile(sorted, .5), q3 = quantile(sorted, .75), iqr = q3 - q1;
     const inside = sorted.filter(value => value >= q1 - 1.5 * iqr && value <= q3 + 1.5 * iqr);

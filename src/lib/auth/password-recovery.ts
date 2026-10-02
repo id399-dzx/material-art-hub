@@ -1,10 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { isRecoveryTokenHash } from "./recovery-link.ts";
 
 type RecoveryAuth = Pick<SupabaseClient["auth"], "verifyOtp" | "updateUser" | "signOut">;
 type ResetResult = { status: number; message: string; invalidLink?: boolean };
 
 export async function resetPasswordWithToken(auth: RecoveryAuth, tokenHash: unknown, password: unknown): Promise<ResetResult> {
-    if (typeof tokenHash !== "string" || !/^[a-f0-9]{64}$/i.test(tokenHash)) {
+    if (!isRecoveryTokenHash(tokenHash)) {
         return { status: 400, message: "重置链接无效，请重新申请重置邮件。", invalidLink: true };
     }
     if (typeof password !== "string" || password.length < 8) {

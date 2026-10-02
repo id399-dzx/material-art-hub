@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { resetPasswordWithToken } from './password-recovery.ts';
+import { createHash } from 'node:crypto';
+import { recoveryTokenFromParams } from './recovery-link.ts';
 
 const token = 'a'.repeat(64);
 const newPassword = 'test-only-new-password';
+const supabaseHash = createHash('sha224').update('synthetic@example.com000000').digest('hex');
 
 function mockAuth({ verificationError = null, session = { user: { id: 'owner' } }, updateError = null, cleanupFails = false } = {}) {
     const calls = [];
@@ -19,6 +22,43 @@ test('missing recovery proof or short password never reaches the auth provider',
     assert.equal((await resetPasswordWithToken(auth, null, newPassword)).status, 400);
     assert.equal((await resetPasswordWithToken(auth, token, 'short')).status, 400);
     assert.deepEqual(calls, []);
+});
+
+test('fresh Supabase SHA-224 and PKCE email links reach recovery verification without rewriting the proof', async () => {
+    assert.equal(supabaseHash.length, 56);
+    for (const tokenHash of [supabaseHash, `pkce_${supabaseHash}`, token]) {
+        const parsed = recoveryTokenFromParams({ token_hash: tokenHash, type: 'recovery' });
+        assert.equal(parsed, tokenHash, 'the page must accept the same proof as the API');
+        const { auth, calls } = mockAuth();
+        assert.equal((await resetPasswordWithToken(auth, parsed, newPassword)).status, 200);
+        assert.deepEqual(calls[0], ['verify', { token_hash: tokenHash, type: 'recovery' }]);
+    }
+});
+
+test('non-recovery, missing, duplicated and malformed link parameters never grant recovery access', async () => {
+    for (const params of [
+        {}, { token_hash: supabaseHash }, { token_hash: supabaseHash, type: 'signup' },
+        { token_hash: supabaseHash, type: 'invite' }, { token_hash: [supabaseHash, token], type: 'recovery' },
+        { token_hash: `pkce_${supabaseHash.slice(1)}`, type: 'recovery' },
+        { token_hash: ` ${supabaseHash}`, type: 'recovery' },
+        { token_hash: '<script>'.repeat(8), type: 'recovery' },
+    ]) {
+        const parsed = recoveryTokenFromParams(params);
+        assert.equal(parsed, null);
+        const { auth, calls } = mockAuth();
+        assert.equal((await resetPasswordWithToken(auth, parsed, newPassword)).status, 400);
+        assert.deepEqual(calls, []);
+    }
+});
+
+test('correctly shaped 56-digit and prefixed tokens still require a valid unexpired recovery proof', async () => {
+    for (const tokenHash of [supabaseHash, `pkce_${supabaseHash}`]) {
+        const { auth, calls } = mockAuth({ verificationError: { code: 'otp_expired' } });
+        const result = await resetPasswordWithToken(auth, tokenHash, newPassword);
+        assert.equal(result.status, 401);
+        assert.equal(result.invalidLink, true);
+        assert.deepEqual(calls.map(([operation]) => operation), ['verify']);
+    }
 });
 
 test('expired proof and a verification response without a session never update a password', async () => {

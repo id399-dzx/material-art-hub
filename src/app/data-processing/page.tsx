@@ -972,8 +972,8 @@ export default function DataProcessingPage() {
                 <div className="workbench-appbar">
                     <header className="workbench-hero">
                         <div className="workbench-eyebrow">DATA STUDIO <span className="workbench-eyebrow-divider">/</span> 科研绘图</div>
-                        <h1>科研数据工作台</h1>
-                        <p>导入实验数据、绘制曲线，让每组结果清晰可见。</p>
+                        <h1>{workspace === "templates" ? "论文图例模板" : "科研数据工作台"}</h1>
+                        <p>{workspace === "templates" ? "选择图式、替换实验数据，生成独立的论文图表。" : "导入实验数据、绘制曲线，让每组结果清晰可见。"}</p>
                     </header>
                     <div className="workbench-appbar-actions">
                         <nav className="workbench-pill-nav" aria-label="工作台区域">

@@ -1,45 +1,51 @@
-.software-plugins-page { --software-accent: #876bcc; }
-.software-plugins-page .resource-hero { align-items: center; }
-.software-hero-stat { min-width: 205px; padding: 23px 26px; display: grid; gap: 5px; border: 1px solid rgba(255,255,255,.92); border-radius: 24px; background: linear-gradient(135deg,rgba(230,220,255,.66),rgba(255,255,255,.65)); }
-.software-hero-stat strong { color: #252336; font-size: 39px; line-height: 1.1; letter-spacing: -2px; }
-.software-hero-stat span { font-size: 13px; font-weight: 600; color: #4e4968; }
-.software-hero-stat small { font-size: 11px; color: #79718c; }
-.software-toolbar { gap: 18px; flex-wrap: wrap; }
-.software-host-filter { display: flex; flex-wrap: wrap; gap: 8px; }
-.software-host-filter .resource-chip { padding: 9px 13px; font-size: 12px; }
-.software-host-filter .resource-chip.is-active { background: #22232e; color: white; border-color: #22232e; }
-.software-search { display: flex; gap: 10px; align-items: center; padding: 11px 16px; border: 1px solid rgba(209,206,218,.68); border-radius: 999px; background: rgba(255,255,255,.67); color: #898394; }
-.software-search input { width: 195px; min-height: 0; padding: 0; outline: none; border: 0; border-radius: 0; background: transparent; color: #272532; font-size: 13px; }
-.software-search:focus-within { outline: 2px solid #917bd0; outline-offset: 2px; }
+.software-host-badge { display: inline-flex; flex: none; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid #fff; border-radius: 99px; background: rgb(255 255 255 / 82%); color: #716b79; box-shadow: 0 5px 16px rgb(43 35 60 / 4%); font-size: 11px; }
+.software-plugins-page .resource-stat em { font-size: 13px; font-style: normal; font-weight: 600; letter-spacing: 0; }
+.software-catalog-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
+.software-catalog-heading h2 { margin: 0 0 6px; color: #27232e; font-size: 17px; font-weight: 720; letter-spacing: -.025em; }
+.software-catalog-heading p { margin: 0; color: #85808b; font-size: 12px; line-height: 1.6; }
+.software-catalog-heading > span { flex: none; }
+.software-toolbar { justify-content: space-between; gap: 14px; }
+.software-host-filter { display: flex; flex-wrap: wrap; gap: 7px; }
+.software-host-filter .resource-chip { padding: 9px 13px; font-size: 11px; }
+.software-host-filter .resource-chip.is-active { background: #211f27; color: #fff; border-color: #211f27; box-shadow: 0 5px 13px rgb(29 28 34 / 12%); }
+.software-search { display: flex; align-items: center; gap: 9px; padding: 10px 14px; border: 1px solid #ece8ef; border-radius: 99px; background: rgb(255 255 255 / 85%); color: #99909f; }
+.software-search input { width: 180px; min-width: 0; min-height: 0; padding: 0; outline: none; border: 0; border-radius: 0; background: transparent; color: #39333f; font-size: 12px; }
+.software-search:focus-within { outline: 2px solid #b8a5dc; outline-offset: 2px; }
 .software-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.software-catalog-caption { margin: 18px 0; }
 .software-plugin-grid { align-items: stretch; }
-.software-plugin-card { display: flex; flex-direction: column; text-align: left; min-height: 350px; padding: 25px; width: 100%; cursor: pointer; }
-.software-plugin-card:focus-visible { outline: 3px solid #8b71c9; outline-offset: 4px; }
-.software-card-top { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 25px; }
-.software-plugin-card .resource-card-icon { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: #f0e5d7; color: #b68042; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
-.software-plugin-card--powerpoint .resource-card-icon { background: #eee3ef; color: #a26ab0; }
-.software-plugin-card--illustrator .resource-card-icon { background: #e2edeb; color: #548b7a; }
-.software-package-type { font-size: 10px; color: #756d83; padding: 6px 9px; background: rgba(242,239,246,.8); border: 1px solid rgba(226,221,235,.65); border-radius: 99px; }
-.software-host-name { color: #8c8496; font-size: 11px; letter-spacing: .055em; font-weight: 600; }
-.software-card-content h2 { margin: 8px 0; font-size: 21px; color: #292635; font-weight: 600; letter-spacing: -.4px; }
-.software-plugin-subtitle { font-size: 12px; color: #656070; margin: 0 0 16px; }
-.software-plugin-summary { color: #837b8b; font-size: 13px; line-height: 1.8; margin: 0; }
-.software-output-chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 21px 0 23px; }
-.software-output-chips span { padding: 5px 8px; border-radius: 7px; background: rgba(242,240,246,.78); color: #7a7189; font-size: 10px; }
-.software-plugin-card .resource-card-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid #ece8f1; font-size: 12px; color: #6b558f; }
-.software-install-note { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; padding: 18px 20px; border: 1px solid rgba(227,219,238,.72); border-radius: 17px; background: rgba(240,232,249,.36); }
-.software-install-note > svg { flex-shrink: 0; margin-top: 2px; color: #87759f; }
-.software-install-note strong { font-size: 13px; color: #595164; }
-.software-install-note p { margin: 6px 0 0; font-size: 12px; line-height: 1.8; color: #8a8195; }
-.software-detail-intro { color: #70657d; font-size: 14px; line-height: 1.9; margin: 0 0 18px; }
-.software-download-meta { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
-.software-download-meta span { font-size: 11px; background: #f3eff8; color: #806b99; padding: 6px 10px; border-radius: 8px; }
-.software-detail-section { margin: 18px 0 24px; }
-.software-detail-section h3 { font-size: 14px; font-weight: 600; margin: 0 0 11px; color: #393044; }
-.software-detail-section .resource-detail-list { padding-left: 20px; font-size: 13px; color: #7a6e86; line-height: 1.85; }
-.software-detail-section ol.resource-detail-list { list-style-type: decimal; }
+.software-plugin-card { width: 100%; padding: 19px; cursor: pointer; }
+.software-card-top { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 9px; margin-bottom: 13px; }
+.software-host-name { display: inline-flex; align-items: center; gap: 6px; color: #625b6d; font-size: 11px; font-weight: 650; }
+.software-package-type { padding: 4px 7px; border: 1px solid #eee9f3; border-radius: 99px; background: #f8f6fb; color: #9a8ca6; font-size: 9px; }
+.software-preview { position: relative; width: 100%; height: 116px; overflow: hidden; border: 1px solid rgb(255 255 255 / 92%); border-radius: 14px; background: radial-gradient(ellipse at 29% 10%, rgb(199 207 248 / 38%), transparent 60%), linear-gradient(130deg, #f8f8fc, #f0ebf8); }
+.software-preview--powerpoint { background: radial-gradient(ellipse at 20% 10%, rgb(196 219 247 / 42%), transparent 65%), linear-gradient(120deg, #f9f8fc, #f7ebf0); }
+.software-preview--illustrator { background: radial-gradient(ellipse at 26% 2%, rgb(229 204 235 / 36%), transparent 70%), linear-gradient(120deg, #fbf8fc, #f1ecf8); }
+.software-preview svg { width: 100%; height: 100%; }
+.software-preview-caption { position: absolute; bottom: 8px; right: 9px; color: #b0a3bd; font-size: 8px; letter-spacing: .08em; }
+.software-card-content h3 { margin: 15px 0 5px; color: #2d2932; font-size: 17px; font-weight: 720; letter-spacing: -.025em; }
+.software-card-content .software-plugin-subtitle { margin: 0 0 10px; color: #817787; font-size: 10px; line-height: 1.6; }
+.software-card-content .software-plugin-summary { margin: 0; color: #77717d; font-size: 12px; line-height: 1.75; }
+.software-output-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 15px 0; }
+.software-output-chips span { padding: 5px 7px; border: 1px solid #eeeaf2; border-radius: 7px; background: rgb(247 245 249 / 74%); color: #8d819b; font-size: 9px; }
+.software-plugin-card .resource-card-footer { padding-top: 12px; border-color: #eeeaf1; color: #696072; font-size: 11px; }
+.software-install-note { display: flex; align-items: flex-start; gap: 10px; margin-top: 20px; padding: 5px 8px; }
+.software-install-note > svg { flex: none; margin-top: 3px; color: #a090b5; }
+.software-install-note strong { color: #756b80; font-size: 11px; font-weight: 650; }
+.software-install-note p { margin: 5px 0 0; max-width: 900px; color: #958c9e; font-size: 11px; line-height: 1.7; }
+.software-detail-summary { display: grid; grid-template-columns: 168px minmax(0, 1fr); align-items: center; gap: 19px; margin-bottom: 22px; }
+.software-detail-summary .software-preview { height: 115px; }
+.software-detail-summary .software-detail-intro { margin: 0 0 10px; color: #67606f; font-size: 13px; line-height: 1.8; }
+.software-download-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.software-download-meta span { padding: 5px 7px; border-radius: 6px; background: #f0ecf6; color: #92809f; font-size: 9px; }
+.software-detail-section { margin: 0 0 22px; }
+.software-detail-section h3 { margin: 0 0 10px; color: #403648; font-size: 13px; font-weight: 720; }
+.software-detail-section .resource-detail-list { margin: 0; padding-left: 17px; color: #7a6f84; font-size: 12px; line-height: 1.85; }
 .software-detail-section li + li { margin-top: 6px; }
 .software-detail-section ol.resource-detail-list { list-style: decimal; }
-.software-package-provenance { padding-top: 15px; border-top: 1px solid #efebf3; }
-@media(max-width: 720px) { .software-hero-stat { min-width: 0; width: 100%; padding: 18px 22px; grid-template-columns: auto 1fr; align-items: center; gap: 4px 15px; } .software-hero-stat strong { grid-row: span 2; } .software-search { width: 100%; } .software-search input { width: 100%; } .software-plugin-card { min-height: 330px; } }
+.software-detail-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; }
+.software-detail-grid > section { padding: 15px 16px; border: 1px solid #f0ebf5; border-radius: 13px; background: rgb(255 255 255 / 62%); }
+.software-detail-boundaries { padding: 15px 17px; border: 1px solid #e9e2f2; border-radius: 13px; background: rgb(239 232 249 / 32%); }
+.software-detail-boundaries .software-detail-section { margin-bottom: 0; }
+.software-package-provenance { margin: 17px 0 0; font-size: 10px; }
+@media (max-width: 720px) { .software-search { flex: 1 1 100%; } .software-search input { width: 100%; } .software-catalog-heading { align-items: flex-start; } .software-detail-grid { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 600px) { .software-host-badge { font-size: 10px; padding: 8px 11px; } .software-preview { height: 126px; } .software-detail-summary { grid-template-columns: 1fr; gap: 14px; } .software-detail-summary .software-preview { width: min(100%, 240px); } .software-catalog-heading p { max-width: 220px; } }

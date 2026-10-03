@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ArrowRight, BookOpen, CheckCircle2, Download, ExternalLink, FileText, Loader2, Search, ShieldCheck, SlidersHorizontal, UploadCloud } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { JOURNAL_PRESETS, type JournalPreset, type ManuscriptOptions } from "@/lib/manuscript/journals";
@@ -62,35 +62,44 @@ export default function ManuscriptWorkbench() {
             <div>
                 <span className="resource-eyebrow"><BookOpen size={13} /> MANUSCRIPT STUDIO</span>
                 <h1>论文排版</h1>
-                <p>选择期刊，上传 Word，将正文整理为清晰一致的投稿稿件。每份方案附官方指南，明确区分期刊要求与可调整的整理预设。</p>
-                <div className="manuscript-hero-chips"><span className="resource-chip"><ShieldCheck size={12} /> 文件仅在本机处理</span><span className="resource-chip">8 个期刊方案</span><span className="resource-chip">输出可编辑 Word</span></div>
+                <p>从原稿到投稿，保持内容完整，让版式清晰一致。选择目标期刊，上传 Word，即可开始整理。</p>
             </div>
-            <div className="manuscript-paper-art" aria-hidden="true"><div className="manuscript-paper-art__sheet"><span>RESEARCH MANUSCRIPT</span><strong>From research<br />to submission.</strong><i /><i /><i /><div className="manuscript-paper-art__chart"><b /><b /><b /><b /><b /></div><i /><i /></div><span className="manuscript-paper-art__stamp"><CheckCircle2 size={17} /> .docx</span></div>
+            <div className="manuscript-hero-mark" aria-hidden="true"><span><FileText size={26} /></span><div><strong>Manuscript Studio</strong><small>保留原稿 · 输出可编辑</small></div></div>
         </header>
-        <div className="manuscript-steps" aria-label="排版步骤"><span><b>01</b> 选择目标期刊</span><ArrowRight size={14} /><span><b>02</b> 上传原稿并确认参数</span><ArrowRight size={14} /><span><b>03</b> 下载并复核排版结果</span></div>
-        <div className="resource-toolbar">
-            <label className="manuscript-search"><Search size={15} /><input aria-label="搜索期刊" placeholder="搜索期刊或出版社…" value={search} onChange={event => setSearch(event.target.value)} /></label>
-            <select aria-label="期刊领域" value={field} onChange={event => setField(event.target.value)}>{["全部领域", "综合科研", "材料与能源", "生命科学"].map(item => <option key={item}>{item}</option>)}</select>
-            <span className="resource-meta">{filtered.length} 个方案 · 官方指南核对于 2026.10.03</span>
+        <div className="resource-stats">
+            <div className="resource-stat" style={{ "--stat-wash": "#d8c8ff" } as CSSProperties}><span className="resource-stat-label">期刊排版方案</span><strong>{JOURNAL_PRESETS.length} 本期刊</strong><small>综合科研 · 材料与能源 · 生命科学</small></div>
+            <div className="resource-stat" style={{ "--stat-wash": "#c8e1ff" } as CSSProperties}><span className="resource-stat-label">原稿处理方式</span><strong>本机处理</strong><small>文件留在你的设备，保留原始内容</small></div>
+            <div className="resource-stat" style={{ "--stat-wash": "#ffd0de" } as CSSProperties}><span className="resource-stat-label">排版输出</span><strong>可编辑 DOCX</strong><small>下载新文件，继续在 Word 中复核</small></div>
         </div>
-        {filtered.length ? <div className="resource-grid">{filtered.map(journal => <button className="resource-card manuscript-journal-card" type="button" key={journal.id} onClick={() => chooseJournal(journal)} aria-label={`选择 ${journal.name} 进行论文排版`}>
-            <div className="manuscript-card-top"><span className={`resource-card-icon manuscript-monogram manuscript-monogram--${journal.accent}`}>{journal.monogram}</span><span className="resource-chip">{journal.field}</span></div>
-            <h2>{journal.name}</h2><span className="resource-meta">{journal.publisher}</span><p>{journal.summary}</p>
-            <div className="resource-card-footer"><span className="resource-chip">{journal.policy}</span><span>选择并排版 <ArrowRight size={13} /></span></div>
-        </button>)}</div> : <div className="resource-empty">未找到匹配期刊，试试其他名称或领域。</div>}
+        <div className="manuscript-steps" aria-label="排版步骤"><span><b>01</b> 选择期刊</span><ArrowRight size={12} /><span><b>02</b> 上传原稿，确认参数</span><ArrowRight size={12} /><span><b>03</b> 下载并复核</span></div>
+        <section className="resource-catalog" aria-label="期刊排版方案">
+            <div className="manuscript-catalog-heading"><div><h2>选择目标期刊</h2><p>每份方案附官方指南与可调整的正文排版预设。</p></div><span className="resource-chip"><BookOpen size={12} /> {JOURNAL_PRESETS.length} 个方案</span></div>
+            <div className="resource-toolbar">
+                <label className="manuscript-search"><Search size={15} /><input aria-label="搜索期刊" placeholder="搜索期刊或出版社…" value={search} onChange={event => setSearch(event.target.value)} /></label>
+                <select aria-label="期刊领域" value={field} onChange={event => setField(event.target.value)}>{["全部领域", "综合科研", "材料与能源", "生命科学"].map(item => <option key={item}>{item}</option>)}</select>
+                <span className="resource-meta">显示 {filtered.length} 个方案</span>
+            </div>
+            {filtered.length ? <div className="resource-grid">{filtered.map(journal => <button className="resource-card manuscript-journal-card" type="button" key={journal.id} onClick={() => chooseJournal(journal)} aria-label={`选择 ${journal.name} 进行论文排版`}>
+                <div className={`manuscript-journal-cover manuscript-journal-cover--${journal.accent}`} aria-hidden="true"><div className="manuscript-cover-book"><span>RESEARCH</span><strong>{journal.monogram}</strong><i /></div><div className="manuscript-cover-orbit" /><span className="resource-chip">{journal.field}</span></div>
+                <div className="manuscript-journal-copy"><span className="manuscript-publisher">{journal.publisher}</span><h2>{journal.name}</h2><p>{journal.summary}</p></div>
+                <div className="resource-card-footer"><span className="manuscript-policy-tag">{journal.policy}</span><span className="manuscript-card-cta">选择排版 <ArrowRight size={13} /></span></div>
+            </button>)}</div> : <div className="resource-empty">未找到匹配期刊，试试其他名称或领域。</div>}
+            <div className="manuscript-catalog-foot"><ShieldCheck size={13} /><span>官方指南核对于 2026.10.03 · 保留原稿，下载可编辑排版文件</span></div>
+        </section>
         <p className="manuscript-scope-note">当前提供投稿稿件的版式整理。字体、字号、纸张和页边距可按需要调整；参考文献、章节顺序和图片内容保留，期刊的最终出版排版由出版社完成。</p>
 
         <ResourceDialog open={!!selected} onClose={() => { if (!busy) setSelected(null); }} title={selected?.name ?? "论文排版"} eyebrow="JOURNAL FORMATTING" footer={<>
             <button className="resource-button" type="button" disabled={busy} onClick={() => setSelected(null)}>返回期刊列表</button>
             {result && downloadUrl ? <a className="resource-button resource-button--primary" href={downloadUrl} download={outputName}><Download size={15} /> 下载排版 Word</a> : <button className="resource-button resource-button--primary" type="button" disabled={!file || busy} onClick={() => void format()}>{busy ? <Loader2 size={15} className="manuscript-spinner" /> : <SlidersHorizontal size={15} />}{busy ? "正在本地排版…" : "生成排版 Word"}</button>}
         </>}>
-            {selected && <>
-                <div className="manuscript-policy"><span className="resource-chip">{selected.policy}</span><p>{selected.summary}</p><ul className="resource-detail-list">{selected.officialRequirements.map(item => <li key={item}>{item}</li>)}</ul><div className="manuscript-source-links"><a href={selected.sourceUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={13} /> 官方作者指南</a>{selected.templateUrl && <a href={selected.templateUrl} target="_blank" rel="noopener noreferrer"><FileText size={13} /> 官方模板入口</a>}<span>核对日期 {selected.checkedOn}</span></div></div>
-                <h3>上传论文原稿</h3>
+            {selected && <div className="manuscript-editor">
+                <section className="manuscript-panel manuscript-policy"><div className="manuscript-panel-heading"><h3><span>01</span> 期刊规范</h3><span className="resource-chip">{selected.policy}</span></div><p>{selected.summary}</p><ul className="resource-detail-list">{selected.officialRequirements.map(item => <li key={item}>{item}</li>)}</ul><div className="manuscript-source-links"><a href={selected.sourceUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={13} /> 官方作者指南</a>{selected.templateUrl && <a href={selected.templateUrl} target="_blank" rel="noopener noreferrer"><FileText size={13} /> 官方模板入口</a>}<span>核对日期 {selected.checkedOn}</span></div></section>
+                <section className="manuscript-panel"><div className="manuscript-panel-heading"><h3><span>02</span> 上传论文原稿</h3><span className="manuscript-local-note"><ShieldCheck size={12} /> 本机处理</span></div>
                 <input ref={inputRef} className="manuscript-file-input" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="上传论文 Word" disabled={busy} onChange={event => { selectFile(event.target.files?.[0]); event.currentTarget.value = ""; }} />
                 <button className={`manuscript-upload ${file ? "manuscript-upload--ready" : ""}`} type="button" disabled={busy} onClick={() => inputRef.current?.click()}>
                     {file ? <FileText size={26} /> : <UploadCloud size={28} />}<strong>{file ? file.name : "选择论文 Word 文件"}</strong><span>{file ? `${(file.size / 1024 / 1024).toFixed(2)} MB · 点击更换文件` : ".docx · 最大 20 MB · 不上传到服务器"}</span>
-                </button>
+                </button></section>
+                <section className="manuscript-panel"><div className="manuscript-panel-heading"><h3><span>03</span> 排版设置</h3><span className="resource-meta">可调整的正文预设</span></div>
                 <div className="manuscript-preset-summary"><span>{options.paper}</span><span>{options.font} · {options.fontSize} pt</span><span>{options.lineSpacing} 倍行距</span><span>{options.marginCm} cm 页边距</span></div>
                 <button className="manuscript-options-toggle" type="button" aria-expanded={advanced} disabled={busy} onClick={() => setAdvanced(value => !value)}><SlidersHorizontal size={14} /> {advanced ? "收起排版参数" : "调整排版参数"}<span>工作台预设可修改</span></button>
                 {advanced && <fieldset className="manuscript-options" disabled={busy}>
@@ -105,17 +114,17 @@ export default function ManuscriptWorkbench() {
                     <label className="manuscript-checkbox"><input type="checkbox" checked={options.pageNumbers} onChange={event => updateOptions({ pageNumbers: event.target.checked })} /> 添加缺少的页码</label>
                     <label className="manuscript-checkbox"><input type="checkbox" checked={options.preserveLandscape} onChange={event => updateOptions({ preserveLandscape: event.target.checked })} /> 保留横向章节</label>
                 </fieldset>}
-                <p className="manuscript-preservation">保留正文、图片、表格、公式、引文域和修订记录。表格、公式及图注的局部字号保持原样；输出为一份新文件，原稿不改写。</p>
+                <p className="manuscript-preservation">保留正文、图片、表格、公式、引文域和修订记录。表格、公式及图注的局部字号保持原样；输出为一份新文件，原稿不改写。</p></section>
                 {error && <p className="manuscript-error" role="alert">{error}</p>}
                 {busy && <p className="manuscript-progress" role="status">正在读取文档并应用排版，请保留此页面。</p>}
-                {result && <div className="manuscript-result" role="status">
-                    <h3><CheckCircle2 size={17} /> 排版完成，可以下载</h3>
+                {result && <section className="manuscript-panel manuscript-result" role="status">
+                    <div className="manuscript-result-heading"><span><CheckCircle2 size={21} /></span><div><h3>排版完成，可以下载</h3><p>已生成新 Word 文件，原稿保持完整。</p></div></div>
                     <div className="manuscript-result-stats"><span><b>{result.report.paragraphCount}</b> 段落</span><span><b>{result.report.tableCount}</b> 表格</span><span><b>{result.report.imageCount}</b> 图片资源</span><span><b>{result.report.equationCount}</b> 公式</span></div>
-                    <h3>本次已应用</h3><ul className="resource-detail-list">{result.report.changes.map(item => <li key={item}>{item}</li>)}</ul>
-                    {result.report.warnings.length > 0 && <><h3>文档中的注意项</h3><ul className="resource-detail-list">{result.report.warnings.map(item => <li key={item}>{item}</li>)}</ul></>}
-                    <h3>投稿前由你复核</h3><ul className="resource-detail-list">{result.report.checks.map(item => <li key={item}>{item}</li>)}</ul>
-                </div>}
-            </>}
+                    <div className="manuscript-report-block"><h4>本次已应用</h4><ul className="resource-detail-list">{result.report.changes.map(item => <li key={item}>{item}</li>)}</ul></div>
+                    {result.report.warnings.length > 0 && <div className="manuscript-report-block manuscript-report-block--attention"><h4>文档中的注意项</h4><ul className="resource-detail-list">{result.report.warnings.map(item => <li key={item}>{item}</li>)}</ul></div>}
+                    <div className="manuscript-report-block"><h4>投稿前由你复核</h4><ul className="resource-detail-list">{result.report.checks.map(item => <li key={item}>{item}</li>)}</ul></div>
+                </section>}
+            </div>}
         </ResourceDialog>
     </main>;
 }

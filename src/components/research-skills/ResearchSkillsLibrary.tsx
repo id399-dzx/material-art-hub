@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { ArrowUpRight, BookOpen, Boxes, ChartNoAxesCombined, ChevronRight, FileText, FlaskConical, Github, Library, Presentation, Search, Sparkles } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { categoryLabel, filterResearchSkills, RESEARCH_SKILL_CATEGORIES, RESEARCH_SKILL_SOURCE, RESEARCH_SKILLS, type ResearchSkill } from "@/lib/research-skills/catalog";
@@ -31,26 +31,23 @@ export default function ResearchSkillsLibrary() {
       <section className="resource-hero research-skills-hero" aria-labelledby="research-skills-heading">
         <div>
           <span className="resource-eyebrow"><Sparkles size={15} /> RESEARCH SKILLS</span>
-          <h1 id="research-skills-heading">让科研工具，<br />成为你的工作流。</h1>
-          <p>从文献阅读到论文表达，整理值得收藏的开源技能。<br className="research-skills-desktop-break" /> 先看中文功能简介，再找到适合当下任务的项目。</p>
-          <a className="research-skills-source" href={RESEARCH_SKILL_SOURCE.url} target="_blank" rel="noopener noreferrer">
-            <Github size={15} /> 来自 {RESEARCH_SKILL_SOURCE.account} 的 GitHub 星标 <ArrowUpRight size={14} />
-          </a>
+          <h1 id="research-skills-heading">科研 Skill</h1>
+          <p>文献、绘图、写作与科学计算的开源技能，先看中文简介，再选适合你的工具。</p>
         </div>
-        <div className="research-skills-overview" aria-label="技能目录概况">
-          <div className="research-skills-overview__orbit" aria-hidden="true"><FlaskConical size={38} strokeWidth={1.4} /><span /><i /></div>
-          <div className="research-skills-overview__stats">
-            <div><strong>{RESEARCH_SKILLS.length}</strong><span>开源仓库</span></div>
-            <div><strong>{researchCount}</strong><span>科研专用</span></div>
-            <div><strong>{RESEARCH_SKILL_CATEGORIES.length}</strong><span>研究场景</span></div>
-          </div>
-          <span className="research-skills-overview__caption">中文介绍核对于 {reviewedDate}</span>
-        </div>
+        <a className="resource-button research-skills-source" href={RESEARCH_SKILL_SOURCE.url} target="_blank" rel="noopener noreferrer">
+          <Github size={16} /> GitHub 星标 <ArrowUpRight size={14} />
+        </a>
       </section>
 
-      <section aria-labelledby="research-skills-catalog-heading">
-        <div className="research-skills-heading-row">
-          <div><span className="resource-eyebrow">THE COLLECTION</span><h2 id="research-skills-catalog-heading">科研技能库</h2></div>
+      <section className="resource-stats" aria-label="技能目录概况">
+        <div className="resource-stat" style={{ "--stat-wash": "#d9ccff" } as CSSProperties}><label>开源仓库</label><strong>{RESEARCH_SKILLS.length}</strong><small>已核对 {RESEARCH_SKILL_SOURCE.starredRepositoryCount} 个公开星标</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#c8e1ff" } as CSSProperties}><label>科研专用</label><strong>{researchCount}</strong><small>另有 {RESEARCH_SKILLS.length - researchCount} 个科研辅助项目</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#f6d3e5" } as CSSProperties}><label>研究场景</label><strong>{RESEARCH_SKILL_CATEGORIES.length}</strong><small>中文介绍核对于 {reviewedDate}</small></div>
+      </section>
+
+      <section className="resource-catalog" aria-labelledby="research-skills-catalog-heading">
+        <div className="resource-catalog__header research-skills-heading-row">
+          <h2 id="research-skills-catalog-heading">科研技能库</h2>
           <p>点击卡片了解功能 · 查看详情前往 GitHub</p>
         </div>
         <div className="resource-toolbar research-skills-toolbar">
@@ -68,11 +65,10 @@ export default function ResearchSkillsLibrary() {
             return (
               <article className={`resource-card research-skill-card research-skill-card--${skill.category}`} key={skill.repo}>
                 <button type="button" className="research-skill-card__open" onClick={() => setSelected(skill)} aria-label={`了解 ${skill.title} 的功能`} aria-haspopup="dialog">
-                  <span className="research-skill-card__top"><span className="resource-card-icon"><Icon size={23} strokeWidth={1.65} /></span><span className="research-skill-card__scope">{skill.scope === "research" ? "科研专用" : "科研辅助"}</span></span>
+                  <span className="research-skill-card__top"><span className="resource-card-icon"><Icon size={23} strokeWidth={1.8} /></span><span className="research-skill-card__scope">{skill.scope === "research" ? "科研专用" : "科研辅助"}</span></span>
                   <span className="research-skill-card__title">{skill.title}</span>
                   <span className="research-skill-card__summary">{skill.summary}</span>
-                  <span className="research-skill-card__category">{categoryLabel(skill.category)}{skill.skillPaths.length > 1 ? " · 技能集合" : " · 单项 Skill"}</span>
-                  <span className="research-skill-card__intro">功能简介 <ChevronRight size={15} /></span>
+                  <span className="research-skill-card__meta"><span className="research-skill-card__category">{categoryLabel(skill.category)}{skill.skillPaths.length > 1 ? " · 技能集合" : " · 单项 Skill"}</span><span className="research-skill-card__intro">功能简介 <ChevronRight size={15} /></span></span>
                 </button>
                 <div className="resource-card-footer research-skill-card__footer"><span title={skill.repo}>{skill.owner}</span><a href={skill.url} target="_blank" rel="noopener noreferrer" aria-label={`查看 ${skill.title} 的 GitHub 详情`}>查看详情 <ArrowUpRight size={14} /></a></div>
               </article>

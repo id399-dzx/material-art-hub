@@ -254,14 +254,16 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         <section id="paper-figures" className="template-studio drawing-library" hidden={!active} aria-labelledby="template-studio-title">
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
-                <div><span className="template-eyebrow"><Layers3 size={14} /> PAPER DRAWING LIBRARY / 论文图例模板</span><h2 id="template-studio-title">从一张图开始<span>。</span></h2><p>按图形类型选择模板，上传你的数据生成独立图表；组数、名称和范围由你的数据决定。</p></div>
-                <div className="template-intro-note"><span><Sparkles size={15} /> 独立图式完整保留</span><p>{DRAWING_TEMPLATES.length} 个数据模板<br />相同结构合并 · 小提琴全部保留</p></div>
+                <div><h2 id="template-studio-title"><Layers3 size={19} /> 图式库</h2></div>
+                <div className="template-intro-note"><span><Sparkles size={14} /> {DRAWING_TEMPLATES.length} 个独立图式 · 完整预览</span></div>
             </div>
+            <div className="drawing-library-controls">
+            <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索图式、CV、阻抗或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...DRAWING_TYPES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
-            <div className="drawing-library-tools"><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label><label className="template-search"><Search size={15} /><input aria-label="搜索模板" placeholder="搜索 CV、阻抗、图形或用途" value={search} onChange={event => setSearch(event.target.value)} /></label></div>
-            <div className="template-catalog-meta"><span>显示 {filtered.length} / {DRAWING_TEMPLATES.length} 个模板</span><span>点击任一模板，弹出单图编辑工作台</span></div>
+            <div className="template-catalog-meta" role="status"><span>找到 <strong>{filtered.length}</strong> 个模板</span><span>选图式 → 替换数据 → 导出图表</span></div>
+            </div>
             {(category === "全部" ? DRAWING_TYPES : [category]).map(kind => {
                 const items = filtered.filter(item => item.category === kind);
                 if (!items.length) return null;

@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart2, Box, LogOut, Upload } from "lucide-react";
+import { BarChart2, Box, FileText, GraduationCap, LogOut, Puzzle, Upload } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -33,7 +33,12 @@ export default function Header() {
 
     const isAdmin = session?.user.email === "id19991016@gmail.com";
     const isDiscovery = pathname === "/" || pathname.startsWith("/asset/");
-    const isDataProcessing = pathname.startsWith("/data-processing");
+    const workspaces = [
+        { href: "/data-processing", label: "数据处理", icon: BarChart2 },
+        { href: "/research-skills", label: "科研 Skill", icon: GraduationCap },
+        { href: "/paper-formatting", label: "论文排版", icon: FileText },
+        { href: "/software-plugins", label: "软件插件", icon: Puzzle },
+    ];
 
     const handleSignOut = async () => {
         await supabase.auth.signOut();
@@ -52,9 +57,11 @@ export default function Header() {
                     <Link href="/" className="site-header__nav-link" aria-current={isDiscovery ? "page" : undefined}>
                         发现探索
                     </Link>
-                    <Link href="/data-processing" className="site-header__nav-link" aria-current={isDataProcessing ? "page" : undefined}>
-                        <BarChart2 size={15} /> 数据处理
-                    </Link>
+                    {workspaces.map(({ href, label, icon: Icon }) => (
+                        <Link key={href} href={href} className="site-header__nav-link" aria-current={pathname.startsWith(href) ? "page" : undefined}>
+                            <Icon size={15} /> {label}
+                        </Link>
+                    ))}
                 </nav>
 
                 <div className="site-header__actions">

@@ -1,0 +1,254 @@
+[
+  {
+    "repo": "Yuan1z0825/nature-skills", "title": "Nature Skills 科研工具集", "category": "literature", "scope": "research",
+    "summary": "从文献检索、阅读和引用核验，到论文润色、科研绘图与组会汇报，覆盖研究工作的多个阶段。",
+    "features": ["检索文献、生成论文阅读卡片和文献流水线", "辅助写作、审稿回复、引用核验与统计分析", "制作科研图和论文汇报 PPT"],
+    "inputs": "论文 PDF、研究问题、数据文件、待润色文稿或审稿意见。",
+    "outputs": "阅读笔记、分析报告、改写文稿、图表或 PPT；具体产物由所选子技能决定。",
+    "environment": "需要支持 Agent Skills 的 AI 助手；部分子技能需要 Python、浏览器或桌面软件。",
+    "note": "这是社区科研技能集，并非 Nature 期刊官方工具。引用、统计结论与改写内容仍需研究者核对。"
+  },
+  {
+    "repo": "zsyggg/paper-craft-skills", "title": "Paper Craft 论文解读", "category": "literature", "scope": "research",
+    "summary": "把学术论文组织成深度解读文章、方法图解和视觉汇报，帮助理解与讲清研究内容。",
+    "features": ["paper-analyzer 生成含公式与图解的 HTML 长文", "paper-comic 按选定风格解释论文方法", "paper-deck 将论文组织为视觉幻灯片"],
+    "inputs": "论文 PDF 或 arXiv 链接，以及汇报目标、语言和视觉风格。",
+    "outputs": "HTML 解读、方法图和视觉幻灯片。",
+    "environment": "支持 Skills 的 AI 助手；图像产出取决于所用助手的图像能力。",
+    "note": "视觉幻灯片与原生可编辑 PPT 是不同交付形式；下载和使用前应查看所选子技能的说明。"
+  },
+  {
+    "repo": "TingxiYu/academic-figure-skill", "title": "Academic Figure 学术制图", "category": "figure", "scope": "research",
+    "summary": "结合数据与科学问题推荐图型，统一科研图表的版式、配色、标注和导出规格。",
+    "features": ["围绕科学问题选择数据图与多面板结构", "复用 Python / R 绘图脚本与视觉规范", "检查数据、统计说明、文本和输出尺寸"],
+    "inputs": "实验数据、要回答的科学问题、目标期刊与图注所需的统计信息。",
+    "outputs": "矢量图、栅格预览与统计 / 数据说明报告。",
+    "environment": "需要 AI 助手及 Python 或 R 绘图环境；运行所选脚本时还需相应依赖。",
+    "note": "项目提供自己的图型与质量检查流程，不能代替独立的统计方法选择和期刊最终核验。"
+  },
+  {
+    "repo": "Haojae/scipilot-figure-skill", "title": "SciPilot 科研可视化顾问", "category": "figure", "scope": "research",
+    "summary": "先分析数据类型、样本量和论证目标，再推荐图型并生成适合论文使用的图表。",
+    "features": ["剖析数据分布、异常值与相关性", "根据论证目标解释推荐图型和备选方案", "配置中文字体、期刊样式与导出后的视觉检查"],
+    "inputs": "CSV 等数据文件、分组信息、科学问题与目标期刊。",
+    "outputs": "数据剖析结果、绘图脚本、静态或交互图及导出文件。",
+    "environment": "Python 绘图环境；主要使用 matplotlib、seaborn，交互图可使用 plotly。",
+    "note": "期刊预设是绘图起点；最终栏宽、字体和图注仍应对照当前投稿指南。"
+  },
+  {
+    "repo": "ChenLiu-1996/figures4papers", "title": "Figures for Papers 论文图式", "category": "figure", "scope": "research",
+    "summary": "提供真实论文中的 Python 绘图示例及 scientific-figure-making Skill，适合学习和改造科研图式。",
+    "features": ["参考比较柱图、组成图、雷达、趋势线及 3D 示例", "学习配色、版式、导出和常见绘图模式", "依据项目脚本调整自己的数据图"],
+    "inputs": "自己的实验数据、目标图型和希望借鉴的布局。",
+    "outputs": "可运行的 Python 绘图脚本与科研图文件。",
+    "environment": "支持读取 Skill 的 AI 助手及对应 Python 绘图依赖。",
+    "note": "部分示例并非完全由 Python 生成；原论文数据与图例只用于理解图式，不能作为自己的实验结果。"
+  },
+  {
+    "repo": "summer-ai-lab/scientific-figure-shapes", "title": "科研图片转 PPT Shapes", "category": "figure", "scope": "research",
+    "summary": "将科研机制图、流程图与截图重建为可编辑的 PowerPoint 形状、文字与连接线。",
+    "features": ["恢复标题、标签、箭头、框线、图例和简单图标", "生成 PowerPoint VBA 宏与结构清单", "复杂区域可保留为有来源记录的局部图片"],
+    "inputs": "参考图片、希望保留的布局与可编辑范围。",
+    "outputs": "VBA .bas 文件、素材、重建清单及可选 PPTX。",
+    "environment": "主要面向 Codex 与 PowerPoint；实际执行宏需匹配本机 Office 环境。",
+    "note": "复杂插画、显微图和照片可能作为图片保留，并非每个像素都会变成可编辑形状。"
+  },
+  {
+    "repo": "Gerry2024-hub/nature-ppt", "title": "Nature PPT 可编辑科研矢量图", "category": "figure", "scope": "research",
+    "summary": "将参考图转换为 PowerPoint 的原生路径和文字，按图像复杂度控制对象数量。",
+    "features": ["参考图复杂度预检与本地矢量化", "简单图原生重建、复杂图轻量原生输出", "校验 SVG 后生成可编辑 PowerPoint 内容"],
+    "inputs": "PNG、JPEG、WebP 或 SVG 参考图。",
+    "outputs": "可编辑 PowerPoint 内容、SVG 与过程结果。",
+    "environment": "需要 Python 与匹配平台的 PowerPoint 写入方式；提供 Windows / macOS 安装说明。",
+    "note": "复杂图会减少颜色和细节以控制对象数；本地流程与可选远程后端的环境要求不同。"
+  },
+  {
+    "repo": "yrui-cmd/cell-ppt", "title": "Cell PPT 科研图重建", "category": "figure", "scope": "research",
+    "summary": "按参考图恢复原生 PowerPoint 路径和可编辑文字，保留目标幻灯片已有内容。",
+    "features": ["记录文字位置并恢复可编辑文本", "保留遮挡、透明叠加、镂空与绘制顺序", "Windows 实时写入或 macOS 生成原生 PPTX"],
+    "inputs": "科研参考图片与目标 PowerPoint 文稿。",
+    "outputs": "原生可编辑 PPTX、文字记录和过程缓存。",
+    "environment": "需要对应 Python / Office 环境及项目要求的图像、路径识别服务配置。",
+    "note": "项目包含第三方处理环节；实际可编辑程度和服务需求应以仓库当前说明为准。"
+  },
+  {
+    "repo": "yrui-cmd/cell-lct", "title": "Cell Illustrator 矢量重建", "category": "figure", "scope": "research",
+    "summary": "将科研参考图重建为 Adobe Illustrator 的可编辑路径与真实文本，并按原层级追加到画板。",
+    "features": ["恢复可编辑文字和矢量图形", "保留复合路径、镂空与源绘制顺序", "保存几何缓存、AI 文档和预览"],
+    "inputs": "参考图片、目标 Illustrator 文档与画板。",
+    "outputs": "可编辑 AI 文档、PNG 预览与阶段结果。",
+    "environment": "稳定版说明要求 Windows、Illustrator 2026、Python 与相应服务配置。",
+    "note": "本页提供 Skill 功能索引；桌面软件和第三方图像服务需在使用者电脑上另行配置。"
+  },
+  {
+    "repo": "cathrynlavery/diagram-design", "title": "Diagram Design 结构图", "category": "figure", "scope": "support",
+    "summary": "把流程、架构和关系组织为 HTML / SVG 图解，可辅助展示研究流程与方法结构。",
+    "features": ["选择流程、架构、层级、时序与关系布局", "将 Mermaid、draw.io 等来源重新组织为图解", "生成可独立打开的 HTML 与 SVG"],
+    "inputs": "流程描述、节点关系、现有图源与所需尺寸。",
+    "outputs": "HTML / SVG 图解；部分场景可使用可选动画。",
+    "environment": "支持 Skills 的 AI 助手和浏览器。",
+    "note": "这是通用结构图设计技能；研究事实、连接含义和定量信息需由用户提供。"
+  },
+  {
+    "repo": "yizhiyanhua-ai/fireworks-tech-graph", "title": "Fireworks 技术路线图", "category": "figure", "scope": "support",
+    "summary": "根据中英文描述生成技术框图、系统架构图和 UML 图，适合展示科研方法与技术路线。",
+    "features": ["按主题与结构生成 SVG 技术图", "检查文字、几何边界与可读性", "导出 PNG、交互 HTML 或特定动画"],
+    "inputs": "模块与流程说明、连接关系、风格和输出尺寸。",
+    "outputs": "SVG、PNG、HTML 及适用场景下的 GIF。",
+    "environment": "支持 Skills 的 AI 助手；部分导出格式需要 Python 或浏览器依赖。",
+    "note": "主要面向工程技术图，不是统计数据分析或实验结果绘图工具。"
+  },
+  {
+    "repo": "huangwb8/ChineseResearchLaTeX", "title": "中国科研 LaTeX 与写作", "category": "writing", "scope": "research",
+    "summary": "整合中国科研文档模板与模块化 Skills，涵盖国自然标书、SCI 写作、文献工作和模板迁移。",
+    "features": ["辅助国自然摘要、研究内容、预算与质量检查", "组织文献检索、解读、综述和研究计划", "维护 LaTeX 模板与文稿格式迁移"],
+    "inputs": "研究基础、项目提纲、论文内容、参考文献和 LaTeX 源文件。",
+    "outputs": "文稿草案、研究材料、LaTeX 源文件与相应文档。",
+    "environment": "支持 Skills 的 AI 助手；编译文档需相应 TeX 环境。",
+    "note": "此仓库主要面向 LaTeX，与本站的 Word 自动排版功能分别使用不同流程。"
+  },
+  {
+    "repo": "blader/humanizer", "title": "Humanizer 英文表达润色", "category": "writing", "scope": "support",
+    "summary": "编辑英文文稿中的空泛、重复与模板化表达，辅助让论文介绍和汇报文字更自然。",
+    "features": ["识别常见模板化句式与空泛表达", "保留原文信息并改进措辞", "在支持 Skills 的助手中处理文本或文件"],
+    "inputs": "英文草稿、所需语气与应保留的术语。",
+    "outputs": "润色后的文本。",
+    "environment": "支持 Agent Skills 的 AI 助手。",
+    "note": "通用编辑技能，不进行学术事实核验，也不保证通过 AI 检测器。"
+  },
+  {
+    "repo": "op7418/Humanizer-zh", "title": "Humanizer 中文表达润色", "category": "writing", "scope": "support",
+    "summary": "减少中文文稿的空话、重复和模板化表达，保留作者立场、事实与确定程度。",
+    "features": ["审阅中文文本的重复与表达问题", "保留术语、作者声音和原有事实", "按需要提供改写稿或只给出建议"],
+    "inputs": "中文文章、研究介绍、汇报稿或文件。",
+    "outputs": "改写后的中文稿或编辑建议。",
+    "environment": "支持 Agent Skills 的 AI 助手。",
+    "note": "这是编辑指导而非检测程序；不能证明文章作者，也不能保证通过 AI 检测。"
+  },
+  {
+    "repo": "huashu996/PPT-Framework-Skill", "title": "PPT 学术框图与技术路线", "category": "presentation", "scope": "research",
+    "summary": "根据参考图、论文或研究提纲制作可编辑的学术框图、技术路线图与研究框架。",
+    "features": ["参考图结构复刻或从研究内容设计框图", "输出原生文本、形状、箭头和连接器", "支持仓库说明中的 Office 原生公式或 MathType 流程"],
+    "inputs": "框图参考、论文 / Word、研究提纲和页面要求。",
+    "outputs": "可继续编辑的 PowerPoint 框图。",
+    "environment": "主要面向 Codex；公式与写入方式需要对应的 PowerPoint / MathType 环境。",
+    "note": "主要解决学术框图，不等同于整篇论文的自动汇报；复杂公式应核对其真实编辑格式。"
+  },
+  {
+    "repo": "ningzimu/image-to-editable-ppt-skill", "title": "图片与 PDF 转可编辑 PPT", "category": "presentation", "scope": "support",
+    "summary": "把截图式幻灯片、PDF 和图片版 PPT 分页重建为文字、形状与独立图片资产。",
+    "features": ["统一图片、PDF、图片版 PPT 的逐页任务", "恢复可读文字和简单几何形状", "复杂视觉保留为可单独调整的图片资产"],
+    "inputs": "图片、PDF 或图片版 PPTX。",
+    "outputs": "可编辑 PPTX、素材及页面验证结果。",
+    "environment": "主要面向 Codex，需要 OCR 与图像处理能力；具体服务按仓库配置。",
+    "note": "这是现有页面的重建流程，不负责直接从论文或提纲生成新汇报；复杂页面可能耗时较长。"
+  },
+  {
+    "repo": "hugohe3/ppt-master", "title": "PPT Master 原生演示文稿", "category": "presentation", "scope": "support",
+    "summary": "将文档与主题组织为原生 PowerPoint，适合制作研究汇报、图表和可编辑演示内容。",
+    "features": ["从文档提取内容并组织幻灯片叙事", "生成原生形状、图表和表格", "支持自有 PPTX 模板及可选旁白 / 动画"],
+    "inputs": "论文、Word、网页资料、提纲与演示模板。",
+    "outputs": "原生可编辑 PPTX 及相应预览。",
+    "environment": "支持 Skills 的 AI 助手及仓库要求的运行环境。",
+    "note": "这是通用演示制作工具；论文中的图表、术语、引用和结论应在生成后核对。"
+  },
+  {
+    "repo": "chuspeeism/dashi-ppt-skill", "title": "大师 PPT 浏览器编辑", "category": "presentation", "scope": "support",
+    "summary": "由文档生成带页面编辑控件的网页演示，可选主题并继续导出 PPTX 或 PDF。",
+    "features": ["按主题库组织幻灯片", "在浏览器中编辑页面控件", "导出 HTML、PDF 与可编辑 PPTX"],
+    "inputs": "研究介绍、报告文档、演示内容与视觉主题。",
+    "outputs": "可编辑网页演示、PPTX 或 PDF。",
+    "environment": "Node.js 与 npm；PPTX / PDF 导出需 Chrome、Chromium 或 Edge。",
+    "note": "通用汇报设计技能；复杂图形的最终可编辑范围应查看仓库当前导出说明。"
+  },
+  {
+    "repo": "matlab/matlab-agentic-toolkit", "title": "MATLAB 科学计算 Skills", "category": "computing", "scope": "research",
+    "summary": "把 MATLAB、工具箱知识和 MCP 工具接入 AI 助手，辅助数据分析、建模、测试与计算。",
+    "features": ["使用数据导入、曲线拟合和数值分析流程", "调用相应工具箱进行信号、图像与模型分析", "生成代码、运行测试、诊断错误与构建应用"],
+    "inputs": "科学数据、MATLAB 代码、模型与计算任务。",
+    "outputs": "MATLAB 脚本、分析结果、图表、测试或应用。",
+    "environment": "需要 MATLAB R2021a 或更新版本、适用工具箱和支持 MCP / Skills 的助手。",
+    "note": "收录的是工具集仓库；具体子技能依赖的工具箱各不相同，MATLAB 本体不包含在 Skill 中。"
+  },
+  {
+    "repo": "matlab/simulink-agentic-toolkit", "title": "Simulink 建模与仿真 Skills", "category": "computing", "scope": "research",
+    "summary": "借助 AI 助手读取、构建、修改和测试 Simulink 模型，组织模型设计与仿真工作。",
+    "features": ["构建模型与设置仿真输入", "执行模型检查、测试和结果分析", "支持系统架构、需求与物理建模相关流程"],
+    "inputs": "Simulink 模型、系统需求、仿真输入与设计任务。",
+    "outputs": "模型、仿真结果、检查报告与相应代码。",
+    "environment": "MATLAB R2023a 或更新版本与 Simulink；部分功能需 Simscape、System Composer 或其他产品。",
+    "note": "实际仿真与验证需要本机软件及对应产品许可；仓库提供工具和知识连接层。"
+  },
+  {
+    "repo": "matlab/agent-skills-playground", "title": "MATLAB 科研工作流实验场", "category": "computing", "scope": "research",
+    "summary": "汇集 MATLAB / Simulink 技能原型与演示，包括符号计算、性能优化、交互应用和工程教学。",
+    "features": ["分析 MATLAB 性能瓶颈并优化计算", "辅助符号计算与数值函数转换", "提供交互应用、工程建模与教学示例"],
+    "inputs": "MATLAB 代码、计算需求或对应演示的数据。",
+    "outputs": "优化代码、计算结果、交互应用与演示材料。",
+    "environment": "需要 MATLAB 及各子技能列出的相应工具箱。",
+    "note": "仓库明确定位为原型和演示实验场；生产使用应优先核对正式 MATLAB / Simulink Toolkit。"
+  },
+  {
+    "repo": "FreedomIntelligence/BlenderLore", "title": "BlenderLore 教程到 3D 场景", "category": "three-dimensional", "scope": "support",
+    "summary": "从 Blender 视频教程恢复操作证据与流程，生成可编辑场景、重现脚本和验证结果。",
+    "features": ["对齐教程视频、字幕、OCR 与时间信息", "根据流程生成 Blender Python 并修复渲染问题", "复用已验证的程序化建模知识"],
+    "inputs": "视频教程、教程链接、图文教程或 3D 生成需求。",
+    "outputs": "Blender 工程、Python 重现脚本、多视图与验证结果。",
+    "environment": "需要 Blender、Python、FFmpeg 及相应 AI / 视觉能力。",
+    "note": "通用 3D 重建工作流，可用于科研示意场景；教程重建不会自动获得真实物理参数。"
+  },
+  {
+    "repo": "viettranx/3dviz-pro-max", "title": "3Dviz 交互可视化", "category": "three-dimensional", "scope": "support",
+    "summary": "用可复用的 3D 场景知识和模板创建可交互视觉展示，辅助讲解研究结构与空间关系。",
+    "features": ["选择场景表达并搭建 Three.js / Blender 工作流", "检索可复用配方、知识与运行示例", "检查实际渲染画面和交互结果"],
+    "inputs": "场景描述、空间结构、交互目标与可用素材。",
+    "outputs": "3D 场景、交互项目与渲染检查结果。",
+    "environment": "支持 Skills 的 AI 助手及对应 Web 3D / Blender 环境。",
+    "note": "通用创意可视化技能；动画本身不代表经过物理验证的科学仿真。"
+  },
+  {
+    "repo": "img2threejs/img2threejs", "title": "参考图转程序化 3D", "category": "three-dimensional", "scope": "support",
+    "summary": "根据参考图片，用代码与程序化几何重建可编辑、可动画的 Three.js 模型。",
+    "features": ["拆解参考对象并以代码构建几何", "组织材质、层级与可动画结构", "通过多视角和渲染检查进行修正"],
+    "inputs": "参考图片、建模目标与需要保留的特征。",
+    "outputs": "程序化 Three.js 模型、源码与浏览器展示。",
+    "environment": "支持 Skills 的 AI 助手与 Three.js 项目运行环境。",
+    "note": "这是代码建模而非测量、摄影测量或网格扫描；尺寸和科学结构需用户额外指定。"
+  },
+  {
+    "repo": "CloudAI-X/threejs-skills", "title": "Three.js 基础技能集", "category": "three-dimensional", "scope": "support",
+    "summary": "涵盖场景、几何、材质、光照与交互的 Three.js 技能，可辅助搭建科研 3D 展示。",
+    "features": ["搭建场景、相机、几何和材质", "实现模型加载、动画、着色器与后处理", "配置视角控制和交互拾取"],
+    "inputs": "3D 场景需求、模型素材与前端项目。",
+    "outputs": "Three.js 场景代码与交互页面。",
+    "environment": "主要面向支持 Skills 的编程助手，需要 JavaScript / Three.js 运行环境。",
+    "note": "通用 Web 3D 技能库，提供开发知识而非现成的科学计算或仿真引擎。"
+  },
+  {
+    "repo": "kepano/obsidian-skills", "title": "Obsidian 文献知识管理", "category": "knowledge", "scope": "support",
+    "summary": "教 AI 助手编辑 Obsidian 笔记、属性、数据库视图与 Canvas，辅助维护文献知识库。",
+    "features": ["编辑带双向链接和属性的 Markdown 笔记", "组织 Bases 视图与 JSON Canvas", "使用 Obsidian CLI 和网页正文提取等子技能"],
+    "inputs": "Obsidian 笔记库、文献笔记与知识组织需求。",
+    "outputs": "Markdown、Bases / Canvas 文件与知识库操作结果。",
+    "environment": "支持 Skills 的 AI 助手；桌面或 CLI 功能需要对应 Obsidian 环境。",
+    "note": "通用知识管理技能；不会自动保证文献引用正确或数据库内容完整。"
+  },
+  {
+    "repo": "firecrawl/anydoc", "title": "AnyDoc 文档读取 Skill", "category": "knowledge", "scope": "support",
+    "summary": "把 Word、PPT、Excel、PDF 等文档转换为 Markdown，辅助 AI 助手读取研究资料。",
+    "features": ["使用随仓库提供的文档转换 Skill", "统一多种办公文档的正文读取", "提供 CLI、Node.js、Python 与浏览器绑定"],
+    "inputs": "Word、PPT、Excel、PDF 和其他支持的文档。",
+    "outputs": "Markdown 或解析后的文档结构。",
+    "environment": "Skill 使用 AnyDoc CLI；OCR 扫描件可能需要额外服务。",
+    "note": "文档解析不等于 Word 排版；普通解析与扫描件 OCR 的能力和服务需求不同。"
+  },
+  {
+    "repo": "liustack/modlens", "title": "ModLens 图片阅读辅助", "category": "knowledge", "scope": "support",
+    "summary": "为纯文本 AI 助手提供图片理解入口，提取 OCR、布局和语义证据，辅助阅读图表截图。",
+    "features": ["接收聊天图片并桥接视觉能力", "提供文字识别、布局和语义结构信息", "集成多种助手与可配置视觉提供方"],
+    "inputs": "论文图、截图或其他图片及读取问题。",
+    "outputs": "图片理解结果或结构化证据。",
+    "environment": "需要仓库支持的助手、插件桥接及视觉服务配置。",
+    "note": "通用视觉辅助工具；图中数值、坐标和公式仍需与原图核对。"
+  }
+]

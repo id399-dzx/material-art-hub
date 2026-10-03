@@ -1,0 +1,45 @@
+.software-plugins-page { --software-accent: #876bcc; }
+.software-plugins-page .resource-hero { align-items: center; }
+.software-hero-stat { min-width: 205px; padding: 23px 26px; display: grid; gap: 5px; border: 1px solid rgba(255,255,255,.92); border-radius: 24px; background: linear-gradient(135deg,rgba(230,220,255,.66),rgba(255,255,255,.65)); }
+.software-hero-stat strong { color: #252336; font-size: 39px; line-height: 1.1; letter-spacing: -2px; }
+.software-hero-stat span { font-size: 13px; font-weight: 600; color: #4e4968; }
+.software-hero-stat small { font-size: 11px; color: #79718c; }
+.software-toolbar { gap: 18px; flex-wrap: wrap; }
+.software-host-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.software-host-filter .resource-chip { padding: 9px 13px; font-size: 12px; }
+.software-host-filter .resource-chip.is-active { background: #22232e; color: white; border-color: #22232e; }
+.software-search { display: flex; gap: 10px; align-items: center; padding: 11px 16px; border: 1px solid rgba(209,206,218,.68); border-radius: 999px; background: rgba(255,255,255,.67); color: #898394; }
+.software-search input { width: 195px; min-height: 0; padding: 0; outline: none; border: 0; border-radius: 0; background: transparent; color: #272532; font-size: 13px; }
+.software-search:focus-within { outline: 2px solid #917bd0; outline-offset: 2px; }
+.software-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.software-catalog-caption { margin: 18px 0; }
+.software-plugin-grid { align-items: stretch; }
+.software-plugin-card { display: flex; flex-direction: column; text-align: left; min-height: 350px; padding: 25px; width: 100%; cursor: pointer; }
+.software-plugin-card:focus-visible { outline: 3px solid #8b71c9; outline-offset: 4px; }
+.software-card-top { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 25px; }
+.software-plugin-card .resource-card-icon { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: #f0e5d7; color: #b68042; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.software-plugin-card--powerpoint .resource-card-icon { background: #eee3ef; color: #a26ab0; }
+.software-plugin-card--illustrator .resource-card-icon { background: #e2edeb; color: #548b7a; }
+.software-package-type { font-size: 10px; color: #756d83; padding: 6px 9px; background: rgba(242,239,246,.8); border: 1px solid rgba(226,221,235,.65); border-radius: 99px; }
+.software-host-name { color: #8c8496; font-size: 11px; letter-spacing: .055em; font-weight: 600; }
+.software-card-content h2 { margin: 8px 0; font-size: 21px; color: #292635; font-weight: 600; letter-spacing: -.4px; }
+.software-plugin-subtitle { font-size: 12px; color: #656070; margin: 0 0 16px; }
+.software-plugin-summary { color: #837b8b; font-size: 13px; line-height: 1.8; margin: 0; }
+.software-output-chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 21px 0 23px; }
+.software-output-chips span { padding: 5px 8px; border-radius: 7px; background: rgba(242,240,246,.78); color: #7a7189; font-size: 10px; }
+.software-plugin-card .resource-card-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid #ece8f1; font-size: 12px; color: #6b558f; }
+.software-install-note { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; padding: 18px 20px; border: 1px solid rgba(227,219,238,.72); border-radius: 17px; background: rgba(240,232,249,.36); }
+.software-install-note > svg { flex-shrink: 0; margin-top: 2px; color: #87759f; }
+.software-install-note strong { font-size: 13px; color: #595164; }
+.software-install-note p { margin: 6px 0 0; font-size: 12px; line-height: 1.8; color: #8a8195; }
+.software-detail-intro { color: #70657d; font-size: 14px; line-height: 1.9; margin: 0 0 18px; }
+.software-download-meta { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
+.software-download-meta span { font-size: 11px; background: #f3eff8; color: #806b99; padding: 6px 10px; border-radius: 8px; }
+.software-detail-section { margin: 18px 0 24px; }
+.software-detail-section h3 { font-size: 14px; font-weight: 600; margin: 0 0 11px; color: #393044; }
+.software-detail-section .resource-detail-list { padding-left: 20px; font-size: 13px; color: #7a6e86; line-height: 1.85; }
+.software-detail-section ol.resource-detail-list { list-style-type: decimal; }
+.software-detail-section li + li { margin-top: 6px; }
+.software-detail-section ol.resource-detail-list { list-style: decimal; }
+.software-package-provenance { padding-top: 15px; border-top: 1px solid #efebf3; }
+@media(max-width: 720px) { .software-hero-stat { min-width: 0; width: 100%; padding: 18px 22px; grid-template-columns: auto 1fr; align-items: center; gap: 4px 15px; } .software-hero-stat strong { grid-row: span 2; } .software-search { width: 100%; } .software-search input { width: 100%; } .software-plugin-card { min-height: 330px; } }

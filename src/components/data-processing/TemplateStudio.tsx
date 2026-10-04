@@ -16,11 +16,71 @@ import DataAdvisor from "./DataAdvisor";
 import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
 import { initialExportSettings } from "@/lib/data-processing/publication";
+import type { ExportSettings } from "@/lib/data-processing/publication";
+import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
 import "./template-studio.css";
 
 type Sheet = { name: string; matrix: unknown[][] };
 type Source = { name: string; kind: "demo" | "file"; sheets: Sheet[] };
 const initial = drawingTemplateForChart("line");
+
+export type TemplateEditSnapshot = {
+    kind: "template"; version: 1; presetId: string; selected: TemplateId; source: Source;
+    sheetIndex: number; hasHeader: boolean; mapping: ColumnMapping;
+    imaginaryMode: ImaginaryMode | ""; referenceColors: boolean; hatching: boolean; sphereGuide: boolean;
+    panelChart: "bar" | "line"; cumulative: boolean; secondaryYLabel: string;
+    annotationX: number; annotationText: string; yaw: number; pitch: number;
+    showUncertainty: boolean; errorInput: ErrorInput; errorMeasure: ErrorMeasure;
+    title: string; xLabel: string; yLabel: string; palette: PublicationStyle;
+    fontFamily: string; fontSize: number; width: number; height: number;
+    showGrid: boolean; showValues: boolean; exportSettings: ExportSettings;
+    caption: string; actualPreview: boolean; legendSelection?: Record<string, boolean>[];
+};
+
+/** Validate imported project data before changing any editor state. ECharts options are regenerated. */
+export function validateTemplateEditSnapshot(value: unknown): TemplateEditSnapshot {
+    const record = (item: unknown): item is Record<string, unknown> => !!item && typeof item === "object" && !Array.isArray(item);
+    const text = (item: unknown, limit = 10000) => typeof item === "string" && item.length <= limit;
+    const numberIn = (item: unknown, min: number, max: number) => typeof item === "number" && Number.isFinite(item) && item >= min && item <= max;
+    const integerIn = (item: unknown, min: number, max: number) => numberIn(item, min, max) && Number.isInteger(item);
+    const fail = (message: string): never => { throw new Error(`无法恢复原图：${message}`); };
+    if (!record(value) || value.kind !== "template" || value.version !== 1) fail("不支持的模板编辑快照版本。");
+    const snapshot = value as Record<string, unknown>;
+    const preset = DRAWING_TEMPLATES.find(item => item.id === snapshot.presetId);
+    if (!preset || snapshot.selected !== preset.chartId) fail("模板不存在或图形类型不匹配。");
+    if (!record(snapshot.source)) fail("原始数据格式不完整。");
+    const source = snapshot.source as Record<string, unknown>;
+    if (!text(source.name, 1000) || !["demo", "file"].includes(source.kind as string) || !Array.isArray(source.sheets) || source.sheets.length < 1 || source.sheets.length > 100) fail("原始工作表格式无效。");
+    let cells = 0;
+    const sheets = source.sheets as unknown[];
+    for (const sheet of sheets) {
+        if (!record(sheet) || !text(sheet.name, 1000) || !Array.isArray(sheet.matrix) || sheet.matrix.length > 100000) fail("工作表名称或行数无效。");
+        for (const row of (sheet as { matrix: unknown[] }).matrix) {
+            if (!Array.isArray(row) || row.length > 2048) fail("工作表行或列数无效。");
+            cells += (row as unknown[]).length;
+            if (cells > 2000000) fail("工作表过大，请精简数据后重新加入组图。");
+            if (!(row as unknown[]).every(cell => cell === null || cell === undefined || typeof cell === "boolean" || text(cell, 32767) || typeof cell === "number" && Number.isFinite(cell))) fail("工作表含不支持的单元格内容。");
+        }
+    }
+    if (!integerIn(snapshot.sheetIndex, 0, sheets.length - 1) || typeof snapshot.hasHeader !== "boolean") fail("工作表选择无效。");
+    const table = parseTemplateTable((sheets[snapshot.sheetIndex as number] as Sheet).matrix, snapshot.hasHeader as boolean);
+    const lastColumn = table.columns.length - 1;
+    if (!record(snapshot.mapping) || !integerIn(snapshot.mapping.x, 0, lastColumn) || !Array.isArray(snapshot.mapping.ys) || snapshot.mapping.ys.length > table.columns.length || !snapshot.mapping.ys.every(index => integerIn(index, -1, lastColumn)) || !record(snapshot.mapping.errors)) fail("数据列绑定无效。");
+    const mapping = snapshot.mapping as Record<string, unknown>;
+    if (mapping.group !== undefined && !integerIn(mapping.group, 0, lastColumn)) fail("分组列绑定无效。");
+    if (!Object.entries(mapping.errors as Record<string, unknown>).every(([index, error]) => /^\d+$/.test(index) && integerIn(Number(index), 0, lastColumn) && integerIn(error, 0, lastColumn))) fail("误差列绑定无效。");
+    for (const key of ["referenceColors", "hatching", "sphereGuide", "cumulative", "showUncertainty", "showGrid", "showValues", "actualPreview"]) {
+        if (typeof snapshot[key] !== "boolean") fail("图形开关参数无效。");
+    }
+    for (const key of ["secondaryYLabel", "annotationText", "title", "xLabel", "yLabel", "caption"]) {
+        if (!text(snapshot[key])) fail("图形文字参数无效。");
+    }
+    if (!["", "negative-imaginary", "raw-imaginary"].includes(snapshot.imaginaryMode as string) || !["bar", "line"].includes(snapshot.panelChart as string) || !["replicates", "summary"].includes(snapshot.errorInput as string) || !["SD", "SEM"].includes(snapshot.errorMeasure as string) || !["journal", "accessible", "soft", "mono"].includes(snapshot.palette as string) || !["Arial", "Times New Roman", "sans-serif"].includes(snapshot.fontFamily as string)) fail("图形样式或误差参数无效。");
+    if (!numberIn(snapshot.width, 420, 1600) || !numberIn(snapshot.height, 320, 1000) || !numberIn(snapshot.fontSize, 5, 16) || !numberIn(snapshot.yaw, -180, 180) || !numberIn(snapshot.pitch, -80, 80) || !numberIn(snapshot.annotationX, -Number.MAX_VALUE, Number.MAX_VALUE)) fail("画布尺寸、字号或视角参数超出范围。");
+    if (!record(snapshot.exportSettings) || !numberIn(snapshot.exportSettings.widthMm, 40, 300) || ![150, 300, 600].includes(snapshot.exportSettings.dpi as number) || typeof snapshot.exportSettings.grayscale !== "boolean" || !["single", "double", "custom"].includes(snapshot.exportSettings.preset as string)) fail("导出参数无效。");
+    if (snapshot.legendSelection !== undefined && (!Array.isArray(snapshot.legendSelection) || snapshot.legendSelection.length > 8 || !snapshot.legendSelection.every(selection => record(selection) && Object.keys(selection).length <= 2048 && Object.entries(selection).every(([name, selected]) => name.length <= 32767 && typeof selected === "boolean")))) fail("图例显示状态无效。");
+    return structuredClone(snapshot) as unknown as TemplateEditSnapshot;
+}
 
 function downloadBlob(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
@@ -33,8 +93,11 @@ function downloadBlob(blob: Blob, filename: string) {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export type TemplateStudioHandle = { loadData: (name: string, matrix: unknown[][], id: TemplateId, mapping: ColumnMapping) => void };
-export default function TemplateStudio({ active, ref }: { active: boolean; ref?: Ref<TemplateStudioHandle> }) {
+export type TemplateStudioHandle = {
+    loadData: (name: string, matrix: unknown[][], id: TemplateId, mapping: ColumnMapping) => void;
+    restoreCompositionAsset: (asset: FigureAsset) => void;
+};
+export default function TemplateStudio({ active, ref, onAddToComposition }: { active: boolean; ref?: Ref<TemplateStudioHandle>; onAddToComposition?: (asset: FigureAsset) => Promise<void> }) {
     const [editorOpen, setEditorOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
     const [category, setCategory] = useState<DrawingType | "全部">("全部");
@@ -76,6 +139,10 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const [caption, setCaption] = useState("");
     const [fileError, setFileError] = useState("");
     const [exportError, setExportError] = useState("");
+    const [compositionBusy, setCompositionBusy] = useState(false);
+    const [compositionError, setCompositionError] = useState("");
+    const [compositionAssetId, setCompositionAssetId] = useState<string | null>(null);
+    const [legendSelection, setLegendSelection] = useState<Record<string, boolean>[] | undefined>(undefined);
     const chartRef = useRef<ReactECharts>(null);
     const previewRef = useRef<HTMLDivElement>(null);
     const [previewWidth, setPreviewWidth] = useState(680);
@@ -109,6 +176,19 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         variant: template.variant,
         xLog: template.electrochemical?.xLog, yLog: template.electrochemical?.yLog, equalAxes: template.electrochemical?.equalAxes,
     }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper, template.variant, template.electrochemical]);
+    const previewOption = useMemo(() => {
+        if (!option || !legendSelection?.length) return option;
+        const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
+        return { ...option, legend: legends.map((legend, index) => ({ ...legend, selected: legendSelection[index] ?? legend.selected })) };
+    }, [option, legendSelection]);
+
+    function currentLegendSelection() {
+        const legends = chartRef.current?.getEchartsInstance().getOption().legend;
+        return Array.isArray(legends) ? legends.map(legend => {
+            const selection = legend.selected;
+            return selection && typeof selection === "object" ? Object.fromEntries(Object.entries(selection).filter(([, value]) => typeof value === "boolean")) as Record<string, boolean> : {};
+        }) : [];
+    }
 
     useEffect(() => {
         if (active && new URLSearchParams(window.location.search).get("templates") === "electrochem") setCategory("电化学测试");
@@ -148,6 +228,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth - 24) / chartWidth);
 
     function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart, preset: DrawingTemplate = template) {
+        setLegendSelection(undefined);
         const nextTable = parseTemplateTable(next.sheets[nextSheet]?.matrix ?? [], headers);
         const nextMapping = preset.electrochemical ? suggestElectrochemicalMapping(nextTable, preset.electrochemical) : suggestDrawingMapping(nextTable, id, preset.variant, panelMode);
         setSource(next);
@@ -170,6 +251,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
 
     function chooseTemplate(preset: string) {
         const next = DRAWING_TEMPLATES.find(item => item.id === preset)!;
+        setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
         const id = next.chartId;
@@ -219,6 +301,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }
 
     function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
+        setLegendSelection(undefined);
         const representative = drawingTemplateForChart(id);
         setPresetId(representative.id); setReferenceColors(!!representative.paper);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
@@ -233,6 +316,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
     }
     useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
         const representative = drawingTemplateForChart(id);
+        setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(!!representative.paper);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
@@ -241,6 +325,21 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         if (id === "horizontal-bar") setShowUncertainty(false);
         setTitle(name); setXLabel(String(matrix[0]?.[nextMapping.x] ?? next.xLabel));
         setYLabel(id === "histogram" ? "样本数" : String(matrix[0]?.[nextMapping.ys[0]] ?? next.yLabel));
+    }, restoreCompositionAsset(asset) {
+        if (asset.kind !== "template" || typeof asset.id !== "string" || !asset.id.trim() || asset.id.length > 200) throw new Error("无法恢复原图：组图资源不是可编辑的模板图。");
+        const saved = validateTemplateEditSnapshot(asset.editSnapshot);
+        setPresetId(saved.presetId); setSelected(saved.selected); setSource(saved.source);
+        setSheetIndex(saved.sheetIndex); setHasHeader(saved.hasHeader); setMapping(saved.mapping);
+        setImaginaryMode(saved.imaginaryMode); setReferenceColors(saved.referenceColors); setHatching(saved.hatching);
+        setSphereGuide(saved.sphereGuide); setPanelChart(saved.panelChart); setCumulative(saved.cumulative);
+        setSecondaryYLabel(saved.secondaryYLabel); setAnnotationX(saved.annotationX); setAnnotationText(saved.annotationText);
+        setYaw(saved.yaw); setPitch(saved.pitch); setShowUncertainty(saved.showUncertainty);
+        setErrorInput(saved.errorInput); setErrorMeasure(saved.errorMeasure); setTitle(saved.title);
+        setXLabel(saved.xLabel); setYLabel(saved.yLabel); setPalette(saved.palette); setFontFamily(saved.fontFamily);
+        setFontSize(saved.fontSize); setWidth(saved.width); setHeight(saved.height); setShowGrid(saved.showGrid);
+        setShowValues(saved.showValues); setExportSettings(saved.exportSettings); setCaption(saved.caption);
+        setActualPreview(saved.actualPreview); setLegendSelection(saved.legendSelection); setCompositionAssetId(asset.id); setCompositionError("");
+        setFileError(""); setExportError(""); setEditorOpen(true); setHasOpened(true);
     } }));
     function exportSvg() {
         if (!chartRef.current) throw new Error("请先完成数据绑定，等待图表呈现。");
@@ -248,6 +347,30 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
         const desc = document.createElementNS("http://www.w3.org/2000/svg", "desc");
         desc.textContent = `${template.paper ? `Single-chart reference: Chen Liu et al., figures4papers, CC BY-NC 4.0; ${template.paper.source}; ${template.paper.regionId}. ` : ""}${source.kind === "demo" ? "演示数据；" : "用户提供数据；"}${template.electrochemical ? `电化学图式：${template.name}；${template.electrochemical.kind === "nyquist" ? imaginaryMode === "raw-imaginary" ? "原始 Im(Z) 乘以 −1，未取绝对值；" : "输入 −Im(Z)，保持原值；" : template.electrochemical.kind === "bode" ? "原始频率和阻抗模值使用对数轴，相位使用线性轴；" : "保留采集顺序；"}` : ""}${caption || "统计图注由用户核对。"}`;
         return svg.replace(/(<svg\b[^>]*>)/, root => root + new XMLSerializer().serializeToString(desc));
+    }
+
+    async function addToComposition() {
+        if (!onAddToComposition || compositionBusy || loading || exporting || !result.data || !option) return;
+        setCompositionBusy(true); setCompositionError("");
+        try {
+            const snapshot = validateTemplateEditSnapshot({
+                kind: "template", version: 1, presetId, selected, source, sheetIndex, hasHeader, mapping,
+                imaginaryMode, referenceColors, hatching, sphereGuide, panelChart, cumulative, secondaryYLabel,
+                annotationX, annotationText, yaw, pitch, showUncertainty, errorInput, errorMeasure,
+                title, xLabel, yLabel, palette, fontFamily, fontSize: safeFontSize, width: chartWidth, height: chartHeight,
+                showGrid, showValues, exportSettings, caption, actualPreview, legendSelection: currentLegendSelection(),
+            });
+            const asset: FigureAsset = {
+                id: compositionAssetId ?? crypto.randomUUID(), name: title.trim() || template.name, kind: "template",
+                width: chartWidth, height: chartHeight, svg: prepareChartSvg(exportSvg()), demo: source.kind === "demo",
+                caption, attribution: template.paper ? `Chen Liu 与合作者 · figures4papers · CC BY-NC 4.0 · ${template.paper.source} · ${template.paper.regionId}` : undefined,
+                editSnapshot: snapshot,
+            };
+            await onAddToComposition(asset);
+            setCompositionAssetId(asset.id); setEditorOpen(false);
+        } catch (error) {
+            setCompositionError(error instanceof Error ? error.message : "加入论文组图失败，请重试。");
+        } finally { setCompositionBusy(false); }
     }
 
     return (
@@ -276,7 +399,7 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                 </section>;
             })}
             {!filtered.length && <p className="template-search-empty">没有匹配的模板，请更换关键词、图形类型或来源。</p>}
-            <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow="SINGLE CHART EDITOR / 单图编辑" description="只编辑这一张图：导入数据、绑定字段，预览并导出。无需与原论文的面板数量一致。" busy={loading || exporting} onClose={() => setEditorOpen(false)}>
+            <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow="SINGLE CHART EDITOR / 单图编辑" description="只编辑这一张图：导入数据、绑定字段，预览并导出。无需与原论文的面板数量一致。" busy={loading || exporting || compositionBusy} onClose={() => setEditorOpen(false)}>
             <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} /> 01 选择模板</span><i /><span><FileSpreadsheet size={14} /> 02 导入与绑定</span><i /><span><ArrowDownToLine size={14} /> 03 预览与导出</span></div>
 
             <div id="template-editor" className="template-editor">
@@ -321,10 +444,12 @@ export default function TemplateStudio({ active, ref }: { active: boolean; ref?:
                 <div className="template-output-column">
                     <section className="template-preview-panel template-glass" aria-labelledby="template-preview-title">
                         <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
-                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && option ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={option} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
+                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && previewOption ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={previewOption} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} onEvents={{ legendselectchanged: () => setLegendSelection(currentLegendSelection()) }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
                         <p className="template-chart-mobile-hint">预览自动适应窗口；切换原始尺寸可滑动查看细节。</p>
                         <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.pointGroups ? `${result.data.pointGroups.reduce((sum, group) => sum + group.points.length, 0)} 个观测点 · ${result.data.pointGroups.length} 组` : result.data.matrixCells ? `${result.data.matrixCells.length} 个有效单元格 · ${result.data.x.length} 行 × ${result.data.series.length} 列` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && showUncertainty && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
-                        <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading} onBusy={setExporting} revision={option} extraIssues={[
+                        {onAddToComposition && <div className="publication-actions" aria-label="论文组图操作"><button className="is-primary" type="button" onClick={addToComposition} disabled={!result.data || !option || loading || exporting || compositionBusy}>{compositionBusy ? <Loader2 size={15} className="animate-spin" /> : <Layers3 size={15} />}{compositionBusy ? "正在保存原图…" : compositionAssetId ? "更新组图中的原图" : "加入论文组图"}</button><span className="template-hint">保留完整图表与编辑参数，可从组图返回修改。</span></div>}
+                        {compositionError && <p className="template-notice template-notice--error" role="alert">{compositionError}</p>}
+                        <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading || compositionBusy} onBusy={setExporting} revision={previewOption} extraIssues={[
                             ...(source.kind === "demo" ? [{ level: "warning" as const, message: "当前为演示数据，不是真实实验结果。" }] : []),
                             ...(drawingId === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
                             ...(selected === "error-bar" && showUncertainty && !caption.trim() ? [{ level: "warning" as const, message: "请补充统计图注：独立样本量、误差含义和实验重复类型。" }] : []),

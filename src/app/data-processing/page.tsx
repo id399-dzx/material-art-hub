@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useSyncExternalStore, useMemo } from "reac
 import Image from "next/image";
 import * as xlsx from "xlsx";
 import ReactECharts from 'echarts-for-react';
-import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight } from "lucide-react";
+import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight, LayoutGrid, Loader2 } from "lucide-react";
 import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/parse";
 import SafeReport from "@/components/data-processing/SafeReport";
 import DataAdvisor from "@/components/data-processing/DataAdvisor";
@@ -13,6 +13,9 @@ import { initialExportSettings } from "@/lib/data-processing/publication";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import { parseTemplateTable } from "@/lib/data-processing/templates";
 import TemplateStudio, { type TemplateStudioHandle } from "@/components/data-processing/TemplateStudio";
+import FigureComposer, { type FigureComposerHandle } from "@/components/data-processing/FigureComposer";
+import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
+import { validateProcessingSnapshot, type ProcessingFigureSnapshot } from "@/lib/data-processing/processing-composition-snapshot";
 import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
 
@@ -110,12 +113,19 @@ const subscribeWorkspace = (callback: () => void) => {
     window.addEventListener("hashchange", callback);
     return () => window.removeEventListener("hashchange", callback);
 };
-const getWorkspace = () => ["#paper-figures", "#data-templates"].includes(window.location.hash) ? "templates" : "processing";
+const getWorkspace = () => window.location.hash === "#paper-composition" ? "composition" : ["#paper-figures", "#data-templates"].includes(window.location.hash) ? "templates" : "processing";
 const getServerWorkspace = () => "processing";
 
 export default function DataProcessingPage() {
     const workspace = useSyncExternalStore(subscribeWorkspace, getWorkspace, getServerWorkspace);
     const templateStudioRef = useRef<TemplateStudioHandle>(null);
+    const figureComposerRef = useRef<FigureComposerHandle>(null);
+    const appliedFigureSnapshotRef = useRef<ProcessingFigureSnapshot | null>(null);
+    const restoredZoomRef = useRef<ProcessingFigureSnapshot['zoom']>(undefined);
+    const restoredLegendRef = useRef<ProcessingFigureSnapshot['legendSelection']>(undefined);
+    const [editingCompositionId, setEditingCompositionId] = useState<string | null>(null);
+    const [compositionAdding, setCompositionAdding] = useState(false);
+    const [compositionError, setCompositionError] = useState("");
     const [exportSettings, setExportSettings] = useState(initialExportSettings);
     const [figureExporting, setFigureExporting] = useState(false);
     const [dataType, setDataType] = useState<string>('GCD');
@@ -365,6 +375,7 @@ export default function DataProcessingPage() {
 
     const handleClearData = async () => {
         if (!window.confirm('确定清空当前主数据、对比样和附图数据吗？')) return;
+        setEditingCompositionId(null); appliedFigureSnapshotRef.current = null;
         setFileChunks1([]);
         setFileName(null);
         setFileChunks2([]);
@@ -393,6 +404,7 @@ export default function DataProcessingPage() {
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []);
         if (files.length === 0) return;
+        setEditingCompositionId(null);
 
         // Sort files by name to ensure sequential stitching
         files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
@@ -837,7 +849,19 @@ export default function DataProcessingPage() {
         };
     };
 
+    function captureFigureSnapshot(): ProcessingFigureSnapshot {
+        return { kind: 'processing', version: 1, state: {
+            fileName, fileName2, fileChunks1, fileChunks2, dataType, dataOrientation,
+            fontFamily, lineWidth, titleSize, labelSize, chartWidth, chartHeight, lineColor, lineColor2,
+            seriesName, seriesName2, legendPosition, xAxisName, yAxisName, xMin, xMax, xInterval,
+            yMin, yMax, yInterval, xOnZero, showInset, useMainDataForInset, insetTotalX, insetTotalY,
+            insetXMin, insetXMax, insetYMin, insetYMax, insetLeft, insetTop, insetWidth, insetHeight,
+            insetFontSize, showInsetAxisName, insetXAxisName, insetYAxisName, insetXSplit, insetYSplit,
+        } };
+    }
+
     const handleRefreshChart = () => {
+        appliedFigureSnapshotRef.current = captureFigureSnapshot();
         setAppliedOptions(generateOption());
 
         // Save to browser LocalStorage
@@ -945,6 +969,7 @@ export default function DataProcessingPage() {
     // Refresh from committed state so a mode switch cannot leave old axis labels on the chart.
     useEffect(() => {
         if (fileChunks1.length > 0) {
+            appliedFigureSnapshotRef.current = captureFigureSnapshot();
             setAppliedOptions(generateOption());
         } else {
             setAppliedOptions(null);
@@ -952,6 +977,19 @@ export default function DataProcessingPage() {
         // generateOption captures the currently committed chart settings.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fileChunks1, fileChunks2, templateApplyCount, insetTotalX, insetTotalY, showInset, useMainDataForInset]);
+
+    useEffect(() => {
+        if (!appliedOptions || (!restoredZoomRef.current && !restoredLegendRef.current)) return;
+        const zoom = restoredZoomRef.current;
+        const legend = restoredLegendRef.current;
+        restoredZoomRef.current = undefined;
+        restoredLegendRef.current = undefined;
+        const frame = requestAnimationFrame(() => {
+            zoom?.forEach((item, dataZoomIndex) => chartRef.current?.getEchartsInstance().dispatchAction({ type: 'dataZoom', dataZoomIndex, ...item }));
+            if (legend) Object.entries(legend).forEach(([name, selected]) => chartRef.current?.getEchartsInstance().dispatchAction({ type: selected ? 'legendSelect' : 'legendUnSelect', name }));
+        });
+        return () => cancelAnimationFrame(frame);
+    }, [appliedOptions]);
 
     const mainPointCount = fileChunks1.reduce((sum, chunk) => sum + chunk.x.length, 0);
 
@@ -966,19 +1004,67 @@ export default function DataProcessingPage() {
         finally { chart.dispose(); }
     }
 
+    async function addToComposition(asset: FigureAsset) {
+        if (!figureComposerRef.current) throw new Error('组图工作区正在加载，请稍后再试。');
+        await figureComposerRef.current.addAsset(asset);
+        setCompositionError('');
+        window.location.hash = 'paper-composition';
+    }
+
+    async function addMainToComposition() {
+        setCompositionAdding(true); setCompositionError('');
+        try {
+            const saved = appliedFigureSnapshotRef.current;
+            if (!saved || !chartRef.current) throw new Error('请先导入数据并更新图表。');
+            const current = chartRef.current.getEchartsInstance().getOption();
+            const zoom = (Array.isArray(current.dataZoom) ? current.dataZoom : []).map(item => {
+                const values: NonNullable<ProcessingFigureSnapshot['zoom']>[number] = {};
+                for (const key of ['start', 'end', 'startValue', 'endValue'] as const) if (typeof item[key] === 'number' && Number.isFinite(item[key])) values[key] = item[key];
+                return values;
+            });
+            const legend = Array.isArray(current.legend) ? current.legend[0] : undefined;
+            const snapshot = validateProcessingSnapshot({ ...saved, state: { ...saved.state, chartWidth: Math.max(200, chartWidth || 600), chartHeight: Math.max(200, chartHeight || 400) }, zoom, legendSelection: legend?.selected });
+            await addToComposition({ id: editingCompositionId || crypto.randomUUID(), name: saved.state.fileName || '实验曲线', kind: 'processing', width: snapshot.state.chartWidth, height: snapshot.state.chartHeight, svg: prepareChartSvg(await exportMainSvg()), editSnapshot: snapshot });
+        } catch (error) { setCompositionError(error instanceof Error ? error.message : '加入组图失败，请重试。'); }
+        finally { setCompositionAdding(false); }
+    }
+
+    function editCompositionSource(asset: FigureAsset) {
+        setCompositionError('');
+        if (asset.kind === 'template') {
+            if (!templateStudioRef.current) throw new Error('模板编辑器正在加载。');
+            templateStudioRef.current.restoreCompositionAsset(asset);
+            window.location.hash = 'paper-figures';
+            return;
+        }
+        const { state: s, zoom, legendSelection } = validateProcessingSnapshot(asset.editSnapshot);
+        setFileName(s.fileName); setFileName2(s.fileName2); setFileChunks1(s.fileChunks1); setFileChunks2(s.fileChunks2);
+        setDataType(s.dataType); setDataOrientation(s.dataOrientation); setFontFamily(s.fontFamily);
+        setLineWidth(s.lineWidth); setTitleSize(s.titleSize); setLabelSize(s.labelSize); setChartWidth(s.chartWidth); setChartHeight(s.chartHeight);
+        setLineColor(s.lineColor); setLineColor2(s.lineColor2); setSeriesName(s.seriesName); setSeriesName2(s.seriesName2); setLegendPosition(s.legendPosition);
+        setXAxisName(s.xAxisName); setYAxisName(s.yAxisName); setXMin(s.xMin); setXMax(s.xMax); setXInterval(s.xInterval); setXOnZero(s.xOnZero);
+        setYMin(s.yMin); setYMax(s.yMax); setYInterval(s.yInterval); setShowInset(s.showInset); setUseMainDataForInset(s.useMainDataForInset);
+        setInsetTotalX(s.insetTotalX); setInsetTotalY(s.insetTotalY); setInsetXMin(s.insetXMin); setInsetXMax(s.insetXMax); setInsetYMin(s.insetYMin); setInsetYMax(s.insetYMax);
+        setInsetLeft(s.insetLeft); setInsetTop(s.insetTop); setInsetWidth(s.insetWidth); setInsetHeight(s.insetHeight); setInsetFontSize(s.insetFontSize);
+        setShowInsetAxisName(s.showInsetAxisName); setInsetXAxisName(s.insetXAxisName); setInsetYAxisName(s.insetYAxisName); setInsetXSplit(s.insetXSplit); setInsetYSplit(s.insetYSplit);
+        setEditingCompositionId(asset.id); restoredZoomRef.current = zoom; restoredLegendRef.current = legendSelection; setTemplateApplyCount(count => count + 1);
+        setImportWarnings([]); window.location.hash = 'chart-preview';
+    }
+
     return (
         <main className="data-workbench min-h-[calc(100vh-4rem)]">
             <div className="workbench-shell">
                 <div className="workbench-appbar">
                     <header className="workbench-hero">
                         <div className="workbench-eyebrow">DATA STUDIO <span className="workbench-eyebrow-divider">/</span> 科研绘图</div>
-                        <h1>{workspace === "templates" ? "论文图例模板" : "科研数据工作台"}</h1>
-                        <p>{workspace === "templates" ? "选择图式、替换实验数据，生成独立的论文图表。" : "导入实验数据、绘制曲线，让每组结果清晰可见。"}</p>
+                        <h1>{workspace === "composition" ? "论文组图" : workspace === "templates" ? "论文图例模板" : "科研数据工作台"}</h1>
+                        <p>{workspace === "composition" ? "组合数据图和实验图片，让每张单图成为完整论文图的一部分。" : workspace === "templates" ? "选择图式、替换实验数据，生成独立的论文图表。" : "导入实验数据、绘制曲线，让每组结果清晰可见。"}</p>
                     </header>
                     <div className="workbench-appbar-actions">
                         <nav className="workbench-pill-nav" aria-label="工作台区域">
                             <a className={workspace === "processing" ? "is-active" : ""} aria-current={workspace === "processing" ? "page" : undefined} href="#data-source">数据处理</a>
                             <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#paper-figures">论文图例模板</a>
+                            <a className={workspace === "composition" ? "is-active" : ""} aria-current={workspace === "composition" ? "page" : undefined} href="#paper-composition">论文组图</a>
                             <a href="#chart-preview">图表画布</a>
                             <a href="#analysis">辅助解读</a>
                         </nav>
@@ -987,6 +1073,7 @@ export default function DataProcessingPage() {
                         </button>}
                     </div>
                 </div>
+                {compositionError && <p className="research-error" role="alert">{compositionError}</p>}
 
                 <div hidden={workspace !== "processing"}>
                 <div className="workbench-quick-stats" aria-label="当前数据概览">
@@ -1236,9 +1323,12 @@ export default function DataProcessingPage() {
                         <div>
                             <span className="workbench-card-eyebrow">VISUAL CANVAS</span>
                             <h2 id="workbench-preview-title">图表画布 <ArrowUpRight size={18} aria-hidden="true" /></h2>
-                            <p>核对曲线，调整参数，设置物理尺寸，检查并导出 PNG、SVG 或打印 PDF。</p>
+                            <p>{editingCompositionId ? '正在编辑组图中的原图。参数修改后请先更新图表，再更新到组图。' : '核对曲线，检查并导出，或将当前画布加入论文组图。参数修改后请先更新图表。'}</p>
                         </div>
                         <div className="workbench-chart-toolbar">
+                            <GlassButton variant="primary" size="sm" onClick={addMainToComposition} disabled={!appliedOptions || isLoading || figureExporting || compositionAdding} className="workbench-export">
+                                {compositionAdding ? <Loader2 size={15} className="animate-spin" /> : <LayoutGrid size={15} />}{editingCompositionId ? '更新组图中的原图' : '加入论文组图'}
+                            </GlassButton>
                             <GlassButton
                                 id="refresh-chart-btn"
                                 variant="secondary"
@@ -1701,7 +1791,8 @@ export default function DataProcessingPage() {
                         </div>
                     </section>
                 </div>
-                <TemplateStudio ref={templateStudioRef} active={workspace === "templates"} />
+                <TemplateStudio ref={templateStudioRef} active={workspace === "templates"} onAddToComposition={addToComposition} />
+                <FigureComposer ref={figureComposerRef} active={workspace === "composition"} onEditSource={editCompositionSource} />
             </div>
         </main>
     );

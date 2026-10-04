@@ -5,6 +5,18 @@ export type SoftwareHost = typeof SOFTWARE_HOSTS[number];
 // No local or private projects are seeded into this public catalog.
 export const PLUGIN_ASSET_TAG = "__fesilent_software_plugin_v1__";
 export const PLUGIN_ADMIN_EMAIL = "id19991016@gmail.com";
+export const PLUGIN_PACKAGE_BUCKET = "plugin-packages";
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const isUuid = (value: unknown): value is string => typeof value === "string" && value.length === 36 && UUID_PATTERN.test(value);
+
+/** A storage reference is metadata, never a public URL. Keep parsing strict and unnormalised. */
+export function getPluginPackagePath(value: unknown): string | null {
+  const prefix = `storage://${PLUGIN_PACKAGE_BUCKET}/`;
+  if (typeof value !== "string" || !value.startsWith(prefix)) return null;
+  const path = value.slice(prefix.length);
+  const parts = path.split("/");
+  return parts.length === 2 && isUuid(parts[0]) && parts[1] === "package.zip" ? path : null;
+}
 
 export type SoftwarePluginDetails = {
   schema: "fesilent-plugin-v1";
@@ -23,6 +35,7 @@ export type SoftwarePlugin = SoftwarePluginDetails & {
   id: string;
   name: string;
   coverUrl?: string;
+  packagePath: string;
   downloadUrl: string;
   publishedAt: string;
 };
@@ -80,12 +93,13 @@ export function pluginFromAsset(row: PluginAssetRow, storageOrigin: string): Sof
   if (!isPluginAsset(row)) return null;
   try {
     const details = validatePluginDetails(JSON.parse(row.description));
-    const downloadUrl = storedUrl(row.source_file_url, storageOrigin);
-    if (!downloadUrl) return null;
+    const packagePath = getPluginPackagePath(row.source_file_url);
+    if (!packagePath || !isUuid(row.id)) return null;
     return {
       ...details, id: textField(row.id, "插件编号", 100),
       name: textField(row.title, "插件名称", 160),
-      coverUrl: storedUrl(row.image_url, storageOrigin), downloadUrl, publishedAt: row.created_at,
+      coverUrl: storedUrl(row.image_url, storageOrigin), packagePath,
+      downloadUrl: `/api/software-plugins/${encodeURIComponent(row.id)}/download`, publishedAt: row.created_at,
     };
   } catch { return null; }
 }

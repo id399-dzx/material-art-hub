@@ -35,8 +35,8 @@
 .research-skill-card__intro { display: inline-flex; align-items: center; gap: 2px; flex-shrink: 0; color: var(--skill-color); font-size: 11px; font-weight: 680; }
 .research-skill-card__footer { width: calc(100% - 40px); margin: auto 20px 0; padding: 12px 0 14px; border-top: 1px solid #e8e3ed; gap: 10px; }
 .research-skill-card__footer > span { overflow: hidden; color: #7b7288; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
-.research-skill-card__footer > a { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; padding: 6px 10px; border: 1px solid #e7e0ef; border-radius: 99px; background: #ffffffd9; color: #51435f; font-size: 11px; font-weight: 650; text-decoration: none; }
-.research-skill-card__footer > a:hover { border-color: #c9b9e5; color: #694bad; }
+.research-skill-card__footer > button { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; padding: 6px 10px; border: 1px solid #e7e0ef; border-radius: 99px; background: #ffffffd9; color: #51435f; font: inherit; font-size: 11px; font-weight: 650; cursor: pointer; }
+.research-skill-card__footer > button:hover { border-color: #c9b9e5; color: #694bad; }
 .research-skill-card--literature { --skill-color: #5375ac; --skill-wash: #d9e6ff; }
 .research-skill-card--figure { --skill-color: #7a54b9; --skill-wash: #e6d7ff; }
 .research-skill-card--writing { --skill-color: #a06f64; --skill-wash: #f6dfd9; }
@@ -59,11 +59,13 @@
 .research-skill-detail__entries summary span { margin-left: 9px; color: #80738e; font-size: 10px; }
 .research-skill-detail__entries ul { max-height: 220px; overflow: auto; padding: 0; margin: 13px 0 0; list-style: none; }
 .research-skill-detail__entries li { padding: 5px 0; }
-.research-skill-detail__entries a { display: inline-flex; align-items: center; gap: 4px; color: #7555a4; font-size: 11px; text-decoration: none; overflow-wrap: anywhere; }
-.research-skill-detail__entries a:hover { text-decoration: underline; }
-.research-skill-detail__entries a svg { flex-shrink: 0; }
+.research-skill-detail__entries button { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: transparent; color: #7555a4; font: inherit; font-size: 11px; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+.research-skill-detail__entries button:hover { text-decoration: underline; }
+.research-skill-detail__entries button svg { flex-shrink: 0; }
 .research-skill-detail__provenance { display: flex; flex-wrap: wrap; gap: 6px 16px; color: #7b6e88; font-size: 10px; }
-.research-skill-detail__provenance a { display: inline-flex; align-items: center; gap: 3px; color: #7555a4; text-decoration: none; }
+.research-skill-detail__provenance button { display: inline-flex; align-items: center; gap: 3px; padding: 0; border: 0; background: transparent; color: #7555a4; font: inherit; cursor: pointer; }
+.research-skills-page button:disabled, .research-skill-detail button:disabled { opacity: .55; cursor: wait; }
+.research-skills-action-error { padding: 10px 13px; border-radius: 11px; background: #fff2f6; color: #a45f78; font-size: 12px; line-height: 1.8; }
 .research-skills-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 720px) {
   .research-skills-heading-row { align-items: flex-start; flex-direction: column; gap: 7px; }

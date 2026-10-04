@@ -1,0 +1,9 @@
+.action-login { display: flex; flex-direction: column; align-items: center; padding: 24px 16px 30px; text-align: center; }
+.action-login-icon { display: grid; place-items: center; width: 70px; height: 70px; margin-bottom: 19px; border: 1px solid white; border-radius: 23px; color: #9a83bc; background: linear-gradient(135deg, #f6eaf3, #e9e6f8, #e8f1fb); box-shadow: 0 12px 24px #a28cbd12; }
+.action-login h3 { margin: 0 0 9px; color: #4b4056; font-size: 17px; font-weight: 650; }
+.resource-dialog__body .action-login p { max-width: 390px; margin: 0; color: #95869f; font-size: 12px; line-height: 1.9; }
+.resource-dialog__body .action-login .action-login-error { margin-top: 15px; color: #a45b75; }
+.action-login p:has(svg) { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+.action-login-spin { animation: action-login-spin 1s linear infinite; }
+@keyframes action-login-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .action-login-spin { animation: none; } }

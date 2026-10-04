@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BarChart3, Database, Eye, EyeOff, Loader2, LockKeyhole, Mail, ShieldCheck } from "lucide-react";
 import { isSupabaseConnectionError, supabase } from "@/lib/supabase";
+import { safeReturnTo } from "@/lib/auth/return-to";
 import "./login.css";
 
 export default function LoginPage() {
@@ -24,7 +25,10 @@ export default function LoginPage() {
                 const { error } = await supabase.auth.signInWithPassword({ email, password });
                 if (error) throw error;
             } else {
-                const { error, data } = await supabase.auth.signUp({ email, password });
+                const next = safeReturnTo(new URLSearchParams(window.location.search).get("next"));
+                const callback = new URL("/auth/callback", window.location.origin);
+                callback.searchParams.set("next", next);
+                const { error, data } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: callback.href } });
                 if (error) throw error;
                 if (data.user && data.session === null) {
                     setNotice({ type: "success", message: "注册成功，请检查邮箱并完成验证。" });
@@ -32,7 +36,7 @@ export default function LoginPage() {
                 }
             }
 
-            window.location.href = "/";
+            window.location.href = safeReturnTo(new URLSearchParams(window.location.search).get("next"));
         } catch (error) {
             const message = error instanceof Error ? error.message : "";
             if (isSupabaseConnectionError(error)) {
@@ -65,7 +69,7 @@ export default function LoginPage() {
                     <section className="auth-intro" aria-label="工作台介绍">
                         <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> FESILENT REVERIE / RESEARCH WORKSPACE</span>
                         <h1>让灵感与数据，<br /><span>在同一处生长。</span></h1>
-                        <p>登录后继续管理你的科研素材。数据处理工作台也随时可用，让图表和研究过程保持清晰。</p>
+                        <p>登录后可查看科研 Skill 详情、整理论文排版和下载自研插件。各个页面与数据处理工作台随时可浏览。</p>
 
                         <div className="auth-showcase" aria-hidden="true">
                             <div className="auth-showcase-top">

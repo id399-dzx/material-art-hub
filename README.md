@@ -27,7 +27,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-publishable-or-anon-key
 ```
 
-使用 Supabase 控制台显示的当前项目地址和公开密钥；不要将 `service_role` 密钥放入 `NEXT_PUBLIC_` 变量。修改配置后重启开发服务器。素材库还需要 `assets` 表、`materials` Storage bucket，以及控制读取、发布和删除权限的 RLS / Storage 策略。本仓库没有这些资源的数据库迁移或素材备份，替换项目配置不会自动恢复原有素材。
+使用 Supabase 控制台显示的当前项目地址和公开密钥；不要将 `service_role` 密钥放入 `NEXT_PUBLIC_` 变量。修改配置后重启开发服务器。素材库还需要 `assets` 表、`materials` Storage bucket，以及控制读取、发布和删除权限的 RLS / Storage 策略。本仓库没有素材表及公开素材桶的初始迁移或素材备份，替换项目配置不会自动恢复原有素材。软件插件上传和登录下载另外需要先在 Supabase 执行 [`20261004000000_private_plugin_packages.sql`](supabase/migrations/20261004000000_private_plugin_packages.sql)，创建私有 `plugin-packages` 桶及受限策略；封面继续使用公开 `materials` 桶。
 
 如果浏览器提示素材无法加载，先检查项目地址是否仍能解析，再到 Supabase 控制台确认项目状态。域名无法解析时，前端修改无法恢复该远端项目。
 

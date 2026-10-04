@@ -56,6 +56,7 @@
 .manuscript-upload:hover { border-color:#a894c7; background-color:#f4effc; }
 .manuscript-upload--ready { border-style:solid; border-color:#cfe1da; background:#f3f8f6; color:#699686; }
 .manuscript-upload:disabled { opacity:.6; cursor:wait; }
+.resource-dialog__body .manuscript-login-note { margin:11px 1px 0; color:#9580a7; font-size:10px; line-height:1.85; }
 .manuscript-preset-summary { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 14px; }
 .manuscript-preset-summary span { padding:7px 10px; border:1px solid #eee8f4; border-radius:8px; background:#faf8fc; color:#746280; font-size:10px; }
 .manuscript-options-toggle { display:flex; align-items:center; width:100%; gap:8px; padding:11px 12px; border:1px solid #e8e0f0; border-radius:10px; background:#fff; color:#594667; font-size:11px; text-align:left; cursor:pointer; }

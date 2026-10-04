@@ -1,16 +1,12 @@
 import { NextResponse } from 'next/server'
 // The client you created from the Server-Side Auth instructions
 import { createClient } from '@/utils/supabase/server'
+import { safeReturnTo } from '@/lib/auth/return-to'
 
 export async function GET(request: Request) {
     const { searchParams, origin } = new URL(request.url)
     const code = searchParams.get('code')
-    const requestedNext = searchParams.get('next') ?? '/'
-    let next = '/'
-    try {
-        const destination = new URL(requestedNext, origin)
-        if (destination.origin === origin) next = `${destination.pathname}${destination.search}`
-    } catch { /* Keep the home page for malformed redirect URLs. */ }
+    const next = safeReturnTo(searchParams.get('next'))
 
     if (code) {
         const supabase = await createClient()

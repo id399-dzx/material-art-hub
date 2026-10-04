@@ -15,6 +15,16 @@ ON CONFLICT (id) DO UPDATE SET
   file_size_limit = EXCLUDED.file_size_limit,
   allowed_mime_types = EXCLUDED.allowed_mime_types;
 
+-- Let the website administrator check the private bucket configuration before
+-- selecting or uploading a package. Object access remains controlled below.
+DROP POLICY IF EXISTS fesilent_plugin_bucket_select ON storage.buckets;
+CREATE POLICY fesilent_plugin_bucket_select ON storage.buckets
+  AS PERMISSIVE FOR SELECT TO authenticated
+  USING (
+    id = 'plugin-packages'
+    AND (SELECT auth.jwt() ->> 'email') = 'id19991016@gmail.com'
+  );
+
 -- UUID/package.zip is the complete object name, with no nested paths or suffixes.
 -- Length and the case-sensitive suffix also exclude trailing newlines and .ZIP.
 DROP POLICY IF EXISTS fesilent_plugin_select ON storage.objects;

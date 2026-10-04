@@ -16,6 +16,8 @@
 .plugin-publisher-field textarea { min-height: 86px; max-height: 350px; resize: vertical; line-height: 1.8; }
 .plugin-publisher-field :is(input,textarea)::placeholder { color: #b8a9c1; opacity: 1; }
 .plugin-publisher-field :is(input,select,textarea):focus { border-color: #b9a2d0; box-shadow: 0 0 0 3px #d7c5ea35; }
+.plugin-publisher-field :is(input,select,textarea)[aria-invalid="true"] { border-color: #cf9eac; background: #fff8fa; }
+.plugin-publisher-upload:has(input[aria-invalid="true"]) { border-color: #cf9eac; background: #fff4f7; }
 .plugin-publisher-field > small { color: #a394ad; font-size: 10px; line-height: 1.6; }
 .plugin-publisher-version-note { display: flex; align-items: center; color: #a394ad; font-size: 10px; line-height: 1.85; padding-top: 21px; }
 .plugin-publisher-files { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; align-items: start; }
@@ -40,6 +42,25 @@
 .plugin-publisher :is(button,input,select,textarea):disabled { cursor: default; opacity: .6; }
 .plugin-publisher fieldset:disabled .plugin-publisher-upload { cursor: default; opacity: .65; }
 .plugin-publisher :is(button,input,select,textarea):focus-visible { outline: 3px solid #c8b3e2; outline-offset: 3px; }
+.plugin-publisher-feedback { position: sticky; top: 0; z-index: 3; padding: 14px 16px; margin: 0 0 22px; border: 1px solid #e4dbea; border-radius: 14px; background: #f5f0fa; color: #826795; box-shadow: 0 6px 22px #4430560f; scroll-margin: 12px; outline: none; }
+.plugin-publisher-feedback:focus-visible { outline: 3px solid #c8b3e2; outline-offset: 3px; }
+.plugin-publisher-feedback.is-error { border-color: #e9cbd7; background: #fff2f6; color: #a35e78; }
+.plugin-publisher-feedback.is-success { border-color: #cfe3d8; background: #f0f9f4; color: #608d7b; }
+.plugin-publisher-feedback > strong { display: flex; align-items: center; gap: 7px; font-size: 12px; line-height: 1.6; }
+.resource-dialog__body .plugin-publisher-feedback > p { margin: 6px 0 0; color: inherit; font-size: 11px; line-height: 1.8; overflow-wrap: anywhere; }
+.plugin-publisher-feedback > small { display: block; margin-top: 8px; opacity: .85; font-size: 10px; line-height: 1.7; }
+.plugin-publisher-error-fields { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+.plugin-publisher-error-fields button { min-height: 28px; padding: 5px 9px; border: 1px solid #e4c3d0; border-radius: 99px; background: #ffffffbf; color: #a15e78; font-size: 10px; cursor: pointer; }
+.plugin-publisher-error-fields button:hover { background: #fff; border-color: #c790a5; }
+.plugin-publisher-service-retry { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 6px 11px; margin-top: 9px; border: 1px solid #d9b4c3; border-radius: 99px; background: #fff; color: #9b5e76; font-size: 10px; cursor: pointer; }
+.plugin-publisher-service-retry:hover:not(:disabled) { border-color: #bb8ea1; background: #fff9fb; }
+.plugin-publisher-stages { display: flex; flex-wrap: wrap; gap: 8px 13px; padding: 0; margin: 10px 0 0; list-style: none; }
+.plugin-publisher-stages li { display: flex; align-items: center; gap: 5px; color: #b2a3bf; font-size: 9px; }
+.plugin-publisher-stages li > span { display: grid; place-items: center; width: 17px; height: 17px; border: 1px solid #e6dced; border-radius: 50%; background: #ffffff9c; font-size: 8px; }
+.plugin-publisher-stages li.is-current { color: #785990; font-weight: 650; }
+.plugin-publisher-stages li.is-current > span { border-color: #b09bc4; background: #b09bc4; color: #fff; }
+.plugin-publisher-stages li.is-complete { color: #6f9b86; }
+.plugin-publisher-stages li.is-complete > span { border-color: #cce1d5; background: #f3faf6; }
 .resource-dialog__body .plugin-publisher-status { margin: 14px 0 0; padding: 0 4px; color: #9a83ab; font-size: 11px; line-height: 1.8; }
 .resource-dialog__body .plugin-publisher-error { margin: 14px 0 0; padding: 11px 14px; border: 1px solid #edd7e0; border-radius: 11px; background: #fff2f6; color: #a35e78; font-size: 11px; line-height: 1.9; overflow-wrap: anywhere; }
 .resource-dialog__body .plugin-publisher-success { display: flex; align-items: center; gap: 7px; margin: 14px 0 0; padding: 11px 14px; border: 1px solid #d7e8df; border-radius: 11px; background: #f0f9f4; color: #608d7b; font-size: 11px; line-height: 1.8; }

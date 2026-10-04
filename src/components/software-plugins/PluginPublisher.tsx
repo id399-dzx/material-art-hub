@@ -3,12 +3,15 @@
 import { useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { CheckCircle2, FileArchive, ImagePlus, Loader2, UploadCloud, X } from 'lucide-react';
 import type { SoftwareHost } from '@/lib/software-plugins/catalog';
-import { publishSoftwarePlugin, type PluginPublicationInput } from '@/lib/software-plugins/storage';
+import { checkPluginPublicationStorage, publishSoftwarePlugin, type PluginPublicationInput, type PluginPublicationStage } from '@/lib/software-plugins/storage';
 import { getSupabaseErrorMessage, isSupabaseConnectionError } from '@/lib/supabase';
 import './plugin-publisher.css';
 
 type Props = { onPublished: () => void; onBusyChange?: (busy: boolean) => void };
 type DetailsField = 'features' | 'environment' | 'installation' | 'outputs';
+type IssueField = 'name' | 'host' | 'summary' | 'version' | 'packageFile' | 'coverFile' | DetailsField;
+const fieldLabels: Record<IssueField, string> = { name: '插件名称', host: '适用软件', summary: '中文简介', version: '发布版本', packageFile: 'ZIP 安装包', coverFile: '插件封面', features: '主要功能', environment: '运行环境', installation: '安装与使用', outputs: '输出内容' };
+const stageLabels: Record<PluginPublicationStage, string> = { checking: '核验账号与文件', package: '上传私有 ZIP', cover: '上传公开封面', publishing: '发布插件介绍' };
 const detailFields: { key: DetailsField; label: string; hint: string; placeholder: string }[] = [
     { key: 'features', label: '主要功能', hint: '告诉用户它能完成什么', placeholder: '批量整理科研图片\n自动添加子图编号\n导出可编辑图形' },
     { key: 'environment', label: '运行环境', hint: '软件版本、系统与必要依赖', placeholder: 'Windows 10 / 11\nPowerPoint 2021 或更新版本' },
@@ -30,50 +33,112 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
     const [coverPreview, setCoverPreview] = useState('');
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState('');
+    const [invalidFields, setInvalidFields] = useState<IssueField[]>([]);
+    const [errorRevision, setErrorRevision] = useState(0);
+    const [stage, setStage] = useState<PluginPublicationStage>('checking');
+    const [started, setStarted] = useState(false);
+    const [serviceState, setServiceState] = useState<'checking' | 'ready' | 'failed'>('checking');
+    const [serviceError, setServiceError] = useState('');
+    const [serviceRetry, setServiceRetry] = useState(0);
     const [published, setPublished] = useState(false);
     const packageRef = useRef<HTMLInputElement>(null);
     const coverRef = useRef<HTMLInputElement>(null);
     const previewUrl = useRef('');
     const submitting = useRef(false);
+    const formRef = useRef<HTMLFormElement>(null);
+    const feedbackRef = useRef<HTMLDivElement>(null);
+    const serviceSequence = useRef(0);
 
     useEffect(() => () => { if (previewUrl.current) URL.revokeObjectURL(previewUrl.current); }, []);
+    useEffect(() => {
+        let cancelled = false;
+        const sequence = ++serviceSequence.current;
+        setServiceState('checking'); setServiceError('');
+        void checkPluginPublicationStorage().then(() => {
+            if (!cancelled && sequence === serviceSequence.current) setServiceState('ready');
+        }).catch(error => {
+            if (cancelled || sequence !== serviceSequence.current) return;
+            setServiceState('failed');
+            setServiceError(getSupabaseErrorMessage(error) ?? '无法检查上传服务，请重试。');
+        });
+        return () => { cancelled = true; };
+    }, [serviceRetry]);
+    useEffect(() => {
+        if (!error && !serviceError) return;
+        const frame = requestAnimationFrame(() => {
+            feedbackRef.current?.focus({ preventScroll: true });
+            feedbackRef.current?.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+        });
+        return () => cancelAnimationFrame(frame);
+    }, [error, serviceError, errorRevision]);
+
+    function showError(message: string, fields: IssueField[] = []) {
+        setError(message); setInvalidFields(fields); setErrorRevision(value => value + 1);
+    }
+    function clearFieldError(field: IssueField) {
+        if (!invalidFields.includes(field)) return;
+        const next = invalidFields.filter(item => item !== field);
+        setInvalidFields(next);
+        if (!next.length) setError('');
+    }
+    function focusField(field: IssueField) {
+        const input = formRef.current?.querySelector<HTMLElement>('[name="' + field + '"]');
+        input?.scrollIntoView({ behavior: 'auto', block: 'center' });
+        input?.focus({ preventScroll: true });
+    }
+    function fieldAria(field: IssueField) {
+        const invalid = invalidFields.includes(field);
+        return { 'aria-invalid': invalid, 'aria-describedby': invalid ? id + '-feedback' : undefined };
+    }
 
     function selectPackage(event: ChangeEvent<HTMLInputElement>) {
         const file = event.currentTarget.files?.[0];
         if (!file) return;
         if (!/\.zip$/i.test(file.name) || !file.size || file.size > 50 * 1024 * 1024) {
-            setError('请选择非空的 ZIP 安装包，大小不超过 50 MB。');
+            setPackageFile(null); setStarted(false); showError('请选择非空的 ZIP 安装包，大小不超过 50 MB。', ['packageFile']);
             event.currentTarget.value = '';
             return;
         }
-        setPackageFile(file); setError(''); setPublished(false);
+        setPackageFile(file); setError(''); setInvalidFields([]); setPublished(false);
     }
     function selectCover(event: ChangeEvent<HTMLInputElement>) {
         const file = event.currentTarget.files?.[0];
         if (!file) return;
         if (!/\.(png|jpe?g|webp)$/i.test(file.name) || !file.size || file.size > 5 * 1024 * 1024) {
-            setError('封面支持 PNG、JPEG 或 WEBP，大小不超过 5 MB。');
+            removeCover(); setStarted(false); showError('封面支持 PNG、JPEG 或 WEBP，大小不超过 5 MB。', ['coverFile']);
             event.currentTarget.value = '';
             return;
         }
         if (previewUrl.current) URL.revokeObjectURL(previewUrl.current);
         previewUrl.current = URL.createObjectURL(file);
-        setCoverPreview(previewUrl.current); setCoverFile(file); setError(''); setPublished(false);
+        setCoverPreview(previewUrl.current); setCoverFile(file); setError(''); setInvalidFields([]); setPublished(false);
     }
     function removeCover() {
         if (previewUrl.current) URL.revokeObjectURL(previewUrl.current);
         previewUrl.current = ''; setCoverPreview(''); setCoverFile(null);
         if (coverRef.current) coverRef.current.value = '';
+        clearFieldError('coverFile');
     }
     async function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (submitting.current || published) return;
-        if (!name.trim() || !host || !summary.trim() || !version.trim() || !packageFile) {
-            setError('请填写插件名称、适用软件、中文简介和版本，并选择 ZIP 安装包。');
-            if (!packageFile) packageRef.current?.focus();
+        if (serviceState !== 'ready') { showError(serviceState === 'checking' ? '正在检查上传服务，请稍后再发布。' : '上传服务尚未就绪，请先重试服务检查。'); return; }
+        setStarted(false);
+        const missing: IssueField[] = [];
+        if (!name.trim()) missing.push('name');
+        if (!host) missing.push('host');
+        if (!summary.trim()) missing.push('summary');
+        if (!version.trim()) missing.push('version');
+        if (!packageFile) missing.push('packageFile');
+        if (missing.length) {
+            showError('请先补全以下必填项，再上传发布。', missing);
             return;
         }
-        submitting.current = true; setBusy(true); onBusyChange?.(true); setError('');
+        const invalidLists = detailFields.filter(field => lines(details[field.key]).length > 40 || lines(details[field.key]).some(line => line.length > 1000)).map(field => field.key);
+        if (invalidLists.length) { showError('使用说明每项最多 40 条，每条不超过 1000 字，请缩短后重试。', invalidLists); return; }
+        // File and host are narrowed by the explicit validation above.
+        if (!packageFile || !host) return;
+        submitting.current = true; setBusy(true); onBusyChange?.(true); setError(''); setInvalidFields([]); setStage('checking'); setStarted(true);
         const input: PluginPublicationInput = {
             name: name.trim(), host, summary: summary.trim(), version: version.trim(),
             features: lines(details.features), environment: lines(details.environment),
@@ -81,23 +146,31 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
             packageFile, ...(coverFile ? { coverFile } : {}),
         };
         try {
-            await publishSoftwarePlugin(input);
+            await publishSoftwarePlugin(input, setStage);
             setPublished(true);
-            onPublished();
-        } catch (error) { setError(isSupabaseConnectionError(error) ? '暂时无法连接上传服务，已保留填写内容，请稍后重试。' : (getSupabaseErrorMessage(error) ?? '上传发布失败，已保留填写内容，请重试。')); }
+        } catch (error) { showError(isSupabaseConnectionError(error) ? '暂时无法连接上传服务，已保留填写内容，请稍后重试。' : (getSupabaseErrorMessage(error) ?? '上传发布失败，已保留填写内容，请重试。')); return; }
         finally { submitting.current = false; setBusy(false); onBusyChange?.(false); }
+        onPublished();
     }
 
-    return <form className="plugin-publisher" onSubmit={submit} aria-label="发布自己的软件插件">
-        <p className="plugin-publisher-intro">填写中文介绍并选择安装包，发布后会以插件卡片展示。文件在点击发布前仅保留在本机。</p>
+    const stages: PluginPublicationStage[] = coverFile ? ['checking', 'package', 'cover', 'publishing'] : ['checking', 'package', 'publishing'];
+    const feedbackError = error || serviceError;
+    return <form ref={formRef} className="plugin-publisher" onSubmit={submit} noValidate aria-label="发布自己的软件插件" aria-busy={busy}>
+        <p className="plugin-publisher-intro">介绍与封面公开展示，ZIP 安装包存入私有空间，用户登录后才能下载。点击发布前，所选文件仅保留在本机。</p>
+        {(busy || feedbackError || published || serviceState !== 'ready') && <div id={id + '-feedback'} ref={feedbackRef} tabIndex={-1} className={'plugin-publisher-feedback ' + (feedbackError ? 'is-error' : published ? 'is-success' : 'is-busy')} role={feedbackError ? 'alert' : 'status'} aria-live={feedbackError ? 'assertive' : 'polite'}>
+            {feedbackError ? <><strong>{started ? '发布未完成 · ' + stageLabels[stage] : error ? '请检查填写内容' : '上传服务尚未就绪'}</strong><p>{feedbackError}</p>{error && serviceError && <p>{serviceError}</p>}{invalidFields.length > 0 && <div className="plugin-publisher-error-fields" aria-label="需要修改的字段">{invalidFields.map(field => <button key={field} type="button" onClick={() => focusField(field)}>{fieldLabels[field]}</button>)}</div>}{serviceState === 'failed' && <button className="plugin-publisher-service-retry" type="button" disabled={busy} onClick={() => { setError(''); setInvalidFields([]); setStarted(false); setServiceState('checking'); setServiceError(''); setServiceRetry(value => value + 1); }}>重试上传服务检查</button>}<small>填写内容已保留，修正后可再次发布。</small></>
+                : published ? <><strong><CheckCircle2 size={16} />插件已发布</strong><p>介绍与封面已加入插件列表，安装包仅登录后可下载。</p></>
+                    : busy ? <><strong><Loader2 size={16} className="animate-spin" />{stageLabels[stage]}…</strong><ol className="plugin-publisher-stages">{stages.map((item, index) => <li key={item} className={item === stage ? 'is-current' : index < stages.indexOf(stage) ? 'is-complete' : ''}><span>{index < stages.indexOf(stage) ? <CheckCircle2 size={12} /> : index + 1}</span>{stageLabels[item]}</li>)}</ol><small>请保持此页面打开。上传耗时取决于安装包大小与网络。</small></>
+                        : <><strong><Loader2 size={16} className="animate-spin" />正在检查上传服务…</strong><p>正在确认管理员权限与私有安装包空间。你可以继续填写介绍、选择本机文件。</p></>}
+        </div>}
         <fieldset disabled={busy || published}>
             <legend className="plugin-publisher-section"><span>01</span>插件信息</legend>
             <div className="plugin-publisher-fields">
-                <label className="plugin-publisher-field" htmlFor={id + '-name'}><span>插件名称 <i>必填</i></span><input id={id + '-name'} name="name" value={name} onChange={event => setName(event.currentTarget.value)} maxLength={120} required placeholder="例如：科研图片排版工具" autoComplete="off" /></label>
-                <label className="plugin-publisher-field" htmlFor={id + '-host'}><span>适用软件 <i>必填</i></span><select id={id + '-host'} name="host" value={host} onChange={event => setHost(event.currentTarget.value as SoftwareHost)} required><option value="" disabled>选择适用软件</option><option value="Blender">Blender</option><option value="PowerPoint">PowerPoint / PPT</option><option value="Illustrator">Illustrator</option><option value="其他">其他软件</option></select></label>
-                <label className="plugin-publisher-field" htmlFor={id + '-version'}><span>发布版本 <i>必填</i></span><input id={id + '-version'} name="version" value={version} onChange={event => setVersion(event.currentTarget.value)} maxLength={64} required placeholder="例如：1.0.0" autoComplete="off" /></label>
+                <label className="plugin-publisher-field" htmlFor={id + '-name'}><span>插件名称 <i>必填</i></span><input id={id + '-name'} name="name" value={name} onChange={event => { setName(event.currentTarget.value); clearFieldError('name'); }} {...fieldAria('name')} maxLength={120} required placeholder="例如：科研图片排版工具" autoComplete="off" /></label>
+                <label className="plugin-publisher-field" htmlFor={id + '-host'}><span>适用软件 <i>必填</i></span><select id={id + '-host'} name="host" value={host} onChange={event => { setHost(event.currentTarget.value as SoftwareHost); clearFieldError('host'); }} {...fieldAria('host')} required><option value="" disabled>选择适用软件</option><option value="Blender">Blender</option><option value="PowerPoint">PowerPoint / PPT</option><option value="Illustrator">Illustrator</option><option value="其他">其他软件</option></select></label>
+                <label className="plugin-publisher-field" htmlFor={id + '-version'}><span>发布版本 <i>必填</i></span><input id={id + '-version'} name="version" value={version} onChange={event => { setVersion(event.currentTarget.value); clearFieldError('version'); }} {...fieldAria('version')} maxLength={64} required placeholder="例如：1.0.0" autoComplete="off" /></label>
                 <div className="plugin-publisher-version-note">填写与安装包一致的版本，方便用户确认下载内容。</div>
-                <label className="plugin-publisher-field plugin-publisher-full" htmlFor={id + '-summary'}><span>中文简介 <i>必填</i></span><textarea id={id + '-summary'} name="summary" value={summary} onChange={event => setSummary(event.currentTarget.value)} maxLength={2000} required rows={3} placeholder="说明插件解决什么问题、适合哪些科研工作，以及使用方式。" /><small>该介绍会显示在插件卡片与详情中。</small></label>
+                <label className="plugin-publisher-field plugin-publisher-full" htmlFor={id + '-summary'}><span>中文简介 <i>必填</i></span><textarea id={id + '-summary'} name="summary" value={summary} onChange={event => { setSummary(event.currentTarget.value); clearFieldError('summary'); }} {...fieldAria('summary')} maxLength={2000} required rows={3} placeholder="说明插件解决什么问题、适合哪些科研工作，以及使用方式。" /><small>该介绍会公开显示在插件卡片与详情中。</small></label>
             </div>
         </fieldset>
 
@@ -105,21 +178,21 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
             <legend className="plugin-publisher-section"><span>02</span>安装包与封面</legend>
             <div className="plugin-publisher-files">
                 <label className={'plugin-publisher-upload ' + (packageFile ? 'has-file' : '')} htmlFor={id + '-package'}>
-                    <input ref={packageRef} id={id + '-package'} type="file" accept=".zip,application/zip,application/x-zip-compressed" onChange={selectPackage} aria-required="true" aria-describedby={id + '-package-hint'} />
+                    <input ref={packageRef} id={id + '-package'} name="packageFile" type="file" accept=".zip,application/zip,application/x-zip-compressed" onChange={selectPackage} aria-required="true" aria-invalid={invalidFields.includes('packageFile')} aria-describedby={(invalidFields.includes('packageFile') ? id + '-feedback ' : '') + id + '-package-hint'} />
                     <span className="plugin-publisher-upload-icon">{packageFile ? <FileArchive size={24} /> : <UploadCloud size={24} />}</span>
                     <strong>{packageFile ? packageFile.name : '选择 ZIP 安装包'}</strong>
-                    <span id={id + '-package-hint'}>{packageFile ? fileSize(packageFile.size) + ' · 点击可更换' : '必填 · 最大 50 MB'}</span>
+                    <span id={id + '-package-hint'}>{packageFile ? fileSize(packageFile.size) + ' · 点击可更换' : '必填 · 私有存储 · 最大 50 MB'}</span>
                 </label>
                 <div className="plugin-publisher-cover">
                     <label className={'plugin-publisher-upload ' + (coverFile ? 'has-file has-cover' : '')} htmlFor={id + '-cover'}>
-                        <input ref={coverRef} id={id + '-cover'} type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" onChange={selectCover} aria-describedby={id + '-cover-hint'} />
+                        <input ref={coverRef} id={id + '-cover'} name="coverFile" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" onChange={selectCover} aria-invalid={invalidFields.includes('coverFile')} aria-describedby={(invalidFields.includes('coverFile') ? id + '-feedback ' : '') + id + '-cover-hint'} />
                         {coverPreview ? <>
                             {/* The preview stays local until the explicit publish action. */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={coverPreview} alt="所选插件封面预览" />
                         </> : <span className="plugin-publisher-upload-icon"><ImagePlus size={24} /></span>}
                         <strong>{coverFile ? coverFile.name : '选择插件封面'}</strong>
-                        <span id={id + '-cover-hint'}>{coverFile ? fileSize(coverFile.size) + ' · 点击可更换' : '选填 · PNG / JPEG / WEBP · 最大 5 MB'}</span>
+                        <span id={id + '-cover-hint'}>{coverFile ? fileSize(coverFile.size) + ' · 公开封面 · 点击可更换' : '选填 · 公开封面 · 最大 5 MB'}</span>
                     </label>
                     {coverFile && <button type="button" className="plugin-publisher-remove-cover" onClick={removeCover}><X size={12} />移除封面</button>}
                 </div>
@@ -128,15 +201,12 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
 
         <fieldset disabled={busy || published}>
             <legend className="plugin-publisher-section"><span>03</span>使用说明 <small>选填，每行一条</small></legend>
-            <div className="plugin-publisher-fields">{detailFields.map(field => <label key={field.key} className="plugin-publisher-field" htmlFor={id + '-' + field.key}><span>{field.label}</span><textarea id={id + '-' + field.key} name={field.key} value={details[field.key]} onChange={event => { const value = event.currentTarget.value; setDetails(current => ({ ...current, [field.key]: value })); }} rows={3} maxLength={6000} placeholder={field.placeholder} /><small>{field.hint}</small></label>)}</div>
+            <div className="plugin-publisher-fields">{detailFields.map(field => <label key={field.key} className="plugin-publisher-field" htmlFor={id + '-' + field.key}><span>{field.label}</span><textarea id={id + '-' + field.key} name={field.key} value={details[field.key]} onChange={event => { const value = event.currentTarget.value; setDetails(current => ({ ...current, [field.key]: value })); clearFieldError(field.key); }} {...fieldAria(field.key)} rows={3} maxLength={6000} placeholder={field.placeholder} /><small>{field.hint}</small></label>)}</div>
         </fieldset>
 
         <div className="plugin-publisher-publication">
-            <div><strong>发布后访客可以查看介绍并下载安装包。</strong><p>点击“上传并发布插件”将公开填写的介绍、所选 ZIP 和封面。仅选择文件不会上传或公开你的本地项目。</p></div>
-            <button type="submit" disabled={busy || published}>{busy ? <Loader2 size={16} className="animate-spin" /> : published ? <CheckCircle2 size={16} /> : <UploadCloud size={16} />}{busy ? '正在上传并发布…' : published ? '插件已发布' : '上传并发布插件'}</button>
+            <div><strong>介绍与封面公开，ZIP 仅登录后可下载。</strong><p>发布会上传所选 ZIP 至私有存储并公开插件介绍、封面。仅选择文件不会上传你的本地项目。</p></div>
+            <button type="submit" disabled={busy || published || serviceState !== 'ready'}>{busy || serviceState === 'checking' ? <Loader2 size={16} className="animate-spin" /> : published ? <CheckCircle2 size={16} /> : <UploadCloud size={16} />}{busy ? stageLabels[stage] + '…' : published ? '插件已发布' : serviceState === 'checking' ? '正在检查上传服务…' : serviceState === 'failed' ? '上传服务尚未就绪' : error ? '修正后上传并发布' : '上传并发布插件'}</button>
         </div>
-        {busy && <p className="plugin-publisher-status" role="status">正在上传所选文件并保存插件介绍，请保持此页面打开。</p>}
-        {error && <p className="plugin-publisher-error" role="alert">{error}</p>}
-        {published && <p className="plugin-publisher-success" role="status"><CheckCircle2 size={15} />发布成功，插件已加入软件插件列表。</p>}
     </form>;
 }

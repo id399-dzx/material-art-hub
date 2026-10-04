@@ -1,5 +1,5 @@
 import { isSupabaseConnectionError, supabase } from "@/lib/supabase";
-import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, getPluginPackagePath, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost } from "./catalog";
+import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, getPluginPackageObjects, getPluginPackagePath, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost } from "./catalog";
 
 export type PluginPublicationInput = {
   name: string; host: SoftwareHost; summary: string; version: string;
@@ -8,6 +8,7 @@ export type PluginPublicationInput = {
 };
 
 export type PluginPublicationStage = "checking" | "package" | "cover" | "publishing";
+export type PluginPackageUploadProgress = { completed: number; total: number };
 
 function pluginServiceError(error: unknown, stage: PluginPublicationStage | "loading" | "readiness"): Error {
   const details = error && typeof error === "object" ? error as Record<string, unknown> : {};
@@ -34,9 +35,9 @@ function pluginServiceError(error: unknown, stage: PluginPublicationStage | "loa
       : stage === "loading" ? "无法读取插件目录，请管理员检查 assets 表的读取权限（RLS）。"
       : "请登录管理员账号后再发布插件。";
   } else if ((stage === "package" || stage === "cover") && (status === 413 || /too large|size.*exceed|exceed.*size|EntityTooLarge/i.test(signature))) {
-    explanation = stage === "package" ? "安装包超过存储服务的大小限制，请检查私有桶和项目限额；安装包最多 50 MB。" : "封面超过存储服务的大小限制，请使用 5 MB 以内的图片并检查项目限额。";
+    explanation = stage === "package" ? "安装包分片超过存储服务的大小限制，请检查私有桶和项目限额；每个对象需允许 32 MB，完整安装包最多 200 MB。" : "封面超过存储服务的大小限制，请使用 5 MB 以内的图片并检查项目限额。";
   } else if ((stage === "package" || stage === "cover") && /mime.*(?:not supported|not allowed)|InvalidMimeType/i.test(signature)) {
-    explanation = stage === "package" ? "私有安装包存储未允许 ZIP 文件，请管理员检查 plugin-packages 的 MIME 类型设置。" : "封面存储未允许该图片类型，请管理员检查 materials 的 MIME 类型设置。";
+    explanation = stage === "package" ? "私有安装包存储未允许 ZIP 或二进制分片文件，请管理员检查 plugin-packages 的 MIME 类型设置，允许 application/zip 和 application/octet-stream。" : "封面存储未允许该图片类型，请管理员检查 materials 的 MIME 类型设置。";
   } else if ((stage === "publishing" || stage === "loading") && (code === "42P01" || code === "PGRST205" || /(?:table|relation).*assets.*(?:not found|does not exist)/i.test(signature))) {
     explanation = "插件目录使用的 assets 表尚未配置，请管理员检查当前 Supabase 项目的数据库。";
   } else if (isSupabaseConnectionError(error)) {
@@ -83,8 +84,12 @@ export async function checkPluginPublicationStorage(): Promise<void> {
   if (bucketError) throw pluginServiceError(bucketError, "readiness");
   if (!bucket || bucket.id !== PLUGIN_PACKAGE_BUCKET) throw new Error("无法确认私有安装包存储配置，请管理员执行私有插件包迁移 SQL 并检查桶配置读取权限。");
   if (bucket.public !== false) throw new Error("plugin-packages 必须是私有存储桶，当前配置无法保障登录下载。请管理员执行私有插件包迁移 SQL 后再上传。");
-  if (bucket.file_size_limit != null && bucket.file_size_limit < 50 * 1024 * 1024) throw new Error("plugin-packages 的安装包大小限额低于 50 MB，请管理员执行私有插件包迁移 SQL 或调整桶限额。");
-  if (bucket.allowed_mime_types?.length && !bucket.allowed_mime_types.some(type => ["application/zip", "application/*", "*/*"].includes(type.toLowerCase()))) throw new Error("plugin-packages 未允许 ZIP 文件，请管理员检查桶的 MIME 类型设置。");
+  if (bucket.file_size_limit != null && bucket.file_size_limit < PLUGIN_PACKAGE_CHUNK_BYTES) throw new Error("plugin-packages 的单对象大小限额低于 32 MB，请管理员执行私有插件包迁移 SQL 或调整桶限额。");
+  if (bucket.allowed_mime_types?.length) {
+    const allowed = bucket.allowed_mime_types.map(type => type.toLowerCase());
+    const supports = (mime: string) => allowed.some(type => [mime, "application/*", "*/*"].includes(type));
+    if (!supports("application/zip") || !supports("application/octet-stream")) throw new Error("plugin-packages 未允许 ZIP 或二进制分片文件，请管理员检查桶的 MIME 类型设置，允许 application/zip 和 application/octet-stream。");
+  }
   const { error: listError } = await supabase.storage.from(PLUGIN_PACKAGE_BUCKET).list("", { limit: 1 }, { signal: AbortSignal.timeout(15_000) })
     .catch(error => { throw pluginServiceError(error, "readiness"); });
   if (listError) throw pluginServiceError(listError, "readiness");
@@ -102,14 +107,37 @@ export async function loadSoftwarePlugins() {
   return plugins.filter(plugin => plugin !== null);
 }
 
-export async function publishSoftwarePlugin(input: PluginPublicationInput, onStage?: (stage: PluginPublicationStage) => void) {
+async function sha256(bytes: ArrayBuffer | Uint8Array<ArrayBuffer>): Promise<string> {
+  try {
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+  } catch (error) {
+    throw new Error("安装包 SHA-256 校验失败，请重新选择文件或刷新页面后重试。", { cause: error });
+  }
+}
+
+export async function publishSoftwarePlugin(input: PluginPublicationInput, onStage?: (stage: PluginPublicationStage) => void, onPackageProgress?: (progress: PluginPackageUploadProgress) => void) {
   onStage?.("checking");
   await requirePluginAdministrator();
   if (!input.name.trim() || input.name.length > 160) throw new Error("请填写插件名称，最多 160 字。");
   if (!input.packageFile || !/\.zip$/i.test(input.packageFile.name)) throw new Error("请将插件与使用说明打包为 ZIP 后上传。");
-  const header = new Uint8Array(await input.packageFile.slice(0, 4).arrayBuffer());
+  if (!Number.isSafeInteger(input.packageFile.size) || input.packageFile.size <= 0 || input.packageFile.size > PLUGIN_PACKAGE_MAX_BYTES) throw new Error("插件安装包大小无效，请使用 200 MB 以内的 ZIP 文件。");
+  const header = new Uint8Array(await input.packageFile.slice(0, 4).arrayBuffer().catch(() => { throw new Error("安装包内容无法读取，请重新选择 ZIP 文件。"); }));
   if (header[0] !== 0x50 || header[1] !== 0x4b || !((header[2] === 3 && header[3] === 4) || (header[2] === 5 && header[3] === 6))) throw new Error("安装包不是有效的 ZIP 文件。");
-  const details = validatePluginDetails({ ...input, schema: "fesilent-plugin-v1", packageName: input.packageFile.name, packageBytes: input.packageFile.size });
+  const packageMetadata = { ...input, packageName: input.packageFile.name, packageBytes: input.packageFile.size };
+  const chunked = input.packageFile.size > PLUGIN_PACKAGE_CHUNK_BYTES;
+  const details = chunked ? await (async () => {
+    const buffer = await input.packageFile.arrayBuffer().catch(() => { throw new Error("安装包内容无法读取，请重新选择 ZIP 文件。"); });
+    if (buffer.byteLength !== input.packageFile.size) throw new Error("安装包实际大小与文件信息不一致，请重新选择 ZIP 文件。");
+    const bytes = new Uint8Array(buffer);
+    const packageSha256 = await sha256(buffer);
+    const packageChunks = [];
+    for (let offset = 0; offset < bytes.length; offset += PLUGIN_PACKAGE_CHUNK_BYTES) {
+      const chunk = bytes.subarray(offset, Math.min(offset + PLUGIN_PACKAGE_CHUNK_BYTES, bytes.length));
+      packageChunks.push({ bytes: chunk.byteLength, sha256: await sha256(chunk) });
+    }
+    return validatePluginDetails({ ...packageMetadata, schema: "fesilent-plugin-v2", packageSha256, packageChunks });
+  })() : validatePluginDetails({ ...packageMetadata, schema: "fesilent-plugin-v1" });
   const cover = input.coverFile;
   if (cover && (!['image/png', 'image/jpeg', 'image/webp'].includes(cover.type) || cover.size <= 0 || cover.size > 5 * 1024 * 1024)) throw new Error("封面请使用 5 MB 以内的 PNG、JPG 或 WEBP 图片。");
   if (cover) {
@@ -125,15 +153,26 @@ export async function publishSoftwarePlugin(input: PluginPublicationInput, onSta
   let published = false;
   let stage: PluginPublicationStage = "package";
   let publicationError: Error | undefined;
+  let activePackageObject = 0;
+  const packagePath = `${uploadId}/${chunked ? "package.parts" : "package.zip"}`;
+  const packageObjects = getPluginPackageObjects(details, packagePath);
   try {
-    const packagePath = `${uploadId}/package.zip`;
     onStage?.(stage);
-    // The SDK uses the Blob's MIME type for multipart uploads; contentType alone
-    // does not fix ZIP files reported as empty/unsupported MIME by the browser.
-    const packageBody = new Blob([input.packageFile], { type: "application/zip" });
-    const { error: packageError } = await supabase.storage.from(PLUGIN_PACKAGE_BUCKET).upload(packagePath, packageBody, { contentType: "application/zip", upsert: false });
-    if (packageError) throw packageError;
-    uploaded.set(PLUGIN_PACKAGE_BUCKET, [packagePath]);
+    onPackageProgress?.({ completed: 0, total: packageObjects.length });
+    const uploadedPackagePaths: string[] = [];
+    for (const [index, object] of packageObjects.entries()) {
+      activePackageObject = index;
+      const type = chunked ? "application/octet-stream" : "application/zip";
+      const part = chunked ? input.packageFile.slice(index * PLUGIN_PACKAGE_CHUNK_BYTES, index * PLUGIN_PACKAGE_CHUNK_BYTES + object.bytes) : input.packageFile;
+      // Supabase multipart upload uses the Blob MIME, including when the browser
+      // reports an empty or unsupported type for the original ZIP.
+      const body = new Blob([part], { type });
+      const { error: packageError } = await supabase.storage.from(PLUGIN_PACKAGE_BUCKET).upload(object.path, body, { contentType: type, upsert: false });
+      if (packageError) throw packageError;
+      uploadedPackagePaths.push(object.path);
+      uploaded.set(PLUGIN_PACKAGE_BUCKET, uploadedPackagePaths);
+      onPackageProgress?.({ completed: index + 1, total: packageObjects.length });
+    }
     const packageReference = `storage://${PLUGIN_PACKAGE_BUCKET}/${packagePath}`;
     let coverUrl = "";
     if (cover) {
@@ -160,6 +199,7 @@ export async function publishSoftwarePlugin(input: PluginPublicationInput, onSta
     published = true;
   } catch (error) {
     publicationError = pluginServiceError(error, stage);
+    if (stage === "package" && chunked) publicationError = new Error(`${publicationError.message}（第 ${activePackageObject + 1}/${packageObjects.length} 个分片）`, { cause: error });
     throw publicationError;
   } finally {
     if (!published && uploaded.size) {

@@ -6,8 +6,12 @@ export type SoftwareHost = typeof SOFTWARE_HOSTS[number];
 export const PLUGIN_ASSET_TAG = "__fesilent_software_plugin_v1__";
 export const PLUGIN_ADMIN_EMAIL = "id19991016@gmail.com";
 export const PLUGIN_PACKAGE_BUCKET = "plugin-packages";
+export const PLUGIN_PACKAGE_MAX_BYTES = 200 * 1024 * 1024;
+export const PLUGIN_PACKAGE_CHUNK_BYTES = 32 * 1024 * 1024;
+const LEGACY_PACKAGE_MAX_BYTES = 50 * 1024 * 1024;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const isUuid = (value: unknown): value is string => typeof value === "string" && value.length === 36 && UUID_PATTERN.test(value);
+const isSha256 = (value: unknown): value is string => typeof value === "string" && value.length === 64 && /^[0-9a-f]{64}$/.test(value);
 
 /** A storage reference is metadata, never a public URL. Keep parsing strict and unnormalised. */
 export function getPluginPackagePath(value: unknown): string | null {
@@ -15,11 +19,10 @@ export function getPluginPackagePath(value: unknown): string | null {
   if (typeof value !== "string" || !value.startsWith(prefix)) return null;
   const path = value.slice(prefix.length);
   const parts = path.split("/");
-  return parts.length === 2 && isUuid(parts[0]) && parts[1] === "package.zip" ? path : null;
+  return parts.length === 2 && isUuid(parts[0]) && ["package.zip", "package.parts"].includes(parts[1]) ? path : null;
 }
 
-export type SoftwarePluginDetails = {
-  schema: "fesilent-plugin-v1";
+type SoftwarePluginDescription = {
   host: SoftwareHost;
   summary: string;
   version: string;
@@ -30,6 +33,13 @@ export type SoftwarePluginDetails = {
   packageName: string;
   packageBytes: number;
 };
+
+export type PluginPackageChunk = { bytes: number; sha256: string };
+export type PluginPackageObject = { path: string; bytes: number; sha256?: string };
+export type SoftwarePluginDetails = SoftwarePluginDescription & (
+  { schema: "fesilent-plugin-v1" }
+  | { schema: "fesilent-plugin-v2"; packageSha256: string; packageChunks: PluginPackageChunk[] }
+);
 
 export type SoftwarePlugin = SoftwarePluginDetails & {
   id: string;
@@ -67,17 +77,49 @@ function textList(value: unknown): string[] {
 export function validatePluginDetails(value: unknown): SoftwarePluginDetails {
   if (!value || typeof value !== "object") throw new Error("插件信息格式有误。");
   const details = value as Record<string, unknown>;
-  if (details.schema !== "fesilent-plugin-v1" || !SOFTWARE_HOSTS.includes(details.host as SoftwareHost)) throw new Error("插件类型无效。");
-  if (!Number.isSafeInteger(details.packageBytes) || (details.packageBytes as number) <= 0 || (details.packageBytes as number) > 50 * 1024 * 1024) throw new Error("插件安装包大小无效。");
-  return {
-    schema: "fesilent-plugin-v1", host: details.host as SoftwareHost,
+  if (!["fesilent-plugin-v1", "fesilent-plugin-v2"].includes(details.schema as string) || !SOFTWARE_HOSTS.includes(details.host as SoftwareHost)) throw new Error("插件类型无效。");
+  const packageBytes = details.packageBytes as number;
+  const maximumBytes = details.schema === "fesilent-plugin-v1" ? LEGACY_PACKAGE_MAX_BYTES : PLUGIN_PACKAGE_MAX_BYTES;
+  if (!Number.isSafeInteger(packageBytes) || packageBytes <= 0 || packageBytes > maximumBytes) throw new Error(`插件安装包大小无效，${details.schema === "fesilent-plugin-v1" ? "旧版安装包最多 50 MB" : "安装包最多 200 MB"}。`);
+  const description: SoftwarePluginDescription = {
+    host: details.host as SoftwareHost,
     summary: textField(details.summary, "中文简介", 4000),
     version: textField(details.version, "版本", 80),
     features: textList(details.features), environment: textList(details.environment),
     installation: textList(details.installation), outputs: textList(details.outputs),
     packageName: textField(details.packageName, "安装包名称", 255),
-    packageBytes: details.packageBytes as number,
+    packageBytes,
   };
+  if (details.schema === "fesilent-plugin-v1") return { schema: "fesilent-plugin-v1", ...description };
+  if (packageBytes <= PLUGIN_PACKAGE_CHUNK_BYTES) throw new Error("分片安装包必须大于 32 MB。");
+  if (!isSha256(details.packageSha256)) throw new Error("安装包 SHA-256 校验值无效。");
+  const chunkCount = Math.ceil(packageBytes / PLUGIN_PACKAGE_CHUNK_BYTES);
+  if (!Array.isArray(details.packageChunks) || details.packageChunks.length !== chunkCount) throw new Error("安装包分片数量与总大小不一致。");
+  const packageChunks = Array.from(details.packageChunks, (value: unknown, index: number): PluginPackageChunk => {
+    if (!value || typeof value !== "object") throw new Error("安装包分片信息格式有误。");
+    const chunk = value as Record<string, unknown>;
+    const expectedBytes = index === chunkCount - 1 ? packageBytes - index * PLUGIN_PACKAGE_CHUNK_BYTES : PLUGIN_PACKAGE_CHUNK_BYTES;
+    if (!Number.isSafeInteger(chunk.bytes) || chunk.bytes !== expectedBytes || (chunk.bytes as number) <= 0 || (chunk.bytes as number) > PLUGIN_PACKAGE_CHUNK_BYTES) throw new Error("安装包分片大小或顺序无效。");
+    if (!isSha256(chunk.sha256)) throw new Error("安装包分片 SHA-256 校验值无效。");
+    return { bytes: chunk.bytes as number, sha256: chunk.sha256 };
+  });
+  return { schema: "fesilent-plugin-v2", ...description, packageSha256: details.packageSha256, packageChunks };
+}
+
+/** Derive storage objects only from validated metadata; records cannot choose arbitrary paths. */
+export function getPluginPackageObjects(plugin: SoftwarePlugin): PluginPackageObject[];
+export function getPluginPackageObjects(details: SoftwarePluginDetails, packagePath: string): PluginPackageObject[];
+export function getPluginPackageObjects(value: SoftwarePluginDetails, suppliedPath?: string): PluginPackageObject[] {
+  const details = validatePluginDetails(value);
+  const packagePath = suppliedPath ?? (value as SoftwarePlugin).packagePath;
+  if (!getPluginPackagePath(`storage://${PLUGIN_PACKAGE_BUCKET}/${packagePath}`)) throw new Error("安装包私有存储路径无效。");
+  const [directory, filename] = packagePath.split("/");
+  if (details.schema === "fesilent-plugin-v1") {
+    if (filename !== "package.zip") throw new Error("旧版安装包信息必须对应 package.zip。");
+    return [{ path: packagePath, bytes: details.packageBytes }];
+  }
+  if (filename !== "package.parts") throw new Error("分片安装包信息必须对应 package.parts。");
+  return details.packageChunks.map((chunk, index) => ({ path: `${directory}/part-${String(index).padStart(3, "0")}.bin`, ...chunk }));
 }
 
 function storedUrl(value: string | null | undefined, storageOrigin: string): string | undefined {
@@ -95,6 +137,7 @@ export function pluginFromAsset(row: PluginAssetRow, storageOrigin: string): Sof
     const details = validatePluginDetails(JSON.parse(row.description));
     const packagePath = getPluginPackagePath(row.source_file_url);
     if (!packagePath || !isUuid(row.id)) return null;
+    getPluginPackageObjects(details, packagePath);
     return {
       ...details, id: textField(row.id, "插件编号", 100),
       name: textField(row.title, "插件名称", 160),

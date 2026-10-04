@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { CheckCircle2, FileArchive, ImagePlus, Loader2, UploadCloud, X } from 'lucide-react';
-import type { SoftwareHost } from '@/lib/software-plugins/catalog';
+import { PLUGIN_PACKAGE_MAX_BYTES, type SoftwareHost } from '@/lib/software-plugins/catalog';
 import { checkPluginPublicationStorage, publishSoftwarePlugin, type PluginPublicationInput, type PluginPublicationStage } from '@/lib/software-plugins/storage';
 import { getSupabaseErrorMessage, isSupabaseConnectionError } from '@/lib/supabase';
 import './plugin-publisher.css';
@@ -41,6 +41,7 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
     const [serviceError, setServiceError] = useState('');
     const [serviceRetry, setServiceRetry] = useState(0);
     const [published, setPublished] = useState(false);
+    const [packageProgress, setPackageProgress] = useState({ completed: 0, total: 0 });
     const packageRef = useRef<HTMLInputElement>(null);
     const coverRef = useRef<HTMLInputElement>(null);
     const previewUrl = useRef('');
@@ -94,8 +95,8 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
     function selectPackage(event: ChangeEvent<HTMLInputElement>) {
         const file = event.currentTarget.files?.[0];
         if (!file) return;
-        if (!/\.zip$/i.test(file.name) || !file.size || file.size > 50 * 1024 * 1024) {
-            setPackageFile(null); setStarted(false); showError('请选择非空的 ZIP 安装包，大小不超过 50 MB。', ['packageFile']);
+        if (!/\.zip$/i.test(file.name) || !file.size || file.size > PLUGIN_PACKAGE_MAX_BYTES) {
+            setPackageFile(null); setStarted(false); showError(`请选择非空的 ZIP 安装包，大小不超过 ${PLUGIN_PACKAGE_MAX_BYTES / 1024 / 1024} MB。`, ['packageFile']);
             event.currentTarget.value = '';
             return;
         }
@@ -138,7 +139,7 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
         if (invalidLists.length) { showError('使用说明每项最多 40 条，每条不超过 1000 字，请缩短后重试。', invalidLists); return; }
         // File and host are narrowed by the explicit validation above.
         if (!packageFile || !host) return;
-        submitting.current = true; setBusy(true); onBusyChange?.(true); setError(''); setInvalidFields([]); setStage('checking'); setStarted(true);
+        submitting.current = true; setBusy(true); onBusyChange?.(true); setError(''); setInvalidFields([]); setStage('checking'); setStarted(true); setPackageProgress({ completed: 0, total: 0 });
         const input: PluginPublicationInput = {
             name: name.trim(), host, summary: summary.trim(), version: version.trim(),
             features: lines(details.features), environment: lines(details.environment),
@@ -146,7 +147,7 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
             packageFile, ...(coverFile ? { coverFile } : {}),
         };
         try {
-            await publishSoftwarePlugin(input, setStage);
+            await publishSoftwarePlugin(input, setStage, setPackageProgress);
             setPublished(true);
         } catch (error) { showError(isSupabaseConnectionError(error) ? '暂时无法连接上传服务，已保留填写内容，请稍后重试。' : (getSupabaseErrorMessage(error) ?? '上传发布失败，已保留填写内容，请重试。')); return; }
         finally { submitting.current = false; setBusy(false); onBusyChange?.(false); }
@@ -160,7 +161,7 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
         {(busy || feedbackError || published || serviceState !== 'ready') && <div id={id + '-feedback'} ref={feedbackRef} tabIndex={-1} className={'plugin-publisher-feedback ' + (feedbackError ? 'is-error' : published ? 'is-success' : 'is-busy')} role={feedbackError ? 'alert' : 'status'} aria-live={feedbackError ? 'assertive' : 'polite'}>
             {feedbackError ? <><strong>{started ? '发布未完成 · ' + stageLabels[stage] : error ? '请检查填写内容' : '上传服务尚未就绪'}</strong><p>{feedbackError}</p>{error && serviceError && <p>{serviceError}</p>}{invalidFields.length > 0 && <div className="plugin-publisher-error-fields" aria-label="需要修改的字段">{invalidFields.map(field => <button key={field} type="button" onClick={() => focusField(field)}>{fieldLabels[field]}</button>)}</div>}{serviceState === 'failed' && <button className="plugin-publisher-service-retry" type="button" disabled={busy} onClick={() => { setError(''); setInvalidFields([]); setStarted(false); setServiceState('checking'); setServiceError(''); setServiceRetry(value => value + 1); }}>重试上传服务检查</button>}<small>填写内容已保留，修正后可再次发布。</small></>
                 : published ? <><strong><CheckCircle2 size={16} />插件已发布</strong><p>介绍与封面已加入插件列表，安装包仅登录后可下载。</p></>
-                    : busy ? <><strong><Loader2 size={16} className="animate-spin" />{stageLabels[stage]}…</strong><ol className="plugin-publisher-stages">{stages.map((item, index) => <li key={item} className={item === stage ? 'is-current' : index < stages.indexOf(stage) ? 'is-complete' : ''}><span>{index < stages.indexOf(stage) ? <CheckCircle2 size={12} /> : index + 1}</span>{stageLabels[item]}</li>)}</ol><small>请保持此页面打开。上传耗时取决于安装包大小与网络。</small></>
+                    : busy ? <><strong><Loader2 size={16} className="animate-spin" />{stageLabels[stage]}…</strong><ol className="plugin-publisher-stages">{stages.map((item, index) => <li key={item} className={item === stage ? 'is-current' : index < stages.indexOf(stage) ? 'is-complete' : ''}><span>{index < stages.indexOf(stage) ? <CheckCircle2 size={12} /> : index + 1}</span>{stageLabels[item]}</li>)}</ol>{stage === 'package' && packageProgress.total > 1 && <p>已完成 {packageProgress.completed} / {packageProgress.total} 部分，正在上传完整安装包。</p>}<small>请保持此页面打开。上传耗时取决于安装包大小与网络。</small></>
                         : <><strong><Loader2 size={16} className="animate-spin" />正在检查上传服务…</strong><p>正在确认管理员权限与私有安装包空间。你可以继续填写介绍、选择本机文件。</p></>}
         </div>}
         <fieldset disabled={busy || published}>
@@ -181,7 +182,7 @@ export default function PluginPublisher({ onPublished, onBusyChange }: Props) {
                     <input ref={packageRef} id={id + '-package'} name="packageFile" type="file" accept=".zip,application/zip,application/x-zip-compressed" onChange={selectPackage} aria-required="true" aria-invalid={invalidFields.includes('packageFile')} aria-describedby={(invalidFields.includes('packageFile') ? id + '-feedback ' : '') + id + '-package-hint'} />
                     <span className="plugin-publisher-upload-icon">{packageFile ? <FileArchive size={24} /> : <UploadCloud size={24} />}</span>
                     <strong>{packageFile ? packageFile.name : '选择 ZIP 安装包'}</strong>
-                    <span id={id + '-package-hint'}>{packageFile ? fileSize(packageFile.size) + ' · 点击可更换' : '必填 · 私有存储 · 最大 50 MB'}</span>
+                    <span id={id + '-package-hint'}>{packageFile ? fileSize(packageFile.size) + ' · 点击可更换' : `必填 · 私有存储 · 最大 ${PLUGIN_PACKAGE_MAX_BYTES / 1024 / 1024} MB`}</span>
                 </label>
                 <div className="plugin-publisher-cover">
                     <label className={'plugin-publisher-upload ' + (coverFile ? 'has-file has-cover' : '')} htmlFor={id + '-cover'}>

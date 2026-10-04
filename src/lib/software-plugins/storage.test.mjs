@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import { after, beforeEach, test } from 'node:test';
 import { registerHooks } from 'node:module';
+import { createHash } from 'node:crypto';
 import JSZip from 'jszip';
-import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET } from './catalog.ts';
+import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES } from './catalog.ts';
 
 // Substitute the client before importing storage.ts. No credentials or network are used.
 const stubKey = Symbol.for('fesilent.software-plugin.storage.test.client');
@@ -15,7 +16,7 @@ const client = {
         from(bucket) {
         state.buckets.push(bucket);
         return {
-            async upload(path, file, settings) { state.uploads.push({ bucket, path, file, settings }); return { error: state.uploadErrorAt === state.uploads.length ? state.uploadError : null }; },
+            async upload(path, file, settings) { state.uploads.push({ bucket, path, file, settings }); state.onUpload?.(); if (state.uploadPending) await state.uploadPending; return { error: state.uploadErrorAt === state.uploads.length ? state.uploadError : null }; },
             async list(path, options, parameters) { state.storageLists.push({ bucket, path, options, parameters }); return { data: [], error: state.listError }; },
             getPublicUrl(path) { state.publicUrlCalls.push({ bucket, path }); return { data: { publicUrl: `${storageOrigin}/storage/v1/object/public/${bucket}/${path}` } }; },
             async remove(paths) { state.removals.push({ bucket, paths: [...paths] }); if (state.cleanupThrow) throw state.cleanupThrow; return { error: state.cleanupError }; },
@@ -42,7 +43,7 @@ const originalStorageUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 after(() => { hooks.deregister(); delete globalThis[stubKey]; if (originalCreateImageBitmap) globalThis.createImageBitmap = originalCreateImageBitmap; else delete globalThis.createImageBitmap; if (originalStorageUrl === undefined) delete process.env.NEXT_PUBLIC_SUPABASE_URL; else process.env.NEXT_PUBLIC_SUPABASE_URL = originalStorageUrl; });
 beforeEach(() => {
     state = { user: { email: PLUGIN_ADMIN_EMAIL }, authError: null, authCalls: 0, buckets: [], uploads: [], removals: [], inserts: [], publicUrlCalls: [], queries: [], rows: [], readError: null, uploadErrorAt: -1, uploadError: new Error('Storage rejected upload'), insertError: null, cleanupError: null, cleanupThrow: null, bitmapClosed: 0 };
-    Object.assign(state, { bucketReads: [], bucketDefinition: { id: PLUGIN_PACKAGE_BUCKET, public: false, file_size_limit: 50 * 1024 * 1024, allowed_mime_types: ['application/zip'] }, bucketError: null, storageLists: [], listError: null });
+    Object.assign(state, { bucketReads: [], bucketDefinition: { id: PLUGIN_PACKAGE_BUCKET, public: false, file_size_limit: PLUGIN_PACKAGE_CHUNK_BYTES, allowed_mime_types: ['application/zip', 'application/octet-stream'] }, bucketError: null, storageLists: [], listError: null });
     process.env.NEXT_PUBLIC_SUPABASE_URL = storageOrigin;
     globalThis.createImageBitmap = async () => ({ width: 800, height: 600, close() { state.bitmapClosed++; } });
 });
@@ -52,6 +53,14 @@ async function input(overrides = {}) {
     return { name: '  科研图工具  ', host: 'Blender', summary: '  用于科研图片的插件。  ', version: '1.0.0', features: ['创建图形'], environment: ['Blender 4.x'], installation: ['安装后启用'], outputs: ['可编辑场景'], packageFile: new File([bytes], 'research-tool.zip', { type: 'application/zip' }), ...overrides };
 }
 const noWrites = () => { assert.equal(state.uploads.length, 0); assert.equal(state.inserts.length, 0); assert.equal(state.removals.length, 0); };
+function packageFixture(size) {
+    const bytes = new Uint8Array(size);
+    bytes.set([0x50, 0x4b, 3, 4]);
+    for (let offset = PLUGIN_PACKAGE_CHUNK_BYTES - 1; offset < size; offset += PLUGIN_PACKAGE_CHUNK_BYTES) bytes[offset] = 173;
+    bytes[size - 1] = 241;
+    return new File([bytes], 'chunked-tool.zip', { type: '' });
+}
+const expectedHash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 test('anonymous and non-admin users cannot upload or write plugin records', async () => {
     const publication = await input();
@@ -78,7 +87,7 @@ test('renamed non-ZIP content and unsupported extensions are rejected before upl
 });
 
 test('oversized packages and invalid covers fail before persistent writes', async () => {
-    const oversizedPackage = { name: 'tool.zip', size: 50 * 1024 * 1024 + 1, slice() { return new Blob([Uint8Array.of(0x50, 0x4b, 3, 4)]); } };
+    const oversizedPackage = { name: 'tool.zip', size: PLUGIN_PACKAGE_MAX_BYTES + 1, slice() { throw new Error('An oversized file must never be read'); } };
     await assert.rejects(publishSoftwarePlugin(await input({ packageFile: oversizedPackage })), /大小/); noWrites();
     await assert.rejects(publishSoftwarePlugin(await input({ coverFile: new File(['svg'], 'cover.svg', { type: 'image/svg+xml' }) })), /封面/); noWrites();
     globalThis.createImageBitmap = async () => { throw new Error('Invalid image'); };
@@ -213,9 +222,9 @@ test('a missing cover bucket preserves its explanation while cleaning only the s
     assert.equal(state.inserts.length, 0);
 });
 
-test('storage size and ZIP MIME restrictions are explained in Chinese', async () => {
+test('storage object size and ZIP or binary MIME restrictions are explained in Chinese', async () => {
     state.uploadErrorAt = 1; state.uploadError = { message: 'The object exceeded the maximum allowed size', status: 413 };
-    await assert.rejects(publishSoftwarePlugin(await input()), /安装包.*大小限制.*50 MB/);
+    await assert.rejects(publishSoftwarePlugin(await input()), /安装包.*大小限制.*32 MB.*200 MB/);
     state.uploadErrorAt = 2; state.uploadError = { message: 'mime type application/zip is not supported', status: 400 };
     await assert.rejects(publishSoftwarePlugin(await input()), /未允许 ZIP.*MIME/);
     assert.equal(state.inserts.length, 0); assert.equal(state.publicUrlCalls.length, 0);
@@ -269,7 +278,7 @@ test('readiness rejects a public bucket, insufficient package capacity and MIME 
     state.bucketDefinition = { ...configured, public: true };
     await assert.rejects(checkPluginPublicationStorage(), /必须是私有存储桶/);
     state.bucketDefinition = { ...configured, file_size_limit: 10 * 1024 * 1024 };
-    await assert.rejects(checkPluginPublicationStorage(), /大小限额低于 50 MB/);
+    await assert.rejects(checkPluginPublicationStorage(), /大小限额低于 32 MB/);
     state.bucketDefinition = { ...configured, allowed_mime_types: ['image/png'] };
     await assert.rejects(checkPluginPublicationStorage(), /未允许 ZIP.*MIME/);
     assert.equal(state.storageLists.length, 0); noWrites();
@@ -304,4 +313,106 @@ test('a ZIP with an empty browser MIME uploads identical bytes with the permitte
     assert.deepEqual(new Uint8Array(await state.uploads[0].file.arrayBuffer()), new Uint8Array(await packageFile.arrayBuffer()));
     assert.equal(JSON.parse(state.inserts[0].record.description).packageName, original.name);
     assert.equal(state.uploads[0].bucket, PLUGIN_PACKAGE_BUCKET); assert.equal(state.publicUrlCalls.length, 0);
+});
+
+test('a package above 32 MB uploads sequential private binary chunks with exact whole and per-chunk SHA-256', async () => {
+    const packageFile = packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES + 257);
+    const progress = [], stages = [];
+    await publishSoftwarePlugin(await input({ packageFile }), stage => stages.push(stage), value => progress.push(value));
+    assert.deepEqual(stages, ['checking', 'package', 'publishing']);
+    assert.deepEqual(progress, [{ completed: 0, total: 2 }, { completed: 1, total: 2 }, { completed: 2, total: 2 }]);
+    assert.equal(state.uploads.length, 2); assert.equal(state.inserts.length, 1); assert.equal(state.removals.length, 0);
+    const [first, last] = state.uploads;
+    assert.equal(first.bucket, PLUGIN_PACKAGE_BUCKET); assert.equal(last.bucket, PLUGIN_PACKAGE_BUCKET);
+    assert.match(first.path, /^[\da-f-]{36}\/part-000\.bin$/); assert.equal(last.path, first.path.replace('part-000', 'part-001'));
+    assert.deepEqual(state.uploads.map(upload => upload.file.size), [PLUGIN_PACKAGE_CHUNK_BYTES, 257]);
+    for (const upload of state.uploads) {
+        assert.equal(upload.file.type, 'application/octet-stream');
+        assert.deepEqual(upload.settings, { contentType: 'application/octet-stream', upsert: false });
+    }
+    const metadata = JSON.parse(state.inserts[0].record.description);
+    assert.equal(metadata.schema, 'fesilent-plugin-v2'); assert.equal(metadata.packageBytes, packageFile.size); assert.equal(metadata.packageName, packageFile.name);
+    const original = new Uint8Array(await packageFile.arrayBuffer());
+    assert.equal(metadata.packageSha256, expectedHash(original));
+    const reconstructed = new Uint8Array(packageFile.size); let offset = 0;
+    for (const [index, upload] of state.uploads.entries()) {
+        const chunk = new Uint8Array(await upload.file.arrayBuffer());
+        assert.deepEqual(metadata.packageChunks[index], { bytes: chunk.byteLength, sha256: expectedHash(chunk) });
+        reconstructed.set(chunk, offset); offset += chunk.byteLength;
+    }
+    assert.deepEqual(reconstructed, original);
+    assert.equal(state.inserts[0].record.source_file_url, `storage://${PLUGIN_PACKAGE_BUCKET}/${first.path.split('/')[0]}/package.parts`);
+    assert.equal(state.publicUrlCalls.length, 0);
+});
+
+test('exactly 32 MB retains a single ZIP object and v1 metadata', async () => {
+    const packageFile = packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES), progress = [];
+    await publishSoftwarePlugin(await input({ packageFile }), undefined, value => progress.push(value));
+    assert.equal(state.uploads.length, 1); assert.equal(state.uploads[0].file.size, PLUGIN_PACKAGE_CHUNK_BYTES);
+    assert.equal(state.uploads[0].file.type, 'application/zip'); assert.match(state.uploads[0].path, /\/package\.zip$/);
+    assert.equal(JSON.parse(state.inserts[0].record.description).schema, 'fesilent-plugin-v1');
+    assert.deepEqual(progress, [{ completed: 0, total: 1 }, { completed: 1, total: 1 }]);
+});
+
+test('a later chunk failure removes all and only successful chunks and cannot publish metadata', async () => {
+    const packageFile = packageFixture(2 * PLUGIN_PACKAGE_CHUNK_BYTES + 257), progress = [];
+    state.uploadErrorAt = 3;
+    await assert.rejects(publishSoftwarePlugin(await input({ packageFile }), undefined, value => progress.push(value)), error => error.cause === state.uploadError && /安装包上传失败.*第 3\/3 个分片/.test(error.message));
+    assert.equal(state.uploads.length, 3); assert.equal(state.inserts.length, 0);
+    assert.deepEqual(state.removals, [{ bucket: PLUGIN_PACKAGE_BUCKET, paths: state.uploads.slice(0, 2).map(upload => upload.path) }]);
+    assert.deepEqual(progress, [{ completed: 0, total: 3 }, { completed: 1, total: 3 }, { completed: 2, total: 3 }]);
+    assert.equal(state.publicUrlCalls.length, 0);
+});
+
+test('progress waits for actual upload completion and the next chunk cannot start early', async () => {
+    const packageFile = packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES + 1), progress = [];
+    let finishUpload;
+    state.uploadPending = new Promise(resolve => { finishUpload = resolve; });
+    const firstUploadStarted = new Promise(resolve => { state.onUpload = resolve; });
+    const publication = publishSoftwarePlugin(await input({ packageFile }), undefined, value => progress.push(value));
+    await firstUploadStarted;
+    assert.equal(state.uploads.length, 1); assert.equal(state.inserts.length, 0);
+    assert.deepEqual(progress, [{ completed: 0, total: 2 }]);
+    finishUpload();
+    await publication;
+    assert.deepEqual(progress, [{ completed: 0, total: 2 }, { completed: 1, total: 2 }, { completed: 2, total: 2 }]);
+});
+
+test('an inconsistent or unreadable large file is rejected before storage writes', async () => {
+    const packageFile = { name: 'tool.zip', size: PLUGIN_PACKAGE_CHUNK_BYTES + 1, slice() { return new Blob([Uint8Array.of(0x50, 0x4b, 3, 4)]); }, async arrayBuffer() { return new ArrayBuffer(4); } };
+    await assert.rejects(publishSoftwarePlugin(await input({ packageFile })), /实际大小.*不一致/); noWrites();
+    packageFile.arrayBuffer = async () => { throw new Error('Local read failed'); };
+    await assert.rejects(publishSoftwarePlugin(await input({ packageFile })), /内容无法读取/); noWrites();
+});
+
+test('failed large package metadata persistence cleans every successful chunk and the cover', async () => {
+    const packageFile = packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES + 1);
+    const coverFile = new File(['fixture PNG decoded by stub'], 'cover.png', { type: 'image/png' });
+    state.insertError = new Error('Database insertion failed');
+    await assert.rejects(publishSoftwarePlugin(await input({ packageFile, coverFile })), /插件介绍保存失败/);
+    assert.equal(state.uploads.length, 3); assert.equal(state.inserts.length, 1);
+    assert.deepEqual(state.removals, [
+        { bucket: PLUGIN_PACKAGE_BUCKET, paths: state.uploads.slice(0, 2).map(upload => upload.path) },
+        { bucket: 'materials', paths: [state.uploads[2].path] },
+    ]);
+});
+
+test('a WebCrypto failure gives a Chinese integrity error and cannot begin uploading', async t => {
+    t.mock.method(globalThis.crypto.subtle, 'digest', async () => { throw new Error('Digest failed'); });
+    await assert.rejects(publishSoftwarePlugin(await input({ packageFile: packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES + 1) })), /安装包 SHA-256 校验失败/);
+    noWrites();
+});
+
+test('readiness accepts a 32 MB object limit and requires both ZIP and chunk MIME permissions', async () => {
+    await checkPluginPublicationStorage();
+    assert.equal(state.bucketDefinition.file_size_limit, PLUGIN_PACKAGE_CHUNK_BYTES);
+    for (const allowed_mime_types of [['application/zip'], ['application/octet-stream']]) {
+        state.bucketDefinition.allowed_mime_types = allowed_mime_types;
+        await assert.rejects(checkPluginPublicationStorage(), /ZIP 或二进制分片.*application\/zip.*application\/octet-stream/);
+    }
+    for (const allowed_mime_types of [['application/*'], ['*/*'], [], null]) {
+        state.bucketDefinition.allowed_mime_types = allowed_mime_types;
+        await checkPluginPublicationStorage();
+    }
+    noWrites(); assert.equal(state.publicUrlCalls.length, 0);
 });

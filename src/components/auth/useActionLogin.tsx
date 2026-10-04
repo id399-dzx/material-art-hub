@@ -24,21 +24,21 @@ export function useActionLogin() {
     return () => { alive.current = false; subscription.unsubscribe(); };
   }, []);
 
-  const requestLogin = useCallback(async (purpose: string, returnTo: string): Promise<boolean> => {
-    if (busy.current) return false;
+  const requestLogin = useCallback(async (purpose: string, returnTo: string, signal?: AbortSignal): Promise<boolean> => {
+    if (busy.current || signal?.aborted) return false;
     busy.current = true;
     setChecking(true);
     const destination = safeReturnTo(returnTo);
     try {
       // Verify the current session with the auth service on each restricted action.
       const { data: { user }, error } = await supabase.auth.getUser();
-      if (!alive.current) return false;
+      if (!alive.current || signal?.aborted) return false;
       if (user && !error) { setIsAuthenticated(true); setPrompt(null); return true; }
       setIsAuthenticated(false);
       setPrompt({ purpose, returnTo: destination, ...(isSupabaseConnectionError(error) ? { error: "账号验证暂时无法连接，请稍后重试。" } : {}) });
       return false;
     } catch {
-      if (alive.current) setPrompt({ purpose, returnTo: destination, error: "账号验证暂时无法连接，请稍后重试。" });
+      if (alive.current && !signal?.aborted) setPrompt({ purpose, returnTo: destination, error: "账号验证暂时无法连接，请稍后重试。" });
       return false;
     } finally {
       busy.current = false;

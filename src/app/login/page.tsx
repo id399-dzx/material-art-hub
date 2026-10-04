@@ -63,7 +63,7 @@ export default function LoginPage() {
 
                 <div className="auth-layout">
                     <section className="auth-intro" aria-label="工作台介绍">
-                        <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> MATERIALART HUB / RESEARCH WORKSPACE</span>
+                        <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> FESILENT REVERIE / RESEARCH WORKSPACE</span>
                         <h1>让灵感与数据，<br /><span>在同一处生长。</span></h1>
                         <p>登录后继续管理你的科研素材。数据处理工作台也随时可用，让图表和研究过程保持清晰。</p>
 
@@ -84,7 +84,7 @@ export default function LoginPage() {
                         <div className="auth-panel-ornament" aria-hidden="true" />
                         <div className="auth-panel-content">
                             <div className="auth-panel-icon"><Database size={23} strokeWidth={1.9} /></div>
-                            <span className="auth-panel-kicker">欢迎来到 MaterialArt Hub</span>
+                            <span className="auth-panel-kicker">欢迎来到 Fesilent Reverie</span>
                             <h2 id="auth-heading">{isLogin ? "登录工作台" : "创建账号"}</h2>
                             <p className="auth-panel-description">{isLogin ? "输入账号信息，继续你的研究整理。" : "填写邮箱和密码，即可开始使用。"}</p>
 

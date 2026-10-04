@@ -232,10 +232,10 @@ export default function UploadPage() {
     return (
         <main className="asset-upload-workbench">
             <div className="asset-upload-shell">
-                <Link href="/" className="asset-upload-back"><ArrowLeft size={17} /> 返回首页</Link>
+                <div className="flex items-center justify-between gap-4 flex-wrap"><Link href="/" className="asset-upload-back"><ArrowLeft size={17} /> 返回首页</Link><Link href="/software-plugins#publish" className="asset-upload-back"><FileArchive size={17} /> 发布软件插件 <ArrowRight size={15} /></Link></div>
                 <header className="asset-upload-heading">
                     <div>
-                        <span className="asset-upload-eyebrow"><span /> MATERIALART HUB / PUBLISH</span>
+                        <span className="asset-upload-eyebrow"><span /> FESILENT REVERIE / PUBLISH</span>
                         <h1>上传科研艺术作品</h1>
                         <p>整理预览图、作品信息和分类标签，让研究成果更易被发现。</p>
                     </div>

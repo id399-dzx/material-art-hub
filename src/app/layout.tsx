@@ -3,7 +3,7 @@ import "./globals.css";
 import "@/components/resources/resources.css";
 
 export const metadata: Metadata = {
-  title: "MaterialArt Hub",
+  title: "Fesilent Reverie",
   description: "科研数据处理、科研 Skill、期刊论文排版与软件工具工作台",
 };
 

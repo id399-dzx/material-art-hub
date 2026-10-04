@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 
 type ResourceDialogProps = {
@@ -14,7 +14,7 @@ type ResourceDialogProps = {
 
 export default function ResourceDialog({ open, onClose, title, eyebrow, children, footer }: ResourceDialogProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const titleId = "resource-dialog-title";
+    const titleId = useId();
 
     useEffect(() => {
         const dialog = dialogRef.current;

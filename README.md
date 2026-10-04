@@ -1,4 +1,4 @@
-# MaterialArt Hub
+# Fesilent Reverie
 
 科研数据处理工作台与素材库。数据处理页面位于 `/data-processing`，可导入实验表格、绘制图表并导出图片；素材探索、账号和素材上传使用 Supabase。
 

@@ -1,6 +1,6 @@
 # Independently rendered drawing previews
 
-Every SVG in this folder is generated from MaterialArtHub demonstration tables,
+Every SVG in this folder is generated from Fesilent Reverie demonstration tables,
 column bindings, and the same ECharts renderer used by the single-chart editor.
 These previews include the complete chart canvas, axes, legends, and labels.
 They contain no cropped publication image, image backplate, or original mechanism
@@ -26,7 +26,7 @@ revision `f0bb7559abe90f5e1828797126d4d133c1bd47d7`:
 
 Those source references use Creative Commons Attribution-NonCommercial 4.0
 International (CC BY-NC 4.0); see the retained [source license](../paper-figures/LICENSE.txt).
-MaterialArtHub changes: single-chart layouts, independent demo data, dynamic axes
+Fesilent Reverie changes: single-chart layouts, independent demo data, dynamic axes
 and labels, and SVG rendering instead of publication-image cropping.
 
 Regenerate with `node --experimental-strip-types scripts/generate-drawing-previews.mjs --check`.

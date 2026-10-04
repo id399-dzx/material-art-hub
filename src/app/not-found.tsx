@@ -6,7 +6,7 @@ export default function NotFound() {
     <main className="site-not-found">
       <section className="site-not-found__card">
         <span className="site-not-found__icon"><FileQuestion size={30} /></span>
-        <span className="site-not-found__eyebrow">MATERIALART HUB / 404</span>
+        <span className="site-not-found__eyebrow">FESILENT REVERIE / 404</span>
         <h1>没有找到这个页面</h1>
         <p>链接可能已失效。你可以返回素材探索，或打开科研数据工作台继续处理数据。</p>
         <div className="site-not-found__actions">

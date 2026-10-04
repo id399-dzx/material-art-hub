@@ -1,4 +1,4 @@
-<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>小提琴与原始样本; independently rendered demonstration data; MaterialArtHub data template</desc>
+<svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>小提琴与原始样本; independently rendered demonstration data; Fesilent Reverie data template</desc>
 <rect width="680" height="420" x="0" y="0" fill="#fff"></rect>
 <path d="M0 0l475.8 0l0 23.9l-475.8 0Z" transform="translate(102.1209 388.1298)" fill="none" pointer-events="visible" class="zr9-cls-48"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 20.577777777777776px Arial" xml:space="preserve" y="11.935111111111109" transform="translate(102.1209 388.1298)" fill="#555">原始点 + 核密度；n&lt;5 或常量组仅显示原始点与摘要</text>

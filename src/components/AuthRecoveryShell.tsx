@@ -14,7 +14,7 @@ export default function AuthRecoveryShell({ title, description, children }: {
                 <Link href="/login" className="auth-back"><ArrowLeft size={17} /> 返回登录</Link>
                 <div className="auth-layout">
                     <section className="auth-intro" aria-label="账号找回说明">
-                        <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> MATERIALART HUB / RESEARCH WORKSPACE</span>
+                        <span className="auth-eyebrow"><span className="auth-eyebrow-dot" /> FESILENT REVERIE / RESEARCH WORKSPACE</span>
                         <h1>找回账号，<br /><span>继续你的研究。</span></h1>
                         <p>通过注册邮箱重新设置密码。账号中的科研素材会保留，数据处理工作台也随时可用。</p>
                         <div className="auth-showcase" aria-hidden="true">
@@ -27,7 +27,7 @@ export default function AuthRecoveryShell({ title, description, children }: {
                         <div className="auth-panel-ornament" aria-hidden="true" />
                         <div className="auth-panel-content">
                             <div className="auth-panel-icon"><LockKeyhole size={23} /></div>
-                            <span className="auth-panel-kicker">MaterialArt Hub · 账号找回</span>
+                            <span className="auth-panel-kicker">Fesilent Reverie · 账号找回</span>
                             <h2 id="auth-heading">{title}</h2>
                             <p className="auth-panel-description">{description}</p>
                             {children}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ResetPasswordForm from "./ResetPasswordForm";
 import { recoveryTokenFromParams } from "@/lib/auth/recovery-link";
 
-export const metadata: Metadata = { title: "设置新密码 · MaterialArt Hub", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "设置新密码 · Fesilent Reverie", robots: { index: false, follow: false } };
 
 export default async function ResetPasswordPage({ searchParams }: {
     searchParams: Promise<{ token_hash?: string; type?: string }>;

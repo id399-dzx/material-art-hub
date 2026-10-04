@@ -48,9 +48,9 @@ export default function Header() {
     return (
         <header className="site-header">
             <div className="site-header__inner">
-                <Link href="/" className="site-header__brand" aria-label="MaterialArt Hub 首页">
+                <Link href="/" className="site-header__brand" aria-label="Fesilent Reverie 首页">
                     <span className="site-header__brand-icon"><Box size={23} strokeWidth={2} /></span>
-                    <span>MaterialArt Hub</span>
+                    <span>Fesilent Reverie</span>
                 </Link>
 
                 <nav className="site-header__nav" aria-label="主导航">
@@ -72,8 +72,8 @@ export default function Header() {
                                 <span className="site-header__user-name">{userName}</span>
                             </span>
                             {isAdmin && (
-                                <Link href="/upload" className="site-header__publish" aria-label="发布素材">
-                                    <Upload size={15} /> <span>发布素材</span>
+                                <Link href={pathname.startsWith("/software-plugins") ? "/software-plugins#publish" : "/upload"} className="site-header__publish" aria-label={pathname.startsWith("/software-plugins") ? "发布插件" : "发布素材"}>
+                                    <Upload size={15} /> <span>{pathname.startsWith("/software-plugins") ? "发布插件" : "发布素材"}</span>
                                 </Link>
                             )}
                             <button type="button" onClick={handleSignOut} className="site-header__signout" aria-label="退出登录" title="退出登录">

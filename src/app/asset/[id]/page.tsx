@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import { isPluginAsset } from "@/lib/software-plugins/catalog";
 import { ArrowLeft, Download, Image as ImageIcon, Box, Layers, Zap, Activity, Trash2, Loader2, LockKeyhole, CalendarDays } from "lucide-react";
 import "./asset-detail.css";
 
@@ -59,6 +60,10 @@ export default function AssetDetailsPage() {
                 }
 
                 if (data) {
+                    if (isPluginAsset(data)) {
+                        router.replace("/software-plugins");
+                        return;
+                    }
                     setAsset(data as AssetDetails);
                 }
             } catch (err: unknown) {
@@ -71,7 +76,7 @@ export default function AssetDetailsPage() {
         }
 
         fetchAssetDetails();
-    }, [params?.id, loadAttempt]);
+    }, [params?.id, loadAttempt, router]);
 
     const handleDownload = () => {
         if (!asset) return;
@@ -87,7 +92,7 @@ export default function AssetDetailsPage() {
                 ext = "." + (parts[parts.length - 1] || "zip");
             }
 
-            link.download = `${asset.title || "material_art"}${ext}`;
+            link.download = `${asset.title || "Fesilent Reverie"}${ext}`;
             link.target = "_blank";
             document.body.appendChild(link);
             link.click();

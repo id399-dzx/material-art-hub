@@ -7,6 +7,7 @@ import {
   Layers, Search, SlidersHorizontal, Sparkles, X, Zap,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import { isPluginAsset } from "@/lib/software-plugins/catalog";
 import "./home.css";
 
 const TAG_CATEGORIES = {
@@ -134,7 +135,7 @@ export default function Home() {
           setAssets([]);
           setLoadError(true);
         } else if (data) {
-          setAssets(data);
+          setAssets(data.filter(asset => !isPluginAsset(asset)));
         }
       } catch (error) {
         console.warn("Exception fetching assets:", error);

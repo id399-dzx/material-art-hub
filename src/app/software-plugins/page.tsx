@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import SoftwarePlugins from "@/components/software-plugins/SoftwarePlugins";
 
 export const metadata: Metadata = {
-  title: "软件插件 · 科研工作台",
-  description: "下载用于 Blender、PowerPoint 与 Illustrator 的科研绘图和建模工具包，查看中文功能与安装说明。",
+  title: "软件插件 · Fesilent Reverie",
+  description: "Fesilent Reverie 自研软件插件，查看中文功能介绍、适用环境与安装说明，下载管理员发布的安装包。",
 };
 
 export default function SoftwarePluginsPage() {

@@ -1,4 +1,4 @@
-<svg width="900" height="620" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 900 620"><desc>多指标分面比较; independently rendered demonstration data; MaterialArtHub data template</desc>
+<svg width="900" height="620" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 900 620"><desc>多指标分面比较; independently rendered demonstration data; Fesilent Reverie data template</desc>
 <rect width="900" height="620" x="0" y="0" fill="#fff"></rect>
 <path d="M-72.2 -34.7l144.3 0l0 34.7l-144.3 0Z" transform="matrix(0,-1,1,0,51.6635,163.98)" fill="none" pointer-events="visible" class="zr18-cls-100"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:29.882352941176464px;font-family:Arial;" xml:space="preserve" y="-17.33176470588235" transform="matrix(0,-1,1,0,51.6635,163.98)" fill="#383842">准确率 (%)</text>

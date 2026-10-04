@@ -49,3 +49,17 @@
 .software-package-provenance { margin: 17px 0 0; font-size: 10px; }
 @media (max-width: 720px) { .software-search { flex: 1 1 100%; } .software-search input { width: 100%; } .software-catalog-heading { align-items: flex-start; } .software-detail-grid { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width: 600px) { .software-host-badge { font-size: 10px; padding: 8px 11px; } .software-preview { height: 126px; } .software-detail-summary { grid-template-columns: 1fr; gap: 14px; } .software-detail-summary .software-preview { width: min(100%, 240px); } .software-catalog-heading p { max-width: 220px; } }
+.software-preview--other { display: grid; place-items: center; color: #a595c7; }
+.software-preview--cover img { width: 100%; height: 100%; object-fit: contain; }
+.software-catalog-state { display: flex; min-height: 300px; flex-direction: column; align-items: center; justify-content: center; padding: 44px 24px; text-align: center; color: #897b99; }
+.software-catalog-state h3 { margin: 12px 0 0; color: #43374e; font-size: 20px; letter-spacing: -.04em; }
+.software-catalog-state > p:not(.resource-eyebrow) { max-width: 460px; margin: 12px 0 20px; font-size: 13px; line-height: 1.85; color: #918599; }
+.software-catalog-state--empty { min-height: 370px; background: radial-gradient(ellipse at 50% 24%, rgb(229 219 247 / 30%), transparent 55%); }
+.software-empty-orbit { display: flex; gap: 19px; align-items: center; margin-bottom: 26px; }
+.software-empty-orbit span { display: grid; place-items: center; width: 50px; height: 50px; border: 1px solid #fff; border-radius: 16px; background: rgb(255 255 255 / 78%); box-shadow: 0 10px 26px rgb(104 80 144 / 7%); }
+.software-empty-orbit span:nth-child(2) { width: 80px; height: 80px; border-radius: 25px; color: #9a83bd; background: linear-gradient(140deg, #fff, #e9e3f6); }
+.software-empty-orbit span:first-child { transform: rotate(-10deg); color: #91a9d3; }
+.software-empty-orbit span:last-child { transform: rotate(10deg); color: #c49bb7; }
+.software-publication-notice { padding: 14px 18px; border: 1px solid #dce8dd; border-radius: 14px; color: #50715b; background: #f2f8f1; font-size: 13px; }
+.software-spin { animation: software-spin 1s linear infinite; }
+@keyframes software-spin { to { transform: rotate(360deg); } }

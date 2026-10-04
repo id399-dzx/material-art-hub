@@ -4,7 +4,7 @@
 
 - Site URL：`https://fesilent.com`。
 - Redirect URLs：添加 `https://fesilent.com/reset-password` 和 `https://material-art-hub.vercel.app/reset-password`。
-- Authentication → Emails → Reset password：主题为「重置 MaterialArt Hub 密码」，正文使用 `supabase/templates/recovery.html`。
+- Authentication → Emails → Reset password：主题为「重置 Fesilent Reverie 密码」，正文使用 `supabase/templates/recovery.html`。
 - 邮件模板通过 `.SiteURL` 指向正式站点，使用 `.TokenHash` 与 `type=recovery`。不要改回 `.ConfirmationURL`，该默认链接与本站的重置接口不同。
 - 复制部署到其他站点时，先更新 Site URL，部署这两个页面和接口，再更新邮件模板。
 

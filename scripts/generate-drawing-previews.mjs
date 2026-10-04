@@ -15,7 +15,7 @@ for (const template of templates) {
     if (!/^[a-z\d-]+$/.test(template.id)) throw new Error(`Invalid preview ID: ${template.id}`);
     const rendered = renderDrawingPreview(template);
     const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-    const desc = `${template.name}; independently rendered demonstration data; ${template.paper ? `source style: ${template.paper.source}; Chen Liu et al., figures4papers, CC BY-NC 4.0` : 'MaterialArtHub data template'}`;
+    const desc = `${template.name}; independently rendered demonstration data; ${template.paper ? `source style: ${template.paper.source}; Chen Liu et al., figures4papers, CC BY-NC 4.0` : 'Fesilent Reverie data template'}`;
     const svg = rendered.svg.replace(/(<svg\b[^>]*>)/, `$1<desc>${escape(desc)}</desc>`);
     await writeFile(new URL(`${template.id}.svg`, output), svg);
     records.push({ id: template.id, name: template.name, width: rendered.width, height: rendered.height, texts: rendered.texts });

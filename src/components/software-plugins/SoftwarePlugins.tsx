@@ -1,15 +1,19 @@
 "use client";
 
-import { useMemo, useState, type CSSProperties } from "react";
-import { ArrowUpRight, Box, Download, Layers3, Monitor, PenTool, Search, Sparkles } from "lucide-react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, PackageOpen, PenTool, Puzzle, Search, Sparkles, Upload } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
-import { SOFTWARE_PLUGINS, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
+import { SOFTWARE_HOSTS, PLUGIN_ADMIN_EMAIL, formatPackageSize, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
+import { loadSoftwarePlugins } from "@/lib/software-plugins/storage";
+import { getSupabaseErrorMessage, isSupabaseConnectionError, supabase } from "@/lib/supabase";
+import PluginPublisher from "./PluginPublisher";
 import "./software-plugins.css";
 
-const hosts: SoftwareHost[] = ["Blender", "PowerPoint", "Illustrator"];
-const hostIcons = { Blender: Box, PowerPoint: Layers3, Illustrator: PenTool };
+const hosts = SOFTWARE_HOSTS;
+const hostIcons = { Blender: Box, PowerPoint: Layers3, Illustrator: PenTool, 其他: Puzzle };
 
 function ToolkitPreview({ host }: { host: SoftwareHost }) {
+  if (host === "其他") return <div className="software-preview software-preview--other"><Puzzle size={54} strokeWidth={1.2} aria-hidden="true" /><span className="software-preview-caption">软件插件</span></div>;
   return <div className={`software-preview software-preview--${host.toLowerCase()}`}>
     <svg viewBox="0 0 320 132" fill="none" aria-hidden="true">
       {host === "Blender" ? <>
@@ -61,71 +65,104 @@ function DetailList({ title, items, ordered = false }: { title: string; items: s
   );
 }
 
+function PluginPreview({ plugin }: { plugin: SoftwarePlugin }) {
+  if (!plugin.coverUrl) return <ToolkitPreview host={plugin.host} />;
+  // Covers are administrator-uploaded, validated bitmap images in our storage.
+  // eslint-disable-next-line @next/next/no-img-element
+  return <div className="software-preview software-preview--cover"><img src={plugin.coverUrl} alt={`${plugin.name}预览`} loading="lazy" /></div>;
+}
+
 export default function SoftwarePlugins() {
   const [host, setHost] = useState<SoftwareHost | "全部">("全部");
   const [query, setQuery] = useState("");
+  const [plugins, setPlugins] = useState<SoftwarePlugin[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
   const [selected, setSelected] = useState<SoftwarePlugin | null>(null);
-  const filtered = useMemo(() => SOFTWARE_PLUGINS.filter((plugin) =>
-    (host === "全部" || plugin.host === host)
-    && `${plugin.name} ${plugin.host} ${plugin.summary} ${plugin.outputs.join(" ")}`.toLowerCase().includes(query.trim().toLowerCase())), [host, query]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [publishingBusy, setPublishingBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+
+  useEffect(() => {
+    let alive = true;
+    supabase.auth.getUser().then(({ data: { user } }) => { if (alive) setIsAdmin(user?.email === PLUGIN_ADMIN_EMAIL); });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (alive) { setIsAdmin(session?.user.email === PLUGIN_ADMIN_EMAIL); if (session?.user.email !== PLUGIN_ADMIN_EMAIL) setPublishing(false); }
+    });
+    return () => { alive = false; subscription.unsubscribe(); };
+  }, []);
+
+  useEffect(() => {
+    let alive = true;
+    loadSoftwarePlugins().then(data => {
+      if (alive) { setPlugins(data); setLoadError(null); setLoading(false); }
+    }).catch(error => {
+      if (alive) { setLoadError(isSupabaseConnectionError(error) ? "暂时无法连接插件库，请稍后重试。" : (getSupabaseErrorMessage(error) ?? "插件库读取失败，请稍后重试。")); setLoading(false); }
+    });
+    return () => { alive = false; };
+  }, [reloadKey]);
+
+  useEffect(() => {
+    const readHash = () => { if (isAdmin && window.location.hash === "#publish") setPublishing(true); };
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, [isAdmin]);
+
+  const filtered = useMemo(() => plugins.filter(plugin =>
+    (host === "全部" || plugin.host === host) && `${plugin.name} ${plugin.host} ${plugin.summary} ${plugin.outputs.join(" ")}`.toLowerCase().includes(query.trim().toLowerCase())), [plugins, host, query]);
+  const softwareCount = new Set(plugins.map(plugin => plugin.host)).size;
+  const retry = () => { setLoading(true); setLoadError(null); setReloadKey(key => key + 1); };
+  const closePublisher = () => { if (publishingBusy) return; setPublishing(false); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); };
 
   return (
     <main className="resource-page software-plugins-page">
       <section className="resource-hero">
-        <div>
-          <p className="resource-eyebrow"><Sparkles size={14} aria-hidden="true" /> SOFTWARE TOOLKITS</p>
-          <h1>软件插件</h1>
-          <p>让科研图与模型在熟悉的软件中继续编辑。</p>
-        </div>
-        <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> AI Agent + 本地软件</span>
+        <div><p className="resource-eyebrow"><Sparkles size={14} aria-hidden="true" /> FESILENT REVERIE / SOFTWARE</p><h1>软件插件</h1><p>为科研创作开发，让工作在熟悉的软件里更顺手。</p></div>
+        {isAdmin ? <button type="button" className="resource-button resource-button--primary" onClick={() => setPublishing(true)}><Upload size={16} /> 上传插件</button> : <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> Fesilent 自研项目</span>}
       </section>
 
-      <section className="resource-stats" aria-label="工具库概览">
-        <div className="resource-stat" style={{ "--stat-wash": "#d3c5f4" } as CSSProperties}><span>自有工具包</span><strong>{SOFTWARE_PLUGINS.length}</strong><small>固定版本 · 真实下载</small></div>
-        <div className="resource-stat" style={{ "--stat-wash": "#bfd8f7" } as CSSProperties}><span>覆盖软件</span><strong>{hosts.length}<em> 类</em></strong><small>Blender · PowerPoint · Illustrator</small></div>
-        <div className="resource-stat" style={{ "--stat-wash": "#f0ccd9" } as CSSProperties}><span>创作与编辑</span><strong>可编辑</strong><small>三维模型 · 原生形状 · 矢量路径</small></div>
+      <section className="resource-stats" aria-label="插件库概览">
+        <div className="resource-stat" style={{ "--stat-wash": "#d3c5f4" } as CSSProperties}><span>已发布插件</span><strong>{loading || loadError ? "—" : plugins.length}</strong><small>由管理员上传发布</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#bfd8f7" } as CSSProperties}><span>覆盖软件</span><strong>{loading || loadError ? "—" : softwareCount}<em> 类</em></strong><small>按适用软件选择工具</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#f0ccd9" } as CSSProperties}><span>使用方式</span><strong>本地安装</strong><small>中文介绍 · 安装说明 · 下载包</small></div>
       </section>
+      {notice && <p className="software-publication-notice" role="status">{notice}</p>}
 
       <section className="resource-catalog" aria-labelledby="software-catalog-title">
-      <div className="software-catalog-heading"><div><h2 id="software-catalog-title">选择你的创作工具</h2><p>点击卡片，查看功能、安装说明与下载版本。</p></div><span className="resource-meta">{filtered.length} 个工具</span></div>
-      <div className="resource-toolbar software-toolbar">
-        <div className="software-host-filter" role="group" aria-label="按软件筛选">
-          {(["全部", ...hosts] as const).map((value) => <button key={value} type="button" className={`resource-chip${host === value ? " is-active" : ""}`} aria-pressed={host === value} onClick={() => setHost(value)}>{value}</button>)}
+        <div className="software-catalog-heading"><div><h2 id="software-catalog-title">科研创作工具箱</h2><p>点击插件了解功能、适用环境与安装方法。</p></div><span className="resource-meta">{loading ? "加载中" : loadError ? "暂时无法读取" : `${filtered.length} 个插件`}</span></div>
+        <div className="resource-toolbar software-toolbar">
+          <div className="software-host-filter" role="group" aria-label="按软件筛选">{(["全部", ...hosts] as const).map(value => <button key={value} type="button" className={`resource-chip${host === value ? " is-active" : ""}`} aria-pressed={host === value} onClick={() => setHost(value)}>{value}</button>)}</div>
+          <label className="software-search"><Search size={17} aria-hidden="true" /><span className="software-sr-only">搜索软件插件</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="搜索插件或功能" /></label>
         </div>
-        <label className="software-search"><Search size={17} aria-hidden="true" /><span className="software-sr-only">搜索软件工具</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索工具或功能" /></label>
-      </div>
-      <div className="resource-grid software-plugin-grid">
-        {filtered.map((plugin) => {
-          const Icon = hostIcons[plugin.host];
-          return (
-            <button key={plugin.id} type="button" className={`resource-card software-plugin-card software-plugin-card--${plugin.host.toLowerCase()}`} onClick={() => setSelected(plugin)} aria-label={`查看${plugin.name}的功能与下载`}>
-              <div className="software-card-top"><span className="software-host-name"><Icon size={14} strokeWidth={1.7} aria-hidden="true" />{plugin.host}</span><span className="software-package-type">Skill 工具包</span></div>
-              <ToolkitPreview host={plugin.host} />
-              <div className="software-card-content"><h3>{plugin.name}</h3><p className="software-plugin-subtitle">{plugin.subtitle}</p><p className="software-plugin-summary">{plugin.summary}</p></div>
-              <div className="software-output-chips">{plugin.outputs.slice(0, 2).map((output) => <span key={output}>{output}</span>)}</div>
-              <div className="resource-card-footer"><span>查看功能与下载</span><ArrowUpRight size={17} aria-hidden="true" /></div>
-            </button>
-          );
-        })}
-      </div>
-      {filtered.length === 0 && <div className="resource-empty"><Search size={28} aria-hidden="true" /><h2>暂未找到匹配的工具</h2><p>换一个关键词，或选择其他软件。</p><button type="button" className="resource-button" onClick={() => { setQuery(""); setHost("全部"); }}>显示全部工具</button></div>}
+
+        {loading ? <div className="software-catalog-state" role="status"><Loader2 size={26} className="software-spin" /><h3>正在读取插件库</h3></div>
+          : loadError ? <div className="software-catalog-state" role="alert"><AlertCircle size={28} /><h3>插件库暂时无法加载</h3><p>{loadError}</p><button type="button" className="resource-button" onClick={retry}>重新加载</button></div>
+          : plugins.length === 0 ? <div className="software-catalog-state software-catalog-state--empty"><div className="software-empty-orbit" aria-hidden="true"><span><Box size={23} /></span><span><PackageOpen size={38} strokeWidth={1.3} /></span><span><Layers3 size={23} /></span></div><p className="resource-eyebrow">FESILENT ORIGINALS</p><h3>新的科研工具，正在准备中</h3><p>自研插件发布后会在这里展示。<br />你可以查看中文功能介绍，并下载对应安装包。</p>{isAdmin && <button type="button" className="resource-button resource-button--primary" onClick={() => setPublishing(true)}><Upload size={16} /> 上传第一个插件</button>}</div>
+          : <><div className="resource-grid software-plugin-grid">{filtered.map(plugin => {
+              const Icon = hostIcons[plugin.host];
+              return <button key={plugin.id} type="button" className={`resource-card software-plugin-card software-plugin-card--${plugin.host.toLowerCase()}`} onClick={() => setSelected(plugin)} aria-label={`查看${plugin.name}的功能与下载`}>
+                <div className="software-card-top"><span className="software-host-name"><Icon size={14} strokeWidth={1.7} aria-hidden="true" />{plugin.host}</span><span className="software-package-type">自研插件</span></div>
+                <PluginPreview plugin={plugin} />
+                <div className="software-card-content"><h3>{plugin.name}</h3><p className="software-plugin-subtitle">版本 {plugin.version}</p><p className="software-plugin-summary">{plugin.summary}</p></div>
+                <div className="software-output-chips">{plugin.outputs.slice(0, 2).map((output, index) => <span key={index}>{output}</span>)}</div>
+                <div className="resource-card-footer"><span>查看功能与下载</span><ArrowUpRight size={17} aria-hidden="true" /></div>
+              </button>;
+            })}</div>{filtered.length === 0 && <div className="resource-empty"><Search size={28} aria-hidden="true" /><h2>暂未找到匹配的插件</h2><p>换一个关键词，或选择其他软件。</p><button type="button" className="resource-button" onClick={() => { setQuery(""); setHost("全部"); }}>显示全部插件</button></div>}</>}
       </section>
 
-      <aside className="resource-note software-install-note"><Monitor size={19} aria-hidden="true" /><div><strong>使用入口：AI Agent + 本地软件</strong><p>当前收录的是我们开发的 Skill 与脚本工具包。下载后按说明安装到 Agent 的 Skill 目录，由 Agent 配合本地软件使用。</p></div></aside>
-
-      <ResourceDialog open={selected !== null} onClose={() => setSelected(null)} title={selected?.name ?? "软件工具详情"} eyebrow={selected ? `${selected.host} · Skill 工具包` : undefined} footer={selected && <><a className="resource-button" href={selected.repositoryUrl} target="_blank" rel="noopener noreferrer">GitHub 详情 <ArrowUpRight size={16} aria-hidden="true" /></a><a className="resource-button resource-button--primary" href={selected.downloadUrl} rel="noopener noreferrer">下载 {selected.downloadKind} <Download size={16} aria-hidden="true" /></a></>}>
-        {selected && <div className="software-plugin-detail">
-          <div className="software-detail-summary"><ToolkitPreview host={selected.host} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>{selected.downloadKind}</span><span>版本 {selected.version}</span><span>约 {selected.packageSize}</span></div></div></div>
-          <DetailList title="能做什么" items={selected.features} />
-          <div className="software-detail-grid">
-          <DetailList title="运行环境" items={selected.environment} />
-          <DetailList title="如何安装与使用" items={selected.installation} ordered />
-          </div>
-          <div className="software-detail-boundaries">
-          <DetailList title="使用说明" items={selected.boundaries} />
-          </div>
-          <p className="resource-meta software-package-provenance">来源：id399-dzx 公开仓库 · 下载版本已于 {selected.verifiedOn} 检查。</p>
+      <ResourceDialog open={selected !== null} onClose={() => setSelected(null)} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={() => setSelected(null)}>返回插件库</button><a className="resource-button resource-button--primary" href={`${selected.downloadUrl}?download=${encodeURIComponent(selected.packageName)}`} download={selected.packageName}>下载安装包 <Download size={16} aria-hidden="true" /></a></>}>
+        {selected && <div className="software-plugin-detail"><div className="software-detail-summary"><PluginPreview plugin={selected} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>ZIP 安装包</span><span>版本 {selected.version}</span><span>{formatPackageSize(selected.packageBytes)}</span></div></div></div>
+          {selected.features.length > 0 && <DetailList title="能做什么" items={selected.features} />}
+          <div className="software-detail-grid">{selected.environment.length > 0 && <DetailList title="运行环境" items={selected.environment} />}{selected.installation.length > 0 && <DetailList title="安装与使用" items={selected.installation} ordered />}</div>
+          {selected.outputs.length > 0 && <DetailList title="输出内容" items={selected.outputs} />}
+          <p className="resource-meta software-package-provenance">Fesilent Reverie 自研项目 · 由管理员上传发布</p>
         </div>}
+      </ResourceDialog>
+      <ResourceDialog open={isAdmin && publishing} onClose={closePublisher} title="发布软件插件" eyebrow="FESILENT REVERIE / PUBLISH">
+        {isAdmin && publishing && <PluginPublisher onBusyChange={setPublishingBusy} onPublished={() => { setPublishing(false); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); setNotice("插件已发布，访客现在可以查看介绍并下载安装包。"); retry(); }} />}
       </ResourceDialog>
     </main>
   );

@@ -1065,8 +1065,6 @@ export default function DataProcessingPage() {
                             <a className={workspace === "processing" ? "is-active" : ""} aria-current={workspace === "processing" ? "page" : undefined} href="#data-source">数据处理</a>
                             <a className={workspace === "templates" ? "is-active" : ""} aria-current={workspace === "templates" ? "page" : undefined} href="#paper-figures">论文图例模板</a>
                             <a className={workspace === "composition" ? "is-active" : ""} aria-current={workspace === "composition" ? "page" : undefined} href="#paper-composition">论文组图</a>
-                            <a href="#chart-preview">图表画布</a>
-                            <a href="#analysis">辅助解读</a>
                         </nav>
                         {workspace === "processing" && <button type="button" className="workbench-top-upload" onClick={() => mainFileInputRef.current?.click()}>
                             <UploadCloud size={16} /> 导入文件

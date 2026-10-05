@@ -86,6 +86,7 @@ export default function SoftwarePlugins() {
   const [selected, setSelected] = useState<SoftwarePlugin | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [publishing, setPublishing] = useState(false);
+  const [editingPlugin, setEditingPlugin] = useState<SoftwarePlugin | undefined>();
   const [publishingBusy, setPublishingBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [downloadBusy, setDownloadBusy] = useState(false);
@@ -103,7 +104,7 @@ export default function SoftwarePlugins() {
     let alive = true;
     supabase.auth.getUser().then(({ data: { user } }) => { if (alive) setIsAdmin(user?.email === PLUGIN_ADMIN_EMAIL); });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (alive) { setIsAdmin(session?.user.email === PLUGIN_ADMIN_EMAIL); if (session?.user.email !== PLUGIN_ADMIN_EMAIL) setPublishing(false); }
+      if (alive) { setIsAdmin(session?.user.email === PLUGIN_ADMIN_EMAIL); if (session?.user.email !== PLUGIN_ADMIN_EMAIL) { setPublishing(false); setEditingPlugin(undefined); } }
     });
     return () => { alive = false; subscription.unsubscribe(); };
   }, []);
@@ -123,7 +124,7 @@ export default function SoftwarePlugins() {
   }, [reloadKey]);
 
   useEffect(() => {
-    const readHash = () => { if (isAdmin && window.location.hash === "#publish") setPublishing(true); };
+    const readHash = () => { if (isAdmin && window.location.hash === "#publish") { setEditingPlugin(undefined); setPublishing(true); } };
     readHash();
     window.addEventListener("hashchange", readHash);
     return () => window.removeEventListener("hashchange", readHash);
@@ -133,7 +134,7 @@ export default function SoftwarePlugins() {
     (host === "全部" || plugin.host === host) && `${plugin.name} ${plugin.host} ${plugin.summary} ${plugin.outputs.join(" ")}`.toLowerCase().includes(query.trim().toLowerCase())), [plugins, host, query]);
   const softwareCount = new Set(plugins.map(plugin => plugin.host)).size;
   const retry = () => { setLoading(true); setLoadError(null); setReloadKey(key => key + 1); };
-  const closePublisher = () => { if (publishingBusy) return; setPublishing(false); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); };
+  const closePublisher = () => { if (publishingBusy) return; setPublishing(false); setEditingPlugin(undefined); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); };
   const closeDetails = () => {
     const controller = downloadController.current;
     downloadController.current = null;
@@ -179,7 +180,7 @@ export default function SoftwarePlugins() {
     <main className="resource-page software-plugins-page">
       <section className="resource-hero">
         <div><p className="resource-eyebrow"><Sparkles size={14} aria-hidden="true" /> FESILENT REVERIE / SOFTWARE</p><h1>软件插件</h1><p>为科研创作开发，让工作在熟悉的软件里更顺手。</p></div>
-        {isAdmin ? <button type="button" className="resource-button resource-button--primary" onClick={() => setPublishing(true)}><Upload size={16} /> 上传插件</button> : <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> Fesilent 自研项目</span>}
+        {isAdmin ? <button type="button" className="resource-button resource-button--primary" onClick={() => { setEditingPlugin(undefined); setPublishing(true); }}><Upload size={16} /> 上传插件</button> : <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> Fesilent 自研项目</span>}
       </section>
 
       <section className="resource-stats" aria-label="插件库概览">
@@ -198,7 +199,7 @@ export default function SoftwarePlugins() {
 
         {loading ? <div className="software-catalog-state" role="status"><Loader2 size={26} className="software-spin" /><h3>正在读取插件库</h3></div>
           : loadError ? <div className="software-catalog-state" role="alert"><AlertCircle size={28} /><h3>插件库暂时无法加载</h3><p>{loadError}</p><button type="button" className="resource-button" onClick={retry}>重新加载</button></div>
-          : plugins.length === 0 ? <div className="software-catalog-state software-catalog-state--empty"><div className="software-empty-orbit" aria-hidden="true"><span><Box size={23} /></span><span><PackageOpen size={38} strokeWidth={1.3} /></span><span><Layers3 size={23} /></span></div><p className="resource-eyebrow">FESILENT ORIGINALS</p><h3>新的科研工具，正在准备中</h3><p>自研插件发布后会在这里展示。<br />功能介绍可自由浏览，登录后下载对应安装包。</p>{isAdmin && <button type="button" className="resource-button resource-button--primary" onClick={() => setPublishing(true)}><Upload size={16} /> 上传第一个插件</button>}</div>
+          : plugins.length === 0 ? <div className="software-catalog-state software-catalog-state--empty"><div className="software-empty-orbit" aria-hidden="true"><span><Box size={23} /></span><span><PackageOpen size={38} strokeWidth={1.3} /></span><span><Layers3 size={23} /></span></div><p className="resource-eyebrow">FESILENT ORIGINALS</p><h3>新的科研工具，正在准备中</h3><p>自研插件发布后会在这里展示。<br />功能介绍可自由浏览，登录后下载对应安装包。</p>{isAdmin && <button type="button" className="resource-button resource-button--primary" onClick={() => { setEditingPlugin(undefined); setPublishing(true); }}><Upload size={16} /> 上传第一个插件</button>}</div>
           : <><div className="resource-grid software-plugin-grid">{filtered.map(plugin => {
               const Icon = hostIcons[plugin.host];
               return <button key={plugin.id} type="button" className={`resource-card software-plugin-card software-plugin-card--${plugin.host.toLowerCase()}`} onClick={() => { closeDetails(); setSelected(plugin); }} aria-label={`查看${plugin.name}的功能与下载`}>
@@ -211,7 +212,7 @@ export default function SoftwarePlugins() {
             })}</div>{filtered.length === 0 && <div className="resource-empty"><Search size={28} aria-hidden="true" /><h2>暂未找到匹配的插件</h2><p>换一个关键词，或选择其他软件。</p><button type="button" className="resource-button" onClick={() => { setQuery(""); setHost("全部"); }}>显示全部插件</button></div>}</>}
       </section>
 
-      <ResourceDialog open={selected !== null} onClose={closeDetails} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button><button type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={() => downloadPlugin(selected)}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>}>
+      <ResourceDialog open={selected !== null} onClose={closeDetails} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button>{isAdmin && <button type="button" className="resource-button" disabled={checking || downloadBusy} onClick={() => { const plugin = selected; closeDetails(); setEditingPlugin(plugin); setPublishing(true); }}>更新插件</button>}<button type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={() => downloadPlugin(selected)}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>}>
         {selected && <div className="software-plugin-detail"><div className="software-detail-summary"><PluginPreview plugin={selected} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>ZIP 安装包</span><span>版本 {selected.version}</span><span>{formatPackageSize(selected.packageBytes)}</span></div></div></div>
           {selected.features.length > 0 && <DetailList title="能做什么" items={selected.features} />}
           <div className="software-detail-grid">{selected.environment.length > 0 && <DetailList title="运行环境" items={selected.environment} />}{selected.installation.length > 0 && <DetailList title="安装与使用" items={selected.installation} ordered />}</div>
@@ -223,8 +224,8 @@ export default function SoftwarePlugins() {
         </div>}
       </ResourceDialog>
       {LoginPrompt}
-      <ResourceDialog open={isAdmin && publishing} onClose={closePublisher} title="发布软件插件" eyebrow="FESILENT REVERIE / PUBLISH">
-        {isAdmin && publishing && <PluginPublisher onBusyChange={setPublishingBusy} onPublished={() => { setPublishing(false); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); setNotice("插件已发布，访客可以查看介绍，登录后下载安装包。"); retry(); }} />}
+      <ResourceDialog open={isAdmin && publishing} onClose={closePublisher} title={editingPlugin ? "更新软件插件" : "发布软件插件"} eyebrow="FESILENT REVERIE / PUBLISH">
+        {isAdmin && publishing && <PluginPublisher key={editingPlugin?.id ?? "new"} plugin={editingPlugin} onBusyChange={setPublishingBusy} onPublished={() => { setPublishing(false); setEditingPlugin(undefined); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); setNotice(editingPlugin ? "插件已更新，登录后可下载最新安装包。" : "插件已发布，访客可以查看介绍，登录后下载安装包。"); retry(); }} />}
       </ResourceDialog>
     </main>
   );

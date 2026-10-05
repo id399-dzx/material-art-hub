@@ -3,7 +3,7 @@ import { after, beforeEach, test } from 'node:test';
 import { registerHooks } from 'node:module';
 import { createHash } from 'node:crypto';
 import JSZip from 'jszip';
-import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES } from './catalog.ts';
+import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, pluginFromAsset } from './catalog.ts';
 
 // Substitute the client before importing storage.ts. No credentials or network are used.
 const stubKey = Symbol.for('fesilent.software-plugin.storage.test.client');
@@ -23,17 +23,43 @@ const client = {
         };
     } },
     from(table) { return {
-        async insert(record) { state.inserts.push({ table, record }); return { error: state.insertError }; },
-        select(columns) { state.queries.push({ table, columns }); return {
-            contains(column, tags) { state.queries.at(-1).filter = { column, tags }; return this; },
-            order(column, options) { state.queries.at(-1).order = { column, options }; return this; },
-            async abortSignal(signal) { state.queries.at(-1).signal = signal; return { data: state.rows, error: state.readError }; },
+        async insert(record) { state.inserts.push({ table, record }); if (state.insertThrow) throw state.insertThrow; return { error: state.insertError, status: state.insertStatus }; },
+        update(record) {
+            const update = { table, record, filters: [] }; state.updates.push(update);
+            return {
+                eq(column, value) { update.filters.push({ column, value }); return this; },
+                contains(column, tags) { update.filter = { column, tags }; return this; },
+                select(columns) { update.columns = columns; return this; },
+                then(resolve, reject) { return (async () => {
+                    state.onUpdate?.();
+                    if (state.updateThrow) throw state.updateThrow;
+                    if (state.updateError) return { data: null, error: state.updateError, status: state.updateStatus };
+                    if (state.updateRows !== undefined) return { data: state.updateRows, error: null };
+                    const matches = state.rows.filter(row => update.filters.every(({ column, value }) => row[column] === value)
+                        && update.filter.tags.every(tag => row[update.filter.column]?.includes(tag)));
+                    for (const row of matches) Object.assign(row, record);
+                    const data = matches.map(({ id, source_file_url }) => ({ id, source_file_url }));
+                    if (state.updateCommittedError) return { data: null, error: state.updateCommittedError, status: state.updateStatus };
+                    return { data, error: null };
+                })().then(resolve, reject); },
+            };
+        },
+        select(columns) { const query = { table, columns, filters: [] }; state.queries.push(query); return {
+            eq(column, value) { query.filters.push({ column, value }); return this; },
+            contains(column, tags) { query.filter = { column, tags }; return this; },
+            order(column, options) { query.order = { column, options }; return this; },
+            async abortSignal(signal) {
+                query.signal = signal;
+                const data = query.filters.length ? state.rows.filter(row => query.filters.every(({ column, value }) => row[column] === value)
+                    && query.filter.tags.every(tag => row[query.filter.column]?.includes(tag))) : state.rows;
+                return { data: structuredClone(data), error: state.readError };
+            },
         }; },
     }; },
 };
 globalThis[stubKey] = client;
 const hooks = registerHooks({ resolve(specifier, context, nextResolve) {
-    if (specifier === '@/lib/supabase') return { url: `data:text/javascript,${encodeURIComponent('export const supabase = globalThis[Symbol.for("fesilent.software-plugin.storage.test.client")]; export const isSupabaseConnectionError = error => /fetch|network|connection/i.test(error?.message ?? String(error));')}`, shortCircuit: true };
+    if (specifier === '@/lib/supabase') return { url: `data:text/javascript,${encodeURIComponent('export const supabase = globalThis[Symbol.for("fesilent.software-plugin.storage.test.client")]; export const isSupabaseConnectionError = error => /failed to fetch|fetch failed|network request failed|networkerror|load failed|enotfound|err_name_not_resolved/i.test(error?.message ?? String(error));')}`, shortCircuit: true };
     if (specifier === './catalog' && context.parentURL?.endsWith('/software-plugins/storage.ts')) return nextResolve(new URL('./catalog.ts', context.parentURL).href, context);
     return nextResolve(specifier, context);
 } });
@@ -42,7 +68,7 @@ const originalCreateImageBitmap = globalThis.createImageBitmap;
 const originalStorageUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 after(() => { hooks.deregister(); delete globalThis[stubKey]; if (originalCreateImageBitmap) globalThis.createImageBitmap = originalCreateImageBitmap; else delete globalThis.createImageBitmap; if (originalStorageUrl === undefined) delete process.env.NEXT_PUBLIC_SUPABASE_URL; else process.env.NEXT_PUBLIC_SUPABASE_URL = originalStorageUrl; });
 beforeEach(() => {
-    state = { user: { email: PLUGIN_ADMIN_EMAIL }, authError: null, authCalls: 0, buckets: [], uploads: [], removals: [], inserts: [], publicUrlCalls: [], queries: [], rows: [], readError: null, uploadErrorAt: -1, uploadError: new Error('Storage rejected upload'), insertError: null, cleanupError: null, cleanupThrow: null, bitmapClosed: 0 };
+    state = { user: { email: PLUGIN_ADMIN_EMAIL }, authError: null, authCalls: 0, buckets: [], uploads: [], removals: [], inserts: [], updates: [], publicUrlCalls: [], queries: [], rows: [], readError: null, uploadErrorAt: -1, uploadError: new Error('Storage rejected upload'), insertError: null, updateError: null, cleanupError: null, cleanupThrow: null, bitmapClosed: 0 };
     Object.assign(state, { bucketReads: [], bucketDefinition: { id: PLUGIN_PACKAGE_BUCKET, public: false, file_size_limit: PLUGIN_PACKAGE_CHUNK_BYTES, allowed_mime_types: ['application/zip', 'application/octet-stream'] }, bucketError: null, storageLists: [], listError: null });
     process.env.NEXT_PUBLIC_SUPABASE_URL = storageOrigin;
     globalThis.createImageBitmap = async () => ({ width: 800, height: 600, close() { state.bitmapClosed++; } });
@@ -52,7 +78,23 @@ async function input(overrides = {}) {
     const bytes = await zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE' });
     return { name: '  科研图工具  ', host: 'Blender', summary: '  用于科研图片的插件。  ', version: '1.0.0', features: ['创建图形'], environment: ['Blender 4.x'], installation: ['安装后启用'], outputs: ['可编辑场景'], packageFile: new File([bytes], 'research-tool.zip', { type: 'application/zip' }), ...overrides };
 }
-const noWrites = () => { assert.equal(state.uploads.length, 0); assert.equal(state.inserts.length, 0); assert.equal(state.removals.length, 0); };
+const noWrites = () => { assert.equal(state.uploads.length, 0); assert.equal(state.inserts.length, 0); assert.equal(state.updates.length, 0); assert.equal(state.removals.length, 0); };
+
+async function updateFixture(overrides = {}) {
+    const publication = await input();
+    const row = {
+        id: '37b37a8b-6ad4-40b9-a7e0-7746fb2bc311', title: '原科研插件',
+        description: JSON.stringify({ schema: 'fesilent-plugin-v1', host: publication.host, summary: '原插件简介', version: '1.0.0', features: publication.features, environment: publication.environment, installation: publication.installation, outputs: publication.outputs, packageName: 'original-tool.zip', packageBytes: publication.packageFile.size }),
+        image_url: `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/old-cover/cover.png`,
+        source_file_url: `storage://${PLUGIN_PACKAGE_BUCKET}/ba706e1c-ec1e-44bb-83eb-253671951124/package.zip`,
+        tags_style: [PLUGIN_ASSET_TAG, '原有风格'], tags_application: ['保留应用'], tags_material: ['保留材质'], tags_process: ['保留工艺'],
+        created_at: '2026-10-04T00:00:00.000Z', ...overrides,
+    };
+    state.rows = [row];
+    const existingPlugin = pluginFromAsset(row, storageOrigin);
+    assert.ok(existingPlugin);
+    return { publication: { ...publication, version: '2.0.0', existingPlugin }, row, original: structuredClone(row) };
+}
 function packageFixture(size) {
     const bytes = new Uint8Array(size);
     bytes.set([0x50, 0x4b, 3, 4]);
@@ -61,6 +103,192 @@ function packageFixture(size) {
     return new File([bytes], 'chunked-tool.zip', { type: '' });
 }
 const expectedHash = bytes => createHash('sha256').update(bytes).digest('hex');
+const databaseRejection = () => Object.assign(new Error('Database insertion failed'), { code: '23514' });
+
+test('updating a plugin replaces its package on the same asset id and preserves original cover, tags and creation time', async () => {
+    const { publication, row, original } = await updateFixture();
+    await publishSoftwarePlugin(publication);
+    assert.equal(state.inserts.length, 0); assert.equal(state.updates.length, 1); assert.equal(state.rows.length, 1);
+    assert.equal(row.id, original.id); assert.equal(row.title, publication.name.trim());
+    assert.equal(JSON.parse(row.description).version, '2.0.0');
+    assert.equal(row.source_file_url, `storage://${PLUGIN_PACKAGE_BUCKET}/${state.uploads[0].path}`);
+    assert.notEqual(row.source_file_url, original.source_file_url);
+    for (const column of ['image_url', 'created_at', 'tags_style', 'tags_application', 'tags_material', 'tags_process']) assert.deepEqual(row[column], original[column]);
+    const update = state.updates[0];
+    assert.deepEqual(Object.keys(update.record).sort(), ['description', 'source_file_url', 'title']);
+    assert.equal(update.filters.find(filter => filter.column === 'id').value, original.id);
+    assert.equal(update.filters.find(filter => filter.column === 'source_file_url').value, original.source_file_url);
+    assert.deepEqual(update.filter, { column: 'tags_style', tags: [PLUGIN_ASSET_TAG] });
+    assert.equal(update.columns, 'id,source_file_url');
+    assert.ok(state.queries[0].signal instanceof AbortSignal);
+    assert.equal(state.publicUrlCalls.length, 0); assert.equal(state.removals.length, 0);
+});
+
+test('updating with a new cover switches only this entry to a new upload directory and retains old files', async () => {
+    const { publication, row, original } = await updateFixture();
+    publication.coverFile = new File(['decoded fixture'], 'cover.webp', { type: 'image/webp' });
+    await publishSoftwarePlugin(publication);
+    assert.equal(state.uploads.length, 2); assert.equal(state.inserts.length, 0); assert.equal(state.updates.length, 1);
+    assert.equal(row.image_url, `${storageOrigin}/storage/v1/object/public/materials/${state.uploads[1].path}`);
+    assert.notEqual(row.image_url, original.image_url); assert.equal(row.created_at, original.created_at);
+    assert.equal(state.uploads[0].path.split('/')[0], state.uploads[1].path.split('/')[2]);
+    assert.equal(state.removals.length, 0);
+});
+
+test('a new ZIP can replace the package while keeping the original plugin name and version', async () => {
+    const { publication, row, original } = await updateFixture();
+    publication.name = publication.existingPlugin.name; publication.version = publication.existingPlugin.version;
+    await publishSoftwarePlugin(publication);
+    assert.equal(row.id, original.id); assert.equal(row.title, original.title);
+    assert.equal(JSON.parse(row.description).version, JSON.parse(original.description).version);
+    assert.notEqual(row.source_file_url, original.source_file_url);
+    assert.equal(state.inserts.length, 0); assert.equal(state.updates.length, 1); assert.equal(state.removals.length, 0);
+});
+
+test('stale plugin snapshots are rejected before upload when metadata, package, cover or creation time changed', async () => {
+    for (const [column, changed] of [
+        ['title', '别人修改的名称'], ['description', JSON.stringify({})],
+        ['source_file_url', `storage://${PLUGIN_PACKAGE_BUCKET}/ad506e1c-ec1e-44bb-83eb-253671951124/package.zip`],
+        ['image_url', `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/new-cover/cover.png`],
+        ['created_at', '2026-10-05T00:00:00.000Z'],
+    ]) {
+        const { publication, row } = await updateFixture(); row[column] = changed;
+        await assert.rejects(publishSoftwarePlugin(publication), /已被修改|原插件信息无效/);
+        noWrites();
+    }
+});
+
+test('missing, non-plugin and invalid plugin targets cannot receive uploads or database updates', async () => {
+    const missing = await updateFixture(); state.rows = [];
+    await assert.rejects(publishSoftwarePlugin(missing.publication), /已删除或不在插件目录/); noWrites();
+    const nonPlugin = await updateFixture(); nonPlugin.row.tags_style = ['普通素材'];
+    await assert.rejects(publishSoftwarePlugin(nonPlugin.publication), /不在插件目录/); noWrites();
+    const invalid = await updateFixture(); invalid.row.source_file_url = 'https://example.test/public.zip';
+    await assert.rejects(publishSoftwarePlugin(invalid.publication), /原插件信息无效/); noWrites();
+    const malformed = await updateFixture(); malformed.publication.existingPlugin.id = '../ordinary-asset';
+    await assert.rejects(publishSoftwarePlugin(malformed.publication), /原插件编号无效/); noWrites();
+});
+
+test('authentication and target read failures stop updates before uploading or writing', async () => {
+    const { publication } = await updateFixture();
+    for (const user of [null, { email: 'viewer@example.test' }]) {
+        state.user = user;
+        await assert.rejects(publishSoftwarePlugin(publication), /管理员/); noWrites();
+    }
+    assert.equal(state.queries.length, 0);
+    state.user = { email: PLUGIN_ADMIN_EMAIL }; state.readError = { message: 'permission denied for table assets', code: '42501' };
+    await assert.rejects(publishSoftwarePlugin(publication), /assets.*读取权限/); noWrites();
+});
+
+test('an update requires a newly selected ZIP and cannot republish using the old package reference', async () => {
+    const { publication, row, original } = await updateFixture(); publication.packageFile = undefined;
+    await assert.rejects(publishSoftwarePlugin(publication), /ZIP/);
+    noWrites(); assert.deepEqual(row, original);
+});
+
+test('a concurrent plugin change causes zero matches and cleans only this update package', async () => {
+    const { publication, row, original } = await updateFixture();
+    state.onUpload = () => { row.title = '另一个管理员保存的名称'; };
+    await assert.rejects(publishSoftwarePlugin(publication), /已被修改或已不可用/);
+    assert.equal(state.updates.length, 1); assert.equal(state.inserts.length, 0);
+    assert.equal(row.title, '另一个管理员保存的名称'); assert.equal(row.source_file_url, original.source_file_url);
+    assert.deepEqual(state.removals, [{ bucket: PLUGIN_PACKAGE_BUCKET, paths: [state.uploads[0].path] }]);
+});
+
+test('an update with no returned matching row never reports success or alters the old download', async () => {
+    const { publication, row, original } = await updateFixture(); state.updateRows = [];
+    await assert.rejects(publishSoftwarePlugin(publication), /已被修改或已不可用/);
+    assert.deepEqual(row, original); assert.equal(state.inserts.length, 0);
+    assert.deepEqual(state.removals, [{ bucket: PLUGIN_PACKAGE_BUCKET, paths: [state.uploads[0].path] }]);
+});
+
+test('failed update package upload preserves the original entry and never starts a database write', async () => {
+    const { publication, row, original } = await updateFixture(); state.uploadErrorAt = 1;
+    await assert.rejects(publishSoftwarePlugin(publication), /安装包上传失败/);
+    assert.deepEqual(row, original); assert.equal(state.updates.length, 0); assert.equal(state.inserts.length, 0); assert.equal(state.removals.length, 0);
+});
+
+test('failed update cover upload cleans the new package and preserves the original package and cover', async () => {
+    const { publication, row, original } = await updateFixture(); state.uploadErrorAt = 2;
+    publication.coverFile = new File(['decoded fixture'], 'cover.png', { type: 'image/png' });
+    await assert.rejects(publishSoftwarePlugin(publication), /封面上传失败/);
+    assert.deepEqual(row, original); assert.equal(state.updates.length, 0); assert.equal(state.inserts.length, 0);
+    assert.deepEqual(state.removals, [{ bucket: PLUGIN_PACKAGE_BUCKET, paths: [state.uploads[0].path] }]);
+});
+
+test('a definite update rejection cleans new uploads while preserving the old entry and downloads', async () => {
+    const { publication, row, original } = await updateFixture();
+    publication.coverFile = new File(['decoded fixture'], 'cover.png', { type: 'image/png' });
+    state.updateError = { message: 'permission denied for table assets', code: '42501' };
+    await assert.rejects(publishSoftwarePlugin(publication), /插件介绍保存权限被拒绝/);
+    assert.deepEqual(row, original); assert.equal(state.updates.length, 1); assert.equal(state.inserts.length, 0);
+    assert.deepEqual(state.removals, state.uploads.map(({ bucket, path }) => ({ bucket, paths: [path] })));
+    assert.ok(state.removals.every(removal => !removal.paths.includes(original.source_file_url.split(`storage://${PLUGIN_PACKAGE_BUCKET}/`)[1])));
+});
+
+test('a committed update with a lost network reply retains the new package referenced by the same entry', async () => {
+    const { publication, row, original } = await updateFixture();
+    publication.coverFile = new File(['decoded fixture'], 'cover.png', { type: 'image/png' });
+    state.updateCommittedError = new Error('Network request failed');
+    await assert.rejects(publishSoftwarePlugin(publication), /无法确认发布结果.*刷新插件目录/);
+    assert.equal(row.id, original.id); assert.equal(row.source_file_url, `storage://${PLUGIN_PACKAGE_BUCKET}/${state.uploads[0].path}`);
+    assert.notEqual(row.source_file_url, original.source_file_url); assert.equal(state.removals.length, 0); assert.equal(state.inserts.length, 0);
+});
+
+test('a thrown or timed out update keeps staged uploads because the database result is unknown', async () => {
+    for (const mode of ['throw', 'timeout', 'server']) {
+        const { publication } = await updateFixture();
+        state.updateThrow = mode === 'throw' ? new Error('Network request failed') : undefined;
+        state.updateError = mode === 'timeout' ? new DOMException('request timed out', 'TimeoutError')
+            : mode === 'server' ? { message: 'Internal server error', status: 500 } : null;
+        await assert.rejects(publishSoftwarePlugin(publication));
+        assert.equal(state.removals.length, 0); assert.equal(state.inserts.length, 0);
+    }
+});
+
+test('SDK parse failures and unidentified errors after a committed update retain its referenced package', async () => {
+    for (const { error, status } of [
+        { error: { message: 'SyntaxError: Unexpected end of JSON input', code: '' }, status: 0 },
+        { error: { message: 'Unknown response error', code: '' }, status: undefined },
+        { error: { message: 'Invalid response', code: '42501' }, status: 0 },
+    ]) {
+        const { publication, row, original } = await updateFixture();
+        state.updateCommittedError = error; state.updateStatus = status;
+        await assert.rejects(publishSoftwarePlugin(publication));
+        assert.equal(row.id, original.id);
+        assert.notEqual(row.source_file_url, original.source_file_url);
+        assert.equal(row.source_file_url, `storage://${PLUGIN_PACKAGE_BUCKET}/${state.uploads.at(-1).path}`);
+        assert.equal(state.removals.length, 0);
+    }
+});
+
+test('unverifiable update responses retain staged files and cannot report successful publication', async () => {
+    for (const result of [null, [{ id: 'another-id', source_file_url: 'unexpected' }], [{ id: 'one' }, { id: 'two' }]]) {
+        const { publication, row, original } = await updateFixture(); state.updateRows = result;
+        await assert.rejects(publishSoftwarePlugin(publication), /更新结果无法确认/);
+        assert.deepEqual(row, original); assert.equal(state.removals.length, 0); assert.equal(state.inserts.length, 0);
+    }
+});
+
+test('a new publication also retains its package when the insert result is uncertain', async () => {
+    state.insertError = new Error('Network request failed');
+    await assert.rejects(publishSoftwarePlugin(await input()), /无法确认发布结果/);
+    assert.equal(state.inserts.length, 1); assert.equal(state.removals.length, 0);
+    state.insertError = null; state.insertThrow = new DOMException('request timed out', 'TimeoutError');
+    await assert.rejects(publishSoftwarePlugin(await input()), /无法确认发布结果/);
+    assert.equal(state.inserts.length, 2); assert.equal(state.removals.length, 0);
+});
+
+test('SDK parse failures and unidentified insert errors cannot delete a potentially published package', async () => {
+    for (const { error, status } of [
+        { error: { message: 'SyntaxError: Unexpected end of JSON input', code: '' }, status: 0 },
+        { error: { message: 'Unknown response error', code: '' }, status: undefined },
+    ]) {
+        state.insertError = error; state.insertStatus = status;
+        await assert.rejects(publishSoftwarePlugin(await input()));
+        assert.equal(state.removals.length, 0);
+    }
+});
 
 test('anonymous and non-admin users cannot upload or write plugin records', async () => {
     const publication = await input();
@@ -76,7 +304,7 @@ test('authentication failure aborts publication before any storage or database c
     const failure = new Error('Session invalid'); state.authError = failure;
     await assert.rejects(publishSoftwarePlugin(await input()), /请登录管理员账号/);
     noWrites();
-    state.authError = new Error('Network connection failed');
+    state.authError = new Error('Network request failed');
     await assert.rejects(publishSoftwarePlugin(await input()), /暂时无法连接账号服务/);
     noWrites();
 });
@@ -95,7 +323,7 @@ test('oversized packages and invalid covers fail before persistent writes', asyn
 });
 
 test('database failure removes exactly the package and cover uploaded in this publication', async () => {
-    const failure = new Error('Database insertion failed'); state.insertError = failure;
+    const failure = databaseRejection(); state.insertError = failure;
     const coverFile = new File(['fixture PNG decoded by stub'], 'cover.png', { type: 'image/png' });
     await assert.rejects(publishSoftwarePlugin(await input({ coverFile })), error => error.cause === failure && /插件介绍保存失败/.test(error.message));
     assert.equal(state.uploads.length, 2); assert.equal(state.inserts.length, 1); assert.equal(state.bitmapClosed, 1);
@@ -107,14 +335,14 @@ test('database failure removes exactly the package and cover uploaded in this pu
 });
 
 test('cleanup returning an error does not falsely report successful rollback', async () => {
-    state.insertError = new Error('Database insertion failed'); state.cleanupError = new Error('Storage cleanup denied');
+    state.insertError = databaseRejection(); state.cleanupError = new Error('Storage cleanup denied');
     await assert.rejects(publishSoftwarePlugin(await input()), /未成功发布.*清理失败/);
     assert.equal(state.inserts.length, 1); assert.equal(state.removals.length, 1);
     assert.deepEqual(state.removals[0], { bucket: PLUGIN_PACKAGE_BUCKET, paths: [state.uploads[0].path] });
 });
 
 test('cleanup throwing a network error gives a visible recovery instruction', async () => {
-    state.insertError = new Error('Database insertion failed'); state.cleanupThrow = new Error('Network cleanup failed');
+    state.insertError = databaseRejection(); state.cleanupThrow = new Error('Network cleanup failed');
     await assert.rejects(publishSoftwarePlugin(await input()), /管理员检查 plugin-packages 与 materials 中的本次上传文件/);
     assert.equal(state.removals.length, 1); assert.deepEqual(state.removals[0], { bucket: PLUGIN_PACKAGE_BUCKET, paths: [state.uploads[0].path] });
 });
@@ -161,7 +389,7 @@ test('publication stores a private package reference and only the cover has a pu
 });
 
 test('rollback attempts both buckets even when removing the private package fails', async () => {
-    state.insertError = new Error('Database insertion failed'); state.cleanupError = new Error('Package cleanup denied');
+    state.insertError = databaseRejection(); state.cleanupError = new Error('Package cleanup denied');
     const coverFile = new File(['fixture PNG decoded by stub'], 'cover.png', { type: 'image/png' });
     await assert.rejects(publishSoftwarePlugin(await input({ coverFile })), /未成功发布.*清理失败/);
     assert.deepEqual(state.removals, state.uploads.map(({ bucket, path }) => ({ bucket, paths: [path] })));
@@ -231,7 +459,7 @@ test('storage object size and ZIP or binary MIME restrictions are explained in C
 });
 
 test('a thrown account network error is visible before any persistent write', async () => {
-    state.authThrow = new Error('Network connection failed');
+    state.authThrow = new Error('Network request failed');
     const stages = [];
     await assert.rejects(publishSoftwarePlugin(await input(), stage => stages.push(stage)), /暂时无法连接账号服务/);
     assert.deepEqual(stages, ['checking']); noWrites();
@@ -388,7 +616,7 @@ test('an inconsistent or unreadable large file is rejected before storage writes
 test('failed large package metadata persistence cleans every successful chunk and the cover', async () => {
     const packageFile = packageFixture(PLUGIN_PACKAGE_CHUNK_BYTES + 1);
     const coverFile = new File(['fixture PNG decoded by stub'], 'cover.png', { type: 'image/png' });
-    state.insertError = new Error('Database insertion failed');
+    state.insertError = databaseRejection();
     await assert.rejects(publishSoftwarePlugin(await input({ packageFile, coverFile })), /插件介绍保存失败/);
     assert.equal(state.uploads.length, 3); assert.equal(state.inserts.length, 1);
     assert.deepEqual(state.removals, [

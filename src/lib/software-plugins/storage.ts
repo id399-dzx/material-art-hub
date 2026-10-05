@@ -1,10 +1,10 @@
 import { isSupabaseConnectionError, supabase } from "@/lib/supabase";
-import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, getPluginPackageObjects, getPluginPackagePath, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost } from "./catalog";
+import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, getPluginPackageObjects, getPluginPackagePath, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost, type SoftwarePlugin } from "./catalog";
 
 export type PluginPublicationInput = {
   name: string; host: SoftwareHost; summary: string; version: string;
   features: string[]; environment: string[]; installation: string[]; outputs: string[];
-  packageFile: File; coverFile?: File;
+  packageFile: File; coverFile?: File; existingPlugin?: SoftwarePlugin;
 };
 
 export type PluginPublicationStage = "checking" | "package" | "cover" | "publishing";
@@ -116,9 +116,45 @@ async function sha256(bytes: ArrayBuffer | Uint8Array<ArrayBuffer>): Promise<str
   }
 }
 
+async function requireCurrentPlugin(existing: SoftwarePlugin): Promise<PluginAssetRow> {
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(existing.id)) throw new Error("原插件编号无效，请刷新插件目录后重试。");
+  const { data, error } = await Promise.resolve(supabase.from("assets").select("id,title,description,image_url,source_file_url,tags_style,created_at")
+    .eq("id", existing.id).contains("tags_style", [PLUGIN_ASSET_TAG]).abortSignal(AbortSignal.timeout(15_000)))
+    .catch(error => { throw pluginServiceError(error, "loading"); });
+  if (error) throw pluginServiceError(error, "loading");
+  const rows = data as PluginAssetRow[] | null;
+  if (!rows || rows.length !== 1) throw new Error("原插件已删除或不在插件目录中，请刷新插件目录后重试。");
+  const row = rows[0];
+  const current = pluginFromAsset(row, new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).origin);
+  if (!current) throw new Error("原插件信息无效，无法更新，请刷新插件目录后重试。");
+  let matches = false;
+  try {
+    matches = current.id === existing.id && current.name === existing.name
+      && current.packagePath === existing.packagePath && current.coverUrl === existing.coverUrl
+      && current.publishedAt === existing.publishedAt
+      && JSON.stringify(validatePluginDetails(current)) === JSON.stringify(validatePluginDetails(existing));
+  } catch { /* A stale or malformed client snapshot cannot authorize an update. */ }
+  if (!matches) throw new Error("插件已被修改，请刷新插件目录后重新选择要更新的插件。");
+  return row;
+}
+
+function isDefinitePublicationRejection(error: unknown, status?: number): boolean {
+  const details = error && typeof error === "object" ? error as Record<string, unknown> : {};
+  const signature = `${details.name ?? ""} ${details.code ?? ""} ${details.message ?? String(error)}`;
+  const responseStatus = status ?? Number(details.statusCode ?? details.status);
+  // The SDK also returns status 0 with empty-code errors when parsing a reply
+  // fails. That reply may have followed a successful write, so retain the files.
+  if (responseStatus === 0 || responseStatus === 408 || responseStatus >= 500
+    || isSupabaseConnectionError(error) || /SyntaxError|TimeoutError|AbortError|timed?\s*out|aborted/i.test(signature)) return false;
+  if (responseStatus >= 400 && responseStatus < 500) return true;
+  const code = String(details.code ?? "");
+  return /^(?:22|23|28|42|P0)[A-Z0-9]{3}$/.test(code) || /^PGRST(?:1|2|3)\d{2}$/.test(code);
+}
+
 export async function publishSoftwarePlugin(input: PluginPublicationInput, onStage?: (stage: PluginPublicationStage) => void, onPackageProgress?: (progress: PluginPackageUploadProgress) => void) {
   onStage?.("checking");
   await requirePluginAdministrator();
+  const existingRow = input.existingPlugin ? await requireCurrentPlugin(input.existingPlugin) : undefined;
   if (!input.name.trim() || input.name.length > 160) throw new Error("请填写插件名称，最多 160 字。");
   if (!input.packageFile || !/\.zip$/i.test(input.packageFile.name)) throw new Error("请将插件与使用说明打包为 ZIP 后上传。");
   if (!Number.isSafeInteger(input.packageFile.size) || input.packageFile.size <= 0 || input.packageFile.size > PLUGIN_PACKAGE_MAX_BYTES) throw new Error("插件安装包大小无效，请使用 200 MB 以内的 ZIP 文件。");
@@ -151,6 +187,7 @@ export async function publishSoftwarePlugin(input: PluginPublicationInput, onSta
   const coverDirectory = `uploads/plugins/${uploadId}`;
   const uploaded = new Map<string, string[]>();
   let published = false;
+  let cleanupAllowed = true;
   let stage: PluginPublicationStage = "package";
   let publicationError: Error | undefined;
   let activePackageObject = 0;
@@ -187,22 +224,50 @@ export async function publishSoftwarePlugin(input: PluginPublicationInput, onSta
     }
     stage = "publishing";
     onStage?.(stage);
-    // An insert timeout cannot distinguish a rejected request from a committed
-    // write whose reply was lost. Keep awaiting it before removing uploaded files.
-    const { error: insertError } = await supabase.from("assets").insert({
-      title: input.name.trim(), description: JSON.stringify(details),
-      image_url: coverUrl || "/plugin-placeholder.svg", source_file_url: packageReference,
-      tags_application: [], tags_material: [], tags_process: [], tags_style: [PLUGIN_ASSET_TAG],
-      created_at: new Date().toISOString(),
-    });
-    if (insertError) throw insertError;
+    // Once a write starts, a lost reply may conceal a committed change. Only a
+    // definite rejection or zero matching rows permits removing staged objects.
+    cleanupAllowed = false;
+    if (existingRow) {
+      const { data, error: updateError, status } = await supabase.from("assets").update({
+        title: input.name.trim(), description: JSON.stringify(details), source_file_url: packageReference,
+        ...(cover ? { image_url: coverUrl } : {}),
+      }).eq("id", existingRow.id).contains("tags_style", [PLUGIN_ASSET_TAG])
+        .eq("title", existingRow.title).eq("description", existingRow.description)
+        .eq("source_file_url", existingRow.source_file_url!).eq("image_url", existingRow.image_url)
+        .eq("created_at", existingRow.created_at).select("id,source_file_url");
+      if (updateError) {
+        cleanupAllowed = isDefinitePublicationRejection(updateError, status);
+        throw updateError;
+      }
+      if (Array.isArray(data) && data.length === 0) {
+        cleanupAllowed = true;
+        throw new Error("插件已被修改或已不可用，请刷新插件目录后重试。");
+      }
+      if (!Array.isArray(data) || data.length !== 1 || data[0].id !== existingRow.id || data[0].source_file_url !== packageReference) {
+        throw new Error("插件更新结果无法确认，请刷新插件目录检查后再操作。");
+      }
+    } else {
+      const { error: insertError, status } = await supabase.from("assets").insert({
+        title: input.name.trim(), description: JSON.stringify(details),
+        image_url: coverUrl || "/plugin-placeholder.svg", source_file_url: packageReference,
+        tags_application: [], tags_material: [], tags_process: [], tags_style: [PLUGIN_ASSET_TAG],
+        created_at: new Date().toISOString(),
+      });
+      if (insertError) {
+        cleanupAllowed = isDefinitePublicationRejection(insertError, status);
+        throw insertError;
+      }
+    }
     published = true;
   } catch (error) {
     publicationError = pluginServiceError(error, stage);
+    if (stage === "publishing" && !cleanupAllowed && !/无法确认|结果无法确认/.test(publicationError.message)) {
+      publicationError = new Error("保存插件介绍时暂时无法确认发布结果，请刷新插件目录检查后再操作。", { cause: error });
+    }
     if (stage === "package" && chunked) publicationError = new Error(`${publicationError.message}（第 ${activePackageObject + 1}/${packageObjects.length} 个分片）`, { cause: error });
     throw publicationError;
   } finally {
-    if (!published && uploaded.size) {
+    if (!published && cleanupAllowed && uploaded.size) {
       let cleanupFailed = false;
       for (const [bucket, paths] of uploaded) {
         try {

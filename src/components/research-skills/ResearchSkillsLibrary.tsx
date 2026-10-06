@@ -2,9 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
+import Link from "next/link";
 import { ArrowUpRight, BookOpen, Boxes, ChartNoAxesCombined, ChevronRight, FileText, FlaskConical, Github, Library, Presentation, Search, Sparkles } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { useActionLogin } from "@/components/auth/useActionLogin";
+import { useContentAdmin, useContentCatalog } from "@/components/admin/ContentProvider";
 import { supabase } from "@/lib/supabase";
 import { categoryLabel, filterResearchSkills, RESEARCH_SKILL_CATEGORIES, RESEARCH_SKILL_SOURCE, RESEARCH_SKILLS, type ResearchSkill } from "@/lib/research-skills/catalog";
 import "./research-skills.css";
@@ -20,9 +22,12 @@ const categoryIcons = {
 };
 
 const reviewedDate = RESEARCH_SKILL_SOURCE.synopsisReviewedAt.replaceAll("-", ".");
-const researchCount = RESEARCH_SKILLS.filter((skill) => skill.scope === "research").length;
+const skillKey = (skill: ResearchSkill) => skill.repo;
 
 export default function ResearchSkillsLibrary() {
+  const { items: skills, loading: catalogLoading, error: catalogError } = useContentCatalog("skills", RESEARCH_SKILLS, skillKey);
+  const { isAdmin } = useContentAdmin();
+  const researchCount = skills.filter((skill) => skill.scope === "research").length;
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const [scope, setScope] = useState("all");
@@ -31,11 +36,12 @@ export default function ResearchSkillsLibrary() {
   const actionPending = useRef(false);
   const selectionRevision = useRef(0);
   const { checking, isAuthenticated, requestLogin, LoginPrompt } = useActionLogin();
-  const visible = useMemo(() => filterResearchSkills(search, category, scope), [search, category, scope]);
+  const visible = useMemo(() => filterResearchSkills(search, category, scope, skills), [search, category, scope, skills]);
 
   useEffect(() => {
+    if (catalogLoading) return;
     const repo = new URLSearchParams(window.location.search).get("skill");
-    const skill = RESEARCH_SKILLS.find(item => item.repo === repo);
+    const skill = skills.find(item => item.repo === repo);
     if (!skill) return;
     let cancelled = false;
     const revision = selectionRevision.current;
@@ -44,7 +50,7 @@ export default function ResearchSkillsLibrary() {
       if (!cancelled && revision === selectionRevision.current && user && !error) setSelected(skill);
     }).catch(() => {});
     return () => { cancelled = true; };
-  }, []);
+  }, [catalogLoading, skills]);
 
   function returnTo(skill: ResearchSkill) { return "/research-skills?skill=" + encodeURIComponent(skill.repo); }
   function closeDetails() {
@@ -86,9 +92,12 @@ export default function ResearchSkillsLibrary() {
         </a>
       </section>
 
+      {isAdmin && <Link className="resource-button" href="/admin?section=skills">管理本板块</Link>}
+      {catalogError && <p className="research-skills-action-error" role="alert">{catalogError}</p>}
+
       <section className="resource-stats" aria-label="技能目录概况">
-        <div className="resource-stat" style={{ "--stat-wash": "#d9ccff" } as CSSProperties}><label>开源仓库</label><strong>{RESEARCH_SKILLS.length}</strong><small>已核对 {RESEARCH_SKILL_SOURCE.starredRepositoryCount} 个公开星标</small></div>
-        <div className="resource-stat" style={{ "--stat-wash": "#c8e1ff" } as CSSProperties}><label>科研专用</label><strong>{researchCount}</strong><small>另有 {RESEARCH_SKILLS.length - researchCount} 个科研辅助项目</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#d9ccff" } as CSSProperties}><label>开源仓库</label><strong>{skills.length}</strong><small>已核对 {RESEARCH_SKILL_SOURCE.starredRepositoryCount} 个公开星标</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#c8e1ff" } as CSSProperties}><label>科研专用</label><strong>{researchCount}</strong><small>另有 {skills.length - researchCount} 个科研辅助项目</small></div>
         <div className="resource-stat" style={{ "--stat-wash": "#f6d3e5" } as CSSProperties}><label>研究场景</label><strong>{RESEARCH_SKILL_CATEGORIES.length}</strong><small>中文介绍核对于 {reviewedDate}</small></div>
       </section>
 
@@ -102,8 +111,8 @@ export default function ResearchSkillsLibrary() {
           <label className="research-skills-scope"><span>适用范围</span><select value={scope} onChange={(event) => setScope(event.target.value)}><option value="all">全部 Skills</option><option value="research">科研专用</option><option value="support">科研辅助</option></select></label>
         </div>
         <div className="research-skills-categories" role="group" aria-label="按研究场景筛选">
-          <button type="button" className="resource-chip" aria-pressed={category === "all"} onClick={() => setCategory("all")}>全部 <span>{RESEARCH_SKILLS.length}</span></button>
-          {RESEARCH_SKILL_CATEGORIES.map((item) => <button type="button" key={item.id} className="resource-chip" aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.label} <span>{RESEARCH_SKILLS.filter((skill) => skill.category === item.id).length}</span></button>)}
+          <button type="button" className="resource-chip" aria-pressed={category === "all"} onClick={() => setCategory("all")}>全部 <span>{skills.length}</span></button>
+          {RESEARCH_SKILL_CATEGORIES.map((item) => <button type="button" key={item.id} className="resource-chip" aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.label} <span>{skills.filter((skill) => skill.category === item.id).length}</span></button>)}
         </div>
         <p className="resource-meta research-skills-results" role="status">当前展示 {visible.length} 个仓库 · 同一工具集的子技能集中展示{checking ? " · 正在验证登录状态…" : ""}</p>
         {actionError && <p className="research-skills-action-error" role="alert">{actionError}</p>}
@@ -123,7 +132,8 @@ export default function ResearchSkillsLibrary() {
             );
           })}
         </div>
-        {visible.length === 0 && <div className="resource-empty"><Search size={27} /><h3>没有找到匹配的技能</h3><p>试试“绘图”“文献”或仓库名称，也可以重置筛选。</p><button type="button" className="resource-button" onClick={() => { setSearch(""); setCategory("all"); setScope("all"); }}>重置筛选</button></div>}
+        {catalogLoading && skills.length === 0 && <p className="resource-meta" role="status">正在读取科研 Skill 目录…</p>}
+        {!catalogLoading && !catalogError && visible.length === 0 && <div className="resource-empty"><Search size={27} /><h3>没有找到匹配的技能</h3><p>试试“绘图”“文献”或仓库名称，也可以重置筛选。</p><button type="button" className="resource-button" onClick={() => { setSearch(""); setCategory("all"); setScope("all"); }}>重置筛选</button></div>}
         <div className="resource-detail-note research-skills-catalog-note"><BookOpen size={19} /><p>已核对 {RESEARCH_SKILL_SOURCE.starredRepositoryCount} 个公开星标仓库，收录其中含 Skill 定义的科研与科研辅助项目。技能集合在一个卡片内查看；普通软件和与科研无关的项目不作为科研 Skill 展示。</p></div>
       </section>
 

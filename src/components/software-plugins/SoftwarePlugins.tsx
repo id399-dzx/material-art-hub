@@ -2,12 +2,14 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
-import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, PackageOpen, PenTool, Puzzle, Search, Sparkles, Upload } from "lucide-react";
+import Link from "next/link";
+import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, PackageOpen, PenTool, Puzzle, Search, Settings2, Sparkles, Upload } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
-import { SOFTWARE_HOSTS, PLUGIN_ADMIN_EMAIL, formatPackageSize, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
+import { useContentAdmin } from "@/components/admin/ContentProvider";
+import { SOFTWARE_HOSTS, formatPackageSize, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
 import { loadSoftwarePlugins } from "@/lib/software-plugins/storage";
 import { downloadPluginPackage, PluginDownloadLoginRequiredError, type PluginDownloadProgress } from "@/lib/software-plugins/download";
-import { getSupabaseErrorMessage, isSupabaseConnectionError, supabase } from "@/lib/supabase";
+import { getSupabaseErrorMessage, isSupabaseConnectionError } from "@/lib/supabase";
 import PluginPublisher from "./PluginPublisher";
 import { useActionLogin } from "@/components/auth/useActionLogin";
 import "./software-plugins.css";
@@ -76,6 +78,7 @@ function PluginPreview({ plugin }: { plugin: SoftwarePlugin }) {
 }
 
 export default function SoftwarePlugins() {
+  const { isAdmin } = useContentAdmin();
   const { requestLogin, showLogin, checking, LoginPrompt } = useActionLogin();
   const [host, setHost] = useState<SoftwareHost | "全部">("全部");
   const [query, setQuery] = useState("");
@@ -84,7 +87,6 @@ export default function SoftwarePlugins() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
   const [selected, setSelected] = useState<SoftwarePlugin | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [editingPlugin, setEditingPlugin] = useState<SoftwarePlugin | undefined>();
   const [publishingBusy, setPublishingBusy] = useState(false);
@@ -100,14 +102,7 @@ export default function SoftwarePlugins() {
     controller?.abort();
   }, []);
 
-  useEffect(() => {
-    let alive = true;
-    supabase.auth.getUser().then(({ data: { user } }) => { if (alive) setIsAdmin(user?.email === PLUGIN_ADMIN_EMAIL); });
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (alive) { setIsAdmin(session?.user.email === PLUGIN_ADMIN_EMAIL); if (session?.user.email !== PLUGIN_ADMIN_EMAIL) { setPublishing(false); setEditingPlugin(undefined); } }
-    });
-    return () => { alive = false; subscription.unsubscribe(); };
-  }, []);
+  useEffect(() => { if (!isAdmin) { setPublishing(false); setEditingPlugin(undefined); } }, [isAdmin]);
 
   useEffect(() => {
     let alive = true;
@@ -180,7 +175,7 @@ export default function SoftwarePlugins() {
     <main className="resource-page software-plugins-page">
       <section className="resource-hero">
         <div><p className="resource-eyebrow"><Sparkles size={14} aria-hidden="true" /> FESILENT REVERIE / SOFTWARE</p><h1>软件插件</h1><p>为科研创作开发，让工作在熟悉的软件里更顺手。</p></div>
-        {isAdmin ? <button type="button" className="resource-button resource-button--primary" onClick={() => { setEditingPlugin(undefined); setPublishing(true); }}><Upload size={16} /> 上传插件</button> : <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> Fesilent 自研项目</span>}
+        {isAdmin ? <div className="software-host-filter"><Link href="/admin?section=plugins" className="resource-button"><Settings2 size={16} /> 管理插件</Link><button type="button" className="resource-button resource-button--primary" onClick={() => { setEditingPlugin(undefined); setPublishing(true); }}><Upload size={16} /> 上传插件</button></div> : <span className="software-host-badge"><Monitor size={15} aria-hidden="true" /> Fesilent 自研项目</span>}
       </section>
 
       <section className="resource-stats" aria-label="插件库概览">
@@ -212,7 +207,7 @@ export default function SoftwarePlugins() {
             })}</div>{filtered.length === 0 && <div className="resource-empty"><Search size={28} aria-hidden="true" /><h2>暂未找到匹配的插件</h2><p>换一个关键词，或选择其他软件。</p><button type="button" className="resource-button" onClick={() => { setQuery(""); setHost("全部"); }}>显示全部插件</button></div>}</>}
       </section>
 
-      <ResourceDialog open={selected !== null} onClose={closeDetails} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button>{isAdmin && <button type="button" className="resource-button" disabled={checking || downloadBusy} onClick={() => { const plugin = selected; closeDetails(); setEditingPlugin(plugin); setPublishing(true); }}>更新插件</button>}<button type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={() => downloadPlugin(selected)}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>}>
+      <ResourceDialog open={selected !== null} onClose={closeDetails} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button>{isAdmin && <><Link href={`/admin?section=plugins&item=${encodeURIComponent(selected.id)}`} className="resource-button"><Settings2 size={15} /> 编辑介绍 / 下架</Link><button type="button" className="resource-button" disabled={checking || downloadBusy} onClick={() => { const plugin = selected; closeDetails(); setEditingPlugin(plugin); setPublishing(true); }}>更新安装包</button></>}<button type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={() => downloadPlugin(selected)}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>}>
         {selected && <div className="software-plugin-detail"><div className="software-detail-summary"><PluginPreview plugin={selected} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>ZIP 安装包</span><span>版本 {selected.version}</span><span>{formatPackageSize(selected.packageBytes)}</span></div></div></div>
           {selected.features.length > 0 && <DetailList title="能做什么" items={selected.features} />}
           <div className="software-detail-grid">{selected.environment.length > 0 && <DetailList title="运行环境" items={selected.environment} />}{selected.installation.length > 0 && <DetailList title="安装与使用" items={selected.installation} ordered />}</div>

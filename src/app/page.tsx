@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Activity, ArrowUpRight, Box, ChevronDown, Filter, Image as ImageIcon,
-  Layers, Search, SlidersHorizontal, Sparkles, X, Zap,
+  Layers, Search, Settings2, SlidersHorizontal, Sparkles, X, Zap,
 } from "lucide-react";
+import { useContentAdmin } from "@/components/admin/ContentProvider";
 import { supabase } from "@/lib/supabase";
 import { isPluginAsset } from "@/lib/software-plugins/catalog";
 import "./home.css";
@@ -95,6 +96,7 @@ interface Asset {
 }
 
 export default function Home() {
+  const { isAdmin } = useContentAdmin();
   const [assets, setAssets] = useState<Asset[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -129,6 +131,7 @@ export default function Home() {
         const { data, error } = await supabase
           .from("assets")
           .select("*")
+          .eq("hidden", false)
           .order("created_at", { ascending: false });
         if (error) {
           console.warn("Error fetching assets:", error);
@@ -220,6 +223,7 @@ export default function Home() {
                 <span className="home-section-kicker">COLLECTION / 02</span>
                 <h2>素材浏览 <span>{loading ? "正在加载" : loadError ? "暂时无法读取" : "共 " + filteredAssets.length + " 项"}</span></h2>
               </div>
+              {isAdmin && <Link href="/admin?section=assets" className="home-filter-reset"><Settings2 size={15} /> 管理素材</Link>}
               <button
                 type="button"
                 className="home-mobile-filter-toggle"

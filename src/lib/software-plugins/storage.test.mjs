@@ -399,16 +399,19 @@ test('anonymous visitors can read catalog metadata without receiving public URLs
     state.user = null;
     const publication = await input();
     const id = '37b37a8b-6ad4-40b9-a7e0-7746fb2bc311', packageId = 'ba706e1c-ec1e-44bb-83eb-253671951124';
-    state.rows = [{ id, title: publication.name.trim(), description: JSON.stringify({ schema: 'fesilent-plugin-v1', host: publication.host, summary: publication.summary.trim(), version: publication.version, features: publication.features, environment: publication.environment, installation: publication.installation, outputs: publication.outputs, packageName: publication.packageFile.name, packageBytes: publication.packageFile.size }), image_url: '/plugin-placeholder.svg', source_file_url: `storage://${PLUGIN_PACKAGE_BUCKET}/${packageId}/package.zip`, tags_style: [PLUGIN_ASSET_TAG], created_at: '2026-10-04T00:00:00.000Z' }];
+    state.rows = [{ hidden: false, id, title: publication.name.trim(), description: JSON.stringify({ schema: 'fesilent-plugin-v1', host: publication.host, summary: publication.summary.trim(), version: publication.version, features: publication.features, environment: publication.environment, installation: publication.installation, outputs: publication.outputs, packageName: publication.packageFile.name, packageBytes: publication.packageFile.size }), image_url: '/plugin-placeholder.svg', source_file_url: `storage://${PLUGIN_PACKAGE_BUCKET}/${packageId}/package.zip`, tags_style: [PLUGIN_ASSET_TAG], created_at: '2026-10-04T00:00:00.000Z' }];
     const plugins = await loadSoftwarePlugins();
     assert.equal(plugins[0].downloadUrl, `/api/software-plugins/${id}/download`);
     assert.equal(plugins[0].packagePath, `${packageId}/package.zip`);
     assert.equal(state.authCalls, 0); assert.equal(state.buckets.length, 0); assert.equal(state.publicUrlCalls.length, 0);
     assert.deepEqual(state.queries[0].filter, { column: 'tags_style', tags: [PLUGIN_ASSET_TAG] });
+    assert.deepEqual(state.queries[0].filters, [{ column: 'hidden', value: false }]);
+    state.rows[0].hidden = true;
+    assert.deepEqual(await loadSoftwarePlugins(), []);
 });
 
 test('old public package records are refused with an explicit migration message', async () => {
-    state.rows = [{ source_file_url: `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/old/package.zip` }];
+    state.rows = [{ hidden: false, tags_style: [PLUGIN_ASSET_TAG], source_file_url: `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/old/package.zip` }];
     await assert.rejects(loadSoftwarePlugins(), /公开链接.*迁移到私有存储/);
     assert.equal(state.buckets.length, 0);
 });

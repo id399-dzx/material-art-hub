@@ -27,6 +27,19 @@ async function fixture(body = `<w:p><w:r><w:t>Research text 123 α β.</w:t></w:
     return zip.generateAsync({ type: "uint8array", compression: "DEFLATE" });
 }
 
+test("edited journal defaults and report content are used without changing the stable journal identity", async () => {
+    const input = await fixture();
+    const edited = { ...JOURNAL_PRESETS[0], name: "Nature 管理员维护方案", manualChecks: ["管理员更新后的核对项目"], options: { ...options, fontSize: 11, lineSpacing: 2 } };
+    const output = await formatManuscript(input, edited.id, undefined, edited);
+    assert.equal(output.report.journalName, edited.name);
+    assert.ok(output.report.checks.includes(edited.manualChecks[0]));
+    const zipped = await JSZip.loadAsync(output.bytes);
+    const doc = parse(await zipped.file("word/document.xml").async("string"));
+    assert.equal(all(doc, "spacing")[0].getAttributeNS(W, "line"), "480");
+    assert.equal(all(doc, "sz")[0].getAttributeNS(W, "val"), "22");
+    await assert.rejects(formatManuscript(input, "nature", undefined, { ...edited, id: "plos-one" }), /方案与所选期刊不匹配/);
+});
+
 test("real text, images, tables, equations, fields, comments and links survive formatting", async () => {
     const table = `<w:tbl><w:tblPr/><w:tr><w:tc><w:p><w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:t>Measured 1.2345</w:t></w:r></w:p></w:tc></w:tr></w:tbl>`;
     const equation = `<m:oMath><m:r><m:t>x² + β</m:t></m:r></m:oMath>`;

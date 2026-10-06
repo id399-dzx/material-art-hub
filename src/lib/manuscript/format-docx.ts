@@ -1,6 +1,6 @@
 import JSZip from "jszip";
 import { DOMParser, XMLSerializer, type Document as XmlDocument, type Element as XmlElement, type Node as XmlNode } from "@xmldom/xmldom";
-import { getJournal, type ManuscriptOptions } from "./journals.ts";
+import { getJournal, type JournalPreset, type ManuscriptOptions } from "./journals.ts";
 
 const W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
 const R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
@@ -259,8 +259,10 @@ async function addPageNumbers(zip: JSZip, doc: XmlDocument, sections: XmlElement
 }
 
 /** Updates OOXML formatting in place. The manuscript never leaves the browser. */
-export async function formatManuscript(input: ArrayBuffer | Uint8Array, journalId: string, options?: ManuscriptOptions): Promise<FormattedManuscript> {
-    const journal = getJournal(journalId), selected = options ?? journal.options;
+export async function formatManuscript(input: ArrayBuffer | Uint8Array, journalId: string, options?: ManuscriptOptions, journalPreset?: JournalPreset): Promise<FormattedManuscript> {
+    const originalJournal = getJournal(journalId);
+    if (journalPreset && journalPreset.id !== originalJournal.id) throw new Error("期刊排版方案与所选期刊不匹配。");
+    const journal = journalPreset ?? originalJournal, selected = options ?? journal.options;
     validateOptions(selected);
     if (input.byteLength > MAX_MANUSCRIPT_BYTES) throw new Error("文件超过 20 MB，请压缩内嵌图片后重试。");
     let zip: JSZip;

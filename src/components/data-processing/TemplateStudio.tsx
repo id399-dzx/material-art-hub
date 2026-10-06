@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useImperativeHandle, type Ref } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ReactECharts from "echarts-for-react";
 import * as XLSX from "xlsx";
 import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search, Zap } from "lucide-react";
@@ -13,6 +14,7 @@ import { suggestElectrochemicalMapping } from "@/lib/data-processing/electrochem
 import { buildDrawingData, suggestDrawingMapping } from "@/lib/data-processing/drawing-data";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import DataAdvisor from "./DataAdvisor";
+import { useContentAdmin, useContentCatalog } from "@/components/admin/ContentProvider";
 import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
 import { initialExportSettings } from "@/lib/data-processing/publication";
@@ -23,6 +25,7 @@ import "./template-studio.css";
 type Sheet = { name: string; matrix: unknown[][] };
 type Source = { name: string; kind: "demo" | "file"; sheets: Sheet[] };
 const initial = drawingTemplateForChart("line");
+const templateKey = (template: DrawingTemplate) => template.id;
 
 export type TemplateEditSnapshot = {
     kind: "template"; version: 1; presetId: string; selected: TemplateId; source: Source;
@@ -98,6 +101,8 @@ export type TemplateStudioHandle = {
     restoreCompositionAsset: (asset: FigureAsset) => void;
 };
 export default function TemplateStudio({ active, ref, onAddToComposition }: { active: boolean; ref?: Ref<TemplateStudioHandle>; onAddToComposition?: (asset: FigureAsset) => Promise<void> }) {
+    const { items: templates, loading: catalogLoading, error: catalogError } = useContentCatalog("templates", DRAWING_TEMPLATES, templateKey);
+    const { isAdmin } = useContentAdmin();
     const [editorOpen, setEditorOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
     const [category, setCategory] = useState<DrawingType | "全部">("全部");
@@ -147,12 +152,13 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const previewRef = useRef<HTMLDivElement>(null);
     const [previewWidth, setPreviewWidth] = useState(680);
     const [actualPreview, setActualPreview] = useState(false);
-    const template = DRAWING_TEMPLATES.find(item => item.id === presetId)!;
+    // Keep the engine available for existing compositions after a card is removed from the gallery.
+    const template = templates.find(item => item.id === presetId) ?? DRAWING_TEMPLATES.find(item => item.id === presetId)!;
     const groupedPoints = template.variant === "embedding-scatter" || template.variant === "position-scatter";
     const groupedSamples = template.variant === "grouped-box";
     const pairedComparison = template.variant === "paired-correlation";
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
-    const catalog = DRAWING_TEMPLATES.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical));
+    const catalog = templates.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical));
     const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
     const table = useMemo(() => parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader), [source, sheetIndex, hasHeader]);
     const drawingId = template.electrochemical?.kind === "cycle" && mapping.ys.length === 1 ? "line" : selected === "error-bar" && !showUncertainty ? template.paper?.region.kind === "horizontal" ? "horizontal-bar" : "grouped-bar" : selected;
@@ -250,7 +256,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     }
 
     function chooseTemplate(preset: string) {
-        const next = DRAWING_TEMPLATES.find(item => item.id === preset)!;
+        const next = templates.find(item => item.id === preset);
+        if (!next) return;
         setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
@@ -302,7 +309,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
 
     function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
         setLegendSelection(undefined);
-        const representative = drawingTemplateForChart(id);
+        const original = drawingTemplateForChart(id);
+        const representative = templates.find(item => item.id === original.id) ?? original;
         setPresetId(representative.id); setReferenceColors(!!representative.paper);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
@@ -315,7 +323,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         requestAnimationFrame(() => document.getElementById("template-editor")?.closest(".template-dialog-content")?.scrollTo({ top: 0, behavior: "smooth" }));
     }
     useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
-        const representative = drawingTemplateForChart(id);
+        const original = drawingTemplateForChart(id);
+        const representative = templates.find(item => item.id === original.id) ?? original;
         setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(!!representative.paper);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
@@ -378,8 +387,10 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
                 <div><h2 id="template-studio-title"><Layers3 size={19} /> 图式库</h2></div>
-                <div className="template-intro-note"><span><Sparkles size={14} /> {DRAWING_TEMPLATES.length} 个独立图式 · 完整预览</span></div>
+                <div className="template-intro-note"><span><Sparkles size={14} /> {templates.length} 个独立图式 · 完整预览</span></div>
             </div>
+            {isAdmin && <Link className="resource-button" href="/admin?section=templates">管理本板块</Link>}
+            {catalogError && <p className="template-notice template-notice--error" role="alert">{catalogError}</p>}
             <div className="drawing-library-controls">
             <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索图式、CV、阻抗或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
             <div className="template-catalog-toolbar">
@@ -393,12 +404,12 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
                     {kind === "电化学测试" ? <div className="electrochemical-column-heading"><span className="electrochemical-column-icon"><Zap size={22} /></span><div><span className="template-eyebrow">ELECTROCHEMISTRY / 专栏</span><h3>电化学测试图</h3><p>伏安 · 充放电 · 性能 · 阻抗谱，选择图式后替换实验数据。</p></div><span className="electrochemical-column-count">{items.length} 个模板</span></div> : category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
                     <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${hasOpened && presetId === item.id ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(DRAWING_TEMPLATES.indexOf(item) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
                         <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && presetId === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
                     </button>)}</div>
                 </section>;
             })}
-            {!filtered.length && <p className="template-search-empty">没有匹配的模板，请更换关键词、图形类型或来源。</p>}
+            {!filtered.length && !catalogError && <p className="template-search-empty" role="status">{catalogLoading ? "正在读取图式目录…" : "没有匹配的模板，请更换关键词、图形类型或来源。"}</p>}
             <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow="SINGLE CHART EDITOR / 单图编辑" description="只编辑这一张图：导入数据、绑定字段，预览并导出。无需与原论文的面板数量一致。" busy={loading || exporting || compositionBusy} onClose={() => setEditorOpen(false)}>
             <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} /> 01 选择模板</span><i /><span><FileSpreadsheet size={14} /> 02 导入与绑定</span><i /><span><ArrowDownToLine size={14} /> 03 预览与导出</span></div>
 

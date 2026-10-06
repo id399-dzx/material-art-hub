@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart2, Box, FileText, GraduationCap, LogOut, Puzzle, Upload } from "lucide-react";
+import { BarChart2, Box, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -71,6 +71,11 @@ export default function Header() {
                                 <span className="site-header__avatar" aria-hidden="true">{userName?.slice(0, 1).toUpperCase() || "U"}</span>
                                 <span className="site-header__user-name">{userName}</span>
                             </span>
+                            {isAdmin && (
+                                <Link href="/admin" className="site-header__login" aria-label="内容管理">
+                                    <Settings2 size={15} /> 内容管理
+                                </Link>
+                            )}
                             {isAdmin && (
                                 <Link href={pathname.startsWith("/software-plugins") ? "/software-plugins#publish" : "/upload"} className="site-header__publish" aria-label={pathname.startsWith("/software-plugins") ? "发布插件" : "发布素材"}>
                                     <Upload size={15} /> <span>{pathname.startsWith("/software-plugins") ? "发布插件" : "发布素材"}</span>

@@ -21,7 +21,7 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
   let row;
   try {
     const { data, error } = await supabase.from("assets").select("id,title,description,image_url,source_file_url,tags_style,created_at")
-      .eq("id", id).contains("tags_style", [PLUGIN_ASSET_TAG]).maybeSingle();
+      .eq("id", id).eq("hidden", false).contains("tags_style", [PLUGIN_ASSET_TAG]).maybeSingle();
     if (error) throw error;
     row = data;
   } catch {

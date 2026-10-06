@@ -2,16 +2,21 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
+import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle2, Download, ExternalLink, FileText, Loader2, Search, ShieldCheck, SlidersHorizontal, UploadCloud } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { useActionLogin } from "@/components/auth/useActionLogin";
+import { useContentAdmin, useContentCatalog } from "@/components/admin/ContentProvider";
 import { JOURNAL_PRESETS, type JournalPreset, type ManuscriptOptions } from "@/lib/manuscript/journals";
 import type { FormattedManuscript } from "@/lib/manuscript/format-docx";
 import "./manuscript.css";
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
+const journalKey = (journal: JournalPreset) => journal.id;
 
 export default function ManuscriptWorkbench() {
+    const { items: journals, loading: catalogLoading, error: catalogError } = useContentCatalog("journals", JOURNAL_PRESETS, journalKey);
+    const { isAdmin } = useContentAdmin();
     const [search, setSearch] = useState("");
     const [field, setField] = useState("全部领域");
     const [selected, setSelected] = useState<JournalPreset | null>(null);
@@ -28,13 +33,14 @@ export default function ManuscriptWorkbench() {
     const jobRef = useRef(0);
     const actionPending = useRef(false);
     const { checking, isAuthenticated, requestLogin, LoginPrompt } = useActionLogin();
-    const filtered = useMemo(() => JOURNAL_PRESETS.filter(item => (field === "全部领域" || item.field === field) && `${item.name} ${item.publisher} ${item.field}`.toLowerCase().includes(search.trim().toLowerCase())), [search, field]);
+    const filtered = useMemo(() => journals.filter(item => (field === "全部领域" || item.field === field) && `${item.name} ${item.publisher} ${item.field}`.toLowerCase().includes(search.trim().toLowerCase())), [search, field, journals]);
 
     useEffect(() => {
+        if (catalogLoading) return;
         const id = new URLSearchParams(window.location.search).get("journal");
-        const journal = JOURNAL_PRESETS.find(item => item.id === id);
+        const journal = journals.find(item => item.id === id);
         if (journal) { setSelected(journal); setOptions({ ...journal.options }); setDialogVisible(true); }
-    }, []);
+    }, [catalogLoading, journals]);
 
     useEffect(() => {
         if (!result) return;
@@ -92,7 +98,7 @@ export default function ManuscriptWorkbench() {
             flushSync(() => setDialogVisible(true));
             setBusy(true); setResult(null);
             const { formatManuscript } = await import("@/lib/manuscript/format-docx");
-            const output = await formatManuscript(await manuscript.arrayBuffer(), journal.id, settings);
+            const output = await formatManuscript(await manuscript.arrayBuffer(), journal.id, settings, journal);
             if (job === jobRef.current) setResult(output);
         } catch (cause) {
             if (job === jobRef.current) { setDialogVisible(true); setError(cause instanceof Error ? cause.message : "排版未完成，请重新上传文档后重试。"); }
@@ -122,14 +128,16 @@ export default function ManuscriptWorkbench() {
             </div>
             <div className="manuscript-hero-mark" aria-hidden="true"><span><FileText size={26} /></span><div><strong>Manuscript Studio</strong><small>保留原稿 · 输出可编辑</small></div></div>
         </header>
+        {isAdmin && <Link className="resource-button" href="/admin?section=journals">管理本板块</Link>}
+        {catalogError && <p className="manuscript-error" role="alert">{catalogError}</p>}
         <div className="resource-stats">
-            <div className="resource-stat" style={{ "--stat-wash": "#d8c8ff" } as CSSProperties}><span className="resource-stat-label">期刊排版方案</span><strong>{JOURNAL_PRESETS.length} 本期刊</strong><small>综合科研 · 材料与能源 · 生命科学</small></div>
+            <div className="resource-stat" style={{ "--stat-wash": "#d8c8ff" } as CSSProperties}><span className="resource-stat-label">期刊排版方案</span><strong>{journals.length} 本期刊</strong><small>综合科研 · 材料与能源 · 生命科学</small></div>
             <div className="resource-stat" style={{ "--stat-wash": "#c8e1ff" } as CSSProperties}><span className="resource-stat-label">原稿处理方式</span><strong>本机处理</strong><small>文件留在你的设备，保留原始内容</small></div>
             <div className="resource-stat" style={{ "--stat-wash": "#ffd0de" } as CSSProperties}><span className="resource-stat-label">排版输出</span><strong>可编辑 DOCX</strong><small>下载新文件，继续在 Word 中复核</small></div>
         </div>
         <div className="manuscript-steps" aria-label="排版步骤"><span><b>01</b> 选择期刊</span><ArrowRight size={12} /><span><b>02</b> 上传原稿，确认参数</span><ArrowRight size={12} /><span><b>03</b> 下载并复核</span></div>
         <section className="resource-catalog" aria-label="期刊排版方案">
-            <div className="manuscript-catalog-heading"><div><h2>选择目标期刊</h2><p>每份方案附官方指南与可调整的正文排版预设。</p></div><span className="resource-chip"><BookOpen size={12} /> {JOURNAL_PRESETS.length} 个方案</span></div>
+            <div className="manuscript-catalog-heading"><div><h2>选择目标期刊</h2><p>每份方案附官方指南与可调整的正文排版预设。</p></div><span className="resource-chip"><BookOpen size={12} /> {journals.length} 个方案</span></div>
             <div className="resource-toolbar">
                 <label className="manuscript-search"><Search size={15} /><input aria-label="搜索期刊" placeholder="搜索期刊或出版社…" value={search} onChange={event => setSearch(event.target.value)} /></label>
                 <select aria-label="期刊领域" value={field} onChange={event => setField(event.target.value)}>{["全部领域", "综合科研", "材料与能源", "生命科学"].map(item => <option key={item}>{item}</option>)}</select>
@@ -139,7 +147,7 @@ export default function ManuscriptWorkbench() {
                 <div className={`manuscript-journal-cover manuscript-journal-cover--${journal.accent}`} aria-hidden="true"><div className="manuscript-cover-book"><span>RESEARCH</span><strong>{journal.monogram}</strong><i /></div><div className="manuscript-cover-orbit" /><span className="resource-chip">{journal.field}</span></div>
                 <div className="manuscript-journal-copy"><span className="manuscript-publisher">{journal.publisher}</span><h2>{journal.name}</h2><p>{journal.summary}</p></div>
                 <div className="resource-card-footer"><span className="manuscript-policy-tag">{journal.policy}</span><span className="manuscript-card-cta">选择排版 <ArrowRight size={13} /></span></div>
-            </button>)}</div> : <div className="resource-empty">未找到匹配期刊，试试其他名称或领域。</div>}
+            </button>)}</div> : !catalogError && <div className="resource-empty" role="status">{catalogLoading ? "正在读取期刊目录…" : "未找到匹配期刊，试试其他名称或领域。"}</div>}
             <div className="manuscript-catalog-foot"><ShieldCheck size={13} /><span>官方指南核对于 2026.10.03 · 保留原稿，下载可编辑排版文件</span></div>
         </section>
         <p className="manuscript-scope-note">当前提供投稿稿件的版式整理。字体、字号、纸张和页边距可按需要调整；参考文献、章节顺序和图片内容保留，期刊的最终出版排版由出版社完成。</p>

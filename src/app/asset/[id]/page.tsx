@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { isPluginAsset } from "@/lib/software-plugins/catalog";
-import { ArrowLeft, Download, Image as ImageIcon, Box, Layers, Zap, Activity, Trash2, Loader2, LockKeyhole, CalendarDays } from "lucide-react";
+import { useContentAdmin } from "@/components/admin/ContentProvider";
+import { ArrowLeft, Download, Image as ImageIcon, Box, Layers, Zap, Activity, Settings2, Loader2, LockKeyhole, CalendarDays } from "lucide-react";
 import "./asset-detail.css";
 
 interface AssetDetails {
@@ -18,6 +20,7 @@ interface AssetDetails {
     tags_process: string[];
     tags_style: string[];
     created_at: string;
+    hidden: boolean;
 }
 
 export default function AssetDetailsPage() {
@@ -28,8 +31,7 @@ export default function AssetDetailsPage() {
     const [error, setError] = useState<string | null>(null);
     const [loadAttempt, setLoadAttempt] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isDeleting, setIsDeleting] = useState(false);
+    const { isAdmin } = useContentAdmin();
 
     useEffect(() => {
         async function fetchAssetDetails() {
@@ -42,11 +44,6 @@ export default function AssetDetailsPage() {
                 // 1. Fetch Auth Session
                 const { data: { session } } = await supabase.auth.getSession();
                 setIsLoggedIn(!!session);
-                if (session?.user?.email) {
-                    setIsAdmin(session.user.email === 'id19991016@gmail.com');
-                } else {
-                    setIsAdmin(false);
-                }
 
                 // 2. Fetch Data
                 const { data, error } = await supabase
@@ -79,7 +76,7 @@ export default function AssetDetailsPage() {
     }, [params?.id, loadAttempt, router]);
 
     const handleDownload = () => {
-        if (!asset) return;
+        if (!asset || asset.hidden) return;
         const targetUrl = asset.source_file_url || asset.image_url;
         if (targetUrl) {
             const link = document.createElement("a");
@@ -97,55 +94,6 @@ export default function AssetDetailsPage() {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        }
-    };
-
-    const handleDelete = async () => {
-        if (!isAdmin || !asset) return;
-
-        const confirmed = window.confirm("🚨 警告：您确定要永久删除该科研素材吗？\n\n此操作不可逆，将同时删除数据库记录和云端存储文件！");
-        if (!confirmed) return;
-
-        setIsDeleting(true);
-        try {
-            // 1. Detele from DB
-            const { error: dbError } = await supabase
-                .from('assets')
-                .delete()
-                .eq('id', asset.id);
-
-            if (dbError) throw dbError;
-
-            // 2. Try to clean up Storage files (Best Effort)
-            try {
-                const filesToRemove = [];
-                // Extract path from image_url
-                if (asset.image_url) {
-                    const imgUrlObj = new URL(asset.image_url);
-                    const imgPath = imgUrlObj.pathname.split('/materials/')[1];
-                    if (imgPath) filesToRemove.push(decodeURIComponent(imgPath));
-                }
-                // Extract path from source_file_url
-                if (asset.source_file_url) {
-                    const srcUrlObj = new URL(asset.source_file_url);
-                    const srcPath = srcUrlObj.pathname.split('/materials/')[1];
-                    if (srcPath) filesToRemove.push(decodeURIComponent(srcPath));
-                }
-
-                if (filesToRemove.length > 0) {
-                    await supabase.storage.from('materials').remove(filesToRemove);
-                }
-            } catch (storageErr) {
-                console.error("Failed to clean up storage files, but DB record was deleted:", storageErr);
-            }
-
-            // 3. Redirect home
-            router.push('/');
-
-        } catch (error: unknown) {
-            console.error("Delete failed:", error);
-            alert(`删除失败: ${error instanceof Error ? error.message : "请稍后重试"}`);
-            setIsDeleting(false);
         }
     };
 
@@ -206,6 +154,7 @@ export default function AssetDetailsPage() {
                         <span className="asset-detail__eyebrow"><span className="asset-detail__eyebrow-dot" /> MATERIAL ARCHIVE <span>/</span> 素材档案</span>
                         <h1>{asset.title}</h1>
                         {asset.description && <p>{asset.description}</p>}
+                        {asset.hidden && isAdmin && <p role="status">已下架 · 仅管理员可查看，可在内容管理中恢复展示。</p>}
                     </div>
                     <div className="asset-detail__intro-mark" aria-hidden="true"><ImageIcon size={33} strokeWidth={1.4} /></div>
                 </header>
@@ -233,7 +182,7 @@ export default function AssetDetailsPage() {
                                 <span className="asset-detail__sparkle" aria-hidden="true" />
                             </div>
                             <p className="asset-detail__action-copy">{asset.source_file_url ? "提供源文件附件，可用于进一步编辑与展示。" : "获取该素材的高清原图。"}</p>
-                            {!isLoggedIn ? (
+                            {asset.hidden ? <p className="asset-detail__usage-note">此素材已下架，恢复展示后可以下载。</p> : !isLoggedIn ? (
                                 <button className="asset-detail__button asset-detail__button--dark" onClick={() => router.push('/login')}>
                                     <LockKeyhole size={18} /> 登录后下载
                                 </button>
@@ -244,10 +193,9 @@ export default function AssetDetailsPage() {
                             )}
                             <p className="asset-detail__usage-note">获准用于学术交流、论文配图及科普展示</p>
                             {isAdmin && (
-                                <button className="asset-detail__button asset-detail__button--danger" onClick={handleDelete} disabled={isDeleting}>
-                                    {isDeleting ? <Loader2 size={16} className="asset-detail__spinner" /> : <Trash2 size={16} />}
-                                    {isDeleting ? "正在删除素材..." : "彻底删除该素材"}
-                                </button>
+                                <Link className="asset-detail__button" href={`/admin?section=assets&item=${encodeURIComponent(asset.id)}`}>
+                                    <Settings2 size={16} /> 管理此素材
+                                </Link>
                             )}
                         </section>
 

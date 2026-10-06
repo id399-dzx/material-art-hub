@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 import Header from "@/components/Header";
+import ContentProvider from "@/components/admin/ContentProvider";
 
 export default function RootLayout({
   children,
@@ -19,8 +20,10 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Header />
-        {children}
+        <ContentProvider>
+          <Header />
+          {children}
+        </ContentProvider>
       </body>
     </html>
   );

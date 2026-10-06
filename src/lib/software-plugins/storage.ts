@@ -97,7 +97,7 @@ export async function checkPluginPublicationStorage(): Promise<void> {
 
 export async function loadSoftwarePlugins() {
   const { data, error } = await supabase.from("assets").select("id,title,description,image_url,source_file_url,tags_style,created_at")
-    .contains("tags_style", [PLUGIN_ASSET_TAG]).order("created_at", { ascending: false }).abortSignal(AbortSignal.timeout(15_000));
+    .eq("hidden", false).contains("tags_style", [PLUGIN_ASSET_TAG]).order("created_at", { ascending: false }).abortSignal(AbortSignal.timeout(15_000));
   if (error) throw pluginServiceError(error, "loading");
   const origin = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).origin;
   const rows = (data as PluginAssetRow[] | null) ?? [];

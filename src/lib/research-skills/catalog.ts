@@ -31,9 +31,9 @@ export function categoryLabel(category: string): string {
   return RESEARCH_SKILL_CATEGORIES.find((item) => item.id === category)?.label ?? category;
 }
 
-export function filterResearchSkills(search: string, category: string, scope: string): ResearchSkill[] {
+export function filterResearchSkills(search: string, category: string, scope: string, skills: ResearchSkill[] = RESEARCH_SKILLS): ResearchSkill[] {
   const terms = search.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  return RESEARCH_SKILLS.filter((skill) => {
+  return skills.filter((skill) => {
     if (category !== "all" && skill.category !== category) return false;
     if (scope !== "all" && skill.scope !== scope) return false;
     const text = [skill.title, skill.repo, skill.summary, categoryLabel(skill.category), ...skill.features, ...skill.topics, ...skill.skillPaths].join(" ").toLocaleLowerCase();

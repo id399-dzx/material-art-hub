@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 import Link from "next/link";
-import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, PackageOpen, PenTool, Puzzle, Search, Settings2, Sparkles, Upload } from "lucide-react";
+import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, Orbit, PackageOpen, PenTool, Puzzle, Search, Settings2, Sparkles, Upload, type LucideIcon } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { useContentAdmin } from "@/components/admin/ContentProvider";
 import { SOFTWARE_HOSTS, formatPackageSize, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
@@ -15,13 +15,13 @@ import { useActionLogin } from "@/components/auth/useActionLogin";
 import "./software-plugins.css";
 
 const hosts = SOFTWARE_HOSTS;
-const hostIcons = { Blender: Box, PowerPoint: Layers3, Illustrator: PenTool, 其他: Puzzle };
+const hostIcons: Record<SoftwareHost, LucideIcon> = { Blender: Box, C4D: Orbit, PowerPoint: Layers3, Illustrator: PenTool, 其他: Puzzle };
 
 function ToolkitPreview({ host }: { host: SoftwareHost }) {
   if (host === "其他") return <div className="software-preview software-preview--other"><Puzzle size={54} strokeWidth={1.2} aria-hidden="true" /><span className="software-preview-caption">软件插件</span></div>;
   return <div className={`software-preview software-preview--${host.toLowerCase()}`}>
     <svg viewBox="0 0 320 132" fill="none" aria-hidden="true">
-      {host === "Blender" ? <>
+      {host === "Blender" || host === "C4D" ? <>
         <g stroke="#b4b3d4" strokeWidth=".6" opacity=".5">
           {[0, 1, 2, 3, 4, 5].map((index) => <path key={`h${index}`} d={`M${42 + index * 18} ${88 - index * 6}L${172 + index * 18} ${128 - index * 6}`} />)}
           {[0, 1, 2, 3, 4, 5, 6].map((index) => <path key={`v${index}`} d={`M${50 + index * 25} ${91 + index * 7}L${158 + index * 14} ${53 + index * 4}`} />)}

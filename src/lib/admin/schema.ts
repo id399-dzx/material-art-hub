@@ -1,4 +1,5 @@
 import type { ContentMutation, ContentPatch, ContentSection } from './types.ts';
+import { SOFTWARE_HOSTS } from '../software-plugins/catalog.ts';
 
 export class ContentValidationError extends Error {}
 export type EditableField = { key: string; label: string; kind: 'text' | 'array' | 'select' | 'url' | 'date'; required?: boolean; limit?: number; choices?: readonly string[]; optionalUrl?: boolean };
@@ -11,7 +12,7 @@ export const CONTENT_FIELDS: Record<ContentSection, EditableField[]> = {
     templates: [text('name', '模板名称', true, 160), text('english', '英文名称', true, 160), select('category', '图形分类', ['电化学测试', '柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程']), text('description', '模板简介', true), text('requirement', '数据要求', true), text('tag', '用途标签', false, 120), text('guide', '使用说明'), text('xLabel', '横轴默认文字', false, 160), text('yLabel', '纵轴默认文字', false, 160)],
     journals: [text('name', '期刊名称', true, 160), text('publisher', '出版社', true, 160), select('field', '研究领域', ['综合科研', '材料与能源', '生命科学']), select('policy', '投稿格式政策', ['灵活初次投稿', '有明确版式要求']), text('summary', '中文简介', true), list('officialRequirements', '官方格式要求'), list('manualChecks', '人工核对事项'), link('sourceUrl', '官方指南链接'), text('sourceTitle', '指南名称', true, 255), link('templateUrl', '官方模板链接', true), { key: 'checkedOn', label: '核对日期', kind: 'date' }],
     assets: [text('title', '素材名称', true, 160), text('description', '素材介绍'), list('tags_application', '应用领域'), list('tags_material', '材料体系'), list('tags_process', '物理与化学过程'), list('tags_style', '视觉风格')],
-    plugins: [text('title', '插件名称', true, 160), select('host', '适用软件', ['Blender', 'PowerPoint', 'Illustrator', '其他']), text('summary', '中文简介', true), text('version', '显示版本', true, 80), list('features', '主要功能'), list('environment', '运行环境'), list('installation', '安装与使用'), list('outputs', '输出内容')],
+    plugins: [text('title', '插件名称', true, 160), select('host', '适用软件', SOFTWARE_HOSTS), text('summary', '中文简介', true), text('version', '显示版本', true, 80), list('features', '主要功能'), list('environment', '运行环境'), list('installation', '安装与使用'), list('outputs', '输出内容')],
 };
 export const CHOICE_LABELS: Record<string, string> = { literature: '文献与阅读', figure: '科研绘图', writing: '写作与排版', presentation: '论文与汇报', computing: '计算与仿真', 'three-dimensional': '3D 可视化', knowledge: '知识与文档', research: '科研专用', support: '科研辅助' };
 export const JOURNAL_OPTION_FIELDS = [

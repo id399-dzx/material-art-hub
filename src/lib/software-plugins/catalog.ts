@@ -1,4 +1,4 @@
-export const SOFTWARE_HOSTS = ["Blender", "PowerPoint", "Illustrator", "其他"] as const;
+export const SOFTWARE_HOSTS = ["Blender", "C4D", "PowerPoint", "Illustrator", "其他"] as const;
 export type SoftwareHost = typeof SOFTWARE_HOSTS[number];
 
 // Separate published plugins from artwork using existing assets/storage permissions.

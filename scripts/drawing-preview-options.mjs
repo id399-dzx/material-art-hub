@@ -7,6 +7,7 @@ import { buildDrawingData, suggestDrawingMapping } from '../src/lib/data-process
 import { buildL1502Data, suggestL1502Mapping } from '../src/lib/data-processing/l1502-data.ts';
 import { l1502DefaultLayout, l1502DefaultStyle } from '../src/lib/data-processing/l1502-spec.ts';
 import { createL1502Option } from '../src/lib/data-processing/l1502-render.ts';
+import { DEFAULT_CHART_PALETTE } from '../src/lib/data-processing/chart-palettes.ts';
 
 /** Mirror the editor's initial demo binding. Never extract pixels from a paper figure. */
 export function drawingPreviewOption(template) {
@@ -42,14 +43,13 @@ export function drawingPreviewOption(template) {
         xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
         yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
-        palette: 'journal', showGrid: false, showValues: false,
+        palette: DEFAULT_CHART_PALETTE, showGrid: false, showValues: false,
         errorMeasure, panelChart: 'bar', cumulative: false,
         secondaryYLabel: template.electrochemical?.secondaryYLabel || table.columns[mapping.ys[1]] || '右轴指标',
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0.6,
         annotationText: '参考位置', yaw: 35, pitch: 25, width, height,
-        customColors: region?.colors,
         horizontal: region?.kind === 'horizontal',
-        colorByCategory: region?.kind === 'bars',
+        colorByCategory: false,
         stackedArea: region?.kind === 'area', hatching: !!region?.hatching,
         fillLines: region?.fillSeries, sphereGuide: region?.kind !== 'vectors',
         variant: template.variant,

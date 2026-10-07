@@ -22,6 +22,8 @@ import { validateL1502EditSnapshot, type L1502EditSnapshot } from "@/lib/data-pr
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import type { ExportSettings } from "@/lib/data-processing/publication";
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
+import { CHART_PALETTES, DEFAULT_CHART_PALETTE } from "@/lib/data-processing/chart-palettes";
+import ChartPalettePicker from "./ChartPalettePicker";
 import "./template-studio.css";
 
 type Sheet = { name: string; matrix: unknown[][] };
@@ -80,7 +82,7 @@ export function validateTemplateEditSnapshot(value: unknown): TemplateEditSnapsh
     for (const key of ["secondaryYLabel", "annotationText", "title", "xLabel", "yLabel", "caption"]) {
         if (!text(snapshot[key])) fail("图形文字参数无效。");
     }
-    if (!["", "negative-imaginary", "raw-imaginary"].includes(snapshot.imaginaryMode as string) || !["bar", "line"].includes(snapshot.panelChart as string) || !["replicates", "summary"].includes(snapshot.errorInput as string) || !["SD", "SEM"].includes(snapshot.errorMeasure as string) || !["journal", "accessible", "soft", "mono"].includes(snapshot.palette as string) || !["Arial", "Times New Roman", "sans-serif"].includes(snapshot.fontFamily as string)) fail("图形样式或误差参数无效。");
+    if (!["", "negative-imaginary", "raw-imaginary"].includes(snapshot.imaginaryMode as string) || !["bar", "line"].includes(snapshot.panelChart as string) || !["replicates", "summary"].includes(snapshot.errorInput as string) || !["SD", "SEM"].includes(snapshot.errorMeasure as string) || !CHART_PALETTES.some(palette => palette.id === snapshot.palette) || !["Arial", "Times New Roman", "sans-serif"].includes(snapshot.fontFamily as string)) fail("图形样式或误差参数无效。");
     if (!numberIn(snapshot.width, 420, 1600) || !numberIn(snapshot.height, 320, 1000) || !numberIn(snapshot.fontSize, 5, 16) || !numberIn(snapshot.yaw, -180, 180) || !numberIn(snapshot.pitch, -80, 80) || !numberIn(snapshot.annotationX, -Number.MAX_VALUE, Number.MAX_VALUE)) fail("画布尺寸、字号或视角参数超出范围。");
     if (!record(snapshot.exportSettings) || !numberIn(snapshot.exportSettings.widthMm, 40, 300) || ![150, 300, 600].includes(snapshot.exportSettings.dpi as number) || typeof snapshot.exportSettings.grayscale !== "boolean" || !["single", "double", "custom"].includes(snapshot.exportSettings.preset as string)) fail("导出参数无效。");
     if (snapshot.legendSelection !== undefined && (!Array.isArray(snapshot.legendSelection) || snapshot.legendSelection.length > 8 || !snapshot.legendSelection.every(selection => record(selection) && Object.keys(selection).length <= 2048 && Object.entries(selection).every(([name, selected]) => name.length <= 32767 && typeof selected === "boolean")))) fail("图例显示状态无效。");
@@ -112,7 +114,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [sourceFilter, setSourceFilter] = useState("全部来源");
     const [imaginaryMode, setImaginaryMode] = useState<ImaginaryMode | "">("negative-imaginary");
     const [presetId, setPresetId] = useState(initial.id);
-    const [referenceColors, setReferenceColors] = useState(!!initial.paper);
+    const [referenceColors, setReferenceColors] = useState(false);
     const [hatching, setHatching] = useState(false);
     const [sphereGuide, setSphereGuide] = useState(true);
     const [panelChart, setPanelChart] = useState<"bar" | "line">("bar");
@@ -133,7 +135,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [title, setTitle] = useState(initial.name);
     const [xLabel, setXLabel] = useState(initial.xLabel);
     const [yLabel, setYLabel] = useState(initial.yLabel);
-    const [palette, setPalette] = useState<PublicationStyle>("journal");
+    const [palette, setPalette] = useState<PublicationStyle>(DEFAULT_CHART_PALETTE);
     const [fontFamily, setFontFamily] = useState("Arial");
     const [fontSize, setFontSize] = useState(8);
     const [width, setWidth] = useState(680);
@@ -295,7 +297,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
         const id = next.chartId;
-        setPresetId(preset); setSelected(id); setReferenceColors(!!next.paper); if(next.paper)setPalette("journal");
+        setPresetId(preset); setSelected(id); setReferenceColors(false); setPalette(DEFAULT_CHART_PALETTE);
         setHatching(!!next.paper?.region.hatching); setSphereGuide(next.variant !== "spatial-vectors");
         setCumulative(false);
         setPanelChart("bar");
@@ -344,7 +346,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setLegendSelection(undefined);
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
-        setPresetId(representative.id); setReferenceColors(!!representative.paper);
+        setPresetId(representative.id); setReferenceColors(false);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
@@ -360,7 +362,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
         setCompositionAssetId(null); setCompositionError("");
-        setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(!!representative.paper);
+        setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(false);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id, "bar", representative);
@@ -495,7 +497,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 </section>
                     <section className="template-style-panel template-glass template-legacy-settings" aria-labelledby="template-style-title">
                         <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3 id="template-style-title">最后一点，按你的风格</h3><p>样式调整会立即同步到预览和导出文件。</p></div></div>
-                        <div className="template-style-presets" role="group" aria-label="论文图表样式">{template.paper && <button type="button" aria-pressed={referenceColors} className={referenceColors ? "is-active" : ""} onClick={()=>setReferenceColors(true)}><span>{(template.paper.region.colors??["#38679b"]).slice(0,3).map((color,i)=><i key={i} style={{backgroundColor:color}}/>)}</span>图例配色{referenceColors&&<Check size={13}/>}</button>}{([{ id: "accessible", name: "色觉友好", colors: ["#0072B2", "#D55E00", "#009E73"] }, { id: "journal", name: "期刊简洁", colors: ["#38679b", "#c77972", "#64958c"] }, { id: "soft", name: "柔和对比", colors: ["#788bcc", "#d69baf", "#7dafb1"] }, { id: "mono", name: "黑白打印", colors: ["#282828", "#696969", "#a0a0a0"] }] as const).map(item => <button type="button" key={item.id} aria-pressed={!referenceColors && palette === item.id} className={!referenceColors && palette === item.id ? "is-active" : ""} onClick={() => {setPalette(item.id);setReferenceColors(false);}}><span>{item.colors.map(color => <i key={color} style={{ backgroundColor: color }} />)}</span>{item.name}{!referenceColors && palette === item.id && <Check size={13} />}</button>)}</div>
+                        <ChartPalettePicker value={referenceColors ? null : palette} onChange={id => { setPalette(id); setReferenceColors(false); }} disabled={loading || exporting || compositionBusy} extraPalette={template.paper ? { name: "原图配色", description: "保留参考图例的颜色", colors: template.paper.region.colors ?? ["#38679b"], selected: referenceColors, onSelect: () => setReferenceColors(true) } : undefined} />
                         <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
                         <label className="template-field">统计图注（保存在 SVG 描述中）<input value={caption} maxLength={300} onChange={event => setCaption(event.target.value)} placeholder="如：n=6 独立实验；误差条为 SD；单位见轴标题" /></label>
                         {drawingId === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}

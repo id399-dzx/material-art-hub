@@ -1,4 +1,5 @@
 import type { DataTable, TableCell } from './templates.ts';
+import { getChartPalette } from './chart-palettes.ts';
 
 export type L1502Kind =
     | 'line' | 'bar' | 'dual-axis' | 'stacked-bar' | 'area' | 'scatter' | 'bubble' | 'bubble-cloud'
@@ -59,7 +60,7 @@ export const L1502_ROLE_LABELS: Record<Exclude<keyof L1502Mapping, 'x' | 'ys' | 
     z: 'Z / 网格值', group: '分组', size: '气泡大小', color: '颜色数值', label: '点标签',
     u: '向量 U', v: '向量 V', w: '向量 W', weight: '权重',
 };
-export const L1502_COLORS = ['#147a8b', '#e3a438', '#9a5b90', '#4566ac', '#62a889', '#d86864', '#7a70b4', '#7f939d'];
+export const L1502_COLORS = [...getChartPalette().colors];
 export function l1502DefaultLayout(spec: L1502Spec) {
     const multiple = ['multi-panel', 'scatter-matrix', 'scatter-marginal', 'parallel'].includes(spec.kind);
     return multiple ? { width: 900, height: spec.issue === 31 ? 900 : 680, widthMm: 180 } : { width: 760, height: 500, widthMm: 85 };

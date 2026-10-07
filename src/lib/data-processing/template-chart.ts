@@ -5,8 +5,9 @@ import { fitTemplateLayout } from "./chart-layout.ts";
 import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 import type { PaperChartVariant } from "./drawing-spec.ts";
 import { createPairedCorrelationOption, observedCurveDifference } from "./template-chart-variants.ts";
+import { getChartPalette, type ChartPaletteId } from "./chart-palettes.ts";
 
-export type PublicationStyle = "journal" | "soft" | "mono" | "accessible";
+export type PublicationStyle = ChartPaletteId;
 export type TemplateChartStyle = {
     title: string; xLabel: string; yLabel: string; fontFamily: string; fontSize: number;
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
@@ -14,13 +15,6 @@ export type TemplateChartStyle = {
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
     xLog?: boolean; yLog?: boolean; equalAxes?: boolean;
     variant?: PaperChartVariant;
-};
-
-const colors: Record<PublicationStyle, string[]> = {
-    accessible: ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#56B4E9", "#000000"],
-    journal: ["#38679b", "#c77972", "#64958c", "#9783b6", "#c29b57", "#7c919f"],
-    soft: ["#788bcc", "#d69baf", "#7dafb1", "#b4a0ce", "#ceaa78", "#89a3ba"],
-    mono: ["#282828", "#696969", "#a0a0a0", "#c9c9c9", "#4b4b4b", "#888888"],
 };
 
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
@@ -89,7 +83,7 @@ function fitEqualUnitGrid(option: EChartsOption, style: TemplateChartStyle): voi
 
 function buildTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const custom = style.customColors?.filter(color => /^#[a-f\d]{6}$/i.test(color));
-    const palette = custom?.length ? custom : colors[style.palette];
+    const palette = custom?.length ? custom : [...getChartPalette(style.palette).colors];
     if (style.variant === "paired-correlation") return createPairedCorrelationOption(data, style, palette);
     if (template === "box" || template === "violin" || template === "histogram") return createDistributionOption(data, template, style, palette);
     if (!["line", "grouped-bar", "error-bar"].includes(template)) return createExtendedTemplateOption(data, template, style, palette, id => buildTemplateOption(data, id, style));

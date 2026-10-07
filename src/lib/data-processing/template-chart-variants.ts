@@ -1,6 +1,7 @@
 import type { CustomSeriesOption, EChartsOption, LineSeriesOption, ScatterSeriesOption } from "echarts";
 import type { TemplateData } from "./templates.ts";
 import type { TemplateChartStyle } from "./template-chart.ts";
+import { findChartPalette, getChartPalette, getValueColors } from "./chart-palettes.ts";
 import { textWidth } from "./chart-layout.ts";
 
 function shell(style: TemplateChartStyle, palette: string[]): EChartsOption {
@@ -34,12 +35,12 @@ export function createVariantHeatmapOption(data: TemplateData, style: TemplateCh
     const text = { color: "#383842", fontSize: style.fontSize, fontFamily: style.fontFamily };
     let sequential: string[];
     if (diverging) {
-        if (style.palette === "mono") sequential = ["#888888", "#ffffff", "#222222"];
-        else if (style.customColors?.length) {
+        if (style.palette === "mono") sequential = [...getChartPalette('mono').diverging];
+        else if (style.customColors?.length && !findChartPalette(palette)) {
             const positive = palette.at(-1)!, negative = palette.find(color => color.toLowerCase() !== "#ffffff" && color !== positive) ?? "#38679b";
             sequential = [negative, "#ffffff", positive];
-        } else sequential = style.palette === "accessible" ? ["#0072B2", "#ffffff", "#D55E00"] : style.palette === "soft" ? ["#8da6cd", "#ffffff", "#d69baf"] : ["#2166ac", "#ffffff", "#b2182b"];
-    } else sequential = style.palette === "mono" ? ["#ffffff", "#b0b0b0", "#313131"] : style.customColors?.length ? palette : style.palette === "accessible" ? ["#ffffff", "#56B4E9", "#0072B2"] : style.palette === "soft" ? ["#fcf9ff", "#c9c0df", "#788bcc"] : attention ? ["#ffffff", "#ff3333"] : frequency ? ["#ffffd4", "#41b6b6", "#192c7d"] : numeric ? ["#fff5f0", "#fc9272", "#99000d"] : ["#f4eff9", "#acb9d3", palette[0]];
+        } else sequential = getValueColors(palette, 'diverging', style.palette);
+    } else sequential = style.palette === "mono" ? [...getChartPalette('mono').sequential] : getValueColors(palette, 'sequential', style.palette);
     const base: EChartsOption = { ...shell(style, palette),
         visualMap: { min, max, dimension: 2, calculable: false, orient: "horizontal", left: "center", bottom: 22, text: [`${Number(max.toPrecision(5))}`, `${Number(min.toPrecision(5))}`], textStyle: text, inRange: { color: sequential } },
         ...(diverging ? { graphic: [{ type: "text" as const, left: "center", bottom: 2, style: { text: style.palette === "mono" ? "色阶以 0 为中心：浅灰为负，深灰为正" : "色阶以 0 为中心：左端为负，右端为正", fill: "#787580", font: `11px ${style.fontFamily}` } }] } : {}) };

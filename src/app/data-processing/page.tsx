@@ -9,6 +9,8 @@ import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/p
 import SafeReport from "@/components/data-processing/SafeReport";
 import DataAdvisor from "@/components/data-processing/DataAdvisor";
 import PublicationExport from "@/components/data-processing/PublicationExport";
+import ChartPalettePicker from "@/components/data-processing/ChartPalettePicker";
+import { CHART_PALETTES, DEFAULT_CHART_PALETTE, getChartPalette } from "@/lib/data-processing/chart-palettes";
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import { parseTemplateTable } from "@/lib/data-processing/templates";
@@ -21,7 +23,7 @@ import "./workbench.css";
 
 type DataChunk = { id: string; name: string; x: number[]; y: number[] };
 type ChartTemplateParams = {
-    fontFamily?: string; lineWidth?: number; lineColor?: string; titleSize?: number;
+    fontFamily?: string; lineWidth?: number; lineColor?: string; lineColor2?: string; titleSize?: number;
     labelSize?: number; seriesName?: string; legendPosition?: string;
     xAxisName?: string; yAxisName?: string; xMin?: string; xMax?: string;
     xInterval?: string; xOnZero?: boolean; yMin?: string; yMax?: string;
@@ -164,9 +166,10 @@ export default function DataProcessingPage() {
     const [yMin, setYMin] = useState<string>("");
     const [yMax, setYMax] = useState<string>("");
     const [yInterval, setYInterval] = useState<string>("");
-    const [lineColor, setLineColor] = useState<string>("#00BFFF");
+    const [lineColor, setLineColor] = useState<string>(getChartPalette(DEFAULT_CHART_PALETTE).colors[0]);
     const [seriesName, setSeriesName] = useState<string>("Data 1");
-    const [lineColor2, setLineColor2] = useState<string>("#ff4500");
+    const [lineColor2, setLineColor2] = useState<string>(getChartPalette(DEFAULT_CHART_PALETTE).colors[1]);
+    const activeCurvePalette = CHART_PALETTES.find(palette => palette.colors[0].toLowerCase() === lineColor.toLowerCase() && palette.colors[1].toLowerCase() === lineColor2.toLowerCase())?.id ?? null;
     const [seriesName2, setSeriesName2] = useState<string>("Control Sample");
     const [legendPosition, setLegendPosition] = useState<string>("top-right");
 
@@ -215,12 +218,12 @@ export default function DataProcessingPage() {
             yMin: "", yMax: "", yInterval: "", legendPosition: "top-right"
         },
         bright: {
-            fontFamily: "Arial", lineWidth: 2, lineColor: "#00BFFF",
+            fontFamily: "Arial", lineWidth: 2, lineColor: getChartPalette("journal").colors[0],
             titleSize: 14, labelSize: 12, xMin: "", xMax: "", xInterval: "",
             yMin: "", yMax: "", yInterval: "", legendPosition: "top-right"
         },
         electro: {
-            fontFamily: "Times New Roman", lineWidth: 2, lineColor: "#D9001B",
+            fontFamily: "Times New Roman", lineWidth: 2, lineColor: getChartPalette("earth").colors[0],
             titleSize: 16, labelSize: 14, xMin: "", xMax: "", xInterval: "",
             yMin: "", yMax: "", yInterval: "", legendPosition: "top-right"
         }
@@ -268,7 +271,8 @@ export default function DataProcessingPage() {
                     if (p.lineWidth) setLineWidth(p.lineWidth);
                     if (p.titleSize) setTitleSize(p.titleSize);
                     if (p.labelSize) setLabelSize(p.labelSize);
-                    if (p.lineColor) setLineColor(p.lineColor);
+                    if (typeof p.lineColor === "string" && /^#[a-f\d]{6}$/i.test(p.lineColor)) setLineColor(p.lineColor);
+                    if (typeof p.lineColor2 === "string" && /^#[a-f\d]{6}$/i.test(p.lineColor2)) setLineColor2(p.lineColor2);
                     if (p.seriesName) setSeriesName(p.seriesName);
                     if (p.legendPosition) setLegendPosition(p.legendPosition);
                     if (p.xAxisName !== undefined) setXAxisName(p.xAxisName);
@@ -323,7 +327,8 @@ export default function DataProcessingPage() {
     const handleApplyTemplate = (p: ChartTemplateParams) => {
         if (p.fontFamily !== undefined) setFontFamily(p.fontFamily);
         if (p.lineWidth !== undefined) setLineWidth(p.lineWidth);
-        if (p.lineColor !== undefined) setLineColor(p.lineColor);
+        if (typeof p.lineColor === "string" && /^#[a-f\d]{6}$/i.test(p.lineColor)) setLineColor(p.lineColor);
+        if (typeof p.lineColor2 === "string" && /^#[a-f\d]{6}$/i.test(p.lineColor2)) setLineColor2(p.lineColor2);
         if (p.titleSize !== undefined) setTitleSize(p.titleSize);
         if (p.labelSize !== undefined) setLabelSize(p.labelSize);
         if (p.xMin !== undefined) setXMin(p.xMin);
@@ -349,7 +354,7 @@ export default function DataProcessingPage() {
         }
 
         const currentParams = {
-            fontFamily, lineWidth, lineColor, titleSize, labelSize, seriesName, legendPosition,
+            fontFamily, lineWidth, lineColor, lineColor2, titleSize, labelSize, seriesName, legendPosition,
             xAxisName, yAxisName, xMin, xMax, xInterval, xOnZero, yMin, yMax, yInterval, chartWidth, chartHeight
         };
 
@@ -866,7 +871,7 @@ export default function DataProcessingPage() {
 
         // Save to browser LocalStorage
         const currentParams = {
-            fontFamily, lineWidth, lineColor, titleSize, labelSize, seriesName, legendPosition,
+            fontFamily, lineWidth, lineColor, lineColor2, titleSize, labelSize, seriesName, legendPosition,
             xAxisName, yAxisName, xMin, xMax, xInterval, yMin, yMax, yInterval, chartWidth, chartHeight, xOnZero
         };
         localStorage.setItem('myChartPresets', JSON.stringify(currentParams));
@@ -1473,6 +1478,14 @@ export default function DataProcessingPage() {
                             <span className="workbench-section-index">04</span><Settings2 size={18} /> 曲线与图例
                         </summary>
                         <div className="p-4 pt-4 bg-gray-800 grid grid-cols-2 gap-4">
+                            <div className="col-span-2">
+                                <ChartPalettePicker value={activeCurvePalette} currentColors={[lineColor, lineColor2]} onChange={id => {
+                                    const colors = getChartPalette(id).colors;
+                                    setLineColor(colors[0]); setLineColor2(colors[1]);
+                                    setTemplateApplyCount(count => count + 1);
+                                }} />
+                                <p className="workbench-palette-hint">主曲线与对比曲线使用前两色，选择后立即更新；也可分别自定义颜色。</p>
+                            </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs font-medium text-slate-400">数据图例名称 (Series Name)</label>
                                 <input type="text" value={seriesName} onChange={(e) => setSeriesName(e.target.value)} className="bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all" />
@@ -1480,7 +1493,7 @@ export default function DataProcessingPage() {
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs font-medium text-slate-400">曲线颜色 (Color)</label>
                                 <div className="flex items-center gap-2 w-full h-full">
-                                    <input type="color" value={lineColor} onChange={(e) => setLineColor(e.target.value)} className="h-9 w-12 rounded bg-transparent border-0 cursor-pointer p-0" />
+                                    <input type="color" aria-label="曲线颜色" value={lineColor} onChange={(e) => setLineColor(e.target.value)} className="h-9 w-12 rounded bg-transparent border-0 cursor-pointer p-0" />
                                     <span className="text-sm font-mono text-slate-300">{lineColor}</span>
                                 </div>
                             </div>
@@ -1491,7 +1504,7 @@ export default function DataProcessingPage() {
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs font-medium text-red-400/80">对比颜色 (Control Color)</label>
                                 <div className="flex items-center gap-2 w-full h-full">
-                                    <input type="color" value={lineColor2} onChange={(e) => setLineColor2(e.target.value)} className="h-9 w-12 rounded bg-transparent border-0 cursor-pointer p-0" />
+                                    <input type="color" aria-label="对比颜色" value={lineColor2} onChange={(e) => setLineColor2(e.target.value)} className="h-9 w-12 rounded bg-transparent border-0 cursor-pointer p-0" />
                                     <span className="text-sm font-mono text-slate-300">{lineColor2}</span>
                                 </div>
                             </div>

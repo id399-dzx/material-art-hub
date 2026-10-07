@@ -1,17 +1,17 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>带偏移扇区的饼图; independently rendered demonstration data; L1502 issue 40; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
-<polyline points="498.5 193.1 508 185.7 517 185.7" fill="none" pointer-events="visible" stroke="#147a8b" class="zr82-cls-905"></polyline>
-<polyline points="468.2 406.4 475.2 416.1 484.2 416.1" fill="none" pointer-events="visible" stroke="#e3a438" class="zr82-cls-905"></polyline>
-<polyline points="291.8 406.4 284.8 416.1 275.8 416.1" fill="none" pointer-events="visible" stroke="#9a5b90" class="zr82-cls-905"></polyline>
-<polyline points="230.3 275.6 223.3 274.8 214.3 274.8" fill="none" pointer-events="visible" stroke="#4566ac" class="zr82-cls-905"></polyline>
-<polyline points="280.8 172.5 266 174.3 257 174.3" fill="none" pointer-events="visible" stroke="#62a889" class="zr82-cls-905"></polyline>
-<polyline points="351.9 137.7 349.6 125.9 340.6 125.9" fill="none" pointer-events="visible" stroke="#d86864" class="zr82-cls-905"></polyline>
-<path d="M380 135A150 150 0 0 1 525.3 322.3L380 285Z" fill="#147a8b" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr82-cls-906"></path>
-<path d="M525.3 322.3A150 150 0 0 1 370.6 434.7L380 285Z" fill="#e3a438" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr82-cls-907"></path>
-<path d="M370.6 434.7A150 150 0 0 1 240.5 340.2L380 285Z" fill="#9a5b90" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr82-cls-908"></path>
-<path d="M240.5 340.2A150 150 0 0 1 248.6 212.7L380 285Z" fill="#4566ac" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr82-cls-909"></path>
-<path d="M248.6 212.7A150 150 0 0 1 324.8 145.5L380 285Z" fill="#62a889" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr82-cls-910"></path>
-<path d="M324.8 145.5A150 150 0 0 1 380 135L380 285Z" fill="#d86864" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr82-cls-911"></path>
+<polyline points="498.5 193.1 508 185.7 517 185.7" fill="none" pointer-events="visible" stroke="#3B6E9E" class="zr82-cls-891"></polyline>
+<polyline points="468.2 406.4 475.2 416.1 484.2 416.1" fill="none" pointer-events="visible" stroke="#CF7868" class="zr82-cls-891"></polyline>
+<polyline points="291.8 406.4 284.8 416.1 275.8 416.1" fill="none" pointer-events="visible" stroke="#4B9188" class="zr82-cls-891"></polyline>
+<polyline points="230.3 275.6 223.3 274.8 214.3 274.8" fill="none" pointer-events="visible" stroke="#8C79AA" class="zr82-cls-891"></polyline>
+<polyline points="280.8 172.5 266 174.3 257 174.3" fill="none" pointer-events="visible" stroke="#B99A56" class="zr82-cls-891"></polyline>
+<polyline points="351.9 137.7 349.6 125.9 340.6 125.9" fill="none" pointer-events="visible" stroke="#687C94" class="zr82-cls-891"></polyline>
+<path d="M380 135A150 150 0 0 1 525.3 322.3L380 285Z" fill="#3B6E9E" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr82-cls-892"></path>
+<path d="M525.3 322.3A150 150 0 0 1 370.6 434.7L380 285Z" fill="#CF7868" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr82-cls-893"></path>
+<path d="M370.6 434.7A150 150 0 0 1 240.5 340.2L380 285Z" fill="#4B9188" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr82-cls-894"></path>
+<path d="M240.5 340.2A150 150 0 0 1 248.6 212.7L380 285Z" fill="#8C79AA" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr82-cls-895"></path>
+<path d="M248.6 212.7A150 150 0 0 1 324.8 145.5L380 285Z" fill="#B99A56" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr82-cls-896"></path>
+<path d="M324.8 145.5A150 150 0 0 1 380 135L380 285Z" fill="#687C94" stroke="#fff" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr82-cls-897"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:23.233986928104574px;font-family:Arial;" xml:space="preserve" y="-11.616993464052287" transform="translate(522.0051 185.7091)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Component A: 29</text>
 <text dominant-baseline="central" text-anchor="start" style="font-size:23.233986928104574px;font-family:Arial;" y="11.616993464052287" transform="translate(522.0051 185.7091)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">(29%)</text>
 <text dominant-baseline="central" text-anchor="start" style="font-size:23.233986928104574px;font-family:Arial;" xml:space="preserve" y="-11.616993464052287" transform="translate(489.2212 416.0608)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Component B: 22</text>
@@ -24,56 +24,56 @@
 <text dominant-baseline="central" text-anchor="end" style="font-size:23.233986928104574px;font-family:Arial;" y="11.616993464052287" transform="translate(252.0181 174.3374)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">(11%)</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:23.233986928104574px;font-family:Arial;" xml:space="preserve" y="-11.616993464052287" transform="translate(335.6442 125.8695)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Component F: 6</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:23.233986928104574px;font-family:Arial;" y="11.616993464052287" transform="translate(335.6442 125.8695)" fill="#333" stroke="rgb(255,255,255)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">(6%)</text>
-<path d="M-5 -5l755.6 0l0 66.5l-755.6 0Z" transform="translate(7.1949 51)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(8.1949 56.117)" fill="#147a8b" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-5 -5l755.6 0l0 66.5l-755.6 0Z" transform="translate(7.1949 51)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(8.1949 56.117)" fill="#3B6E9E" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(8.1949 56.117)" fill="#54555a">Component A</text>
-<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(8.1949 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(195.9916 56.117)" fill="#e3a438" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(8.1949 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(195.9916 56.117)" fill="#CF7868" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(195.9916 56.117)" fill="#54555a">Component B</text>
-<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(195.9916 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(383.7883 56.117)" fill="#9a5b90" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(195.9916 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(383.7883 56.117)" fill="#4B9188" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(383.7883 56.117)" fill="#54555a">Component C</text>
-<path d="M-1 -5.1l181 0l0 24.2l-181 0Z" transform="translate(383.7883 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(572.7967 56.117)" fill="#4566ac" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l181 0l0 24.2l-181 0Z" transform="translate(383.7883 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(572.7967 56.117)" fill="#8C79AA" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(572.7967 56.117)" fill="#54555a">Component D</text>
-<path d="M-1 -5.1l181 0l0 24.2l-181 0Z" transform="translate(572.7967 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(8.1949 88.351)" fill="#62a889" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l181 0l0 24.2l-181 0Z" transform="translate(572.7967 56.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(8.1949 88.351)" fill="#B99A56" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(8.1949 88.351)" fill="#54555a">Component E</text>
-<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(8.1949 88.351)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(195.9916 88.351)" fill="#d86864" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l179.8 0l0 24.2l-179.8 0Z" transform="translate(8.1949 88.351)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(195.9916 88.351)" fill="#687C94" stroke="#fff" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="round" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(195.9916 88.351)" fill="#54555a">Component F</text>
-<path d="M-1 -5.1l178.3 0l0 24.2l-178.3 0Z" transform="translate(195.9916 88.351)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-912"></path>
-<path d="M-196.4 -5l392.9 0l0 38.2l-392.9 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr82-cls-912"></path>
+<path d="M-1 -5.1l178.3 0l0 24.2l-178.3 0Z" transform="translate(195.9916 88.351)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr82-cls-898"></path>
+<path d="M-196.4 -5l392.9 0l0 38.2l-392.9 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr82-cls-898"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">带偏移扇区的饼图 · 示例数据</text>
 <style ><![CDATA[
-.zr82-cls-905:hover {
+.zr82-cls-891:hover {
 cursor:pointer;
 }
-.zr82-cls-906:hover {
+.zr82-cls-892:hover {
 cursor:pointer;
-fill:rgba(22,134,152,1);
+fill:rgba(64,121,173,1);
 }
-.zr82-cls-907:hover {
+.zr82-cls-893:hover {
 cursor:pointer;
-fill:rgba(249,180,61,1);
+fill:rgba(227,132,114,1);
 }
-.zr82-cls-908:hover {
+.zr82-cls-894:hover {
 cursor:pointer;
-fill:rgba(169,100,158,1);
+fill:rgba(82,159,149,1);
 }
-.zr82-cls-909:hover {
+.zr82-cls-895:hover {
 cursor:pointer;
-fill:rgba(75,112,189,1);
+fill:rgba(154,133,187,1);
 }
-.zr82-cls-910:hover {
+.zr82-cls-896:hover {
 cursor:pointer;
-fill:rgba(107,184,150,1);
+fill:rgba(203,169,94,1);
 }
-.zr82-cls-911:hover {
+.zr82-cls-897:hover {
 cursor:pointer;
-fill:rgba(237,114,110,1);
+fill:rgba(114,136,162,1);
 }
-.zr82-cls-912:hover {
+.zr82-cls-898:hover {
 pointer-events:none;
 }
 

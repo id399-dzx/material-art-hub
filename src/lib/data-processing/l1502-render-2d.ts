@@ -3,16 +3,16 @@ import { sampleBox } from './distributions.ts';
 import { numericCell } from './templates.ts';
 import { wrapChartText } from './chart-layout.ts';
 import type { L1502Data, L1502Point, L1502Series, L1502Spec, L1502Style } from './l1502-spec.ts';
+import { getChartPalette, getValueColors, interpolateChartColor } from './chart-palettes.ts';
 
 type Part = Record<string, unknown>;
 const unique = <T,>(a: T[]) => [...new Set(a)];
 const extent = (a: number[]) => a.length ? [Math.min(...a), Math.max(...a)] as const : [0, 1] as const;
 const fmt = (v: number) => Number(v.toPrecision(4)).toString();
 const font = (s: L1502Style, delta = 0) => `${Math.max(9, s.fontSize + delta)}px ${s.fontFamily}`;
-const colorAt = (s: L1502Style, i: number) => s.colors[i % s.colors.length] ?? '#147a8b';
-function scalarColor(value: number, min: number, max: number): string {
-    const stops = [[36, 77, 139], [100, 187, 197], [245, 230, 167], [204, 73, 67]], t = Math.max(0, Math.min(3, max === min ? 1.5 : (value - min) / (max - min) * 3)), i = Math.min(2, Math.floor(t)), p = t - i;
-    return `rgb(${stops[i].map((v, c) => Math.round(v + (stops[i + 1][c] - v) * p)).join(',')})`;
+const colorAt = (s: L1502Style, i: number) => s.colors[i % s.colors.length] ?? getChartPalette().colors[0];
+function scalarColor(value: number, min: number, max: number, style: L1502Style): string {
+    return interpolateChartColor(getValueColors(style.colors, 'sequential'), max === min ? .5 : (value - min) / (max - min));
 }
 const gradient = (c: string, horizontal = false) => ({ type: 'linear' as const, x: 0, y: 1, x2: horizontal ? 1 : 0, y2: horizontal ? 1 : 0, colorStops: [{ offset: 0, color: `${c}25` }, { offset: 1, color: c }] });
 const note = (style: L1502Style, text: string): Part => ({ type: 'text', left: 'center', bottom: 6, style: { text: wrapChartText(text, style.width - 48, Math.max(9, style.fontSize - 3), style.fontFamily), fill: '#505763', font: font(style, -3), lineHeight: Math.max(9, style.fontSize - 3) * 1.22, align: 'center' } });
@@ -37,7 +37,8 @@ function shell(data: L1502Data, spec: L1502Spec, style: L1502Style, names = data
 function valueMap(values: number[], indices: number[], style: L1502Style, dimension = 3, label = 'Color'): Part {
     const [min, max] = extent(values);
     const common = { dimension, seriesIndex: indices, calculable: false, orient: 'vertical', right: 5, top: '54%', itemHeight: Math.min(150, style.height * .3), itemWidth: 13, precision: 3, text: [label, ''], textStyle: { fontFamily: style.fontFamily, fontSize: Math.max(9, style.fontSize - 2) } };
-    return min === max ? { ...common, type: 'piecewise', pieces: [{ value: min, label: fmt(min), color: '#64bbc5' }], selectedMode: false } : { ...common, type: 'continuous', min, max, inRange: { color: ['#244d8b', '#64bbc5', '#f5e6a7', '#cc4943'] } };
+    const colors = getValueColors(style.colors, 'sequential');
+    return min === max ? { ...common, type: 'piecewise', pieces: [{ value: min, label: fmt(min), color: interpolateChartColor(colors, .5) }], selectedMode: false } : { ...common, type: 'continuous', min, max, inRange: { color: colors } };
 }
 function sizeLegend(data: L1502Data, style: L1502Style, maxDiameter = 52): Part[] {
     const max = Math.max(...data.points.map(p => p.size ?? 0)), samples = unique([max * .25, max * .5, max]);
@@ -161,7 +162,7 @@ function matrixOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base:
         const shade = (value: number, xi: number, yi: number) => {
             const left = lookup.get(`${xi - 1}:${yi}`) ?? value, right = lookup.get(`${xi + 1}:${yi}`) ?? value, low = lookup.get(`${xi}:${yi - 1}`) ?? value, high = lookup.get(`${xi}:${yi + 1}`) ?? value;
             const dx = (right - left) / ((xs[Math.min(xs.length - 1, xi + 1)] - xs[Math.max(0, xi - 1)]) || 1), dy = (high - low) / ((ys[Math.min(ys.length - 1, yi + 1)] - ys[Math.max(0, yi - 1)]) || 1), magnitude = Math.hypot(dx, dy, 1), intensity = .56 + .44 * Math.max(0, (-dx * .35 - dy * .45 + .82) / magnitude);
-            const raw = scalarColor(value, range[0], range[1]).match(/\d+/g)!.map(Number);
+            const raw = scalarColor(value, range[0], range[1], style).match(/\d+/g)!.map(Number);
             const tone = (factor: number) => `rgb(${raw.map(c => Math.min(255, Math.round(c * factor))).join(',')})`;
             return { type: 'linear' as const, x: 0, y: 1, x2: 1, y2: 0, colorStops: [{ offset: 0, color: tone(intensity * .91) }, { offset: 1, color: tone(Math.min(1.05, intensity * 1.09)) }] };
         };
@@ -333,18 +334,20 @@ function networkOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base
     return { ...base, legend: undefined, grid: undefined, xAxis: undefined, yAxis: undefined,
         series: [{ type: 'graph', name: '网络', layout: 'none', roam: false, coordinateSystem: undefined, left: '14%', right: '14%', top: '22%', bottom: '17%', symbolSize: 22, edgeSymbol: spec.directed ? ['none', 'arrow'] : ['none', 'none'], edgeSymbolSize: 8,
             data: nodes.map((name, i) => ({ name, x: Math.cos(i / nodes.length * Math.PI * 2) * 150, y: Math.sin(i / nodes.length * Math.PI * 2) * 150, value: degree(name), itemStyle: { color: colorAt(style, i) }, label: { position: 'right', fontSize: Math.max(9, style.fontSize - 2) } })),
-            links: edges.map(e => ({ source: e.source, target: e.target, value: e.weight, lineStyle: { color: spec.colorByValue ? scalarColor(e.weight, range[0], range[1]) : '#8a9baa', width: .5 + e.weight / maxWeight * 4, opacity: .55, curveness: e.source === e.target ? .5 : .12 } })), label: { show: true, fontFamily: style.fontFamily }, edgeLabel: { show: spec.labels || style.showValues, formatter: '{c}', fontSize: style.fontSize - 3 }, emphasis: { focus: 'adjacency' } }], ...(spec.colorByValue ? { visualMap: valueMap(edges.map(e => e.weight), [], style, 0, 'Weight') } : {}), graphic: [note(style, `${nodes.length} 个节点；${edges.length} 条真实边；线宽 = 0.5 + 4 × Weight / 最大权重${spec.directed ? '；箭头为 Source → Target' : ''}`)] };
+            links: edges.map(e => ({ source: e.source, target: e.target, value: e.weight, lineStyle: { color: spec.colorByValue ? scalarColor(e.weight, range[0], range[1], style) : '#8a9baa', width: .5 + e.weight / maxWeight * 4, opacity: .55, curveness: e.source === e.target ? .5 : .12 } })), label: { show: true, fontFamily: style.fontFamily }, edgeLabel: { show: spec.labels || style.showValues, formatter: '{c}', fontSize: style.fontSize - 3 }, emphasis: { focus: 'adjacency' } }], ...(spec.colorByValue ? { visualMap: valueMap(edges.map(e => e.weight), [], style, 0, 'Weight') } : {}), graphic: [note(style, `${nodes.length} 个节点；${edges.length} 条真实边；线宽 = 0.5 + 4 × Weight / 最大权重${spec.directed ? '；箭头为 Source → Target' : ''}`)] };
 }
 
 function polarOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base: Part): Part {
     const maxSize = Math.max(0, ...data.points.map(p => p.size ?? 0)), bubble = spec.kind === 'polar-bubble';
+    const scalarLine = spec.kind === 'polar-line' && spec.colorByValue, scalarBounds = extent(data.points.map(p => p.color ?? Number(p.y)));
     const series = data.series.map((s, i) => ({ type: spec.kind === 'polar-line' ? 'line' : 'scatter', coordinateSystem: 'polar', name: s.name,
-        data: s.points.map(p => ({ value: [p.y, ((Number(p.x) * 180 / Math.PI % 360) + 360) % 360, p.size ?? 0, p.color ?? Number(p.y)], name: p.label ?? `${p.x} rad; ${p.y}` })), encode: { radius: 0, angle: 1, tooltip: [1, 0, 2, 3] },
+        // Polar lines cannot consume ECharts visualMeta gradients; measured points use the colorbar scale directly.
+        data: s.points.map(p => ({ value: [p.y, ((Number(p.x) * 180 / Math.PI % 360) + 360) % 360, p.size ?? 0, p.color ?? Number(p.y)], name: p.label ?? `${p.x} rad; ${p.y}`, ...(scalarLine ? { itemStyle: { color: scalarColor(p.color ?? Number(p.y), scalarBounds[0], scalarBounds[1], style) } } : {}) })), encode: { radius: 0, angle: 1, tooltip: [1, 0, 2, 3] },
         symbolSize: bubble ? (v: number[]) => maxSize ? 42 * Math.sqrt(v[2] / maxSize) : 0 : 6,
         lineStyle: { color: colorAt(style, i), width: 2 }, itemStyle: { color: colorAt(style, i), opacity: .76 }, ...(spec.filled ? { areaStyle: { color: colorAt(style, i), opacity: .23 } } : {}), label: { show: spec.labels || style.showValues, formatter: (p: { name: string }) => p.name, fontSize: style.fontSize - 2 } }));
     return { ...base, grid: undefined, xAxis: undefined, yAxis: undefined, polar: { center: [bubble || spec.colorByValue ? '43%' : '50%', '50%'], radius: '58%' },
         angleAxis: { type: 'value', min: 0, max: 360, interval: 45, startAngle: 90, axisLabel: { formatter: (v: number) => fmt(v * Math.PI / 180), fontSize: style.fontSize - 1 }, splitLine: { show: true, lineStyle: { color: '#e4e9ed' } } }, radiusAxis: { type: spec.logY ? 'log' : 'value', name: style.yLabel, axisLabel: { fontSize: style.fontSize - 2 }, splitLine: { show: true, lineStyle: { color: '#e4e9ed' } } },
-        series, ...(spec.colorByValue ? { visualMap: valueMap(data.points.map(p => p.color!), series.map((_, i) => i), style) } : {}), graphic: [...(bubble ? sizeLegend(data, style, 42) : []), note(style, 'X 为角度（rad，2π 周期）；Y 为非负半径；按输入顺序连接真实观测')] };
+        series, ...(spec.colorByValue ? { visualMap: valueMap(data.points.map(p => p.color ?? Number(p.y)), scalarLine ? [] : series.map((_, i) => i), style) } : {}), graphic: [...(bubble ? sizeLegend(data, style, 42) : []), note(style, `X 为角度（rad，2π 周期）；Y 为非负半径；按输入顺序连接真实观测${scalarLine ? '；点色表示颜色数值' : ''}`)] };
 }
 
 function vectorOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base: Part): Part {

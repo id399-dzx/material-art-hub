@@ -1,6 +1,7 @@
 import { color as echartsColor, type EChartsOption, type GraphicComponentOption } from 'echarts';
 import { textWidth, wrapChartText } from './chart-layout.ts';
 import { L1502_COLORS, L1502_SPATIAL_KINDS, type L1502Data, type L1502Point, type L1502Spec, type L1502Style } from './l1502-spec.ts';
+import { getValueColors, interpolateChartColor } from './chart-palettes.ts';
 
 export type L1502Vec3 = [number, number, number];
 export type L1502Triangle = [L1502Vec3, L1502Vec3, L1502Vec3];
@@ -222,9 +223,7 @@ function mixColor(a: string, b: string, t: number): string {
 }
 function valueColor(value: number, bounds: [number, number], palette: string[]): string {
     const t = bounds[0] === bounds[1] ? .5 : Math.max(0, Math.min(1, (value - bounds[0]) / (bounds[1] - bounds[0])));
-    const colors = palette.length === 1 ? [mixColor('#ffffff', palette[0], .2), palette[0]] : palette;
-    const f = t * (colors.length - 1), i = Math.min(colors.length - 2, Math.floor(f));
-    return mixColor(colors[i], colors[i + 1], f - i);
+    return interpolateChartColor(palette, t);
 }
 function litColor(fill: string, vertices: L1502Vec3[]): string {
     if (vertices.length < 3) return fill;
@@ -263,6 +262,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
     if (!data.points.length) throw new Error('空间图没有可绘制的观测数据。');
     const width = style.width || 760, height = style.height || 500, fontSize = Math.max(6, style.fontSize || 14), family = style.fontFamily || 'Arial';
     const palette = style.colors.length ? style.colors : [...L1502_COLORS];
+    const valuePalette = getValueColors(palette, 'sequential');
     const yaw = Number.isFinite(style.yaw) ? style.yaw : 35, pitch = Number.isFinite(style.pitch) ? Math.max(-89, Math.min(89, style.pitch)) : 25;
     const graphic: GraphicComponentOption[] = [], primitives: Primitive[] = [], labels: { position: L1502Vec3; text: string; color: string }[] = [];
     const text = (value: string, x: number, y: number, size = fontSize, align: 'left' | 'center' | 'right' = 'center', fill = '#334155', maxWidth = Math.min(140, width * .22), z = 100000): void => {
@@ -333,7 +333,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
         colorBounds = extent(scalars);
         colorLabel = data.mapping.color !== undefined ? String(data.table.columns[data.mapping.color] || 'Color') : style.zLabel || 'Z';
         const groupColor = (name: string): string => palette[Math.max(0, names.indexOf(name)) % palette.length];
-        const entryColor = (e: Entry): string => useScale ? valueColor(e.point.color ?? e.point.z!, colorBounds, palette) : groupColor(e.group);
+        const entryColor = (e: Entry): string => useScale ? valueColor(e.point.color ?? e.point.z!, colorBounds, valuePalette) : groupColor(e.group);
         const originalGroups = entriesByGroup(entries);
         if (spec.kind === 'bar3') {
             requireLimit(entries.length, 2200, '立体柱');
@@ -404,7 +404,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
             const mesh = l1502MarchingTetrahedra(entries.map(e => ({ position: e.position, value: e.point.color! })), iso);
             if (!mesh.completeCells) throw new Error('标量场没有完整的八角 XYZ 网格单元，无法提取等值面。');
             if (!mesh.triangles.length) throw new Error(`完整网格内没有穿过等值 ${formatNumber(iso)} 的表面；请调整阈值。`);
-            const fill = valueColor(iso, colorBounds, palette);
+            const fill = valueColor(iso, colorBounds, valuePalette);
             for (const triangle of mesh.triangles) addFace(triangle, fill, { kind: 'iso-face', scalar: iso, vertices: triangle }, { lighting: true });
             notes += ` · ${colorLabel} = ${formatNumber(iso)} · ${mesh.triangles.length} 个三角面 · 完整单元 ${mesh.completeCells}${mesh.missingCells ? `，缺失单元 ${mesh.missingCells} 保留为空` : ''}`;
         } else if (spec.kind === 'surface' || spec.kind === 'tri-mesh' || spec.kind === 'tri-surface') {
@@ -417,7 +417,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
                 const lookup = new Map(list.map(e => [key(e.position), e]));
                 for (const face of faces) {
                     const scalar = face.reduce((sum, p) => sum + (lookup.get(key(p))!.point.color ?? p[2]), 0) / face.length;
-                    const fill = useScale ? valueColor(scalar, colorBounds, palette) : groupColor(group);
+                    const fill = useScale ? valueColor(scalar, colorBounds, valuePalette) : groupColor(group);
                     if (spec.kind === 'tri-mesh' || spec.kind === 'surface' && spec.filled === false) addLine([...face, face[0]], fill, { kind: spec.kind === 'tri-mesh' ? 'triangle-wire' : 'surface-wire', group, vertices: face }, .9);
                     else addFace(face, fill, { kind: 'surface-face', group, scalar, vertices: face });
                 }
@@ -429,7 +429,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
                         const edge = boundary.get(id);
                         if (edge) edge.count++; else boundary.set(id, { a, b, count: 1 });
                     }
-                    for (const { a, b, count } of boundary.values()) if (count === 1) addFace([a, b, [b[0], b[1], 0], [a[0], a[1], 0]], valueColor((a[2] + b[2]) / 2, colorBounds, palette), { kind: 'curtain', group, baseline: 0 }, { opacity: .65, lighting: true });
+                    for (const { a, b, count } of boundary.values()) if (count === 1) addFace([a, b, [b[0], b[1], 0], [a[0], a[1], 0]], valueColor((a[2] + b[2]) / 2, colorBounds, valuePalette), { kind: 'curtain', group, baseline: 0 }, { opacity: .65, lighting: true });
                 }
                 if (spec.withContours) {
                     const [zmin, zmax] = extent(positions.map(p => p[2]));
@@ -459,7 +459,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
                         const a = ordered[i - 1], b = ordered[i];
                         if (xs.indexOf(b.position[0]) !== xs.indexOf(a.position[0]) + 1) continue;
                         const scalar = ((a.point.color ?? a.position[2]) + (b.point.color ?? b.position[2])) / 2;
-                        const fill = useScale ? valueColor(scalar, colorBounds, palette) : groupColor(group);
+                        const fill = useScale ? valueColor(scalar, colorBounds, valuePalette) : groupColor(group);
                         const info = { kind: spec.kind, group, vertices: [a.position, b.position], scalar };
                         if (spec.kind === 'waterfall') {
                             addFace([[a.position[0], y, 0], a.position, b.position, [b.position[0], y, 0]], fill, info, { opacity: .22 });
@@ -594,7 +594,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
     for (const label of labels) { const [x, y] = project(label.position); text(label.text, x + 5, y - fontSize - 3, Math.max(7, fontSize - 1), 'left', label.color, 100); }
     if (useScale) {
         const x = width - colorWidth + 12, y = plotTop + 18, barHeight = Math.max(50, Math.min(200, plotBottom - plotTop - 46));
-        const stops = Array.from({ length: 17 }, (_, i) => ({ offset: i / 16, color: valueColor(colorBounds[1] - (colorBounds[1] - colorBounds[0]) * i / 16, colorBounds, palette) }));
+        const stops = Array.from({ length: 17 }, (_, i) => ({ offset: i / 16, color: valueColor(colorBounds[1] - (colorBounds[1] - colorBounds[0]) * i / 16, colorBounds, valuePalette) }));
         graphic.push({ type: 'rect', z: 100000, silent: true, info: { kind: 'color-scale', min: colorBounds[0], max: colorBounds[1], label: colorLabel }, shape: { x, y, width: 12, height: barHeight }, style: { fill: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: stops }, stroke: '#94a3b8', lineWidth: .6 } });
         const colorFont = Math.max(7, fontSize * .66);
         text(colorLabel, x - 4, y - colorFont - 7, colorFont, 'left', '#475569', colorWidth - 16);

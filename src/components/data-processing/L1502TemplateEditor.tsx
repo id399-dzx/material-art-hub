@@ -9,20 +9,15 @@ import { matrixToCsv, numericCell, parseTemplateTable } from "@/lib/data-process
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import { buildL1502Data, l1502Roles, suggestL1502Mapping } from "@/lib/data-processing/l1502-data";
 import { createL1502Option } from "@/lib/data-processing/l1502-render";
-import { L1502_COLORS, L1502_ROLE_LABELS, L1502_SPATIAL_KINDS, l1502DefaultLayout, l1502DefaultStyle, type L1502Mapping, type L1502Style } from "@/lib/data-processing/l1502-spec";
+import { L1502_ROLE_LABELS, L1502_SPATIAL_KINDS, l1502DefaultLayout, l1502DefaultStyle, type L1502Mapping, type L1502Style } from "@/lib/data-processing/l1502-spec";
 import { validateL1502EditSnapshot, type L1502EditSnapshot, type L1502Source } from "@/lib/data-processing/l1502-edit-snapshot";
 import { downloadFigureBlob, initialExportSettings } from "@/lib/data-processing/publication";
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
 import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
 import L1502MatlabSource from "./L1502MatlabSource";
-
-const palettes = [
-    { name: "科研经典", colors: L1502_COLORS },
-    { name: "蓝绿序列", colors: ["#164b6b", "#147a8b", "#2e9a9b", "#67b4a3", "#aed3bc", "#deead3"] },
-    { name: "暖色对比", colors: ["#426b9b", "#db7962", "#e5b56b", "#83a6a0", "#a575a2", "#68788c"] },
-    { name: "黑白印刷", colors: ["#222222", "#555555", "#888888", "#aaaaaa", "#cccccc", "#eeeeee"] },
-];
+import ChartPalettePicker from "./ChartPalettePicker";
+import { findChartPalette, getChartPalette } from "@/lib/data-processing/chart-palettes";
 
 function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const spec = template.l1502!;
@@ -174,7 +169,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 <details className="l1502-control-section l1502-style-section"><summary><span className="l1502-summary-title"><Palette size={15} />样式与标注</span><span>字号 · 画布 · 图注</span></summary><div>
                 <fieldset className="template-style-fields l1502-fieldset" disabled={locked}>
                     {textFields.map(field => <label className="template-field" key={field.key}>{field.name}<input aria-label={field.name} value={String(editor.style[field.key])} onChange={event => changeStyle(field.key, event.target.value as never)} /></label>)}
-                    <label className="template-field">配色方案<select aria-label="配色方案" value={palettes.findIndex(palette => palette.colors.join() === editor.style.colors.join())} onChange={event => changeStyle("colors", [...palettes[Number(event.target.value)].colors])}>{palettes.map((palette, index) => <option key={palette.name} value={index}>{palette.name}</option>)}</select></label>
+                    <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} disabled={locked} onChange={id => changeStyle("colors", [...getChartPalette(id).colors])} />
                     <label className="template-field">字体<select aria-label="图表字体" value={editor.style.fontFamily} onChange={event => changeStyle("fontFamily", event.target.value)}><option>Arial</option><option>Times New Roman</option><option>sans-serif</option></select></label>
                     <label className="template-field">主体字号 (pt)<input aria-label="主体字号" type="number" min={5} max={16} step={0.5} value={editor.style.fontSize} onChange={event => { const value = Number(event.target.value); if (value >= 5 && value <= 16) changeStyle("fontSize", value); }} /></label>
                     <label className="template-field">画布宽度 (px)<input aria-label="画布宽度" type="number" min={420} max={1600} value={editor.style.width} onChange={event => { const value = Number(event.target.value); if (value >= 420 && value <= 1600) changeStyle("width", value); }} /></label>

@@ -1,0 +1,20 @@
+{
+  "issue": 52,
+  "folder": "Matlab论文插图绘制模板第52期-三维分簇散点图",
+  "scripts": [
+    {
+      "name": "Swarm3Plot.m",
+      "path": "/l1502-matlab/052/Swarm3Plot.m",
+      "role": "plot",
+      "lines": 66,
+      "bytes": 2508,
+      "sha256": "4d623410da8c958545423df9afa0b29daf72af002ab9ace9e87e91b1b568b463",
+      "dataFiles": [
+        "bicycleData.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

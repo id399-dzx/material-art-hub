@@ -1,0 +1,20 @@
+{
+  "issue": 31,
+  "folder": "Matlab论文插图绘制模板第31期-堆叠折线图",
+  "scripts": [
+    {
+      "name": "StackedPlot.m",
+      "path": "/l1502-matlab/031/StackedPlot.m",
+      "role": "plot",
+      "lines": 44,
+      "bytes": 1085,
+      "sha256": "4c7b577d34dded3e2ec06155978ede9fd034db7d8afcb7a81d59ee52c37adc26",
+      "dataFiles": [
+        "patients.xls"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

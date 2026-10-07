@@ -1,0 +1,20 @@
+{
+  "issue": 82,
+  "folder": "Matlab论文插图绘制模板第82期-箭头图",
+  "scripts": [
+    {
+      "name": "QuiverPlot.m",
+      "path": "/l1502-matlab/082/QuiverPlot.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1810,
+      "sha256": "52cd01c3e3fd6cfe9470fd653ed700a2ad4852eaeb3ad6f7c2f019e4886c952f",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

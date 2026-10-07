@@ -1,0 +1,20 @@
+{
+  "issue": 17,
+  "folder": "Matlab论文插图绘制模板第17期-散点图气泡",
+  "scripts": [
+    {
+      "name": "ScatterBubble.m",
+      "path": "/l1502-matlab/017/ScatterBubble.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1837,
+      "sha256": "ac8e02c2dce39031cb61ce49f64407b4a48e5f2bca74eda6afa290caf1f62dc0",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 90,
+  "folder": "Matlab论文插图绘制模板第90期-带权重的有向图",
+  "scripts": [
+    {
+      "name": "GraphWeightPlot.m",
+      "path": "/l1502-matlab/090/GraphWeightPlot.m",
+      "role": "plot",
+      "lines": 55,
+      "bytes": 1181,
+      "sha256": "76115f828b022619d000a1b3ae3b622327bc249d360acdff47ec01da17847da9",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

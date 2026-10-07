@@ -1,0 +1,20 @@
+{
+  "issue": 65,
+  "folder": "Matlab论文插图绘制模板第65期-带等高线的曲面图",
+  "scripts": [
+    {
+      "name": "SurfaceCPlot.m",
+      "path": "/l1502-matlab/065/SurfaceCPlot.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1787,
+      "sha256": "ed24fba0709a58a40a7e6dc9bf062eee8ce75da421d6d668ed302e8ab93821f4",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

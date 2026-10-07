@@ -1,0 +1,20 @@
+{
+  "issue": 93,
+  "folder": "Matlab论文插图绘制模板第93期-带类别标签的散点图",
+  "scripts": [
+    {
+      "name": "GroupedScatterPlot.m",
+      "path": "/l1502-matlab/093/GroupedScatterPlot.m",
+      "role": "plot",
+      "lines": 70,
+      "bytes": 1823,
+      "sha256": "a195a324f8fe0115281711ca5675aa11b9ad732c6998d483c6942623d44dba37",
+      "dataFiles": [
+        "data.txt"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

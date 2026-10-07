@@ -1,0 +1,18 @@
+{
+  "issue": 129,
+  "folder": "Matlab论文插图绘制模板第129期-函数网格曲面图",
+  "scripts": [
+    {
+      "name": "FMeshPlot.m",
+      "path": "/l1502-matlab/129/FMeshPlot.m",
+      "role": "plot",
+      "lines": 54,
+      "bytes": 1748,
+      "sha256": "b6673ec80414112d5ab12808efcd3cc83cc0794b5f94158e531cb611d4ca5a71",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

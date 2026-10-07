@@ -1,0 +1,20 @@
+{
+  "issue": 18,
+  "folder": "Matlab论文插图绘制模板第18期-散点图矩阵",
+  "scripts": [
+    {
+      "name": "ScatterMatrix.m",
+      "path": "/l1502-matlab/018/ScatterMatrix.m",
+      "role": "plot",
+      "lines": 66,
+      "bytes": 1947,
+      "sha256": "bfeb9541de5c7fa2529223be41ef924251a70e1d380b301196d599d13a181c51",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

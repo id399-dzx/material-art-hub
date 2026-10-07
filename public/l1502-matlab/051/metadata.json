@@ -1,0 +1,20 @@
+{
+  "issue": 51,
+  "folder": "Matlab论文插图绘制模板第51期-抖动控制的分簇散点图",
+  "scripts": [
+    {
+      "name": "RandJitterSwarmPlot.m",
+      "path": "/l1502-matlab/051/RandJitterSwarmPlot.m",
+      "role": "plot",
+      "lines": 58,
+      "bytes": 1938,
+      "sha256": "ebbb7018f518a1fc693bdd258738ed6a6cc1b545feb9f6b7d02aa3e324c0087f",
+      "dataFiles": [
+        "BicycleCounts.csv"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 125,
+  "folder": "Matlab论文插图绘制模板第125期-特征渲染的三维气泡图",
+  "scripts": [
+    {
+      "name": "FeaturedBubbleChart3.m",
+      "path": "/l1502-matlab/125/FeaturedBubbleChart3.m",
+      "role": "plot",
+      "lines": 62,
+      "bytes": 1875,
+      "sha256": "69ef6c0bce6b7130d876e9c0afa1d2dfa9ec75df24225eb19d12a18f8dab4f91",
+      "dataFiles": [
+        "carsmall.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

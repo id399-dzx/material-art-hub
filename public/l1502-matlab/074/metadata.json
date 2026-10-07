@@ -1,0 +1,20 @@
+{
+  "issue": 74,
+  "folder": "Matlab论文插图绘制模板第74期-双对数刻度折线图",
+  "scripts": [
+    {
+      "name": "LoglogPlot.m",
+      "path": "/l1502-matlab/074/LoglogPlot.m",
+      "role": "plot",
+      "lines": 87,
+      "bytes": 2584,
+      "sha256": "16c00b9d51c8b43066e1d0d85dbb24592bf5e9da6e43d52e6054365f679e464d",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

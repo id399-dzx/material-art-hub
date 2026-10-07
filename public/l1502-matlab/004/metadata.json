@@ -1,0 +1,18 @@
+{
+  "issue": 4,
+  "folder": "Matlab论文插图绘制模板第4期-双轴柱状图",
+  "scripts": [
+    {
+      "name": "Db_Bar.m",
+      "path": "/l1502-matlab/004/Db_Bar.m",
+      "role": "plot",
+      "lines": 73,
+      "bytes": 2231,
+      "sha256": "5c549b3e49e4c89089fa5c45b5cea8b48b0cb948f8ea2b3faff1f3faa6fdcec3",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 44,
+  "folder": "Matlab论文插图绘制模板第44期-二元直方图",
+  "scripts": [
+    {
+      "name": "Hist2Plot.m",
+      "path": "/l1502-matlab/044/Hist2Plot.m",
+      "role": "plot",
+      "lines": 59,
+      "bytes": 1901,
+      "sha256": "267319a303fb99cbc7922f71089a24b9d4f9baa080a7f5955c39fd60ea3b9013",
+      "dataFiles": [
+        "rideData.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

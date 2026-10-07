@@ -1,0 +1,20 @@
+{
+  "issue": 94,
+  "folder": "Matlab论文插图绘制模板第94期-带置信区间的折线散点图",
+  "scripts": [
+    {
+      "name": "LineScatterChartwithConfidenceInterval.m",
+      "path": "/l1502-matlab/094/LineScatterChartwithConfidenceInterval.m",
+      "role": "plot",
+      "lines": 103,
+      "bytes": 3347,
+      "sha256": "c9661924153e5d2898b542c0eb4983da66022db8b693aad5d9804d776e12dbe8",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

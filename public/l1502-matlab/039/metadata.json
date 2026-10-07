@@ -1,0 +1,16 @@
+{
+  "issue": 39,
+  "folder": "Matlab论文插图绘制模板第39期-阶梯图",
+  "scripts": [
+    {
+      "name": "StairPlot.m",
+      "path": "/l1502-matlab/039/StairPlot.m",
+      "role": "plot",
+      "lines": 84,
+      "bytes": 2753,
+      "sha256": "e90b649a4d7803e810d4744031135bce7f807af1615a9e4fb127343dd15d30de",
+      "dataFiles": [],
+      "externalFunctions": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "issue": 2,
+  "folder": "Matlab论文插图绘制模板第2期-柱状图",
+  "scripts": [
+    {
+      "name": "bar_figure.m",
+      "path": "/l1502-matlab/002/bar_figure.m",
+      "role": "plot",
+      "lines": 84,
+      "bytes": 2819,
+      "sha256": "8c3b2c95ff308e7071d7cce8cf6b48f06a6417baa2c8872a69223a1fa1d03d47",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolor"
+      ]
+    }
+  ]
+}

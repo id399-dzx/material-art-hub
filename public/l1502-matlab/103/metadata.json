@@ -1,0 +1,20 @@
+{
+  "issue": 103,
+  "folder": "Matlab论文插图绘制模板第103期-分组散点图",
+  "scripts": [
+    {
+      "name": "GroupedScatterPlot.m",
+      "path": "/l1502-matlab/103/GroupedScatterPlot.m",
+      "role": "plot",
+      "lines": 84,
+      "bytes": 2435,
+      "sha256": "4d8b62ab6e0ecae3ba91d6bc69bfeba036ca36e102fbb8d76316fac562d73396",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

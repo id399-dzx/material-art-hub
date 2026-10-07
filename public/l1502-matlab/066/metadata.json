@@ -1,0 +1,20 @@
+{
+  "issue": 66,
+  "folder": "Matlab论文插图绘制模板第66期-条带图",
+  "scripts": [
+    {
+      "name": "RibbonPlot.m",
+      "path": "/l1502-matlab/066/RibbonPlot.m",
+      "role": "plot",
+      "lines": 65,
+      "bytes": 1904,
+      "sha256": "395904a70433eb00822f616109e19081517b6796ce986d07b6c02a8693539757",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

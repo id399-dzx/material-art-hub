@@ -1,0 +1,20 @@
+{
+  "issue": 48,
+  "folder": "Matlab论文插图绘制模板第48期-平行坐标图",
+  "scripts": [
+    {
+      "name": "ParallelPlot.m",
+      "path": "/l1502-matlab/048/ParallelPlot.m",
+      "role": "plot",
+      "lines": 52,
+      "bytes": 1429,
+      "sha256": "0e54e529cd0629f81955131536a96e5ca715d74aefe555dced61bbeac8eca998",
+      "dataFiles": [
+        "TemperatureData.csv"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

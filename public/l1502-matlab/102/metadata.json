@@ -1,0 +1,20 @@
+{
+  "issue": 102,
+  "folder": "Matlab论文插图绘制模板第102期-分组填充箱线图",
+  "scripts": [
+    {
+      "name": "GroupedFilledBoxPlot.m",
+      "path": "/l1502-matlab/102/GroupedFilledBoxPlot.m",
+      "role": "plot",
+      "lines": 85,
+      "bytes": 2896,
+      "sha256": "fb9d7d6e2554c1e4b243aa56bca3c2c67466020780aefc397ece4c99d172335a",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

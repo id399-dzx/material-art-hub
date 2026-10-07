@@ -1,0 +1,20 @@
+{
+  "issue": 21,
+  "folder": "Matlab论文插图绘制模板第21期-三维散点图特征渲染",
+  "scripts": [
+    {
+      "name": "Scatter3Feature.m",
+      "path": "/l1502-matlab/021/Scatter3Feature.m",
+      "role": "plot",
+      "lines": 55,
+      "bytes": 1546,
+      "sha256": "37f61b3fdac9c84bc6932f3d67aa91b68937c1f33547be56ffdbb435e647364c",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

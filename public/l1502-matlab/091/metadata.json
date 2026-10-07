@@ -1,0 +1,20 @@
+{
+  "issue": 91,
+  "folder": "Matlab论文插图绘制模板第91期-不等宽柱状图",
+  "scripts": [
+    {
+      "name": "BarUEwidth.m",
+      "path": "/l1502-matlab/091/BarUEwidth.m",
+      "role": "plot",
+      "lines": 84,
+      "bytes": 2588,
+      "sha256": "44d080669c1d1613c7b51eb69cd365dd38db048c44be4f1739fe32843f00f7f9",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

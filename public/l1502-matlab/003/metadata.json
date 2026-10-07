@@ -1,0 +1,18 @@
+{
+  "issue": 3,
+  "folder": "Matlab论文插图绘制模板第3期-双轴折线图",
+  "scripts": [
+    {
+      "name": "Db_Zhexian.m",
+      "path": "/l1502-matlab/003/Db_Zhexian.m",
+      "role": "plot",
+      "lines": 93,
+      "bytes": 2986,
+      "sha256": "a21939a8d745649751be3b9150c218bfcefe3dfe0196c98f8333aad77c4f26e7",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolor"
+      ]
+    }
+  ]
+}

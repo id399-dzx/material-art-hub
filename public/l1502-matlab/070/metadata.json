@@ -1,0 +1,18 @@
+{
+  "issue": 70,
+  "folder": "Matlab论文插图绘制模板第70期-带误差棒的柱状图",
+  "scripts": [
+    {
+      "name": "BarWithErrorbar.m",
+      "path": "/l1502-matlab/070/BarWithErrorbar.m",
+      "role": "plot",
+      "lines": 78,
+      "bytes": 2371,
+      "sha256": "b6a45936b47d6b3c2061b7ec9821bb85e40d7ae79231e9f9b1ad2f4836b55e75",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

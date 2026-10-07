@@ -1,0 +1,20 @@
+{
+  "issue": 137,
+  "folder": "Matlab论文插图绘制模板第137期-极坐标分组气泡图",
+  "scripts": [
+    {
+      "name": "GroupedPolarBubblePlot.m",
+      "path": "/l1502-matlab/137/GroupedPolarBubblePlot.m",
+      "role": "plot",
+      "lines": 66,
+      "bytes": 2065,
+      "sha256": "71d03b87c70f59e272db96c9cc85bd878f4f32b869f41644b75050b90c5e06ac",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

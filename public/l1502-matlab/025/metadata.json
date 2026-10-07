@@ -1,0 +1,18 @@
+{
+  "issue": 25,
+  "folder": "Matlab论文插图绘制模板第25期-针状图",
+  "scripts": [
+    {
+      "name": "Stem.m",
+      "path": "/l1502-matlab/025/Stem.m",
+      "role": "plot",
+      "lines": 72,
+      "bytes": 2118,
+      "sha256": "13979bed6c66c9b0ab9141d1e2590894f1408cc7057ae24a2b312bb0afe3004b",
+      "dataFiles": [
+        "amplitudeData.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

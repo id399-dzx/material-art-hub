@@ -1,0 +1,18 @@
+{
+  "issue": 8,
+  "folder": "Matlab论文插图绘制模板第8期-多组横向柱状图",
+  "scripts": [
+    {
+      "name": "barh_figure.m",
+      "path": "/l1502-matlab/008/barh_figure.m",
+      "role": "plot",
+      "lines": 66,
+      "bytes": 1936,
+      "sha256": "ce167c42dca26399ee65fd9baaa8e1016df6d0c26e5971b2a070f3e3a4a07a5a",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

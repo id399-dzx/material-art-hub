@@ -1,0 +1,20 @@
+{
+  "issue": 96,
+  "folder": "Matlab论文插图绘制模板第96期-分组箱线图",
+  "scripts": [
+    {
+      "name": "GroupedBoxPlot.m",
+      "path": "/l1502-matlab/096/GroupedBoxPlot.m",
+      "role": "plot",
+      "lines": 76,
+      "bytes": 2480,
+      "sha256": "df4292e7690e20627d7bfe162ff1325493dbfad48029150a4ebb7d17c8a23c13",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 78,
+  "folder": "Matlab论文插图绘制模板第78期-进阶词云图",
+  "scripts": [
+    {
+      "name": "WordCloudPlus.m",
+      "path": "/l1502-matlab/078/WordCloudPlus.m",
+      "role": "plot",
+      "lines": 37,
+      "bytes": 1218,
+      "sha256": "c803e93dec22aadc75d1802743565a80d9a38bbb6943ceb557fb16531a2a77f2",
+      "dataFiles": [
+        "sonnetsTable.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

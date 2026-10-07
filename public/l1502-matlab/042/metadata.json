@@ -1,0 +1,20 @@
+{
+  "issue": 42,
+  "folder": "Matlab论文插图绘制模板第42期-气泡矩阵图",
+  "scripts": [
+    {
+      "name": "BubbleMatrix.m",
+      "path": "/l1502-matlab/042/BubbleMatrix.m",
+      "role": "plot",
+      "lines": 75,
+      "bytes": 2184,
+      "sha256": "4d80fe0e68ea60523d4ccab60df37e5981fa5f40f8c2e5e1c3813a2052d483a0",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

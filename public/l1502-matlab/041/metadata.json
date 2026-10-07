@@ -1,0 +1,20 @@
+{
+  "issue": 41,
+  "folder": "Matlab论文插图绘制模板第41期-气泡图",
+  "scripts": [
+    {
+      "name": "BubbleChartPlot.m",
+      "path": "/l1502-matlab/041/BubbleChartPlot.m",
+      "role": "plot",
+      "lines": 71,
+      "bytes": 2072,
+      "sha256": "b074d54364113042f0f36cc68f91c6ca752484ede94c8e4720c04865a2317f15",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

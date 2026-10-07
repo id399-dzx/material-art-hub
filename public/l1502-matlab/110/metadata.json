@@ -1,0 +1,20 @@
+{
+  "issue": 110,
+  "folder": "Matlab论文插图绘制模板第110期-水平双向柱状图",
+  "scripts": [
+    {
+      "name": "BidirectionalBarhPlot.m",
+      "path": "/l1502-matlab/110/BidirectionalBarhPlot.m",
+      "role": "plot",
+      "lines": 83,
+      "bytes": 2535,
+      "sha256": "4282658125fc7baca8bb56cb93a7dc09caae11271cb4d7f1a9067491257694a0",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

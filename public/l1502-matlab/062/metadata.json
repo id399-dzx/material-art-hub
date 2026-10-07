@@ -1,0 +1,20 @@
+{
+  "issue": 62,
+  "folder": "Matlab论文插图绘制模板第62期-水平三维柱状图",
+  "scripts": [
+    {
+      "name": "bar3DH.m",
+      "path": "/l1502-matlab/062/bar3DH.m",
+      "role": "plot",
+      "lines": 56,
+      "bytes": 2080,
+      "sha256": "54bd0d7a730a9478d8230c65b869df30c23873d07579fd320f3e241c07b2dc07",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

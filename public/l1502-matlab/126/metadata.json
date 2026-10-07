@@ -1,0 +1,20 @@
+{
+  "issue": 126,
+  "folder": "Matlab论文插图绘制模板第126期-分组三维气泡图",
+  "scripts": [
+    {
+      "name": "GroupedBubbleChart3.m",
+      "path": "/l1502-matlab/126/GroupedBubbleChart3.m",
+      "role": "plot",
+      "lines": 79,
+      "bytes": 2254,
+      "sha256": "d34abd29c0c80b6d8ee3fcb7c1bd1545f3ba807d7279bf6caccf5d4f30b33f87",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

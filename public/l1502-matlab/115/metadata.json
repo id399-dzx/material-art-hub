@@ -1,0 +1,18 @@
+{
+  "issue": 115,
+  "folder": "Matlab论文插图绘制模板第115期-带Latex公式的图",
+  "scripts": [
+    {
+      "name": "ChartwithLatex.m",
+      "path": "/l1502-matlab/115/ChartwithLatex.m",
+      "role": "plot",
+      "lines": 75,
+      "bytes": 2381,
+      "sha256": "b7180b7f0e83fae0574ec890e22773ad0d05b6c40f43a3d501e339e73076b261",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

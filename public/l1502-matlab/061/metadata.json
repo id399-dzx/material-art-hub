@@ -1,0 +1,18 @@
+{
+  "issue": 61,
+  "folder": "Matlab论文插图绘制模板第61期-横向多组堆叠图",
+  "scripts": [
+    {
+      "name": "HMultiStack.m",
+      "path": "/l1502-matlab/061/HMultiStack.m",
+      "role": "plot",
+      "lines": 88,
+      "bytes": 2664,
+      "sha256": "2c0bd983725ee42cd24ca7891a6a2d5341dcd07b9515cb76f2e94e6784b35699",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

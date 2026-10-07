@@ -1,0 +1,18 @@
+{
+  "issue": 114,
+  "folder": "Matlab论文插图绘制模板第114期-带图形标记的图",
+  "scripts": [
+    {
+      "name": "ChartwithShapeLabel.m",
+      "path": "/l1502-matlab/114/ChartwithShapeLabel.m",
+      "role": "plot",
+      "lines": 73,
+      "bytes": 2393,
+      "sha256": "669bda03ee2d853e8bbaf22cc44163e7aededc674ffc359aac52fd077f1dc538",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

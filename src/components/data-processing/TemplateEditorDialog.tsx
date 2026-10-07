@@ -4,12 +4,13 @@ import { useEffect, useId, useRef, type ReactNode } from 'react';
 import { ArrowLeft, X } from 'lucide-react';
 import './template-editor-dialog.css';
 
-export default function TemplateEditorDialog({ open, title, eyebrow, description, busy = false, onClose, children }: {
+export default function TemplateEditorDialog({ open, title, eyebrow, description, busy = false, contentClassName = '', onClose, children }: {
     open: boolean;
     title: string;
     eyebrow: string;
     description: string;
     busy?: boolean;
+    contentClassName?: string;
     onClose: () => void;
     children: ReactNode;
 }) {
@@ -47,7 +48,7 @@ export default function TemplateEditorDialog({ open, title, eyebrow, description
             <div><span className="template-dialog-eyebrow">{eyebrow}</span><h2 id={titleId}>{title}</h2><p id={descriptionId}>{description}</p></div>
             <button type="button" className="template-dialog-close" aria-label="关闭编辑，返回模板列表" disabled={busy} onClick={onClose}><X size={20} /></button>
         </header>
-        <div ref={contentRef} className="template-dialog-content">{children}</div>
+        <div ref={contentRef} className={`template-dialog-content${contentClassName ? ` ${contentClassName}` : ''}`}>{children}</div>
         <footer className="template-dialog-footer"><span>{busy ? '正在处理，请稍候…' : '关闭后保留本次页面中的编辑；刷新前请保存结果。'}</span><button type="button" disabled={busy} onClick={onClose}><ArrowLeft size={15} />返回模板列表</button></footer>
     </dialog>;
 }

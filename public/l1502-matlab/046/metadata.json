@@ -1,0 +1,20 @@
+{
+  "issue": 46,
+  "folder": "Matlab论文插图绘制模板第46期-帕累托图",
+  "scripts": [
+    {
+      "name": "ParetoPlot.m",
+      "path": "/l1502-matlab/046/ParetoPlot.m",
+      "role": "plot",
+      "lines": 79,
+      "bytes": 2535,
+      "sha256": "f5371025478cedb7f2d764ac63bd18db3544eac44503e1f50319a3a63fed409f",
+      "dataFiles": [
+        "AircraftAccidents.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

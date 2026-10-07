@@ -1,0 +1,18 @@
+{
+  "issue": 40,
+  "folder": "Matlab论文插图绘制模板第40期-带偏移扇区的饼图",
+  "scripts": [
+    {
+      "name": "PiePlot2.m",
+      "path": "/l1502-matlab/040/PiePlot2.m",
+      "role": "plot",
+      "lines": 38,
+      "bytes": 947,
+      "sha256": "c3a8a1fc9ffed6cadb31ecf80624baed3bcad7c45df09b15e91cf770eb5bc213",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

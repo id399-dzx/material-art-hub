@@ -1,0 +1,20 @@
+{
+  "issue": 124,
+  "folder": "Matlab论文插图绘制模板第124期-三维气泡图",
+  "scripts": [
+    {
+      "name": "BubbleChart3.m",
+      "path": "/l1502-matlab/124/BubbleChart3.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1846,
+      "sha256": "af6738a504f8859ff95f211c941749c2ec29ef44a212fced5d053e8ad7b7e041",
+      "dataFiles": [
+        "carsmall.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

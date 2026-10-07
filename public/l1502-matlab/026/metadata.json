@@ -1,0 +1,18 @@
+{
+  "issue": 26,
+  "folder": "Matlab论文插图绘制模板第26期-多组针状图",
+  "scripts": [
+    {
+      "name": "StemMulti.m",
+      "path": "/l1502-matlab/026/StemMulti.m",
+      "role": "plot",
+      "lines": 97,
+      "bytes": 3163,
+      "sha256": "f30e3d2d4edfb9e8ff4243e58dba26d9cc0502f177e027d031fd09c384e26cd0",
+      "dataFiles": [
+        "filterData.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

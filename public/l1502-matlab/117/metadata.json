@@ -1,0 +1,20 @@
+{
+  "issue": 117,
+  "folder": "Matlab论文插图绘制模板第117期-气泡云图",
+  "scripts": [
+    {
+      "name": "BubblecolodPlot.m",
+      "path": "/l1502-matlab/117/BubblecolodPlot.m",
+      "role": "plot",
+      "lines": 38,
+      "bytes": 877,
+      "sha256": "6e2620d798fd9d6caf933f27aa0f388162a9b96a8efdcf99159db915c601a235",
+      "dataFiles": [
+        "populationData.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

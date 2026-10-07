@@ -1,0 +1,20 @@
+{
+  "issue": 19,
+  "folder": "Matlab论文插图绘制模板第19期-散点折线图",
+  "scripts": [
+    {
+      "name": "ScatterLine.m",
+      "path": "/l1502-matlab/019/ScatterLine.m",
+      "role": "plot",
+      "lines": 69,
+      "bytes": 2199,
+      "sha256": "7247da70ff4c509807d1a21b6d6ba66d0b73c2756f3e94a3eef5295b1f9910cd",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

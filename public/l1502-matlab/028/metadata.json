@@ -1,0 +1,16 @@
+{
+  "issue": 28,
+  "folder": "Matlab论文插图绘制模板第28期-柱状图误差棒",
+  "scripts": [
+    {
+      "name": "BarError.m",
+      "path": "/l1502-matlab/028/BarError.m",
+      "role": "plot",
+      "lines": 92,
+      "bytes": 2863,
+      "sha256": "ccd260d6735259d795780c2dc23d150a2f3a48d6154e0327b5b25debe7e99c9d",
+      "dataFiles": [],
+      "externalFunctions": []
+    }
+  ]
+}

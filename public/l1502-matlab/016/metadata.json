@@ -1,0 +1,20 @@
+{
+  "issue": 16,
+  "folder": "Matlab论文插图绘制模板第16期-特征渲染的散点图",
+  "scripts": [
+    {
+      "name": "ScatterFeature.m",
+      "path": "/l1502-matlab/016/ScatterFeature.m",
+      "role": "plot",
+      "lines": 55,
+      "bytes": 1224,
+      "sha256": "cb0c28ed1318831bb07304ac76aaaf4d55f6bf868a5030ca608dd54879950b82",
+      "dataFiles": [
+        "Vaihingen_Strip_05_part.txt"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

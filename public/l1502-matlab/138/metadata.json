@@ -1,0 +1,18 @@
+{
+  "issue": 138,
+  "folder": "Matlab论文插图绘制模板第138期-极坐标直方图",
+  "scripts": [
+    {
+      "name": "PolarhistogramChart.m",
+      "path": "/l1502-matlab/138/PolarhistogramChart.m",
+      "role": "plot",
+      "lines": 53,
+      "bytes": 1608,
+      "sha256": "baab2e2502fb0c7a1df78df25abaa404253f6bd7773db17d0b3205b5316f8d64",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

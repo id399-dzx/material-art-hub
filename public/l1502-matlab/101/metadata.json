@@ -1,0 +1,20 @@
+{
+  "issue": 101,
+  "folder": "Matlab论文插图绘制模板第101期-人口金字塔图",
+  "scripts": [
+    {
+      "name": "PPbarplot.m",
+      "path": "/l1502-matlab/101/PPbarplot.m",
+      "role": "plot",
+      "lines": 87,
+      "bytes": 2731,
+      "sha256": "828905df06a2f8a210d9cf350fc6a2f971926ebc93819c3832f8579f54983f00",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

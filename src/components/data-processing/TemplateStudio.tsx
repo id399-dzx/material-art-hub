@@ -414,8 +414,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         <section id="paper-figures" className="template-studio drawing-library" hidden={!active} aria-labelledby="template-studio-title">
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
-                <div><h2 id="template-studio-title"><Layers3 size={19} /> 图式库</h2></div>
-                <div className="template-intro-note"><span><Sparkles size={14} /> {templates.length} 个数据模板 · 完整预览</span></div>
+                <div><span className="template-eyebrow">SCIENTIFIC FIGURE LIBRARY</span><h2 id="template-studio-title">从一个好图式开始</h2><p>选择适合你的图例，替换数据，整理成可发表的科研图表。</p></div>
+                <div className="template-intro-note"><span><Layers3 size={17} /> {templates.length} 个图式</span><p><Sparkles size={12} /> 完整预览 · 即时编辑</p></div>
             </div>
             {isAdmin && <Link className="resource-button" href="/admin?section=templates">管理本板块</Link>}
             {catalogError && <p className="template-notice template-notice--error" role="alert">{catalogError}</p>}
@@ -424,7 +424,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...availableTypes] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
-            <div className="template-catalog-meta" role="status"><span>找到 <strong>{filtered.length}</strong> 个模板</span><span>选图式 → 替换数据 → 导出图表</span></div>
+            <div className="template-catalog-meta" role="status"><span>找到 <strong>{filtered.length}</strong> 个模板</span><span>点击卡片打开图例详情与编辑器</span></div>
             </div>
             {(category === "全部" ? DRAWING_TYPES : [category]).map(kind => {
                 const items = filtered.filter(item => item.category === kind);
@@ -432,8 +432,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
                     {kind === "电化学测试" ? <div className="electrochemical-column-heading"><span className="electrochemical-column-icon"><Zap size={22} /></span><div><span className="template-eyebrow">ELECTROCHEMISTRY / 专栏</span><h3>电化学测试图</h3><p>伏安 · 充放电 · 性能 · 阻抗谱，选择图式后替换实验数据。</p></div><span className="electrochemical-column-count">{items.length} 个模板</span></div> : category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
                     <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : item.l1502 ? " template-card-art--l1502" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{item.l1502 ? `第 ${item.l1502.issue} 期` : String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={760} height={500} alt={`${item.name}完整图表预览`} /></div>
-                        <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : item.l1502 ? " template-card-art--l1502" : ` template-card-art--${item.id}`}`}><div className="template-card-topline"><span className="template-card-number">{item.l1502 ? `第 ${item.l1502.issue} 期` : String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span></div><Image src={item.preview} width={760} height={500} sizes="(max-width: 620px) 90vw, (max-width: 850px) 45vw, 30vw" alt={`${item.name}完整图表预览`} /></div>
+                        <div className="template-card-body"><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.l1502 ? "含 MATLAB 源码" : item.category}</small><span>{(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={14} /> 查看与编辑</>}</span></div></div>
                     </button>)}</div>
                 </section>;
             })}

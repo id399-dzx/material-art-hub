@@ -1,0 +1,20 @@
+{
+  "issue": 106,
+  "folder": "Matlab论文插图绘制模板第106期-带误差棒的堆叠柱状图",
+  "scripts": [
+    {
+      "name": "StackedBarwithErrorbar.m",
+      "path": "/l1502-matlab/106/StackedBarwithErrorbar.m",
+      "role": "plot",
+      "lines": 80,
+      "bytes": 2408,
+      "sha256": "e25a317babdb598cec9adff4f81e565a70a51192b9b84c792e477abc9c5002c3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

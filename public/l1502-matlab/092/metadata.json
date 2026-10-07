@@ -1,0 +1,20 @@
+{
+  "issue": 92,
+  "folder": "Matlab论文插图绘制模板第92期-折线图升级",
+  "scripts": [
+    {
+      "name": "LinePlot.m",
+      "path": "/l1502-matlab/092/LinePlot.m",
+      "role": "plot",
+      "lines": 65,
+      "bytes": 2179,
+      "sha256": "f2b64d922bef6bd494730d6f7d906a55f6af5e2e0fa0a13512528695847a5ea6",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

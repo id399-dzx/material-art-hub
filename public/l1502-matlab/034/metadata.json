@@ -1,0 +1,18 @@
+{
+  "issue": 34,
+  "folder": "Matlab论文插图绘制模板第34期-箱线图",
+  "scripts": [
+    {
+      "name": "BoxPlot.m",
+      "path": "/l1502-matlab/034/BoxPlot.m",
+      "role": "plot",
+      "lines": 52,
+      "bytes": 1603,
+      "sha256": "72de918b54317c8f0fe46fd00ef630aa025647925dec642fe8c17583ce95d8a3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

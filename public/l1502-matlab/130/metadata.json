@@ -1,0 +1,18 @@
+{
+  "issue": 130,
+  "folder": "Matlab论文插图绘制模板第130期-函数曲面图",
+  "scripts": [
+    {
+      "name": "FSurfacePlot.m",
+      "path": "/l1502-matlab/130/FSurfacePlot.m",
+      "role": "plot",
+      "lines": 53,
+      "bytes": 1629,
+      "sha256": "fc0cf45c825f1ebaa27a8c60aa80305a6b1cc9c5a752216c62ff65c3ef4825fe",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 29,
+  "folder": "Matlab论文插图绘制模板第29期-进阶折线图",
+  "scripts": [
+    {
+      "name": "LinePlus.m",
+      "path": "/l1502-matlab/029/LinePlus.m",
+      "role": "plot",
+      "lines": 87,
+      "bytes": 2938,
+      "sha256": "41fada32f8523d8835129c8d6596efee0fbc3897ffa5277c0a438e47c821d6ab",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

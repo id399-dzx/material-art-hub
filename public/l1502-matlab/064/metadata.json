@@ -1,0 +1,20 @@
+{
+  "issue": 64,
+  "folder": "Matlab论文插图绘制模板第64期-渐变水平三维柱状图",
+  "scripts": [
+    {
+      "name": "bar3DHInter.m",
+      "path": "/l1502-matlab/064/bar3DHInter.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 2220,
+      "sha256": "9a7942ccac222b5c79715a69a999c46a0bc498243bed1225841c9701d3d112c3",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

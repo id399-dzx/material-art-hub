@@ -1,0 +1,20 @@
+{
+  "issue": 116,
+  "folder": "Matlab论文插图绘制模板第116期-带时间刻度的图",
+  "scripts": [
+    {
+      "name": "LinewithDataTick.m",
+      "path": "/l1502-matlab/116/LinewithDataTick.m",
+      "role": "plot",
+      "lines": 68,
+      "bytes": 2170,
+      "sha256": "e98a398430d5d4bf611a7b62073e756a45f5f024aca17fefb5754e5eb5761ea9",
+      "dataFiles": [
+        "RideSummary.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

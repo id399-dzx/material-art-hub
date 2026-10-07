@@ -1,0 +1,18 @@
+{
+  "issue": 36,
+  "folder": "Matlab论文插图绘制模板第36期-横向单组柱状图",
+  "scripts": [
+    {
+      "name": "BarHPlot.m",
+      "path": "/l1502-matlab/036/BarHPlot.m",
+      "role": "plot",
+      "lines": 64,
+      "bytes": 2131,
+      "sha256": "a2e1f71637e175b1b2b5d75a15580635583e5cd90d738d3d8ca419ffa66331a7",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

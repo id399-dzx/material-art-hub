@@ -1,0 +1,20 @@
+{
+  "issue": 59,
+  "folder": "Matlab论文插图绘制模板第59期-光影伪彩图",
+  "scripts": [
+    {
+      "name": "PcolorShadingChart.m",
+      "path": "/l1502-matlab/059/PcolorShadingChart.m",
+      "role": "plot",
+      "lines": 74,
+      "bytes": 2149,
+      "sha256": "3809b3c3a3003e21709ceb43ba85d4f0caa126e0d2c5066597980505063fccc6",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

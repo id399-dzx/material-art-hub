@@ -1,0 +1,20 @@
+{
+  "issue": 107,
+  "folder": "Matlab论文插图绘制模板第107期-标签散点图",
+  "scripts": [
+    {
+      "name": "ScatterwithLabel.m",
+      "path": "/l1502-matlab/107/ScatterwithLabel.m",
+      "role": "plot",
+      "lines": 75,
+      "bytes": 2320,
+      "sha256": "932b4357bef4254fd77e92351a9acebbc574447da2c3234d40d6a682b5dcdc27",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

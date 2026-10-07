@@ -1,0 +1,20 @@
+{
+  "issue": 139,
+  "folder": "Matlab论文插图绘制模板第139期-罗盘图",
+  "scripts": [
+    {
+      "name": "CompassPlot.m",
+      "path": "/l1502-matlab/139/CompassPlot.m",
+      "role": "plot",
+      "lines": 45,
+      "bytes": 977,
+      "sha256": "bd0c85fa47ee6154515712dba35b7d61bfdc44277b0d47874b1ff8269768a127",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

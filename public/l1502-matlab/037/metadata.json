@@ -1,0 +1,20 @@
+{
+  "issue": 37,
+  "folder": "Matlab论文插图绘制模板第37期-三维折线图",
+  "scripts": [
+    {
+      "name": "Line3.m",
+      "path": "/l1502-matlab/037/Line3.m",
+      "role": "plot",
+      "lines": 63,
+      "bytes": 1714,
+      "sha256": "ae3a8789f5e270cd86e27fca69e41629714d0bf125963c1ac91b1bf6aa046e4b",
+      "dataFiles": [
+        "spectraData.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

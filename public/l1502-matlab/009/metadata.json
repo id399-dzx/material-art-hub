@@ -1,0 +1,18 @@
+{
+  "issue": 9,
+  "folder": "Matlab论文插图绘制模板第9期-横向堆叠图",
+  "scripts": [
+    {
+      "name": "stackh.m",
+      "path": "/l1502-matlab/009/stackh.m",
+      "role": "plot",
+      "lines": 82,
+      "bytes": 2601,
+      "sha256": "1a14306d67ff9ab03380a3c92c247169295163bf9b0e45d4e1b2d07b275ca880",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

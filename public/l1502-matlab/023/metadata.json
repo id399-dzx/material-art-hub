@@ -1,0 +1,18 @@
+{
+  "issue": 23,
+  "folder": "Matlab论文插图绘制模板第23期-热图灵活版",
+  "scripts": [
+    {
+      "name": "Heatmap2.m",
+      "path": "/l1502-matlab/023/Heatmap2.m",
+      "role": "plot",
+      "lines": 75,
+      "bytes": 2958,
+      "sha256": "0f27cb5c723b5f2007706b7037adf0a1e046400df1064dbc55400e78eb0caaf9",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

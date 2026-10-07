@@ -1,0 +1,20 @@
+{
+  "issue": 57,
+  "folder": "Matlab论文插图绘制模板第57期-光影曲面图",
+  "scripts": [
+    {
+      "name": "SurfaceLightPlot.m",
+      "path": "/l1502-matlab/057/SurfaceLightPlot.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1760,
+      "sha256": "eca01551d8ab6a7348af7fb851d2522f7f3432880cd5dee01fe02f60ab5d5b6b",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

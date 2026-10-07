@@ -1,0 +1,30 @@
+{
+  "issue": 87,
+  "folder": "Matlab论文插图绘制模板第87期-模值赋色的三维箭头图",
+  "scripts": [
+    {
+      "name": "Quiver3Plot.m",
+      "path": "/l1502-matlab/087/Quiver3Plot.m",
+      "role": "plot",
+      "lines": 65,
+      "bytes": 1864,
+      "sha256": "43ea6c53ac5dc0354037f6832fb81759a59e121aa38d58fed2a2064aa62ef6d3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    },
+    {
+      "name": "ColortheArrow.m",
+      "path": "/l1502-matlab/087/ColortheArrow.m",
+      "role": "helper",
+      "lines": 28,
+      "bytes": 1034,
+      "sha256": "6ae961f8a63f99c0c26418b698174ece554cc02fbdbccaed0e95e2dd236fc498",
+      "dataFiles": [],
+      "externalFunctions": []
+    }
+  ]
+}

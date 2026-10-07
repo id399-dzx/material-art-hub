@@ -1,0 +1,18 @@
+{
+  "issue": 69,
+  "folder": "Matlab论文插图绘制模板第69期-带误差棒的折线图",
+  "scripts": [
+    {
+      "name": "ErrorbarPlot.m",
+      "path": "/l1502-matlab/069/ErrorbarPlot.m",
+      "role": "plot",
+      "lines": 89,
+      "bytes": 2984,
+      "sha256": "5aa831d9092f97faf07e697484fb93416f920951b5ca2ecaff62c4b97fb5921e",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

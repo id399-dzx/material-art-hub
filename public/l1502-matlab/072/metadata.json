@@ -1,0 +1,18 @@
+{
+  "issue": 72,
+  "folder": "Matlab论文插图绘制模板第72期-金字塔图",
+  "scripts": [
+    {
+      "name": "BarPMDPlot.m",
+      "path": "/l1502-matlab/072/BarPMDPlot.m",
+      "role": "plot",
+      "lines": 69,
+      "bytes": 1767,
+      "sha256": "acb1ef755d12f4417f19dd3a302478b3dfb497ab20290824577513f3f378e2d1",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

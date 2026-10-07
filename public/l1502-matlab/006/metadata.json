@@ -1,0 +1,18 @@
+{
+  "issue": 6,
+  "folder": "Matlab论文插图绘制模板第6期-堆叠图",
+  "scripts": [
+    {
+      "name": "stack.m",
+      "path": "/l1502-matlab/006/stack.m",
+      "role": "plot",
+      "lines": 84,
+      "bytes": 2576,
+      "sha256": "5eb66e73e01380738e521a996dc82be34b6335db4acd18ebbb6eac24b810d022",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

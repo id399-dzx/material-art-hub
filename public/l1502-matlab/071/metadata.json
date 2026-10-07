@@ -1,0 +1,18 @@
+{
+  "issue": 71,
+  "folder": "Matlab论文插图绘制模板第71期-三维饼图",
+  "scripts": [
+    {
+      "name": "Pie3Plot.m",
+      "path": "/l1502-matlab/071/Pie3Plot.m",
+      "role": "plot",
+      "lines": 50,
+      "bytes": 1239,
+      "sha256": "c707a187df9e09b4a685575ccbdd1f061e8d0582c29f6cf0563c672042ade491",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

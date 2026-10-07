@@ -1,0 +1,18 @@
+{
+  "issue": 15,
+  "folder": "Matlab论文插图绘制模板第15期-散点图",
+  "scripts": [
+    {
+      "name": "spoint.m",
+      "path": "/l1502-matlab/015/spoint.m",
+      "role": "plot",
+      "lines": 52,
+      "bytes": 1657,
+      "sha256": "c94edf7dea41eaf256dee4f1d84d50a7ff1e283913349a4587bbe3ef5fde6766",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

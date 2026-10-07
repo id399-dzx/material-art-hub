@@ -1,0 +1,18 @@
+{
+  "issue": 5,
+  "folder": "Matlab论文插图绘制模板第5期-双轴柱线图",
+  "scripts": [
+    {
+      "name": "Bar_Line.m",
+      "path": "/l1502-matlab/005/Bar_Line.m",
+      "role": "plot",
+      "lines": 81,
+      "bytes": 2431,
+      "sha256": "bd5be1dbef7d268d897a3f87f8b854fd9a35df6a67b0489b66ef883cf24d681b",
+      "dataFiles": [
+        "1.txt"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 108,
+  "folder": "Matlab论文插图绘制模板第108期-特征渲染的标签散点图",
+  "scripts": [
+    {
+      "name": "FeatureLabelScatter.m",
+      "path": "/l1502-matlab/108/FeatureLabelScatter.m",
+      "role": "plot",
+      "lines": 81,
+      "bytes": 2447,
+      "sha256": "4bc237f6898c0b9be311cfc54dd4988c80aa8fd4998bd5b74478bee10dfc95a1",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

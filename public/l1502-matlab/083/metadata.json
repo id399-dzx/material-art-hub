@@ -1,0 +1,20 @@
+{
+  "issue": 83,
+  "folder": "Matlab论文插图绘制模板第83期-三维箭头图",
+  "scripts": [
+    {
+      "name": "Quiver3Plot.m",
+      "path": "/l1502-matlab/083/Quiver3Plot.m",
+      "role": "plot",
+      "lines": 63,
+      "bytes": 1764,
+      "sha256": "df90e66dc9b827e75ebfa8161dce75119ac7cd7d0a50075a189853b4ceae5f4d",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

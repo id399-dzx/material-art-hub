@@ -1,0 +1,20 @@
+{
+  "issue": 30,
+  "folder": "Matlab论文插图绘制模板第30期-面积填充图",
+  "scripts": [
+    {
+      "name": "Area.m",
+      "path": "/l1502-matlab/030/Area.m",
+      "role": "plot",
+      "lines": 69,
+      "bytes": 2055,
+      "sha256": "818593861a19ad5ccd887e63eb233fe882a4bb221254958401e36005cec97b92",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 95,
+  "folder": "Matlab论文插图绘制模板第95期-双向柱状图",
+  "scripts": [
+    {
+      "name": "BidirectionalBarPlot.m",
+      "path": "/l1502-matlab/095/BidirectionalBarPlot.m",
+      "role": "plot",
+      "lines": 82,
+      "bytes": 2519,
+      "sha256": "523ab3994bbd0a7c4d39dac7797622f172c512503a4f2a3f6bcaeb3869e39559",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

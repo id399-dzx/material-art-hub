@@ -1,0 +1,18 @@
+{
+  "issue": 121,
+  "folder": "Matlab论文插图绘制模板第121期-图中图",
+  "scripts": [
+    {
+      "name": "Plot_in_Plot.m",
+      "path": "/l1502-matlab/121/Plot_in_Plot.m",
+      "role": "plot",
+      "lines": 127,
+      "bytes": 4729,
+      "sha256": "c5c4b8d6c14edf91f1475ea43ef4d7dff9fbdc3e97d41df5f05e653f7190c29e",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

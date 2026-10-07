@@ -1,0 +1,20 @@
+{
+  "issue": 99,
+  "folder": "Matlab论文插图绘制模板第99期-正负柱状图",
+  "scripts": [
+    {
+      "name": "bar_single.m",
+      "path": "/l1502-matlab/099/bar_single.m",
+      "role": "plot",
+      "lines": 90,
+      "bytes": 2606,
+      "sha256": "0c172b3fb9fcc46b4fa3b8f524948b471fcd73d83ad48247ba4e3c0e759d2892",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

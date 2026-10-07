@@ -1,0 +1,20 @@
+{
+  "issue": 56,
+  "folder": "Matlab论文插图绘制模板第56期-曲面图",
+  "scripts": [
+    {
+      "name": "SurfacePlot.m",
+      "path": "/l1502-matlab/056/SurfacePlot.m",
+      "role": "plot",
+      "lines": 57,
+      "bytes": 1645,
+      "sha256": "6cd44577283a26807ce77561ba88a271da1618eef0f3e3b0a3463d9f8b124f81",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

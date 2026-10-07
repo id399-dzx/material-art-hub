@@ -1,0 +1,18 @@
+{
+  "issue": 53,
+  "folder": "Matlab论文插图绘制模板第53期-网格曲面图",
+  "scripts": [
+    {
+      "name": "MeshPlot.m",
+      "path": "/l1502-matlab/053/MeshPlot.m",
+      "role": "plot",
+      "lines": 57,
+      "bytes": 1779,
+      "sha256": "2a74d5f5822519dcc67b110e71e3aeef483ed7a60750fa6eae9e70397687e2b2",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

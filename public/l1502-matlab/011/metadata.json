@@ -1,0 +1,18 @@
+{
+  "issue": 11,
+  "folder": "Matlab论文插图绘制模板第11期-单组柱状图",
+  "scripts": [
+    {
+      "name": "bar_single.m",
+      "path": "/l1502-matlab/011/bar_single.m",
+      "role": "plot",
+      "lines": 69,
+      "bytes": 2196,
+      "sha256": "4cb823baee7e9f18a09053ff1c06e45c2f52ae5ebede8cffad928c02c8e4684d",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

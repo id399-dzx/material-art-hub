@@ -1,0 +1,20 @@
+{
+  "issue": 112,
+  "folder": "Matlab论文插图绘制模板第112期-带阴影标记的图",
+  "scripts": [
+    {
+      "name": "LinewithBlockLabel.m",
+      "path": "/l1502-matlab/112/LinewithBlockLabel.m",
+      "role": "plot",
+      "lines": 94,
+      "bytes": 2813,
+      "sha256": "324402e9b1a9dc1f2471208aee707a35c8859a495df444b0a73136ed37a543df",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 104,
+  "folder": "Matlab论文插图绘制模板第104期-带缺口的分组箱线图",
+  "scripts": [
+    {
+      "name": "BoxwithNotch.m",
+      "path": "/l1502-matlab/104/BoxwithNotch.m",
+      "role": "plot",
+      "lines": 77,
+      "bytes": 2596,
+      "sha256": "c57aa8e6369895ea2ddf072f4cb0bd27418b660be706c7a922d86649255101b4",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

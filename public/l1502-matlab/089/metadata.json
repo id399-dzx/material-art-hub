@@ -1,0 +1,20 @@
+{
+  "issue": 89,
+  "folder": "Matlab论文插图绘制模板第89期-有向图",
+  "scripts": [
+    {
+      "name": "GraphPlot.m",
+      "path": "/l1502-matlab/089/GraphPlot.m",
+      "role": "plot",
+      "lines": 51,
+      "bytes": 1027,
+      "sha256": "fecb00c061539bd0ca6d632090cb9744ada8d993bc3111f473b69e0d38cae403",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

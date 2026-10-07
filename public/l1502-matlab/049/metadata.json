@@ -1,0 +1,30 @@
+{
+  "issue": 49,
+  "folder": "Matlab论文插图绘制模板第49期-散点矩阵图",
+  "scripts": [
+    {
+      "name": "PlotMatrixChart1.m",
+      "path": "/l1502-matlab/049/PlotMatrixChart1.m",
+      "role": "plot",
+      "lines": 52,
+      "bytes": 1329,
+      "sha256": "38da4a80c91b83dd3e2d60e76a01486473b4e16bfae6eef7592a55311d1f5f48",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    },
+    {
+      "name": "PlotMatrixChart2.m",
+      "path": "/l1502-matlab/049/PlotMatrixChart2.m",
+      "role": "plot",
+      "lines": 60,
+      "bytes": 1529,
+      "sha256": "2583ba668e251514c744667c9d4c9321f5034ba00091e3f8afc0459fceb93c73",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

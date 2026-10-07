@@ -1,0 +1,30 @@
+{
+  "issue": 85,
+  "folder": "Matlab论文插图绘制模板第85期-模值赋色的箭头图",
+  "scripts": [
+    {
+      "name": "QuiverwithColormapPlot.m",
+      "path": "/l1502-matlab/085/QuiverwithColormapPlot.m",
+      "role": "plot",
+      "lines": 64,
+      "bytes": 1889,
+      "sha256": "2a805678fe2a03bd85d2e2f4e2d5923f7f74d1bb4ab1a8ce3e711c2e60ab3a23",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    },
+    {
+      "name": "ColortheArrow.m",
+      "path": "/l1502-matlab/085/ColortheArrow.m",
+      "role": "helper",
+      "lines": 28,
+      "bytes": 1034,
+      "sha256": "6ae961f8a63f99c0c26418b698174ece554cc02fbdbccaed0e95e2dd236fc498",
+      "dataFiles": [],
+      "externalFunctions": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "issue": 135,
+  "folder": "Matlab论文插图绘制模板第135期-隐函数曲面图",
+  "scripts": [
+    {
+      "name": "FImplicit3Plot.m",
+      "path": "/l1502-matlab/135/FImplicit3Plot.m",
+      "role": "plot",
+      "lines": 53,
+      "bytes": 1652,
+      "sha256": "f208921068423bff3f0bc0960feddb5853dc6a0b4ee882de3acf6bae81da022e",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

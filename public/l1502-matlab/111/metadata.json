@@ -1,0 +1,20 @@
+{
+  "issue": 111,
+  "folder": "Matlab论文插图绘制模板第111期-带线标记的图",
+  "scripts": [
+    {
+      "name": "LinewithLineLabel.m",
+      "path": "/l1502-matlab/111/LinewithLineLabel.m",
+      "role": "plot",
+      "lines": 96,
+      "bytes": 2822,
+      "sha256": "12605e44f91f292dd2d4d12413e269f6f30f30b5cdb3271233d774945cd59d51",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

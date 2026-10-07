@@ -1,0 +1,20 @@
+{
+  "issue": 47,
+  "folder": "Matlab论文插图绘制模板第47期-词云图",
+  "scripts": [
+    {
+      "name": "WordCloud.m",
+      "path": "/l1502-matlab/047/WordCloud.m",
+      "role": "plot",
+      "lines": 35,
+      "bytes": 750,
+      "sha256": "69bad3adef16a27f0fd17563afa50f81a04259c9e85ed3618075e9d08a7ec358",
+      "dataFiles": [
+        "sonnetsTable.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

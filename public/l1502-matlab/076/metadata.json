@@ -1,0 +1,34 @@
+{
+  "issue": 76,
+  "folder": "Matlab论文插图绘制模板第76期-半对数刻度折线图",
+  "scripts": [
+    {
+      "name": "SemilogxPlot.m",
+      "path": "/l1502-matlab/076/SemilogxPlot.m",
+      "role": "plot",
+      "lines": 71,
+      "bytes": 2187,
+      "sha256": "1b65aba8f636d1f1e3ddb0654a0ab4cc45b6df93e312f4e5c51b5e91468a0d83",
+      "dataFiles": [
+        "responseData.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    },
+    {
+      "name": "SemilogyPlot.m",
+      "path": "/l1502-matlab/076/SemilogyPlot.m",
+      "role": "plot",
+      "lines": 70,
+      "bytes": 2088,
+      "sha256": "996c6aa794140a37e92a16f37d8a2eb686875edbf7035eef35451da1c0bd62d5",
+      "dataFiles": [
+        "responseData.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

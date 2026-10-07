@@ -1,0 +1,18 @@
+{
+  "issue": 38,
+  "folder": "Matlab论文插图绘制模板第38期-饼图",
+  "scripts": [
+    {
+      "name": "PiePlot.m",
+      "path": "/l1502-matlab/038/PiePlot.m",
+      "role": "plot",
+      "lines": 38,
+      "bytes": 875,
+      "sha256": "2bcbcd32854148923c2c3d671d9d4c6d54e0760633bc9a1610aa156af19ff6bc",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

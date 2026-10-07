@@ -1,0 +1,20 @@
+{
+  "issue": 50,
+  "folder": "Matlab论文插图绘制模板第50期-分簇散点图",
+  "scripts": [
+    {
+      "name": "SwarmPlot.m",
+      "path": "/l1502-matlab/050/SwarmPlot.m",
+      "role": "plot",
+      "lines": 76,
+      "bytes": 2326,
+      "sha256": "5fa4a2ecfd9f4b9da041821e2185d4f744bd16beea2c20c6661da7a1fbecca59",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

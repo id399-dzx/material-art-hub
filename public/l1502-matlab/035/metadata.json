@@ -1,0 +1,18 @@
+{
+  "issue": 35,
+  "folder": "Matlab论文插图绘制模板第35期-填充箱线图",
+  "scripts": [
+    {
+      "name": "BoxFill.m",
+      "path": "/l1502-matlab/035/BoxFill.m",
+      "role": "plot",
+      "lines": 66,
+      "bytes": 2002,
+      "sha256": "e965f70ea4dcf52a6d10695e10c0d77762dac06166749a0fd21b9349ab9b1788",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

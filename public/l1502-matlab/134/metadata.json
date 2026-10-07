@@ -1,0 +1,18 @@
+{
+  "issue": 134,
+  "folder": "Matlab论文插图绘制模板第134期-隐函数折线图",
+  "scripts": [
+    {
+      "name": "FImplicitPlot.m",
+      "path": "/l1502-matlab/134/FImplicitPlot.m",
+      "role": "plot",
+      "lines": 63,
+      "bytes": 1941,
+      "sha256": "8aea081245d5782115e5bed3d4a1ab9e8640eae38a3ed5737d2121f2f1996ddc",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

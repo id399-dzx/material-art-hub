@@ -1,0 +1,20 @@
+{
+  "issue": 119,
+  "folder": "Matlab论文插图绘制模板第119期-分组气泡图",
+  "scripts": [
+    {
+      "name": "BubbleGrouped.m",
+      "path": "/l1502-matlab/119/BubbleGrouped.m",
+      "role": "plot",
+      "lines": 92,
+      "bytes": 2588,
+      "sha256": "15cc89d43e12ab0f5ae7401e331647fbe7abc9318dfb67ac51e91fc101b5fc94",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

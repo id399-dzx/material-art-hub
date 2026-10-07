@@ -1,0 +1,20 @@
+{
+  "issue": 105,
+  "folder": "Matlab论文插图绘制模板第105期-带缺口的分组填充箱线图",
+  "scripts": [
+    {
+      "name": "FillesBoxwithNotch.m",
+      "path": "/l1502-matlab/105/FillesBoxwithNotch.m",
+      "role": "plot",
+      "lines": 86,
+      "bytes": 3047,
+      "sha256": "0d5be5240aa560266c18e7a76a8c313c1e348aaa5a003d5f421d8b1fb4ba7bf1",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

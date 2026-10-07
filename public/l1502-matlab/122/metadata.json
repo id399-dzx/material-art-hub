@@ -1,0 +1,18 @@
+{
+  "issue": 122,
+  "folder": "Matlab论文插图绘制模板第122期-函数折线图",
+  "scripts": [
+    {
+      "name": "FplotPlot.m",
+      "path": "/l1502-matlab/122/FplotPlot.m",
+      "role": "plot",
+      "lines": 78,
+      "bytes": 2681,
+      "sha256": "b7f68c1ad4abe7d8007926c3ebb4b768a9d69cd4dfaa86c03ea1a0c53ee353e9",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

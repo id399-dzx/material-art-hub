@@ -1,0 +1,16 @@
+{
+  "issue": 27,
+  "folder": "Matlab论文插图绘制模板第27期-三维针状图",
+  "scripts": [
+    {
+      "name": "Stem3D.m",
+      "path": "/l1502-matlab/027/Stem3D.m",
+      "role": "plot",
+      "lines": 67,
+      "bytes": 2040,
+      "sha256": "4dc0fd5f5ec513cefac1bef388f6e5e4ac7bf0c6aebcee8d2b1433a81e3a97cd",
+      "dataFiles": [],
+      "externalFunctions": []
+    }
+  ]
+}

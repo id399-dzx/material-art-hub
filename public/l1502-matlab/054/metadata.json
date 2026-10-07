@@ -1,0 +1,18 @@
+{
+  "issue": 54,
+  "folder": "Matlab论文插图绘制模板第54期-带帷幕的网格曲面图",
+  "scripts": [
+    {
+      "name": "MeshzPlot.m",
+      "path": "/l1502-matlab/054/MeshzPlot.m",
+      "role": "plot",
+      "lines": 55,
+      "bytes": 1828,
+      "sha256": "b56a116b0aba034c609c4963597006d646b216e07ed8822ef3e47dc8c31b630a",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

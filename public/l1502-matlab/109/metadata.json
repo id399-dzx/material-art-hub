@@ -1,0 +1,20 @@
+{
+  "issue": 109,
+  "folder": "Matlab论文插图绘制模板第109期-特征渲染的标签气泡散点图",
+  "scripts": [
+    {
+      "name": "FeatureLabelBubbleScatter.m",
+      "path": "/l1502-matlab/109/FeatureLabelBubbleScatter.m",
+      "role": "plot",
+      "lines": 93,
+      "bytes": 2845,
+      "sha256": "2fe70dce615c15b5e119ed04382137296f984e948a742929a55e72b4b3c36c2c",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

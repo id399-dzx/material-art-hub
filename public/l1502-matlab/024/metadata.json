@@ -1,0 +1,18 @@
+{
+  "issue": 24,
+  "folder": "Matlab论文插图绘制模板第24期-多组堆叠图",
+  "scripts": [
+    {
+      "name": "MultiStack.m",
+      "path": "/l1502-matlab/024/MultiStack.m",
+      "role": "plot",
+      "lines": 89,
+      "bytes": 2634,
+      "sha256": "92ca180ca77ba4b67c8f8876ab294359db3c224920efd814da7191d160f00b41",
+      "dataFiles": [],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

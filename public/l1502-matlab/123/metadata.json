@@ -1,0 +1,20 @@
+{
+  "issue": 123,
+  "folder": "Matlab论文插图绘制模板第123期-水平正负柱状图",
+  "scripts": [
+    {
+      "name": "barh_pn.m",
+      "path": "/l1502-matlab/123/barh_pn.m",
+      "role": "plot",
+      "lines": 90,
+      "bytes": 2621,
+      "sha256": "f9c133aaff2b3637b2d154d7677111a03d02628000b8e66bcca327128e270f8c",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

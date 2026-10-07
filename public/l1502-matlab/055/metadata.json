@@ -1,0 +1,18 @@
+{
+  "issue": 55,
+  "folder": "Matlab论文插图绘制模板第55期-带等高线的网格曲面图",
+  "scripts": [
+    {
+      "name": "MeshcPlot.m",
+      "path": "/l1502-matlab/055/MeshcPlot.m",
+      "role": "plot",
+      "lines": 71,
+      "bytes": 2042,
+      "sha256": "53db78cc9ca3f54a594abba622d56431eab2efb8f42f9c679c0cceb17e15d90f",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

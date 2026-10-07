@@ -1,0 +1,20 @@
+{
+  "issue": 86,
+  "folder": "Matlab论文插图绘制模板第86期-带置信区间的折线图",
+  "scripts": [
+    {
+      "name": "LineChartwithConfidenceInterval.m",
+      "path": "/l1502-matlab/086/LineChartwithConfidenceInterval.m",
+      "role": "plot",
+      "lines": 101,
+      "bytes": 3271,
+      "sha256": "01887dc59bce91b70c8f9604991bb3e002f8e9ea96039a0618c15380faeff8f3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

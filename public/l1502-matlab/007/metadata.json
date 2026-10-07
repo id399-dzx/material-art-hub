@@ -1,0 +1,21 @@
+{
+  "issue": 7,
+  "folder": "Matlab论文插图绘制模板第7期-面积图",
+  "scripts": [
+    {
+      "name": "main.m",
+      "path": "/l1502-matlab/007/main.m",
+      "role": "plot",
+      "lines": 60,
+      "bytes": 1724,
+      "sha256": "b4935c922080b96d94b5fbdbaa180f896028fc20a20c34dcbefc44416b92f6c0",
+      "dataFiles": [
+        "datax.mat",
+        "datay.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

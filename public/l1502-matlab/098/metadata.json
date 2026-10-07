@@ -1,0 +1,20 @@
+{
+  "issue": 98,
+  "folder": "Matlab论文插图绘制模板第98期-大小不同多子图",
+  "scripts": [
+    {
+      "name": "SubPlotChart2.m",
+      "path": "/l1502-matlab/098/SubPlotChart2.m",
+      "role": "plot",
+      "lines": 169,
+      "bytes": 6037,
+      "sha256": "1f984f300a6544e13b682887e54e49ddf06440c8bff51b5b2ec3bc2f4e06bdc3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

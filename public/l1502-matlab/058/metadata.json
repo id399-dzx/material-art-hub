@@ -1,0 +1,20 @@
+{
+  "issue": 58,
+  "folder": "Matlab论文插图绘制模板第58期-伪彩图",
+  "scripts": [
+    {
+      "name": "PcolorChart.m",
+      "path": "/l1502-matlab/058/PcolorChart.m",
+      "role": "plot",
+      "lines": 73,
+      "bytes": 2069,
+      "sha256": "56c9e5a6f382ec0c97a3513dd7a2c45da1cab189df2415b599763ca57b33426f",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

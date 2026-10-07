@@ -1,0 +1,20 @@
+{
+  "issue": 14,
+  "folder": "Matlab论文插图绘制模板第14期-三维柱状图渐变",
+  "scripts": [
+    {
+      "name": "bar3_interp.m",
+      "path": "/l1502-matlab/014/bar3_interp.m",
+      "role": "plot",
+      "lines": 53,
+      "bytes": 1801,
+      "sha256": "4dead9445e896ec27ae7a3026fd4497f9832c3c37e24df2c7c644f2d061bafaa",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

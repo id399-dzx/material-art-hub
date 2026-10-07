@@ -1,0 +1,20 @@
+{
+  "issue": 73,
+  "folder": "Matlab论文插图绘制模板第73期-带等高线的光影曲面图",
+  "scripts": [
+    {
+      "name": "SurfaceCLightPlot.m",
+      "path": "/l1502-matlab/073/SurfaceCLightPlot.m",
+      "role": "plot",
+      "lines": 67,
+      "bytes": 1952,
+      "sha256": "ea1ba5e1a4e0997ee984c24c100ec388fddafbea2268a67eb5b1c477a2739482",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

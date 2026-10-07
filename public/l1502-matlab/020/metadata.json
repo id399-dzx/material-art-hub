@@ -1,0 +1,19 @@
+{
+  "issue": 20,
+  "folder": "Matlab论文插图绘制模板第20期-三维散点图",
+  "scripts": [
+    {
+      "name": "BScatter3.m",
+      "path": "/l1502-matlab/020/BScatter3.m",
+      "role": "plot",
+      "lines": 49,
+      "bytes": 1360,
+      "sha256": "060f76f4169234e53c7032e0f59d718841064355c4afd4777428c977827132e1",
+      "dataFiles": [
+        "LionScan1.xyz",
+        "LionScan2.xyz"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

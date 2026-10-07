@@ -1,0 +1,18 @@
+{
+  "issue": 113,
+  "folder": "Matlab论文插图绘制模板第113期-带箭头标记的图",
+  "scripts": [
+    {
+      "name": "ChartwithArrowLabel.m",
+      "path": "/l1502-matlab/113/ChartwithArrowLabel.m",
+      "role": "plot",
+      "lines": 88,
+      "bytes": 2827,
+      "sha256": "b8ee5306cb9ee087a487d1562d458c90d5b94c5bc276d451426c20f292c9d403",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

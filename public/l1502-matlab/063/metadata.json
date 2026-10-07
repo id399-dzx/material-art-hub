@@ -1,0 +1,20 @@
+{
+  "issue": 63,
+  "folder": "Matlab论文插图绘制模板第63期-高度赋色的水平三维柱状图",
+  "scripts": [
+    {
+      "name": "bar3HV.m",
+      "path": "/l1502-matlab/063/bar3HV.m",
+      "role": "plot",
+      "lines": 65,
+      "bytes": 2318,
+      "sha256": "fdffe2ee8f498bcf91b04a7baa86d097bfebd4525b0ec66ae4f6d0aceeec64cf",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

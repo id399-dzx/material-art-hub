@@ -1,0 +1,18 @@
+{
+  "issue": 43,
+  "folder": "Matlab论文插图绘制模板第43期-直方图",
+  "scripts": [
+    {
+      "name": "HistPlot.m",
+      "path": "/l1502-matlab/043/HistPlot.m",
+      "role": "plot",
+      "lines": 67,
+      "bytes": 2091,
+      "sha256": "b5e135d81f3308ed2beabb6ad9f348733f2728711ffe282e27682c4629aa8ad8",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

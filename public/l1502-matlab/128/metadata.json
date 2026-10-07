@@ -1,0 +1,18 @@
+{
+  "issue": 128,
+  "folder": "Matlab论文插图绘制模板第128期-函数三维折线图",
+  "scripts": [
+    {
+      "name": "FPlot3Plot.m",
+      "path": "/l1502-matlab/128/FPlot3Plot.m",
+      "role": "plot",
+      "lines": 67,
+      "bytes": 2091,
+      "sha256": "9572684960a3f876213be6db90b19ab87b0e74a8579b9990a123b72a1465a344",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "issue": 68,
+  "folder": "Matlab论文插图绘制模板第68期-三角曲面图",
+  "scripts": [
+    {
+      "name": "TrisurfPlot.m",
+      "path": "/l1502-matlab/068/TrisurfPlot.m",
+      "role": "plot",
+      "lines": 61,
+      "bytes": 1779,
+      "sha256": "9fc1d8549a17864cd979edfa58ae3914adef342e22621fa6da9ed58855f181b3",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

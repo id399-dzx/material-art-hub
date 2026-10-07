@@ -1,0 +1,18 @@
+{
+  "issue": 10,
+  "folder": "Matlab论文插图绘制模板第10期-叠加柱状图",
+  "scripts": [
+    {
+      "name": "bar_overlay.m",
+      "path": "/l1502-matlab/010/bar_overlay.m",
+      "role": "plot",
+      "lines": 74,
+      "bytes": 2500,
+      "sha256": "2fbecc9562e7f075a6b87c207d43dd44cac342846ad047e4a75039268ee67347",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": []
+    }
+  ]
+}

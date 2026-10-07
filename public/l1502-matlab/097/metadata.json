@@ -1,0 +1,20 @@
+{
+  "issue": 97,
+  "folder": "Matlab论文插图绘制模板第97期-多子图",
+  "scripts": [
+    {
+      "name": "SubplotChart.m",
+      "path": "/l1502-matlab/097/SubplotChart.m",
+      "role": "plot",
+      "lines": 141,
+      "bytes": 5102,
+      "sha256": "fe7c05f30eea64a9f7e9d022ddb49d8f752563372f3bd330ae4efacd14aa7e39",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

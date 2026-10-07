@@ -1,0 +1,20 @@
+{
+  "issue": 127,
+  "folder": "Matlab论文插图绘制模板第127期-进阶气泡热图",
+  "scripts": [
+    {
+      "name": "BubbleMatrixPlus.m",
+      "path": "/l1502-matlab/127/BubbleMatrixPlus.m",
+      "role": "plot",
+      "lines": 88,
+      "bytes": 2505,
+      "sha256": "67312aa1d5db02156cd6c559cbad46c2a1e1f72deb57577ccf7f26dd80648278",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

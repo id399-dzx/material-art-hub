@@ -1,0 +1,20 @@
+{
+  "issue": 13,
+  "folder": "Matlab论文插图绘制模板第13期-三维柱状图高度赋色",
+  "scripts": [
+    {
+      "name": "bar3DEC.m",
+      "path": "/l1502-matlab/013/bar3DEC.m",
+      "role": "plot",
+      "lines": 58,
+      "bytes": 1888,
+      "sha256": "3f928e8d409bde3898f177f19a8c4b8552de69de9401acd5492e3289faf83a33",
+      "dataFiles": [
+        "BostonTemp.mat"
+      ],
+      "externalFunctions": [
+        "addcolorplus"
+      ]
+    }
+  ]
+}

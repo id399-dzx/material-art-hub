@@ -1,0 +1,20 @@
+{
+  "issue": 118,
+  "folder": "Matlab论文插图绘制模板第118期-进阶气泡图",
+  "scripts": [
+    {
+      "name": "BubblePlus.m",
+      "path": "/l1502-matlab/118/BubblePlus.m",
+      "role": "plot",
+      "lines": 96,
+      "bytes": 2902,
+      "sha256": "172e464b27093f2a167de013659101d140bc659ae497d4fe2d6e9f60c6c25a8b",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

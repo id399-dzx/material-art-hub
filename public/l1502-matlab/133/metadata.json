@@ -1,0 +1,18 @@
+{
+  "issue": 133,
+  "folder": "Matlab论文插图绘制模板第133期-函数极坐标折线图",
+  "scripts": [
+    {
+      "name": "EzpolarPlot.m",
+      "path": "/l1502-matlab/133/EzpolarPlot.m",
+      "role": "plot",
+      "lines": 45,
+      "bytes": 1142,
+      "sha256": "e299cc9cb9a6177e057aa7236883249de8d77da8ced88286769dce77f3ffd852",
+      "dataFiles": [],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

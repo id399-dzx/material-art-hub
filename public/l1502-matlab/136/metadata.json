@@ -1,0 +1,20 @@
+{
+  "issue": 136,
+  "folder": "Matlab论文插图绘制模板第136期-极坐标气泡图",
+  "scripts": [
+    {
+      "name": "PolarBubblePlot.m",
+      "path": "/l1502-matlab/136/PolarBubblePlot.m",
+      "role": "plot",
+      "lines": 67,
+      "bytes": 2019,
+      "sha256": "1b9709e0c09d2052bd9bca4871ac6ce4f99340bb9598ac5deb711451d694d556",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

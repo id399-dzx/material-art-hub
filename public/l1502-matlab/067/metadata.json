@@ -1,0 +1,20 @@
+{
+  "issue": 67,
+  "folder": "Matlab论文插图绘制模板第67期-三角网格图",
+  "scripts": [
+    {
+      "name": "TrimeshPlot.m",
+      "path": "/l1502-matlab/067/TrimeshPlot.m",
+      "role": "plot",
+      "lines": 62,
+      "bytes": 1779,
+      "sha256": "2fd70494dd8b240e615ad0494f9304af2c164914aa3e64b90f860eb54954c769",
+      "dataFiles": [
+        "data.mat"
+      ],
+      "externalFunctions": [
+        "TheColor"
+      ]
+    }
+  ]
+}

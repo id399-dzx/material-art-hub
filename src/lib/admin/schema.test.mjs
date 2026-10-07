@@ -26,7 +26,7 @@ test('each catalog accepts editable presentation fields and preserves typed valu
 test('patches cannot change identity, chart engines, numerical examples, package objects, or internal state', () => {
     const forbidden = {
         skills: ['repo', 'owner', 'defaultBranch', 'isStarred'],
-        templates: ['id', 'chartId', 'demo', 'variant', 'paper', 'electrochemical', 'preview'],
+        templates: ['id', 'chartId', 'demo', 'variant', 'paper', 'electrochemical', 'l1502', 'preview'],
         journals: ['id'],
         assets: ['id', 'image_url', 'source_file_url', 'created_at'],
         plugins: ['id', 'packagePath', 'source_file_url', 'packageName', 'packageBytes', 'chunks', 'sha256', 'schema'],
@@ -36,6 +36,21 @@ test('patches cannot change identity, chart engines, numerical examples, package
             rejects(() => validateContentPatch(section, { [field]: 'tampered' }));
         }
         rejects(() => validateContentPatch(section, JSON.parse('{"__proto__":{"isAdmin":true}}')));
+    }
+});
+
+test('L1502 administrative edits accept display metadata and reject graph specifications', () => {
+    const knownL1502 = (section, id) => section === 'templates' && id === 'l1502-135';
+    const request = staticRequest({ itemId: 'l1502-135', patch: { name: '我的隐函数曲面', category: '三维图', guide: 'XYZ 网格与真实标量值' } });
+    assert.deepEqual(validateContentMutation(request, knownL1502).patch, request.patch);
+    for (const config of [
+        { l1502: { issue: 135, kind: 'implicit-surface', isoLevel: 99 } },
+        { l1502: { kind: 'line', folder: 'tampered' } },
+        { chartId: 'line' }, { demo: [['X', 'Y'], [0, 999]] },
+        { mapping: { x: 0, ys: [1] } }, { style: { colors: ['#000000'] } },
+    ]) rejects(() => validateContentMutation({ ...request, patch: config }, knownL1502));
+    for (const category of ['极坐标图', '等高线与场图', '文本图', '多图布局']) {
+        assert.deepEqual(validateContentPatch('templates', { category }), { category });
     }
 });
 

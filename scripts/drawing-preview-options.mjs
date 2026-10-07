@@ -4,12 +4,24 @@ import { createTemplateOption } from '../src/lib/data-processing/template-chart.
 import { suggestElectrochemicalMapping } from '../src/lib/data-processing/electrochemical-mapping.ts';
 import { prepareElectrochemicalData } from '../src/lib/data-processing/electrochemistry.ts';
 import { buildDrawingData, suggestDrawingMapping } from '../src/lib/data-processing/drawing-data.ts';
+import { buildL1502Data, suggestL1502Mapping } from '../src/lib/data-processing/l1502-data.ts';
+import { l1502DefaultLayout, l1502DefaultStyle } from '../src/lib/data-processing/l1502-spec.ts';
+import { createL1502Option } from '../src/lib/data-processing/l1502-render.ts';
 
 /** Mirror the editor's initial demo binding. Never extract pixels from a paper figure. */
 export function drawingPreviewOption(template) {
     if (!template.chartId) throw new Error(`${template.id}: no numerical chart engine`);
     const id = template.chartId;
     const table = parseTemplateTable(template.demo);
+    if (template.l1502) {
+        const { width, height, widthMm } = l1502DefaultLayout(template.l1502);
+        const mapping = suggestL1502Mapping(table, template.l1502);
+        const result = buildL1502Data(table, mapping, template.l1502);
+        if (!result.data) throw new Error(`${template.id}: ${result.error}`);
+        const style = { ...l1502DefaultStyle(`${template.name} · 示例数据`, width, height), xLabel: template.xLabel, yLabel: template.yLabel,
+            fontSize: 8 * 25.4 / 72 * width / widthMm, annotationText: template.l1502.annotation === 'formula' ? 'Δy = y₂ − y₁' : '参考位置', annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
+        return { option: createL1502Option(result.data, template.l1502, style), width, height, table, mapping, data: result.data, style };
+    }
     const mapping = template.electrochemical ? suggestElectrochemicalMapping(table, template.electrochemical) : suggestDrawingMapping(table, id, template.variant, 'bar');
     const errors = Object.values(mapping.errors).map(index => table.columns[index]);
     const errorMeasure = errors.length && errors.every(name => /sem|标准误|standard.?error/i.test(name)) ? 'SEM' : 'SD';

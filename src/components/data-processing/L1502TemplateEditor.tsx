@@ -1,0 +1,176 @@
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import ReactECharts from "echarts-for-react";
+import * as XLSX from "xlsx";
+import { Check, Download, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, UploadCloud } from "lucide-react";
+import type { DrawingTemplate } from "@/lib/data-processing/drawing-catalog";
+import { matrixToCsv, numericCell, parseTemplateTable } from "@/lib/data-processing/templates";
+import { readWorkbook } from "@/lib/data-processing/read-workbook";
+import { buildL1502Data, l1502Roles, suggestL1502Mapping } from "@/lib/data-processing/l1502-data";
+import { createL1502Option } from "@/lib/data-processing/l1502-render";
+import { L1502_COLORS, L1502_ROLE_LABELS, L1502_SPATIAL_KINDS, l1502DefaultLayout, l1502DefaultStyle, type L1502Mapping, type L1502Style } from "@/lib/data-processing/l1502-spec";
+import { validateL1502EditSnapshot, type L1502EditSnapshot, type L1502Source } from "@/lib/data-processing/l1502-edit-snapshot";
+import { downloadFigureBlob, initialExportSettings } from "@/lib/data-processing/publication";
+import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
+import PublicationExport from "./PublicationExport";
+import TemplateEditorDialog from "./TemplateEditorDialog";
+
+const palettes = [
+    { name: "科研经典", colors: L1502_COLORS },
+    { name: "蓝绿序列", colors: ["#164b6b", "#147a8b", "#2e9a9b", "#67b4a3", "#aed3bc", "#deead3"] },
+    { name: "暖色对比", colors: ["#426b9b", "#db7962", "#e5b56b", "#83a6a0", "#a575a2", "#68788c"] },
+    { name: "黑白印刷", colors: ["#222222", "#555555", "#888888", "#aaaaaa", "#cccccc", "#eeeeee"] },
+];
+
+function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
+    const spec = template.l1502!;
+    const source: L1502Source = { name: `${template.name}示例`, kind: "demo", sheets: [{ name: "示例数据", matrix: template.demo }] };
+    const table = parseTemplateTable(template.demo, true);
+    const mapping = suggestL1502Mapping(table, spec);
+    const layout = l1502DefaultLayout(spec);
+    const style = { ...l1502DefaultStyle(template.name, layout.width, layout.height), fontSize: 8, xLabel: template.xLabel, yLabel: template.yLabel,
+        annotationText: spec.annotation === "formula" ? "Δy = y₂ − y₁" : "参考位置",
+        annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
+    return { kind: "l1502", version: 1, presetId: template.id, source, sheetIndex: 0, hasHeader: true, mapping, style,
+        logX: !!spec.logX, logY: !!spec.logY, caption: "", exportSettings: { ...initialExportSettings(), widthMm: layout.widthMm, preset: layout.widthMm === 180 ? "double" : "single" } };
+}
+
+export default function L1502TemplateEditor({ template, open, initialSnapshot, assetId, onClose, onAddToComposition }: {
+    template: DrawingTemplate; open: boolean; initialSnapshot?: L1502EditSnapshot; assetId?: string | null;
+    onClose: (snapshot: L1502EditSnapshot) => void; onAddToComposition?: (asset: FigureAsset) => void | Promise<void>;
+}) {
+    const [editor, setEditor] = useState<L1502EditSnapshot>(() => initialSnapshot ?? initialEditor(template));
+    const [busy, setBusy] = useState(false), [exporting, setExporting] = useState(false), [error, setError] = useState("");
+    const chartRef = useRef<ReactECharts>(null);
+    const previewRef = useRef<HTMLDivElement>(null);
+    const [previewWidth, setPreviewWidth] = useState(760);
+    useEffect(() => {
+        if (!open || !previewRef.current) return;
+        const observer = new ResizeObserver(entries => setPreviewWidth(entries[0]?.contentRect.width || 760));
+        observer.observe(previewRef.current);
+        return () => observer.disconnect();
+    }, [open]);
+    const previewScale = Math.min(1, Math.max(1, previewWidth - 16) / editor.style.width);
+    const spec = useMemo(() => ({ ...template.l1502!, logX: editor.logX, logY: editor.logY }), [template, editor.logX, editor.logY]);
+    const table = useMemo(() => parseTemplateTable(editor.source.sheets[editor.sheetIndex]?.matrix ?? [], editor.hasHeader), [editor.source, editor.sheetIndex, editor.hasHeader]);
+    const result = useMemo(() => buildL1502Data(table, editor.mapping, spec), [table, editor.mapping, spec]);
+    const rendered = useMemo(() => {
+        if (!result.data) return { option: null, error: "" };
+        try {
+            return { option: createL1502Option(result.data, spec, { ...editor.style,
+                title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
+                fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }), error: "" };
+        } catch (cause) { return { option: null, error: cause instanceof Error ? cause.message : "请检查数据和绘图参数。" }; }
+    }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const roles = l1502Roles(spec), spatial = L1502_SPATIAL_KINDS.includes(spec.kind);
+    const hasErrors = ["error-bar", "error-line"].includes(spec.kind), hasBounds = ["confidence", "error-line"].includes(spec.kind);
+    const textFields: { key: keyof L1502Style; name: string }[] = [
+        { key: "title", name: "图表标题" }, { key: "xLabel", name: "X 轴 / 类别名称" }, { key: "yLabel", name: "Y 轴名称" },
+        ...(spatial ? [{ key: "zLabel" as const, name: "Z 轴名称" }] : []),
+        ...(spec.kind === "dual-axis" ? [{ key: "secondaryYLabel" as const, name: "右轴名称" }] : []),
+    ];
+    function changeStyle<K extends keyof L1502Style>(key: K, value: L1502Style[K]) {
+        setEditor(current => ({ ...current, style: { ...current.style, [key]: value } })); setError("");
+    }
+    function changeMapping(update: Partial<L1502Mapping>) {
+        setEditor(current => ({ ...current, mapping: { ...current.mapping, ...update } })); setError("");
+    }
+    function bind(source: L1502Source, sheetIndex = 0, hasHeader = true) {
+        const next = parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader);
+        const mapping = suggestL1502Mapping(next, spec);
+        setEditor(current => ({ ...current, source, sheetIndex, hasHeader, mapping, style: { ...current.style,
+            title: source.kind === "file" ? source.name.replace(/\.[^.]+$/, "") : template.name,
+            xLabel: source.kind === "file" ? next.columns[mapping.x] || template.xLabel : template.xLabel,
+            yLabel: source.kind === "file" ? next.columns[mapping.ys[0]] || template.yLabel : template.yLabel,
+            zLabel: next.columns[mapping.z ?? -1] || "Z", secondaryYLabel: next.columns[mapping.ys[1]] || "右轴指标",
+            annotationX: numericCell(next.rows[Math.floor(next.rows.length / 2)]?.[mapping.x]) ?? 0 } }));
+        setError("");
+    }
+    async function importFile(event: React.ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0]; event.target.value = "";
+        if (!file) return;
+        if (!/\.(csv|xlsx|xls)$/i.test(file.name)) { setError("请上传 CSV、XLSX 或 XLS 表格。"); return; }
+        if (file.size > 10 * 1024 * 1024) { setError("请上传不超过 10 MB 的数据文件。"); return; }
+        setBusy(true); setError("");
+        try {
+            const workbook = readWorkbook(await file.arrayBuffer(), file.name);
+            const sheets = workbook.SheetNames.map(name => ({ name, matrix: XLSX.utils.sheet_to_json<unknown[]>(workbook.Sheets[name], { header: 1, defval: null, blankrows: true }) }));
+            const first = sheets.findIndex(sheet => parseTemplateTable(sheet.matrix, false).rows.length > 0);
+            if (first < 0) throw new Error("文件中没有可读取的数据行。");
+            bind({ name: file.name, kind: "file", sheets }, first, true);
+        } catch (cause) { setError(cause instanceof Error ? cause.message : "文件读取失败。"); }
+        finally { setBusy(false); }
+    }
+    function getSvg() {
+        if (!rendered.option || !chartRef.current) throw new Error("请先完成数据绑定，生成有效图表。");
+        const svg = chartRef.current.getEchartsInstance().renderToSVGString();
+        const desc = `L1502 第 ${spec.issue} 期；图式独立重建；${editor.source.kind === "demo" ? "示例数据" : `数据：${editor.source.name}`}；${editor.caption}`;
+        return svg.replace(/(<svg\b[^>]*>)/, root => `${root}<desc>${desc.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</desc>`);
+    }
+    async function addToComposition() {
+        if (!onAddToComposition || busy || exporting) return;
+        setBusy(true); setError("");
+        try {
+            const snapshot = validateL1502EditSnapshot(editor);
+            await onAddToComposition({ id: assetId ?? crypto.randomUUID(), kind: "template", name: editor.style.title.trim() || template.name,
+                width: editor.style.width, height: editor.style.height, svg: prepareChartSvg(getSvg()), caption: editor.caption,
+                demo: editor.source.kind === "demo", attribution: `L1502 第 ${spec.issue} 期；图式独立重建`, editSnapshot: snapshot });
+            onClose(snapshot);
+        } catch (cause) { setError(cause instanceof Error ? cause.message : "加入论文组图失败。"); }
+        finally { setBusy(false); }
+    }
+    const columns = table.columns.map((name, index) => <option key={index} value={index}>{name}</option>);
+    const locked = busy || exporting;
+    return <TemplateEditorDialog open={open} title={template.name} eyebrow={`L1502 / 第 ${spec.issue} 期`} description={`${template.category} · 导入表格、选择字段，生成你自己的数据图。`} busy={locked} onClose={() => onClose(editor)}>
+        <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} />01 选择模板</span><i /><span><FileSpreadsheet size={14} />02 导入与绑定</span><i /><span><Download size={14} />03 预览与导出</span></div>
+        <div className="template-editor l1502-editor">
+            <section className="template-input-panel template-glass" aria-label="模板数据与字段">
+                <div className="template-section-heading"><span className="template-section-icon"><FileSpreadsheet size={18} /></span><div><h3>让模板读懂你的数据</h3><p>{template.requirement}</p></div></div>
+                <p className="template-input-guide">{template.guide}</p>
+                <details className="template-reference"><summary>文件分类与图式说明</summary><p>{spec.folder}</p><p>{template.description}。预览与结果由网页绘图引擎生成，示例数据用于演示字段结构。</p></details>
+                <label className={`template-upload${busy ? " is-loading" : ""}`} htmlFor="l1502-data-upload"><input id="l1502-data-upload" className="sr-only" type="file" accept=".csv,.xlsx,.xls" disabled={locked} onChange={importFile} />{busy ? <Loader2 size={24} className="animate-spin" /> : <UploadCloud size={24} />}<strong>导入自己的实验数据</strong><span>CSV / Excel · 最大 10 MB</span></label>
+                <div className="template-example-actions"><button type="button" disabled={locked} onClick={() => bind(initialEditor(template).source)}><FlaskConical size={14} />载入示例</button><button type="button" disabled={locked} onClick={() => downloadFigureBlob(new Blob(["\uFEFF", matrixToCsv(template.demo)], { type: "text/csv;charset=utf-8" }), `${template.name}-示例.csv`)}><Download size={14} />下载数据结构</button></div>
+                <div className="template-file-meta"><strong>{editor.source.name}</strong><span>{table.rows.length} 行 · {table.columns.length} 列 · {editor.source.kind === "demo" ? "示例数据" : "已上传数据"}</span></div>
+                <fieldset className="l1502-fieldset" disabled={locked}>
+                    <label className="template-field">工作表<select aria-label="工作表" value={editor.sheetIndex} onChange={event => bind(editor.source, Number(event.target.value), editor.hasHeader)}>{editor.source.sheets.map((sheet, index) => <option key={index} value={index}>{sheet.name}</option>)}</select></label>
+                    <label className="template-checkbox"><input type="checkbox" checked={editor.hasHeader} onChange={event => bind(editor.source, editor.sheetIndex, event.target.checked)} />首行为表头</label>
+                    <label className="template-field">X / 类别 / 来源列<select aria-label="X 列" value={editor.mapping.x} onChange={event => changeMapping({ x: Number(event.target.value) })}>{columns}</select></label>
+                    <div className="template-field"><span>Y / 数值 / 目标列</span><div className="l1502-series-fields">{table.columns.map((name, index) => <label key={index}><input type="checkbox" checked={editor.mapping.ys.includes(index)} onChange={() => changeMapping({ ys: editor.mapping.ys.includes(index) ? editor.mapping.ys.filter(y => y !== index) : [...editor.mapping.ys, index] })} />{name}</label>)}</div></div>
+                    {roles.map(role => <label className="template-field" key={role}>{L1502_ROLE_LABELS[role]}列<select aria-label={`${L1502_ROLE_LABELS[role]}列`} value={editor.mapping[role] ?? ""} onChange={event => changeMapping({ [role]: event.target.value === "" ? undefined : Number(event.target.value) })}><option value="">不绑定</option>{columns}</select></label>)}
+                    {(hasErrors || hasBounds) && editor.mapping.ys.map(y => <div className="l1502-uncertainty" key={y}><strong>{table.columns[y]} · {hasErrors ? "误差" : "区间"}</strong>
+                        {hasErrors && <label className="template-field">误差值列<select aria-label={`${table.columns[y]}误差列`} value={editor.mapping.errors[y] ?? ""} onChange={event => { const errors = { ...editor.mapping.errors }; if (event.target.value === "") delete errors[y]; else errors[y] = Number(event.target.value); changeMapping({ errors }); }}><option value="">请选择</option>{columns}</select></label>}
+                        {hasBounds && ["lower", "upper"].map(side => <label className="template-field" key={side}>{side === "lower" ? "下界" : "上界"}列<select aria-label={`${table.columns[y]}${side === "lower" ? "下界" : "上界"}列`} value={editor.mapping.bounds[y]?.[side as "lower" | "upper"] ?? ""} onChange={event => { const bounds = { ...editor.mapping.bounds }; if (event.target.value === "") delete bounds[y]; else bounds[y] = { ...bounds[y], lower: bounds[y]?.lower ?? -1, upper: bounds[y]?.upper ?? -1, [side]: Number(event.target.value) }; changeMapping({ bounds }); }}><option value="">{spec.kind === "error-line" ? "可选" : "请选择"}</option>{columns}</select></label>)}
+                    </div>)}
+                </fieldset>
+                <details className="template-data-details"><summary>查看当前表格（前 6 行）</summary><div className="template-table-wrap"><table><thead><tr>{table.columns.map((name, i) => <th key={i}>{name}</th>)}</tr></thead><tbody>{table.rows.slice(0, 6).map((row, i) => <tr key={i}>{table.columns.map((_, j) => <td key={j}>{String(row[j] ?? "")}</td>)}</tr>)}</tbody></table></div></details>
+                {error && <p className="template-notice template-notice--error" role="alert">{error}</p>}
+                {(result.error || rendered.error) && <p className="template-notice template-notice--error" role="alert">{result.error || rendered.error}</p>}
+                {!!result.data?.warnings.length && <div className="template-notice" role="status"><strong>请核对数据</strong><ul>{result.data.warnings.map((warning, index) => <li key={index}>{warning}</li>)}</ul></div>}
+            </section>
+            <section className="template-preview-panel template-glass" aria-label="图表预览与样式">
+                <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3>图表预览与样式</h3><p>{editor.source.kind === "demo" ? "示例数据 · 上传表格后替换" : "使用你上传的数据"}</p></div></div>
+                <div ref={previewRef} className="template-chart-wrap l1502-chart-wrap">{rendered.option ? <div style={{ width: editor.style.width * previewScale, height: editor.style.height * previewScale, margin: "8px auto" }}><div style={{ width: editor.style.width, height: editor.style.height, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={rendered.option} notMerge opts={{ renderer: "svg", width: editor.style.width, height: editor.style.height }} style={{ width: editor.style.width, height: editor.style.height }} /></div></div> : <div className="template-chart-empty">完成字段绑定后，图表将在这里生成。</div>}</div>
+                <fieldset className="template-style-fields l1502-fieldset" disabled={locked}>
+                    {textFields.map(field => <label className="template-field" key={field.key}>{field.name}<input aria-label={field.name} value={String(editor.style[field.key])} onChange={event => changeStyle(field.key, event.target.value as never)} /></label>)}
+                    <label className="template-field">配色方案<select aria-label="配色方案" value={palettes.findIndex(palette => palette.colors.join() === editor.style.colors.join())} onChange={event => changeStyle("colors", [...palettes[Number(event.target.value)].colors])}>{palettes.map((palette, index) => <option key={palette.name} value={index}>{palette.name}</option>)}</select></label>
+                    <label className="template-field">字体<select aria-label="图表字体" value={editor.style.fontFamily} onChange={event => changeStyle("fontFamily", event.target.value)}><option>Arial</option><option>Times New Roman</option><option>sans-serif</option></select></label>
+                    <label className="template-field">主体字号 (pt)<input aria-label="主体字号" type="number" min={5} max={16} step={0.5} value={editor.style.fontSize} onChange={event => { const value = Number(event.target.value); if (value >= 5 && value <= 16) changeStyle("fontSize", value); }} /></label>
+                    <label className="template-field">画布宽度 (px)<input aria-label="画布宽度" type="number" min={420} max={1600} value={editor.style.width} onChange={event => { const value = Number(event.target.value); if (value >= 420 && value <= 1600) changeStyle("width", value); }} /></label>
+                    <label className="template-field">画布高度 (px)<input aria-label="画布高度" type="number" min={320} max={1000} value={editor.style.height} onChange={event => { const value = Number(event.target.value); if (value >= 320 && value <= 1000) changeStyle("height", value); }} /></label>
+                    {spatial && <><label className="template-field">水平视角<input aria-label="水平视角" type="range" min={-180} max={180} value={editor.style.yaw} onChange={event => changeStyle("yaw", Number(event.target.value))} /></label><label className="template-field">俯仰视角<input aria-label="俯仰视角" type="range" min={-80} max={80} value={editor.style.pitch} onChange={event => changeStyle("pitch", Number(event.target.value))} /></label></>}
+                    {["histogram", "histogram2", "polar-histogram", "scatter-marginal"].includes(spec.kind) && <label className="template-field">分箱数量<input aria-label="分箱数量" type="number" min={2} max={60} value={editor.style.bins} onChange={event => { const value = Number(event.target.value); if (Number.isInteger(value) && value >= 2 && value <= 60) changeStyle("bins", value); }} /></label>}
+                    {spec.kind === "implicit-surface" && <label className="template-field">等值面数值<input aria-label="等值面数值" type="number" step="any" value={editor.style.isoLevel} onChange={event => { const value = Number(event.target.value); if (Number.isFinite(value)) changeStyle("isoLevel", value); }} /></label>}
+                    {hasBounds && <label className="template-field">区间图例名称<input aria-label="区间图例名称" value={editor.style.intervalLabel} onChange={event => changeStyle("intervalLabel", event.target.value)} /></label>}
+                    {(spec.annotation === "line" || spec.annotation === "band" || spec.kind === "inset") && <label className="template-field">{spec.kind === "inset" ? "局部放大起点 X" : "标注位置 X"}<input aria-label={spec.kind === "inset" ? "局部放大起点 X" : "标注位置 X"} type="number" step="any" value={editor.style.annotationX} onChange={event => { const value = Number(event.target.value); if (Number.isFinite(value)) changeStyle("annotationX", value); }} /></label>}
+                    {spec.annotation && <label className="template-field">标注文字<input aria-label="标注文字" value={editor.style.annotationText} onChange={event => changeStyle("annotationText", event.target.value)} /></label>}
+                    <div className="l1502-switches"><label><input type="checkbox" checked={editor.style.showGrid} onChange={event => changeStyle("showGrid", event.target.checked)} />显示网格</label><label><input type="checkbox" checked={editor.style.showValues} onChange={event => changeStyle("showValues", event.target.checked)} />显示数值</label>{["line", "scatter", "error-line", "confidence", "dual-axis", "inset"].includes(spec.kind) && <><label><input type="checkbox" checked={editor.logX} onChange={event => setEditor(current => ({ ...current, logX: event.target.checked }))} />X 对数轴</label><label><input type="checkbox" checked={editor.logY} onChange={event => setEditor(current => ({ ...current, logY: event.target.checked }))} />Y 对数轴</label></>}</div>
+                    <label className="template-field">图注<textarea aria-label="图注" rows={2} value={editor.caption} onChange={event => setEditor(current => ({ ...current, caption: event.target.value }))} placeholder="样品、条件、单位与误差含义…" /></label>
+                </fieldset>
+                <p className="template-input-guide">字号按导出物理宽度换算；刻度、图例与注释采用较小字号，可在导出检查中核对。多面板默认双栏，保持各面板文字清晰。</p>
+                <PublicationExport width={editor.style.width} height={editor.style.height} settings={editor.exportSettings} onChange={exportSettings => setEditor(current => ({ ...current, exportSettings }))} getSvg={getSvg} filename={editor.style.title || template.name} disabled={!rendered.option || busy} onBusy={setExporting} revision={editor} />
+                {onAddToComposition && <button type="button" className="resource-button is-primary l1502-composition" disabled={!rendered.option || locked} onClick={addToComposition}><Layers3 size={16} />{assetId ? "更新论文组图中的此图" : "加入论文组图"}</button>}
+            </section>
+        </div>
+    </TemplateEditorDialog>;
+}

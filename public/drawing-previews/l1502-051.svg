@@ -1,0 +1,104 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>抖动控制的分簇散点图; independently rendered demonstration data; L1502 issue 51; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l667 0l0 27.1l-667 0Z" transform="translate(46.4902 466.8745)" fill="none" pointer-events="visible" class="zr93-cls-1035"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" y="13.56273202614379" transform="translate(46.4902 466.8745)" fill="#505763">横坐标为分类展示；确定性偏移仅防重叠；每个点对应一个真实观测</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,71.9276,236.9373)" fill="#74808b">Y</text>
+<path d="M118.5 375.6L118.5 98.2" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr93-cls-1036"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(418.9638 415.6405)" fill="#74808b">X</text>
+<path d="M117.9 375.5L720 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr93-cls-1036"></path>
+<path d="M117.9 375.5L112.9 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M117.9 320.5L112.9 320.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M117.9 264.5L112.9 264.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M117.9 209.5L112.9 209.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M117.9 153.5L112.9 153.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M117.9 98.5L112.9 98.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M118.5 375.6L118.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M318.5 375.6L318.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M519.5 375.6L519.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<path d="M720.5 375.6L720.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr93-cls-1036"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 375.6405)" fill="#54555a">1.5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 320.1592)" fill="#54555a">2</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 264.6779)" fill="#54555a">2.5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 209.1966)" fill="#54555a">3</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 153.7153)" fill="#54555a">3.5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 98.234)" fill="#54555a">4</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(218.273 383.6405)" fill="#54555a">Category 1</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(418.9638 383.6405)" fill="#54555a">Category 2</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(619.6546 383.6405)" fill="#54555a">Category 3</text>
+<circle cx="164.4" cy="320.2" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="177.5" cy="288.9" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="190.6" cy="353.2" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="168" cy="253.7" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="181.1" cy="339.3" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="194.2" cy="271.4" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="171.5" cy="281.5" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="184.6" cy="311.5" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="365.1" cy="253.6" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="378.2" cy="222.3" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="391.3" cy="286.6" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="368.7" cy="187.1" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="381.8" cy="272.7" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="394.9" cy="204.9" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="372.2" cy="214.9" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="385.3" cy="244.9" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="565.8" cy="187" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="578.9" cy="155.7" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="592" cy="220" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="569.4" cy="120.5" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="582.5" cy="206.1" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="595.6" cy="138.3" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="572.9" cy="148.3" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="586" cy="178.4" r="3.5" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1037"></circle>
+<circle cx="241.3" cy="269.3" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="254.4" cy="346.2" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="267.5" cy="295.5" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="244.8" cy="284.8" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="257.9" cy="333.2" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="271" cy="240.4" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="248.4" cy="330.5" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="261.5" cy="248.3" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="442" cy="202.7" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="455.1" cy="279.6" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="468.2" cy="229" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="445.5" cy="218.2" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="458.6" cy="266.7" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="471.7" cy="173.8" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="449.1" cy="263.9" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="462.2" cy="181.7" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="642.7" cy="136.1" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="655.8" cy="213" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="668.9" cy="162.4" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="646.2" cy="151.7" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="659.3" cy="200.1" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="672.4" cy="107.2" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="649.8" cy="197.3" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<circle cx="662.9" cy="115.2" r="3.5" fill="#e3a438" fill-opacity="0.65" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr93-cls-1038"></circle>
+<path d="M-5 -5l266.8 0l0 35.2l-266.8 0Z" transform="translate(251.6249 48)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr93-cls-1036"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(251.6249 53.617)" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr93-cls-1036"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:25.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(251.6249 53.617)" fill="#54555a">Group A</text>
+<path d="M0 -5.6l124.4 0l0 25.2l-124.4 0Z" transform="translate(251.6249 53.617)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr93-cls-1036"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(384 53.617)" fill="#e3a438" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr93-cls-1036"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:25.233986928104574px;font-family:Arial;" xml:space="preserve" x="30" y="7" transform="translate(384 53.617)" fill="#54555a">Group B</text>
+<path d="M0 -5.6l124.4 0l0 25.2l-124.4 0Z" transform="translate(384 53.617)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr93-cls-1036"></path>
+<path d="M-224.7 -5l449.3 0l0 38.2l-449.3 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr93-cls-1036"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">抖动控制的分簇散点图 · 示例数据</text>
+<style ><![CDATA[
+.zr93-cls-1035:hover {
+cursor:pointer;
+}
+.zr93-cls-1036:hover {
+pointer-events:none;
+}
+.zr93-cls-1037:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+.zr93-cls-1038:hover {
+cursor:pointer;
+fill:rgba(249,180,61,1);
+}
+
+]]>
+
+</style>
+</svg>

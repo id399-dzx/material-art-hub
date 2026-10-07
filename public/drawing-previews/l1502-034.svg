@@ -1,0 +1,106 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>箱线图; independently rendered demonstration data; L1502 issue 34; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l583.4 0l0 27.1l-583.4 0Z" transform="translate(88.2901 466.8745)" fill="none" pointer-events="visible" class="zr76-cls-875"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(88.2901 466.8745)" fill="#505763">原始样本全保留；Q1 / 中位数 / Q3；须线 = 1.5 IQR 内观测</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,51.571,219.8203)" fill="#74808b">Y</text>
+<path d="M97.5 375.6L97.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr76-cls-876"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(408.7855 415.6405)" fill="#74808b">X</text>
+<path d="M97.6 375.5L720 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr76-cls-876"></path>
+<path d="M97.6 375.5L92.6 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 323.5L92.6 323.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 272.5L92.6 272.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 220.5L92.6 220.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 168.5L92.6 168.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 116.5L92.6 116.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.6 64.5L92.6 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M97.5 375.6L97.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M305.5 375.6L305.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M512.5 375.6L512.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<path d="M720.5 375.6L720.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr76-cls-876"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 375.6405)" fill="#54555a">3</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 323.7005)" fill="#54555a">4</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 271.7604)" fill="#54555a">5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 219.8203)" fill="#54555a">6</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 167.8802)" fill="#54555a">7</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 115.9401)" fill="#54555a">8</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 64)" fill="#54555a">9</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(201.3092 383.6405)" fill="#54555a">Category 1</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(408.7855 383.6405)" fill="#54555a">Category 2</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(616.2618 383.6405)" fill="#54555a">Category 3</text>
+<path d="M201.3 336L201.3 141.2" fill="#000" stroke="#147a8b" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M175.3 237.4l52 0l0 71l-52 0Z" fill="#fff" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-878"></path>
+<path d="M175.3 336L227.3 336" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M175.3 284.3L227.3 284.3" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M175.3 141.2L227.3 141.2" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<circle cx="183.1" cy="323.7" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="196.6" cy="295.4" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="210" cy="336" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="186.7" cy="327.7" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="200.2" cy="275.3" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="213.7" cy="293.4" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="190.4" cy="303.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="203.9" cy="240.9" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="217.3" cy="226.7" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="194" cy="246.6" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="207.5" cy="189.6" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="184.2" cy="141.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<path d="M408.8 302.2L408.8 107.5" fill="#000" stroke="#147a8b" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M382.8 203.6l52 0l0 71l-52 0Z" fill="#fff" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-878"></path>
+<path d="M382.8 302.2L434.8 302.2" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M382.8 250.6L434.8 250.6" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M382.8 107.5L434.8 107.5" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<circle cx="390.6" cy="289.9" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="404.1" cy="261.6" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="417.5" cy="302.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="394.2" cy="294" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="407.7" cy="241.5" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="421.2" cy="259.6" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="397.9" cy="269.5" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="411.3" cy="207.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="424.8" cy="192.9" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="401.5" cy="212.9" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="415" cy="155.8" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="391.7" cy="107.5" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<path d="M616.3 268.5L616.3 73.7" fill="#000" stroke="#147a8b" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M590.3 169.9l52 0l0 71l-52 0Z" fill="#fff" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-878"></path>
+<path d="M590.3 268.5L642.3 268.5" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M590.3 216.8L642.3 216.8" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<path d="M590.3 73.7L642.3 73.7" fill="#000" stroke="#147a8b" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-877"></path>
+<circle cx="598.1" cy="256.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="611.5" cy="227.8" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="625" cy="268.5" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="601.7" cy="260.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="615.2" cy="207.8" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="628.6" cy="225.9" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="605.3" cy="235.7" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="618.8" cy="173.4" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="632.3" cy="159.2" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="609" cy="179.1" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="622.4" cy="122" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<circle cx="599.2" cy="73.7" r="2.4" fill="#147a8b" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr76-cls-879"></circle>
+<path d="M-125.8 -5l251.7 0l0 38.2l-251.7 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr76-cls-876"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">箱线图 · 示例数据</text>
+<style ><![CDATA[
+.zr76-cls-875:hover {
+cursor:pointer;
+}
+.zr76-cls-876:hover {
+pointer-events:none;
+}
+.zr76-cls-877:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr76-cls-878:hover {
+cursor:pointer;
+fill:rgba(255,255,255,1);
+}
+.zr76-cls-879:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+
+]]>
+
+</style>
+</svg>

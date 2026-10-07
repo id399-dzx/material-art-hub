@@ -1,0 +1,263 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>进阶词云图; independently rendered demonstration data; L1502 issue 78; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l580.1 0l0 54.3l-580.1 0Z" transform="translate(89.9576 439.7491)" fill="none" pointer-events="visible" class="zr120-cls-2015"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(89.9576 439.7491)" fill="#505763">每个词对应一行原始数据；字号 = 12 + 42 √(Weight / 最大</text>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" y="40.68819607843137" transform="translate(89.9576 439.7491)" fill="#505763">Weight)，再整体等比缩放</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 46.2357479503619px Arial" x="372.3820343781124" y="268.7629973471425" fill="rgb(204,73,67)">Materials</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 43.913174404536754px Arial" x="368.6340136750453" y="324.7470621694572" fill="rgb(222,140,110)">Energy</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 41.41786910184863px Arial" x="375.0604985442734" y="214.4128986885753" fill="rgb(239,208,153)">Structure</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 39.63675630305223px Arial" x="376.89101614064623" y="163.68860198408896" fill="rgb(224,224,171)">Design</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 37.740382943932815px Arial" x="539.7222646863383" y="322.0092802171077" fill="rgb(183,212,180)">Surface</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 35.70297469591713px Arial" x="365.9666362766507" y="374.6716669801921" fill="rgb(141,199,188)">Interface</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 33.48742496449463px Arial" x="182.91028998357902" y="319.6793184664832" fill="rgb(100,187,197)">Transport</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 32.29621989119816px Arial" x="147.07799381988426" y="262.9854070946607" fill="rgb(91,171,189)">Catalysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 31.036782953111075px Arial" x="575.3115981765625" y="276.1017006290598" fill="rgb(82,156,180)">Storage</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 29.69584449121623px Arial" x="179.49074745294018" y="219.50964348788142" fill="rgb(73,140,172)">Analysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 28.255179302998936px Arial" x="555.392897437843" y="236.152874039704" fill="rgb(63,124,164)">Model</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 26.688549063854055px Arial" x="565.7264380166404" y="199.7071189846497" fill="rgb(54,108,156)">Spectrum</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 24.955683479344103px Arial" x="255.6121294627244" y="172.57092500240935" fill="rgb(45,93,147)">Cycle</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 24.007496799784395px Arial" x="518.8639719671869" y="361.15708950758017" fill="rgb(41,85,143)">Charge</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 22.988792675776555px Arial" x="208.76683285000556" y="356.1545649309552" fill="rgb(36,77,139)">Process</text>
+<path d="M-49.3 -198.2l85.5 0l0 213.2l-85.5 0Z" transform="translate(718.7354 468.234)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#cfd2d7" stroke-width="0" class="zr120-cls-2016"></path>
+<g clip-path="url(#zr120-c0)">
+<polygon points="0 0 13 0 13 150 0 150" transform="matrix(-1,0,0,-1,718.7354,468.234)" fill="url(#zr120-g0)" class="zr120-cls-2018"></polygon>
+<polygon points="0 0 13 0 13 150 0 150" transform="matrix(-1,0,0,-1,718.7354,468.234)" fill="url(#zr120-g1)" class="zr120-cls-2019"></polygon>
+</g>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:23.233986928104574px;font-family:Arial;" x="-6.5" y="-171.61699346405229" transform="translate(718.7354 468.234)" fill="#54555a">Color</text>
+<path d="M-154.1 -5l308.2 0l0 38.2l-308.2 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr120-cls-2016"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">进阶词云图 · 示例数据</text>
+<defs >
+<clipPath id="zr120-c0">
+<path d="M3 0L10 0A3 3 0 0 1 13 3L13 147A3 3 0 0 1 10 150L3 150A3 3 0 0 1 0 147L0 3A3 3 0 0 1 3 0" transform="matrix(-1,0,0,-1,718.7354,468.234)" fill="#000" class="zr120-cls-2017"></path>
+</clipPath>
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr120-g0">
+<stop offset="0%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="1%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="2%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="3%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="4%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="5%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="6%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="7.000000000000001%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="8%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="9%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="10%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="11%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="12%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="13%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="14.000000000000002%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="15%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="16%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="17%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="18%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="19%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="20%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="21%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="22%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="23%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="24%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="25%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="26%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="27%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="28.000000000000004%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="28.999999999999996%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="30%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="31%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="32%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="33%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="34%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="35%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="36%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="37%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="38%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="39%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="40%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="41%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="42%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="43%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="44%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="45%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="46%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="47%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="48%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="49%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="50%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="51%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="52%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="53%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="54%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="55.00000000000001%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="56.00000000000001%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="56.99999999999999%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="57.99999999999999%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="59%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="60%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="61%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="62%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="63%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="64%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="65%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="66%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="67%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="68%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="69%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="70%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="71%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="72%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="73%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="74%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="75%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="76%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="77%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="78%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="79%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="80%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="81%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="82%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="83%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="84%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="85%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="86%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="87%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="88%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="89%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="90%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="91%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="92%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="93%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="94%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="95%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="96%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="97%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="98%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="99%" stop-color="rgb(207,210,215)"></stop>
+<stop offset="100%" stop-color="rgb(207,210,215)"></stop>
+</linearGradient>
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr120-g1">
+<stop offset="0%" stop-color="rgb(36,77,139)"></stop>
+<stop offset="1%" stop-color="rgb(38,80,141)"></stop>
+<stop offset="2%" stop-color="rgb(40,84,142)"></stop>
+<stop offset="3%" stop-color="rgb(42,87,144)"></stop>
+<stop offset="4%" stop-color="rgb(44,90,146)"></stop>
+<stop offset="5%" stop-color="rgb(46,94,148)"></stop>
+<stop offset="6%" stop-color="rgb(48,97,149)"></stop>
+<stop offset="7.000000000000001%" stop-color="rgb(49,100,151)"></stop>
+<stop offset="8%" stop-color="rgb(51,103,153)"></stop>
+<stop offset="9%" stop-color="rgb(53,107,155)"></stop>
+<stop offset="10%" stop-color="rgb(55,110,156)"></stop>
+<stop offset="11%" stop-color="rgb(57,113,158)"></stop>
+<stop offset="12%" stop-color="rgb(59,117,160)"></stop>
+<stop offset="13%" stop-color="rgb(61,120,162)"></stop>
+<stop offset="14.000000000000002%" stop-color="rgb(63,123,163)"></stop>
+<stop offset="15%" stop-color="rgb(65,127,165)"></stop>
+<stop offset="16%" stop-color="rgb(67,130,167)"></stop>
+<stop offset="17%" stop-color="rgb(69,133,169)"></stop>
+<stop offset="18%" stop-color="rgb(71,136,170)"></stop>
+<stop offset="19%" stop-color="rgb(72,140,172)"></stop>
+<stop offset="20%" stop-color="rgb(74,143,174)"></stop>
+<stop offset="21%" stop-color="rgb(76,146,176)"></stop>
+<stop offset="22%" stop-color="rgb(78,150,177)"></stop>
+<stop offset="23%" stop-color="rgb(80,153,179)"></stop>
+<stop offset="24%" stop-color="rgb(82,156,181)"></stop>
+<stop offset="25%" stop-color="rgb(84,160,183)"></stop>
+<stop offset="26%" stop-color="rgb(86,163,184)"></stop>
+<stop offset="27%" stop-color="rgb(88,166,186)"></stop>
+<stop offset="28.000000000000004%" stop-color="rgb(90,169,188)"></stop>
+<stop offset="28.999999999999996%" stop-color="rgb(92,173,189)"></stop>
+<stop offset="30%" stop-color="rgb(94,176,191)"></stop>
+<stop offset="31%" stop-color="rgb(96,179,193)"></stop>
+<stop offset="32%" stop-color="rgb(97,183,195)"></stop>
+<stop offset="33%" stop-color="rgb(99,186,196)"></stop>
+<stop offset="34%" stop-color="rgb(103,188,196)"></stop>
+<stop offset="35%" stop-color="rgb(107,189,196)"></stop>
+<stop offset="36%" stop-color="rgb(112,190,195)"></stop>
+<stop offset="37%" stop-color="rgb(116,192,194)"></stop>
+<stop offset="38%" stop-color="rgb(120,193,193)"></stop>
+<stop offset="39%" stop-color="rgb(125,194,192)"></stop>
+<stop offset="40%" stop-color="rgb(129,196,191)"></stop>
+<stop offset="41%" stop-color="rgb(133,197,190)"></stop>
+<stop offset="42%" stop-color="rgb(138,198,189)"></stop>
+<stop offset="43%" stop-color="rgb(142,199,188)"></stop>
+<stop offset="44%" stop-color="rgb(146,201,187)"></stop>
+<stop offset="45%" stop-color="rgb(151,202,187)"></stop>
+<stop offset="46%" stop-color="rgb(155,203,186)"></stop>
+<stop offset="47%" stop-color="rgb(159,205,185)"></stop>
+<stop offset="48%" stop-color="rgb(164,206,184)"></stop>
+<stop offset="49%" stop-color="rgb(168,207,183)"></stop>
+<stop offset="50%" stop-color="rgb(173,209,182)"></stop>
+<stop offset="51%" stop-color="rgb(177,210,181)"></stop>
+<stop offset="52%" stop-color="rgb(181,211,180)"></stop>
+<stop offset="53%" stop-color="rgb(186,212,179)"></stop>
+<stop offset="54%" stop-color="rgb(190,214,178)"></stop>
+<stop offset="55.00000000000001%" stop-color="rgb(194,215,178)"></stop>
+<stop offset="56.00000000000001%" stop-color="rgb(199,216,177)"></stop>
+<stop offset="56.99999999999999%" stop-color="rgb(203,218,176)"></stop>
+<stop offset="57.99999999999999%" stop-color="rgb(207,219,175)"></stop>
+<stop offset="59%" stop-color="rgb(212,220,174)"></stop>
+<stop offset="60%" stop-color="rgb(216,221,173)"></stop>
+<stop offset="61%" stop-color="rgb(220,223,172)"></stop>
+<stop offset="62%" stop-color="rgb(225,224,171)"></stop>
+<stop offset="63%" stop-color="rgb(229,225,170)"></stop>
+<stop offset="64%" stop-color="rgb(233,227,169)"></stop>
+<stop offset="65%" stop-color="rgb(238,228,169)"></stop>
+<stop offset="66%" stop-color="rgb(242,229,168)"></stop>
+<stop offset="67%" stop-color="rgb(245,228,166)"></stop>
+<stop offset="68%" stop-color="rgb(243,224,163)"></stop>
+<stop offset="69%" stop-color="rgb(242,219,160)"></stop>
+<stop offset="70%" stop-color="rgb(241,214,157)"></stop>
+<stop offset="71%" stop-color="rgb(240,210,154)"></stop>
+<stop offset="72%" stop-color="rgb(238,205,151)"></stop>
+<stop offset="73%" stop-color="rgb(237,200,148)"></stop>
+<stop offset="74%" stop-color="rgb(236,195,145)"></stop>
+<stop offset="75%" stop-color="rgb(235,191,142)"></stop>
+<stop offset="76%" stop-color="rgb(234,186,139)"></stop>
+<stop offset="77%" stop-color="rgb(232,181,136)"></stop>
+<stop offset="78%" stop-color="rgb(231,177,133)"></stop>
+<stop offset="79%" stop-color="rgb(230,172,130)"></stop>
+<stop offset="80%" stop-color="rgb(229,167,127)"></stop>
+<stop offset="81%" stop-color="rgb(227,162,124)"></stop>
+<stop offset="82%" stop-color="rgb(226,158,121)"></stop>
+<stop offset="83%" stop-color="rgb(225,153,118)"></stop>
+<stop offset="84%" stop-color="rgb(224,148,115)"></stop>
+<stop offset="85%" stop-color="rgb(222,144,112)"></stop>
+<stop offset="86%" stop-color="rgb(221,139,109)"></stop>
+<stop offset="87%" stop-color="rgb(220,134,106)"></stop>
+<stop offset="88%" stop-color="rgb(219,130,103)"></stop>
+<stop offset="89%" stop-color="rgb(218,125,100)"></stop>
+<stop offset="90%" stop-color="rgb(216,120,97)"></stop>
+<stop offset="91%" stop-color="rgb(215,115,94)"></stop>
+<stop offset="92%" stop-color="rgb(214,111,91)"></stop>
+<stop offset="93%" stop-color="rgb(213,106,88)"></stop>
+<stop offset="94%" stop-color="rgb(211,101,85)"></stop>
+<stop offset="95%" stop-color="rgb(210,97,82)"></stop>
+<stop offset="96%" stop-color="rgb(209,92,79)"></stop>
+<stop offset="97%" stop-color="rgb(208,87,76)"></stop>
+<stop offset="98%" stop-color="rgb(206,82,73)"></stop>
+<stop offset="99%" stop-color="rgb(205,78,70)"></stop>
+<stop offset="100%" stop-color="rgb(204,73,67)"></stop>
+</linearGradient>
+</defs>
+<style ><![CDATA[
+.zr120-cls-2015:hover {
+cursor:pointer;
+}
+.zr120-cls-2016:hover {
+pointer-events:none;
+}
+.zr120-cls-2017:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr120-cls-2018:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr120-cls-2019:hover {
+cursor:pointer;
+fill:[object Object];
+}
+
+]]>
+
+</style>
+</svg>

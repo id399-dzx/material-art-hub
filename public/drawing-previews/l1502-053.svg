@@ -1,0 +1,232 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>网格曲面图; independently rendered demonstration data; L1502 issue 53; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#ffffff"></rect>
+<polyline points="329.7 208.5 344 188.3 333.2 193.7 318.8 210.2 329.7 208.5" fill="none" pointer-events="visible" stroke="rgb(209,160,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="318.8 210.2 333.2 193.7 322 198.2 307.5 206.6 318.8 210.2" fill="none" pointer-events="visible" stroke="rgb(221,158,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="344 188.3 359 166.9 348.2 175.5 333.2 193.7 344 188.3" fill="none" pointer-events="visible" stroke="rgb(173,110,121)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="307.5 206.6 322 198.2 310.5 201.7 295.5 199.8 307.5 206.6" fill="none" pointer-events="visible" stroke="rgb(203,140,85)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="333.2 193.7 348.2 175.5 337.1 187.1 322 198.2 333.2 193.7" fill="none" pointer-events="visible" stroke="rgb(176,113,118)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="359 166.9 374.7 154.8 363.9 164.1 348.2 175.5 359 166.9" fill="none" pointer-events="visible" stroke="rgb(117,96,156)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="322 198.2 337.1 187.1 325.7 198.9 310.5 201.7 322 198.2" fill="none" pointer-events="visible" stroke="rgb(178,115,115)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="295.5 199.8 310.5 201.7 298.5 204.5 283.1 192.9 295.5 199.8" fill="none" pointer-events="visible" stroke="rgb(181,118,111)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="348.2 175.5 363.9 164.1 352.8 177.4 337.1 187.1 348.2 175.5" fill="none" pointer-events="visible" stroke="rgb(130,94,152)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="374.7 154.8 390.6 159.2 380 165.6 363.9 164.1 374.7 154.8" fill="none" pointer-events="visible" stroke="rgb(92,99,164)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="310.5 201.7 325.7 198.9 314 209 298.5 204.5 310.5 201.7" fill="none" pointer-events="visible" stroke="rgb(179,116,114)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="390.6 159.2 406.5 180.4 396.2 181.3 380 165.6 390.6 159.2" fill="none" pointer-events="visible" stroke="rgb(110,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="422.2 211.3 437.8 241.2 428.4 233.5 412.3 206.8 422.2 211.3" fill="none" pointer-events="visible" stroke="rgb(218,155,67)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="437.8 241.2 453.8 260.1 444.9 252.7 428.4 233.5 437.8 241.2" fill="none" pointer-events="visible" stroke="rgb(122,143,98)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="406.5 180.4 422.2 211.3 412.3 206.8 396.2 181.3 406.5 180.4" fill="none" pointer-events="visible" stroke="rgb(161,98,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="337.1 187.1 352.8 177.4 341.4 190 325.7 198.9 337.1 187.1" fill="none" pointer-events="visible" stroke="rgb(146,92,147)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="363.9 164.1 380 165.6 369 173 352.8 177.4 363.9 164.1" fill="none" pointer-events="visible" stroke="rgb(100,98,162)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="453.8 260.1 471.1 262.7 462.2 258.8 444.9 252.7 453.8 260.1" fill="none" pointer-events="visible" stroke="rgb(78,134,116)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="283.1 192.9 298.5 204.5 286.1 208.1 270.2 189.5 283.1 192.9" fill="none" pointer-events="visible" stroke="rgb(162,99,134)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="325.7 198.9 341.4 190 329.6 199.3 314 209 325.7 198.9" fill="none" pointer-events="visible" stroke="rgb(157,94,141)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="298.5 204.5 314 209 301.8 217.2 286.1 208.1 298.5 204.5" fill="none" pointer-events="visible" stroke="rgb(176,113,117)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="380 165.6 396.2 181.3 385.6 177.2 369 173 380 165.6" fill="none" pointer-events="visible" stroke="rgb(99,98,162)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="352.8 177.4 369 173 357.6 176.5 341.4 190 352.8 177.4" fill="none" pointer-events="visible" stroke="rgb(107,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="471.1 262.7 489.8 249.8 480.7 251.7 462.2 258.8 471.1 262.7" fill="none" pointer-events="visible" stroke="rgb(137,146,92)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="396.2 181.3 412.3 206.8 402.3 190.5 385.6 177.2 396.2 181.3" fill="none" pointer-events="visible" stroke="rgb(127,95,153)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="412.3 206.8 428.4 233.5 419.1 209.8 402.3 190.5 412.3 206.8" fill="none" pointer-events="visible" stroke="rgb(169,106,126)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="270.2 189.5 286.1 208.1 273.3 213.9 257.1 192.6 270.2 189.5" fill="none" pointer-events="visible" stroke="rgb(150,92,145)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="428.4 233.5 444.9 252.7 436.1 229 419.1 209.8 428.4 233.5" fill="none" pointer-events="visible" stroke="rgb(207,144,80)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="314 209 329.6 199.3 317.5 205.8 301.8 217.2 314 209" fill="none" pointer-events="visible" stroke="rgb(160,97,137)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="286.1 208.1 301.8 217.2 289.3 224.9 273.3 213.9 286.1 208.1" fill="none" pointer-events="visible" stroke="rgb(174,111,120)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="444.9 252.7 462.2 258.8 453.5 242.3 436.1 229 444.9 252.7" fill="none" pointer-events="visible" stroke="rgb(222,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="341.4 190 357.6 176.5 345.8 174.6 329.6 199.3 341.4 190" fill="none" pointer-events="visible" stroke="rgb(105,97,160)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="369 173 385.6 177.2 374.5 164 357.6 176.5 369 173" fill="none" pointer-events="visible" stroke="rgb(77,101,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="257.1 192.6 273.3 213.9 260.3 223 244 203.7 257.1 192.6" fill="none" pointer-events="visible" stroke="rgb(150,92,145)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="489.8 249.8 510 228.3 500.6 236.9 480.7 251.7 489.8 249.8" fill="none" pointer-events="visible" stroke="rgb(211,148,75)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="462.2 258.8 480.7 251.7 471.7 247.5 453.5 242.3 462.2 258.8" fill="none" pointer-events="visible" stroke="rgb(226,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="301.8 217.2 317.5 205.8 304.9 212.6 289.3 224.9 301.8 217.2" fill="none" pointer-events="visible" stroke="rgb(160,97,137)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="273.3 213.9 289.3 224.9 276.3 232.6 260.3 223 273.3 213.9" fill="none" pointer-events="visible" stroke="rgb(174,111,120)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="385.6 177.2 402.3 190.5 392 160.3 374.5 164 385.6 177.2" fill="none" pointer-events="visible" stroke="rgb(70,105,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="329.6 199.3 345.8 174.6 333.5 171.2 317.5 205.8 329.6 199.3" fill="none" pointer-events="visible" stroke="rgb(93,99,164)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="244 203.7 260.3 223 247 234.5 230.9 222 244 203.7" fill="none" pointer-events="visible" stroke="rgb(162,99,134)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="402.3 190.5 419.1 209.8 409.6 169.7 392 160.3 402.3 190.5" fill="none" pointer-events="visible" stroke="rgb(78,101,169)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="357.6 176.5 374.5 164 362.9 143.2 345.8 174.6 357.6 176.5" fill="none" pointer-events="visible" stroke="rgb(80,127,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="289.3 224.9 304.9 212.6 292 221.1 276.3 232.6 289.3 224.9" fill="none" pointer-events="visible" stroke="rgb(160,97,137)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="480.7 251.7 500.6 236.9 490.8 246.6 471.7 247.5 480.7 251.7" fill="none" pointer-events="visible" stroke="rgb(202,139,87)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="419.1 209.8 436.1 229 427.2 190.1 409.6 169.7 419.1 209.8" fill="none" pointer-events="visible" stroke="rgb(110,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="260.3 223 276.3 232.6 262.9 239.7 247 234.5 260.3 223" fill="none" pointer-events="visible" stroke="rgb(176,113,117)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="436.1 229 453.5 242.3 444.8 215 427.2 190.1 436.1 229" fill="none" pointer-events="visible" stroke="rgb(147,92,146)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="510 228.3 530.8 209.5 521.1 223.6 500.6 236.9 510 228.3" fill="none" pointer-events="visible" stroke="rgb(158,95,139)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="230.9 222 247 234.5 233.3 247.1 217.8 244.5 230.9 222" fill="none" pointer-events="visible" stroke="rgb(181,118,111)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="317.5 205.8 333.5 171.2 320.7 173.7 304.9 212.6 317.5 205.8" fill="none" pointer-events="visible" stroke="rgb(82,100,168)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="453.5 242.3 471.7 247.5 462.6 238.1 444.8 215 453.5 242.3" fill="none" pointer-events="visible" stroke="rgb(173,110,121)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="276.3 232.6 292 221.1 278.6 229.9 262.9 239.7 276.3 232.6" fill="none" pointer-events="visible" stroke="rgb(160,97,137)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="374.5 164 392 160.3 381 120.4 362.9 143.2 374.5 164" fill="none" pointer-events="visible" stroke="rgb(103,165,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="217.8 244.5 233.3 247.1 219.1 259.2 204.5 267.5 217.8 244.5" fill="none" pointer-events="visible" stroke="rgb(203,140,85)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="247 234.5 262.9 239.7 248.8 244.8 233.3 247.1 247 234.5" fill="none" pointer-events="visible" stroke="rgb(179,116,114)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="500.6 236.9 521.1 223.6 510.5 244.7 490.8 246.6 500.6 236.9" fill="none" pointer-events="visible" stroke="rgb(170,107,124)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="345.8 174.6 362.9 143.2 350.6 123.9 333.5 171.2 345.8 174.6" fill="none" pointer-events="visible" stroke="rgb(96,162,140)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="471.7 247.5 490.8 246.6 480.7 256.3 462.6 238.1 471.7 247.5" fill="none" pointer-events="visible" stroke="rgb(186,123,106)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="304.9 212.6 320.7 173.7 307.7 185.8 292 221.1 304.9 212.6" fill="none" pointer-events="visible" stroke="rgb(82,100,168)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="204.5 267.5 219.1 259.2 204.4 270.4 190.7 287.8 204.5 267.5" fill="none" pointer-events="visible" stroke="rgb(221,158,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="490.8 246.6 510.5 244.7 499.5 269.5 480.7 256.3 490.8 246.6" fill="none" pointer-events="visible" stroke="rgb(188,125,103)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="262.9 239.7 278.6 229.9 264.6 235.9 248.8 244.8 262.9 239.7" fill="none" pointer-events="visible" stroke="rgb(157,94,141)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="392 160.3 409.6 169.7 399.4 119.7 381 120.4 392 160.3" fill="none" pointer-events="visible" stroke="rgb(135,148,125)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="233.3 247.1 248.8 244.8 234.1 247.9 219.1 259.2 233.3 247.1" fill="none" pointer-events="visible" stroke="rgb(178,115,115)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="292 221.1 307.7 185.8 294.4 204.3 278.6 229.9 292 221.1" fill="none" pointer-events="visible" stroke="rgb(93,99,164)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="409.6 169.7 427.2 190.1 417.8 143.5 399.4 119.7 409.6 169.7" fill="none" pointer-events="visible" stroke="rgb(105,164,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="444.8 215 462.6 238.1 453 226.8 435.5 183.1 444.8 215" fill="none" pointer-events="visible" stroke="rgb(103,98,161)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="462.6 238.1 480.7 256.3 470.4 265.3 453 226.8 462.6 238.1" fill="none" pointer-events="visible" stroke="rgb(166,103,130)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="333.5 171.2 350.6 123.9 337.6 119.5 320.7 173.7 333.5 171.2" fill="none" pointer-events="visible" stroke="rgb(133,149,126)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="190.7 287.8 204.4 270.4 189.1 280.8 176 302.7 190.7 287.8" fill="none" pointer-events="visible" stroke="rgb(209,160,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="427.2 190.1 444.8 215 435.5 183.1 417.8 143.5 427.2 190.1" fill="none" pointer-events="visible" stroke="rgb(81,129,158)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="480.7 256.3 499.5 269.5 488.3 293.7 470.4 265.3 480.7 256.3" fill="none" pointer-events="visible" stroke="rgb(207,144,80)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="362.9 143.2 381 120.4 368.9 85.3 350.6 123.9 362.9 143.2" fill="none" pointer-events="visible" stroke="rgb(209,105,106)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="219.1 259.2 234.1 247.9 218.7 251 204.4 270.4 219.1 259.2" fill="none" pointer-events="visible" stroke="rgb(176,113,118)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="248.8 244.8 264.6 235.9 249.8 238 234.1 247.9 248.8 244.8" fill="none" pointer-events="visible" stroke="rgb(146,92,147)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="278.6 229.9 294.4 204.3 280.8 221.9 264.6 235.9 278.6 229.9" fill="none" pointer-events="visible" stroke="rgb(105,97,160)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="470.4 265.3 488.3 293.7 477.3 314 459.7 274 470.4 265.3" fill="none" pointer-events="visible" stroke="rgb(221,158,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="320.7 173.7 337.6 119.5 324.4 137.3 307.7 185.8 320.7 173.7" fill="none" pointer-events="visible" stroke="rgb(133,149,126)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="453 226.8 470.4 265.3 459.7 274 442.6 219.2 453 226.8" fill="none" pointer-events="visible" stroke="rgb(145,92,147)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="204.4 270.4 218.7 251 202.9 257.3 189.1 280.8 204.4 270.4" fill="none" pointer-events="visible" stroke="rgb(173,110,121)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="307.7 185.8 324.4 137.3 311.1 171.6 294.4 204.3 307.7 185.8" fill="none" pointer-events="visible" stroke="rgb(96,162,140)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="264.6 235.9 280.8 221.9 266.5 234.1 249.8 238 264.6 235.9" fill="none" pointer-events="visible" stroke="rgb(107,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="234.1 247.9 249.8 238 234.3 239.1 218.7 251 234.1 247.9" fill="none" pointer-events="visible" stroke="rgb(130,94,152)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="381 120.4 399.4 119.7 388.1 76.8 368.9 85.3 381 120.4" fill="none" pointer-events="visible" stroke="rgb(151,110,155)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="435.5 183.1 453 226.8 442.6 219.2 425.2 158 435.5 183.1" fill="none" pointer-events="visible" stroke="rgb(80,128,158)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="459.7 274 477.3 314 466.3 327.9 448.6 283.1 459.7 274" fill="none" pointer-events="visible" stroke="rgb(221,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="350.6 123.9 368.9 85.3 356 74.3 337.6 119.5 350.6 123.9" fill="none" pointer-events="visible" stroke="rgb(147,110,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="294.4 204.3 311.1 171.6 297.9 209.1 280.8 221.9 294.4 204.3" fill="none" pointer-events="visible" stroke="rgb(80,127,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="417.8 143.5 435.5 183.1 425.2 158 407.1 104.7 417.8 143.5" fill="none" pointer-events="visible" stroke="rgb(175,126,113)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="399.4 119.7 417.8 143.5 407.1 104.7 388.1 76.8 399.4 119.7" fill="none" pointer-events="visible" stroke="rgb(167,108,142)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="442.6 219.2 459.7 274 448.6 283.1 431.3 221.4 442.6 219.2" fill="none" pointer-events="visible" stroke="rgb(130,94,152)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="280.8 221.9 297.9 209.1 284.2 239.7 266.5 234.1 280.8 221.9" fill="none" pointer-events="visible" stroke="rgb(77,101,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="249.8 238 266.5 234.1 251.5 242 234.3 239.1 249.8 238" fill="none" pointer-events="visible" stroke="rgb(100,98,162)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="218.7 251 234.3 239.1 218.5 244.6 202.9 257.3 218.7 251" fill="none" pointer-events="visible" stroke="rgb(117,96,156)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="448.6 283.1 466.3 327.9 455.4 334.5 437.1 293.2 448.6 283.1" fill="none" pointer-events="visible" stroke="rgb(221,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="337.6 119.5 356 74.3 342.5 97.8 324.4 137.3 337.6 119.5" fill="none" pointer-events="visible" stroke="rgb(147,110,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="425.2 158 442.6 219.2 431.3 221.4 413.5 152.6 425.2 158" fill="none" pointer-events="visible" stroke="rgb(94,160,141)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="431.3 221.4 448.6 283.1 437.1 293.2 419.1 236.6 431.3 221.4" fill="none" pointer-events="visible" stroke="rgb(130,94,152)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="266.5 234.1 284.2 239.7 270 261.2 251.5 242 266.5 234.1" fill="none" pointer-events="visible" stroke="rgb(99,98,162)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="324.4 137.3 342.5 97.8 329.1 147.9 311.1 171.6 324.4 137.3" fill="none" pointer-events="visible" stroke="rgb(209,105,106)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="311.1 171.6 329.1 147.9 315.9 205.7 297.9 209.1 311.1 171.6" fill="none" pointer-events="visible" stroke="rgb(103,165,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="368.9 85.3 388.1 76.8 375.4 62.8 356 74.3 368.9 85.3" fill="none" pointer-events="visible" stroke="rgb(125,131,167)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="297.9 209.1 315.9 205.7 302.7 255.5 284.2 239.7 297.9 209.1" fill="none" pointer-events="visible" stroke="rgb(70,105,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="234.3 239.1 251.5 242 236 251.2 218.5 244.6 234.3 239.1" fill="none" pointer-events="visible" stroke="rgb(92,99,164)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="437.1 293.2 455.4 334.5 444.5 334.4 425.2 303.8 437.1 293.2" fill="none" pointer-events="visible" stroke="rgb(221,158,63)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="284.2 239.7 302.7 255.5 289 291.5 270 261.2 284.2 239.7" fill="none" pointer-events="visible" stroke="rgb(127,95,153)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="407.1 104.7 425.2 158 413.5 152.6 394.9 93 407.1 104.7" fill="none" pointer-events="visible" stroke="rgb(178,107,132)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="302.7 255.5 321.5 278 308.1 323.2 289 291.5 302.7 255.5" fill="none" pointer-events="visible" stroke="rgb(169,106,126)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="315.9 205.7 334.7 216.7 321.5 278 302.7 255.5 315.9 205.7" fill="none" pointer-events="visible" stroke="rgb(78,101,169)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="388.1 76.8 407.1 104.7 394.9 93 375.4 62.8 388.1 76.8" fill="none" pointer-events="visible" stroke="rgb(124,127,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="419.1 236.6 437.1 293.2 425.2 303.8 406.2 262.5 419.1 236.6" fill="none" pointer-events="visible" stroke="rgb(145,92,147)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="413.5 152.6 431.3 221.4 419.1 236.6 400.6 173.4 413.5 152.6" fill="none" pointer-events="visible" stroke="rgb(94,160,141)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="321.5 278 340.6 300.4 327.1 346.5 308.1 323.2 321.5 278" fill="none" pointer-events="visible" stroke="rgb(207,144,80)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="251.5 242 270 261.2 255 277.5 236 251.2 251.5 242" fill="none" pointer-events="visible" stroke="rgb(110,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="289 291.5 308.1 323.2 294.2 351.6 274.7 315.2 289 291.5" fill="none" pointer-events="visible" stroke="rgb(218,155,67)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="270 261.2 289 291.5 274.7 315.2 255 277.5 270 261.2" fill="none" pointer-events="visible" stroke="rgb(161,98,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="308.1 323.2 327.1 346.5 313.3 375.4 294.2 351.6 308.1 323.2" fill="none" pointer-events="visible" stroke="rgb(122,143,98)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="329.1 147.9 348.1 147.6 334.7 216.7 315.9 205.7 329.1 147.9" fill="none" pointer-events="visible" stroke="rgb(135,148,125)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="334.7 216.7 354 239.7 340.6 300.4 321.5 278 334.7 216.7" fill="none" pointer-events="visible" stroke="rgb(110,97,159)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="356 74.3 375.4 62.8 361.8 89.2 342.5 97.8 356 74.3" fill="none" pointer-events="visible" stroke="rgb(125,131,167)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="340.6 300.4 359.8 316.4 346.2 355 327.1 346.5 340.6 300.4" fill="none" pointer-events="visible" stroke="rgb(222,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="354 239.7 373.4 267.6 359.8 316.4 340.6 300.4 354 239.7" fill="none" pointer-events="visible" stroke="rgb(147,92,146)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="400.6 173.4 419.1 236.6 406.2 262.5 387.1 215.8 400.6 173.4" fill="none" pointer-events="visible" stroke="rgb(80,128,158)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="342.5 97.8 361.8 89.2 348.1 147.6 329.1 147.9 342.5 97.8" fill="none" pointer-events="visible" stroke="rgb(151,110,155)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="327.1 346.5 346.2 355 332.3 380.3 313.3 375.4 327.1 346.5" fill="none" pointer-events="visible" stroke="rgb(78,134,116)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="406.2 262.5 425.2 303.8 412.8 314.1 392.9 293.4 406.2 262.5" fill="none" pointer-events="visible" stroke="rgb(166,103,130)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="425.2 303.8 444.5 334.4 433.1 329.3 412.8 314.1 425.2 303.8" fill="none" pointer-events="visible" stroke="rgb(207,144,80)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="387.1 215.8 406.2 262.5 392.9 293.4 373.4 267.6 387.1 215.8" fill="none" pointer-events="visible" stroke="rgb(103,98,161)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="394.9 93 413.5 152.6 400.6 173.4 381.5 118.2 394.9 93" fill="none" pointer-events="visible" stroke="rgb(178,107,132)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="348.1 147.6 367.7 173.3 354 239.7 334.7 216.7 348.1 147.6" fill="none" pointer-events="visible" stroke="rgb(105,164,135)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="373.4 267.6 392.9 293.4 379.5 323.4 359.8 316.4 373.4 267.6" fill="none" pointer-events="visible" stroke="rgb(173,110,121)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="367.7 173.3 387.1 215.8 373.4 267.6 354 239.7 367.7 173.3" fill="none" pointer-events="visible" stroke="rgb(81,129,158)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="375.4 62.8 394.9 93 381.5 118.2 361.8 89.2 375.4 62.8" fill="none" pointer-events="visible" stroke="rgb(124,127,170)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="359.8 316.4 379.5 323.4 365.9 348.5 346.2 355 359.8 316.4" fill="none" pointer-events="visible" stroke="rgb(226,163,58)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="381.5 118.2 400.6 173.4 387.1 215.8 367.7 173.3 381.5 118.2" fill="none" pointer-events="visible" stroke="rgb(175,126,113)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="361.8 89.2 381.5 118.2 367.7 173.3 348.1 147.6 361.8 89.2" fill="none" pointer-events="visible" stroke="rgb(167,108,142)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="392.9 293.4 412.8 314.1 399.9 323.7 379.5 323.4 392.9 293.4" fill="none" pointer-events="visible" stroke="rgb(186,123,106)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="346.2 355 365.9 348.5 351.9 367.4 332.3 380.3 346.2 355" fill="none" pointer-events="visible" stroke="rgb(137,146,92)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="412.8 314.1 433.1 329.3 421.1 323 399.9 323.7 412.8 314.1" fill="none" pointer-events="visible" stroke="rgb(188,125,103)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="379.5 323.4 399.9 323.7 386.6 333.4 365.9 348.5 379.5 323.4" fill="none" pointer-events="visible" stroke="rgb(202,139,87)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="365.9 348.5 386.6 333.4 372.6 344.4 351.9 367.4 365.9 348.5" fill="none" pointer-events="visible" stroke="rgb(211,148,75)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="399.9 323.7 421.1 323 408.3 319.9 386.6 333.4 399.9 323.7" fill="none" pointer-events="visible" stroke="rgb(170,107,124)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<polyline points="386.6 333.4 408.3 319.9 394.6 324.4 372.6 344.4 386.6 333.4" fill="none" pointer-events="visible" stroke="rgb(158,95,139)" stroke-width="0.9" stroke-linejoin="round" class="zr95-cls-1076"></polyline>
+<path d="M177.2 315.7L392.8 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr95-cls-1077"></path>
+<path d="M177.2 315.7L175.2 320.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M276.6 359.3L274.6 363.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M392.8 410.3L390.8 414.8" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M524.3 283L392.8 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr95-cls-1077"></path>
+<path d="M524.3 283L527.8 286.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M465.6 339.8L469.1 343.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M392.8 410.3L396.3 413.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M177.2 315.7L153.4 69.4" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr95-cls-1077"></path>
+<path d="M177.2 315.7L172.2 316.2" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M166.1 200.2L161.1 200.7" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M153.4 69.4L148.5 69.8" fill="none" pointer-events="visible" stroke="#64748b" class="zr95-cls-1077"></path>
+<path d="M0 0l287.6 0l0 32.7l-287.6 0Z" transform="translate(236.2045 12)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 27.233986928104574px Arial" xml:space="preserve" y="16.340392156862745" transform="translate(236.2045 12)" fill="#172033">网格曲面图 · 示例数据</text>
+<path d="M0 0l448.2 0l0 17l-448.2 0Z" transform="translate(155.8818 474.0428)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 14.131032679738563px Arial" xml:space="preserve" y="8.478619607843138" transform="translate(155.8818 474.0428)" fill="#64748b">透视投影 · 方位 35° / 仰角 25° · 144 个完整相邻网格，缺格不补值</text>
+<path d="M0 0l16.2 0l0 21.8l-16.2 0Z" transform="translate(161.066 324.979)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(161.066 324.979)" fill="#475569">-3</text>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(263.4604 368.5957)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(263.4604 368.5957)" fill="#475569">0</text>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(379.632 419.5735)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(379.632 419.5735)" fill="#475569">3</text>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(252.9127 409.9617)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(252.9127 409.9617)" fill="#172033">X</text>
+<path d="M0 0l16.2 0l0 21.8l-16.2 0Z" transform="translate(538.2481 288.3867)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(538.2481 288.3867)" fill="#475569">-3</text>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(479.5729 345.1594)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(479.5729 345.1594)" fill="#475569">0</text>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(406.7554 415.6158)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(406.7554 415.6158)" fill="#475569">3</text>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(495.1717 381.3333)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(495.1717 381.3333)" fill="#172033">Y</text>
+<path d="M0 0l51.8 0l0 21.8l-51.8 0Z" transform="translate(92.7908 309.7388)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(92.7908 309.7388)" fill="#475569">-0.692</text>
+<path d="M0 0l45.8 0l0 21.8l-45.8 0Z" transform="translate(100.3003 193.0378)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(100.3003 193.0378)" fill="#475569">0.393</text>
+<path d="M0 0l35.6 0l0 21.8l-35.6 0Z" transform="translate(97.847 62.1991)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(97.847 62.1991)" fill="#475569">1.48</text>
+<path d="M0 0l12.6 0l0 24.8l-12.6 0Z" transform="translate(63.6396 191.3728)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(63.6396 191.3728)" fill="#172033">Z</text>
+<path d="M661 80.8l12 0l0 200l-12 0Z" fill="url(#zr95-g0)" stroke="#94a3b8" stroke-width="0.6" class="zr95-cls-1077"></path>
+<path d="M0 0l10.2 0l0 20l-10.2 0Z" transform="translate(656.9705 57.1199)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(656.9705 57.1199)" fill="#475569">Z</text>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 72.4472)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 72.4472)" fill="#475569">1.4785</text>
+<path d="M0 0l60.6 0l0 20l-60.6 0Z" transform="translate(678.9705 122.4472)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 122.4472)" fill="#475569">0.93585</text>
+<path d="M0 0l60.6 0l0 20l-60.6 0Z" transform="translate(678.9705 172.4472)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 172.4472)" fill="#475569">0.39324</text>
+<path d="M0 0l66.1 0l0 20l-66.1 0Z" transform="translate(678.9705 222.4472)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 222.4472)" fill="#475569">-0.14936</text>
+<path d="M0 0l66.1 0l0 20l-66.1 0Z" transform="translate(678.9705 272.4472)" fill="none" pointer-events="visible" class="zr95-cls-1077"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 272.4472)" fill="#475569">-0.69197</text>
+<defs >
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr95-g0">
+<stop offset="0%" stop-color="rgb(127,147,157)"></stop>
+<stop offset="6.25%" stop-color="rgb(125,132,167)"></stop>
+<stop offset="12.5%" stop-color="rgb(123,116,177)"></stop>
+<stop offset="18.75%" stop-color="rgb(151,110,155)"></stop>
+<stop offset="25%" stop-color="rgb(193,106,120)"></stop>
+<stop offset="31.25%" stop-color="rgb(194,116,107)"></stop>
+<stop offset="37.5%" stop-color="rgb(142,144,123)"></stop>
+<stop offset="43.75%" stop-color="rgb(96,164,139)"></stop>
+<stop offset="50%" stop-color="rgb(84,135,155)"></stop>
+<stop offset="56.25%" stop-color="rgb(71,106,170)"></stop>
+<stop offset="62.5%" stop-color="rgb(101,98,162)"></stop>
+<stop offset="68.75%" stop-color="rgb(138,93,149)"></stop>
+<stop offset="75%" stop-color="rgb(172,109,122)"></stop>
+<stop offset="81.25%" stop-color="rgb(204,141,84)"></stop>
+<stop offset="87.5%" stop-color="rgb(201,159,66)"></stop>
+<stop offset="93.75%" stop-color="rgb(111,140,103)"></stop>
+<stop offset="100%" stop-color="rgb(20,122,139)"></stop>
+</linearGradient>
+</defs>
+<style ><![CDATA[
+.zr95-cls-1076:hover {
+cursor:pointer;
+}
+.zr95-cls-1077:hover {
+pointer-events:none;
+}
+
+]]>
+
+</style>
+</svg>

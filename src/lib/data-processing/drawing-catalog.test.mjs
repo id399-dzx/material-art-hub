@@ -5,6 +5,7 @@ import { DRAWING_TEMPLATES, DRAWING_TYPES, drawingTemplateForChart, panelTemplat
 import { PAPER_FIGURES } from './paper-figures/catalog.ts';
 import { CHART_TEMPLATES, parseTemplateTable } from './templates.ts';
 import { suggestDrawingMapping, buildDrawingData } from './drawing-data.ts';
+import { suggestL1502Mapping, buildL1502Data } from './l1502-data.ts';
 import { renderDrawingPreview } from '../../../scripts/drawing-preview-options.mjs';
 
 const structure = template => template.chartId === 'error-bar'
@@ -12,14 +13,15 @@ const structure = template => template.chartId === 'error-bar'
     : template.chartId === 'trend' && template.paper?.region.kind === 'area' ? 'stacked-area' : template.chartId;
 
 test('library keeps distinct paper data structures even when they share an engine', () => {
-    assert.equal(DRAWING_TEMPLATES.length, 43);
-    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 43);
-    assert.equal(DRAWING_TYPES.length, 10);
+    assert.equal(DRAWING_TEMPLATES.length, 182);
+    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 182);
+    assert.equal(DRAWING_TYPES.length, 14);
     const paper = DRAWING_TEMPLATES.filter(t => t.paper);
     assert.equal(paper.length, 18);
     assert.equal(new Set(paper.map(t => t.variant)).size, 18);
-    assert.equal(DRAWING_TEMPLATES.filter(t => !t.paper && !t.electrochemical).length, 17);
+    assert.equal(DRAWING_TEMPLATES.filter(t => !t.paper && !t.electrochemical && !t.l1502).length, 17);
     assert.equal(DRAWING_TEMPLATES.filter(t => t.electrochemical).length, 8);
+    assert.equal(DRAWING_TEMPLATES.filter(t => t.l1502).length, 139);
     // A density heatmap, a sparse attention matrix and a frequency matrix are not interchangeable.
     assert.equal(paper.filter(t => t.chartId === 'heatmap').length, 3);
     assert.ok(paper.some(t => t.variant === 'stacked-area' && t.chartId === 'line'));
@@ -92,9 +94,26 @@ test('every gallery preview is a complete chart from the same engine with no ras
         const saved = readFileSync(path, 'utf8');
         assert.ok(saved.includes('示例数据'), template.id);
         assert.ok(!/<image\b|\/paper-panels\//.test(saved), template.id);
-        if (template.chartId === 'heatmap' && !template.variant) assert.ok(saved.includes('指标 A'), template.id);
+        if (template.chartId === 'heatmap' && !template.variant && !template.l1502) assert.ok(saved.includes('指标 A'), template.id);
         if (template.chartId === 'violin') assert.ok(saved.includes('n='), template.id);
     }
+});
+
+test('every L1502 preset binds and preserves demo data through its dedicated data engine', () => {
+    const failures = [];
+    for (const template of DRAWING_TEMPLATES.filter(item => item.l1502)) {
+        const table = parseTemplateTable(template.demo);
+        const mapping = suggestL1502Mapping(table, template.l1502);
+        const result = buildL1502Data(table, mapping, template.l1502);
+        if (result.error) { failures.push(`${template.id}: ${result.error}`); continue; }
+        assert.ok(result.data, template.id);
+        assert.equal(result.data.skipped, 0, template.id);
+        assert.deepEqual(result.data.table.rows, table.rows, template.id);
+        if (template.l1502.kind === 'heatmap') assert.equal(result.data.matrix.cells.length, table.rows.length * mapping.ys.length, template.id);
+        else if (template.l1502.kind === 'network') assert.equal(result.data.edges.length, table.rows.length, template.id);
+        else assert.equal(result.data.points.length, table.rows.length * mapping.ys.length, template.id);
+    }
+    assert.deepEqual(failures, []);
 });
 
 test('retained representatives accept new names, fewer groups, and new ranges', () => {

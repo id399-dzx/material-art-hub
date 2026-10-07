@@ -1,0 +1,76 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>带时间刻度的图; independently rendered demonstration data; L1502 issue 116; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,71.9276,231.383)" fill="#74808b">Y</text>
+<path d="M118.5 398.8L118.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr158-cls-2691"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(418.9638 444.766)" fill="#74808b">X</text>
+<path d="M117.9 399.5L720 399.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr158-cls-2691"></path>
+<path d="M117.9 399.5L112.9 399.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 343.5L112.9 343.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 287.5L112.9 287.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 231.5L112.9 231.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 175.5L112.9 175.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 120.5L112.9 120.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M117.9 64.5L112.9 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M195.5 398.8L195.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M287.5 398.8L287.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M380.5 398.8L380.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M473.5 398.8L473.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M565.5 398.8L565.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<path d="M658.5 398.8L658.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr158-cls-2691"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 398.766)" fill="#54555a">1.5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 342.9717)" fill="#54555a">1.8</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 287.1773)" fill="#54555a">2.1</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 231.383)" fill="#54555a">2.4</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 175.5887)" fill="#54555a">2.7</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 119.7943)" fill="#54555a">3</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(109.9276 64)" fill="#54555a">3.3</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(195.1164 406.766)" fill="#54555a">3</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(287.7429 406.766)" fill="#54555a">5</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(380.3694 406.766)" fill="#54555a">7</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(472.9959 406.766)" fill="#54555a">9</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(565.6225 406.766)" fill="#54555a">11</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: normal normal 24.233986928104574px Arial" y="12.116993464052287" transform="translate(658.249 406.766)" fill="#54555a">13</text>
+<g clip-path="url(#zr158-c0)">
+<path d="M117.9 132.2L164.2 99.5L210.6 77.1L256.9 65.9L303.2 66.2L349.5 77.7L395.8 99.4L442.1 129.5L488.4 165.8L534.7 205.7L581.1 246.4L627.4 285.1L673.7 318.8L720 345.3" fill="none" pointer-events="visible" stroke="#147a8b" stroke-width="2" stroke-linejoin="bevel" class="zr158-cls-2693"></path>
+</g>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,117.9276,132.1528)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,164.2408,99.5429)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,210.5541,77.0968)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,256.8674,65.8598)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,303.1806,66.189)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,349.4939,77.7124)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,395.8072,99.3699)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,442.1204,129.4653)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,488.4337,165.7819)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,534.7469,205.7158)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,581.0602,246.4345)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,627.3735,285.0627)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,673.6867,318.8499)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(2.5,0,0,2.5,720,345.3485)" fill="#147a8b" stroke="#fff" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr158-cls-2694"></path>
+<path d="M-182.3 -5l364.6 0l0 38.2l-364.6 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr158-cls-2691"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">带时间刻度的图 · 示例数据</text>
+<defs >
+<clipPath id="zr158-c0">
+<path d="M116 63l606 0l0 336.8l-606 0Z" fill="#000" class="zr158-cls-2692"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr158-cls-2691:hover {
+pointer-events:none;
+}
+.zr158-cls-2692:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr158-cls-2693:hover {
+cursor:pointer;
+}
+.zr158-cls-2694:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+
+]]>
+
+</style>
+</svg>

@@ -1,0 +1,54 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>不等宽柱状图; independently rendered demonstration data; L1502 issue 91; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l603.2 0l0 27.1l-603.2 0Z" transform="translate(78.396 466.8745)" fill="none" pointer-events="visible" class="zr133-cls-2378"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(78.396 466.8745)" fill="#505763">每个矩形：左边界 X，宽度 Size，高度 Y；未按类别平均宽度</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,65.1421,219.8203)" fill="#74808b">Y</text>
+<path d="M111.5 375.6L111.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr133-cls-2379"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(415.571 421.6405)" fill="#74808b">X</text>
+<path d="M111.1 375.5L720 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr133-cls-2379"></path>
+<path d="M111.1 375.5L106.1 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M111.1 297.5L106.1 297.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M111.1 220.5L106.1 220.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M111.1 142.5L106.1 142.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M111.1 64.5L106.1 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M111.5 375.6L111.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M233.5 375.6L233.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M354.5 375.6L354.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M476.5 375.6L476.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M598.5 375.6L598.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<path d="M720.5 375.6L720.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr133-cls-2379"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 375.6405)" fill="#54555a">0</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 297.7304)" fill="#54555a">5</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 219.8203)" fill="#54555a">10</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 141.9101)" fill="#54555a">15</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 64)" fill="#54555a">20</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(111.1421 383.6405)" fill="#54555a">0</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(232.9137 383.6405)" fill="#54555a">2</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(354.6852 383.6405)" fill="#54555a">4</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(476.4568 383.6405)" fill="#54555a">6</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(598.2284 383.6405)" fill="#54555a">8</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(720 383.6405)" fill="#54555a">10</text>
+<path d="M111.1 251l36.5 0l0 124.7l-36.5 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M159.9 188.7l73.1 0l0 187l-73.1 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M251.2 235.4l48.7 0l0 140.2l-48.7 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M324.2 110.7l103.5 0l0 264.9l-103.5 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M452.1 157.5l67 0l0 218.1l-67 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M543.4 64l121.8 0l0 311.6l-121.8 0Z" fill="#147a8b" fill-opacity="0.82" stroke="#fff" stroke-width="0.7" stroke-opacity="0.82" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr133-cls-2380"></path>
+<path d="M-168.2 -5l336.4 0l0 38.2l-336.4 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr133-cls-2379"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">不等宽柱状图 · 示例数据</text>
+<style ><![CDATA[
+.zr133-cls-2378:hover {
+cursor:pointer;
+}
+.zr133-cls-2379:hover {
+pointer-events:none;
+}
+.zr133-cls-2380:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+
+]]>
+
+</style>
+</svg>

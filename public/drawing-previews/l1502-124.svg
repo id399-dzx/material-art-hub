@@ -1,0 +1,268 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>三维气泡图; independently rendered demonstration data; L1502 issue 124; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#ffffff"></rect>
+<circle cx="378.6" cy="135.7" r="8.7" fill="rgb(192,117,107)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2800"></circle>
+<circle cx="356.6" cy="145.5" r="8.6" fill="rgb(169,130,115)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2801"></circle>
+<circle cx="307" cy="171.4" r="8.2" fill="rgb(98,168,137)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2802"></circle>
+<circle cx="320.4" cy="163.5" r="8.3" fill="rgb(122,155,130)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2803"></circle>
+<circle cx="332.8" cy="157" r="8.5" fill="rgb(145,142,122)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2804"></circle>
+<circle cx="389.7" cy="132.1" r="8.8" fill="rgb(216,104,100)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2805"></circle>
+<circle cx="282.8" cy="186" r="8.1" fill="rgb(92,155,144)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2806"></circle>
+<circle cx="317" cy="299.3" r="4" fill="rgb(20,122,139)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2807"></circle>
+<circle cx="404.2" cy="127.3" r="9" fill="rgb(197,106,116)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2808"></circle>
+<circle cx="426.6" cy="118.7" r="9.1" fill="rgb(178,107,132)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2809"></circle>
+<circle cx="257.6" cy="206.4" r="7.8" fill="rgb(81,128,158)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2810"></circle>
+<circle cx="263.9" cy="198.9" r="7.9" fill="rgb(86,142,151)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2811"></circle>
+<circle cx="315.3" cy="298.4" r="4.4" fill="rgb(61,130,122)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2812"></circle>
+<circle cx="245.4" cy="218.2" r="7.6" fill="rgb(75,115,165)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2813"></circle>
+<circle cx="441.6" cy="114.2" r="9.2" fill="rgb(160,109,148)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2814"></circle>
+<circle cx="307.1" cy="300.4" r="4.7" fill="rgb(103,139,106)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2815"></circle>
+<circle cx="225.3" cy="235.5" r="7.5" fill="rgb(69,102,172)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2816"></circle>
+<circle cx="447.8" cy="114.4" r="9.3" fill="rgb(141,110,164)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2817"></circle>
+<circle cx="218.3" cy="246.8" r="7.3" fill="rgb(86,100,166)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2818"></circle>
+<circle cx="221.5" cy="253.5" r="7.1" fill="rgb(103,98,161)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2819"></circle>
+<circle cx="286.6" cy="309.2" r="5" fill="rgb(144,147,89)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2820"></circle>
+<circle cx="214.3" cy="267" r="7" fill="rgb(120,95,155)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2821"></circle>
+<circle cx="460.1" cy="111.1" r="9.4" fill="rgb(122,112,180)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2822"></circle>
+<circle cx="269" cy="305.9" r="5.6" fill="rgb(227,164,56)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2823"></circle>
+<circle cx="273.1" cy="311.4" r="5.3" fill="rgb(186,156,73)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2824"></circle>
+<circle cx="475.5" cy="105.7" r="9.6" fill="rgb(123,119,175)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2825"></circle>
+<circle cx="254.1" cy="306.2" r="5.8" fill="rgb(212,149,74)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2826"></circle>
+<circle cx="227.3" cy="291.1" r="6.4" fill="rgb(169,106,126)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2827"></circle>
+<circle cx="215" cy="287.5" r="6.6" fill="rgb(154,91,144)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2828"></circle>
+<circle cx="205.7" cy="282.2" r="6.8" fill="rgb(137,93,150)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2829"></circle>
+<circle cx="227.3" cy="302.2" r="6.2" fill="rgb(183,120,109)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2830"></circle>
+<circle cx="233.1" cy="309.4" r="6" fill="rgb(198,135,91)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2831"></circle>
+<circle cx="479.4" cy="106.1" r="9.7" fill="rgb(124,126,171)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2832"></circle>
+<circle cx="477.7" cy="108.8" r="9.8" fill="rgb(125,133,166)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2833"></circle>
+<circle cx="483.7" cy="106.1" r="9.9" fill="rgb(126,140,162)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2834"></circle>
+<circle cx="487.3" cy="103.4" r="10" fill="rgb(127,147,157)" stroke="#ffffff" stroke-width="0.65" class="zr166-cls-2835"></circle>
+<path d="M193.9 323.5L391.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr166-cls-2836"></path>
+<path d="M193.9 323.5L191.9 328.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M285.1 363.5L283.1 368.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M391.6 410.3L389.6 414.8" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M512.2 293.6L391.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr166-cls-2836"></path>
+<path d="M512.2 293.6L515.7 297.2" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M458.4 345.6L461.9 349.2" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M391.6 410.3L395.1 413.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M193.9 323.5L172.1 97.6" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr166-cls-2836"></path>
+<path d="M193.9 323.5L188.9 324" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M183.7 217.6L178.7 218.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M172.1 97.6L167.1 98.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr166-cls-2836"></path>
+<path d="M0 0l287.6 0l0 32.7l-287.6 0Z" transform="translate(236.2045 12)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 27.233986928104574px Arial" xml:space="preserve" y="16.340392156862745" transform="translate(236.2045 12)" fill="#172033">三维气泡图 · 示例数据</text>
+<path d="M20 55.7l14 0l0 7l-14 0Z" fill="none" pointer-events="visible" stroke="#147a8b" stroke-width="1.8" class="zr166-cls-2836"></path>
+<path d="M0 0l77.4 0l0 24.8l-77.4 0Z" transform="translate(41 52.6808)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" xml:space="preserve" y="12.41512156862745" transform="translate(41 52.6808)" fill="#334155">Group A</text>
+<path d="M0 0l214.8 0l0 17l-214.8 0Z" transform="translate(272.6042 474.0428)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 14.131032679738563px Arial" xml:space="preserve" y="8.478619607843138" transform="translate(272.6042 474.0428)" fill="#64748b">透视投影 · 方位 35° / 仰角 25°</text>
+<path d="M0 0l41.6 0l0 21.8l-41.6 0Z" transform="translate(165.0268 332.8178)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(165.0268 332.8178)" fill="#475569">-1.77</text>
+<path d="M0 0l51.8 0l0 21.8l-51.8 0Z" transform="translate(251.0994 372.8201)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(251.0994 372.8201)" fill="#475569">-0.765</text>
+<path d="M0 0l35.6 0l0 21.8l-35.6 0Z" transform="translate(365.7291 419.5735)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(365.7291 419.5735)" fill="#475569">0.24</text>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(254.9097 426.9843)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(254.9097 426.9843)" fill="#172033">X</text>
+<path d="M0 0l51.8 0l0 21.8l-51.8 0Z" transform="translate(526.1666 298.9299)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(526.1666 298.9299)" fill="#475569">-0.786</text>
+<path d="M0 0l62 0l0 21.8l-62 0Z" transform="translate(472.3536 350.998)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(472.3536 350.998)" fill="#475569">-0.0109</text>
+<path d="M0 0l45.8 0l0 21.8l-45.8 0Z" transform="translate(414.4139 424.7557)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(414.4139 424.7557)" fill="#475569">0.764</text>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(519.52 418.6246)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(519.52 418.6246)" fill="#172033">Y</text>
+<path d="M0 0l45.8 0l0 21.8l-45.8 0Z" transform="translate(102.806 318.7994)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(102.806 318.7994)" fill="#475569">0.431</text>
+<path d="M0 0l35.6 0l0 21.8l-35.6 0Z" transform="translate(128.0769 210.4462)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(128.0769 210.4462)" fill="#475569">4.81</text>
+<path d="M0 0l25.4 0l0 21.8l-25.4 0Z" transform="translate(126.67 90.4498)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(126.67 90.4498)" fill="#475569">9.2</text>
+<path d="M0 0l12.6 0l0 24.8l-12.6 0Z" transform="translate(74.5845 210.066)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(74.5845 210.066)" fill="#172033">Z</text>
+<path d="M661 115.6l12 0l0 200l-12 0Z" fill="url(#zr166-g0)" stroke="#94a3b8" stroke-width="0.6" class="zr166-cls-2836"></path>
+<path d="M0 0l39.8 0l0 20l-39.8 0Z" transform="translate(656.9705 91.9502)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(656.9705 91.9502)" fill="#475569">Color</text>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 107.2774)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 107.2774)" fill="#475569">3.1818</text>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 157.2774)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 157.2774)" fill="#475569">2.3864</text>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 207.2774)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 207.2774)" fill="#475569">1.5909</text>
+<path d="M0 0l60.6 0l0 20l-60.6 0Z" transform="translate(678.9705 257.2774)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 257.2774)" fill="#475569">0.79546</text>
+<path d="M0 0l9.3 0l0 20l-9.3 0Z" transform="translate(678.9705 307.2774)" fill="none" pointer-events="visible" class="zr166-cls-2836"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 307.2774)" fill="#475569">0</text>
+<defs >
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr166-g0">
+<stop offset="0%" stop-color="rgb(127,147,157)"></stop>
+<stop offset="6.25%" stop-color="rgb(125,132,167)"></stop>
+<stop offset="12.5%" stop-color="rgb(123,116,177)"></stop>
+<stop offset="18.75%" stop-color="rgb(151,110,155)"></stop>
+<stop offset="25%" stop-color="rgb(193,106,120)"></stop>
+<stop offset="31.25%" stop-color="rgb(194,116,107)"></stop>
+<stop offset="37.5%" stop-color="rgb(142,144,123)"></stop>
+<stop offset="43.75%" stop-color="rgb(96,164,139)"></stop>
+<stop offset="50%" stop-color="rgb(84,135,155)"></stop>
+<stop offset="56.25%" stop-color="rgb(71,106,170)"></stop>
+<stop offset="62.5%" stop-color="rgb(101,98,162)"></stop>
+<stop offset="68.75%" stop-color="rgb(138,93,149)"></stop>
+<stop offset="75%" stop-color="rgb(172,109,122)"></stop>
+<stop offset="81.25%" stop-color="rgb(204,141,83)"></stop>
+<stop offset="87.5%" stop-color="rgb(201,159,66)"></stop>
+<stop offset="93.75%" stop-color="rgb(111,140,103)"></stop>
+<stop offset="100%" stop-color="rgb(20,122,139)"></stop>
+</linearGradient>
+</defs>
+<style ><![CDATA[
+.zr166-cls-2800:hover {
+cursor:pointer;
+fill:rgba(211,128,117,1);
+}
+.zr166-cls-2801:hover {
+cursor:pointer;
+fill:rgba(185,143,126,1);
+}
+.zr166-cls-2802:hover {
+cursor:pointer;
+fill:rgba(107,184,150,1);
+}
+.zr166-cls-2803:hover {
+cursor:pointer;
+fill:rgba(134,170,143,1);
+}
+.zr166-cls-2804:hover {
+cursor:pointer;
+fill:rgba(159,156,134,1);
+}
+.zr166-cls-2805:hover {
+cursor:pointer;
+fill:rgba(237,114,110,1);
+}
+.zr166-cls-2806:hover {
+cursor:pointer;
+fill:rgba(101,170,158,1);
+}
+.zr166-cls-2807:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+.zr166-cls-2808:hover {
+cursor:pointer;
+fill:rgba(216,116,127,1);
+}
+.zr166-cls-2809:hover {
+cursor:pointer;
+fill:rgba(195,117,145,1);
+}
+.zr166-cls-2810:hover {
+cursor:pointer;
+fill:rgba(89,140,173,1);
+}
+.zr166-cls-2811:hover {
+cursor:pointer;
+fill:rgba(94,156,166,1);
+}
+.zr166-cls-2812:hover {
+cursor:pointer;
+fill:rgba(67,143,134,1);
+}
+.zr166-cls-2813:hover {
+cursor:pointer;
+fill:rgba(82,126,181,1);
+}
+.zr166-cls-2814:hover {
+cursor:pointer;
+fill:rgba(176,119,162,1);
+}
+.zr166-cls-2815:hover {
+cursor:pointer;
+fill:rgba(113,152,116,1);
+}
+.zr166-cls-2816:hover {
+cursor:pointer;
+fill:rgba(75,112,189,1);
+}
+.zr166-cls-2817:hover {
+cursor:pointer;
+fill:rgba(155,121,180,1);
+}
+.zr166-cls-2818:hover {
+cursor:pointer;
+fill:rgba(94,110,182,1);
+}
+.zr166-cls-2819:hover {
+cursor:pointer;
+fill:rgba(113,107,177,1);
+}
+.zr166-cls-2820:hover {
+cursor:pointer;
+fill:rgba(158,161,97,1);
+}
+.zr166-cls-2821:hover {
+cursor:pointer;
+fill:rgba(132,104,170,1);
+}
+.zr166-cls-2822:hover {
+cursor:pointer;
+fill:rgba(134,123,198,1);
+}
+.zr166-cls-2823:hover {
+cursor:pointer;
+fill:rgba(249,180,61,1);
+}
+.zr166-cls-2824:hover {
+cursor:pointer;
+fill:rgba(204,171,80,1);
+}
+.zr166-cls-2825:hover {
+cursor:pointer;
+fill:rgba(135,130,192,1);
+}
+.zr166-cls-2826:hover {
+cursor:pointer;
+fill:rgba(233,163,81,1);
+}
+.zr166-cls-2827:hover {
+cursor:pointer;
+fill:rgba(185,116,138,1);
+}
+.zr166-cls-2828:hover {
+cursor:pointer;
+fill:rgba(169,100,158,1);
+}
+.zr166-cls-2829:hover {
+cursor:pointer;
+fill:rgba(150,102,165,1);
+}
+.zr166-cls-2830:hover {
+cursor:pointer;
+fill:rgba(201,132,119,1);
+}
+.zr166-cls-2831:hover {
+cursor:pointer;
+fill:rgba(217,148,100,1);
+}
+.zr166-cls-2832:hover {
+cursor:pointer;
+fill:rgba(136,138,188,1);
+}
+.zr166-cls-2833:hover {
+cursor:pointer;
+fill:rgba(137,146,182,1);
+}
+.zr166-cls-2834:hover {
+cursor:pointer;
+fill:rgba(138,154,178,1);
+}
+.zr166-cls-2835:hover {
+cursor:pointer;
+fill:rgba(139,161,172,1);
+}
+.zr166-cls-2836:hover {
+pointer-events:none;
+}
+
+]]>
+
+</style>
+</svg>

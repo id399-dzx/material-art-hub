@@ -3,14 +3,17 @@ import { PAPER_FIGURES, type FigureRegion } from './paper-figures/catalog.ts';
 import type { PaperChartVariant } from './drawing-spec.ts';
 import { ELECTROCHEMICAL_TEMPLATES } from './electrochemical-templates.ts';
 import type { ElectrochemicalChartSpec } from './electrochemistry.ts';
+import type { L1502Spec } from './l1502-spec.ts';
+import { L1502_TEMPLATES } from './l1502-catalog.ts';
 
-export const DRAWING_TYPES = ['电化学测试', '柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程'] as const;
+export const DRAWING_TYPES = ['电化学测试', '柱状图', '组成图', '折线图', '散点图', '热图', '分布图', '雷达图', '三维图', '网络与流程', '极坐标图', '等高线与场图', '文本图', '多图布局'] as const;
 export type DrawingType = typeof DRAWING_TYPES[number];
 export type DrawingTemplate = {
     id: string; chartId: TemplateId; name: string; english: string; category: DrawingType;
     description: string; requirement: string; tag: string; guide: string; xLabel: string; yLabel: string;
     demo: TableCell[][]; preview: string;
     electrochemical?: ElectrochemicalChartSpec;
+    l1502?: L1502Spec;
     variant?: PaperChartVariant;
     paper?: { figureId: string; regionId: string; project: string; figureName: string; source: string; region: FigureRegion };
 };
@@ -261,6 +264,7 @@ export const DRAWING_TEMPLATES: DrawingTemplate[] = [
         ...template, chartId: template.id, category: TYPES[template.id], preview: `/drawing-previews/${template.id}.svg`,
     })),
     ...paperTemplates,
+    ...L1502_TEMPLATES,
 ];
 
 /** Advisor and main-data import still use chart engine IDs, including replaced cards. */

@@ -17,6 +17,8 @@ import DataAdvisor from "./DataAdvisor";
 import { useContentAdmin, useContentCatalog } from "@/components/admin/ContentProvider";
 import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
+import L1502TemplateEditor from "./L1502TemplateEditor";
+import { validateL1502EditSnapshot, type L1502EditSnapshot } from "@/lib/data-processing/l1502-edit-snapshot";
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import type { ExportSettings } from "@/lib/data-processing/publication";
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
@@ -50,7 +52,7 @@ export function validateTemplateEditSnapshot(value: unknown): TemplateEditSnapsh
     if (!record(value) || value.kind !== "template" || value.version !== 1) fail("不支持的模板编辑快照版本。");
     const snapshot = value as Record<string, unknown>;
     const preset = DRAWING_TEMPLATES.find(item => item.id === snapshot.presetId);
-    if (!preset || snapshot.selected !== preset.chartId) fail("模板不存在或图形类型不匹配。");
+    if (!preset || preset.l1502 || snapshot.selected !== preset.chartId) fail("模板不存在或图形类型不匹配。");
     if (!record(snapshot.source)) fail("原始数据格式不完整。");
     const source = snapshot.source as Record<string, unknown>;
     if (!text(source.name, 1000) || !["demo", "file"].includes(source.kind as string) || !Array.isArray(source.sheets) || source.sheets.length < 1 || source.sheets.length > 100) fail("原始工作表格式无效。");
@@ -147,6 +149,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [compositionBusy, setCompositionBusy] = useState(false);
     const [compositionError, setCompositionError] = useState("");
     const [compositionAssetId, setCompositionAssetId] = useState<string | null>(null);
+    const [l1502Editor, setL1502Editor] = useState<{ id: string; key: number; open: boolean; snapshot?: L1502EditSnapshot; assetId?: string | null } | null>(null);
+    const l1502Cache = useRef(new Map<string, L1502EditSnapshot>());
     const [legendSelection, setLegendSelection] = useState<Record<string, boolean>[] | undefined>(undefined);
     const chartRef = useRef<ReactECharts>(null);
     const previewRef = useRef<HTMLDivElement>(null);
@@ -158,8 +162,10 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const groupedSamples = template.variant === "grouped-box";
     const pairedComparison = template.variant === "paired-correlation";
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
-    const catalog = templates.filter(item => sourceFilter === "全部来源" || (sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical));
-    const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
+    const catalog = templates.filter(item => sourceFilter === "全部来源" || (sourceFilter === "L1502 图例" ? !!item.l1502 : sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical && !item.l1502));
+    const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""} ${item.l1502?.folder ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
+    const availableTypes = DRAWING_TYPES.filter(type => catalog.some(item => item.category === type));
+    const l1502Template = l1502Editor && (templates.find(item => item.id === l1502Editor.id) ?? DRAWING_TEMPLATES.find(item => item.id === l1502Editor.id));
     const table = useMemo(() => parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader), [source, sheetIndex, hasHeader]);
     const drawingId = template.electrochemical?.kind === "cycle" && mapping.ys.length === 1 ? "line" : selected === "error-bar" && !showUncertainty ? template.paper?.region.kind === "horizontal" ? "horizontal-bar" : "grouped-bar" : selected;
     const boundResult = useMemo(() => buildDrawingData(table, mapping, drawingId, template.variant, errorInput, errorMeasure, panelChart), [table, mapping, drawingId, template.variant, errorInput, errorMeasure, panelChart]);
@@ -197,7 +203,10 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     }
 
     useEffect(() => {
-        if (active && new URLSearchParams(window.location.search).get("templates") === "electrochem") setCategory("电化学测试");
+        if (!active) return;
+        const source = new URLSearchParams(window.location.search).get("templates");
+        if (source === "electrochem") setCategory("电化学测试");
+        if (source === "l1502") { setSourceFilter("L1502 图例"); setCategory("全部"); }
     }, [active]);
 
     function chooseCategory(next: DrawingType | "全部") {
@@ -205,14 +214,19 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         if (next === "电化学测试" || sourceFilter === "电化学专栏") setSourceFilter("全部来源");
         const url = new URL(window.location.href);
         if (next === "电化学测试") url.searchParams.set("templates", "electrochem");
+        else if (sourceFilter === "L1502 图例") url.searchParams.set("templates", "l1502");
         else url.searchParams.delete("templates");
         window.history.replaceState(null, "", url);
     }
 
     function chooseSource(next: string) {
         if (next === "电化学专栏") chooseCategory("电化学测试");
-        else if (category === "电化学测试" && next !== "全部来源") chooseCategory("全部");
+        else setCategory("全部");
         setSourceFilter(next);
+        const url = new URL(window.location.href);
+        if (next === "L1502 图例") url.searchParams.set("templates", "l1502");
+        else if (next !== "电化学专栏") url.searchParams.delete("templates");
+        window.history.replaceState(null, "", url);
     }
 
     useEffect(() => {
@@ -258,6 +272,12 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     function chooseTemplate(preset: string) {
         const next = templates.find(item => item.id === preset);
         if (!next) return;
+        if (next.l1502) {
+            setEditorOpen(false);
+            setL1502Editor(current => current?.id === preset ? { ...current, open: true, assetId: null } : { id: preset, key: Date.now(), open: true, snapshot: l1502Cache.current.get(preset) });
+            return;
+        }
+        setL1502Editor(current => current ? { ...current, open: false } : null);
         setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
@@ -323,6 +343,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         requestAnimationFrame(() => document.getElementById("template-editor")?.closest(".template-dialog-content")?.scrollTo({ top: 0, behavior: "smooth" }));
     }
     useImperativeHandle(ref, () => ({ loadData(name, matrix, id, nextMapping) {
+        setL1502Editor(current => current ? { ...current, open: false } : null);
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
         setCompositionAssetId(null); setCompositionError("");
@@ -336,6 +357,13 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setYLabel(id === "histogram" ? "样本数" : String(matrix[0]?.[nextMapping.ys[0]] ?? next.yLabel));
     }, restoreCompositionAsset(asset) {
         if (asset.kind !== "template" || typeof asset.id !== "string" || !asset.id.trim() || asset.id.length > 200) throw new Error("无法恢复原图：组图资源不是可编辑的模板图。");
+        if (asset.editSnapshot && typeof asset.editSnapshot === "object" && "kind" in asset.editSnapshot && asset.editSnapshot.kind === "l1502") {
+            const saved = validateL1502EditSnapshot(asset.editSnapshot);
+            setEditorOpen(false);
+            setL1502Editor({ id: saved.presetId, key: Date.now(), open: true, snapshot: saved, assetId: asset.id });
+            return;
+        }
+        setL1502Editor(current => current ? { ...current, open: false } : null);
         const saved = validateTemplateEditSnapshot(asset.editSnapshot);
         setPresetId(saved.presetId); setSelected(saved.selected); setSource(saved.source);
         setSheetIndex(saved.sheetIndex); setHasHeader(saved.hasHeader); setMapping(saved.mapping);
@@ -387,14 +415,14 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
             <div id="data-templates" aria-hidden="true" />
             <div className="template-intro">
                 <div><h2 id="template-studio-title"><Layers3 size={19} /> 图式库</h2></div>
-                <div className="template-intro-note"><span><Sparkles size={14} /> {templates.length} 个独立图式 · 完整预览</span></div>
+                <div className="template-intro-note"><span><Sparkles size={14} /> {templates.length} 个数据模板 · 完整预览</span></div>
             </div>
             {isAdmin && <Link className="resource-button" href="/admin?section=templates">管理本板块</Link>}
             {catalogError && <p className="template-notice template-notice--error" role="alert">{catalogError}</p>}
             <div className="drawing-library-controls">
-            <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索图式、CV、阻抗或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
+            <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索图式、期号或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","L1502 图例","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
             <div className="template-catalog-toolbar">
-                <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...DRAWING_TYPES] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
+                <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...availableTypes] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
             <div className="template-catalog-meta" role="status"><span>找到 <strong>{filtered.length}</strong> 个模板</span><span>选图式 → 替换数据 → 导出图表</span></div>
             </div>
@@ -403,9 +431,9 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 if (!items.length) return null;
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
                     {kind === "电化学测试" ? <div className="electrochemical-column-heading"><span className="electrochemical-column-icon"><Zap size={22} /></span><div><span className="template-eyebrow">ELECTROCHEMISTRY / 专栏</span><h3>电化学测试图</h3><p>伏安 · 充放电 · 性能 · 阻抗谱，选择图式后替换实验数据。</p></div><span className="electrochemical-column-count">{items.length} 个模板</span></div> : category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
-                    <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${hasOpened && presetId === item.id ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={680} height={420} alt={`${item.name}完整图表预览`} /></div>
-                        <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{hasOpened && presetId === item.id ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
+                    <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : item.l1502 ? " template-card-art--l1502" : ` template-card-art--${item.id}`}`}><span className="template-card-number">{item.l1502 ? `第 ${item.l1502.issue} 期` : String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span><Image src={item.preview} width={760} height={500} alt={`${item.name}完整图表预览`} /></div>
+                        <div className="template-card-body"><span className="template-eyebrow">{item.english}</span><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.requirement}</small><span>{(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={15} /> 使用模板</>}</span></div></div>
                     </button>)}</div>
                 </section>;
             })}
@@ -488,7 +516,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
             </div>
             <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
             </TemplateEditorDialog>
-            <p className="template-bottom-note">按坐标、分组和图形结构去重；密度、注意力、分组箱线等独立图式分别保留。电化学按测试用途分类，小提琴全部保留。全部预览由绘图引擎完整生成，示例非真实实验结果。论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
+            {l1502Template?.l1502 && l1502Editor && <L1502TemplateEditor key={`${l1502Editor.id}-${l1502Editor.key}`} template={l1502Template} open={active && l1502Editor.open} initialSnapshot={l1502Editor.snapshot} assetId={l1502Editor.assetId} onClose={snapshot => { l1502Cache.current.set(snapshot.presetId, snapshot); setL1502Editor(current => current ? { ...current, open: false, snapshot } : null); }} onAddToComposition={onAddToComposition} />}
+            <p className="template-bottom-note">L1502 第 1–139 期按文件图式分类，同类型的不同样式分别保留。预览和示例数据由网页引擎独立生成，上传后使用你的数据重新绘图。原有论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
         </section>
     );
 }

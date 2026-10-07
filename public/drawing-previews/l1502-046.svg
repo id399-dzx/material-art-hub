@@ -1,0 +1,95 @@
+<svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>帕累托图; independently rendered demonstration data; L1502 issue 46; independent web implementation</desc>
+<rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
+<path d="M0 0l580.5 0l0 27.1l-580.5 0Z" transform="translate(89.7353 466.8745)" fill="none" pointer-events="visible" class="zr88-cls-1017"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(89.7353 466.8745)" fill="#505763">按实际数值降序排列；累计比例 = 累计数值 / 总值 × 100%</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,65.1421,219.8203)" fill="#74808b">Y</text>
+<path d="M111.5 375.6L111.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.616993464052287" transform="matrix(0,-1,1,0,717.2869,219.8203)" fill="#74808b">累计 (%)</text>
+<path d="M671.5 375.6L671.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(391.2145 415.6405)" fill="#74808b">X</text>
+<path d="M111.1 375.5L671.3 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr88-cls-1018"></path>
+<path d="M111.1 375.5L106.1 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.1 313.5L106.1 313.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.1 251.5L106.1 251.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.1 188.5L106.1 188.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.1 126.5L106.1 126.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.1 64.5L106.1 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 375.5L676.3 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 313.5L676.3 313.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 251.5L676.3 251.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 188.5L676.3 188.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 126.5L676.3 126.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.3 64.5L676.3 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M111.5 375.6L111.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M298.5 375.6L298.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M484.5 375.6L484.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<path d="M671.5 375.6L671.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 375.6405)" fill="#54555a">0</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 313.3124)" fill="#54555a">10</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 250.9843)" fill="#54555a">20</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 188.6562)" fill="#54555a">30</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 126.3281)" fill="#54555a">40</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(103.1421 64)" fill="#54555a">50</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 375.6405)" fill="#54555a">0</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 313.3124)" fill="#54555a">20</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 250.9843)" fill="#54555a">40</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 188.6562)" fill="#54555a">60</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 126.3281)" fill="#54555a">80</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(679.2869 64)" fill="#54555a">100</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(157.8208 383.6405)" fill="#54555a">Factor A</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(344.5357 383.6405)" fill="#54555a">Factor C</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(531.2507 383.6405)" fill="#54555a">Factor E</text>
+<path d="M125.6 375.6l64.4 0l0 -261.8l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<path d="M219 375.6l64.4 0l0 -193.2l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<path d="M312.3 375.6l64.4 0l0 -149.6l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<path d="M405.7 375.6l64.4 0l0 -106l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<path d="M499 375.6l64.4 0l0 -68.6l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<path d="M592.4 375.6l64.4 0l0 -31.2l-64.4 0Z" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr88-cls-1019"></path>
+<g clip-path="url(#zr88-c0)">
+<path d="M157.8 275L251.2 200.6L344.5 143.1L437.9 102.4L531.3 76L624.6 64" fill="none" pointer-events="visible" stroke="#e3a438" stroke-width="2" stroke-linejoin="bevel" class="zr88-cls-1017"></path>
+</g>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,157.8208,274.9567)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,251.1783,200.6424)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,344.5357,143.1087)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,437.8932,102.3558)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,531.2507,75.9862)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M1 0A1 1 0 1 1 1 -0.1A1 1 0 0 1 1 0" transform="matrix(3,0,0,3,624.6082,64)" fill="#fff" stroke="#e3a438" stroke-width="0.6666666666666666" ecmeta_series_index="1" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr88-cls-1021"></path>
+<path d="M-5 -5l255.6 0l0 35.2l-255.6 0Z" transform="translate(257.181 48)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr88-cls-1018"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(257.181 53.617)" fill="#147a8b" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:25.233986928104574px;font-family:Arial;" x="30" y="7" transform="translate(257.181 53.617)" fill="#54555a">数值</text>
+<path d="M0 -5.6l80.5 0l0 25.2l-80.5 0Z" transform="translate(257.181 53.617)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr88-cls-1018"></path>
+<path d="M0 7L25 7" transform="translate(346.649 53.617)" fill="#000" stroke="#e3a438" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr88-cls-1018"></path>
+<path d="M18.1 7A5.6 5.6 0 1 1 18.1 6.4A5.6 5.6 0 0 1 18.1 7" transform="translate(346.649 53.617)" fill="#fff" stroke="#e3a438" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:25.233986928104574px;font-family:Arial;" x="30" y="7" transform="translate(346.649 53.617)" fill="#54555a">累计百分比</text>
+<path d="M-1 -5.6l157.2 0l0 25.2l-157.2 0Z" transform="translate(346.649 53.617)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr88-cls-1018"></path>
+<path d="M-140 -5l279.9 0l0 38.2l-279.9 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr88-cls-1018"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">帕累托图 · 示例数据</text>
+<defs >
+<clipPath id="zr88-c0">
+<path d="M110 63l564 0l0 313.6l-564 0Z" fill="#000" class="zr88-cls-1020"></path>
+</clipPath>
+</defs>
+<style ><![CDATA[
+.zr88-cls-1017:hover {
+cursor:pointer;
+}
+.zr88-cls-1018:hover {
+pointer-events:none;
+}
+.zr88-cls-1019:hover {
+cursor:pointer;
+fill:rgba(22,134,152,1);
+}
+.zr88-cls-1020:hover {
+cursor:pointer;
+fill:rgba(0,0,0,1);
+}
+.zr88-cls-1021:hover {
+cursor:pointer;
+fill:rgba(255,255,255,1);
+}
+
+]]>
+
+</style>
+</svg>

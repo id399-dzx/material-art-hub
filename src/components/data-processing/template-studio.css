@@ -13,6 +13,7 @@
 .l1502-edit-panel[hidden], .l1502-code-panel[hidden] { display: none; }
 .template-editor-dialog .l1502-editor { height: 100%; min-height: 0; grid-template-columns: minmax(300px, 330px) minmax(0, 1fr); gap: 18px; align-items: stretch; }
 .template-editor-dialog .l1502-editor > .template-glass { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 20px; border-radius: 18px; scrollbar-width: thin; scrollbar-color: #d2c8df transparent; }
+.template-editor-dialog .l1502-editor > .template-preview-panel { display: flex; flex-direction: column; overflow: hidden; }
 .l1502-editor .template-input-panel { display: block; }
 .l1502-editor .template-section-heading { margin-bottom: 16px; }
 .l1502-editor .template-section-heading h3 { color: #332c3b; font-size: 15px; }
@@ -61,10 +62,9 @@
 .l1502-editor .template-preview-controls button { padding: 7px 12px; font-size: 11px; }
 .l1502-editor .template-preview-controls button[aria-pressed="true"] { background: #eee8f6; border-color: #d8cbe9; color: #6c5684; }
 .l1502-editor .template-preview-controls > span { color: #a093ad; font-size: 10px; }
-.l1502-editor .template-preview-controls .l1502-parameters-jump { display: none; }
-.l1502-chart-wrap { display: flex; justify-content: safe center; align-items: flex-start; overflow: auto; padding: 8px; border: 1px solid #eae4f0; border-radius: 12px; background: #fff; box-shadow: 0 5px 16px #47335706; }
+.l1502-chart-wrap { display: flex; flex: 1; min-height: 0; justify-content: safe center; align-items: flex-start; overflow: auto; padding: 8px; border: 1px solid #eae4f0; border-radius: 12px; background: #fff; box-shadow: 0 5px 16px #47335706; }
 .l1502-chart-wrap > div { flex: none; }
-.l1502-editor .template-chart-empty { display: grid; min-height: 320px; place-items: center; color: #93869e; font-size: 12px; }
+.l1502-editor .template-chart-empty { display: grid; min-height: 0; place-items: center; color: #93869e; font-size: 12px; }
 .l1502-canvas-note { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 11px 2px 17px; color: #9a8ea5; font-size: 10px; }
 .l1502-export-section { border: 1px solid #e9e2ef; border-radius: 12px; background: #faf8fd88; }
 .l1502-export-section > summary { display: flex; align-items: center; gap: 7px; padding: 13px 15px; list-style: none; color: #68547d; font-size: 12px; font-weight: 600; cursor: pointer; }
@@ -74,7 +74,7 @@
 .l1502-export-section[open] > summary::after { content: "−"; }
 .l1502-editor .publication-export { margin: 0; padding: 0 15px 15px; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; }
 .l1502-editor .publication-export > .research-tool-heading { display: none; }
-.l1502-editor .publication-fields { margin: 4px 0 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.l1502-editor .publication-fields { margin: 4px 0 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .l1502-editor .publication-fields label { color: #847290; font-size: 10px; }
 .l1502-editor .publication-fields output { flex-wrap: wrap; height: auto; min-height: 38px; gap: 1px; }
 .l1502-editor .publication-actions { margin-top: 13px; }
@@ -97,26 +97,41 @@
     .l1502-editor .template-preview-controls button { padding: 6px 12px; }
 }
 @media (max-width: 900px) {
-    .template-dialog-content.l1502-dialog-content { display: block; overflow-y: auto; }
-    .l1502-dialog-tabs { position: sticky; top: 0; z-index: 2; background: #f8f5fdeb; backdrop-filter: blur(16px); }
-    .l1502-edit-panel { padding: 16px; }
-    .template-editor-dialog .l1502-editor { height: auto; grid-template-columns: 1fr; }
-    .template-editor-dialog .l1502-editor > .template-glass { overflow: visible; }
+    .l1502-dialog-tabs { padding: 8px 16px; background: #f8f5fdeb; }
+    .l1502-dialog-tabs > button { min-height: 32px; padding: 6px 12px; }
+    .l1502-edit-panel { padding: 12px; }
+    .template-editor-dialog .l1502-editor { grid-template-columns: 1fr; grid-template-rows: minmax(0, 46%) minmax(0, 1fr); gap: 10px; }
+    .template-editor-dialog .l1502-editor > .template-glass { padding: 12px; }
     .l1502-editor .template-preview-panel { order: 0; }
-    .l1502-editor .template-input-panel { order: 1; scroll-margin-top: 72px; }
-    .l1502-editor .template-preview-controls .l1502-parameters-jump { display: inline-flex; align-items: center; gap: 5px; }
-    .l1502-code-panel { overflow: visible; }
+    .l1502-editor .template-input-panel { order: 1; }
+    .l1502-preview-heading { margin-bottom: 7px; gap: 8px; }
+    .l1502-preview-heading .template-eyebrow { display: none; }
+    .l1502-preview-heading h3 { margin: 0; font-size: 15px; }
+    .l1502-editor .template-preview-controls { flex: none; margin-bottom: 8px; gap: 6px; }
+    .l1502-editor .template-preview-controls button { padding: 4px 9px; font-size: 10px; }
+    .l1502-editor .template-preview-controls > span { font-size: 9px; }
+    .l1502-canvas-note { flex: none; padding: 7px 0 0; font-size: 9px; }
+    .l1502-canvas-note > span:last-child { display: none; }
 }
 @media (max-width: 620px) {
-    .l1502-dialog-tabs { padding: 10px 14px; gap: 4px; }
-    .l1502-dialog-tabs > button { padding: 8px 12px; font-size: 11px; }
+    .l1502-dialog-tabs { padding: 7px 14px; gap: 4px; }
+    .l1502-dialog-tabs > button { padding: 6px 12px; font-size: 11px; }
     .l1502-dialog-tabs > span { display: none; }
     .l1502-edit-panel { padding: 12px; }
     .l1502-code-panel { padding: 14px 12px; }
-    .template-editor-dialog .l1502-editor > .template-glass { padding: 16px; border-radius: 16px; }
-    .l1502-preview-heading h3 { font-size: 17px; }
+    .template-editor-dialog .l1502-editor > .template-glass { padding: 12px; border-radius: 14px; }
+    .l1502-preview-heading h3 { font-size: 14px; }
     .l1502-editor .publication-fields { gap: 9px; }
     .l1502-editor .publication-actions { justify-content: flex-start; }
+}
+/* A tablet or short landscape screen has room for side-by-side editing. */
+@media (min-width: 761px) and (max-width: 900px), (min-width: 621px) and (max-width: 900px) and (max-height: 620px) {
+    .template-editor-dialog .l1502-editor { grid-template-columns: 260px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+    .l1502-editor .template-preview-panel { order: 1; }
+    .l1502-editor .template-input-panel { order: 0; }
+}
+@media (max-width: 620px) and (max-height: 620px) {
+    .l1502-canvas-note { display: none; }
 }
 @media (prefers-reduced-transparency: reduce) { .l1502-dialog-tabs { background: #f8f5fd; backdrop-filter: none; } }
 .template-studio button, .template-studio input, .template-studio select { font: inherit; }

@@ -154,7 +154,9 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [legendSelection, setLegendSelection] = useState<Record<string, boolean>[] | undefined>(undefined);
     const chartRef = useRef<ReactECharts>(null);
     const previewRef = useRef<HTMLDivElement>(null);
+    const previewPanelRef = useRef<HTMLElement>(null);
     const [previewWidth, setPreviewWidth] = useState(680);
+    const [previewHeight, setPreviewHeight] = useState<number | null>(null);
     const [actualPreview, setActualPreview] = useState(false);
     // Keep the engine available for existing compositions after a card is removed from the gallery.
     const template = templates.find(item => item.id === presetId) ?? DRAWING_TEMPLATES.find(item => item.id === presetId)!;
@@ -162,8 +164,14 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const groupedSamples = template.variant === "grouped-box";
     const pairedComparison = template.variant === "paired-correlation";
     const currentDemo = selected === "multi-panel" && panelChart === "line" ? PANEL_SWEEP_DEMO : template.demo;
+    // Number the complete gallery in its rendered category order, before filters.
+    const templateNumbers = useMemo(() => new Map(DRAWING_TYPES.flatMap(type => templates.filter(item => item.category === type)).map((item, index) => [item.id, index + 1])), [templates]);
+    const templateNumberLabel = (id: string) => {
+        const number = templateNumbers.get(id);
+        return number === undefined ? "已归档模板" : `模板 ${String(number).padStart(3, "0")}`;
+    };
     const catalog = templates.filter(item => sourceFilter === "全部来源" || (sourceFilter === "L1502 图例" ? !!item.l1502 : sourceFilter === "论文图式" ? !!item.paper : sourceFilter === "电化学专栏" ? !!item.electrochemical : !item.paper && !item.electrochemical && !item.l1502));
-    const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""} ${item.l1502?.folder ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
+    const filtered = catalog.filter(item => (category === "全部" || item.category === category) && `${templateNumberLabel(item.id)} ${item.name} ${item.english} ${item.tag} ${item.description} ${item.paper?.figureName ?? ""} ${item.l1502?.folder ?? ""}`.toLowerCase().includes(search.trim().toLowerCase()));
     const availableTypes = DRAWING_TYPES.filter(type => catalog.some(item => item.category === type));
     const l1502Template = l1502Editor && (templates.find(item => item.id === l1502Editor.id) ?? DRAWING_TEMPLATES.find(item => item.id === l1502Editor.id));
     const table = useMemo(() => parseTemplateTable(source.sheets[sheetIndex]?.matrix ?? [], hasHeader), [source, sheetIndex, hasHeader]);
@@ -237,15 +245,20 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
 
     useEffect(() => {
         const element = previewRef.current;
-        if (!active || !editorOpen || !element) return;
-        const observer = new ResizeObserver(entries => {
-            const available = entries[0]?.contentRect.width;
-            if (available && available > 0) setPreviewWidth(available);
-        });
+        const panel = previewPanelRef.current;
+        if (!active || !editorOpen || !element || !panel) return;
+        const measure = () => {
+            const canvasStyle = window.getComputedStyle(element);
+            setPreviewWidth(element.clientWidth - parseFloat(canvasStyle.paddingLeft) - parseFloat(canvasStyle.paddingRight));
+            setPreviewHeight(Math.max(1, element.clientHeight - parseFloat(canvasStyle.paddingTop) - parseFloat(canvasStyle.paddingBottom)));
+        };
+        const observer = new ResizeObserver(measure);
         observer.observe(element);
+        observer.observe(panel);
+        measure();
         return () => observer.disconnect();
     }, [active, editorOpen]);
-    const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth - 24) / chartWidth);
+    const previewScale = actualPreview ? 1 : Math.min(1, Math.max(1, previewWidth) / chartWidth, previewHeight === null ? 1 : previewHeight / chartHeight);
 
     function bindTable(next: Source, nextSheet = 0, headers = true, id = selected, panelMode = panelChart, preset: DrawingTemplate = template) {
         setLegendSelection(undefined);
@@ -420,7 +433,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
             {isAdmin && <Link className="resource-button" href="/admin?section=templates">管理本板块</Link>}
             {catalogError && <p className="template-notice template-notice--error" role="alert">{catalogError}</p>}
             <div className="drawing-library-controls">
-            <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索图式、期号或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","L1502 图例","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
+            <div className="drawing-library-tools"><label className="template-search"><Search size={17} /><input aria-label="搜索模板" placeholder="搜索编号、图式或实验用途…" value={search} onChange={event => setSearch(event.target.value)} /></label><label className="drawing-source-filter">模板来源<select aria-label="模板来源" value={sourceFilter} onChange={e=>chooseSource(e.target.value)}>{["全部来源","通用模板","论文图式","L1502 图例","电化学专栏"].map(item=><option key={item}>{item}</option>)}</select></label></div>
             <div className="template-catalog-toolbar">
                 <div className="template-category-tabs" role="group" aria-label="图形类型">{(["全部", ...availableTypes] as const).map(item => <button key={item} type="button" aria-pressed={category === item} className={`${category === item ? "is-active" : ""}${item === "电化学测试" ? " electrochemical-tab" : ""}`} onClick={() => chooseCategory(item)}>{item === "电化学测试" && <Zap size={13} />}{item}<small>{item === "全部" ? catalog.length : catalog.filter(t => t.category === item).length}</small></button>)}</div>
             </div>
@@ -432,16 +445,17 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 return <section className="drawing-type-group" key={kind} aria-label={`${kind}模板`}>
                     {kind === "电化学测试" ? <div className="electrochemical-column-heading"><span className="electrochemical-column-icon"><Zap size={22} /></span><div><span className="template-eyebrow">ELECTROCHEMISTRY / 专栏</span><h3>电化学测试图</h3><p>伏安 · 充放电 · 性能 · 阻抗谱，选择图式后替换实验数据。</p></div><span className="electrochemical-column-count">{items.length} 个模板</span></div> : category === "全部" && <div className="drawing-type-heading"><h3>{kind}</h3><span>{items.length} 个模板</span></div>}
                     <div className="template-gallery" aria-label={`选择${kind}模板`}>{items.map(item => <button key={item.id} type="button" className={`template-card${(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? " is-selected" : ""}`} aria-haspopup="dialog" aria-pressed={item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id} onClick={() => chooseTemplate(item.id)} disabled={loading || exporting}>
-                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : item.l1502 ? " template-card-art--l1502" : ` template-card-art--${item.id}`}`}><div className="template-card-topline"><span className="template-card-number">{item.l1502 ? `第 ${item.l1502.issue} 期` : String(templates.findIndex(template => template.id === item.id) + 1).padStart(2, "0")}</span><span className="template-card-tag">{item.tag}</span></div><Image src={item.preview} width={760} height={500} sizes="(max-width: 620px) 90vw, (max-width: 850px) 45vw, 30vw" alt={`${item.name}完整图表预览`} /></div>
+                        <div className={`template-card-art${item.paper ? " template-card-art--paper" : item.electrochemical ? " template-card-art--electrochemical" : item.l1502 ? " template-card-art--l1502" : ` template-card-art--${item.id}`}`}><div className="template-card-topline"><span className="template-card-number">{templateNumberLabel(item.id)}</span><span className="template-card-tag">{item.l1502 ? "L1502 图例" : item.tag}</span></div><Image src={item.preview} width={760} height={500} sizes="(max-width: 620px) 90vw, (max-width: 850px) 45vw, 30vw" alt={`${item.name}完整图表预览`} /></div>
                         <div className="template-card-body"><h3>{item.name}</h3><p>{item.description}</p><div className="template-card-bottom"><small>{item.l1502 ? "含 MATLAB 源码" : item.category}</small><span>{(item.l1502 ? l1502Editor?.id === item.id : hasOpened && presetId === item.id) ? <><Check size={14} /> 继续编辑</> : <><ArrowRight size={14} /> 查看与编辑</>}</span></div></div>
                     </button>)}</div>
                 </section>;
             })}
             {!filtered.length && !catalogError && <p className="template-search-empty" role="status">{catalogLoading ? "正在读取图式目录…" : "没有匹配的模板，请更换关键词、图形类型或来源。"}</p>}
-            <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow="SINGLE CHART EDITOR / 单图编辑" description="只编辑这一张图：导入数据、绑定字段，预览并导出。无需与原论文的面板数量一致。" busy={loading || exporting || compositionBusy} onClose={() => setEditorOpen(false)}>
+            <TemplateEditorDialog open={active && editorOpen} title={template.name} eyebrow={`${templateNumberLabel(template.id)} / 单图编辑`} contentClassName="template-legacy-dialog-content" description="只编辑这一张图：导入数据、绑定字段，预览并导出。无需与原论文的面板数量一致。" busy={loading || exporting || compositionBusy} onClose={() => setEditorOpen(false)}>
             <div className="template-flow" aria-label="模板使用流程"><span className="is-complete"><Check size={14} /> 01 选择模板</span><i /><span><FileSpreadsheet size={14} /> 02 导入与绑定</span><i /><span><ArrowDownToLine size={14} /> 03 预览与导出</span></div>
 
-            <div id="template-editor" className="template-editor">
+            <div id="template-editor" className="template-editor template-legacy-editor">
+                <div className="template-legacy-controls" aria-label="模板数据与参数">
                 <section className="template-input-panel template-glass" aria-labelledby="template-data-title">
                     <div className="template-section-heading"><span className="template-section-icon"><FileSpreadsheet size={18} /></span><div><h3 id="template-data-title">让模板读懂你的数据</h3><p>当前模板：{template.name}</p></div></div>
                     <p className="template-input-guide">{template.guide}</p>
@@ -479,25 +493,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                     {!!result.data?.skipped && <div className="template-notice" role="status"><strong>已跳过 {result.data.skipped} 行不完整数据</strong>{result.data.warnings.map(message => <p key={message}>{message}</p>)}</div>}
                     {!!result.data?.warnings.length && !result.data.skipped && <div className="template-notice" role="status">{result.data.warnings.map(message => <p key={message}>{message}</p>)}</div>}
                 </section>
-
-                <div className="template-output-column">
-                    <section className="template-preview-panel template-glass" aria-labelledby="template-preview-title">
-                        <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
-                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && previewOption ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={previewOption} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} onEvents={{ legendselectchanged: () => setLegendSelection(currentLegendSelection()) }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
-                        <p className="template-chart-mobile-hint">预览自动适应窗口；切换原始尺寸可滑动查看细节。</p>
-                        <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.pointGroups ? `${result.data.pointGroups.reduce((sum, group) => sum + group.points.length, 0)} 个观测点 · ${result.data.pointGroups.length} 组` : result.data.matrixCells ? `${result.data.matrixCells.length} 个有效单元格 · ${result.data.x.length} 行 × ${result.data.series.length} 列` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && showUncertainty && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
-                        {onAddToComposition && <div className="publication-actions" aria-label="论文组图操作"><button className="is-primary" type="button" onClick={addToComposition} disabled={!result.data || !option || loading || exporting || compositionBusy}>{compositionBusy ? <Loader2 size={15} className="animate-spin" /> : <Layers3 size={15} />}{compositionBusy ? "正在保存原图…" : compositionAssetId ? "更新组图中的原图" : "加入论文组图"}</button><span className="template-hint">保留完整图表与编辑参数，可从组图返回修改。</span></div>}
-                        {compositionError && <p className="template-notice template-notice--error" role="alert">{compositionError}</p>}
-                        <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading || compositionBusy} onBusy={setExporting} revision={previewOption} extraIssues={[
-                            ...(source.kind === "demo" ? [{ level: "warning" as const, message: "当前为演示数据，不是真实实验结果。" }] : []),
-                            ...(drawingId === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
-                            ...(selected === "error-bar" && showUncertainty && !caption.trim() ? [{ level: "warning" as const, message: "请补充统计图注：独立样本量、误差含义和实验重复类型。" }] : []),
-                            ...(result.data?.skipped ? [{ level: "warning" as const, message: `绘图跳过 ${result.data.skipped} 行，请对照原始数据检查。` }] : []),
-                        ]} />
-                        {exportError && <p className="template-notice template-notice--error" role="alert">{exportError}</p>}
-                    </section>
-
-                    <section className="template-style-panel template-glass" aria-labelledby="template-style-title">
+                    <section className="template-style-panel template-glass template-legacy-settings" aria-labelledby="template-style-title">
                         <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3 id="template-style-title">最后一点，按你的风格</h3><p>样式调整会立即同步到预览和导出文件。</p></div></div>
                         <div className="template-style-presets" role="group" aria-label="论文图表样式">{template.paper && <button type="button" aria-pressed={referenceColors} className={referenceColors ? "is-active" : ""} onClick={()=>setReferenceColors(true)}><span>{(template.paper.region.colors??["#38679b"]).slice(0,3).map((color,i)=><i key={i} style={{backgroundColor:color}}/>)}</span>图例配色{referenceColors&&<Check size={13}/>}</button>}{([{ id: "accessible", name: "色觉友好", colors: ["#0072B2", "#D55E00", "#009E73"] }, { id: "journal", name: "期刊简洁", colors: ["#38679b", "#c77972", "#64958c"] }, { id: "soft", name: "柔和对比", colors: ["#788bcc", "#d69baf", "#7dafb1"] }, { id: "mono", name: "黑白打印", colors: ["#282828", "#696969", "#a0a0a0"] }] as const).map(item => <button type="button" key={item.id} aria-pressed={!referenceColors && palette === item.id} className={!referenceColors && palette === item.id ? "is-active" : ""} onClick={() => {setPalette(item.id);setReferenceColors(false);}}><span>{item.colors.map(color => <i key={color} style={{ backgroundColor: color }} />)}</span>{item.name}{!referenceColors && palette === item.id && <Check size={13} />}</button>)}</div>
                         <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
@@ -512,11 +508,28 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                         {(selected === "stacked-bar" || selected === "percent-bar" || template.variant === "stacked-area") && <label className="template-checkbox"><input type="checkbox" checked={hatching} onChange={event => setHatching(event.target.checked)} />使用纹理区分组成</label>}
                         {selected === "sphere" && template.variant !== "spatial-vectors" && <label className="template-checkbox"><input type="checkbox" checked={sphereGuide} onChange={event => setSphereGuide(event.target.checked)} />显示单位参考球</label>}
                     </section>
-                </div>
-            </div>
+                    <section className="template-glass template-legacy-export" aria-label="图表导出与组图">
+                        {onAddToComposition && <div className="publication-actions" aria-label="论文组图操作"><button className="is-primary" type="button" onClick={addToComposition} disabled={!result.data || !option || loading || exporting || compositionBusy}>{compositionBusy ? <Loader2 size={15} className="animate-spin" /> : <Layers3 size={15} />}{compositionBusy ? "正在保存原图…" : compositionAssetId ? "更新组图中的原图" : "加入论文组图"}</button><span className="template-hint">保留完整图表与编辑参数，可从组图返回修改。</span></div>}
+                        {compositionError && <p className="template-notice template-notice--error" role="alert">{compositionError}</p>}
+                        <PublicationExport width={chartWidth} height={chartHeight} settings={exportSettings} onChange={setExportSettings} getSvg={exportSvg} filename={`${title}${source.kind === "demo" ? "-示例" : ""}`} disabled={!result.data || loading || compositionBusy} onBusy={setExporting} revision={previewOption} extraIssues={[
+                            ...(source.kind === "demo" ? [{ level: "warning" as const, message: "当前为演示数据，不是真实实验结果。" }] : []),
+                            ...(drawingId === "dual-axis" ? [{ level: "warning" as const, message: "双 Y 轴使用独立刻度，请勿据曲线高度判断相关或比较大小。" }] : []),
+                            ...(selected === "error-bar" && showUncertainty && !caption.trim() ? [{ level: "warning" as const, message: "请补充统计图注：独立样本量、误差含义和实验重复类型。" }] : []),
+                            ...(result.data?.skipped ? [{ level: "warning" as const, message: `绘图跳过 ${result.data.skipped} 行，请对照原始数据检查。` }] : []),
+                        ]} />
+                        {exportError && <p className="template-notice template-notice--error" role="alert">{exportError}</p>}
+
+                    </section>
             <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
+                </div>
+                    <section ref={previewPanelRef} className="template-preview-panel template-glass template-legacy-preview" aria-label="固定图表预览" aria-labelledby="template-preview-title">
+                        <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
+                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && previewOption ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto", overflow: "hidden" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={previewOption} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} onEvents={{ legendselectchanged: () => setLegendSelection(currentLegendSelection()) }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
+                        <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.pointGroups ? `${result.data.pointGroups.reduce((sum, group) => sum + group.points.length, 0)} 个观测点 · ${result.data.pointGroups.length} 组` : result.data.matrixCells ? `${result.data.matrixCells.length} 个有效单元格 · ${result.data.x.length} 行 × ${result.data.series.length} 列` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && showUncertainty && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
+                    </section>
+            </div>
             </TemplateEditorDialog>
-            {l1502Template?.l1502 && l1502Editor && <L1502TemplateEditor key={`${l1502Editor.id}-${l1502Editor.key}`} template={l1502Template} open={active && l1502Editor.open} initialSnapshot={l1502Editor.snapshot} assetId={l1502Editor.assetId} onClose={snapshot => { l1502Cache.current.set(snapshot.presetId, snapshot); setL1502Editor(current => current ? { ...current, open: false, snapshot } : null); }} onAddToComposition={onAddToComposition} />}
+            {l1502Template?.l1502 && l1502Editor && <L1502TemplateEditor key={`${l1502Editor.id}-${l1502Editor.key}`} template={l1502Template} templateNumber={templateNumbers.get(l1502Template.id)} open={active && l1502Editor.open} initialSnapshot={l1502Editor.snapshot} assetId={l1502Editor.assetId} onClose={snapshot => { l1502Cache.current.set(snapshot.presetId, snapshot); setL1502Editor(current => current ? { ...current, open: false, snapshot } : null); }} onAddToComposition={onAddToComposition} />}
             <p className="template-bottom-note">L1502 第 1–139 期按文件图式分类，同类型的不同样式分别保留。预览和示例数据由网页引擎独立生成，上传后使用你的数据重新绘图。原有论文图式参考：Chen Liu 与合作者 · figures4papers · <a href="/paper-figures/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>。</p>
         </section>
     );

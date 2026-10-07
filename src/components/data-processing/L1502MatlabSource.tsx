@@ -98,7 +98,7 @@ export default function L1502MatlabSource({ issue, active = true }: { issue: num
         <header className="l1502-matlab-intro">
             <span className="l1502-matlab-intro-icon"><Code2 size={23} /></span>
             <div><span className="l1502-matlab-eyebrow">MATLAB SOURCE</span><h3>从图例到代码</h3><p>查看这一期的原始 MATLAB 脚本，复制后在本地继续调整。</p></div>
-            <span className="l1502-matlab-issue">第 {issue} 期{manifest && ` · ${manifest.scripts.length} 份脚本`}</span>
+            <span className="l1502-matlab-issue">来源第 {issue} 期{manifest && ` · ${manifest.scripts.length} 份脚本`}</span>
         </header>
 
         {manifest && manifest.scripts.length > 1 && <div className="l1502-matlab-files" aria-label="选择 MATLAB 文件">

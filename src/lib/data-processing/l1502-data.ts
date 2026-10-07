@@ -43,7 +43,7 @@ export function suggestL1502Mapping(table: DataTable, spec: L1502Spec): L1502Map
     const roleIndices = new Set(l1502Roles(spec).map(r => mapping[r]).filter((i): i is number => i !== undefined));
     const xPattern = spec.kind === 'network' ? /^(?:source|from|源|起点)$/i : spec.kind === 'word-cloud' ? /^(?:word|term|词语|词|文字)$/i : /^(?:x|time|angle|theta|category|row|categoryname|类别|分类|时间|角度|行)$/i;
     mapping.x = cols.find(c => xPattern.test(c.name))?.index ?? cols.find(c => !roleIndices.has(c.index) && !auxiliaries.has(c.index))?.index ?? 0;
-    if (spec.kind === 'compass' && table.columns.length === 2 && mapping.u !== undefined && mapping.v !== undefined) { mapping.x = mapping.u; mapping.ys = [mapping.v]; }
+    if (spec.kind === 'compass' && mapping.u !== undefined && mapping.v !== undefined) { mapping.x = mapping.u; mapping.ys = [mapping.v]; }
     else if (spec.kind === 'network') mapping.ys = [cols.find(c => /^(?:target|to|目标|终点)$/i.test(c.name))?.index ?? cols.find(c => c.index !== mapping.x && c.index !== mapping.weight)?.index ?? -1];
     else if (spec.kind === 'word-cloud') mapping.ys = [mapping.weight ?? numeric.find(c => c.index !== mapping.x)?.index ?? -1];
     else if (spec.kind === 'bubble-cloud') mapping.ys = [mapping.size ?? numeric.find(c => c.index !== mapping.x)?.index ?? -1];
@@ -56,7 +56,6 @@ export function suggestL1502Mapping(table: DataTable, spec: L1502Spec): L1502Map
     }
     if (['bubble', 'polar-bubble', 'bubble-matrix', 'variable-bar'].includes(spec.kind) && mapping.size === undefined) mapping.size = numeric.find(c => c.index !== mapping.x && !mapping.ys.includes(c.index) && c.index !== mapping.color && c.index !== mapping.group)?.index;
     if (['network', 'word-cloud'].includes(spec.kind) && mapping.weight === undefined) mapping.weight = numeric.find(c => c.index !== mapping.x && (spec.kind === 'word-cloud' || !mapping.ys.includes(c.index)))?.index;
-    if (spec.kind === 'compass' && !valid(table, mapping.ys[0]) && mapping.u !== undefined && mapping.v !== undefined) { mapping.x = mapping.u; mapping.ys = [mapping.v]; }
     for (const y of mapping.ys) {
         const base = table.columns[y]?.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         if (!base) continue;

@@ -50,6 +50,16 @@ test('XYZ and vector UVW plus scalar Color bind without losing signed values', (
     const result = data([['X', 'Y', 'Z', 'U', 'V', 'W', 'Color'], [0, 1, 2, -3, 4, 0, -5]], 'vector3');
     assert.deepEqual(result.points[0], { x: 0, y: 1, z: 2, u: -3, v: 4, w: 0, color: -5 });
 });
+test('compass automatically binds U/V alongside signed Color, Group and Label without auxiliary XY', () => {
+    const rows = [['U', 'V', 'Color', 'Group', 'Label'], [3, 4, -8, 'A', 'Northeast'], [-1, 0, 0, 'B', 'West'], [0, -2, 2, 'A', 'South']], table = parseTemplateTable(rows), compass = spec('compass', { grouped: true, colorByValue: true });
+    const mapping = suggestL1502Mapping(table, compass);
+    assert.deepEqual(mapping, { x: 0, ys: [1], u: 0, v: 1, color: 2, group: 3, label: 4, errors: {}, bounds: {} });
+    const result = buildL1502Data(table, mapping, compass); assert.equal(result.error, null); assert.equal(result.data.skipped, 0);
+    assert.deepEqual(result.data.points.map(p => [p.x, p.y, p.u, p.v, p.color, p.group, p.label]), [[3, 4, 3, 4, -8, 'A', 'Northeast'], [-1, 0, -1, 0, 0, 'B', 'West'], [0, -2, 0, -2, 2, 'A', 'South']]);
+    assert.deepEqual(result.data.series.map(s => [s.name, s.points.length]), [['A', 2], ['B', 1]]);
+    const withExtraXY = parseTemplateTable([['X', 'Y', ...rows[0]], ...rows.slice(1).map(row => [99, 100, ...row])]), extraMapping = suggestL1502Mapping(withExtraXY, compass);
+    assert.equal(extraMapping.x, 2); assert.deepEqual(extraMapping.ys, [3]);
+});
 test('long box samples preserve every original category/group replicate and notch formula is explicit', () => {
     const rows = [['Category', 'Value', 'Group'], ['B', 0, 'A'], ['B', 3, 'A'], ['B', 3, 'A'], ['A', 5, 'B']], result = data(rows, 'box', undefined, { grouped: true, notched: true });
     assert.deepEqual(result.samples.map(s => s.values), [[0, 3, 3], [5]]); assert.match(result.warnings[0], /1\.57.*√n/);

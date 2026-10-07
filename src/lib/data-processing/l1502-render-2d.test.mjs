@@ -60,6 +60,13 @@ test('compass accepts U/V-only tables and encodes direction and magnitude in a p
     const t = item(139), table = parseTemplateTable([['U', 'V'], [3, 4], [-1, 0], [0, 0]]), mapping = suggestL1502Mapping(table, t.l1502), result = buildL1502Data(table, mapping, t.l1502); assert.equal(result.error, null);
     const option = createL1502TwoDimensionalOption(result.data, t.l1502, l1502DefaultStyle('Compass')); assert.equal(option.series[0].coordinateSystem, 'polar'); assert.ok(option.angleAxis); assert.ok(option.radiusAxis); assert.equal(option.series[0].data[0][0], 5); assert.equal(option.series[0].data[1][1], 180); assert.equal(option.series[0].data[2][0], 0); assert.doesNotMatch(svg(option, l1502DefaultStyle('Compass')), /NaN|Infinity/);
 });
+test('uploaded compass U/V/Color/Group/Label retain grouped signed colors and render measured directions', () => {
+    const compass = { ...item(139).l1502, grouped: true, colorByValue: true }, table = parseTemplateTable([['U', 'V', 'Color', 'Group', 'Label'], [3, 4, -8, 'A', 'Northeast'], [-1, 0, 0, 'B', 'West'], [0, -2, 2, 'A', 'South']]);
+    const result = buildL1502Data(table, suggestL1502Mapping(table, compass), compass); assert.equal(result.error, null);
+    const style = l1502DefaultStyle('Compass'), option = createL1502TwoDimensionalOption(result.data, compass, style);
+    assert.deepEqual(option.series.map(s => s.name), ['A', 'B']); assert.equal(option.series[0].data[0][0], 5); assert.equal(option.series[0].data[0][1], (Math.atan2(4, 3) * 180 / Math.PI + 360) % 360);
+    assert.equal(option.series[0].data[1][1], 270); assert.equal(option.series[1].data[0][1], 180); assert.deepEqual(option.series.flatMap(s => s.data.map(v => v[2])), [-8, 2, 0]); assert.equal(option.visualMap.min, -8); assert.equal(option.visualMap.max, 2); assert.doesNotMatch(svg(option, style), /NaN|Infinity/);
+});
 test('79 is filled by seamless compound isoband paths without contour strokes', () => {
     const { option } = prepare(item(79)); assert.ok(option.series[0].data.length <= 9);
     const renderer = option.series[0].renderItem, primitive = renderer({ dataIndex: 0 }, { coord: p => p, visual: () => '#f00' }); assert.equal(primitive.type, 'path'); assert.match(primitive.shape.pathData, /M.*L.*Z/); assert.equal(primitive.style.stroke, undefined);

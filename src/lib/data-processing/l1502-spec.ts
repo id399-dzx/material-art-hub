@@ -52,6 +52,7 @@ export type L1502Style = {
     fontFamily: string; fontSize: number; width: number; height: number; colors: string[];
     scalarPalette?: ScalarPaletteId;
     scalarColors?: string[];
+    scalarConstantColor?: string;
     showGrid: boolean; showValues: boolean; yaw: number; pitch: number;
     annotationX: number; annotationText: string; intervalLabel: string; bins: number; isoLevel: number;
 };

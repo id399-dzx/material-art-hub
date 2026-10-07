@@ -38,7 +38,8 @@ function valueMap(values: number[], indices: number[], style: L1502Style, dimens
     const [min, max] = extent(values);
     const common = { dimension, seriesIndex: indices, calculable: false, orient: 'vertical', right: 5, top: '54%', itemHeight: Math.min(150, style.height * .3), itemWidth: 13, precision: 3, text: [label, ''], textStyle: { fontFamily: style.fontFamily, fontSize: Math.max(9, style.fontSize - 2) } };
     const colors = getChartValueColors(style);
-    return min === max ? { ...common, type: 'piecewise', pieces: [{ value: min, label: fmt(min), color: interpolateChartColor(colors, .5) }], selectedMode: false } : { ...common, type: 'continuous', min, max, inRange: { color: colors } };
+    const constantColor = !style.scalarPalette && style.scalarConstantColor ? style.scalarConstantColor : interpolateChartColor(colors, .5);
+    return min === max ? { ...common, type: 'piecewise', pieces: [{ value: min, label: fmt(min), color: constantColor }], selectedMode: false } : { ...common, type: 'continuous', min, max, inRange: { color: colors } };
 }
 function sizeLegend(data: L1502Data, style: L1502Style, maxDiameter = 52): Part[] {
     const max = Math.max(...data.points.map(p => p.size ?? 0)), samples = unique([max * .25, max * .5, max]);

@@ -178,3 +178,16 @@ test('frozen custom scalar colors survive snapshot restoration separately from c
         assert.throws(() => validateL1502EditSnapshot(broken), /自定义数值色阶格式无效/);
     }
 });
+
+test('original constant-value color survives a snapshot round trip and rejects executable or malformed colors', () => {
+    const state = fixture(); delete state.style.scalarPalette;
+    state.style.scalarConstantColor = '#64bbc5';
+    const restored = validateL1502EditSnapshot(JSON.parse(JSON.stringify(state)));
+    assert.equal(restored.style.scalarConstantColor, '#64bbc5');
+    for (const invalid of ['red', '#fff', null, 42, { color: '#64bbc5' }, 'url(javascript:alert(1))']) {
+        const broken = fixture(); broken.style.scalarConstantColor = invalid;
+        assert.throws(() => validateL1502EditSnapshot(broken), /常量数值颜色格式无效/);
+    }
+    const old = fixture();
+    assert.equal('scalarConstantColor' in validateL1502EditSnapshot(old).style, false);
+});

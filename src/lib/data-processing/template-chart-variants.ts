@@ -34,7 +34,7 @@ export function createVariantHeatmapOption(data: TemplateData, style: TemplateCh
     else if (max === min) max = min + 1;
     const text = { color: "#383842", fontSize: style.fontSize, fontFamily: style.fontFamily };
     let sequential: string[];
-    if (style.scalarPalette) sequential = getChartValueColors({ ...style, colors: palette }, diverging ? 'diverging' : 'sequential');
+    if (style.scalarPalette || style.scalarColors?.length) sequential = getChartValueColors({ ...style, colors: palette }, diverging ? 'diverging' : 'sequential');
     else if (diverging) {
         if (style.palette === "mono") sequential = [...getChartPalette('mono').diverging];
         else if (style.customColors?.length && !findChartPalette(palette)) {

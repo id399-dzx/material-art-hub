@@ -12,6 +12,7 @@ export type TemplateChartStyle = {
     title: string; xLabel: string; yLabel: string; fontFamily: string; fontSize: number;
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
     scalarPalette?: ScalarPaletteId;
+    scalarColors?: string[];
     panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
     xLog?: boolean; yLog?: boolean; equalAxes?: boolean;

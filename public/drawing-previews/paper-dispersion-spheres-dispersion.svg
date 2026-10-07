@@ -19,16 +19,16 @@
 <path d="M340 235.5L340 84.7" fill="none" pointer-events="visible" stroke="#827d90" class="zr27-cls-180"></path>
 <path d="M0 0l13.8 0l0 26.2l-13.8 0Z" transform="translate(344 73.4116)" fill="none" pointer-events="visible" class="zr27-cls-180"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 22.577777777777776px Arial" y="13.095111111111109" transform="translate(344 73.4116)" fill="#48404f">Z</text>
-<circle cx="375.6" cy="215" r="4.5" fill="#EA0A6E" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
-<circle cx="304.6" cy="310.9" r="4.5" fill="#EA0A6E" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
-<circle cx="444.3" cy="281.3" r="4.5" fill="#EA0A6E" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
-<circle cx="263.9" cy="156.3" r="4.5" fill="#EA0A6E" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
-<circle cx="341.8" cy="369.5" r="4.5" fill="#EA0A6E" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
-<circle cx="456.8" cy="298.1" r="4.5" fill="#0A6AA8" stroke="#fff" class="zr27-cls-182"></circle>
-<circle cx="225.7" cy="161" r="4.5" fill="#0A6AA8" stroke="#fff" class="zr27-cls-182"></circle>
-<circle cx="245.8" cy="214.6" r="4.5" fill="#0A6AA8" stroke="#fff" class="zr27-cls-182"></circle>
-<circle cx="394.7" cy="200.6" r="4.5" fill="#0A6AA8" stroke="#fff" class="zr27-cls-182"></circle>
-<circle cx="329.1" cy="236.6" r="4.5" fill="#0A6AA8" stroke="#fff" class="zr27-cls-182"></circle>
+<circle cx="375.6" cy="215" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
+<circle cx="304.6" cy="310.9" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
+<circle cx="444.3" cy="281.3" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
+<circle cx="263.9" cy="156.3" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
+<circle cx="341.8" cy="369.5" r="4.5" fill="#c77972" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr27-cls-181"></circle>
+<circle cx="456.8" cy="298.1" r="4.5" fill="#38679b" stroke="#fff" class="zr27-cls-182"></circle>
+<circle cx="225.7" cy="161" r="4.5" fill="#38679b" stroke="#fff" class="zr27-cls-182"></circle>
+<circle cx="245.8" cy="214.6" r="4.5" fill="#38679b" stroke="#fff" class="zr27-cls-182"></circle>
+<circle cx="394.7" cy="200.6" r="4.5" fill="#38679b" stroke="#fff" class="zr27-cls-182"></circle>
+<circle cx="329.1" cy="236.6" r="4.5" fill="#38679b" stroke="#fff" class="zr27-cls-182"></circle>
 <path d="M0 0l291.1 0l0 12.8l-291.1 0Z" transform="translate(194.47 391.24)" fill="none" pointer-events="visible" class="zr27-cls-180"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 11px Arial" xml:space="preserve" y="6.38" transform="translate(194.47 391.24)" fill="#787580">正交投影 · 方位 35° / 仰角 25° · 三维点；参考球 R = 1</text>
 <path d="M-185.2 0l370.4 0l0 28.5l-370.4 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr27-cls-183"></path>
@@ -50,11 +50,11 @@ cursor:pointer;
 }
 .zr27-cls-181:hover {
 cursor:pointer;
-fill:rgba(255,11,121,1);
+fill:rgba(218,133,125,1);
 }
 .zr27-cls-182:hover {
 cursor:pointer;
-fill:rgba(11,116,184,1);
+fill:rgba(61,113,170,1);
 }
 .zr27-cls-183:hover {
 pointer-events:none;

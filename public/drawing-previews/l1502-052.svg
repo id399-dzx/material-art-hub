@@ -1,41 +1,41 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>三维分簇散点图; independently rendered demonstration data; L1502 issue 52; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#ffffff"></rect>
-<circle cx="378.4" cy="138.3" r="7.6" fill="rgb(63,187,116)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1036"></circle>
-<circle cx="321.4" cy="164.8" r="7.6" fill="rgb(40,168,131)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1037"></circle>
-<circle cx="306.4" cy="173.2" r="7.6" fill="rgb(34,162,135)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1038"></circle>
-<circle cx="355.2" cy="148.6" r="7.6" fill="rgb(51,181,122)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1039"></circle>
-<circle cx="332.7" cy="159.1" r="7.6" fill="rgb(45,174,126)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1040"></circle>
-<circle cx="390.4" cy="134.4" r="7.6" fill="rgb(77,192,107)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1041"></circle>
-<circle cx="281.6" cy="187.7" r="7.6" fill="rgb(32,155,138)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1042"></circle>
-<circle cx="316.7" cy="299.5" r="7.6" fill="rgb(68,1,84)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1043"></circle>
-<circle cx="403.4" cy="130.4" r="7.6" fill="rgb(91,198,99)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1044"></circle>
-<circle cx="258.6" cy="206.2" r="7.6" fill="rgb(35,140,140)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1045"></circle>
-<circle cx="264.6" cy="199.2" r="7.6" fill="rgb(34,148,139)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1046"></circle>
-<circle cx="425.3" cy="122" r="7.6" fill="rgb(106,204,91)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1047"></circle>
-<circle cx="314" cy="298.9" r="7.6" fill="rgb(69,11,93)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1048"></circle>
-<circle cx="441.8" cy="116.6" r="7.6" fill="rgb(123,208,80)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1049"></circle>
-<circle cx="244.3" cy="218.7" r="7.6" fill="rgb(37,133,141)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1050"></circle>
-<circle cx="307.6" cy="299.3" r="7.6" fill="rgb(70,21,103)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1051"></circle>
-<circle cx="224.5" cy="235.3" r="7.6" fill="rgb(40,126,142)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1052"></circle>
-<circle cx="448.1" cy="116.5" r="7.6" fill="rgb(141,213,68)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1053"></circle>
-<circle cx="219.7" cy="245" r="7.6" fill="rgb(42,120,142)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1054"></circle>
-<circle cx="221.9" cy="251.9" r="7.6" fill="rgb(45,113,142)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1055"></circle>
-<circle cx="287.7" cy="307.2" r="7.6" fill="rgb(71,31,112)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1056"></circle>
-<circle cx="458.9" cy="113.9" r="7.6" fill="rgb(160,217,57)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1057"></circle>
-<circle cx="212.8" cy="266.2" r="7.6" fill="rgb(48,106,142)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1058"></circle>
-<circle cx="272.2" cy="310.4" r="7.6" fill="rgb(72,41,120)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1059"></circle>
-<circle cx="268" cy="304.7" r="7.6" fill="rgb(69,49,125)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1060"></circle>
-<circle cx="255.4" cy="303.4" r="7.6" fill="rgb(67,58,129)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1061"></circle>
-<circle cx="474.6" cy="108" r="7.6" fill="rgb(178,222,45)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1062"></circle>
-<circle cx="227" cy="289" r="7.6" fill="rgb(58,83,139)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1063"></circle>
-<circle cx="216.6" cy="284.4" r="7.6" fill="rgb(55,91,140)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1064"></circle>
-<circle cx="205.8" cy="280.2" r="7.6" fill="rgb(51,99,141)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1065"></circle>
-<circle cx="225.9" cy="300.7" r="7.6" fill="rgb(61,75,137)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1066"></circle>
-<circle cx="233.9" cy="306.7" r="7.6" fill="rgb(64,66,134)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1067"></circle>
-<circle cx="480.1" cy="107.2" r="7.6" fill="rgb(197,224,42)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1068"></circle>
-<circle cx="477.7" cy="109.8" r="7.6" fill="rgb(215,226,41)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1069"></circle>
-<circle cx="482.4" cy="107.4" r="7.6" fill="rgb(234,229,39)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1070"></circle>
-<circle cx="487.1" cy="103.5" r="7.6" fill="rgb(253,231,37)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1071"></circle>
+<circle cx="378.4" cy="138.3" r="7.6" fill="rgb(192,117,107)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1036"></circle>
+<circle cx="321.4" cy="164.8" r="7.6" fill="rgb(122,155,130)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1037"></circle>
+<circle cx="306.4" cy="173.2" r="7.6" fill="rgb(98,168,137)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1038"></circle>
+<circle cx="355.2" cy="148.6" r="7.6" fill="rgb(169,130,115)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1039"></circle>
+<circle cx="332.7" cy="159.1" r="7.6" fill="rgb(145,142,122)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1040"></circle>
+<circle cx="390.4" cy="134.4" r="7.6" fill="rgb(216,104,100)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1041"></circle>
+<circle cx="281.6" cy="187.7" r="7.6" fill="rgb(92,155,144)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1042"></circle>
+<circle cx="316.7" cy="299.5" r="7.6" fill="rgb(20,122,139)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1043"></circle>
+<circle cx="403.4" cy="130.4" r="7.6" fill="rgb(197,106,116)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1044"></circle>
+<circle cx="258.6" cy="206.2" r="7.6" fill="rgb(81,128,158)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1045"></circle>
+<circle cx="264.6" cy="199.2" r="7.6" fill="rgb(86,142,151)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1046"></circle>
+<circle cx="425.3" cy="122" r="7.6" fill="rgb(178,107,132)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1047"></circle>
+<circle cx="314" cy="298.9" r="7.6" fill="rgb(61,130,122)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1048"></circle>
+<circle cx="441.8" cy="116.6" r="7.6" fill="rgb(160,109,148)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1049"></circle>
+<circle cx="244.3" cy="218.7" r="7.6" fill="rgb(75,115,165)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1050"></circle>
+<circle cx="307.6" cy="299.3" r="7.6" fill="rgb(103,139,106)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1051"></circle>
+<circle cx="224.5" cy="235.3" r="7.6" fill="rgb(69,102,172)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1052"></circle>
+<circle cx="448.1" cy="116.5" r="7.6" fill="rgb(141,110,164)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1053"></circle>
+<circle cx="219.7" cy="245" r="7.6" fill="rgb(86,100,166)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1054"></circle>
+<circle cx="221.9" cy="251.9" r="7.6" fill="rgb(103,98,161)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1055"></circle>
+<circle cx="287.7" cy="307.2" r="7.6" fill="rgb(144,147,89)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1056"></circle>
+<circle cx="458.9" cy="113.9" r="7.6" fill="rgb(122,112,180)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1057"></circle>
+<circle cx="212.8" cy="266.2" r="7.6" fill="rgb(120,95,155)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1058"></circle>
+<circle cx="272.2" cy="310.4" r="7.6" fill="rgb(186,156,73)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1059"></circle>
+<circle cx="268" cy="304.7" r="7.6" fill="rgb(227,164,56)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1060"></circle>
+<circle cx="255.4" cy="303.4" r="7.6" fill="rgb(212,149,74)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1061"></circle>
+<circle cx="474.6" cy="108" r="7.6" fill="rgb(123,119,175)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1062"></circle>
+<circle cx="227" cy="289" r="7.6" fill="rgb(169,106,126)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1063"></circle>
+<circle cx="216.6" cy="284.4" r="7.6" fill="rgb(154,91,144)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1064"></circle>
+<circle cx="205.8" cy="280.2" r="7.6" fill="rgb(137,93,150)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1065"></circle>
+<circle cx="225.9" cy="300.7" r="7.6" fill="rgb(183,120,109)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1066"></circle>
+<circle cx="233.9" cy="306.7" r="7.6" fill="rgb(198,135,91)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1067"></circle>
+<circle cx="480.1" cy="107.2" r="7.6" fill="rgb(124,126,171)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1068"></circle>
+<circle cx="477.7" cy="109.8" r="7.6" fill="rgb(125,133,166)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1069"></circle>
+<circle cx="482.4" cy="107.4" r="7.6" fill="rgb(126,140,162)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1070"></circle>
+<circle cx="487.1" cy="103.5" r="7.6" fill="rgb(127,147,157)" stroke="#ffffff" stroke-width="0.65" class="zr94-cls-1071"></circle>
 <path d="M193.9 323.5L391.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr94-cls-1072"></path>
 <path d="M193.9 323.5L191.9 328.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr94-cls-1072"></path>
 <path d="M285.1 363.5L283.1 368.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr94-cls-1072"></path>
@@ -50,7 +50,7 @@
 <path d="M172.1 97.6L167.1 98.1" fill="none" pointer-events="visible" stroke="#64748b" class="zr94-cls-1072"></path>
 <path d="M0 0l342.1 0l0 32.7l-342.1 0Z" transform="translate(208.9706 12)" fill="none" pointer-events="visible" class="zr94-cls-1072"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 27.233986928104574px Arial" xml:space="preserve" y="16.340392156862745" transform="translate(208.9706 12)" fill="#172033">三维分簇散点图 · 示例数据</text>
-<path d="M20 55.7l14 0l0 7l-14 0Z" fill="none" pointer-events="visible" stroke="#0A6AA8" stroke-width="1.8" class="zr94-cls-1072"></path>
+<path d="M20 55.7l14 0l0 7l-14 0Z" fill="none" pointer-events="visible" stroke="#147a8b" stroke-width="1.8" class="zr94-cls-1072"></path>
 <path d="M0 0l77.4 0l0 24.8l-77.4 0Z" transform="translate(41 52.6808)" fill="none" pointer-events="visible" class="zr94-cls-1072"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" xml:space="preserve" y="12.41512156862745" transform="translate(41 52.6808)" fill="#334155">Group A</text>
 <path d="M0 0l214.8 0l0 17l-214.8 0Z" transform="translate(272.6042 474.0428)" fill="none" pointer-events="visible" class="zr94-cls-1072"></path>
@@ -94,169 +94,169 @@
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 307.2774)" fill="#475569">0</text>
 <defs >
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr94-g0">
-<stop offset="0%" stop-color="rgb(253,231,37)"></stop>
-<stop offset="6.25%" stop-color="rgb(212,226,41)"></stop>
-<stop offset="12.5%" stop-color="rgb(171,220,50)"></stop>
-<stop offset="18.75%" stop-color="rgb(131,210,75)"></stop>
-<stop offset="25%" stop-color="rgb(95,200,97)"></stop>
-<stop offset="31.25%" stop-color="rgb(64,187,115)"></stop>
-<stop offset="37.5%" stop-color="rgb(45,174,127)"></stop>
-<stop offset="43.75%" stop-color="rgb(32,160,136)"></stop>
-<stop offset="50%" stop-color="rgb(35,144,140)"></stop>
-<stop offset="56.25%" stop-color="rgb(39,128,142)"></stop>
-<stop offset="62.5%" stop-color="rgb(45,114,142)"></stop>
-<stop offset="68.75%" stop-color="rgb(51,98,141)"></stop>
-<stop offset="75%" stop-color="rgb(59,81,138)"></stop>
-<stop offset="81.25%" stop-color="rgb(65,63,132)"></stop>
-<stop offset="87.5%" stop-color="rgb(71,44,122)"></stop>
-<stop offset="93.75%" stop-color="rgb(70,23,104)"></stop>
-<stop offset="100%" stop-color="rgb(68,1,84)"></stop>
+<stop offset="0%" stop-color="rgb(127,147,157)"></stop>
+<stop offset="6.25%" stop-color="rgb(125,132,167)"></stop>
+<stop offset="12.5%" stop-color="rgb(123,116,177)"></stop>
+<stop offset="18.75%" stop-color="rgb(151,110,155)"></stop>
+<stop offset="25%" stop-color="rgb(193,106,120)"></stop>
+<stop offset="31.25%" stop-color="rgb(194,116,107)"></stop>
+<stop offset="37.5%" stop-color="rgb(142,144,123)"></stop>
+<stop offset="43.75%" stop-color="rgb(96,164,139)"></stop>
+<stop offset="50%" stop-color="rgb(84,135,155)"></stop>
+<stop offset="56.25%" stop-color="rgb(71,106,170)"></stop>
+<stop offset="62.5%" stop-color="rgb(101,98,162)"></stop>
+<stop offset="68.75%" stop-color="rgb(138,93,149)"></stop>
+<stop offset="75%" stop-color="rgb(172,109,122)"></stop>
+<stop offset="81.25%" stop-color="rgb(204,141,83)"></stop>
+<stop offset="87.5%" stop-color="rgb(201,159,66)"></stop>
+<stop offset="93.75%" stop-color="rgb(111,140,103)"></stop>
+<stop offset="100%" stop-color="rgb(20,122,139)"></stop>
 </linearGradient>
 </defs>
 <style ><![CDATA[
 .zr94-cls-1036:hover {
 cursor:pointer;
-fill:rgba(69,205,127,1);
+fill:rgba(211,128,117,1);
 }
 .zr94-cls-1037:hover {
 cursor:pointer;
-fill:rgba(44,184,144,1);
+fill:rgba(134,170,143,1);
 }
 .zr94-cls-1038:hover {
 cursor:pointer;
-fill:rgba(37,178,148,1);
+fill:rgba(107,184,150,1);
 }
 .zr94-cls-1039:hover {
 cursor:pointer;
-fill:rgba(56,199,134,1);
+fill:rgba(185,143,126,1);
 }
 .zr94-cls-1040:hover {
 cursor:pointer;
-fill:rgba(49,191,138,1);
+fill:rgba(159,156,134,1);
 }
 .zr94-cls-1041:hover {
 cursor:pointer;
-fill:rgba(84,211,117,1);
+fill:rgba(237,114,110,1);
 }
 .zr94-cls-1042:hover {
 cursor:pointer;
-fill:rgba(35,170,151,1);
+fill:rgba(101,170,158,1);
 }
 .zr94-cls-1043:hover {
 cursor:pointer;
-fill:rgba(74,1,92,1);
+fill:rgba(22,134,152,1);
 }
 .zr94-cls-1044:hover {
 cursor:pointer;
-fill:rgba(100,217,108,1);
+fill:rgba(216,116,127,1);
 }
 .zr94-cls-1045:hover {
 cursor:pointer;
-fill:rgba(38,154,154,1);
+fill:rgba(89,140,173,1);
 }
 .zr94-cls-1046:hover {
 cursor:pointer;
-fill:rgba(37,162,152,1);
+fill:rgba(94,156,166,1);
 }
 .zr94-cls-1047:hover {
 cursor:pointer;
-fill:rgba(116,224,100,1);
+fill:rgba(195,117,145,1);
 }
 .zr94-cls-1048:hover {
 cursor:pointer;
-fill:rgba(75,12,102,1);
+fill:rgba(67,143,134,1);
 }
 .zr94-cls-1049:hover {
 cursor:pointer;
-fill:rgba(135,228,88,1);
+fill:rgba(176,119,162,1);
 }
 .zr94-cls-1050:hover {
 cursor:pointer;
-fill:rgba(40,146,155,1);
+fill:rgba(82,126,181,1);
 }
 .zr94-cls-1051:hover {
 cursor:pointer;
-fill:rgba(77,23,113,1);
+fill:rgba(113,152,116,1);
 }
 .zr94-cls-1052:hover {
 cursor:pointer;
-fill:rgba(44,138,156,1);
+fill:rgba(75,112,189,1);
 }
 .zr94-cls-1053:hover {
 cursor:pointer;
-fill:rgba(155,234,74,1);
+fill:rgba(155,121,180,1);
 }
 .zr94-cls-1054:hover {
 cursor:pointer;
-fill:rgba(46,132,156,1);
+fill:rgba(94,110,182,1);
 }
 .zr94-cls-1055:hover {
 cursor:pointer;
-fill:rgba(49,124,156,1);
+fill:rgba(113,107,177,1);
 }
 .zr94-cls-1056:hover {
 cursor:pointer;
-fill:rgba(78,34,123,1);
+fill:rgba(158,161,97,1);
 }
 .zr94-cls-1057:hover {
 cursor:pointer;
-fill:rgba(176,238,62,1);
+fill:rgba(134,123,198,1);
 }
 .zr94-cls-1058:hover {
 cursor:pointer;
-fill:rgba(52,116,156,1);
+fill:rgba(132,104,170,1);
 }
 .zr94-cls-1059:hover {
 cursor:pointer;
-fill:rgba(79,45,132,1);
+fill:rgba(204,171,80,1);
 }
 .zr94-cls-1060:hover {
 cursor:pointer;
-fill:rgba(75,53,137,1);
+fill:rgba(249,180,61,1);
 }
 .zr94-cls-1061:hover {
 cursor:pointer;
-fill:rgba(73,63,141,1);
+fill:rgba(233,163,81,1);
 }
 .zr94-cls-1062:hover {
 cursor:pointer;
-fill:rgba(195,244,49,1);
+fill:rgba(135,130,192,1);
 }
 .zr94-cls-1063:hover {
 cursor:pointer;
-fill:rgba(63,91,152,1);
+fill:rgba(185,116,138,1);
 }
 .zr94-cls-1064:hover {
 cursor:pointer;
-fill:rgba(60,100,154,1);
+fill:rgba(169,100,158,1);
 }
 .zr94-cls-1065:hover {
 cursor:pointer;
-fill:rgba(56,108,155,1);
+fill:rgba(150,102,165,1);
 }
 .zr94-cls-1066:hover {
 cursor:pointer;
-fill:rgba(67,82,150,1);
+fill:rgba(201,132,119,1);
 }
 .zr94-cls-1067:hover {
 cursor:pointer;
-fill:rgba(70,72,147,1);
+fill:rgba(217,148,100,1);
 }
 .zr94-cls-1068:hover {
 cursor:pointer;
-fill:rgba(216,246,46,1);
+fill:rgba(136,138,188,1);
 }
 .zr94-cls-1069:hover {
 cursor:pointer;
-fill:rgba(236,248,45,1);
+fill:rgba(137,146,182,1);
 }
 .zr94-cls-1070:hover {
 cursor:pointer;
-fill:rgba(255,251,42,1);
+fill:rgba(138,154,178,1);
 }
 .zr94-cls-1071:hover {
 cursor:pointer;
-fill:rgba(255,254,40,1);
+fill:rgba(139,161,172,1);
 }
 .zr94-cls-1072:hover {
 pointer-events:none;

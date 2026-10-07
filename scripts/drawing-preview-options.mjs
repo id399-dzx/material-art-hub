@@ -8,6 +8,7 @@ import { buildL1502Data, suggestL1502Mapping } from '../src/lib/data-processing/
 import { l1502DefaultLayout, l1502DefaultStyle } from '../src/lib/data-processing/l1502-spec.ts';
 import { createL1502Option } from '../src/lib/data-processing/l1502-render.ts';
 import { getRecommendedPalette } from '../src/lib/data-processing/chart-palettes.ts';
+import { originalL1502Colors, originalTemplateColors } from '../src/lib/data-processing/original-chart-colors.ts';
 
 /** Mirror the editor's initial demo binding. Never extract pixels from a paper figure. */
 export function drawingPreviewOption(template) {
@@ -19,7 +20,7 @@ export function drawingPreviewOption(template) {
         const mapping = suggestL1502Mapping(table, template.l1502);
         const result = buildL1502Data(table, mapping, template.l1502);
         if (!result.data) throw new Error(`${template.id}: ${result.error}`);
-        const style = { ...l1502DefaultStyle(`${template.name} · 示例数据`, width, height, template.l1502), xLabel: template.xLabel, yLabel: template.yLabel,
+        const style = { ...l1502DefaultStyle(`${template.name} · 示例数据`, width, height, template.l1502), ...originalL1502Colors(template.category), xLabel: template.xLabel, yLabel: template.yLabel,
             fontSize: 8 * 25.4 / 72 * width / widthMm, annotationText: template.l1502.annotation === 'formula' ? 'Δy = y₂ − y₁' : '参考位置', annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
         return { option: createL1502Option(result.data, template.l1502, style), width, height, table, mapping, data: result.data, style };
     }
@@ -38,12 +39,14 @@ export function drawingPreviewOption(template) {
     const height = id === 'multi-panel' ? 620 : 420;
     const base = CHART_TEMPLATES.find(item => item.id === id);
     const region = template.paper?.region;
+    const originalColors = originalTemplateColors(template);
+    const recommendedColors = getRecommendedPalette(template.variant ?? id);
     const style = {
         title: `${template.name} · 示例数据`,
         xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
         yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
-        ...getRecommendedPalette(template.variant ?? id), showGrid: false, showValues: false,
+        ...recommendedColors, ...originalColors, palette: originalColors ? 'journal' : recommendedColors.palette, showGrid: false, showValues: false,
         errorMeasure, panelChart: 'bar', cumulative: false,
         secondaryYLabel: template.electrochemical?.secondaryYLabel || table.columns[mapping.ys[1]] || '右轴指标',
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0.6,

@@ -22,7 +22,8 @@ import { validateL1502EditSnapshot, type L1502EditSnapshot } from "@/lib/data-pr
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import type { ExportSettings } from "@/lib/data-processing/publication";
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
-import { CHART_PALETTES, SCALAR_PALETTES, getRecommendedPalette, type ScalarPaletteId } from "@/lib/data-processing/chart-palettes";
+import { CHART_PALETTES, SCALAR_PALETTES, getChartValueColors, getRecommendedPalette, type ScalarPaletteId } from "@/lib/data-processing/chart-palettes";
+import { originalTemplateColors } from "@/lib/data-processing/original-chart-colors";
 import ChartPalettePicker from "./ChartPalettePicker";
 import ScalarPalettePicker from "./ScalarPalettePicker";
 import PaletteComparison from "./PaletteComparison";
@@ -40,7 +41,7 @@ export type TemplateEditSnapshot = {
     panelChart: "bar" | "line"; cumulative: boolean; secondaryYLabel: string;
     annotationX: number; annotationText: string; yaw: number; pitch: number;
     showUncertainty: boolean; errorInput: ErrorInput; errorMeasure: ErrorMeasure;
-    title: string; xLabel: string; yLabel: string; palette: PublicationStyle; scalarPalette?: ScalarPaletteId;
+    title: string; xLabel: string; yLabel: string; palette: PublicationStyle; scalarPalette?: ScalarPaletteId; scalarColors?: string[];
     fontFamily: string; fontSize: number; width: number; height: number;
     showGrid: boolean; showValues: boolean; exportSettings: ExportSettings;
     caption: string; actualPreview: boolean; legendSelection?: Record<string, boolean>[];
@@ -87,6 +88,7 @@ export function validateTemplateEditSnapshot(value: unknown): TemplateEditSnapsh
     if (!["", "negative-imaginary", "raw-imaginary"].includes(snapshot.imaginaryMode as string) || !["bar", "line"].includes(snapshot.panelChart as string) || !["replicates", "summary"].includes(snapshot.errorInput as string) || !["SD", "SEM"].includes(snapshot.errorMeasure as string) || !CHART_PALETTES.some(palette => palette.id === snapshot.palette) || !["Arial", "Times New Roman", "sans-serif"].includes(snapshot.fontFamily as string)) fail("图形样式或误差参数无效。");
     if (!numberIn(snapshot.width, 420, 1600) || !numberIn(snapshot.height, 320, 1000) || !numberIn(snapshot.fontSize, 5, 16) || !numberIn(snapshot.yaw, -180, 180) || !numberIn(snapshot.pitch, -80, 80) || !numberIn(snapshot.annotationX, -Number.MAX_VALUE, Number.MAX_VALUE)) fail("画布尺寸、字号或视角参数超出范围。");
     if (snapshot.scalarPalette !== undefined && !SCALAR_PALETTES.some(palette => palette.id === snapshot.scalarPalette)) fail("数值色阶无效。");
+    if (snapshot.scalarColors !== undefined && (!Array.isArray(snapshot.scalarColors) || snapshot.scalarColors.length < 1 || snapshot.scalarColors.length > 32 || !snapshot.scalarColors.every(color => typeof color === "string" && /^#[a-f\d]{6}$/i.test(color)))) fail("自定义数值色阶无效。");
     if (!record(snapshot.exportSettings) || !numberIn(snapshot.exportSettings.widthMm, 40, 300) || ![150, 300, 600].includes(snapshot.exportSettings.dpi as number) || typeof snapshot.exportSettings.grayscale !== "boolean" || !["single", "double", "custom"].includes(snapshot.exportSettings.preset as string)) fail("导出参数无效。");
     if (snapshot.legendSelection !== undefined && (!Array.isArray(snapshot.legendSelection) || snapshot.legendSelection.length > 8 || !snapshot.legendSelection.every(selection => record(selection) && Object.keys(selection).length <= 2048 && Object.entries(selection).every(([name, selected]) => name.length <= 32767 && typeof selected === "boolean")))) fail("图例显示状态无效。");
     return structuredClone(snapshot) as unknown as TemplateEditSnapshot;
@@ -140,6 +142,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [yLabel, setYLabel] = useState(initial.yLabel);
     const [palette, setPalette] = useState<PublicationStyle>(getRecommendedPalette(initial.variant ?? initial.chartId).palette);
     const [scalarPalette, setScalarPalette] = useState<ScalarPaletteId | undefined>(getRecommendedPalette(initial.variant ?? initial.chartId).scalarPalette);
+    const [scalarColors, setScalarColors] = useState<string[] | undefined>(undefined);
     const [comparePalettes, setComparePalettes] = useState(false);
     const [fontFamily, setFontFamily] = useState("Arial");
     const [fontSize, setFontSize] = useState(8);
@@ -167,6 +170,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [actualPreview, setActualPreview] = useState(false);
     // Keep the engine available for existing compositions after a card is removed from the gallery.
     const template = templates.find(item => item.id === presetId) ?? DRAWING_TEMPLATES.find(item => item.id === presetId)!;
+    const originalColors = useMemo(() => originalTemplateColors(template), [template]);
     const groupedPoints = template.variant === "embedding-scatter" || template.variant === "position-scatter";
     const groupedSamples = template.variant === "grouped-box";
     const pairedComparison = template.variant === "paired-correlation";
@@ -195,14 +199,14 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const safeFontSize = Number.isFinite(fontSize) && fontSize >= 5 && fontSize <= 16 ? fontSize : 8;
     const canvasFontSize = safeFontSize * 25.4 / 72 * chartWidth / exportSettings.widthMm;
     const chartStyle = useMemo<TemplateChartStyle>(() => ({
-        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, scalarPalette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
-        customColors: referenceColors ? template.paper?.region.colors : undefined,
+        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, scalarPalette, scalarColors, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
+        customColors: referenceColors ? originalColors?.customColors ?? template.paper?.region.colors : undefined,
         horizontal: template.paper?.region.kind === "horizontal", colorByCategory: referenceColors && template.paper?.region.kind === "bars",
         stackedArea: template.paper?.region.kind === "area", hatching,
         fillLines: template.paper?.region.fillSeries, sphereGuide,
         variant: template.variant,
         xLog: template.electrochemical?.xLog, yLog: template.electrochemical?.yLog, equalAxes: template.electrochemical?.equalAxes,
-    }), [title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, scalarPalette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper, template.variant, template.electrochemical]);
+    }), [title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, scalarPalette, scalarColors, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, originalColors, hatching, sphereGuide, template.paper, template.variant, template.electrochemical]);
     const option = useMemo(() => result.data ? createTemplateOption(result.data, drawingId, chartStyle) : null, [result.data, drawingId, chartStyle]);
     const previewOption = useMemo(() => {
         if (!option || !legendSelection?.length) return option;
@@ -221,12 +225,21 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         createOption: (scalarPalette: ScalarPaletteId) => result.data ? createTemplateOption(result.data, drawingId, { ...chartStyle, scalarPalette }) : null,
     }), [chartWidth, chartHeight, result.data, drawingId, chartStyle, legendSelection]);
     const referenceOption = useMemo(() => {
-        if (!result.data || !template.paper) return null;
-        const option = createTemplateOption(result.data, drawingId, { ...chartStyle, customColors: template.paper.region.colors, scalarPalette: undefined, colorByCategory: template.paper.region.kind === "bars" });
+        if (!result.data || !template.paper && !originalColors) return null;
+        const option = createTemplateOption(result.data, drawingId, { ...chartStyle, ...(originalColors ?? {}), palette: originalColors ? "journal" : chartStyle.palette, customColors: originalColors?.customColors ?? template.paper?.region.colors, scalarColors: originalColors?.scalarColors, scalarPalette: undefined, colorByCategory: template.paper?.region.kind === "bars" });
         const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
         return legendSelection?.length ? { ...option, legend: legends.map((legend, index) => ({ ...legend, selected: legendSelection[index] ?? legend.selected })) } : option;
-    }, [result.data, drawingId, chartStyle, template.paper, legendSelection]);
+    }, [result.data, drawingId, chartStyle, template.paper, originalColors, legendSelection]);
     const scalarOnly = drawingId === "heatmap" || drawingId === "surface";
+    function restoreReferenceColors() {
+        setReferenceColors(true); setScalarPalette(undefined); setScalarColors(originalColors?.scalarColors);
+        if (originalColors) setPalette("journal");
+    }
+    function resetTemplateColors(next: DrawingTemplate) {
+        const original = originalTemplateColors(next), recommended = getRecommendedPalette(next.variant ?? next.chartId);
+        setReferenceColors(!!original); setPalette(original ? "journal" : recommended.palette);
+        setScalarPalette(original ? undefined : recommended.scalarPalette); setScalarColors(original?.scalarColors);
+    }
 
     function currentLegendSelection() {
         const legends = chartRef.current?.getEchartsInstance().getOption().legend;
@@ -322,8 +335,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
         const id = next.chartId;
-        const recommended = getRecommendedPalette(next.variant ?? id);
-        setPresetId(preset); setSelected(id); setReferenceColors(false); setPalette(recommended.palette); setScalarPalette(recommended.scalarPalette);
+        setPresetId(preset); setSelected(id); resetTemplateColors(next);
         setHatching(!!next.paper?.region.hatching); setSphereGuide(next.variant !== "spatial-vectors");
         setCumulative(false);
         setPanelChart("bar");
@@ -373,8 +385,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setLegendSelection(undefined);
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
-        setPresetId(representative.id); setReferenceColors(false);
-        setPalette(getRecommendedPalette(representative.variant ?? representative.chartId).palette); setScalarPalette(getRecommendedPalette(representative.variant ?? representative.chartId).scalarPalette);
+        setPresetId(representative.id); resetTemplateColors(representative);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
@@ -390,8 +401,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
         setCompositionAssetId(null); setCompositionError("");
-        setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(false);
-        setComparePalettes(false); setPalette(getRecommendedPalette(representative.variant ?? representative.chartId).palette); setScalarPalette(getRecommendedPalette(representative.variant ?? representative.chartId).scalarPalette);
+        setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); resetTemplateColors(representative);
+        setComparePalettes(false);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id, "bar", representative);
@@ -416,7 +427,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setSecondaryYLabel(saved.secondaryYLabel); setAnnotationX(saved.annotationX); setAnnotationText(saved.annotationText);
         setYaw(saved.yaw); setPitch(saved.pitch); setShowUncertainty(saved.showUncertainty);
         setErrorInput(saved.errorInput); setErrorMeasure(saved.errorMeasure); setTitle(saved.title);
-        setXLabel(saved.xLabel); setYLabel(saved.yLabel); setPalette(saved.palette); setScalarPalette(saved.scalarPalette); setComparePalettes(false); setFontFamily(saved.fontFamily);
+        setXLabel(saved.xLabel); setYLabel(saved.yLabel); setPalette(saved.palette); setScalarPalette(saved.scalarPalette); setScalarColors(saved.scalarColors); setComparePalettes(false); setFontFamily(saved.fontFamily);
         setFontSize(saved.fontSize); setWidth(saved.width); setHeight(saved.height); setShowGrid(saved.showGrid);
         setShowValues(saved.showValues); setExportSettings(saved.exportSettings); setCaption(saved.caption);
         setActualPreview(saved.actualPreview); setLegendSelection(saved.legendSelection); setCompositionAssetId(asset.id); setCompositionError("");
@@ -438,7 +449,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 kind: "template", version: 1, presetId, selected, source, sheetIndex, hasHeader, mapping,
                 imaginaryMode, referenceColors, hatching, sphereGuide, panelChart, cumulative, secondaryYLabel,
                 annotationX, annotationText, yaw, pitch, showUncertainty, errorInput, errorMeasure,
-                title, xLabel, yLabel, palette, scalarPalette, fontFamily, fontSize: safeFontSize, width: chartWidth, height: chartHeight,
+                title, xLabel, yLabel, palette, scalarPalette, scalarColors, fontFamily, fontSize: safeFontSize, width: chartWidth, height: chartHeight,
                 showGrid, showValues, exportSettings, caption, actualPreview, legendSelection: currentLegendSelection(),
             });
             const asset: FigureAsset = {
@@ -526,9 +537,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 </section>
                     <section className="template-style-panel template-glass template-legacy-settings" aria-labelledby="template-style-title">
                         <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3 id="template-style-title">最后一点，按你的风格</h3><p>样式调整会立即同步到预览和导出文件。</p></div></div>
-                        {!scalarOnly && <ChartPalettePicker value={referenceColors ? null : palette} preview={palettePreview} onChange={id => { setPalette(id); setReferenceColors(false); }} disabled={loading || exporting || compositionBusy} extraPalette={template.paper ? { name: "原图配色", description: "使用来源图例的配色绘制当前数据", colors: template.paper.region.colors ?? ["#38679b"], option: referenceOption, selected: referenceColors, onSelect: () => { setReferenceColors(true); setScalarPalette(undefined); } } : undefined} />}
-                        {scalarOnly && <ScalarPalettePicker value={scalarPalette} preview={scalarPreview} disabled={loading || exporting || compositionBusy} onChange={setScalarPalette} />}
-                        {scalarOnly && template.paper && <button className="resource-button template-reference-scale" type="button" aria-pressed={referenceColors && !scalarPalette} disabled={loading || exporting || compositionBusy} onClick={() => { setReferenceColors(true); setScalarPalette(undefined); }}>使用原图色阶</button>}
+                        {!scalarOnly && <ChartPalettePicker value={referenceColors ? null : palette} preview={palettePreview} onChange={id => { setPalette(id); setReferenceColors(false); }} disabled={loading || exporting || compositionBusy} extraPalette={template.paper || originalColors ? { name: originalColors ? "初始配色" : "原图配色", description: "恢复此图式最初的颜色", colors: originalColors?.customColors ?? template.paper?.region.colors ?? ["#38679b"], option: referenceOption, selected: referenceColors, onSelect: restoreReferenceColors } : undefined} />}
+                        {scalarOnly && <ScalarPalettePicker value={scalarPalette} preview={scalarPreview} disabled={loading || exporting || compositionBusy} onChange={setScalarPalette} extraPalette={originalColors ? { name: "初始色阶", description: "恢复此图式最初的数值渐变", colors: getChartValueColors({ ...originalColors, palette: "journal" }), option: referenceOption, selected: referenceColors && !scalarPalette && JSON.stringify(scalarColors) === JSON.stringify(originalColors.scalarColors), onSelect: restoreReferenceColors } : undefined} />}
                         <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
                         <label className="template-field">统计图注（保存在 SVG 描述中）<input value={caption} maxLength={300} onChange={event => setCaption(event.target.value)} placeholder="如：n=6 独立实验；误差条为 SD；单位见轴标题" /></label>
                         {drawingId === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}

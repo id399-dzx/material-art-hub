@@ -20,6 +20,7 @@ import ChartPalettePicker from "./ChartPalettePicker";
 import ScalarPalettePicker from "./ScalarPalettePicker";
 import PaletteComparison from "./PaletteComparison";
 import { findChartPalette, getChartPalette, getChartValueColors, type ChartPaletteId } from "@/lib/data-processing/chart-palettes";
+import { originalL1502Colors } from "@/lib/data-processing/original-chart-colors";
 
 function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const spec = template.l1502!;
@@ -27,7 +28,7 @@ function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const table = parseTemplateTable(template.demo, true);
     const mapping = suggestL1502Mapping(table, spec);
     const layout = l1502DefaultLayout(spec);
-    const style = { ...l1502DefaultStyle(template.name, layout.width, layout.height, spec), fontSize: 8, xLabel: template.xLabel, yLabel: template.yLabel,
+    const style = { ...l1502DefaultStyle(template.name, layout.width, layout.height, spec), ...originalL1502Colors(template.category), fontSize: 8, xLabel: template.xLabel, yLabel: template.yLabel,
         annotationText: spec.annotation === "formula" ? "Δy = y₂ − y₁" : "参考位置",
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
     return { kind: "l1502", version: 1, presetId: template.id, source, sheetIndex: 0, hasHeader: true, mapping, style,
@@ -72,6 +73,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     const spec = useMemo(() => ({ ...template.l1502!, logX: editor.logX, logY: editor.logY }), [template, editor.logX, editor.logY]);
     const table = useMemo(() => parseTemplateTable(editor.source.sheets[editor.sheetIndex]?.matrix ?? [], editor.hasHeader), [editor.source, editor.sheetIndex, editor.hasHeader]);
     const result = useMemo(() => buildL1502Data(table, editor.mapping, spec), [table, editor.mapping, spec]);
+    const originalColors = useMemo(() => originalL1502Colors(template.category), [template.category]);
     const rendered = useMemo(() => {
         if (!result.data) return { option: null, error: "" };
         try {
@@ -80,6 +82,23 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }), error: "" };
         } catch (cause) { return { option: null, error: cause instanceof Error ? cause.message : "请检查数据和绘图参数。" }; }
     }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const originalOption = useMemo(() => {
+        if (!result.data || !originalColors) return null;
+        try {
+            return createL1502Option(result.data, spec, { ...editor.style, ...originalColors,
+                title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
+                fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm });
+        } catch { return null; }
+    }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm, originalColors]);
+    const originalScalarOption = useMemo(() => {
+        if (!result.data || !originalColors) return null;
+        try {
+            return createL1502Option(result.data, spec, { ...editor.style,
+                scalarPalette: undefined, scalarColors: originalColors.scalarColors, scalarConstantColor: originalColors.scalarConstantColor,
+                title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
+                fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm });
+        } catch { return null; }
+    }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm, originalColors]);
     const palettePreview = useMemo(() => ({ width: editor.style.width, height: editor.style.height, revision: JSON.stringify([result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]),
         createOption: (id: ChartPaletteId) => result.data ? createL1502Option(result.data, spec, { ...editor.style,
             scalarColors: editor.style.scalarPalette ? editor.style.scalarColors : getChartValueColors(editor.style),
@@ -107,6 +126,17 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
         setEditor(current => ({ ...current, style: { ...current.style,
             scalarColors: current.style.scalarPalette ? current.style.scalarColors : getChartValueColors(current.style),
             colors: [...getChartPalette(id).colors] } }));
+        setError("");
+    }
+    function restoreOriginalColors() {
+        if (!originalColors) return;
+        setEditor(current => ({ ...current, style: { ...current.style, ...originalColors } }));
+        setError("");
+    }
+    function restoreOriginalScale() {
+        if (!originalColors) return;
+        setEditor(current => ({ ...current, style: { ...current.style, scalarPalette: undefined,
+            scalarColors: [...originalColors.scalarColors], scalarConstantColor: originalColors.scalarConstantColor } }));
         setError("");
     }
     function changeMapping(update: Partial<L1502Mapping>) {
@@ -191,8 +221,8 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 <details className="l1502-control-section l1502-style-section"><summary><span className="l1502-summary-title"><Palette size={15} />样式与标注</span><span>字号 · 画布 · 图注</span></summary><div>
                 <fieldset className="template-style-fields l1502-fieldset" disabled={locked}>
                     {textFields.map(field => <label className="template-field" key={field.key}>{field.name}<input aria-label={field.name} value={String(editor.style[field.key])} onChange={event => changeStyle(field.key, event.target.value as never)} /></label>)}
-                    {!scalarOnly && <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} preview={palettePreview} disabled={locked} onChange={changePalette} />}
-                    {hasScalar && <ScalarPalettePicker value={editor.style.scalarPalette} preview={scalarPreview} disabled={locked} onChange={id => changeStyle("scalarPalette", id)} />}
+                    {!scalarOnly && <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} preview={palettePreview} disabled={locked} onChange={changePalette} extraPalette={originalColors ? { name: "初始配色", description: "恢复此图式最初的系列颜色", colors: originalColors.colors, option: originalOption, selected: JSON.stringify(editor.style.colors) === JSON.stringify(originalColors.colors), onSelect: restoreOriginalColors } : undefined} />}
+                    {hasScalar && <ScalarPalettePicker value={editor.style.scalarPalette} preview={scalarPreview} disabled={locked} onChange={id => changeStyle("scalarPalette", id)} extraPalette={originalColors ? { name: "初始色阶", description: "恢复此图式最初的数值渐变", colors: originalColors.scalarColors, option: originalScalarOption, selected: !editor.style.scalarPalette && JSON.stringify(editor.style.scalarColors) === JSON.stringify(originalColors.scalarColors), onSelect: restoreOriginalScale } : undefined} />}
                     <label className="template-field">字体<select aria-label="图表字体" value={editor.style.fontFamily} onChange={event => changeStyle("fontFamily", event.target.value)}><option>Arial</option><option>Times New Roman</option><option>sans-serif</option></select></label>
                     <label className="template-field">主体字号 (pt)<input aria-label="主体字号" type="number" min={5} max={16} step={0.5} value={editor.style.fontSize} onChange={event => { const value = Number(event.target.value); if (value >= 5 && value <= 16) changeStyle("fontSize", value); }} /></label>
                     <label className="template-field">画布宽度 (px)<input aria-label="画布宽度" type="number" min={420} max={1600} value={editor.style.width} onChange={event => { const value = Number(event.target.value); if (value >= 420 && value <= 1600) changeStyle("width", value); }} /></label>

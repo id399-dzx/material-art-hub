@@ -17,3 +17,4 @@
 .scalar-palette-picker__mini-scale { display: block; height: 5px; margin-top: 5px; border: 1px solid #2117280d; border-radius: 3px; }
 .scalar-palette-picker__card-title { display: flex; align-items: center; justify-content: space-between; gap: 4px; margin: 7px 2px 2px; color: #756384; }
 .scalar-palette-picker__card-title > strong { font-size: 10px; font-weight: 650; line-height: 1.4; }
+.scalar-palette-picker__card--original > small { margin: 4px 2px 1px; color: #9a8ca4; font-size: 9px; line-height: 1.4; }

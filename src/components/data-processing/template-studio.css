@@ -372,3 +372,11 @@
 }
 @media(prefers-reduced-motion:reduce) { .drawing-library .template-card:hover { transform:none; } }
 @media(prefers-reduced-transparency:reduce) { .drawing-library-controls { background:#fff; backdrop-filter:none; } }
+
+/* The comparison replaces only the preview; the full chart stays mounted for export. */
+.l1502-chart-wrap.is-comparing { display: block; padding: 0; overflow: hidden; }
+.l1502-chart-wrap > .palette-comparison { width: 100%; height: 100%; min-height: 0; }
+.template-legacy-preview .template-chart-frame > .palette-comparison { flex: 1; min-height: 0; height: 100%; }
+.template-preview-controls button { display: inline-flex; align-items: center; gap: 5px; }
+
+.template-preview-panel.is-comparing :is(.l1502-preview-heading, .template-preview-heading, .template-preview-controls, .l1502-canvas-note, .template-chart-footer) { display: none; }

@@ -1,5 +1,5 @@
 import type { DataTable, TableCell } from './templates.ts';
-import { getChartPalette } from './chart-palettes.ts';
+import { getChartPalette, getRecommendedPalette, type ScalarPaletteId } from './chart-palettes.ts';
 
 export type L1502Kind =
     | 'line' | 'bar' | 'dual-axis' | 'stacked-bar' | 'area' | 'scatter' | 'bubble' | 'bubble-cloud'
@@ -50,6 +50,8 @@ export type L1502Result = { data: L1502Data | null; error: string | null };
 export type L1502Style = {
     title: string; xLabel: string; yLabel: string; zLabel: string; secondaryYLabel: string;
     fontFamily: string; fontSize: number; width: number; height: number; colors: string[];
+    scalarPalette?: ScalarPaletteId;
+    scalarColors?: string[];
     showGrid: boolean; showValues: boolean; yaw: number; pitch: number;
     annotationX: number; annotationText: string; intervalLabel: string; bins: number; isoLevel: number;
 };
@@ -65,9 +67,10 @@ export function l1502DefaultLayout(spec: L1502Spec) {
     const multiple = ['multi-panel', 'scatter-matrix', 'scatter-marginal', 'parallel'].includes(spec.kind);
     return multiple ? { width: 900, height: spec.issue === 31 ? 900 : 680, widthMm: 180 } : { width: 760, height: 500, widthMm: 85 };
 }
-export function l1502DefaultStyle(name: string, width = 760, height = 500): L1502Style {
+export function l1502DefaultStyle(name: string, width = 760, height = 500, spec?: L1502Spec): L1502Style {
+    const recommended = getRecommendedPalette(spec?.kind ?? 'line');
     return { title: name, xLabel: 'X', yLabel: 'Y', zLabel: 'Z', secondaryYLabel: '右轴指标', fontFamily: 'Arial', fontSize: 14,
-        width, height, colors: [...L1502_COLORS], showGrid: false, showValues: false, yaw: 35, pitch: 25,
+        width, height, colors: [...getChartPalette(recommended.palette).colors], scalarPalette: recommended.scalarPalette, showGrid: false, showValues: false, yaw: 35, pitch: 25,
         annotationX: 0, annotationText: '参考位置', intervalLabel: '输入区间', bins: 12, isoLevel: 0 };
 }
 export type L1502Demo = TableCell[][];

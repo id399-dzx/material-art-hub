@@ -1,22 +1,22 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>多组针状图; independently rendered demonstration data; L1502 issue 26; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,51.571,248.5)" fill="#74808b">Y</text>
-<path d="M97.5 398.8L97.5 98.2" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr68-cls-814"></path>
+<path d="M97.5 398.8L97.5 98.2" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(408.7855 444.766)" fill="#74808b">X</text>
-<path d="M97.6 399.5L720 399.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr68-cls-814"></path>
-<path d="M97.6 399.5L92.6 399.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.6 338.5L92.6 338.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.6 278.5L92.6 278.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.6 218.5L92.6 218.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.6 158.5L92.6 158.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.6 98.5L92.6 98.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M97.5 398.8L97.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M201.5 398.8L201.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M305.5 398.8L305.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M409.5 398.8L409.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M512.5 398.8L512.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M616.5 398.8L616.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
-<path d="M720.5 398.8L720.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-814"></path>
+<path d="M97.6 399.5L720 399.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr68-cls-827"></path>
+<path d="M97.6 399.5L92.6 399.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.6 338.5L92.6 338.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.6 278.5L92.6 278.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.6 218.5L92.6 218.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.6 158.5L92.6 158.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.6 98.5L92.6 98.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M97.5 398.8L97.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M201.5 398.8L201.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M305.5 398.8L305.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M409.5 398.8L409.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M512.5 398.8L512.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M616.5 398.8L616.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
+<path d="M720.5 398.8L720.5 403.8" fill="none" pointer-events="visible" stroke="#74808b" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 398.766)" fill="#54555a">0</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 338.6596)" fill="#54555a">1</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 278.5532)" fill="#54555a">2</text>
@@ -30,187 +30,187 @@
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(512.5237 406.766)" fill="#54555a">4</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(616.2618 406.766)" fill="#54555a">5</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" y="12.116993464052287" transform="translate(720 406.766)" fill="#54555a">6</text>
-<path d="M97.6 398.8L97.6 236.2" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="97.6" cy="236.2" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M123.5 398.8L123.5 222.5" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="123.5" cy="222.5" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M149.4 398.8L149.4 211.4" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="149.4" cy="211.4" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M175.4 398.8L175.4 203.5" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="175.4" cy="203.5" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M201.3 398.8L201.3 199.3" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="201.3" cy="199.3" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M227.2 398.8L227.2 198.7" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="227.2" cy="198.7" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M253.2 398.8L253.2 201.8" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="253.2" cy="201.8" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M279.1 398.8L279.1 208.3" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="279.1" cy="208.3" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M305 398.8L305 217.6" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="305" cy="217.6" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M331 398.8L331 229" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="331" cy="229" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M356.9 398.8L356.9 241.8" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="356.9" cy="241.8" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M382.9 398.8L382.9 255" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="382.9" cy="255" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M408.8 398.8L408.8 267.6" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="408.8" cy="267.6" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M434.7 398.8L434.7 278.9" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="434.7" cy="278.9" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M460.7 398.8L460.7 287.9" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="460.7" cy="287.9" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M486.6 398.8L486.6 294" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="486.6" cy="294" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M512.5 398.8L512.5 296.8" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="512.5" cy="296.8" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M538.5 398.8L538.5 295.8" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="538.5" cy="295.8" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M564.4 398.8L564.4 291.2" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="564.4" cy="291.2" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M590.3 398.8L590.3 283" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="590.3" cy="283" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M616.3 398.8L616.3 271.6" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="616.3" cy="271.6" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M642.2 398.8L642.2 257.7" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="642.2" cy="257.7" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M668.1 398.8L668.1 242" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="668.1" cy="242" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M694.1 398.8L694.1 225.3" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="694.1" cy="225.3" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M720 398.8L720 208.6" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="720" cy="208.6" r="4" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-816"></circle>
-<path d="M97.6 398.8L97.6 194.1" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="97.6" cy="194.1" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M123.5 398.8L123.5 180.4" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="123.5" cy="180.4" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M149.4 398.8L149.4 169.3" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="149.4" cy="169.3" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M175.4 398.8L175.4 161.5" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="175.4" cy="161.5" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M201.3 398.8L201.3 157.2" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="201.3" cy="157.2" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M227.2 398.8L227.2 156.6" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="227.2" cy="156.6" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M253.2 398.8L253.2 159.7" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="253.2" cy="159.7" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M279.1 398.8L279.1 166.2" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="279.1" cy="166.2" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M305 398.8L305 175.5" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="305" cy="175.5" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M331 398.8L331 186.9" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="331" cy="186.9" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M356.9 398.8L356.9 199.7" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="356.9" cy="199.7" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M382.9 398.8L382.9 212.9" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="382.9" cy="212.9" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M408.8 398.8L408.8 225.5" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="408.8" cy="225.5" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M434.7 398.8L434.7 236.8" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="434.7" cy="236.8" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M460.7 398.8L460.7 245.8" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="460.7" cy="245.8" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M486.6 398.8L486.6 252" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="486.6" cy="252" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M512.5 398.8L512.5 254.7" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="512.5" cy="254.7" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M538.5 398.8L538.5 253.8" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="538.5" cy="253.8" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M564.4 398.8L564.4 249.1" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="564.4" cy="249.1" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M590.3 398.8L590.3 240.9" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="590.3" cy="240.9" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M616.3 398.8L616.3 229.5" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="616.3" cy="229.5" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M642.2 398.8L642.2 215.6" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="642.2" cy="215.6" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M668.1 398.8L668.1 199.9" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="668.1" cy="199.9" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M694.1 398.8L694.1 183.2" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="694.1" cy="183.2" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M720 398.8L720 166.5" fill="#000" stroke="#CF7868" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="720" cy="166.5" r="4" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-817"></circle>
-<path d="M97.6 398.8L97.6 152" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="97.6" cy="152" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M123.5 398.8L123.5 138.3" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="123.5" cy="138.3" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M149.4 398.8L149.4 127.3" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="149.4" cy="127.3" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M175.4 398.8L175.4 119.4" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="175.4" cy="119.4" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M201.3 398.8L201.3 115.1" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="201.3" cy="115.1" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M227.2 398.8L227.2 114.6" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="227.2" cy="114.6" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M253.2 398.8L253.2 117.7" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="253.2" cy="117.7" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M279.1 398.8L279.1 124.1" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="279.1" cy="124.1" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M305 398.8L305 133.4" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="305" cy="133.4" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M331 398.8L331 144.9" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="331" cy="144.9" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M356.9 398.8L356.9 157.6" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="356.9" cy="157.6" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M382.9 398.8L382.9 170.8" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="382.9" cy="170.8" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M408.8 398.8L408.8 183.5" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="408.8" cy="183.5" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M434.7 398.8L434.7 194.7" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="434.7" cy="194.7" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M460.7 398.8L460.7 203.8" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="460.7" cy="203.8" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M486.6 398.8L486.6 209.9" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="486.6" cy="209.9" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M512.5 398.8L512.5 212.6" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="512.5" cy="212.6" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M538.5 398.8L538.5 211.7" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="538.5" cy="211.7" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M564.4 398.8L564.4 207" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="564.4" cy="207" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M590.3 398.8L590.3 198.8" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="590.3" cy="198.8" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M616.3 398.8L616.3 187.5" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="616.3" cy="187.5" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M642.2 398.8L642.2 173.5" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="642.2" cy="173.5" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M668.1 398.8L668.1 157.8" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="668.1" cy="157.8" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M694.1 398.8L694.1 141.1" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="694.1" cy="141.1" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M720 398.8L720 124.5" fill="#000" stroke="#4B9188" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-815"></path>
-<circle cx="720" cy="124.5" r="4" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-818"></circle>
-<path d="M-5 -5l380.4 0l0 34.2l-380.4 0Z" transform="translate(40 47)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr68-cls-814"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(40 52.117)" fill="#3B6E9E" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
+<path d="M97.6 398.8L97.6 236.2" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="97.6" cy="236.2" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M123.5 398.8L123.5 222.5" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="123.5" cy="222.5" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M149.4 398.8L149.4 211.4" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="149.4" cy="211.4" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M175.4 398.8L175.4 203.5" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="175.4" cy="203.5" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M201.3 398.8L201.3 199.3" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="201.3" cy="199.3" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M227.2 398.8L227.2 198.7" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="227.2" cy="198.7" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M253.2 398.8L253.2 201.8" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="253.2" cy="201.8" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M279.1 398.8L279.1 208.3" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="279.1" cy="208.3" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M305 398.8L305 217.6" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="305" cy="217.6" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M331 398.8L331 229" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="331" cy="229" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M356.9 398.8L356.9 241.8" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="356.9" cy="241.8" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M382.9 398.8L382.9 255" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="382.9" cy="255" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M408.8 398.8L408.8 267.6" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="408.8" cy="267.6" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M434.7 398.8L434.7 278.9" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="434.7" cy="278.9" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M460.7 398.8L460.7 287.9" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="460.7" cy="287.9" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M486.6 398.8L486.6 294" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="486.6" cy="294" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M512.5 398.8L512.5 296.8" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="512.5" cy="296.8" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M538.5 398.8L538.5 295.8" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="538.5" cy="295.8" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M564.4 398.8L564.4 291.2" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="564.4" cy="291.2" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M590.3 398.8L590.3 283" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="590.3" cy="283" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M616.3 398.8L616.3 271.6" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="616.3" cy="271.6" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M642.2 398.8L642.2 257.7" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="642.2" cy="257.7" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M668.1 398.8L668.1 242" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="668.1" cy="242" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M694.1 398.8L694.1 225.3" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="694.1" cy="225.3" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M720 398.8L720 208.6" fill="#000" stroke="#1B6FAE" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="720" cy="208.6" r="4" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-829"></circle>
+<path d="M97.6 398.8L97.6 194.1" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="97.6" cy="194.1" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M123.5 398.8L123.5 180.4" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="123.5" cy="180.4" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M149.4 398.8L149.4 169.3" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="149.4" cy="169.3" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M175.4 398.8L175.4 161.5" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="175.4" cy="161.5" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M201.3 398.8L201.3 157.2" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="201.3" cy="157.2" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M227.2 398.8L227.2 156.6" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="227.2" cy="156.6" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M253.2 398.8L253.2 159.7" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="253.2" cy="159.7" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M279.1 398.8L279.1 166.2" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="279.1" cy="166.2" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M305 398.8L305 175.5" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="305" cy="175.5" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M331 398.8L331 186.9" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="331" cy="186.9" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M356.9 398.8L356.9 199.7" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="356.9" cy="199.7" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M382.9 398.8L382.9 212.9" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="382.9" cy="212.9" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M408.8 398.8L408.8 225.5" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="408.8" cy="225.5" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M434.7 398.8L434.7 236.8" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="434.7" cy="236.8" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M460.7 398.8L460.7 245.8" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="460.7" cy="245.8" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M486.6 398.8L486.6 252" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="486.6" cy="252" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M512.5 398.8L512.5 254.7" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="512.5" cy="254.7" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M538.5 398.8L538.5 253.8" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="538.5" cy="253.8" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M564.4 398.8L564.4 249.1" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="564.4" cy="249.1" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M590.3 398.8L590.3 240.9" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="590.3" cy="240.9" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M616.3 398.8L616.3 229.5" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="616.3" cy="229.5" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M642.2 398.8L642.2 215.6" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="642.2" cy="215.6" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M668.1 398.8L668.1 199.9" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="668.1" cy="199.9" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M694.1 398.8L694.1 183.2" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="694.1" cy="183.2" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M720 398.8L720 166.5" fill="#000" stroke="#F08A3C" stroke-width="1.5" ecmeta_series_index="1" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="720" cy="166.5" r="4" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-830"></circle>
+<path d="M97.6 398.8L97.6 152" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="97.6" cy="152" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M123.5 398.8L123.5 138.3" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="123.5" cy="138.3" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M149.4 398.8L149.4 127.3" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="149.4" cy="127.3" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M175.4 398.8L175.4 119.4" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="175.4" cy="119.4" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M201.3 398.8L201.3 115.1" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="201.3" cy="115.1" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M227.2 398.8L227.2 114.6" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="227.2" cy="114.6" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M253.2 398.8L253.2 117.7" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="253.2" cy="117.7" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="6" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M279.1 398.8L279.1 124.1" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="279.1" cy="124.1" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="7" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M305 398.8L305 133.4" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="305" cy="133.4" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="8" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M331 398.8L331 144.9" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="331" cy="144.9" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="9" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M356.9 398.8L356.9 157.6" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="356.9" cy="157.6" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="10" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M382.9 398.8L382.9 170.8" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="382.9" cy="170.8" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="11" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M408.8 398.8L408.8 183.5" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="408.8" cy="183.5" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="12" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M434.7 398.8L434.7 194.7" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="434.7" cy="194.7" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="13" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M460.7 398.8L460.7 203.8" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="460.7" cy="203.8" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="14" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M486.6 398.8L486.6 209.9" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="486.6" cy="209.9" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="15" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M512.5 398.8L512.5 212.6" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="512.5" cy="212.6" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="16" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M538.5 398.8L538.5 211.7" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="538.5" cy="211.7" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="17" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M564.4 398.8L564.4 207" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="564.4" cy="207" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="18" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M590.3 398.8L590.3 198.8" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="590.3" cy="198.8" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="19" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M616.3 398.8L616.3 187.5" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="616.3" cy="187.5" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="20" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M642.2 398.8L642.2 173.5" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="642.2" cy="173.5" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="21" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M668.1 398.8L668.1 157.8" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="668.1" cy="157.8" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="22" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M694.1 398.8L694.1 141.1" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="694.1" cy="141.1" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="23" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M720 398.8L720 124.5" fill="#000" stroke="#3FA55A" stroke-width="1.5" ecmeta_series_index="2" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-828"></path>
+<circle cx="720" cy="124.5" r="4" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="24" ecmeta_ssr_type="chart" class="zr68-cls-831"></circle>
+<path d="M-5 -5l380.4 0l0 34.2l-380.4 0Z" transform="translate(40 47)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr68-cls-827"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(40 52.117)" fill="#1B6FAE" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" x="30" y="7" transform="translate(40 52.117)" fill="#54555a">SeriesA</text>
-<path d="M0 -5.1l115.1 0l0 24.2l-115.1 0Z" transform="translate(40 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(167.0613 52.117)" fill="#CF7868" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
+<path d="M0 -5.1l115.1 0l0 24.2l-115.1 0Z" transform="translate(40 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(167.0613 52.117)" fill="#F08A3C" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" x="30" y="7" transform="translate(167.0613 52.117)" fill="#54555a">SeriesB</text>
-<path d="M0 -5.1l115.1 0l0 24.2l-115.1 0Z" transform="translate(167.0613 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
-<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(294.1226 52.117)" fill="#4B9188" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
+<path d="M0 -5.1l115.1 0l0 24.2l-115.1 0Z" transform="translate(167.0613 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(294.1226 52.117)" fill="#3FA55A" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:24.233986928104574px;font-family:Arial;" x="30" y="7" transform="translate(294.1226 52.117)" fill="#54555a">SeriesC</text>
-<path d="M0 -5.1l116.3 0l0 24.2l-116.3 0Z" transform="translate(294.1226 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-814"></path>
-<path d="M-154.1 -5l308.2 0l0 38.2l-308.2 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr68-cls-814"></path>
+<path d="M0 -5.1l116.3 0l0 24.2l-116.3 0Z" transform="translate(294.1226 52.117)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr68-cls-827"></path>
+<path d="M-154.1 -5l308.2 0l0 38.2l-308.2 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr68-cls-827"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">多组针状图 · 示例数据</text>
 <style ><![CDATA[
-.zr68-cls-814:hover {
+.zr68-cls-827:hover {
 pointer-events:none;
 }
-.zr68-cls-815:hover {
+.zr68-cls-828:hover {
 cursor:pointer;
 fill:rgba(0,0,0,1);
 }
-.zr68-cls-816:hover {
+.zr68-cls-829:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(29,122,191,1);
 }
-.zr68-cls-817:hover {
+.zr68-cls-830:hover {
 cursor:pointer;
-fill:rgba(227,132,114,1);
+fill:rgba(255,151,66,1);
 }
-.zr68-cls-818:hover {
+.zr68-cls-831:hover {
 cursor:pointer;
-fill:rgba(82,159,149,1);
+fill:rgba(69,181,99,1);
 }
 
 ]]>

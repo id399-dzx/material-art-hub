@@ -39,31 +39,31 @@
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(451.6487 329.5244)" fill="#383842">1 C</text>
 <path d="M-17.6 0l35.2 0l0 26.2l-35.2 0Z" transform="translate(577.2162 329.5244)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(577.2162 329.5244)" fill="#383842">2 C</text>
-<path d="M162.8 319.5l21.5 0l0 -178.1l-21.5 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
-<path d="M288.4 319.5l21.5 0l0 -164.6l-21.5 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
-<path d="M414 319.5l21.5 0l0 -148.8l-21.5 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
-<path d="M539.5 319.5l21.5 0l0 -129.6l-21.5 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
-<path d="M189.8 319.5l21.5 0l0 -161.2l-21.5 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
-<path d="M315.3 319.5l21.5 0l0 -147.7l-21.5 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
-<path d="M440.9 319.5l21.5 0l0 -129.6l-21.5 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
-<path d="M566.5 319.5l21.5 0l0 -110.5l-21.5 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
-<path d="M216.7 319.5l21.5 0l0 -145.4l-21.5 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
-<path d="M342.2 319.5l21.5 0l0 -131.9l-21.5 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
-<path d="M467.8 319.5l21.5 0l0 -116.1l-21.5 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
-<path d="M593.4 319.5l21.5 0l0 -94.7l-21.5 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
-<path d="M0 0l283 0l0 25l-283 0Z" transform="translate(198.4789 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr11-cls-53"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(198.4789 67.0253)" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
-<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(198.4789 67.0253)" fill="#383842">样品 A</text>
-<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(198.4789 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(297.1333 67.0253)" fill="#CF7868" stroke="#CF7868" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
-<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(297.1333 67.0253)" fill="#383842">样品 B</text>
-<path d="M0 -8.5l84.7 0l0 25l-84.7 0Z" transform="translate(297.1333 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(395.7878 67.0253)" fill="#4B9188" stroke="#4B9188" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
-<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(395.7878 67.0253)" fill="#383842">样品 C</text>
-<path d="M0 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(395.7878 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
+<path d="M163.2 319.2l20.8 0l0 -177.4l-20.8 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
+<path d="M288.8 319.2l20.8 0l0 -163.9l-20.8 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
+<path d="M414.3 319.2l20.8 0l0 -148.1l-20.8 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
+<path d="M539.9 319.2l20.8 0l0 -128.9l-20.8 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-54"></path>
+<path d="M190.1 319.2l20.8 0l0 -160.5l-20.8 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
+<path d="M315.7 319.2l20.8 0l0 -147l-20.8 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
+<path d="M441.2 319.2l20.8 0l0 -128.9l-20.8 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
+<path d="M566.8 319.2l20.8 0l0 -109.8l-20.8 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-55"></path>
+<path d="M217 319.2l20.8 0l0 -144.7l-20.8 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
+<path d="M342.6 319.2l20.8 0l0 -131.2l-20.8 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
+<path d="M468.1 319.2l20.8 0l0 -115.4l-20.8 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
+<path d="M593.7 319.2l20.8 0l0 -94l-20.8 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr11-cls-56"></path>
+<path d="M0 0l286 0l0 25l-286 0Z" transform="translate(196.9789 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr11-cls-53"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(197.9789 67.0253)" fill="#3FA55A" stroke="#3FA55A" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(197.9789 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(197.9789 67.0253)" fill="#383842">样品 A</text>
+<path d="M-1 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(197.9789 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(297.6333 67.0253)" fill="#F08A3C" stroke="#F08A3C" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
+<path d="M21 -8.5l63.7 0l0 25l-63.7 0Z" transform="translate(297.6333 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(297.6333 67.0253)" fill="#383842">样品 B</text>
+<path d="M-1 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(297.6333 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(397.2878 67.0253)" fill="#4A93C7" stroke="#4A93C7" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr11-cls-53"></path>
+<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(397.2878 67.0253)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(397.2878 67.0253)" fill="#383842">样品 C</text>
+<path d="M-1 -8.5l86.7 0l0 25l-86.7 0Z" transform="translate(397.2878 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" class="zr11-cls-57"></path>
 <path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr11-cls-53"></path>
 <path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr11-cls-53"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">分组柱状图 · 示例数据</text>
@@ -73,15 +73,15 @@ pointer-events:none;
 }
 .zr11-cls-54:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(69,181,99,1);
 }
 .zr11-cls-55:hover {
 cursor:pointer;
-fill:rgba(227,132,114,1);
+fill:rgba(255,151,66,1);
 }
 .zr11-cls-56:hover {
 cursor:pointer;
-fill:rgba(82,159,149,1);
+fill:rgba(81,161,218,1);
 }
 .zr11-cls-57:hover {
 cursor:pointer;

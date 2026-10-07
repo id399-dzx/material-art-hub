@@ -7,7 +7,7 @@ import ReactECharts from "echarts-for-react";
 import * as XLSX from "xlsx";
 import { ArrowDownToLine, ArrowRight, Check, ChevronDown, FileSpreadsheet, FlaskConical, Layers3, Loader2, Palette, SlidersHorizontal, Sparkles, UploadCloud, Search, Zap } from "lucide-react";
 import { CHART_TEMPLATES, PANEL_SWEEP_DEMO, isNumericX, isSpatial, isGraph, isBar, matrixToCsv, numericCell, parseTemplateTable, type ColumnMapping, type ErrorInput, type ErrorMeasure, type TemplateId } from "@/lib/data-processing/templates";
-import { createTemplateOption, type PublicationStyle } from "@/lib/data-processing/template-chart";
+import { createTemplateOption, type PublicationStyle, type TemplateChartStyle } from "@/lib/data-processing/template-chart";
 import { DRAWING_TEMPLATES, DRAWING_TYPES, drawingTemplateForChart, type DrawingType, type DrawingTemplate } from "@/lib/data-processing/drawing-catalog";
 import { prepareElectrochemicalData, type ImaginaryMode } from "@/lib/data-processing/electrochemistry";
 import { suggestElectrochemicalMapping } from "@/lib/data-processing/electrochemical-mapping";
@@ -22,8 +22,10 @@ import { validateL1502EditSnapshot, type L1502EditSnapshot } from "@/lib/data-pr
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import type { ExportSettings } from "@/lib/data-processing/publication";
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
-import { CHART_PALETTES, DEFAULT_CHART_PALETTE } from "@/lib/data-processing/chart-palettes";
+import { CHART_PALETTES, SCALAR_PALETTES, getRecommendedPalette, type ScalarPaletteId } from "@/lib/data-processing/chart-palettes";
 import ChartPalettePicker from "./ChartPalettePicker";
+import ScalarPalettePicker from "./ScalarPalettePicker";
+import PaletteComparison from "./PaletteComparison";
 import "./template-studio.css";
 
 type Sheet = { name: string; matrix: unknown[][] };
@@ -38,7 +40,7 @@ export type TemplateEditSnapshot = {
     panelChart: "bar" | "line"; cumulative: boolean; secondaryYLabel: string;
     annotationX: number; annotationText: string; yaw: number; pitch: number;
     showUncertainty: boolean; errorInput: ErrorInput; errorMeasure: ErrorMeasure;
-    title: string; xLabel: string; yLabel: string; palette: PublicationStyle;
+    title: string; xLabel: string; yLabel: string; palette: PublicationStyle; scalarPalette?: ScalarPaletteId;
     fontFamily: string; fontSize: number; width: number; height: number;
     showGrid: boolean; showValues: boolean; exportSettings: ExportSettings;
     caption: string; actualPreview: boolean; legendSelection?: Record<string, boolean>[];
@@ -84,6 +86,7 @@ export function validateTemplateEditSnapshot(value: unknown): TemplateEditSnapsh
     }
     if (!["", "negative-imaginary", "raw-imaginary"].includes(snapshot.imaginaryMode as string) || !["bar", "line"].includes(snapshot.panelChart as string) || !["replicates", "summary"].includes(snapshot.errorInput as string) || !["SD", "SEM"].includes(snapshot.errorMeasure as string) || !CHART_PALETTES.some(palette => palette.id === snapshot.palette) || !["Arial", "Times New Roman", "sans-serif"].includes(snapshot.fontFamily as string)) fail("图形样式或误差参数无效。");
     if (!numberIn(snapshot.width, 420, 1600) || !numberIn(snapshot.height, 320, 1000) || !numberIn(snapshot.fontSize, 5, 16) || !numberIn(snapshot.yaw, -180, 180) || !numberIn(snapshot.pitch, -80, 80) || !numberIn(snapshot.annotationX, -Number.MAX_VALUE, Number.MAX_VALUE)) fail("画布尺寸、字号或视角参数超出范围。");
+    if (snapshot.scalarPalette !== undefined && !SCALAR_PALETTES.some(palette => palette.id === snapshot.scalarPalette)) fail("数值色阶无效。");
     if (!record(snapshot.exportSettings) || !numberIn(snapshot.exportSettings.widthMm, 40, 300) || ![150, 300, 600].includes(snapshot.exportSettings.dpi as number) || typeof snapshot.exportSettings.grayscale !== "boolean" || !["single", "double", "custom"].includes(snapshot.exportSettings.preset as string)) fail("导出参数无效。");
     if (snapshot.legendSelection !== undefined && (!Array.isArray(snapshot.legendSelection) || snapshot.legendSelection.length > 8 || !snapshot.legendSelection.every(selection => record(selection) && Object.keys(selection).length <= 2048 && Object.entries(selection).every(([name, selected]) => name.length <= 32767 && typeof selected === "boolean")))) fail("图例显示状态无效。");
     return structuredClone(snapshot) as unknown as TemplateEditSnapshot;
@@ -135,7 +138,9 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const [title, setTitle] = useState(initial.name);
     const [xLabel, setXLabel] = useState(initial.xLabel);
     const [yLabel, setYLabel] = useState(initial.yLabel);
-    const [palette, setPalette] = useState<PublicationStyle>(DEFAULT_CHART_PALETTE);
+    const [palette, setPalette] = useState<PublicationStyle>(getRecommendedPalette(initial.variant ?? initial.chartId).palette);
+    const [scalarPalette, setScalarPalette] = useState<ScalarPaletteId | undefined>(getRecommendedPalette(initial.variant ?? initial.chartId).scalarPalette);
+    const [comparePalettes, setComparePalettes] = useState(false);
     const [fontFamily, setFontFamily] = useState("Arial");
     const [fontSize, setFontSize] = useState(8);
     const [width, setWidth] = useState(680);
@@ -189,20 +194,39 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     const chartHeight = Number.isFinite(height) && height >= 320 && height <= 1000 ? height : 420;
     const safeFontSize = Number.isFinite(fontSize) && fontSize >= 5 && fontSize <= 16 ? fontSize : 8;
     const canvasFontSize = safeFontSize * 25.4 / 72 * chartWidth / exportSettings.widthMm;
-    const option = useMemo(() => result.data ? createTemplateOption(result.data, drawingId, {
-        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
+    const chartStyle = useMemo<TemplateChartStyle>(() => ({
+        title: `${title}${source.kind === "demo" ? " · 示例数据" : ""}`, xLabel, yLabel, fontFamily, fontSize: canvasFontSize, palette, scalarPalette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, width: chartWidth, height: chartHeight,
         customColors: referenceColors ? template.paper?.region.colors : undefined,
         horizontal: template.paper?.region.kind === "horizontal", colorByCategory: referenceColors && template.paper?.region.kind === "bars",
         stackedArea: template.paper?.region.kind === "area", hatching,
         fillLines: template.paper?.region.fillSeries, sphereGuide,
         variant: template.variant,
         xLog: template.electrochemical?.xLog, yLog: template.electrochemical?.yLog, equalAxes: template.electrochemical?.equalAxes,
-    }) : null, [result.data, drawingId, title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper, template.variant, template.electrochemical]);
+    }), [title, source.kind, xLabel, yLabel, fontFamily, canvasFontSize, palette, scalarPalette, showGrid, showValues, errorMeasure, panelChart, cumulative, secondaryYLabel, annotationX, annotationText, yaw, pitch, chartWidth, chartHeight, referenceColors, hatching, sphereGuide, template.paper, template.variant, template.electrochemical]);
+    const option = useMemo(() => result.data ? createTemplateOption(result.data, drawingId, chartStyle) : null, [result.data, drawingId, chartStyle]);
     const previewOption = useMemo(() => {
         if (!option || !legendSelection?.length) return option;
         const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
         return { ...option, legend: legends.map((legend, index) => ({ ...legend, selected: legendSelection[index] ?? legend.selected })) };
     }, [option, legendSelection]);
+    const palettePreview = useMemo(() => ({ width: chartWidth, height: chartHeight, revision: JSON.stringify([result.data, chartStyle, legendSelection]),
+        createOption: (palette: PublicationStyle) => {
+            if (!result.data) return null;
+            const option = createTemplateOption(result.data, drawingId, { ...chartStyle, palette, customColors: undefined, colorByCategory: false });
+            const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
+            return legendSelection?.length ? { ...option, legend: legends.map((legend, index) => ({ ...legend, selected: legendSelection[index] ?? legend.selected })) } : option;
+        },
+    }), [chartWidth, chartHeight, result.data, drawingId, chartStyle, legendSelection]);
+    const scalarPreview = useMemo(() => ({ width: chartWidth, height: chartHeight, revision: JSON.stringify([result.data, chartStyle, legendSelection]),
+        createOption: (scalarPalette: ScalarPaletteId) => result.data ? createTemplateOption(result.data, drawingId, { ...chartStyle, scalarPalette }) : null,
+    }), [chartWidth, chartHeight, result.data, drawingId, chartStyle, legendSelection]);
+    const referenceOption = useMemo(() => {
+        if (!result.data || !template.paper) return null;
+        const option = createTemplateOption(result.data, drawingId, { ...chartStyle, customColors: template.paper.region.colors, scalarPalette: undefined, colorByCategory: template.paper.region.kind === "bars" });
+        const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
+        return legendSelection?.length ? { ...option, legend: legends.map((legend, index) => ({ ...legend, selected: legendSelection[index] ?? legend.selected })) } : option;
+    }, [result.data, drawingId, chartStyle, template.paper, legendSelection]);
+    const scalarOnly = drawingId === "heatmap" || drawingId === "surface";
 
     function currentLegendSelection() {
         const legends = chartRef.current?.getEchartsInstance().getOption().legend;
@@ -287,6 +311,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     function chooseTemplate(preset: string) {
         const next = templates.find(item => item.id === preset);
         if (!next) return;
+        setComparePalettes(false);
         if (next.l1502) {
             setEditorOpen(false);
             setL1502Editor(current => current?.id === preset ? { ...current, open: true, assetId: null } : { id: preset, key: Date.now(), open: true, snapshot: l1502Cache.current.get(preset) });
@@ -297,7 +322,8 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setEditorOpen(true); setHasOpened(true);
         if (preset === presetId) return;
         const id = next.chartId;
-        setPresetId(preset); setSelected(id); setReferenceColors(false); setPalette(DEFAULT_CHART_PALETTE);
+        const recommended = getRecommendedPalette(next.variant ?? id);
+        setPresetId(preset); setSelected(id); setReferenceColors(false); setPalette(recommended.palette); setScalarPalette(recommended.scalarPalette);
         setHatching(!!next.paper?.region.hatching); setSphereGuide(next.variant !== "spatial-vectors");
         setCumulative(false);
         setPanelChart("bar");
@@ -343,10 +369,12 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
     }
 
     function applyRecommendation(id: TemplateId, nextMapping: ColumnMapping) {
+        setComparePalettes(false);
         setLegendSelection(undefined);
         const original = drawingTemplateForChart(id);
         const representative = templates.find(item => item.id === original.id) ?? original;
         setPresetId(representative.id); setReferenceColors(false);
+        setPalette(getRecommendedPalette(representative.variant ?? representative.chartId).palette); setScalarPalette(getRecommendedPalette(representative.variant ?? representative.chartId).scalarPalette);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         setSelected(representative.chartId); setMapping(nextMapping); setPanelChart("bar"); setCumulative(false);
@@ -363,6 +391,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         const representative = templates.find(item => item.id === original.id) ?? original;
         setCompositionAssetId(null); setCompositionError("");
         setEditorOpen(true); setHasOpened(true); setPresetId(representative.id); setReferenceColors(false);
+        setComparePalettes(false); setPalette(getRecommendedPalette(representative.variant ?? representative.chartId).palette); setScalarPalette(getRecommendedPalette(representative.variant ?? representative.chartId).scalarPalette);
         setHatching(!!representative.paper?.region.hatching); setSphereGuide(true);
         const next = CHART_TEMPLATES.find(item => item.id === id)!;
         bindTable({ name, kind: "file", sheets: [{ name: "已处理 XY 数据", matrix }] }, 0, true, id, "bar", representative);
@@ -387,7 +416,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
         setSecondaryYLabel(saved.secondaryYLabel); setAnnotationX(saved.annotationX); setAnnotationText(saved.annotationText);
         setYaw(saved.yaw); setPitch(saved.pitch); setShowUncertainty(saved.showUncertainty);
         setErrorInput(saved.errorInput); setErrorMeasure(saved.errorMeasure); setTitle(saved.title);
-        setXLabel(saved.xLabel); setYLabel(saved.yLabel); setPalette(saved.palette); setFontFamily(saved.fontFamily);
+        setXLabel(saved.xLabel); setYLabel(saved.yLabel); setPalette(saved.palette); setScalarPalette(saved.scalarPalette); setComparePalettes(false); setFontFamily(saved.fontFamily);
         setFontSize(saved.fontSize); setWidth(saved.width); setHeight(saved.height); setShowGrid(saved.showGrid);
         setShowValues(saved.showValues); setExportSettings(saved.exportSettings); setCaption(saved.caption);
         setActualPreview(saved.actualPreview); setLegendSelection(saved.legendSelection); setCompositionAssetId(asset.id); setCompositionError("");
@@ -409,7 +438,7 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 kind: "template", version: 1, presetId, selected, source, sheetIndex, hasHeader, mapping,
                 imaginaryMode, referenceColors, hatching, sphereGuide, panelChart, cumulative, secondaryYLabel,
                 annotationX, annotationText, yaw, pitch, showUncertainty, errorInput, errorMeasure,
-                title, xLabel, yLabel, palette, fontFamily, fontSize: safeFontSize, width: chartWidth, height: chartHeight,
+                title, xLabel, yLabel, palette, scalarPalette, fontFamily, fontSize: safeFontSize, width: chartWidth, height: chartHeight,
                 showGrid, showValues, exportSettings, caption, actualPreview, legendSelection: currentLegendSelection(),
             });
             const asset: FigureAsset = {
@@ -497,7 +526,9 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                 </section>
                     <section className="template-style-panel template-glass template-legacy-settings" aria-labelledby="template-style-title">
                         <div className="template-section-heading"><span className="template-section-icon"><Palette size={18} /></span><div><h3 id="template-style-title">最后一点，按你的风格</h3><p>样式调整会立即同步到预览和导出文件。</p></div></div>
-                        <ChartPalettePicker value={referenceColors ? null : palette} onChange={id => { setPalette(id); setReferenceColors(false); }} disabled={loading || exporting || compositionBusy} extraPalette={template.paper ? { name: "原图配色", description: "保留参考图例的颜色", colors: template.paper.region.colors ?? ["#38679b"], selected: referenceColors, onSelect: () => setReferenceColors(true) } : undefined} />
+                        {!scalarOnly && <ChartPalettePicker value={referenceColors ? null : palette} preview={palettePreview} onChange={id => { setPalette(id); setReferenceColors(false); }} disabled={loading || exporting || compositionBusy} extraPalette={template.paper ? { name: "原图配色", description: "使用来源图例的配色绘制当前数据", colors: template.paper.region.colors ?? ["#38679b"], option: referenceOption, selected: referenceColors, onSelect: () => { setReferenceColors(true); setScalarPalette(undefined); } } : undefined} />}
+                        {scalarOnly && <ScalarPalettePicker value={scalarPalette} preview={scalarPreview} disabled={loading || exporting || compositionBusy} onChange={setScalarPalette} />}
+                        {scalarOnly && template.paper && <button className="resource-button template-reference-scale" type="button" aria-pressed={referenceColors && !scalarPalette} disabled={loading || exporting || compositionBusy} onClick={() => { setReferenceColors(true); setScalarPalette(undefined); }}>使用原图色阶</button>}
                         <div className="template-style-grid"><label className="template-field template-field--wide">图表标题<input value={title} onChange={event => setTitle(event.target.value)} maxLength={80} /></label><label className="template-field">X 轴标题<input value={xLabel} onChange={event => setXLabel(event.target.value)} maxLength={60} /></label><label className="template-field">Y 轴标题<input value={yLabel} onChange={event => setYLabel(event.target.value)} maxLength={60} /></label><label className="template-field">字体<div className="template-select-wrap"><select value={fontFamily} onChange={event => setFontFamily(event.target.value)}><option value="Arial">Arial · 无衬线</option><option value="Times New Roman">Times New Roman · 衬线</option><option value="sans-serif">系统无衬线</option></select><ChevronDown size={14} /></div></label><label className="template-field">最终字号 (pt)<input type="number" min={5} max={16} step={0.5} value={fontSize} onChange={event => setFontSize(Number(event.target.value))} onBlur={() => setFontSize(safeFontSize)} /></label><label className="template-field">画布宽度 (px)<input type="number" min={420} max={1600} step={20} value={width} onChange={event => setWidth(Number(event.target.value))} onBlur={() => setWidth(chartWidth)} /></label><label className="template-field">画布高度 (px)<input type="number" min={320} max={1000} step={20} value={height} onChange={event => setHeight(Number(event.target.value))} onBlur={() => setHeight(chartHeight)} /></label></div>
                         <label className="template-field">统计图注（保存在 SVG 描述中）<input value={caption} maxLength={300} onChange={event => setCaption(event.target.value)} placeholder="如：n=6 独立实验；误差条为 SD；单位见轴标题" /></label>
                         {drawingId === "dual-axis" && <label className="template-field">右侧 Y 轴标题<input value={secondaryYLabel} onChange={event => setSecondaryYLabel(event.target.value)} maxLength={60} /></label>}
@@ -524,9 +555,9 @@ export default function TemplateStudio({ active, ref, onAddToComposition }: { ac
                     </section>
             <details className="template-dialog-advisor"><summary>数据检查与绘图建议 · 缺失值、样本量与推荐图形</summary><DataAdvisor key={`${source.name}-${sheetIndex}-${hasHeader}`} table={table} mapping={mapping} demo={source.kind === "demo"} disabled={loading || exporting} onApply={applyRecommendation} /></details>
                 </div>
-                    <section ref={previewPanelRef} className="template-preview-panel template-glass template-legacy-preview" aria-label="固定图表预览" aria-labelledby="template-preview-title">
+                    <section ref={previewPanelRef} className={`template-preview-panel template-glass template-legacy-preview${comparePalettes && !scalarOnly ? " is-comparing" : ""}`} aria-label="固定图表预览" aria-labelledby="template-preview-title">
                         <div className="template-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3 id="template-preview-title">你的图表，正在成形</h3></div><span className={`template-data-badge${source.kind === "demo" ? " is-demo" : ""}`}><i />{source.kind === "demo" ? "示例 · 非真实实验结果" : "你的实验数据"}</span></div>
-                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><div className="template-chart-scroll" ref={previewRef}>{active && hasOpened && previewOption ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto", overflow: "hidden" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={previewOption} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} onEvents={{ legendselectchanged: () => setLegendSelection(currentLegendSelection()) }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
+                        <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button>{!scalarOnly && <button type="button" aria-pressed={comparePalettes} disabled={!option || loading || exporting || compositionBusy} onClick={() => setComparePalettes(value => !value)}><Palette size={12} />配色对照</button>}<span>预览缩放不改变导出规格</span></div><div className="template-chart-frame"><PaletteComparison open={comparePalettes && !scalarOnly} onClose={() => setComparePalettes(false)} value={referenceColors ? null : palette} currentOption={previewOption} preview={palettePreview} disabled={loading || exporting || compositionBusy} onApply={id => { setPalette(id); setReferenceColors(false); setComparePalettes(false); }} /><div className="template-chart-scroll" ref={previewRef} style={{ display: comparePalettes && !scalarOnly ? "none" : undefined }}>{active && hasOpened && previewOption ? <div style={{ width: chartWidth * previewScale, height: chartHeight * previewScale, flex: "0 0 auto", overflow: "hidden" }}><div style={{ width: chartWidth, height: chartHeight, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={previewOption} opts={{ renderer: "svg", width: chartWidth, height: chartHeight }} style={{ width: chartWidth, height: chartHeight }} onEvents={{ legendselectchanged: () => setLegendSelection(currentLegendSelection()) }} notMerge /></div></div> : <div className="template-chart-empty"><SlidersHorizontal size={30} /><strong>完成列绑定后，图表会在这里呈现</strong><p>{result.error}</p></div>}</div></div>
                         <div className="template-chart-footer"><span>{result.data ? isGraph(selected) ? `${result.data.x.length} 个节点 · ${result.data.edges?.length} 条连接` : isSpatial(selected) ? `${result.data.x.length} 个顶点 · X / Y / Z 坐标` : result.data.pointGroups ? `${result.data.pointGroups.reduce((sum, group) => sum + group.points.length, 0)} 个观测点 · ${result.data.pointGroups.length} 组` : result.data.matrixCells ? `${result.data.matrixCells.length} 个有效单元格 · ${result.data.x.length} 行 × ${result.data.series.length} 列` : result.data.samples ? `${result.data.samples.reduce((sum, group) => sum + group.values.length, 0)} 个真实样本 · ${result.data.samples.length} 组` : `${result.data.x.length} ${isNumericX(selected) ? "个数据点" : "行数据"} · ${result.data.series.length} 组数据` : "等待有效数据"}{selected === "error-bar" && showUncertainty && result.data ? ` · ±${errorMeasure}` : ""}</span><span>{chartWidth} × {chartHeight} px</span></div>
                     </section>
             </div>

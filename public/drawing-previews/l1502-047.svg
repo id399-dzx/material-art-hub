@@ -1,30 +1,30 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>词云图; independently rendered demonstration data; L1502 issue 47; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
-<path d="M0 0l580.1 0l0 54.3l-580.1 0Z" transform="translate(89.9576 439.7491)" fill="none" pointer-events="visible" class="zr89-cls-1007"></path>
+<path d="M0 0l580.1 0l0 54.3l-580.1 0Z" transform="translate(89.9576 439.7491)" fill="none" pointer-events="visible" class="zr89-cls-1019"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(89.9576 439.7491)" fill="#505763">每个词对应一行原始数据；字号 = 12 + 42 √(Weight / 最大</text>
 <text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" y="40.68819607843137" transform="translate(89.9576 439.7491)" fill="#505763">Weight)，再整体等比缩放</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 50.93768841989022px Arial" x="404.6581734674119" y="268.8405902976994" fill="#3B6E9E">Materials</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 48.37892095415066px Arial" x="400.52899811657534" y="330.5179498477071" fill="#3B6E9E">Energy</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 45.629855790172215px Arial" x="407.6090238199622" y="208.9633629619898" fill="#3B6E9E">Structure</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 43.66761287624398px Arial" x="409.62569574816956" y="153.0806632028099" fill="#3B6E9E">Design</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 41.57838798907852px Arial" x="589.0160543154575" y="327.5017493917288" fill="#3B6E9E">Surface</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 39.3337856819426px Arial" x="397.5903619996999" y="385.51963311377096" fill="#3B6E9E">Interface</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 36.89292580834154px Arial" x="195.918116083604" y="324.93484237832894" fill="#3B6E9E">Transport</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 35.58058123606577px Arial" x="156.44185759817756" y="262.4754484941177" fill="#3B6E9E">Catalysis</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 34.19306596529186px Arial" x="628.2246420589248" y="276.92560238794727" fill="#3B6E9E">Storage</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 32.71576088015347px Arial" x="192.15082346510357" y="214.57842079173378" fill="#3B6E9E">Analysis</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 31.12858736771069px Arial" x="606.2803107366066" y="232.9141832640807" fill="#3B6E9E">Model</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 29.40263879916124px Arial" x="617.6647198488411" y="192.76208023732596" fill="#3B6E9E">Spectrum</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 27.49354959588757px Arial" x="276.0133629674082" y="162.86627330773916" fill="#3B6E9E">Cycle</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 26.44893715230484px Arial" x="566.0365792858838" y="370.630691830385" fill="#3B6E9E">Charge</text>
-<text dominant-baseline="central" text-anchor="middle" style="font: 25.32663599873688px Arial" x="224.40413788559934" y="365.11943594088285" fill="#3B6E9E">Process</text>
-<path d="M-125.8 -5l251.7 0l0 38.2l-251.7 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr89-cls-1008"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font: 50.93768841989022px Arial" x="404.6581734674119" y="268.8405902976994" fill="#1B6FAE">Materials</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 48.37892095415066px Arial" x="400.52899811657534" y="330.5179498477071" fill="#1B6FAE">Energy</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 45.629855790172215px Arial" x="407.6090238199622" y="208.9633629619898" fill="#1B6FAE">Structure</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 43.66761287624398px Arial" x="409.62569574816956" y="153.0806632028099" fill="#1B6FAE">Design</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 41.57838798907852px Arial" x="589.0160543154575" y="327.5017493917288" fill="#1B6FAE">Surface</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 39.3337856819426px Arial" x="397.5903619996999" y="385.51963311377096" fill="#1B6FAE">Interface</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 36.89292580834154px Arial" x="195.918116083604" y="324.93484237832894" fill="#1B6FAE">Transport</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 35.58058123606577px Arial" x="156.44185759817756" y="262.4754484941177" fill="#1B6FAE">Catalysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 34.19306596529186px Arial" x="628.2246420589248" y="276.92560238794727" fill="#1B6FAE">Storage</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 32.71576088015347px Arial" x="192.15082346510357" y="214.57842079173378" fill="#1B6FAE">Analysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 31.12858736771069px Arial" x="606.2803107366066" y="232.9141832640807" fill="#1B6FAE">Model</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 29.40263879916124px Arial" x="617.6647198488411" y="192.76208023732596" fill="#1B6FAE">Spectrum</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 27.49354959588757px Arial" x="276.0133629674082" y="162.86627330773916" fill="#1B6FAE">Cycle</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 26.44893715230484px Arial" x="566.0365792858838" y="370.630691830385" fill="#1B6FAE">Charge</text>
+<text dominant-baseline="central" text-anchor="middle" style="font: 25.32663599873688px Arial" x="224.40413788559934" y="365.11943594088285" fill="#1B6FAE">Process</text>
+<path d="M-125.8 -5l251.7 0l0 38.2l-251.7 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr89-cls-1020"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">词云图 · 示例数据</text>
 <style ><![CDATA[
-.zr89-cls-1007:hover {
+.zr89-cls-1019:hover {
 cursor:pointer;
 }
-.zr89-cls-1008:hover {
+.zr89-cls-1020:hover {
 pointer-events:none;
 }
 

@@ -1,107 +1,107 @@
 <svg width="680" height="420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 680 420"><desc>堆叠面积图; independently rendered demonstration data; source style: figure_ophthal_review/figures/trend_by_month.png; Chen Liu et al., figures4papers, CC BY-NC 4.0</desc>
 <rect width="680" height="420" x="0" y="0" fill="#ffffff"></rect>
-<path d="M-30.3 -26.2l60.5 0l0 26.2l-60.5 0Z" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-30.3 -26.2l60.5 0l0 26.2l-60.5 0Z" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="-13.095111111111109" transform="matrix(0,-1,1,0,50.1902,218.08)" fill="#383842">Count</text>
-<path d="M137.5 319.5L137.5 116.6" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr32-cls-207"></path>
-<path d="M-25.1 0l50.1 0l0 26.2l-50.1 0Z" transform="translate(388.8649 376.8098)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M137.5 319.5L137.5 116.6" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr32-cls-208"></path>
+<path d="M-25.1 0l50.1 0l0 26.2l-50.1 0Z" transform="translate(388.8649 376.8098)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(388.8649 376.8098)" fill="#383842">Time</text>
-<path d="M137.7 319.5L640 319.5" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr32-cls-207"></path>
-<path d="M137.7 294.5L142.7 294.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 269.5L142.7 269.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 243.5L142.7 243.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 218.5L142.7 218.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 192.5L142.7 192.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 167.5L142.7 167.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.7 142.5L142.7 142.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M137.5 319.5L137.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M221.5 319.5L221.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M305.5 319.5L305.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M389.5 319.5L389.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M472.5 319.5L472.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M556.5 319.5L556.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M640.5 319.5L640.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-207"></path>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 294.1633)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M137.7 319.5L640 319.5" fill="none" pointer-events="visible" stroke="#42424b" stroke-width="1.2" stroke-linecap="round" class="zr32-cls-208"></path>
+<path d="M137.7 294.5L142.7 294.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 269.5L142.7 269.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 243.5L142.7 243.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 218.5L142.7 218.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 192.5L142.7 192.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 167.5L142.7 167.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.7 142.5L142.7 142.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M137.5 319.5L137.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M221.5 319.5L221.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M305.5 319.5L305.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M389.5 319.5L389.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M472.5 319.5L472.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M556.5 319.5L556.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M640.5 319.5L640.5 314.5" fill="none" pointer-events="visible" stroke="#42424b" class="zr32-cls-208"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 294.1633)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 294.1633)" fill="#383842">10</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 268.8022)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 268.8022)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 268.8022)" fill="#383842">20</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 243.4411)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 243.4411)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 243.4411)" fill="#383842">30</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 218.08)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 218.08)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 218.08)" fill="#383842">40</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 192.7189)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 192.7189)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 192.7189)" fill="#383842">50</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 167.3578)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 167.3578)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 167.3578)" fill="#383842">60</text>
-<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 141.9967)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-25.3 -13.1l25.3 0l0 26.2l-25.3 0Z" transform="translate(127.7298 141.9967)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:22.577777777777776px;font-family:Arial;" transform="translate(127.7298 141.9967)" fill="#383842">70</text>
-<path d="M-6.3 0l12.6 0l0 26.2l-12.6 0Z" transform="translate(137.7298 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-6.3 0l12.6 0l0 26.2l-12.6 0Z" transform="translate(137.7298 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(137.7298 329.5244)" fill="#383842">0</text>
-<path d="M-6.3 0l12.6 0l0 26.2l-12.6 0Z" transform="translate(221.4415 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-6.3 0l12.6 0l0 26.2l-12.6 0Z" transform="translate(221.4415 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(221.4415 329.5244)" fill="#383842">5</text>
-<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(305.1532 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(305.1532 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(305.1532 329.5244)" fill="#383842">10</text>
-<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(388.8649 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(388.8649 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(388.8649 329.5244)" fill="#383842">15</text>
-<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(472.5766 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(472.5766 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(472.5766 329.5244)" fill="#383842">20</text>
-<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(556.2883 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(556.2883 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(556.2883 329.5244)" fill="#383842">25</text>
-<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(640 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-12.6 0l25.3 0l0 26.2l-25.3 0Z" transform="translate(640 329.5244)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" y="13.095111111111109" transform="translate(640 329.5244)" fill="#383842">30</text>
 <g clip-path="url(#zr32-c0)">
-<path d="M137.7 309.4L188 299.2L254.9 284L338.6 261.2L472.6 230.8L606.5 202.9L606.5 319.5L472.6 319.5L338.6 319.5L254.9 319.5L188 319.5L137.7 319.5Z" fill="#3B6E9E" fill-opacity="0.7" class="zr32-cls-209"></path>
+<path d="M137.7 309.4L188 299.2L254.9 284L338.6 261.2L472.6 230.8L606.5 202.9L606.5 319.5L472.6 319.5L338.6 319.5L254.9 319.5L188 319.5L137.7 319.5Z" fill="#3FA55A" fill-opacity="0.7" class="zr32-cls-210"></path>
 </g>
 <g clip-path="url(#zr32-c1)">
-<path d="M137.7 304.3L188 291.6L254.9 266.3L338.6 233.3L472.6 185.1L606.5 136.9L606.5 202.9L472.6 230.8L338.6 261.2L254.9 284L188 299.2L137.7 309.4Z" fill="#CF7868" fill-opacity="0.7" class="zr32-cls-210"></path>
+<path d="M137.7 304.3L188 291.6L254.9 266.3L338.6 233.3L472.6 185.1L606.5 136.9L606.5 202.9L472.6 230.8L338.6 261.2L254.9 284L188 299.2L137.7 309.4Z" fill="#F08A3C" fill-opacity="0.7" class="zr32-cls-211"></path>
 </g>
 <g clip-path="url(#zr32-c0)">
-<path d="M137.7 309.4L188 299.2L254.9 284L338.6 261.2L472.6 230.8L606.5 202.9" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-width="2" stroke-linejoin="bevel" class="zr32-cls-211"></path>
+<path d="M137.7 309.4L188 299.2L254.9 284L338.6 261.2L472.6 230.8L606.5 202.9" fill="none" pointer-events="visible" stroke="#3FA55A" stroke-width="2" stroke-linejoin="bevel" class="zr32-cls-212"></path>
 </g>
 <g clip-path="url(#zr32-c1)">
-<path d="M137.7 304.3L188 291.6L254.9 266.3L338.6 233.3L472.6 185.1L606.5 136.9" fill="none" pointer-events="visible" stroke="#CF7868" stroke-width="2" stroke-linejoin="bevel" class="zr32-cls-211"></path>
+<path d="M137.7 304.3L188 291.6L254.9 266.3L338.6 233.3L472.6 185.1L606.5 136.9" fill="none" pointer-events="visible" stroke="#F08A3C" stroke-width="2" stroke-linejoin="bevel" class="zr32-cls-212"></path>
 </g>
-<path d="M0 0l219.4 0l0 25l-219.4 0Z" transform="translate(230.2991 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr32-cls-207"></path>
-<path d="M0 4L16 4" transform="translate(231.2991 67.0253)" fill="#000" stroke="#3B6E9E" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr32-cls-207"></path>
-<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(231.2991 67.0253)" fill="#3B6E9E" class="zr32-cls-207"></path>
-<path d="M21 -8.5l80.7 0l0 25l-80.7 0Z" transform="translate(231.2991 67.0253)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M0 0l219.4 0l0 25l-219.4 0Z" transform="translate(230.2991 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr32-cls-208"></path>
+<path d="M0 4L16 4" transform="translate(231.2991 67.0253)" fill="#000" stroke="#3FA55A" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr32-cls-208"></path>
+<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(231.2991 67.0253)" fill="#3FA55A" class="zr32-cls-208"></path>
+<path d="M21 -8.5l80.7 0l0 25l-80.7 0Z" transform="translate(231.2991 67.0253)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(231.2991 67.0253)" fill="#383842">Group A</text>
-<path d="M-1 -8.5l102.7 0l0 25l-102.7 0Z" transform="translate(231.2991 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr32-cls-212"></path>
-<path d="M0 4L16 4" transform="translate(348 67.0253)" fill="#000" stroke="#CF7868" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr32-cls-207"></path>
-<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(348 67.0253)" fill="#CF7868" class="zr32-cls-207"></path>
-<path d="M21 -8.5l80.7 0l0 25l-80.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-1 -8.5l102.7 0l0 25l-102.7 0Z" transform="translate(231.2991 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr32-cls-213"></path>
+<path d="M0 4L16 4" transform="translate(348 67.0253)" fill="#000" stroke="#F08A3C" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" class="zr32-cls-208"></path>
+<path d="M11.2 4A3.2 3.2 0 1 1 11.2 3.7A3.2 3.2 0 0 1 11.2 4" transform="translate(348 67.0253)" fill="#F08A3C" class="zr32-cls-208"></path>
+<path d="M21 -8.5l80.7 0l0 25l-80.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" xml:space="preserve" x="21" y="4" transform="translate(348 67.0253)" fill="#383842">Group B</text>
-<path d="M-1 -8.5l102.7 0l0 25l-102.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr32-cls-212"></path>
-<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr32-cls-207"></path>
-<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr32-cls-207"></path>
+<path d="M-1 -8.5l102.7 0l0 25l-102.7 0Z" transform="translate(348 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr32-cls-213"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr32-cls-208"></path>
+<path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr32-cls-208"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">堆叠面积图 · 示例数据</text>
 <defs >
 <clipPath id="zr32-c0">
-<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr32-cls-208"></path>
+<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr32-cls-209"></path>
 </clipPath>
 <clipPath id="zr32-c1">
-<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr32-cls-208"></path>
+<path d="M136 115.6l506 0l0 204.9l-506 0Z" fill="#000" class="zr32-cls-209"></path>
 </clipPath>
 </defs>
 <style ><![CDATA[
-.zr32-cls-207:hover {
-pointer-events:none;
-}
 .zr32-cls-208:hover {
-cursor:pointer;
-fill:rgba(0,0,0,1);
+pointer-events:none;
 }
 .zr32-cls-209:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(0,0,0,1);
 }
 .zr32-cls-210:hover {
 cursor:pointer;
-fill:rgba(227,132,114,1);
+fill:rgba(69,181,99,1);
 }
 .zr32-cls-211:hover {
 cursor:pointer;
+fill:rgba(255,151,66,1);
 }
 .zr32-cls-212:hover {
+cursor:pointer;
+}
+.zr32-cls-213:hover {
 cursor:pointer;
 fill:rgba(0,0,0,0);
 }

@@ -1,7 +1,7 @@
 import type { CustomSeriesOption, EChartsOption, LineSeriesOption, ScatterSeriesOption } from "echarts";
 import type { TemplateData } from "./templates.ts";
 import type { TemplateChartStyle } from "./template-chart.ts";
-import { findChartPalette, getChartPalette, getValueColors } from "./chart-palettes.ts";
+import { findChartPalette, getChartPalette, getChartValueColors } from "./chart-palettes.ts";
 import { textWidth } from "./chart-layout.ts";
 
 function shell(style: TemplateChartStyle, palette: string[]): EChartsOption {
@@ -34,16 +34,17 @@ export function createVariantHeatmapOption(data: TemplateData, style: TemplateCh
     else if (max === min) max = min + 1;
     const text = { color: "#383842", fontSize: style.fontSize, fontFamily: style.fontFamily };
     let sequential: string[];
-    if (diverging) {
+    if (style.scalarPalette) sequential = getChartValueColors({ ...style, colors: palette }, diverging ? 'diverging' : 'sequential');
+    else if (diverging) {
         if (style.palette === "mono") sequential = [...getChartPalette('mono').diverging];
         else if (style.customColors?.length && !findChartPalette(palette)) {
             const positive = palette.at(-1)!, negative = palette.find(color => color.toLowerCase() !== "#ffffff" && color !== positive) ?? "#38679b";
             sequential = [negative, "#ffffff", positive];
-        } else sequential = getValueColors(palette, 'diverging', style.palette);
-    } else sequential = style.palette === "mono" ? [...getChartPalette('mono').sequential] : getValueColors(palette, 'sequential', style.palette);
+        } else sequential = getChartValueColors({ ...style, colors: palette }, 'diverging');
+    } else sequential = style.palette === "mono" ? [...getChartPalette('mono').sequential] : getChartValueColors({ ...style, colors: palette });
     const base: EChartsOption = { ...shell(style, palette),
         visualMap: { min, max, dimension: 2, calculable: false, orient: "horizontal", left: "center", bottom: 22, text: [`${Number(max.toPrecision(5))}`, `${Number(min.toPrecision(5))}`], textStyle: text, inRange: { color: sequential } },
-        ...(diverging ? { graphic: [{ type: "text" as const, left: "center", bottom: 2, style: { text: style.palette === "mono" ? "色阶以 0 为中心：浅灰为负，深灰为正" : "色阶以 0 为中心：左端为负，右端为正", fill: "#787580", font: `11px ${style.fontFamily}` } }] } : {}) };
+        ...(diverging ? { graphic: [{ type: "text" as const, left: "center", bottom: 2, style: { text: style.scalarPalette === 'gray' || style.palette === "mono" && !style.scalarPalette ? "色阶以 0 为中心：浅灰为负，深灰为正" : "色阶以 0 为中心：左端为负，右端为正", fill: "#787580", font: `11px ${style.fontFamily}` } }] } : {}) };
     if (!numeric) return { ...base,
         xAxis: { type: "category", data: data.series.map(item => item.name), name: style.xLabel, axisLabel: text, splitArea: { show: false } },
         yAxis: { type: "category", data: data.x, name: style.yLabel, inverse: true, axisLabel: text, splitArea: { show: false } },

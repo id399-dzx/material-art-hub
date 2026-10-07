@@ -9,6 +9,7 @@ import { suggestL1502Mapping, buildL1502Data } from './l1502-data.ts';
 import { createL1502Option } from './l1502-render.ts';
 import { l1502DefaultStyle } from './l1502-spec.ts';
 import { initialExportSettings } from './publication.ts';
+import { SCALAR_PALETTES } from './chart-palettes.ts';
 
 function fixture() {
     return {
@@ -144,4 +145,36 @@ test('HTML-looking user text stays inert text when the validated snapshot is ren
     const { svg } = renderSignature(prepare(restored).option, restored.style);
     assert.ok(!/<script\b|<foreignObject\b|onload=/.test(svg));
     assert.ok(svg.includes('&lt;script&gt;'));
+});
+
+test('independent numeric palette is round tripped while older snapshots without it remain valid', () => {
+    for (const palette of SCALAR_PALETTES) {
+        const state = fixture(); state.style.scalarPalette = palette.id;
+        const restored = validateL1502EditSnapshot(JSON.parse(JSON.stringify(state)));
+        assert.equal(restored.style.scalarPalette, palette.id);
+        assert.deepEqual(restored.style.colors, state.style.colors);
+    }
+    const old = fixture(); delete old.style.scalarPalette;
+    const restored = validateL1502EditSnapshot(old);
+    assert.equal('scalarPalette' in restored.style, false);
+    assert.deepEqual(restored, old);
+    for (const invalid of ['rainbow', 0, null, { id: 'viridis' }]) {
+        const state = fixture(); state.style.scalarPalette = invalid;
+        assert.throws(() => validateL1502EditSnapshot(state), /数值色阶无效/);
+    }
+});
+
+test('frozen custom scalar colors survive snapshot restoration separately from changed classification colors', () => {
+    const state = fixture(); delete state.style.scalarPalette;
+    state.style.scalarColors = ['#123456', '#abcdef', '#ef4567'];
+    state.style.colors = ['#1b6fae', '#f08a3c'];
+    const restored = validateL1502EditSnapshot(JSON.parse(JSON.stringify(state)));
+    assert.deepEqual(restored.style.scalarColors, ['#123456', '#abcdef', '#ef4567']);
+    assert.deepEqual(restored.style.colors, ['#1b6fae', '#f08a3c']);
+    restored.style.scalarColors[0] = '#ffffff';
+    assert.equal(state.style.scalarColors[0], '#123456');
+    for (const invalid of [[], Array(33).fill('#123456'), ['red'], ['#fff'], 'viridis', null, ['url(javascript:alert(1))']]) {
+        const broken = fixture(); broken.style.scalarColors = invalid;
+        assert.throws(() => validateL1502EditSnapshot(broken), /自定义数值色阶格式无效/);
+    }
 });

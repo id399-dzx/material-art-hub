@@ -484,6 +484,37 @@
   line-height: 1.7;
 }
 
+.data-workbench .workbench-palette-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.data-workbench .workbench-palette-tools > .workbench-palette-hint {
+  flex: 1;
+  min-width: 160px;
+  margin: 0;
+}
+
+.data-workbench .workbench-palette-compare-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid #e0d8eb;
+  border-radius: 99px;
+  background: #ffffffb8;
+  color: #7b658f;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.data-workbench .workbench-preview-frame[hidden] {
+  display: none;
+}
+
 .data-workbench .workbench-card button:not(.glass-button),
 .data-workbench .workbench-analysis button:not(.glass-button) {
   transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 160ms ease;

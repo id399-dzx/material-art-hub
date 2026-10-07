@@ -5,12 +5,13 @@ import { fitTemplateLayout } from "./chart-layout.ts";
 import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 import type { PaperChartVariant } from "./drawing-spec.ts";
 import { createPairedCorrelationOption, observedCurveDifference } from "./template-chart-variants.ts";
-import { getChartPalette, type ChartPaletteId } from "./chart-palettes.ts";
+import { getChartPalette, type ChartPaletteId, type ScalarPaletteId } from "./chart-palettes.ts";
 
 export type PublicationStyle = ChartPaletteId;
 export type TemplateChartStyle = {
     title: string; xLabel: string; yLabel: string; fontFamily: string; fontSize: number;
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
+    scalarPalette?: ScalarPaletteId;
     panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
     xLog?: boolean; yLog?: boolean; equalAxes?: boolean;
@@ -106,7 +107,7 @@ function buildTemplateOption(data: TemplateData, template: TemplateId, style: Te
         return {
             name: item.name, type: "bar", data: style.colorByCategory && data.series.length === 1 ? item.values.map((value,i) => ({value,itemStyle:{color:palette[i%palette.length]}})) : item.values, barMaxWidth: 40, barGap: "25%", barCategoryGap: "40%",
             itemStyle: {
-                color, borderColor: style.palette === "mono" ? "#282828" : color, borderWidth: style.palette === "mono" ? 1 : 0,
+                color, borderColor: style.palette === "mono" ? "#282828" : color, borderWidth: style.palette === "mono" ? 1 : .7,
                 ...(style.palette === "mono" ? { decal: { symbol: "rect", dashArrayX: [1, 0], dashArrayY: [2, 5 + index * 2], rotation: index % 2 ? -Math.PI / 4 : Math.PI / 4, color: "rgba(255,255,255,.65)" } } : {}),
             },
             label: { show: style.showValues, position: horizontal ? "insideRight" : "insideTop", distance: 6, color: "#fff", fontSize: Math.max(10, style.fontSize - 2), formatter: ({ value }) => Number(value).toLocaleString(undefined, { maximumFractionDigits: 2 }) },

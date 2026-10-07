@@ -1,7 +1,7 @@
 import { color as echartsColor, type EChartsOption, type GraphicComponentOption } from 'echarts';
 import { textWidth, wrapChartText } from './chart-layout.ts';
 import { L1502_COLORS, L1502_SPATIAL_KINDS, type L1502Data, type L1502Point, type L1502Spec, type L1502Style } from './l1502-spec.ts';
-import { getValueColors, interpolateChartColor } from './chart-palettes.ts';
+import { getChartValueColors, interpolateChartColor } from './chart-palettes.ts';
 
 export type L1502Vec3 = [number, number, number];
 export type L1502Triangle = [L1502Vec3, L1502Vec3, L1502Vec3];
@@ -262,7 +262,7 @@ export function createL1502SpatialOption(data: L1502Data, spec: L1502Spec, style
     if (!data.points.length) throw new Error('空间图没有可绘制的观测数据。');
     const width = style.width || 760, height = style.height || 500, fontSize = Math.max(6, style.fontSize || 14), family = style.fontFamily || 'Arial';
     const palette = style.colors.length ? style.colors : [...L1502_COLORS];
-    const valuePalette = getValueColors(palette, 'sequential');
+    const valuePalette = getChartValueColors({ ...style, colors: palette });
     const yaw = Number.isFinite(style.yaw) ? style.yaw : 35, pitch = Number.isFinite(style.pitch) ? Math.max(-89, Math.min(89, style.pitch)) : 25;
     const graphic: GraphicComponentOption[] = [], primitives: Primitive[] = [], labels: { position: L1502Vec3; text: string; color: string }[] = [];
     const text = (value: string, x: number, y: number, size = fontSize, align: 'left' | 'center' | 'right' = 'center', fill = '#334155', maxWidth = Math.min(140, width * .22), z = 100000): void => {

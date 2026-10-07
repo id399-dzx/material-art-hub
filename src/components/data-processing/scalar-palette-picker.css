@@ -1,0 +1,19 @@
+.scalar-palette-picker { grid-column: 1 / -1; min-width: 0; margin: 0 0 16px; padding: 11px; border: 1px solid #e7dfed; border-radius: 11px; background: #fffafdc9; }
+.scalar-palette-picker > label { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; color: #51485b; font-size: 12px; font-weight: 650; }
+.scalar-palette-picker > label > span { color: #998aa5; font-size: 9px; font-weight: 400; }
+.scalar-palette-picker > select { width: 100%; min-width: 0; height: 34px; padding: 5px 9px; border: 1px solid #e2d9eb; border-radius: 7px; background: #ffffffb8; color: #675870; font: inherit; font-size: 11px; }
+.scalar-palette-picker > select:focus-visible { outline: 2px solid #9477ac; outline-offset: 2px; }
+.scalar-palette-picker__scale { height: 14px; margin-top: 11px; border: 1px solid #2117280d; border-radius: 5px; }
+.scalar-palette-picker__labels { display: flex; justify-content: space-between; margin-top: 5px; color: #8e8298; font-size: 9px; }
+.scalar-palette-picker > p { margin: 8px 0 0; color: #998ba4; font-size: 10px; line-height: 1.5; }
+.scalar-palette-picker > select:disabled { opacity: .5; cursor: wait; }
+.scalar-palette-picker > .scalar-palette-picker__preview-note { margin-top: 12px; }
+.scalar-palette-picker__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 8px; }
+.scalar-palette-picker .scalar-palette-picker__card { display: flex; flex-direction: column; min-width: 0; padding: 5px; border: 1px solid #e7dfed; border-radius: 9px; background: #fff; cursor: pointer; text-align: left; }
+.scalar-palette-picker .scalar-palette-picker__card:hover:not(:disabled) { border-color: #bbaacd; }
+.scalar-palette-picker .scalar-palette-picker__card.is-selected { border-color: #a68bbd; background: #f6f0fb; box-shadow: 0 0 0 1px #ae91c526; }
+.scalar-palette-picker .scalar-palette-picker__card:focus-visible { outline: 2px solid #9477ac; outline-offset: 2px; }
+.scalar-palette-picker .scalar-palette-picker__card:disabled { opacity: .5; cursor: wait; }
+.scalar-palette-picker__mini-scale { display: block; height: 5px; margin-top: 5px; border: 1px solid #2117280d; border-radius: 3px; }
+.scalar-palette-picker__card-title { display: flex; align-items: center; justify-content: space-between; gap: 4px; margin: 7px 2px 2px; color: #756384; }
+.scalar-palette-picker__card-title > strong { font-size: 10px; font-weight: 650; line-height: 1.4; }

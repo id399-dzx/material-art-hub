@@ -1,671 +1,631 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>三维柱状图渐变; independently rendered demonstration data; L1502 issue 14; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#ffffff"></rect>
-<polygon points="325.4 216.2 346.6 223.1 327.7 235.5 306.2 228.2" fill="url(#zr56-g0)" stroke="rgb(218,224,228)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-432"></polygon>
-<polygon points="325.4 216.2 324.7 159.2 346.5 165.4 346.6 223.1" fill="url(#zr56-g1)" stroke="rgb(183,190,197)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-433"></polygon>
-<polygon points="306.2 228.2 304.9 170.1 324.7 159.2 325.4 216.2" fill="url(#zr56-g2)" stroke="rgb(165,172,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-434"></polygon>
-<polygon points="356.8 226.4 378.9 233.6 360.4 246.5 338 239" fill="url(#zr56-g3)" stroke="rgb(194,211,218)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-435"></polygon>
-<polygon points="346.6 223.1 346.5 165.4 326.9 176.7 327.7 235.5" fill="url(#zr56-g2)" stroke="rgb(165,172,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-434"></polygon>
-<polygon points="327.7 235.5 326.9 176.7 304.9 170.1 306.2 228.2" fill="url(#zr56-g1)" stroke="rgb(183,190,197)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-433"></polygon>
-<polygon points="324.7 159.2 304.9 170.1 326.9 176.7 346.5 165.4" fill="url(#zr56-g0)" stroke="rgb(218,224,228)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-432"></polygon>
-<polygon points="356.8 226.4 357 144.9 380.1 151.1 378.9 233.6" fill="url(#zr56-g4)" stroke="rgb(163,179,188)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-436"></polygon>
-<polygon points="338 239 337.4 155.8 357 144.9 356.8 226.4" fill="url(#zr56-g5)" stroke="rgb(148,163,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-437"></polygon>
-<polygon points="296.8 234.1 318.4 241.6 297.9 255 276.1 247.1" fill="url(#zr56-g6)" stroke="rgb(204,217,222)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-438"></polygon>
-<polygon points="296.8 234.1 294.8 161.9 317.2 168.4 318.4 241.6" fill="url(#zr56-g7)" stroke="rgb(172,184,191)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-439"></polygon>
-<polygon points="389.6 237 412.7 244.5 394.6 258.1 371.2 250.2" fill="url(#zr56-g8)" stroke="rgb(180,203,211)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-440"></polygon>
-<polygon points="276.1 247.1 273.2 173.4 294.8 161.9 296.8 234.1" fill="url(#zr56-g9)" stroke="rgb(155,167,176)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-441"></polygon>
-<polygon points="378.9 233.6 380.1 151.1 360.8 162.4 360.4 246.5" fill="url(#zr56-g5)" stroke="rgb(148,163,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-437"></polygon>
-<polygon points="389.6 237 391.4 139.5 415.7 145.8 412.7 244.5" fill="url(#zr56-g10)" stroke="rgb(152,172,183)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-442"></polygon>
-<polygon points="360.4 246.5 360.8 162.4 337.4 155.8 338 239" fill="url(#zr56-g4)" stroke="rgb(163,179,188)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-436"></polygon>
-<polygon points="328.8 245.1 351.3 252.9 331.3 266.9 308.5 258.7" fill="url(#zr56-g11)" stroke="rgb(177,201,209)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-443"></polygon>
-<polygon points="371.2 250.2 372.2 150.6 391.4 139.5 389.6 237" fill="url(#zr56-g12)" stroke="rgb(138,157,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-444"></polygon>
-<polygon points="357 144.9 337.4 155.8 360.8 162.4 380.1 151.1" fill="url(#zr56-g3)" stroke="rgb(194,211,218)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-435"></polygon>
-<polygon points="318.4 241.6 317.2 168.4 295.9 180.3 297.9 255" fill="url(#zr56-g9)" stroke="rgb(155,167,176)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-441"></polygon>
-<polygon points="423.8 248.1 448 256 430.5 270.2 405.9 261.9" fill="url(#zr56-g13)" stroke="rgb(165,194,204)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-445"></polygon>
-<polygon points="297.9 255 295.9 180.3 273.2 173.4 276.1 247.1" fill="url(#zr56-g7)" stroke="rgb(172,184,191)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-439"></polygon>
-<polygon points="328.8 245.1 327.6 144.2 351.3 150.7 351.3 252.9" fill="url(#zr56-g14)" stroke="rgb(149,171,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-446"></polygon>
-<polygon points="294.8 161.9 273.2 173.4 295.9 180.3 317.2 168.4" fill="url(#zr56-g6)" stroke="rgb(204,217,222)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-438"></polygon>
-<polygon points="412.7 244.5 415.7 145.8 396.9 157.3 394.6 258.1" fill="url(#zr56-g12)" stroke="rgb(138,157,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-444"></polygon>
-<polygon points="266 253.5 287.9 261.5 265.8 276.1 243.6 267.6" fill="url(#zr56-g15)" stroke="rgb(191,209,217)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-447"></polygon>
-<polygon points="308.5 258.7 306.1 155.7 327.6 144.2 328.8 245.1" fill="url(#zr56-g16)" stroke="rgb(136,156,167)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-448"></polygon>
-<polygon points="423.8 248.1 427.9 136.9 453.5 143.4 448 256" fill="url(#zr56-g17)" stroke="rgb(140,165,177)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-449"></polygon>
-<polygon points="394.6 258.1 396.9 157.3 372.2 150.6 371.2 250.2" fill="url(#zr56-g10)" stroke="rgb(152,172,183)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-442"></polygon>
-<polygon points="362.2 256.6 385.8 264.7 366.3 279.4 342.3 270.9" fill="url(#zr56-g18)" stroke="rgb(155,189,200)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-450"></polygon>
-<polygon points="266 253.5 262.1 165.3 285 172.2 287.9 261.5" fill="url(#zr56-g19)" stroke="rgb(161,178,187)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-451"></polygon>
-<polygon points="405.9 261.9 409.1 148.3 427.9 136.9 423.8 248.1" fill="url(#zr56-g20)" stroke="rgb(127,151,163)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-452"></polygon>
-<polygon points="459.6 259.8 484.9 268 468.1 282.9 442.3 274.2" fill="url(#zr56-g21)" stroke="rgb(142,181,193)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-453"></polygon>
-<polygon points="243.6 267.6 238.5 177.5 262.1 165.3 266 253.5" fill="url(#zr56-g22)" stroke="rgb(146,162,172)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-454"></polygon>
-<polygon points="391.4 139.5 372.2 150.6 396.9 157.3 415.7 145.8" fill="url(#zr56-g8)" stroke="rgb(180,203,211)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-440"></polygon>
-<polygon points="351.3 252.9 351.3 150.7 330.2 162.6 331.3 266.9" fill="url(#zr56-g16)" stroke="rgb(136,156,167)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-448"></polygon>
-<polygon points="331.3 266.9 330.2 162.6 306.1 155.7 308.5 258.7" fill="url(#zr56-g14)" stroke="rgb(149,171,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-446"></polygon>
-<polygon points="362.2 256.6 362.8 135.9 387.9 142.5 385.8 264.7" fill="url(#zr56-g23)" stroke="rgb(132,161,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
-<polygon points="298.5 265.4 321.5 273.8 299.8 289 276.5 280.1" fill="url(#zr56-g24)" stroke="rgb(157,190,200)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-456"></polygon>
-<polygon points="448 256 453.5 143.4 435.2 155.2 430.5 270.2" fill="url(#zr56-g20)" stroke="rgb(127,151,163)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-452"></polygon>
-<polygon points="342.3 270.9 341.7 147.5 362.8 135.9 362.2 256.6" fill="url(#zr56-g25)" stroke="rgb(120,147,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-457"></polygon>
-<polygon points="397.2 268.7 421.9 277.2 403 292.6 377.8 283.6" fill="url(#zr56-g26)" stroke="rgb(141,181,192)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-458"></polygon>
-<polygon points="287.9 261.5 285 172.2 261.7 184.8 265.8 276.1" fill="url(#zr56-g22)" stroke="rgb(146,162,172)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-454"></polygon>
-<polygon points="430.5 270.2 435.2 155.2 409.1 148.3 405.9 261.9" fill="url(#zr56-g17)" stroke="rgb(140,165,177)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-449"></polygon>
-<polygon points="459.6 259.8 466.9 127.4 494.1 134 484.9 268" fill="url(#zr56-g27)" stroke="rgb(120,155,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-459"></polygon>
-<polygon points="327.6 144.2 306.1 155.7 330.2 162.6 351.3 150.7" fill="url(#zr56-g11)" stroke="rgb(177,201,209)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-443"></polygon>
-<polygon points="497.1 272 523.6 280.6 507.5 296.2 480.5 287.1" fill="url(#zr56-g28)" stroke="rgb(106,154,172)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-460"></polygon>
-<polygon points="265.8 276.1 261.7 184.8 238.5 177.5 243.6 267.6" fill="url(#zr56-g19)" stroke="rgb(161,178,187)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-451"></polygon>
-<polygon points="442.3 274.2 448.7 138.9 466.9 127.4 459.6 259.8" fill="url(#zr56-g29)" stroke="rgb(110,141,155)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-461"></polygon>
-<polygon points="298.5 265.4 295.2 144.4 319.6 151.2 321.5 273.8" fill="url(#zr56-g30)" stroke="rgb(133,161,174)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-462"></polygon>
-<polygon points="232.6 274.5 254.9 283.2 230.8 298.9 208.3 289.7" fill="url(#zr56-g31)" stroke="rgb(177,201,210)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-463"></polygon>
-<polygon points="385.8 264.7 387.9 142.5 367.2 154.5 366.3 279.4" fill="url(#zr56-g25)" stroke="rgb(120,147,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-457"></polygon>
-<polygon points="262.1 165.3 238.5 177.5 261.7 184.8 285 172.2" fill="url(#zr56-g15)" stroke="rgb(191,209,217)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-447"></polygon>
-<polygon points="276.5 280.1 271.6 156.4 295.2 144.4 298.5 265.4" fill="url(#zr56-g32)" stroke="rgb(121,147,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-464"></polygon>
-<polygon points="427.9 136.9 409.1 148.3 435.2 155.2 453.5 143.4" fill="url(#zr56-g13)" stroke="rgb(165,194,204)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-445"></polygon>
-<polygon points="332.6 277.8 356.7 286.7 335.5 302.6 311 293.3" fill="url(#zr56-g33)" stroke="rgb(131,175,188)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-465"></polygon>
-<polygon points="397.2 268.7 400.3 133.3 426.9 140 421.9 277.2" fill="url(#zr56-g34)" stroke="rgb(120,154,167)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-466"></polygon>
-<polygon points="366.3 279.4 367.2 154.5 341.7 147.5 342.3 270.9" fill="url(#zr56-g23)" stroke="rgb(132,161,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
-<polygon points="232.6 274.5 226.1 169.2 249.5 176.6 254.9 283.2" fill="url(#zr56-g35)" stroke="rgb(149,171,182)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-467"></polygon>
-<polygon points="484.9 268 494.1 134 476.4 145.9 468.1 282.9" fill="url(#zr56-g29)" stroke="rgb(110,141,155)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-461"></polygon>
-<polygon points="433.8 281.3 459.8 290.2 441.5 306.4 415.1 296.9" fill="url(#zr56-g36)" stroke="rgb(121,167,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-468"></polygon>
-<polygon points="377.8 283.6 379.7 145.1 400.3 133.3 397.2 268.7" fill="url(#zr56-g37)" stroke="rgb(109,141,154)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-469"></polygon>
-<polygon points="208.3 289.7 200.2 182.2 226.1 169.2 232.6 274.5" fill="url(#zr56-g38)" stroke="rgb(136,156,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-470"></polygon>
-<polygon points="468.1 282.9 476.4 145.9 448.7 138.9 442.3 274.2" fill="url(#zr56-g27)" stroke="rgb(120,155,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-459"></polygon>
-<polygon points="321.5 273.8 319.6 151.2 296.3 163.7 299.8 289" fill="url(#zr56-g32)" stroke="rgb(121,147,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-464"></polygon>
-<polygon points="497.1 272 509.6 106.1 538.7 112.5 523.6 280.6" fill="url(#zr56-g39)" stroke="rgb(91,132,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-471"></polygon>
-<polygon points="265.7 287.4 289.1 296.5 265.4 313.1 241.7 303.4" fill="url(#zr56-g40)" stroke="rgb(137,179,190)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-472"></polygon>
-<polygon points="362.8 135.9 341.7 147.5 367.2 154.5 387.9 142.5" fill="url(#zr56-g18)" stroke="rgb(155,189,200)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-450"></polygon>
-<polygon points="299.8 289 296.3 163.7 271.6 156.4 276.5 280.1" fill="url(#zr56-g30)" stroke="rgb(133,161,174)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-462"></polygon>
-<polygon points="480.5 287.1 491.9 117.4 509.6 106.1 497.1 272" fill="url(#zr56-g41)" stroke="rgb(84,121,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-473"></polygon>
-<polygon points="332.6 277.8 331.1 132.5 357.1 139.4 356.7 286.7" fill="url(#zr56-g42)" stroke="rgb(111,149,163)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-474"></polygon>
-<polygon points="368.3 290.9 393.6 300.2 373 317 347.3 307.1" fill="url(#zr56-g43)" stroke="rgb(115,162,178)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-475"></polygon>
-<polygon points="421.9 277.2 426.9 140 406.7 152.3 403 292.6" fill="url(#zr56-g37)" stroke="rgb(109,141,154)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-469"></polygon>
-<polygon points="311 293.3 307.8 144.6 331.1 132.5 332.6 277.8" fill="url(#zr56-g44)" stroke="rgb(102,137,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-476"></polygon>
-<polygon points="254.9 283.2 249.5 176.6 223.9 190 230.8 298.9" fill="url(#zr56-g38)" stroke="rgb(136,156,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-470"></polygon>
-<polygon points="433.8 281.3 440.5 126 468.7 132.9 459.8 290.2" fill="url(#zr56-g45)" stroke="rgb(103,143,158)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-477"></polygon>
-<polygon points="403 292.6 406.7 152.3 379.7 145.1 377.8 283.6" fill="url(#zr56-g34)" stroke="rgb(120,154,167)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-466"></polygon>
-<polygon points="472.3 294.5 499.6 303.9 482 320.9 454.2 311" fill="url(#zr56-g46)" stroke="rgb(88,140,161)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-478"></polygon>
-<polygon points="466.9 127.4 448.7 138.9 476.4 145.9 494.1 134" fill="url(#zr56-g21)" stroke="rgb(142,181,193)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-453"></polygon>
-<polygon points="230.8 298.9 223.9 190 200.2 182.2 208.3 289.7" fill="url(#zr56-g35)" stroke="rgb(149,171,182)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-467"></polygon>
-<polygon points="196.3 297.2 219 306.7 192.8 323.9 169.9 313.8" fill="url(#zr56-g47)" stroke="rgb(160,191,201)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-479"></polygon>
-<polygon points="415.1 296.9 420.3 138.1 440.5 126 433.8 281.3" fill="url(#zr56-g48)" stroke="rgb(95,131,146)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-480"></polygon>
-<polygon points="295.2 144.4 271.6 156.4 296.3 163.7 319.6 151.2" fill="url(#zr56-g24)" stroke="rgb(157,190,200)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-456"></polygon>
-<polygon points="523.6 280.6 538.7 112.5 521.5 124.2 507.5 296.2" fill="url(#zr56-g41)" stroke="rgb(84,121,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-473"></polygon>
-<polygon points="265.7 287.4 259.3 145.5 284.4 152.8 289.1 296.5" fill="url(#zr56-g49)" stroke="rgb(117,152,165)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-481"></polygon>
-<polygon points="300.4 300.9 325 310.5 301.9 327.9 276.9 317.7" fill="url(#zr56-g50)" stroke="rgb(108,156,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-482"></polygon>
-<polygon points="507.5 296.2 521.5 124.2 491.9 117.4 480.5 287.1" fill="url(#zr56-g39)" stroke="rgb(91,132,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-471"></polygon>
-<polygon points="356.7 286.7 357.1 139.4 334.1 152 335.5 302.6" fill="url(#zr56-g44)" stroke="rgb(102,137,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-476"></polygon>
-<polygon points="241.7 303.4 233.3 158.3 259.3 145.5 265.7 287.4" fill="url(#zr56-g51)" stroke="rgb(106,139,153)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-483"></polygon>
-<polygon points="226.1 169.2 200.2 182.2 223.9 190 249.5 176.6" fill="url(#zr56-g31)" stroke="rgb(177,201,210)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-463"></polygon>
-<polygon points="405.8 304.6 432.5 314.4 412.4 332 385.4 321.7" fill="url(#zr56-g52)" stroke="rgb(99,148,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-484"></polygon>
-<polygon points="368.3 290.9 369.7 128.8 397.2 135.8 393.6 300.2" fill="url(#zr56-g53)" stroke="rgb(99,139,155)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-485"></polygon>
-<polygon points="400.3 133.3 379.7 145.1 406.7 152.3 426.9 140" fill="url(#zr56-g26)" stroke="rgb(141,181,192)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-458"></polygon>
-<polygon points="335.5 302.6 334.1 152 307.8 144.6 311 293.3" fill="url(#zr56-g42)" stroke="rgb(111,149,163)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-474"></polygon>
-<polygon points="196.3 297.2 186.2 173.6 210.2 181.5 219 306.7" fill="url(#zr56-g54)" stroke="rgb(135,163,174)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-486"></polygon>
-<polygon points="459.8 290.2 468.7 132.9 449.1 145.4 441.5 306.4" fill="url(#zr56-g48)" stroke="rgb(95,131,146)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-480"></polygon>
-<polygon points="347.3 307.1 346.8 141.2 369.7 128.8 368.3 290.9" fill="url(#zr56-g55)" stroke="rgb(91,127,144)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-487"></polygon>
-<polygon points="169.9 313.8 157.7 187.4 186.2 173.6 196.3 297.2" fill="url(#zr56-g56)" stroke="rgb(123,149,161)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-488"></polygon>
-<polygon points="441.5 306.4 449.1 145.4 420.3 138.1 415.1 296.9" fill="url(#zr56-g45)" stroke="rgb(103,143,158)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-477"></polygon>
-<polygon points="230 311.3 253.8 321.2 228 339.3 203.8 328.7" fill="url(#zr56-g57)" stroke="rgb(119,165,180)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-489"></polygon>
-<polygon points="289.1 296.5 284.4 152.8 258.7 166 265.4 313.1" fill="url(#zr56-g51)" stroke="rgb(106,139,153)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-483"></polygon>
-<polygon points="472.3 294.5 484.2 106.5 514.4 113.3 499.6 303.9" fill="url(#zr56-g58)" stroke="rgb(77,120,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-490"></polygon>
-<polygon points="336.9 315.1 362.8 325.2 340.2 343.6 313.9 332.9" fill="url(#zr56-g59)" stroke="rgb(91,142,162)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-491"></polygon>
-<polygon points="265.4 313.1 258.7 166 233.3 158.3 241.7 303.4" fill="url(#zr56-g49)" stroke="rgb(117,152,165)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-481"></polygon>
-<polygon points="454.2 311 464.6 118.5 484.2 106.5 472.3 294.5" fill="url(#zr56-g60)" stroke="rgb(71,111,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-492"></polygon>
-<polygon points="300.4 300.9 295.7 129.5 322.5 136.8 325 310.5" fill="url(#zr56-g61)" stroke="rgb(93,134,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-493"></polygon>
-<polygon points="509.6 106.1 491.9 117.4 521.5 124.2 538.7 112.5" fill="url(#zr56-g28)" stroke="rgb(106,154,172)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-460"></polygon>
-<polygon points="393.6 300.2 397.2 135.8 374.8 148.8 373 317" fill="url(#zr56-g55)" stroke="rgb(91,127,144)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-487"></polygon>
-<polygon points="331.1 132.5 307.8 144.6 334.1 152 357.1 139.4" fill="url(#zr56-g33)" stroke="rgb(131,175,188)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-465"></polygon>
-<polygon points="445.3 319 473.3 329.3 454.1 347.9 425.5 337" fill="url(#zr56-g62)" stroke="rgb(74,123,150)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-494"></polygon>
-<polygon points="219 306.7 210.2 181.5 181.9 195.8 192.8 323.9" fill="url(#zr56-g56)" stroke="rgb(123,149,161)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-488"></polygon>
-<polygon points="276.9 317.7 269.9 142.3 295.7 129.5 300.4 300.9" fill="url(#zr56-g63)" stroke="rgb(85,123,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-495"></polygon>
-<polygon points="405.8 304.6 411 123.4 440.3 130.6 432.5 314.4" fill="url(#zr56-g64)" stroke="rgb(85,127,147)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-496"></polygon>
-<polygon points="373 317 374.8 148.8 346.8 141.2 347.3 307.1" fill="url(#zr56-g53)" stroke="rgb(99,139,155)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-485"></polygon>
-<polygon points="192.8 323.9 181.9 195.8 157.7 187.4 169.9 313.8" fill="url(#zr56-g54)" stroke="rgb(135,163,174)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-486"></polygon>
-<polygon points="440.5 126 420.3 138.1 449.1 145.4 468.7 132.9" fill="url(#zr56-g36)" stroke="rgb(121,167,181)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-468"></polygon>
-<polygon points="385.4 321.7 388.7 136.1 411 123.4 405.8 304.6" fill="url(#zr56-g65)" stroke="rgb(79,117,136)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-497"></polygon>
-<polygon points="499.6 303.9 514.4 113.3 495.4 125.7 482 320.9" fill="url(#zr56-g60)" stroke="rgb(71,111,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-492"></polygon>
-<polygon points="230 311.3 219.4 147.6 245.1 155.3 253.8 321.2" fill="url(#zr56-g66)" stroke="rgb(102,141,157)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-498"></polygon>
-<polygon points="265.3 326 290.4 336.5 265.1 355.6 239.6 344.5" fill="url(#zr56-g67)" stroke="rgb(86,138,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-499"></polygon>
-<polygon points="259.3 145.5 233.3 158.3 258.7 166 284.4 152.8" fill="url(#zr56-g40)" stroke="rgb(137,179,190)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-472"></polygon>
-<polygon points="482 320.9 495.4 125.7 464.6 118.5 454.2 311" fill="url(#zr56-g58)" stroke="rgb(77,120,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-490"></polygon>
-<polygon points="203.8 328.7 190.6 161.2 219.4 147.6 230 311.3" fill="url(#zr56-g68)" stroke="rgb(93,129,146)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-500"></polygon>
-<polygon points="375.3 330.1 402.6 340.7 380.7 360.1 352.9 348.8" fill="url(#zr56-g69)" stroke="rgb(77,128,153)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-501"></polygon>
-<polygon points="325 310.5 322.5 136.8 297.1 150 301.9 327.9" fill="url(#zr56-g63)" stroke="rgb(85,123,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-495"></polygon>
-<polygon points="186.2 173.6 157.7 187.4 181.9 195.8 210.2 181.5" fill="url(#zr56-g47)" stroke="rgb(160,191,201)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-479"></polygon>
-<polygon points="336.9 315.1 335.4 123.6 363.9 131 362.8 325.2" fill="url(#zr56-g70)" stroke="rgb(79,122,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-502"></polygon>
-<polygon points="301.9 327.9 297.1 150 269.9 142.3 276.9 317.7" fill="url(#zr56-g61)" stroke="rgb(93,134,151)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-493"></polygon>
-<polygon points="432.5 314.4 440.3 130.6 418.5 143.8 412.4 332" fill="url(#zr56-g65)" stroke="rgb(79,117,136)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-497"></polygon>
-<polygon points="313.9 332.9 309.9 136.7 335.4 123.6 336.9 315.1" fill="url(#zr56-g71)" stroke="rgb(73,112,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-503"></polygon>
-<polygon points="369.7 128.8 346.8 141.2 374.8 148.8 397.2 135.8" fill="url(#zr56-g43)" stroke="rgb(115,162,178)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-475"></polygon>
-<polygon points="412.4 332 418.5 143.8 388.7 136.1 385.4 321.7" fill="url(#zr56-g64)" stroke="rgb(85,127,147)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-496"></polygon>
-<polygon points="253.8 321.2 245.1 155.3 216.6 169.4 228 339.3" fill="url(#zr56-g68)" stroke="rgb(93,129,146)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-500"></polygon>
-<polygon points="445.3 319 455.8 106.3 487.3 113.5 473.3 329.3" fill="url(#zr56-g72)" stroke="rgb(65,107,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-504"></polygon>
-<polygon points="302.6 341.6 329.1 352.6 304.3 372.8 277.4 361" fill="url(#zr56-g73)" stroke="rgb(71,120,147)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-505"></polygon>
-<polygon points="228 339.3 216.6 169.4 190.6 161.2 203.8 328.7" fill="url(#zr56-g66)" stroke="rgb(102,141,157)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-498"></polygon>
-<polygon points="425.5 337 434.1 118.9 455.8 106.3 445.3 319" fill="url(#zr56-g74)" stroke="rgb(60,99,123)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-506"></polygon>
-<polygon points="265.3 326 256.1 127.2 283.8 134.8 290.4 336.5" fill="url(#zr56-g75)" stroke="rgb(75,119,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-507"></polygon>
-<polygon points="415.8 345.9 444.6 357.1 423.4 377.6 394.1 365.6" fill="url(#zr56-g76)" stroke="rgb(60,106,136)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-508"></polygon>
-<polygon points="362.8 325.2 363.9 131 338.9 144.6 340.2 343.6" fill="url(#zr56-g71)" stroke="rgb(73,112,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-503"></polygon>
-<polygon points="484.2 106.5 464.6 118.5 495.4 125.7 514.4 113.3" fill="url(#zr56-g46)" stroke="rgb(88,140,161)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-478"></polygon>
-<polygon points="239.6 344.5 227.3 140.6 256.1 127.2 265.3 326" fill="url(#zr56-g77)" stroke="rgb(69,109,130)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-509"></polygon>
-<polygon points="295.7 129.5 269.9 142.3 297.1 150 322.5 136.8" fill="url(#zr56-g50)" stroke="rgb(108,156,173)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-482"></polygon>
-<polygon points="375.3 330.1 377.9 119.4 408.4 127.1 402.6 340.7" fill="url(#zr56-g78)" stroke="rgb(68,111,135)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-510"></polygon>
-<polygon points="340.2 343.6 338.9 144.6 309.9 136.7 313.9 332.9" fill="url(#zr56-g70)" stroke="rgb(79,122,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-502"></polygon>
-<polygon points="473.3 329.3 487.3 113.5 466.2 126.7 454.1 347.9" fill="url(#zr56-g74)" stroke="rgb(60,99,123)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-506"></polygon>
-<polygon points="352.9 348.8 353 132.8 377.9 119.4 375.3 330.1" fill="url(#zr56-g79)" stroke="rgb(63,102,126)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-511"></polygon>
-<polygon points="341.9 358 369.8 369.7 345.7 391 317.3 378.5" fill="url(#zr56-g80)" stroke="rgb(61,106,137)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-512"></polygon>
-<polygon points="411 123.4 388.7 136.1 418.5 143.8 440.3 130.6" fill="url(#zr56-g52)" stroke="rgb(99,148,168)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-484"></polygon>
-<polygon points="454.1 347.9 466.2 126.7 434.1 118.9 425.5 337" fill="url(#zr56-g72)" stroke="rgb(65,107,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-504"></polygon>
-<polygon points="219.4 147.6 190.6 161.2 216.6 169.4 245.1 155.3" fill="url(#zr56-g57)" stroke="rgb(119,165,180)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-489"></polygon>
-<polygon points="290.4 336.5 283.8 134.8 255.3 148.8 265.1 355.6" fill="url(#zr56-g77)" stroke="rgb(69,109,130)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-509"></polygon>
-<polygon points="302.6 341.6 296.6 118 326.2 125.8 329.1 352.6" fill="url(#zr56-g81)" stroke="rgb(62,104,130)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-513"></polygon>
-<polygon points="265.1 355.6 255.3 148.8 227.3 140.6 239.6 344.5" fill="url(#zr56-g75)" stroke="rgb(75,119,140)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-507"></polygon>
-<polygon points="402.6 340.7 408.4 127.1 384.1 141 380.7 360.1" fill="url(#zr56-g79)" stroke="rgb(63,102,126)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-511"></polygon>
-<polygon points="277.4 361 268.1 131.7 296.6 118 302.6 341.6" fill="url(#zr56-g82)" stroke="rgb(58,96,121)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-514"></polygon>
-<polygon points="380.7 360.1 384.1 141 353 132.8 352.9 348.8" fill="url(#zr56-g78)" stroke="rgb(68,111,135)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-510"></polygon>
-<polygon points="415.8 345.9 424 105 456.8 112.7 444.6 357.1" fill="url(#zr56-g83)" stroke="rgb(53,93,121)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-515"></polygon>
-<polygon points="335.4 123.6 309.9 136.7 338.9 144.6 363.9 131" fill="url(#zr56-g59)" stroke="rgb(91,142,162)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-491"></polygon>
-<polygon points="383.4 375.3 413 387.7 389.6 410.3 359.5 397" fill="url(#zr56-g84)" stroke="rgb(47,87,123)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-516"></polygon>
-<polygon points="394.1 365.6 399.7 118.5 424 105 415.8 345.9" fill="url(#zr56-g85)" stroke="rgb(50,86,113)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-517"></polygon>
-<polygon points="329.1 352.6 326.2 125.8 298.2 140.1 304.3 372.8" fill="url(#zr56-g82)" stroke="rgb(58,96,121)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-514"></polygon>
-<polygon points="455.8 106.3 434.1 118.9 466.2 126.7 487.3 113.5" fill="url(#zr56-g62)" stroke="rgb(74,123,150)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-494"></polygon>
-<polygon points="341.9 358 340.5 114.1 372.2 122.1 369.8 369.7" fill="url(#zr56-g86)" stroke="rgb(54,93,122)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-518"></polygon>
-<polygon points="304.3 372.8 298.2 140.1 268.1 131.7 277.4 361" fill="url(#zr56-g81)" stroke="rgb(62,104,130)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-513"></polygon>
-<polygon points="256.1 127.2 227.3 140.6 255.3 148.8 283.8 134.8" fill="url(#zr56-g67)" stroke="rgb(86,138,160)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-499"></polygon>
-<polygon points="444.6 357.1 456.8 112.7 433.2 126.7 423.4 377.6" fill="url(#zr56-g85)" stroke="rgb(50,86,113)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-517"></polygon>
-<polygon points="317.3 378.5 312.5 128.2 340.5 114.1 341.9 358" fill="url(#zr56-g87)" stroke="rgb(51,86,114)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-519"></polygon>
-<polygon points="423.4 377.6 433.2 126.7 399.7 118.5 394.1 365.6" fill="url(#zr56-g83)" stroke="rgb(53,93,121)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-515"></polygon>
-<polygon points="377.9 119.4 353 132.8 384.1 141 408.4 127.1" fill="url(#zr56-g69)" stroke="rgb(77,128,153)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-501"></polygon>
-<polygon points="369.8 369.7 372.2 122.1 344.8 136.8 345.7 391" fill="url(#zr56-g87)" stroke="rgb(51,86,114)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-519"></polygon>
-<polygon points="383.4 375.3 388.1 102.4 422.3 110.5 413 387.7" fill="url(#zr56-g88)" stroke="rgb(42,77,110)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-520"></polygon>
-<polygon points="345.7 391 344.8 136.8 312.5 128.2 317.3 378.5" fill="url(#zr56-g86)" stroke="rgb(54,93,122)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-518"></polygon>
-<polygon points="359.5 397 360.6 116.7 388.1 102.4 383.4 375.3" fill="url(#zr56-g89)" stroke="rgb(40,72,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-521"></polygon>
-<polygon points="296.6 118 268.1 131.7 298.2 140.1 326.2 125.8" fill="url(#zr56-g73)" stroke="rgb(71,120,147)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-505"></polygon>
-<polygon points="424 105 399.7 118.5 433.2 126.7 456.8 112.7" fill="url(#zr56-g76)" stroke="rgb(60,106,136)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-508"></polygon>
-<polygon points="413 387.7 422.3 110.5 395.6 125.4 389.6 410.3" fill="url(#zr56-g89)" stroke="rgb(40,72,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-521"></polygon>
-<polygon points="389.6 410.3 395.6 125.4 360.6 116.7 359.5 397" fill="url(#zr56-g88)" stroke="rgb(42,77,110)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-520"></polygon>
-<polygon points="340.5 114.1 312.5 128.2 344.8 136.8 372.2 122.1" fill="url(#zr56-g80)" stroke="rgb(61,106,137)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-512"></polygon>
-<polygon points="388.1 102.4 360.6 116.7 395.6 125.4 422.3 110.5" fill="url(#zr56-g84)" stroke="rgb(47,87,123)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-516"></polygon>
-<path d="M169.9 313.8L389.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-522"></path>
-<path d="M181.2 318.8L179.2 323.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M215.8 334L213.8 338.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M252.2 350L250.2 354.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M290.7 366.9L288.7 371.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M331.3 384.7L329.3 389.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M374.4 403.6L372.4 408.2" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M523.6 280.6L389.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-522"></path>
-<path d="M515.7 288.3L519.2 291.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M490.9 312.3L494.4 315.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M463.8 338.5L467.3 342" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M434.2 367.2L437.6 370.8" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M401.5 398.8L405 402.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M169.9 313.8L145.6 62.8" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-522"></path>
-<path d="M169.9 313.8L164.9 314.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M158.5 196.1L153.5 196.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M145.6 62.8L140.7 63.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-522"></path>
-<path d="M0 0l342.1 0l0 32.7l-342.1 0Z" transform="translate(208.9706 12)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<polygon points="325.4 216.2 346.6 223.1 327.7 235.5 306.2 228.2" fill="url(#zr56-g0)" stroke="rgb(229,194,162)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-441"></polygon>
+<polygon points="325.4 216.2 324.7 159.2 346.5 165.4 346.6 223.1" fill="url(#zr56-g1)" stroke="rgb(192,165,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-442"></polygon>
+<polygon points="306.2 228.2 304.9 170.1 324.7 159.2 325.4 216.2" fill="url(#zr56-g2)" stroke="rgb(174,151,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-443"></polygon>
+<polygon points="356.8 226.4 378.9 233.6 360.4 246.5 338 239" fill="url(#zr56-g3)" stroke="rgb(228,174,126)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-444"></polygon>
+<polygon points="346.6 223.1 346.5 165.4 326.9 176.7 327.7 235.5" fill="url(#zr56-g2)" stroke="rgb(174,151,132)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-443"></polygon>
+<polygon points="327.7 235.5 326.9 176.7 304.9 170.1 306.2 228.2" fill="url(#zr56-g1)" stroke="rgb(192,165,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-442"></polygon>
+<polygon points="324.7 159.2 304.9 170.1 326.9 176.7 346.5 165.4" fill="url(#zr56-g0)" stroke="rgb(229,194,162)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-441"></polygon>
+<polygon points="356.8 226.4 357 144.9 380.1 151.1 378.9 233.6" fill="url(#zr56-g4)" stroke="rgb(191,149,113)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-445"></polygon>
+<polygon points="338 239 337.4 155.8 357 144.9 356.8 226.4" fill="url(#zr56-g5)" stroke="rgb(173,136,106)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-446"></polygon>
+<polygon points="296.8 234.1 318.4 241.6 297.9 255 276.1 247.1" fill="url(#zr56-g6)" stroke="rgb(229,182,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-447"></polygon>
+<polygon points="296.8 234.1 294.8 161.9 317.2 168.4 318.4 241.6" fill="url(#zr56-g7)" stroke="rgb(192,155,125)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-448"></polygon>
+<polygon points="389.6 237 412.7 244.5 394.6 258.1 371.2 250.2" fill="url(#zr56-g8)" stroke="rgb(227,162,104)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-449"></polygon>
+<polygon points="276.1 247.1 273.2 173.4 294.8 161.9 296.8 234.1" fill="url(#zr56-g9)" stroke="rgb(173,142,117)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-450"></polygon>
+<polygon points="378.9 233.6 380.1 151.1 360.8 162.4 360.4 246.5" fill="url(#zr56-g5)" stroke="rgb(173,136,106)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-446"></polygon>
+<polygon points="389.6 237 391.4 139.5 415.7 145.8 412.7 244.5" fill="url(#zr56-g10)" stroke="rgb(190,139,95)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-451"></polygon>
+<polygon points="360.4 246.5 360.8 162.4 337.4 155.8 338 239" fill="url(#zr56-g4)" stroke="rgb(191,149,113)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-445"></polygon>
+<polygon points="328.8 245.1 351.3 252.9 331.3 266.9 308.5 258.7" fill="url(#zr56-g11)" stroke="rgb(227,161,102)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-452"></polygon>
+<polygon points="371.2 250.2 372.2 150.6 391.4 139.5 389.6 237" fill="url(#zr56-g12)" stroke="rgb(172,127,90)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-453"></polygon>
+<polygon points="357 144.9 337.4 155.8 360.8 162.4 380.1 151.1" fill="url(#zr56-g3)" stroke="rgb(228,174,126)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-444"></polygon>
+<polygon points="318.4 241.6 317.2 168.4 295.9 180.3 297.9 255" fill="url(#zr56-g9)" stroke="rgb(173,142,117)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-450"></polygon>
+<polygon points="423.8 248.1 448 256 430.5 270.2 405.9 261.9" fill="url(#zr56-g13)" stroke="rgb(225,152,91)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-454"></polygon>
+<polygon points="297.9 255 295.9 180.3 273.2 173.4 276.1 247.1" fill="url(#zr56-g7)" stroke="rgb(192,155,125)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-448"></polygon>
+<polygon points="328.8 245.1 327.6 144.2 351.3 150.7 351.3 252.9" fill="url(#zr56-g14)" stroke="rgb(190,138,93)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
+<polygon points="294.8 161.9 273.2 173.4 295.9 180.3 317.2 168.4" fill="url(#zr56-g6)" stroke="rgb(229,182,142)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-447"></polygon>
+<polygon points="412.7 244.5 415.7 145.8 396.9 157.3 394.6 258.1" fill="url(#zr56-g12)" stroke="rgb(172,127,90)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-453"></polygon>
+<polygon points="266 253.5 287.9 261.5 265.8 276.1 243.6 267.6" fill="url(#zr56-g15)" stroke="rgb(228,171,122)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-456"></polygon>
+<polygon points="308.5 258.7 306.1 155.7 327.6 144.2 328.8 245.1" fill="url(#zr56-g16)" stroke="rgb(172,126,88)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-457"></polygon>
+<polygon points="423.8 248.1 427.9 136.9 453.5 143.4 448 256" fill="url(#zr56-g17)" stroke="rgb(189,131,84)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-458"></polygon>
+<polygon points="394.6 258.1 396.9 157.3 372.2 150.6 371.2 250.2" fill="url(#zr56-g10)" stroke="rgb(190,139,95)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-451"></polygon>
+<polygon points="362.2 256.6 385.8 264.7 366.3 279.4 342.3 270.9" fill="url(#zr56-g18)" stroke="rgb(223,145,82)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-459"></polygon>
+<polygon points="266 253.5 262.1 165.3 285 172.2 287.9 261.5" fill="url(#zr56-g19)" stroke="rgb(191,146,109)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-460"></polygon>
+<polygon points="405.9 261.9 409.1 148.3 427.9 136.9 423.8 248.1" fill="url(#zr56-g20)" stroke="rgb(171,120,80)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-461"></polygon>
+<polygon points="459.6 259.8 484.9 268 468.1 282.9 442.3 274.2" fill="url(#zr56-g21)" stroke="rgb(221,136,70)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-462"></polygon>
+<polygon points="243.6 267.6 238.5 177.5 262.1 165.3 266 253.5" fill="url(#zr56-g22)" stroke="rgb(173,134,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-463"></polygon>
+<polygon points="391.4 139.5 372.2 150.6 396.9 157.3 415.7 145.8" fill="url(#zr56-g8)" stroke="rgb(227,162,104)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-449"></polygon>
+<polygon points="351.3 252.9 351.3 150.7 330.2 162.6 331.3 266.9" fill="url(#zr56-g16)" stroke="rgb(172,126,88)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-457"></polygon>
+<polygon points="331.3 266.9 330.2 162.6 306.1 155.7 308.5 258.7" fill="url(#zr56-g14)" stroke="rgb(190,138,93)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
+<polygon points="362.2 256.6 362.8 135.9 387.9 142.5 385.8 264.7" fill="url(#zr56-g23)" stroke="rgb(187,125,76)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-464"></polygon>
+<polygon points="298.5 265.4 321.5 273.8 299.8 289 276.5 280.1" fill="url(#zr56-g24)" stroke="rgb(223,146,84)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-465"></polygon>
+<polygon points="448 256 453.5 143.4 435.2 155.2 430.5 270.2" fill="url(#zr56-g20)" stroke="rgb(171,120,80)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-461"></polygon>
+<polygon points="342.3 270.9 341.7 147.5 362.8 135.9 362.2 256.6" fill="url(#zr56-g25)" stroke="rgb(169,115,74)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-466"></polygon>
+<polygon points="397.2 268.7 421.9 277.2 403 292.6 377.8 283.6" fill="url(#zr56-g26)" stroke="rgb(221,135,69)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-467"></polygon>
+<polygon points="287.9 261.5 285 172.2 261.7 184.8 265.8 276.1" fill="url(#zr56-g22)" stroke="rgb(173,134,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-463"></polygon>
+<polygon points="430.5 270.2 435.2 155.2 409.1 148.3 405.9 261.9" fill="url(#zr56-g17)" stroke="rgb(189,131,84)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-458"></polygon>
+<polygon points="459.6 259.8 466.9 127.4 494.1 134 484.9 268" fill="url(#zr56-g27)" stroke="rgb(186,117,67)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-468"></polygon>
+<polygon points="327.6 144.2 306.1 155.7 330.2 162.6 351.3 150.7" fill="url(#zr56-g11)" stroke="rgb(227,161,102)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-452"></polygon>
+<polygon points="497.1 272 523.6 280.6 507.5 296.2 480.5 287.1" fill="url(#zr56-g28)" stroke="rgb(203,109,44)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-469"></polygon>
+<polygon points="265.8 276.1 261.7 184.8 238.5 177.5 243.6 267.6" fill="url(#zr56-g19)" stroke="rgb(191,146,109)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-460"></polygon>
+<polygon points="442.3 274.2 448.7 138.9 466.9 127.4 459.6 259.8" fill="url(#zr56-g29)" stroke="rgb(168,108,65)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-470"></polygon>
+<polygon points="298.5 265.4 295.2 144.4 319.6 151.2 321.5 273.8" fill="url(#zr56-g30)" stroke="rgb(187,126,78)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-471"></polygon>
+<polygon points="232.6 274.5 254.9 283.2 230.8 298.9 208.3 289.7" fill="url(#zr56-g31)" stroke="rgb(227,161,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-472"></polygon>
+<polygon points="385.8 264.7 387.9 142.5 367.2 154.5 366.3 279.4" fill="url(#zr56-g25)" stroke="rgb(169,115,74)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-466"></polygon>
+<polygon points="262.1 165.3 238.5 177.5 261.7 184.8 285 172.2" fill="url(#zr56-g15)" stroke="rgb(228,171,122)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-456"></polygon>
+<polygon points="276.5 280.1 271.6 156.4 295.2 144.4 298.5 265.4" fill="url(#zr56-g32)" stroke="rgb(169,115,75)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-473"></polygon>
+<polygon points="427.9 136.9 409.1 148.3 435.2 155.2 453.5 143.4" fill="url(#zr56-g13)" stroke="rgb(225,152,91)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-454"></polygon>
+<polygon points="332.6 277.8 356.7 286.7 335.5 302.6 311 293.3" fill="url(#zr56-g33)" stroke="rgb(220,129,60)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-474"></polygon>
+<polygon points="397.2 268.7 400.3 133.3 426.9 140 421.9 277.2" fill="url(#zr56-g34)" stroke="rgb(186,117,66)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-475"></polygon>
+<polygon points="366.3 279.4 367.2 154.5 341.7 147.5 342.3 270.9" fill="url(#zr56-g23)" stroke="rgb(187,125,76)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-464"></polygon>
+<polygon points="232.6 274.5 226.1 169.2 249.5 176.6 254.9 283.2" fill="url(#zr56-g14)" stroke="rgb(190,138,93)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
+<polygon points="484.9 268 494.1 134 476.4 145.9 468.1 282.9" fill="url(#zr56-g29)" stroke="rgb(168,108,65)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-470"></polygon>
+<polygon points="433.8 281.3 459.8 290.2 441.5 306.4 415.1 296.9" fill="url(#zr56-g35)" stroke="rgb(213,121,53)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-476"></polygon>
+<polygon points="377.8 283.6 379.7 145.1 400.3 133.3 397.2 268.7" fill="url(#zr56-g36)" stroke="rgb(168,107,64)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-477"></polygon>
+<polygon points="208.3 289.7 200.2 182.2 226.1 169.2 232.6 274.5" fill="url(#zr56-g37)" stroke="rgb(172,126,89)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-478"></polygon>
+<polygon points="468.1 282.9 476.4 145.9 448.7 138.9 442.3 274.2" fill="url(#zr56-g27)" stroke="rgb(186,117,67)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-468"></polygon>
+<polygon points="321.5 273.8 319.6 151.2 296.3 163.7 299.8 289" fill="url(#zr56-g32)" stroke="rgb(169,115,75)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-473"></polygon>
+<polygon points="497.1 272 509.6 106.1 538.7 112.5 523.6 280.6" fill="url(#zr56-g38)" stroke="rgb(171,95,45)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-479"></polygon>
+<polygon points="265.7 287.4 289.1 296.5 265.4 313.1 241.7 303.4" fill="url(#zr56-g39)" stroke="rgb(220,133,66)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-480"></polygon>
+<polygon points="362.8 135.9 341.7 147.5 367.2 154.5 387.9 142.5" fill="url(#zr56-g18)" stroke="rgb(223,145,82)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-459"></polygon>
+<polygon points="299.8 289 296.3 163.7 271.6 156.4 276.5 280.1" fill="url(#zr56-g30)" stroke="rgb(187,126,78)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-471"></polygon>
+<polygon points="480.5 287.1 491.9 117.4 509.6 106.1 497.1 272" fill="url(#zr56-g40)" stroke="rgb(155,88,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-481"></polygon>
+<polygon points="332.6 277.8 331.1 132.5 357.1 139.4 356.7 286.7" fill="url(#zr56-g41)" stroke="rgb(184,112,58)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-482"></polygon>
+<polygon points="368.3 290.9 393.6 300.2 373 317 347.3 307.1" fill="url(#zr56-g42)" stroke="rgb(210,116,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-483"></polygon>
+<polygon points="421.9 277.2 426.9 140 406.7 152.3 403 292.6" fill="url(#zr56-g36)" stroke="rgb(168,107,64)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-477"></polygon>
+<polygon points="311 293.3 307.8 144.6 331.1 132.5 332.6 277.8" fill="url(#zr56-g43)" stroke="rgb(167,103,58)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-484"></polygon>
+<polygon points="254.9 283.2 249.5 176.6 223.9 190 230.8 298.9" fill="url(#zr56-g37)" stroke="rgb(172,126,89)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-478"></polygon>
+<polygon points="433.8 281.3 440.5 126 468.7 132.9 459.8 290.2" fill="url(#zr56-g44)" stroke="rgb(179,105,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-485"></polygon>
+<polygon points="403 292.6 406.7 152.3 379.7 145.1 377.8 283.6" fill="url(#zr56-g34)" stroke="rgb(186,117,66)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-475"></polygon>
+<polygon points="472.3 294.5 499.6 303.9 482 320.9 454.2 311" fill="url(#zr56-g45)" stroke="rgb(191,95,32)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-486"></polygon>
+<polygon points="466.9 127.4 448.7 138.9 476.4 145.9 494.1 134" fill="url(#zr56-g21)" stroke="rgb(221,136,70)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-462"></polygon>
+<polygon points="230.8 298.9 223.9 190 200.2 182.2 208.3 289.7" fill="url(#zr56-g14)" stroke="rgb(190,138,93)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-455"></polygon>
+<polygon points="196.3 297.2 219 306.7 192.8 323.9 169.9 313.8" fill="url(#zr56-g46)" stroke="rgb(224,149,86)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-487"></polygon>
+<polygon points="415.1 296.9 420.3 138.1 440.5 126 433.8 281.3" fill="url(#zr56-g47)" stroke="rgb(162,97,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-488"></polygon>
+<polygon points="295.2 144.4 271.6 156.4 296.3 163.7 319.6 151.2" fill="url(#zr56-g24)" stroke="rgb(223,146,84)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-465"></polygon>
+<polygon points="523.6 280.6 538.7 112.5 521.5 124.2 507.5 296.2" fill="url(#zr56-g40)" stroke="rgb(155,88,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-481"></polygon>
+<polygon points="265.7 287.4 259.3 145.5 284.4 152.8 289.1 296.5" fill="url(#zr56-g48)" stroke="rgb(185,115,64)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-489"></polygon>
+<polygon points="300.4 300.9 325 310.5 301.9 327.9 276.9 317.7" fill="url(#zr56-g49)" stroke="rgb(205,111,45)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-490"></polygon>
+<polygon points="507.5 296.2 521.5 124.2 491.9 117.4 480.5 287.1" fill="url(#zr56-g38)" stroke="rgb(171,95,45)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-479"></polygon>
+<polygon points="356.7 286.7 357.1 139.4 334.1 152 335.5 302.6" fill="url(#zr56-g43)" stroke="rgb(167,103,58)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-484"></polygon>
+<polygon points="241.7 303.4 233.3 158.3 259.3 145.5 265.7 287.4" fill="url(#zr56-g50)" stroke="rgb(167,106,62)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-491"></polygon>
+<polygon points="226.1 169.2 200.2 182.2 223.9 190 249.5 176.6" fill="url(#zr56-g31)" stroke="rgb(227,161,103)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-472"></polygon>
+<polygon points="405.8 304.6 432.5 314.4 412.4 332 385.4 321.7" fill="url(#zr56-g51)" stroke="rgb(199,103,38)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-492"></polygon>
+<polygon points="368.3 290.9 369.7 128.8 397.2 135.8 393.6 300.2" fill="url(#zr56-g52)" stroke="rgb(176,101,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-493"></polygon>
+<polygon points="400.3 133.3 379.7 145.1 406.7 152.3 426.9 140" fill="url(#zr56-g26)" stroke="rgb(221,135,69)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-467"></polygon>
+<polygon points="335.5 302.6 334.1 152 307.8 144.6 311 293.3" fill="url(#zr56-g41)" stroke="rgb(184,112,58)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-482"></polygon>
+<polygon points="196.3 297.2 186.2 173.6 210.2 181.5 219 306.7" fill="url(#zr56-g53)" stroke="rgb(188,128,80)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-494"></polygon>
+<polygon points="459.8 290.2 468.7 132.9 449.1 145.4 441.5 306.4" fill="url(#zr56-g47)" stroke="rgb(162,97,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-488"></polygon>
+<polygon points="347.3 307.1 346.8 141.2 369.7 128.8 368.3 290.9" fill="url(#zr56-g54)" stroke="rgb(159,94,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-495"></polygon>
+<polygon points="169.9 313.8 157.7 187.4 186.2 173.6 196.3 297.2" fill="url(#zr56-g55)" stroke="rgb(170,117,77)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-496"></polygon>
+<polygon points="441.5 306.4 449.1 145.4 420.3 138.1 415.1 296.9" fill="url(#zr56-g44)" stroke="rgb(179,105,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-485"></polygon>
+<polygon points="230 311.3 253.8 321.2 228 339.3 203.8 328.7" fill="url(#zr56-g56)" stroke="rgb(212,119,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-497"></polygon>
+<polygon points="289.1 296.5 284.4 152.8 258.7 166 265.4 313.1" fill="url(#zr56-g50)" stroke="rgb(167,106,62)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-491"></polygon>
+<polygon points="472.3 294.5 484.2 106.5 514.4 113.3 499.6 303.9" fill="url(#zr56-g57)" stroke="rgb(161,84,35)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-498"></polygon>
+<polygon points="336.9 315.1 362.8 325.2 340.2 343.6 313.9 332.9" fill="url(#zr56-g58)" stroke="rgb(193,96,34)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-499"></polygon>
+<polygon points="265.4 313.1 258.7 166 233.3 158.3 241.7 303.4" fill="url(#zr56-g48)" stroke="rgb(185,115,64)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-489"></polygon>
+<polygon points="454.2 311 464.6 118.5 484.2 106.5 472.3 294.5" fill="url(#zr56-g59)" stroke="rgb(146,78,37)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-500"></polygon>
+<polygon points="300.4 300.9 295.7 129.5 322.5 136.8 325 310.5" fill="url(#zr56-g60)" stroke="rgb(172,97,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-501"></polygon>
+<polygon points="509.6 106.1 491.9 117.4 521.5 124.2 538.7 112.5" fill="url(#zr56-g28)" stroke="rgb(203,109,44)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-469"></polygon>
+<polygon points="393.6 300.2 397.2 135.8 374.8 148.8 373 317" fill="url(#zr56-g54)" stroke="rgb(159,94,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-495"></polygon>
+<polygon points="331.1 132.5 307.8 144.6 334.1 152 357.1 139.4" fill="url(#zr56-g33)" stroke="rgb(220,129,60)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-474"></polygon>
+<polygon points="445.3 319 473.3 329.3 454.1 347.9 425.5 337" fill="url(#zr56-g61)" stroke="rgb(174,79,23)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-502"></polygon>
+<polygon points="219 306.7 210.2 181.5 181.9 195.8 192.8 323.9" fill="url(#zr56-g55)" stroke="rgb(170,117,77)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-496"></polygon>
+<polygon points="276.9 317.7 269.9 142.3 295.7 129.5 300.4 300.9" fill="url(#zr56-g62)" stroke="rgb(156,90,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-503"></polygon>
+<polygon points="405.8 304.6 411 123.4 440.3 130.6 432.5 314.4" fill="url(#zr56-g63)" stroke="rgb(167,90,41)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-504"></polygon>
+<polygon points="373 317 374.8 148.8 346.8 141.2 347.3 307.1" fill="url(#zr56-g52)" stroke="rgb(176,101,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-493"></polygon>
+<polygon points="192.8 323.9 181.9 195.8 157.7 187.4 169.9 313.8" fill="url(#zr56-g53)" stroke="rgb(188,128,80)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-494"></polygon>
+<polygon points="440.5 126 420.3 138.1 449.1 145.4 468.7 132.9" fill="url(#zr56-g35)" stroke="rgb(213,121,53)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-476"></polygon>
+<polygon points="385.4 321.7 388.7 136.1 411 123.4 405.8 304.6" fill="url(#zr56-g64)" stroke="rgb(151,84,42)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-505"></polygon>
+<polygon points="499.6 303.9 514.4 113.3 495.4 125.7 482 320.9" fill="url(#zr56-g59)" stroke="rgb(146,78,37)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-500"></polygon>
+<polygon points="230 311.3 219.4 147.6 245.1 155.3 253.8 321.2" fill="url(#zr56-g65)" stroke="rgb(178,103,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-506"></polygon>
+<polygon points="265.3 326 290.4 336.5 265.1 355.6 239.6 344.5" fill="url(#zr56-g66)" stroke="rgb(191,93,30)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-507"></polygon>
+<polygon points="259.3 145.5 233.3 158.3 258.7 166 284.4 152.8" fill="url(#zr56-g39)" stroke="rgb(220,133,66)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-480"></polygon>
+<polygon points="482 320.9 495.4 125.7 464.6 118.5 454.2 311" fill="url(#zr56-g57)" stroke="rgb(161,84,35)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-498"></polygon>
+<polygon points="203.8 328.7 190.6 161.2 219.4 147.6 230 311.3" fill="url(#zr56-g67)" stroke="rgb(161,96,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-508"></polygon>
+<polygon points="375.3 330.1 402.6 340.7 380.7 360.1 352.9 348.8" fill="url(#zr56-g68)" stroke="rgb(181,85,25)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-509"></polygon>
+<polygon points="325 310.5 322.5 136.8 297.1 150 301.9 327.9" fill="url(#zr56-g62)" stroke="rgb(156,90,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-503"></polygon>
+<polygon points="186.2 173.6 157.7 187.4 181.9 195.8 210.2 181.5" fill="url(#zr56-g46)" stroke="rgb(224,149,86)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-487"></polygon>
+<polygon points="336.9 315.1 335.4 123.6 363.9 131 362.8 325.2" fill="url(#zr56-g69)" stroke="rgb(163,85,37)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-510"></polygon>
+<polygon points="301.9 327.9 297.1 150 269.9 142.3 276.9 317.7" fill="url(#zr56-g60)" stroke="rgb(172,97,46)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-501"></polygon>
+<polygon points="432.5 314.4 440.3 130.6 418.5 143.8 412.4 332" fill="url(#zr56-g64)" stroke="rgb(151,84,42)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-505"></polygon>
+<polygon points="313.9 332.9 309.9 136.7 335.4 123.6 336.9 315.1" fill="url(#zr56-g70)" stroke="rgb(147,79,38)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-511"></polygon>
+<polygon points="369.7 128.8 346.8 141.2 374.8 148.8 397.2 135.8" fill="url(#zr56-g42)" stroke="rgb(210,116,50)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-483"></polygon>
+<polygon points="412.4 332 418.5 143.8 388.7 136.1 385.4 321.7" fill="url(#zr56-g63)" stroke="rgb(167,90,41)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-504"></polygon>
+<polygon points="253.8 321.2 245.1 155.3 216.6 169.4 228 339.3" fill="url(#zr56-g67)" stroke="rgb(161,96,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-508"></polygon>
+<polygon points="445.3 319 455.8 106.3 487.3 113.5 473.3 329.3" fill="url(#zr56-g71)" stroke="rgb(147,71,28)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-512"></polygon>
+<polygon points="302.6 341.6 329.1 352.6 304.3 372.8 277.4 361" fill="url(#zr56-g72)" stroke="rgb(170,75,21)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-513"></polygon>
+<polygon points="228 339.3 216.6 169.4 190.6 161.2 203.8 328.7" fill="url(#zr56-g65)" stroke="rgb(178,103,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-506"></polygon>
+<polygon points="425.5 337 434.1 118.9 455.8 106.3 445.3 319" fill="url(#zr56-g73)" stroke="rgb(134,66,30)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-514"></polygon>
+<polygon points="265.3 326 256.1 127.2 283.8 134.8 290.4 336.5" fill="url(#zr56-g74)" stroke="rgb(161,82,34)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-515"></polygon>
+<polygon points="415.8 345.9 444.6 357.1 423.4 377.6 394.1 365.6" fill="url(#zr56-g75)" stroke="rgb(152,62,16)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-516"></polygon>
+<polygon points="362.8 325.2 363.9 131 338.9 144.6 340.2 343.6" fill="url(#zr56-g70)" stroke="rgb(147,79,38)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-511"></polygon>
+<polygon points="484.2 106.5 464.6 118.5 495.4 125.7 514.4 113.3" fill="url(#zr56-g45)" stroke="rgb(191,95,32)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-486"></polygon>
+<polygon points="239.6 344.5 227.3 140.6 256.1 127.2 265.3 326" fill="url(#zr56-g76)" stroke="rgb(146,76,36)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-517"></polygon>
+<polygon points="295.7 129.5 269.9 142.3 297.1 150 322.5 136.8" fill="url(#zr56-g49)" stroke="rgb(205,111,45)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-490"></polygon>
+<polygon points="375.3 330.1 377.9 119.4 408.4 127.1 402.6 340.7" fill="url(#zr56-g77)" stroke="rgb(152,75,29)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-518"></polygon>
+<polygon points="340.2 343.6 338.9 144.6 309.9 136.7 313.9 332.9" fill="url(#zr56-g69)" stroke="rgb(163,85,37)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-510"></polygon>
+<polygon points="473.3 329.3 487.3 113.5 466.2 126.7 454.1 347.9" fill="url(#zr56-g73)" stroke="rgb(134,66,30)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-514"></polygon>
+<polygon points="352.9 348.8 353 132.8 377.9 119.4 375.3 330.1" fill="url(#zr56-g78)" stroke="rgb(138,70,32)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-519"></polygon>
+<polygon points="341.9 358 369.8 369.7 345.7 391 317.3 378.5" fill="url(#zr56-g79)" stroke="rgb(152,63,17)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-520"></polygon>
+<polygon points="411 123.4 388.7 136.1 418.5 143.8 440.3 130.6" fill="url(#zr56-g51)" stroke="rgb(199,103,38)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-492"></polygon>
+<polygon points="454.1 347.9 466.2 126.7 434.1 118.9 425.5 337" fill="url(#zr56-g71)" stroke="rgb(147,71,28)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-512"></polygon>
+<polygon points="219.4 147.6 190.6 161.2 216.6 169.4 245.1 155.3" fill="url(#zr56-g56)" stroke="rgb(212,119,52)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-497"></polygon>
+<polygon points="290.4 336.5 283.8 134.8 255.3 148.8 265.1 355.6" fill="url(#zr56-g76)" stroke="rgb(146,76,36)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-517"></polygon>
+<polygon points="302.6 341.6 296.6 118 326.2 125.8 329.1 352.6" fill="url(#zr56-g80)" stroke="rgb(143,68,26)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-521"></polygon>
+<polygon points="265.1 355.6 255.3 148.8 227.3 140.6 239.6 344.5" fill="url(#zr56-g74)" stroke="rgb(161,82,34)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-515"></polygon>
+<polygon points="402.6 340.7 408.4 127.1 384.1 141 380.7 360.1" fill="url(#zr56-g78)" stroke="rgb(138,70,32)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-519"></polygon>
+<polygon points="277.4 361 268.1 131.7 296.6 118 302.6 341.6" fill="url(#zr56-g81)" stroke="rgb(130,64,29)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-522"></polygon>
+<polygon points="380.7 360.1 384.1 141 353 132.8 352.9 348.8" fill="url(#zr56-g77)" stroke="rgb(152,75,29)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-518"></polygon>
+<polygon points="415.8 345.9 424 105 456.8 112.7 444.6 357.1" fill="url(#zr56-g82)" stroke="rgb(129,57,22)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-523"></polygon>
+<polygon points="335.4 123.6 309.9 136.7 338.9 144.6 363.9 131" fill="url(#zr56-g58)" stroke="rgb(193,96,34)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-499"></polygon>
+<polygon points="383.4 375.3 413 387.7 389.6 410.3 359.5 397" fill="url(#zr56-g83)" stroke="rgb(127,44,8)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-524"></polygon>
+<polygon points="394.1 365.6 399.7 118.5 424 105 415.8 345.9" fill="url(#zr56-g84)" stroke="rgb(117,54,25)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-525"></polygon>
+<polygon points="329.1 352.6 326.2 125.8 298.2 140.1 304.3 372.8" fill="url(#zr56-g81)" stroke="rgb(130,64,29)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-522"></polygon>
+<polygon points="455.8 106.3 434.1 118.9 466.2 126.7 487.3 113.5" fill="url(#zr56-g61)" stroke="rgb(174,79,23)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-502"></polygon>
+<polygon points="341.9 358 340.5 114.1 372.2 122.1 369.8 369.7" fill="url(#zr56-g85)" stroke="rgb(129,57,23)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-526"></polygon>
+<polygon points="304.3 372.8 298.2 140.1 268.1 131.7 277.4 361" fill="url(#zr56-g80)" stroke="rgb(143,68,26)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-521"></polygon>
+<polygon points="256.1 127.2 227.3 140.6 255.3 148.8 283.8 134.8" fill="url(#zr56-g66)" stroke="rgb(191,93,30)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-507"></polygon>
+<polygon points="444.6 357.1 456.8 112.7 433.2 126.7 423.4 377.6" fill="url(#zr56-g84)" stroke="rgb(117,54,25)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-525"></polygon>
+<polygon points="317.3 378.5 312.5 128.2 340.5 114.1 341.9 358" fill="url(#zr56-g86)" stroke="rgb(118,55,26)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-527"></polygon>
+<polygon points="423.4 377.6 433.2 126.7 399.7 118.5 394.1 365.6" fill="url(#zr56-g82)" stroke="rgb(129,57,22)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-523"></polygon>
+<polygon points="377.9 119.4 353 132.8 384.1 141 408.4 127.1" fill="url(#zr56-g68)" stroke="rgb(181,85,25)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-509"></polygon>
+<polygon points="369.8 369.7 372.2 122.1 344.8 136.8 345.7 391" fill="url(#zr56-g86)" stroke="rgb(118,55,26)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-527"></polygon>
+<polygon points="383.4 375.3 388.1 102.4 422.3 110.5 413 387.7" fill="url(#zr56-g87)" stroke="rgb(108,42,16)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-528"></polygon>
+<polygon points="345.7 391 344.8 136.8 312.5 128.2 317.3 378.5" fill="url(#zr56-g85)" stroke="rgb(129,57,23)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-526"></polygon>
+<polygon points="359.5 397 360.6 116.7 388.1 102.4 383.4 375.3" fill="url(#zr56-g88)" stroke="rgb(99,41,20)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-529"></polygon>
+<polygon points="296.6 118 268.1 131.7 298.2 140.1 326.2 125.8" fill="url(#zr56-g72)" stroke="rgb(170,75,21)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-513"></polygon>
+<polygon points="424 105 399.7 118.5 433.2 126.7 456.8 112.7" fill="url(#zr56-g75)" stroke="rgb(152,62,16)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-516"></polygon>
+<polygon points="413 387.7 422.3 110.5 395.6 125.4 389.6 410.3" fill="url(#zr56-g88)" stroke="rgb(99,41,20)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-529"></polygon>
+<polygon points="389.6 410.3 395.6 125.4 360.6 116.7 359.5 397" fill="url(#zr56-g87)" stroke="rgb(108,42,16)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-528"></polygon>
+<polygon points="340.5 114.1 312.5 128.2 344.8 136.8 372.2 122.1" fill="url(#zr56-g79)" stroke="rgb(152,63,17)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-520"></polygon>
+<polygon points="388.1 102.4 360.6 116.7 395.6 125.4 422.3 110.5" fill="url(#zr56-g83)" stroke="rgb(127,44,8)" stroke-width="0.35" stroke-linejoin="round" class="zr56-cls-524"></polygon>
+<path d="M169.9 313.8L389.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-530"></path>
+<path d="M181.2 318.8L179.2 323.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M215.8 334L213.8 338.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M252.2 350L250.2 354.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M290.7 366.9L288.7 371.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M331.3 384.7L329.3 389.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M374.4 403.6L372.4 408.2" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M523.6 280.6L389.6 410.3" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-530"></path>
+<path d="M515.7 288.3L519.2 291.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M490.9 312.3L494.4 315.9" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M463.8 338.5L467.3 342" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M434.2 367.2L437.6 370.8" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M401.5 398.8L405 402.4" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M169.9 313.8L145.6 62.8" fill="none" pointer-events="visible" stroke="#64748b" stroke-width="1.1" class="zr56-cls-530"></path>
+<path d="M169.9 313.8L164.9 314.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M158.5 196.1L153.5 196.6" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M145.6 62.8L140.7 63.3" fill="none" pointer-events="visible" stroke="#64748b" class="zr56-cls-530"></path>
+<path d="M0 0l342.1 0l0 32.7l-342.1 0Z" transform="translate(208.9706 12)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 27.233986928104574px Arial" xml:space="preserve" y="16.340392156862745" transform="translate(208.9706 12)" fill="#172033">三维柱状图渐变 · 示例数据</text>
-<path d="M0 0l402.6 0l0 17l-402.6 0Z" transform="translate(178.7034 474.0428)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l402.6 0l0 17l-402.6 0Z" transform="translate(178.7034 474.0428)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 14.131032679738563px Arial" xml:space="preserve" y="8.478619607843138" transform="translate(178.7034 474.0428)" fill="#64748b">透视投影 · 方位 35° / 仰角 25° · 柱长对应原始 Z，基线为 0</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(168.0724 328.1346)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(168.0724 328.1346)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(168.0724 328.1346)" fill="#475569">1</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(202.637 343.3021)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(202.637 343.3021)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(202.637 343.3021)" fill="#475569">2</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(239.0703 359.2895)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(239.0703 359.2895)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(239.0703 359.2895)" fill="#475569">3</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(277.5279 376.1653)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(277.5279 376.1653)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(277.5279 376.1653)" fill="#475569">4</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(318.1833 394.0055)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(318.1833 394.0055)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(318.1833 394.0055)" fill="#475569">5</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(361.2305 412.8953)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(361.2305 412.8953)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(361.2305 412.8953)" fill="#475569">6</text>
-<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(248.6179 406.8427)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(248.6179 406.8427)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(248.6179 406.8427)" fill="#172033">X</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(529.6448 293.6316)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(529.6448 293.6316)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(529.6448 293.6316)" fill="#475569">1</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(504.8593 317.6133)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(504.8593 317.6133)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(504.8593 317.6133)" fill="#475569">2</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(477.7955 343.7996)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(477.7955 343.7996)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(477.7955 343.7996)" fill="#475569">3</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(448.124 372.509)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(448.124 372.509)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(448.124 372.509)" fill="#475569">4</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(415.4489 404.1247)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(415.4489 404.1247)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(415.4489 404.1247)" fill="#475569">5</text>
-<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(490.3589 377.1094)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l13.9 0l0 24.8l-13.9 0Z" transform="translate(490.3589 377.1094)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(490.3589 377.1094)" fill="#172033">Y</text>
-<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(139.7126 306.6913)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l10.2 0l0 21.8l-10.2 0Z" transform="translate(139.7126 306.6913)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(139.7126 306.6913)" fill="#475569">0</text>
-<path d="M0 0l20.3 0l0 21.8l-20.3 0Z" transform="translate(118.1779 188.9834)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l20.3 0l0 21.8l-20.3 0Z" transform="translate(118.1779 188.9834)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(118.1779 188.9834)" fill="#475569">10</text>
-<path d="M0 0l20.3 0l0 21.8l-20.3 0Z" transform="translate(105.3066 55.6196)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l20.3 0l0 21.8l-20.3 0Z" transform="translate(105.3066 55.6196)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 18.168470588235294px Arial" y="10.901082352941176" transform="translate(105.3066 55.6196)" fill="#475569">20</text>
-<path d="M0 0l12.6 0l0 24.8l-12.6 0Z" transform="translate(99.8676 182.9428)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l12.6 0l0 24.8l-12.6 0Z" transform="translate(99.8676 182.9428)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 20.69186928104575px Arial" y="12.41512156862745" transform="translate(99.8676 182.9428)" fill="#172033">Z</text>
-<path d="M661 80.8l12 0l0 200l-12 0Z" fill="url(#zr56-g90)" stroke="#94a3b8" stroke-width="0.6" class="zr56-cls-522"></path>
-<path d="M0 0l10.2 0l0 20l-10.2 0Z" transform="translate(656.9705 57.1199)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M661 80.8l12 0l0 200l-12 0Z" fill="url(#zr56-g89)" stroke="#94a3b8" stroke-width="0.6" class="zr56-cls-530"></path>
+<path d="M0 0l10.2 0l0 20l-10.2 0Z" transform="translate(656.9705 57.1199)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(656.9705 57.1199)" fill="#475569">Z</text>
-<path d="M0 0l18.7 0l0 20l-18.7 0Z" transform="translate(678.9705 72.4472)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l18.7 0l0 20l-18.7 0Z" transform="translate(678.9705 72.4472)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 72.4472)" fill="#475569">20</text>
-<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 122.4472)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 122.4472)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 122.4472)" fill="#475569">16.434</text>
-<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 172.4472)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 172.4472)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 172.4472)" fill="#475569">12.867</text>
-<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 222.4472)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 222.4472)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 222.4472)" fill="#475569">9.3002</text>
-<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 272.4472)" fill="none" pointer-events="visible" class="zr56-cls-522"></path>
+<path d="M0 0l51.3 0l0 20l-51.3 0Z" transform="translate(678.9705 272.4472)" fill="none" pointer-events="visible" class="zr56-cls-530"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 16.65443137254902px Arial" y="9.992658823529412" transform="translate(678.9705 272.4472)" fill="#475569">5.7336</text>
 <defs >
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g0">
-<stop offset="0%" stop-color="rgb(237,240,242)"></stop>
-<stop offset="100%" stop-color="rgb(218,224,228)"></stop>
+<stop offset="0%" stop-color="rgb(242,225,209)"></stop>
+<stop offset="100%" stop-color="rgb(229,194,162)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g1">
-<stop offset="0%" stop-color="rgb(219,223,226)"></stop>
-<stop offset="100%" stop-color="rgb(183,190,197)"></stop>
+<stop offset="0%" stop-color="rgb(224,210,199)"></stop>
+<stop offset="100%" stop-color="rgb(192,165,142)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g2">
-<stop offset="0%" stop-color="rgb(210,214,218)"></stop>
-<stop offset="100%" stop-color="rgb(165,172,181)"></stop>
+<stop offset="0%" stop-color="rgb(215,203,194)"></stop>
+<stop offset="100%" stop-color="rgb(174,151,132)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g3">
-<stop offset="0%" stop-color="rgb(225,233,237)"></stop>
-<stop offset="100%" stop-color="rgb(194,211,218)"></stop>
+<stop offset="0%" stop-color="rgb(242,215,191)"></stop>
+<stop offset="100%" stop-color="rgb(228,174,126)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g4">
-<stop offset="0%" stop-color="rgb(209,217,222)"></stop>
-<stop offset="100%" stop-color="rgb(163,179,188)"></stop>
+<stop offset="0%" stop-color="rgb(223,202,184)"></stop>
+<stop offset="100%" stop-color="rgb(191,149,113)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g5">
-<stop offset="0%" stop-color="rgb(202,209,214)"></stop>
-<stop offset="100%" stop-color="rgb(148,163,173)"></stop>
+<stop offset="0%" stop-color="rgb(214,196,181)"></stop>
+<stop offset="100%" stop-color="rgb(173,136,106)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g6">
-<stop offset="0%" stop-color="rgb(230,236,239)"></stop>
-<stop offset="100%" stop-color="rgb(204,217,222)"></stop>
+<stop offset="0%" stop-color="rgb(242,219,199)"></stop>
+<stop offset="100%" stop-color="rgb(229,182,142)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g7">
-<stop offset="0%" stop-color="rgb(214,220,223)"></stop>
-<stop offset="100%" stop-color="rgb(172,184,191)"></stop>
+<stop offset="0%" stop-color="rgb(224,205,190)"></stop>
+<stop offset="100%" stop-color="rgb(192,155,125)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g8">
-<stop offset="0%" stop-color="rgb(218,229,233)"></stop>
-<stop offset="100%" stop-color="rgb(180,203,211)"></stop>
+<stop offset="0%" stop-color="rgb(241,209,180)"></stop>
+<stop offset="100%" stop-color="rgb(227,162,104)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g9">
-<stop offset="0%" stop-color="rgb(205,211,216)"></stop>
-<stop offset="100%" stop-color="rgb(155,167,176)"></stop>
+<stop offset="0%" stop-color="rgb(214,199,186)"></stop>
+<stop offset="100%" stop-color="rgb(173,142,117)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g10">
-<stop offset="0%" stop-color="rgb(204,214,219)"></stop>
-<stop offset="100%" stop-color="rgb(152,172,183)"></stop>
+<stop offset="0%" stop-color="rgb(223,197,175)"></stop>
+<stop offset="100%" stop-color="rgb(190,139,95)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g11">
-<stop offset="0%" stop-color="rgb(216,228,232)"></stop>
-<stop offset="100%" stop-color="rgb(177,201,209)"></stop>
+<stop offset="0%" stop-color="rgb(241,208,179)"></stop>
+<stop offset="100%" stop-color="rgb(227,161,102)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g12">
-<stop offset="0%" stop-color="rgb(197,206,212)"></stop>
-<stop offset="100%" stop-color="rgb(138,157,168)"></stop>
+<stop offset="0%" stop-color="rgb(214,191,173)"></stop>
+<stop offset="100%" stop-color="rgb(172,127,90)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g13">
-<stop offset="0%" stop-color="rgb(210,225,230)"></stop>
-<stop offset="100%" stop-color="rgb(165,194,204)"></stop>
+<stop offset="0%" stop-color="rgb(240,204,173)"></stop>
+<stop offset="100%" stop-color="rgb(225,152,91)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g14">
-<stop offset="0%" stop-color="rgb(202,213,218)"></stop>
-<stop offset="100%" stop-color="rgb(149,171,181)"></stop>
+<stop offset="0%" stop-color="rgb(223,197,174)"></stop>
+<stop offset="100%" stop-color="rgb(190,138,93)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g15">
-<stop offset="0%" stop-color="rgb(223,232,236)"></stop>
-<stop offset="100%" stop-color="rgb(191,209,217)"></stop>
+<stop offset="0%" stop-color="rgb(242,213,189)"></stop>
+<stop offset="100%" stop-color="rgb(228,171,122)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g16">
-<stop offset="0%" stop-color="rgb(196,206,211)"></stop>
-<stop offset="100%" stop-color="rgb(136,156,167)"></stop>
+<stop offset="0%" stop-color="rgb(214,191,172)"></stop>
+<stop offset="100%" stop-color="rgb(172,126,88)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g17">
-<stop offset="0%" stop-color="rgb(198,210,216)"></stop>
-<stop offset="100%" stop-color="rgb(140,165,177)"></stop>
+<stop offset="0%" stop-color="rgb(222,193,170)"></stop>
+<stop offset="100%" stop-color="rgb(189,131,84)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g18">
-<stop offset="0%" stop-color="rgb(205,222,228)"></stop>
-<stop offset="100%" stop-color="rgb(155,189,200)"></stop>
+<stop offset="0%" stop-color="rgb(239,200,169)"></stop>
+<stop offset="100%" stop-color="rgb(223,145,82)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g19">
-<stop offset="0%" stop-color="rgb(208,217,221)"></stop>
-<stop offset="100%" stop-color="rgb(161,178,187)"></stop>
+<stop offset="0%" stop-color="rgb(223,201,182)"></stop>
+<stop offset="100%" stop-color="rgb(191,146,109)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g20">
-<stop offset="0%" stop-color="rgb(191,203,209)"></stop>
-<stop offset="100%" stop-color="rgb(127,151,163)"></stop>
+<stop offset="0%" stop-color="rgb(213,188,168)"></stop>
+<stop offset="100%" stop-color="rgb(171,120,80)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g21">
-<stop offset="0%" stop-color="rgb(199,218,224)"></stop>
-<stop offset="100%" stop-color="rgb(142,181,193)"></stop>
+<stop offset="0%" stop-color="rgb(238,196,163)"></stop>
+<stop offset="100%" stop-color="rgb(221,136,70)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g22">
-<stop offset="0%" stop-color="rgb(201,209,214)"></stop>
-<stop offset="100%" stop-color="rgb(146,162,172)"></stop>
+<stop offset="0%" stop-color="rgb(214,195,179)"></stop>
+<stop offset="100%" stop-color="rgb(173,134,103)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g23">
-<stop offset="0%" stop-color="rgb(194,208,214)"></stop>
-<stop offset="100%" stop-color="rgb(132,161,173)"></stop>
+<stop offset="0%" stop-color="rgb(221,190,166)"></stop>
+<stop offset="100%" stop-color="rgb(187,125,76)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g24">
-<stop offset="0%" stop-color="rgb(206,223,228)"></stop>
-<stop offset="100%" stop-color="rgb(157,190,200)"></stop>
+<stop offset="0%" stop-color="rgb(239,201,170)"></stop>
+<stop offset="100%" stop-color="rgb(223,146,84)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g25">
-<stop offset="0%" stop-color="rgb(188,201,208)"></stop>
-<stop offset="100%" stop-color="rgb(120,147,160)"></stop>
+<stop offset="0%" stop-color="rgb(212,185,165)"></stop>
+<stop offset="100%" stop-color="rgb(169,115,74)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g26">
-<stop offset="0%" stop-color="rgb(198,218,224)"></stop>
-<stop offset="100%" stop-color="rgb(141,181,192)"></stop>
+<stop offset="0%" stop-color="rgb(238,195,162)"></stop>
+<stop offset="100%" stop-color="rgb(221,135,69)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g27">
-<stop offset="0%" stop-color="rgb(188,205,212)"></stop>
-<stop offset="100%" stop-color="rgb(120,155,168)"></stop>
+<stop offset="0%" stop-color="rgb(221,186,161)"></stop>
+<stop offset="100%" stop-color="rgb(186,117,67)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g28">
-<stop offset="0%" stop-color="rgb(181,205,214)"></stop>
-<stop offset="100%" stop-color="rgb(106,154,172)"></stop>
+<stop offset="0%" stop-color="rgb(229,182,150)"></stop>
+<stop offset="100%" stop-color="rgb(203,109,44)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g29">
-<stop offset="0%" stop-color="rgb(183,198,205)"></stop>
-<stop offset="100%" stop-color="rgb(110,141,155)"></stop>
+<stop offset="0%" stop-color="rgb(212,182,160)"></stop>
+<stop offset="100%" stop-color="rgb(168,108,65)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g30">
-<stop offset="0%" stop-color="rgb(194,208,215)"></stop>
-<stop offset="100%" stop-color="rgb(133,161,174)"></stop>
+<stop offset="0%" stop-color="rgb(221,191,167)"></stop>
+<stop offset="100%" stop-color="rgb(187,126,78)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g31">
-<stop offset="0%" stop-color="rgb(216,228,233)"></stop>
-<stop offset="100%" stop-color="rgb(177,201,210)"></stop>
+<stop offset="0%" stop-color="rgb(241,208,179)"></stop>
+<stop offset="100%" stop-color="rgb(227,161,103)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g32">
-<stop offset="0%" stop-color="rgb(188,201,208)"></stop>
-<stop offset="100%" stop-color="rgb(121,147,160)"></stop>
+<stop offset="0%" stop-color="rgb(212,185,165)"></stop>
+<stop offset="100%" stop-color="rgb(169,115,75)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g33">
-<stop offset="0%" stop-color="rgb(193,215,222)"></stop>
-<stop offset="100%" stop-color="rgb(131,175,188)"></stop>
+<stop offset="0%" stop-color="rgb(238,192,158)"></stop>
+<stop offset="100%" stop-color="rgb(220,129,60)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g34">
-<stop offset="0%" stop-color="rgb(188,205,211)"></stop>
-<stop offset="100%" stop-color="rgb(120,154,167)"></stop>
+<stop offset="0%" stop-color="rgb(221,186,161)"></stop>
+<stop offset="100%" stop-color="rgb(186,117,66)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g35">
-<stop offset="0%" stop-color="rgb(202,213,219)"></stop>
-<stop offset="100%" stop-color="rgb(149,171,182)"></stop>
+<stop offset="0%" stop-color="rgb(234,188,154)"></stop>
+<stop offset="100%" stop-color="rgb(213,121,53)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g36">
-<stop offset="0%" stop-color="rgb(188,211,218)"></stop>
-<stop offset="100%" stop-color="rgb(121,167,181)"></stop>
+<stop offset="0%" stop-color="rgb(212,181,160)"></stop>
+<stop offset="100%" stop-color="rgb(168,107,64)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g37">
-<stop offset="0%" stop-color="rgb(182,198,205)"></stop>
-<stop offset="100%" stop-color="rgb(109,141,154)"></stop>
+<stop offset="0%" stop-color="rgb(214,191,172)"></stop>
+<stop offset="100%" stop-color="rgb(172,126,89)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g38">
-<stop offset="0%" stop-color="rgb(196,206,212)"></stop>
-<stop offset="100%" stop-color="rgb(136,156,168)"></stop>
+<stop offset="0%" stop-color="rgb(213,175,150)"></stop>
+<stop offset="100%" stop-color="rgb(171,95,45)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g39">
-<stop offset="0%" stop-color="rgb(173,194,203)"></stop>
-<stop offset="100%" stop-color="rgb(91,132,151)"></stop>
+<stop offset="0%" stop-color="rgb(238,194,161)"></stop>
+<stop offset="100%" stop-color="rgb(220,133,66)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g40">
-<stop offset="0%" stop-color="rgb(196,217,223)"></stop>
-<stop offset="100%" stop-color="rgb(137,179,190)"></stop>
+<stop offset="0%" stop-color="rgb(205,172,151)"></stop>
+<stop offset="100%" stop-color="rgb(155,88,46)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g41">
-<stop offset="0%" stop-color="rgb(170,188,198)"></stop>
-<stop offset="100%" stop-color="rgb(84,121,140)"></stop>
+<stop offset="0%" stop-color="rgb(220,184,157)"></stop>
+<stop offset="100%" stop-color="rgb(184,112,58)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g42">
-<stop offset="0%" stop-color="rgb(183,202,209)"></stop>
-<stop offset="100%" stop-color="rgb(111,149,163)"></stop>
+<stop offset="0%" stop-color="rgb(233,186,153)"></stop>
+<stop offset="100%" stop-color="rgb(210,116,50)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g43">
-<stop offset="0%" stop-color="rgb(185,209,217)"></stop>
-<stop offset="100%" stop-color="rgb(115,162,178)"></stop>
+<stop offset="0%" stop-color="rgb(211,179,157)"></stop>
+<stop offset="100%" stop-color="rgb(167,103,58)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g44">
-<stop offset="0%" stop-color="rgb(179,196,203)"></stop>
-<stop offset="100%" stop-color="rgb(102,137,151)"></stop>
+<stop offset="0%" stop-color="rgb(217,180,154)"></stop>
+<stop offset="100%" stop-color="rgb(179,105,52)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g45">
-<stop offset="0%" stop-color="rgb(179,199,207)"></stop>
-<stop offset="100%" stop-color="rgb(103,143,158)"></stop>
+<stop offset="0%" stop-color="rgb(223,175,144)"></stop>
+<stop offset="100%" stop-color="rgb(191,95,32)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g46">
-<stop offset="0%" stop-color="rgb(172,198,208)"></stop>
-<stop offset="100%" stop-color="rgb(88,140,161)"></stop>
+<stop offset="0%" stop-color="rgb(240,202,171)"></stop>
+<stop offset="100%" stop-color="rgb(224,149,86)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g47">
-<stop offset="0%" stop-color="rgb(208,223,228)"></stop>
-<stop offset="100%" stop-color="rgb(160,191,201)"></stop>
+<stop offset="0%" stop-color="rgb(209,176,154)"></stop>
+<stop offset="100%" stop-color="rgb(162,97,52)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g48">
-<stop offset="0%" stop-color="rgb(175,193,201)"></stop>
-<stop offset="100%" stop-color="rgb(95,131,146)"></stop>
+<stop offset="0%" stop-color="rgb(220,185,160)"></stop>
+<stop offset="100%" stop-color="rgb(185,115,64)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g49">
-<stop offset="0%" stop-color="rgb(186,204,210)"></stop>
-<stop offset="100%" stop-color="rgb(117,152,165)"></stop>
+<stop offset="0%" stop-color="rgb(230,183,150)"></stop>
+<stop offset="100%" stop-color="rgb(205,111,45)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g50">
-<stop offset="0%" stop-color="rgb(182,206,214)"></stop>
-<stop offset="100%" stop-color="rgb(108,156,173)"></stop>
+<stop offset="0%" stop-color="rgb(211,181,159)"></stop>
+<stop offset="100%" stop-color="rgb(167,106,62)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g51">
-<stop offset="0%" stop-color="rgb(181,197,204)"></stop>
-<stop offset="100%" stop-color="rgb(106,139,153)"></stop>
+<stop offset="0%" stop-color="rgb(227,179,147)"></stop>
+<stop offset="100%" stop-color="rgb(199,103,38)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g52">
-<stop offset="0%" stop-color="rgb(177,202,212)"></stop>
-<stop offset="100%" stop-color="rgb(99,148,168)"></stop>
+<stop offset="0%" stop-color="rgb(216,178,153)"></stop>
+<stop offset="100%" stop-color="rgb(176,101,50)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g53">
-<stop offset="0%" stop-color="rgb(177,197,205)"></stop>
-<stop offset="100%" stop-color="rgb(99,139,155)"></stop>
+<stop offset="0%" stop-color="rgb(222,192,168)"></stop>
+<stop offset="100%" stop-color="rgb(188,128,80)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g54">
-<stop offset="0%" stop-color="rgb(195,209,215)"></stop>
-<stop offset="100%" stop-color="rgb(135,163,174)"></stop>
+<stop offset="0%" stop-color="rgb(207,175,153)"></stop>
+<stop offset="100%" stop-color="rgb(159,94,50)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g55">
-<stop offset="0%" stop-color="rgb(173,191,200)"></stop>
-<stop offset="100%" stop-color="rgb(91,127,144)"></stop>
+<stop offset="0%" stop-color="rgb(213,186,166)"></stop>
+<stop offset="100%" stop-color="rgb(170,117,77)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g56">
-<stop offset="0%" stop-color="rgb(189,202,208)"></stop>
-<stop offset="100%" stop-color="rgb(123,149,161)"></stop>
+<stop offset="0%" stop-color="rgb(234,187,154)"></stop>
+<stop offset="100%" stop-color="rgb(212,119,52)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g57">
-<stop offset="0%" stop-color="rgb(187,210,218)"></stop>
-<stop offset="100%" stop-color="rgb(119,165,180)"></stop>
+<stop offset="0%" stop-color="rgb(208,170,145)"></stop>
+<stop offset="100%" stop-color="rgb(161,84,35)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g58">
-<stop offset="0%" stop-color="rgb(166,188,199)"></stop>
-<stop offset="100%" stop-color="rgb(77,120,142)"></stop>
+<stop offset="0%" stop-color="rgb(224,176,145)"></stop>
+<stop offset="100%" stop-color="rgb(193,96,34)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g59">
-<stop offset="0%" stop-color="rgb(173,199,209)"></stop>
-<stop offset="100%" stop-color="rgb(91,142,162)"></stop>
+<stop offset="0%" stop-color="rgb(201,167,146)"></stop>
+<stop offset="100%" stop-color="rgb(146,78,37)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g60">
-<stop offset="0%" stop-color="rgb(163,183,194)"></stop>
-<stop offset="100%" stop-color="rgb(71,111,132)"></stop>
+<stop offset="0%" stop-color="rgb(214,176,151)"></stop>
+<stop offset="100%" stop-color="rgb(172,97,46)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g61">
-<stop offset="0%" stop-color="rgb(174,195,203)"></stop>
-<stop offset="100%" stop-color="rgb(93,134,151)"></stop>
+<stop offset="0%" stop-color="rgb(215,167,139)"></stop>
+<stop offset="100%" stop-color="rgb(174,79,23)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g62">
-<stop offset="0%" stop-color="rgb(165,189,203)"></stop>
-<stop offset="100%" stop-color="rgb(74,123,150)"></stop>
+<stop offset="0%" stop-color="rgb(206,173,151)"></stop>
+<stop offset="100%" stop-color="rgb(156,90,46)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g63">
-<stop offset="0%" stop-color="rgb(170,189,198)"></stop>
-<stop offset="100%" stop-color="rgb(85,123,140)"></stop>
+<stop offset="0%" stop-color="rgb(211,173,148)"></stop>
+<stop offset="100%" stop-color="rgb(167,90,41)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g64">
-<stop offset="0%" stop-color="rgb(170,191,201)"></stop>
-<stop offset="100%" stop-color="rgb(85,127,147)"></stop>
+<stop offset="0%" stop-color="rgb(203,170,149)"></stop>
+<stop offset="100%" stop-color="rgb(151,84,42)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g65">
-<stop offset="0%" stop-color="rgb(167,186,196)"></stop>
-<stop offset="100%" stop-color="rgb(79,117,136)"></stop>
+<stop offset="0%" stop-color="rgb(217,179,154)"></stop>
+<stop offset="100%" stop-color="rgb(178,103,52)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g66">
-<stop offset="0%" stop-color="rgb(179,198,206)"></stop>
-<stop offset="100%" stop-color="rgb(102,141,157)"></stop>
+<stop offset="0%" stop-color="rgb(223,174,143)"></stop>
+<stop offset="100%" stop-color="rgb(191,93,30)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g67">
-<stop offset="0%" stop-color="rgb(171,197,208)"></stop>
-<stop offset="100%" stop-color="rgb(86,138,160)"></stop>
+<stop offset="0%" stop-color="rgb(208,176,154)"></stop>
+<stop offset="100%" stop-color="rgb(161,96,52)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g68">
-<stop offset="0%" stop-color="rgb(174,192,201)"></stop>
-<stop offset="100%" stop-color="rgb(93,129,146)"></stop>
+<stop offset="0%" stop-color="rgb(218,170,140)"></stop>
+<stop offset="100%" stop-color="rgb(181,85,25)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g69">
-<stop offset="0%" stop-color="rgb(166,192,204)"></stop>
-<stop offset="100%" stop-color="rgb(77,128,153)"></stop>
+<stop offset="0%" stop-color="rgb(209,170,146)"></stop>
+<stop offset="100%" stop-color="rgb(163,85,37)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g70">
-<stop offset="0%" stop-color="rgb(167,189,199)"></stop>
-<stop offset="100%" stop-color="rgb(79,122,142)"></stop>
+<stop offset="0%" stop-color="rgb(201,167,147)"></stop>
+<stop offset="100%" stop-color="rgb(147,79,38)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g71">
-<stop offset="0%" stop-color="rgb(164,184,194)"></stop>
-<stop offset="100%" stop-color="rgb(73,112,132)"></stop>
+<stop offset="0%" stop-color="rgb(201,163,142)"></stop>
+<stop offset="100%" stop-color="rgb(147,71,28)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g72">
-<stop offset="0%" stop-color="rgb(160,181,194)"></stop>
-<stop offset="100%" stop-color="rgb(65,107,132)"></stop>
+<stop offset="0%" stop-color="rgb(213,165,138)"></stop>
+<stop offset="100%" stop-color="rgb(170,75,21)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g73">
-<stop offset="0%" stop-color="rgb(163,188,201)"></stop>
-<stop offset="100%" stop-color="rgb(71,120,147)"></stop>
+<stop offset="0%" stop-color="rgb(195,161,143)"></stop>
+<stop offset="100%" stop-color="rgb(134,66,30)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g74">
-<stop offset="0%" stop-color="rgb(158,177,189)"></stop>
-<stop offset="100%" stop-color="rgb(60,99,123)"></stop>
+<stop offset="0%" stop-color="rgb(208,169,145)"></stop>
+<stop offset="100%" stop-color="rgb(161,82,34)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g75">
-<stop offset="0%" stop-color="rgb(165,187,198)"></stop>
-<stop offset="100%" stop-color="rgb(75,119,140)"></stop>
+<stop offset="0%" stop-color="rgb(204,159,136)"></stop>
+<stop offset="100%" stop-color="rgb(152,62,16)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g76">
-<stop offset="0%" stop-color="rgb(158,181,196)"></stop>
-<stop offset="100%" stop-color="rgb(60,106,136)"></stop>
+<stop offset="0%" stop-color="rgb(201,166,146)"></stop>
+<stop offset="100%" stop-color="rgb(146,76,36)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g77">
-<stop offset="0%" stop-color="rgb(162,182,193)"></stop>
-<stop offset="100%" stop-color="rgb(69,109,130)"></stop>
+<stop offset="0%" stop-color="rgb(204,165,142)"></stop>
+<stop offset="100%" stop-color="rgb(152,75,29)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g78">
-<stop offset="0%" stop-color="rgb(162,183,195)"></stop>
-<stop offset="100%" stop-color="rgb(68,111,135)"></stop>
+<stop offset="0%" stop-color="rgb(197,163,144)"></stop>
+<stop offset="100%" stop-color="rgb(138,70,32)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g79">
-<stop offset="0%" stop-color="rgb(159,179,191)"></stop>
-<stop offset="100%" stop-color="rgb(63,102,126)"></stop>
+<stop offset="0%" stop-color="rgb(204,159,136)"></stop>
+<stop offset="100%" stop-color="rgb(152,63,17)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g80">
-<stop offset="0%" stop-color="rgb(158,181,196)"></stop>
-<stop offset="100%" stop-color="rgb(61,106,137)"></stop>
+<stop offset="0%" stop-color="rgb(199,162,141)"></stop>
+<stop offset="100%" stop-color="rgb(143,68,26)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g81">
-<stop offset="0%" stop-color="rgb(159,180,193)"></stop>
-<stop offset="100%" stop-color="rgb(62,104,130)"></stop>
+<stop offset="0%" stop-color="rgb(193,160,142)"></stop>
+<stop offset="100%" stop-color="rgb(130,64,29)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g82">
-<stop offset="0%" stop-color="rgb(157,176,188)"></stop>
-<stop offset="100%" stop-color="rgb(58,96,121)"></stop>
+<stop offset="0%" stop-color="rgb(192,156,139)"></stop>
+<stop offset="100%" stop-color="rgb(129,57,22)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g83">
-<stop offset="0%" stop-color="rgb(154,174,188)"></stop>
-<stop offset="100%" stop-color="rgb(53,93,121)"></stop>
+<stop offset="0%" stop-color="rgb(191,150,132)"></stop>
+<stop offset="100%" stop-color="rgb(127,44,8)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g84">
-<stop offset="0%" stop-color="rgb(151,171,189)"></stop>
-<stop offset="100%" stop-color="rgb(47,87,123)"></stop>
+<stop offset="0%" stop-color="rgb(186,155,140)"></stop>
+<stop offset="100%" stop-color="rgb(117,54,25)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g85">
-<stop offset="0%" stop-color="rgb(153,171,184)"></stop>
-<stop offset="100%" stop-color="rgb(50,86,113)"></stop>
+<stop offset="0%" stop-color="rgb(192,156,139)"></stop>
+<stop offset="100%" stop-color="rgb(129,57,23)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g86">
-<stop offset="0%" stop-color="rgb(155,174,189)"></stop>
-<stop offset="100%" stop-color="rgb(54,93,122)"></stop>
+<stop offset="0%" stop-color="rgb(187,155,141)"></stop>
+<stop offset="100%" stop-color="rgb(118,55,26)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g87">
-<stop offset="0%" stop-color="rgb(153,171,185)"></stop>
-<stop offset="100%" stop-color="rgb(51,86,114)"></stop>
+<stop offset="0%" stop-color="rgb(182,149,136)"></stop>
+<stop offset="100%" stop-color="rgb(108,42,16)"></stop>
 </linearGradient>
 <linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g88">
-<stop offset="0%" stop-color="rgb(149,166,183)"></stop>
-<stop offset="100%" stop-color="rgb(42,77,110)"></stop>
+<stop offset="0%" stop-color="rgb(177,148,138)"></stop>
+<stop offset="100%" stop-color="rgb(99,41,20)"></stop>
 </linearGradient>
-<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0" id="zr56-g89">
-<stop offset="0%" stop-color="rgb(148,164,179)"></stop>
-<stop offset="100%" stop-color="rgb(40,72,103)"></stop>
-</linearGradient>
-<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr56-g90">
-<stop offset="0%" stop-color="rgb(49,93,130)"></stop>
-<stop offset="6.25%" stop-color="rgb(58,106,139)"></stop>
-<stop offset="12.5%" stop-color="rgb(68,118,149)"></stop>
-<stop offset="18.75%" stop-color="rgb(77,131,158)"></stop>
-<stop offset="25%" stop-color="rgb(86,143,167)"></stop>
-<stop offset="31.25%" stop-color="rgb(100,155,176)"></stop>
-<stop offset="37.5%" stop-color="rgb(114,166,184)"></stop>
-<stop offset="43.75%" stop-color="rgb(127,178,193)"></stop>
-<stop offset="50%" stop-color="rgb(141,189,201)"></stop>
-<stop offset="56.25%" stop-color="rgb(155,197,208)"></stop>
-<stop offset="62.5%" stop-color="rgb(168,205,215)"></stop>
-<stop offset="68.75%" stop-color="rgb(182,213,221)"></stop>
-<stop offset="75%" stop-color="rgb(196,221,228)"></stop>
-<stop offset="81.25%" stop-color="rgb(207,227,233)"></stop>
-<stop offset="87.5%" stop-color="rgb(217,233,238)"></stop>
-<stop offset="93.75%" stop-color="rgb(227,238,242)"></stop>
-<stop offset="100%" stop-color="rgb(238,244,247)"></stop>
+<linearGradient gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1" id="zr56-g89">
+<stop offset="0%" stop-color="rgb(138,45,4)"></stop>
+<stop offset="6.25%" stop-color="rgb(154,57,9)"></stop>
+<stop offset="12.5%" stop-color="rgb(171,70,14)"></stop>
+<stop offset="18.75%" stop-color="rgb(187,82,19)"></stop>
+<stop offset="25%" stop-color="rgb(203,94,24)"></stop>
+<stop offset="31.25%" stop-color="rgb(212,105,33)"></stop>
+<stop offset="37.5%" stop-color="rgb(222,116,42)"></stop>
+<stop offset="43.75%" stop-color="rgb(231,127,51)"></stop>
+<stop offset="50%" stop-color="rgb(240,138,60)"></stop>
+<stop offset="56.25%" stop-color="rgb(242,148,73)"></stop>
+<stop offset="62.5%" stop-color="rgb(244,157,85)"></stop>
+<stop offset="68.75%" stop-color="rgb(246,167,97)"></stop>
+<stop offset="75%" stop-color="rgb(248,176,110)"></stop>
+<stop offset="81.25%" stop-color="rgb(249,185,126)"></stop>
+<stop offset="87.5%" stop-color="rgb(250,194,142)"></stop>
+<stop offset="93.75%" stop-color="rgb(250,202,158)"></stop>
+<stop offset="100%" stop-color="rgb(251,211,174)"></stop>
 </linearGradient>
 </defs>
 <style ><![CDATA[
-.zr56-cls-432:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-433:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-434:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-435:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-436:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-437:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-438:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-439:hover {
-cursor:pointer;
-fill:[object Object];
-}
-.zr56-cls-440:hover {
-cursor:pointer;
-fill:[object Object];
-}
 .zr56-cls-441:hover {
 cursor:pointer;
 fill:[object Object];
@@ -991,6 +951,38 @@ cursor:pointer;
 fill:[object Object];
 }
 .zr56-cls-522:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-523:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-524:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-525:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-526:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-527:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-528:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-529:hover {
+cursor:pointer;
+fill:[object Object];
+}
+.zr56-cls-530:hover {
 pointer-events:none;
 }
 

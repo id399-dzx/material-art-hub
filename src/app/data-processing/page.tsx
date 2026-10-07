@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useEffect, useRef, useSyncExternalStore, useMemo } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore, useMemo, useCallback } from "react";
 import Image from "next/image";
 import * as xlsx from "xlsx";
 import ReactECharts from 'echarts-for-react';
-import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight, LayoutGrid, Loader2 } from "lucide-react";
+import type { EChartsOption } from "echarts";
+import { UploadCloud, FileSpreadsheet, Settings2, RefreshCw, Zap, FileText, Trash2, Sparkles, Activity, Battery, Cpu, RotateCw, ZapIcon, Download, ArrowUpRight, LayoutGrid, Loader2, Palette } from "lucide-react";
 import { parseXYMatrix, type XYOrientationChoice } from "@/lib/data-processing/parse";
 import SafeReport from "@/components/data-processing/SafeReport";
 import DataAdvisor from "@/components/data-processing/DataAdvisor";
 import PublicationExport from "@/components/data-processing/PublicationExport";
-import ChartPalettePicker from "@/components/data-processing/ChartPalettePicker";
-import { CHART_PALETTES, DEFAULT_CHART_PALETTE, getChartPalette } from "@/lib/data-processing/chart-palettes";
+import ChartPalettePicker, { type ChartPalettePreview } from "@/components/data-processing/ChartPalettePicker";
+import PaletteComparison from "@/components/data-processing/PaletteComparison";
+import { CHART_PALETTES, DEFAULT_CHART_PALETTE, getChartPalette, type ChartPaletteId } from "@/lib/data-processing/chart-palettes";
 import { initialExportSettings } from "@/lib/data-processing/publication";
 import { readWorkbook } from "@/lib/data-processing/read-workbook";
 import { parseTemplateTable } from "@/lib/data-processing/templates";
@@ -22,6 +24,17 @@ import { GlassButton } from "@/components/ui/GlassButton";
 import "./workbench.css";
 
 type DataChunk = { id: string; name: string; x: number[]; y: number[] };
+type CurveInteraction = Pick<ProcessingFigureSnapshot, 'zoom' | 'legendSelection'>;
+
+function withCurveInteraction(option: EChartsOption, interaction: CurveInteraction): EChartsOption {
+    const zooms = Array.isArray(option.dataZoom) ? option.dataZoom : option.dataZoom ? [option.dataZoom] : [];
+    const legends = Array.isArray(option.legend) ? option.legend : option.legend ? [option.legend] : [];
+    return {
+        ...option,
+        ...(zooms.length ? { dataZoom: zooms.map((zoom, index) => ({ ...zoom, ...interaction.zoom?.[index] })) } : {}),
+        ...(legends.length ? { legend: legends.map(legend => ({ ...legend, ...(interaction.legendSelection ? { selected: { ...legend.selected, ...interaction.legendSelection } } : {}) })) } : {}),
+    };
+}
 type ChartTemplateParams = {
     fontFamily?: string; lineWidth?: number; lineColor?: string; lineColor2?: string; titleSize?: number;
     labelSize?: number; seriesName?: string; legendPosition?: string;
@@ -130,6 +143,8 @@ export default function DataProcessingPage() {
     const [compositionError, setCompositionError] = useState("");
     const [exportSettings, setExportSettings] = useState(initialExportSettings);
     const [figureExporting, setFigureExporting] = useState(false);
+    const [paletteComparisonOpen, setPaletteComparisonOpen] = useState(false);
+    const [curvePaletteInteraction, setCurvePaletteInteraction] = useState<CurveInteraction>({});
     const [dataType, setDataType] = useState<string>('GCD');
     const [dataOrientation, setDataOrientation] = useState<XYOrientationChoice>('auto');
     const [importWarnings, setImportWarnings] = useState<string[]>([]);
@@ -143,7 +158,7 @@ export default function DataProcessingPage() {
         if (workspace !== "processing") return;
         const frame = requestAnimationFrame(() => chartRef.current?.getEchartsInstance()?.resize());
         return () => cancelAnimationFrame(frame);
-    }, [workspace]);
+    }, [workspace, paletteComparisonOpen]);
     const [fileName, setFileName] = useState<string | null>(null);
     const [fileChunks1, setFileChunks1] = useState<DataChunk[]>([]);
     const [fileChunks2, setFileChunks2] = useState<DataChunk[]>([]);
@@ -622,8 +637,10 @@ export default function DataProcessingPage() {
         });
     };
 
-    const generateOption = () => {
+    const generateOption = useCallback((colorsOverride?: readonly string[]): EChartsOption => {
         if (fileChunks1.length === 0) return {};
+        const primaryColor = colorsOverride?.[0] ?? lineColor;
+        const comparisonColor = colorsOverride?.[1] ?? lineColor2;
 
         const seriesFromChunks = (chunks: DataChunk[]) => chunks.flatMap((chunk, chunkIndex) => [
             ...chunk.x.map((xValue, index) => [xValue, chunk.y[index]]),
@@ -750,11 +767,11 @@ export default function DataProcessingPage() {
             large: true,
             largeThreshold: 5000,
             itemStyle: {
-                color: lineColor
+                color: primaryColor
             },
             lineStyle: {
                 width: lineWidth,
-                color: lineColor
+                color: primaryColor
             }
         };
 
@@ -837,7 +854,7 @@ export default function DataProcessingPage() {
             series: (() => {
                 const mainSeries = [
                     { ...baseSeries, xAxisIndex: 0, yAxisIndex: 0 },
-                    fileChunks2.length > 0 ? { ...baseSeries, xAxisIndex: 0, yAxisIndex: 0, name: seriesName2, data: controlSeriesData, itemStyle: { color: lineColor2 }, lineStyle: { width: lineWidth, color: lineColor2 } } : null
+                    fileChunks2.length > 0 ? { ...baseSeries, xAxisIndex: 0, yAxisIndex: 0, name: seriesName2, data: controlSeriesData, itemStyle: { color: comparisonColor }, lineStyle: { width: lineWidth, color: comparisonColor } } : null
                 ].filter(Boolean);
 
                 if (!showInset) return mainSeries;
@@ -846,12 +863,59 @@ export default function DataProcessingPage() {
 
                 const insetSeries = useMainDataForInset ? [
                     baseInsetSeries1,
-                    fileChunks2.length > 0 ? { ...baseSeries, xAxisIndex: 1, yAxisIndex: 1, zlevel: 1, name: seriesName2, data: controlSeriesData, itemStyle: { color: lineColor2 }, lineStyle: { width: lineWidth, color: lineColor2 } } : null
+                    fileChunks2.length > 0 ? { ...baseSeries, xAxisIndex: 1, yAxisIndex: 1, zlevel: 1, name: seriesName2, data: controlSeriesData, itemStyle: { color: comparisonColor }, lineStyle: { width: lineWidth, color: comparisonColor } } : null
                 ].filter(Boolean) : [baseInsetSeries1];
 
                 return [...mainSeries, ...insetSeries];
             })()
+        } as EChartsOption;
+    }, [fileChunks1, fileChunks2, lineColor, lineColor2, lineWidth, useMainDataForInset,
+        insetTotalX, insetTotalY, xAxisName, xMin, xMax, xInterval, titleSize, xOnZero,
+        labelSize, yAxisName, yMin, yMax, yInterval, seriesName, seriesName2, fontFamily,
+        legendPosition, showInset, insetLeft, insetTop, insetWidth, insetHeight,
+        insetXMin, insetXMax, showInsetAxisName, insetXAxisName, insetFontSize, insetXSplit,
+        insetYMin, insetYMax, insetYAxisName, insetYSplit]);
+
+    const createPaletteOption = useCallback((id: ChartPaletteId) => fileChunks1.length ? withCurveInteraction(generateOption(getChartPalette(id).colors), curvePaletteInteraction) : null,
+        [fileChunks1.length, generateOption, curvePaletteInteraction]);
+    const curvePalettePreview = useMemo<ChartPalettePreview>(() => ({
+        width: Math.max(200, chartWidth || 600), height: Math.max(200, chartHeight || 400), createOption: createPaletteOption,
+    }), [chartWidth, chartHeight, createPaletteOption]);
+    const currentCurvePaletteOption = useMemo(() => fileChunks1.length ? withCurveInteraction(generateOption(), curvePaletteInteraction) : null,
+        [fileChunks1.length, generateOption, curvePaletteInteraction]);
+
+    const captureCurveInteraction = (): CurveInteraction => {
+        const current = chartRef.current?.getEchartsInstance().getOption() as {
+            dataZoom?: Record<string, unknown>[];
+            legend?: { selected?: Record<string, boolean> }[];
+        } | undefined;
+        if (!current) return {};
+        return {
+            zoom: current.dataZoom?.map(zoom => Object.fromEntries(['start', 'end', 'startValue', 'endValue']
+                .filter(key => typeof zoom[key] === 'number' && Number.isFinite(zoom[key]))
+                .map(key => [key, zoom[key]]))),
+            legendSelection: current.legend?.[0]?.selected ? { ...current.legend[0].selected } : undefined,
         };
+    };
+
+    const openCurvePaletteComparison = () => {
+        setCurvePaletteInteraction(captureCurveInteraction());
+        setPaletteComparisonOpen(true);
+    };
+
+    const applyCurvePalette = (id: ChartPaletteId) => {
+        const interaction = captureCurveInteraction();
+        restoredZoomRef.current = interaction.zoom;
+        restoredLegendRef.current = interaction.legendSelection;
+        setCurvePaletteInteraction(interaction);
+        const colors = getChartPalette(id).colors;
+        setLineColor(colors[0]); setLineColor2(colors[1]);
+        setTemplateApplyCount(count => count + 1);
+        setPaletteComparisonOpen(false);
+        localStorage.setItem('myChartPresets', JSON.stringify({
+            fontFamily, lineWidth, lineColor: colors[0], lineColor2: colors[1], titleSize, labelSize, seriesName, legendPosition,
+            xAxisName, yAxisName, xMin, xMax, xInterval, yMin, yMax, yInterval, chartWidth, chartHeight, xOnZero,
+        }));
     };
 
     function captureFigureSnapshot(): ProcessingFigureSnapshot {
@@ -979,6 +1043,7 @@ export default function DataProcessingPage() {
         } else {
             setAppliedOptions(null);
         }
+        setCurvePaletteInteraction({ zoom: restoredZoomRef.current, legendSelection: restoredLegendRef.current });
         // generateOption captures the currently committed chart settings.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fileChunks1, fileChunks2, templateApplyCount, insetTotalX, insetTotalY, showInset, useMainDataForInset]);
@@ -1329,6 +1394,7 @@ export default function DataProcessingPage() {
                             <p>{editingCompositionId ? '正在编辑组图中的原图。参数修改后请先更新图表，再更新到组图。' : '核对曲线，检查并导出，或将当前画布加入论文组图。参数修改后请先更新图表。'}</p>
                         </div>
                         <div className="workbench-chart-toolbar">
+                            <GlassButton variant="secondary" size="sm" onClick={openCurvePaletteComparison} disabled={!appliedOptions || isLoading || figureExporting || compositionAdding} className="workbench-palette-compare" aria-pressed={paletteComparisonOpen}><Palette size={15} />配色对照</GlassButton>
                             <GlassButton variant="primary" size="sm" onClick={addMainToComposition} disabled={!appliedOptions || isLoading || figureExporting || compositionAdding} className="workbench-export">
                                 {compositionAdding ? <Loader2 size={15} className="animate-spin" /> : <LayoutGrid size={15} />}{editingCompositionId ? '更新组图中的原图' : '加入论文组图'}
                             </GlassButton>
@@ -1363,7 +1429,8 @@ export default function DataProcessingPage() {
                         )}
                     </div>
 
-                    <div className="workbench-preview-frame flex-1 w-full h-full rounded-xl border relative flex items-center justify-center overflow-hidden min-h-[400px]">
+                    <PaletteComparison open={paletteComparisonOpen} onClose={() => setPaletteComparisonOpen(false)} preview={curvePalettePreview} currentOption={currentCurvePaletteOption} value={activeCurvePalette} onApply={applyCurvePalette} disabled={!fileChunks1.length || isLoading || figureExporting || compositionAdding} />
+                    <div className="workbench-preview-frame flex-1 w-full h-full rounded-xl border relative flex items-center justify-center overflow-hidden min-h-[400px]" hidden={paletteComparisonOpen}>
                         {isLoading ? (
                             <div className="workbench-empty flex flex-col items-center gap-4">
                                 <RefreshCw size={32} className="animate-spin" />
@@ -1391,7 +1458,7 @@ export default function DataProcessingPage() {
                             </div>
                         )}
                     </div>
-                    {fileChunks1.length > 0 && <p className="workbench-chart-pan-hint">左右滑动图表，可查看完整曲线</p>}
+                    {fileChunks1.length > 0 && !paletteComparisonOpen && <p className="workbench-chart-pan-hint">左右滑动图表，可查看完整曲线</p>}
                     <div id="main-publication-export"><PublicationExport width={Math.max(200, chartWidth || 600)} height={Math.max(200, chartHeight || 400)} settings={exportSettings} onChange={setExportSettings} getSvg={exportMainSvg} filename={fileName || "实验曲线"} disabled={!appliedOptions || isLoading} onBusy={setFigureExporting} revision={appliedOptions} /></div>
                 </section>
 
@@ -1479,12 +1546,8 @@ export default function DataProcessingPage() {
                         </summary>
                         <div className="p-4 pt-4 bg-gray-800 grid grid-cols-2 gap-4">
                             <div className="col-span-2">
-                                <ChartPalettePicker value={activeCurvePalette} currentColors={[lineColor, lineColor2]} onChange={id => {
-                                    const colors = getChartPalette(id).colors;
-                                    setLineColor(colors[0]); setLineColor2(colors[1]);
-                                    setTemplateApplyCount(count => count + 1);
-                                }} />
-                                <p className="workbench-palette-hint">主曲线与对比曲线使用前两色，选择后立即更新；也可分别自定义颜色。</p>
+                                <ChartPalettePicker value={activeCurvePalette} currentColors={[lineColor, lineColor2]} onChange={applyCurvePalette} preview={curvePalettePreview} disabled={isLoading || figureExporting || compositionAdding} />
+                                <div className="workbench-palette-tools"><p className="workbench-palette-hint">缩略图使用你的曲线数据；主题应用后立即更新，也可分别自定义颜色。</p><button type="button" className="workbench-palette-compare-link" disabled={!fileChunks1.length || isLoading || figureExporting || compositionAdding} onClick={() => { openCurvePaletteComparison(); document.getElementById("chart-preview")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}><Palette size={13} />同数据配色对照</button></div>
                             </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs font-medium text-slate-400">数据图例名称 (Series Name)</label>

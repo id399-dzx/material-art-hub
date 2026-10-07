@@ -2,7 +2,7 @@ import type { EChartsOption, GraphicComponentOption } from "echarts";
 import type { TemplateData } from "./templates";
 import type { TemplateChartStyle } from "./template-chart";
 import { textWidth, wrapChartText } from "./chart-layout.ts";
-import { getValueColors, interpolateChartColor } from "./chart-palettes.ts";
+import { getChartValueColors, interpolateChartColor } from "./chart-palettes.ts";
 
 type Point = [number, number, number];
 export function rotatePoint([x, y, z]: Point, yaw: number, pitch: number): Point {
@@ -58,7 +58,7 @@ export function createSpatialOption(data: TemplateData, template: "sphere" | "su
         wires.forEach(line => graphic.push({ type: "polyline", shape: { points: line.map(project) }, style: { stroke: "#b9b3cb", lineWidth: 0.7, opacity: 0.6, fill: "none" } }));
     } else if (template === "surface") {
         const zmin = Math.min(...points.map(p => p[2])), zmax = Math.max(...points.map(p => p[2]));
-        const valueColors = getValueColors(palette, 'sequential', style.palette);
+        const valueColors = getChartValueColors({ ...style, colors: palette });
         surfaceFaces(points).sort((a, b) => a.reduce((sum, p) => sum + rotatePoint(p, yaw, pitch)[2], 0) - b.reduce((sum, p) => sum + rotatePoint(p, yaw, pitch)[2], 0)).forEach(face => {
             const z = face.reduce((sum, p) => sum + p[2], 0) / 4, t = (z - zmin) / (zmax - zmin || 1);
             graphic.push({ type: "polygon", shape: { points: face.map(project) }, style: { fill: interpolateChartColor(valueColors, t), stroke: style.showGrid ? "#75718b" : "#fff", lineWidth: style.showGrid ? 0.6 : 0.25 } });

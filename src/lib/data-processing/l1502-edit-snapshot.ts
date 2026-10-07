@@ -2,6 +2,7 @@ import { DRAWING_TEMPLATES } from './drawing-catalog.ts';
 import { parseTemplateTable } from './templates.ts';
 import type { L1502Mapping, L1502Style } from './l1502-spec.ts';
 import type { ExportSettings } from './publication.ts';
+import { SCALAR_PALETTES } from './chart-palettes.ts';
 
 export type L1502Source = { name: string; kind: 'demo' | 'file'; sheets: { name: string; matrix: unknown[][] }[] };
 export type L1502EditSnapshot = {
@@ -42,6 +43,8 @@ export function validateL1502EditSnapshot(value: unknown): L1502EditSnapshot {
     for (const key of ['title', 'xLabel', 'yLabel', 'zLabel', 'secondaryYLabel', 'annotationText', 'intervalLabel']) if (!text(style[key])) return fail('文字参数无效。');
     if (!['Arial', 'Times New Roman', 'sans-serif'].includes(style.fontFamily as string) || !within(style.fontSize, 5, 16) || !within(style.width, 420, 1600) || !within(style.height, 320, 1000) || !within(style.yaw, -180, 180) || !within(style.pitch, -80, 80) || !Number.isInteger(style.bins) || !within(style.bins, 2, 60) || !finite(style.isoLevel) || !finite(style.annotationX)) return fail('字号、画布或数值参数超出范围。');
     if (!Array.isArray(style.colors) || style.colors.length < 1 || style.colors.length > 32 || !style.colors.every(color => typeof color === 'string' && /^#[0-9a-f]{6}$/i.test(color))) return fail('配色格式无效。');
+    if (style.scalarPalette !== undefined && !SCALAR_PALETTES.some(palette => palette.id === style.scalarPalette)) return fail('数值色阶无效。');
+    if (style.scalarColors !== undefined && (!Array.isArray(style.scalarColors) || style.scalarColors.length < 1 || style.scalarColors.length > 32 || !style.scalarColors.every(color => typeof color === 'string' && /^#[0-9a-f]{6}$/i.test(color)))) return fail('自定义数值色阶格式无效。');
     for (const field of ['showGrid', 'showValues']) if (typeof style[field] !== 'boolean') return fail('样式开关无效。');
     if (typeof value.logX !== 'boolean' || typeof value.logY !== 'boolean' || !text(value.caption)) return fail('坐标或图注格式无效。');
     if (!record(value.exportSettings) || !within(value.exportSettings.widthMm, 40, 300) || ![150, 300, 600].includes(value.exportSettings.dpi as number) || typeof value.exportSettings.grayscale !== 'boolean' || !['single', 'double', 'custom'].includes(value.exportSettings.preset as string)) return fail('导出规格无效。');

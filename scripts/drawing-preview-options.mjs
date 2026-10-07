@@ -7,7 +7,7 @@ import { buildDrawingData, suggestDrawingMapping } from '../src/lib/data-process
 import { buildL1502Data, suggestL1502Mapping } from '../src/lib/data-processing/l1502-data.ts';
 import { l1502DefaultLayout, l1502DefaultStyle } from '../src/lib/data-processing/l1502-spec.ts';
 import { createL1502Option } from '../src/lib/data-processing/l1502-render.ts';
-import { DEFAULT_CHART_PALETTE } from '../src/lib/data-processing/chart-palettes.ts';
+import { getRecommendedPalette } from '../src/lib/data-processing/chart-palettes.ts';
 
 /** Mirror the editor's initial demo binding. Never extract pixels from a paper figure. */
 export function drawingPreviewOption(template) {
@@ -19,7 +19,7 @@ export function drawingPreviewOption(template) {
         const mapping = suggestL1502Mapping(table, template.l1502);
         const result = buildL1502Data(table, mapping, template.l1502);
         if (!result.data) throw new Error(`${template.id}: ${result.error}`);
-        const style = { ...l1502DefaultStyle(`${template.name} · 示例数据`, width, height), xLabel: template.xLabel, yLabel: template.yLabel,
+        const style = { ...l1502DefaultStyle(`${template.name} · 示例数据`, width, height, template.l1502), xLabel: template.xLabel, yLabel: template.yLabel,
             fontSize: 8 * 25.4 / 72 * width / widthMm, annotationText: template.l1502.annotation === 'formula' ? 'Δy = y₂ − y₁' : '参考位置', annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
         return { option: createL1502Option(result.data, template.l1502, style), width, height, table, mapping, data: result.data, style };
     }
@@ -43,7 +43,7 @@ export function drawingPreviewOption(template) {
         xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
         yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
-        palette: DEFAULT_CHART_PALETTE, showGrid: false, showValues: false,
+        ...getRecommendedPalette(template.variant ?? id), showGrid: false, showValues: false,
         errorMeasure, panelChart: 'bar', cumulative: false,
         secondaryYLabel: template.electrochemical?.secondaryYLabel || table.columns[mapping.ys[1]] || '右轴指标',
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0.6,

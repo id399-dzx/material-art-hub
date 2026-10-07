@@ -19,18 +19,18 @@
 <path d="M340 235.5L340 84.7" fill="none" pointer-events="visible" stroke="#827d90" class="zr20-cls-111"></path>
 <path d="M0 0l13.8 0l0 26.2l-13.8 0Z" transform="translate(344 73.4116)" fill="none" pointer-events="visible" class="zr20-cls-111"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 22.577777777777776px Arial" y="13.095111111111109" transform="translate(344 73.4116)" fill="#48404f">Z</text>
-<path d="M340 235.5L300.3 125.1" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.25" class="zr20-cls-111"></path>
-<circle cx="300.3" cy="125.1" r="4.5" fill="#CF7868" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr20-cls-112"></circle>
-<path d="M340 235.5L338.9 373.5" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.25" class="zr20-cls-111"></path>
-<circle cx="338.9" cy="373.5" r="4.5" fill="#CF7868" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr20-cls-112"></circle>
-<path d="M340 235.5L208.2 253.8" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.65" class="zr20-cls-111"></path>
-<circle cx="208.2" cy="253.8" r="4.5" fill="#3B6E9E" stroke="#fff" class="zr20-cls-113"></circle>
-<path d="M340 235.5L409.3 126.5" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.65" class="zr20-cls-111"></path>
-<circle cx="409.3" cy="126.5" r="4.5" fill="#3B6E9E" stroke="#fff" class="zr20-cls-113"></circle>
-<path d="M340 235.5L292.3 163.8" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.65" class="zr20-cls-111"></path>
-<circle cx="292.3" cy="163.8" r="4.5" fill="#3B6E9E" stroke="#fff" class="zr20-cls-113"></circle>
-<path d="M340 235.5L383.2 291.2" fill="none" pointer-events="visible" stroke="#3B6E9E" stroke-opacity="0.65" class="zr20-cls-111"></path>
-<circle cx="383.2" cy="291.2" r="4.5" fill="#3B6E9E" stroke="#fff" class="zr20-cls-113"></circle>
+<path d="M340 235.5L300.3 125.1" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.25" class="zr20-cls-111"></path>
+<circle cx="300.3" cy="125.1" r="4.5" fill="#F08A3C" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr20-cls-112"></circle>
+<path d="M340 235.5L338.9 373.5" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.25" class="zr20-cls-111"></path>
+<circle cx="338.9" cy="373.5" r="4.5" fill="#F08A3C" fill-opacity="0.6" stroke="#fff" stroke-opacity="0.6" class="zr20-cls-112"></circle>
+<path d="M340 235.5L208.2 253.8" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.65" class="zr20-cls-111"></path>
+<circle cx="208.2" cy="253.8" r="4.5" fill="#1B6FAE" stroke="#fff" class="zr20-cls-113"></circle>
+<path d="M340 235.5L409.3 126.5" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.65" class="zr20-cls-111"></path>
+<circle cx="409.3" cy="126.5" r="4.5" fill="#1B6FAE" stroke="#fff" class="zr20-cls-113"></circle>
+<path d="M340 235.5L292.3 163.8" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.65" class="zr20-cls-111"></path>
+<circle cx="292.3" cy="163.8" r="4.5" fill="#1B6FAE" stroke="#fff" class="zr20-cls-113"></circle>
+<path d="M340 235.5L383.2 291.2" fill="none" pointer-events="visible" stroke="#1B6FAE" stroke-opacity="0.65" class="zr20-cls-111"></path>
+<circle cx="383.2" cy="291.2" r="4.5" fill="#1B6FAE" stroke="#fff" class="zr20-cls-113"></circle>
 <path d="M0 0l247.1 0l0 12.8l-247.1 0Z" transform="translate(216.47 391.24)" fill="none" pointer-events="visible" class="zr20-cls-111"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 11px Arial" xml:space="preserve" y="6.38" transform="translate(216.47 391.24)" fill="#787580">正交投影 · 方位 35° / 仰角 25° · 参考球 R = 1</text>
 <path d="M-154.3 0l308.7 0l0 28.5l-308.7 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr20-cls-114"></path>
@@ -52,11 +52,11 @@ cursor:pointer;
 }
 .zr20-cls-112:hover {
 cursor:pointer;
-fill:rgba(227,132,114,1);
+fill:rgba(255,151,66,1);
 }
 .zr20-cls-113:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(29,122,191,1);
 }
 .zr20-cls-114:hover {
 pointer-events:none;

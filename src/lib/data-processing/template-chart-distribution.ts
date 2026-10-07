@@ -29,7 +29,7 @@ export function createDistributionOption(data: TemplateData, id: 'box' | 'violin
             const children: NonNullable<ReturnType<NonNullable<CustomSeriesOption['renderItem']>>>[] = [];
             if (id === 'violin') {
                 const density = kernelDensity(group.values), max = Math.max(...density.map(point => point.density));
-                if (density.length) children.push({ type: 'polygon', shape: { points: [...density.map(point => [center - point.density / max * half, y(point.y)]), ...[...density].reverse().map(point => [center + point.density / max * half, y(point.y)])] }, style: { fill: color, opacity: .3, stroke: color, lineWidth: 1 } });
+                if (density.length) children.push({ type: 'polygon', shape: { points: [...density.map(point => [center - point.density / max * half, y(point.y)]), ...[...density].reverse().map(point => [center + point.density / max * half, y(point.y)])] }, style: { fill: `${color}B3`, stroke: color, lineWidth: 1 } });
             }
             if (group.values.length >= 3) {
                 const bw = id === 'violin' ? half * .4 : half;

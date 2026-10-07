@@ -1,0 +1,22 @@
+.palette-comparison { display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 0; min-width: 0; padding: 12px; border: 1px solid #e6dfee; border-radius: 14px; background: #fbf9fd; color: #594965; overflow: hidden; }
+.palette-comparison > header { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex: none; margin-bottom: 12px; }
+.palette-comparison > header h3 { margin: 0; font-size: 15px; font-weight: 650; }
+.palette-comparison > header p { margin: 5px 0 0; color: #9a8ca4; font-size: 10px; line-height: 1.5; }
+.palette-comparison > header > button { display: inline-flex; align-items: center; justify-content: center; gap: 4px; flex: none; padding: 7px 10px; border: 1px solid #d9cde4; border-radius: 8px; background: #fff; color: #79628b; font-size: 11px; white-space: nowrap; cursor: pointer; }
+.palette-comparison__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #d2c8df transparent; align-content: start; padding-right: 3px; }
+.palette-comparison__card { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding: 8px; border: 1px solid #e6dfed; border-radius: 11px; background: #ffffffb8; }
+.palette-comparison__card--current { background: #f4f0f8; border-color: #d1c4dd; }
+.palette-comparison__card-heading { display: flex; align-items: center; justify-content: space-between; gap: 7px; height: 31px; }
+.palette-comparison__card-heading > strong { font-size: 11px; font-weight: 650; }
+.palette-comparison__card-heading > small { font-size: 9px; color: #a090ab; }
+.palette-comparison__select { display: flex; align-items: center; gap: 7px; }
+.palette-comparison__select > span { flex: none; color: #94839f; font-size: 10px; }
+.palette-comparison__select > select { min-width: 0; flex: 1; width: 100%; height: 31px; padding: 4px 7px; border: 1px solid #e0d4e9; border-radius: 6px; background: #fff; color: #65516f; font-size: 11px; }
+.palette-comparison__card .chart-palette-thumbnail { flex: none; max-height: 140px; }
+.palette-comparison__apply { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 31px; width: 100%; padding: 6px 8px; border: 1px solid #d6c6e2; border-radius: 7px; background: #f6effb; color: #806297; font-size: 10px; cursor: pointer; }
+.palette-comparison__apply:hover:not(:disabled) { border-color: #b197c4; background: #eee3f6; }
+.palette-comparison__card.is-current .palette-comparison__apply { background: #8f75a4; color: #fff; border-color: #8f75a4; }
+.palette-comparison__baseline { display: flex; align-items: center; justify-content: center; min-height: 31px; color: #a192ac; font-size: 10px; }
+.palette-comparison :is(button, select):focus-visible { outline: 2px solid #9477ac; outline-offset: 2px; }
+.palette-comparison :is(button, select):disabled { opacity: .5; cursor: wait; }
+@media (max-width: 760px) { .palette-comparison { padding: 10px; border-radius: 11px; } .palette-comparison__grid { grid-template-columns: 1fr; } .palette-comparison__card .chart-palette-thumbnail { max-height: 105px; } .palette-comparison > header { align-items: flex-start; } .palette-comparison > header h3 { font-size: 13px; } .palette-comparison > header p { font-size: 9px; } .palette-comparison > header > button { padding: 6px 8px; font-size: 10px; } }

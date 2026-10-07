@@ -3,7 +3,7 @@ import { sampleBox } from './distributions.ts';
 import { numericCell } from './templates.ts';
 import { wrapChartText } from './chart-layout.ts';
 import type { L1502Data, L1502Point, L1502Series, L1502Spec, L1502Style } from './l1502-spec.ts';
-import { getChartPalette, getValueColors, interpolateChartColor } from './chart-palettes.ts';
+import { getChartPalette, getChartValueColors, interpolateChartColor } from './chart-palettes.ts';
 
 type Part = Record<string, unknown>;
 const unique = <T,>(a: T[]) => [...new Set(a)];
@@ -12,7 +12,7 @@ const fmt = (v: number) => Number(v.toPrecision(4)).toString();
 const font = (s: L1502Style, delta = 0) => `${Math.max(9, s.fontSize + delta)}px ${s.fontFamily}`;
 const colorAt = (s: L1502Style, i: number) => s.colors[i % s.colors.length] ?? getChartPalette().colors[0];
 function scalarColor(value: number, min: number, max: number, style: L1502Style): string {
-    return interpolateChartColor(getValueColors(style.colors, 'sequential'), max === min ? .5 : (value - min) / (max - min));
+    return interpolateChartColor(getChartValueColors(style), max === min ? .5 : (value - min) / (max - min));
 }
 const gradient = (c: string, horizontal = false) => ({ type: 'linear' as const, x: 0, y: 1, x2: horizontal ? 1 : 0, y2: horizontal ? 1 : 0, colorStops: [{ offset: 0, color: `${c}25` }, { offset: 1, color: c }] });
 const note = (style: L1502Style, text: string): Part => ({ type: 'text', left: 'center', bottom: 6, style: { text: wrapChartText(text, style.width - 48, Math.max(9, style.fontSize - 3), style.fontFamily), fill: '#505763', font: font(style, -3), lineHeight: Math.max(9, style.fontSize - 3) * 1.22, align: 'center' } });
@@ -37,7 +37,7 @@ function shell(data: L1502Data, spec: L1502Spec, style: L1502Style, names = data
 function valueMap(values: number[], indices: number[], style: L1502Style, dimension = 3, label = 'Color'): Part {
     const [min, max] = extent(values);
     const common = { dimension, seriesIndex: indices, calculable: false, orient: 'vertical', right: 5, top: '54%', itemHeight: Math.min(150, style.height * .3), itemWidth: 13, precision: 3, text: [label, ''], textStyle: { fontFamily: style.fontFamily, fontSize: Math.max(9, style.fontSize - 2) } };
-    const colors = getValueColors(style.colors, 'sequential');
+    const colors = getChartValueColors(style);
     return min === max ? { ...common, type: 'piecewise', pieces: [{ value: min, label: fmt(min), color: interpolateChartColor(colors, .5) }], selectedMode: false } : { ...common, type: 'continuous', min, max, inRange: { color: colors } };
 }
 function sizeLegend(data: L1502Data, style: L1502Style, maxDiameter = 52): Part[] {
@@ -47,7 +47,7 @@ function sizeLegend(data: L1502Data, style: L1502Style, maxDiameter = 52): Part[
 }
 function scatterSeries(s: L1502Series, spec: L1502Spec, style: L1502Style, i: number, maxSize: number, extra: Part = {}): Part {
     return { type: 'scatter', name: s.name, data: s.points.map(p => ({ value: [p.x, p.y, p.size ?? 0, p.color ?? Number(p.y)], name: p.label ?? `${p.x}, ${p.y}` })), encode: { x: 0, y: 1, tooltip: [0, 1, 2, 3] }, symbolSize: ['bubble', 'polar-bubble'].includes(spec.kind) ? (v: number[]) => maxSize > 0 ? 52 * Math.sqrt(v[2] / maxSize) : 0 : 7,
-        itemStyle: { color: colorAt(style, i), opacity: .78, borderColor: '#fff', borderWidth: .6 }, label: { show: spec.labels || style.showValues, formatter: (p: { name: string }) => wrapChartText(p.name, 100, style.fontSize - 2, style.fontFamily), position: 'top', fontFamily: style.fontFamily, fontSize: style.fontSize - 2 }, labelLayout: (p: { labelRect: { width: number; height: number; x: number; y: number } }) => ({ x: Math.max(100 + p.labelRect.width / 2, Math.min(style.width - (spec.colorByValue ? 145 : 65) - p.labelRect.width / 2, p.labelRect.x + p.labelRect.width / 2)), y: Math.max(100, Math.min(style.height - 120, p.labelRect.y)), hideOverlap: true }), ...extra };
+        itemStyle: { color: colorAt(style, i), opacity: .9, borderColor: spec.colorByValue ? '#465261' : '#fff', borderWidth: .6 }, label: { show: spec.labels || style.showValues, formatter: (p: { name: string }) => wrapChartText(p.name, 100, style.fontSize - 2, style.fontFamily), position: 'top', fontFamily: style.fontFamily, fontSize: style.fontSize - 2 }, labelLayout: (p: { labelRect: { width: number; height: number; x: number; y: number } }) => ({ x: Math.max(100 + p.labelRect.width / 2, Math.min(style.width - (spec.colorByValue ? 145 : 65) - p.labelRect.width / 2, p.labelRect.x + p.labelRect.width / 2)), y: Math.max(100, Math.min(style.height - 120, p.labelRect.y)), hideOverlap: true }), ...extra };
 }
 function errors(s: L1502Series, i: number, style: L1502Style, horizontal: boolean, axisIndex = 0, categoryOffset = 0): CustomSeriesOption {
     return { type: 'custom', name: `${s.name} · error`, xAxisIndex: axisIndex, yAxisIndex: axisIndex, data: s.points.filter(p => p.error !== undefined).map(p => horizontal ? [p.y, p.x, Number(p.y) - p.error!, Number(p.y) + p.error!] : [p.x, p.y, Number(p.y) - p.error!, Number(p.y) + p.error!]), encode: horizontal ? { x: [0, 2, 3], y: 1 } : { x: 0, y: [1, 2, 3] },
@@ -153,7 +153,7 @@ function matrixOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base:
         xAxis: axis(style, style.xLabel, 'category', { data: m.xs, splitArea: { show: bubbles, areaStyle: { color: ['#fff', '#f8fafb'] } } }),
         yAxis: axis(style, style.yLabel, 'category', { data: m.ys, splitArea: { show: bubbles } }),
         visualMap: valueMap(m.cells.map(c => c.value), [0], style, bubbles ? 3 : 2, data.mapping.color === undefined ? '数值' : data.table.columns[data.mapping.color]),
-        series: [bubbles ? { type: 'scatter', name: 'Size / Color', data: values, encode: { x: 0, y: 1, tooltip: [2, 3] }, symbolSize: (v: number[]) => max > 0 ? Math.min(52, (style.width - 220) / m.xs.length * .85, (style.height - 150) / m.ys.length * .85) * Math.sqrt(v[2] / max) : 0, itemStyle: { opacity: .8 }, label: { show: spec.labels || style.showValues, formatter: (p: { value: number[] }) => fmt(p.value[2]), fontSize: style.fontSize - 2 } } : { type: 'heatmap', name: '矩阵数值', data: m.cells.map(c => [c.xi, c.yi, c.value]), itemStyle: { borderColor: '#fff', borderWidth: .5 }, label: { show: spec.labels || style.showValues, fontSize: style.fontSize - 2 } }], ...(bubbles ? { graphic: sizeLegend(data, style) } : {}) };
+        series: [bubbles ? { type: 'scatter', name: 'Size / Color', data: values, encode: { x: 0, y: 1, tooltip: [2, 3] }, symbolSize: (v: number[]) => max > 0 ? Math.min(52, (style.width - 220) / m.xs.length * .85, (style.height - 150) / m.ys.length * .85) * Math.sqrt(v[2] / max) : 0, itemStyle: { opacity: .9, borderColor: '#465261', borderWidth: .6 }, label: { show: spec.labels || style.showValues, formatter: (p: { value: number[] }) => fmt(p.value[2]), fontSize: style.fontSize - 2 } } : { type: 'heatmap', name: '矩阵数值', data: m.cells.map(c => [c.xi, c.yi, c.value]), itemStyle: { borderColor: '#fff', borderWidth: .5 }, label: { show: spec.labels || style.showValues, fontSize: style.fontSize - 2 } }], ...(bubbles ? { graphic: sizeLegend(data, style) } : {}) };
     if (!bubbles && [58, 59].includes(spec.issue) && [...m.xs, ...m.ys].every(v => typeof v === 'number')) {
         const bounds = (v: number[], i: number) => [i ? (v[i - 1] + v[i]) / 2 : v[i] - ((v[1] ?? v[i] + 1) - v[i]) / 2, i < v.length - 1 ? (v[i] + v[i + 1]) / 2 : v[i] + (v[i] - (v[i - 1] ?? v[i] - 1)) / 2];
         const xs = m.xs as number[], ys = m.ys as number[];
@@ -344,7 +344,7 @@ function polarOption(data: L1502Data, spec: L1502Spec, style: L1502Style, base: 
         // Polar lines cannot consume ECharts visualMeta gradients; measured points use the colorbar scale directly.
         data: s.points.map(p => ({ value: [p.y, ((Number(p.x) * 180 / Math.PI % 360) + 360) % 360, p.size ?? 0, p.color ?? Number(p.y)], name: p.label ?? `${p.x} rad; ${p.y}`, ...(scalarLine ? { itemStyle: { color: scalarColor(p.color ?? Number(p.y), scalarBounds[0], scalarBounds[1], style) } } : {}) })), encode: { radius: 0, angle: 1, tooltip: [1, 0, 2, 3] },
         symbolSize: bubble ? (v: number[]) => maxSize ? 42 * Math.sqrt(v[2] / maxSize) : 0 : 6,
-        lineStyle: { color: colorAt(style, i), width: 2 }, itemStyle: { color: colorAt(style, i), opacity: .76 }, ...(spec.filled ? { areaStyle: { color: colorAt(style, i), opacity: .23 } } : {}), label: { show: spec.labels || style.showValues, formatter: (p: { name: string }) => p.name, fontSize: style.fontSize - 2 } }));
+        lineStyle: { color: colorAt(style, i), width: 2 }, itemStyle: { color: colorAt(style, i), opacity: .9, ...(spec.colorByValue ? { borderColor: '#465261', borderWidth: .6 } : {}) }, ...(spec.filled ? { areaStyle: { color: colorAt(style, i), opacity: .23 } } : {}), label: { show: spec.labels || style.showValues, formatter: (p: { name: string }) => p.name, fontSize: style.fontSize - 2 } }));
     return { ...base, grid: undefined, xAxis: undefined, yAxis: undefined, polar: { center: [bubble || spec.colorByValue ? '43%' : '50%', '50%'], radius: '58%' },
         angleAxis: { type: 'value', min: 0, max: 360, interval: 45, startAngle: 90, axisLabel: { formatter: (v: number) => fmt(v * Math.PI / 180), fontSize: style.fontSize - 1 }, splitLine: { show: true, lineStyle: { color: '#e4e9ed' } } }, radiusAxis: { type: spec.logY ? 'log' : 'value', name: style.yLabel, axisLabel: { fontSize: style.fontSize - 2 }, splitLine: { show: true, lineStyle: { color: '#e4e9ed' } } },
         series, ...(spec.colorByValue ? { visualMap: valueMap(data.points.map(p => p.color ?? Number(p.y)), scalarLine ? [] : series.map((_, i) => i), style) } : {}), graphic: [...(bubble ? sizeLegend(data, style, 42) : []), note(style, `X 为角度（rad，2π 周期）；Y 为非负半径；按输入顺序连接真实观测${scalarLine ? '；点色表示颜色数值' : ''}`)] };

@@ -33,28 +33,28 @@
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(388.8649 329.5244)" fill="#383842">方案 A</text>
 <path d="M-33.3 0l66.6 0l0 26.2l-66.6 0Z" transform="translate(556.2883 329.5244)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:22.577777777777776px;font-family:Arial;" xml:space="preserve" y="13.095111111111109" transform="translate(556.2883 329.5244)" fill="#383842">方案 B</text>
-<path d="M201.4 319.5l40 0l0 -85.2l-40 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
-<path d="M368.9 319.5l40 0l0 -123.8l-40 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
-<path d="M536.3 319.5l40 0l0 -152.2l-40 0Z" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
-<path d="M201.4 234.3l40 0l0 -42.6l-40 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
-<path d="M368.9 195.8l40 0l0 -48.7l-40 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
-<path d="M536.3 167.4l40 0l0 -34.5l-40 0Z" fill="#CF7868" stroke="#CF7868" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
-<path d="M201.4 191.7l40 0l0 -75.1l-40 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
-<path d="M368.9 147.1l40 0l0 -30.4l-40 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
-<path d="M536.3 132.9l40 0l0 -16.2l-40 0Z" fill="#4B9188" stroke="#4B9188" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
-<path d="M0 0l285.2 0l0 25l-285.2 0Z" transform="translate(197.4 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr12-cls-58"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(197.4 67.0253)" fill="#3B6E9E" stroke="#3B6E9E" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
-<path d="M21 -8.5l43.2 0l0 25l-43.2 0Z" transform="translate(197.4 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(197.4 67.0253)" fill="#383842">正确</text>
-<path d="M0 -8.5l64.2 0l0 25l-64.2 0Z" transform="translate(197.4 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(275.5556 67.0253)" fill="#CF7868" stroke="#CF7868" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
-<path d="M21 -8.5l86.3 0l0 25l-86.3 0Z" transform="translate(275.5556 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(275.5556 67.0253)" fill="#383842">部分正确</text>
-<path d="M0 -8.5l107.3 0l0 25l-107.3 0Z" transform="translate(275.5556 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
-<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(396.8667 67.0253)" fill="#4B9188" stroke="#4B9188" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
-<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(396.8667 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
-<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(396.8667 67.0253)" fill="#383842">未通过</text>
-<path d="M0 -8.5l85.7 0l0 25l-85.7 0Z" transform="translate(396.8667 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M201.8 319.2l39.3 0l0 -84.5l-39.3 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
+<path d="M369.2 319.2l39.3 0l0 -123.1l-39.3 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
+<path d="M536.6 319.2l39.3 0l0 -151.5l-39.3 0Z" fill="#3FA55A" stroke="#3FA55A" stroke-width="0.7" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-59"></path>
+<path d="M201.8 234l39.3 0l0 -41.9l-39.3 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
+<path d="M369.2 195.4l39.3 0l0 -48l-39.3 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
+<path d="M536.6 167l39.3 0l0 -33.8l-39.3 0Z" fill="#F08A3C" stroke="#F08A3C" stroke-width="0.7" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-60"></path>
+<path d="M201.8 191.4l39.3 0l0 -74.4l-39.3 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
+<path d="M369.2 146.7l39.3 0l0 -29.7l-39.3 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
+<path d="M536.6 132.5l39.3 0l0 -15.5l-39.3 0Z" fill="#4A93C7" stroke="#4A93C7" stroke-width="0.7" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr12-cls-61"></path>
+<path d="M0 0l288.2 0l0 25l-288.2 0Z" transform="translate(195.9 58.5102)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr12-cls-58"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(196.9 67.0253)" fill="#3FA55A" stroke="#3FA55A" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M21 -8.5l43.2 0l0 25l-43.2 0Z" transform="translate(196.9 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(196.9 67.0253)" fill="#383842">正确</text>
+<path d="M-1 -8.5l65.2 0l0 25l-65.2 0Z" transform="translate(196.9 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(276.0556 67.0253)" fill="#F08A3C" stroke="#F08A3C" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M21 -8.5l86.3 0l0 25l-86.3 0Z" transform="translate(276.0556 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(276.0556 67.0253)" fill="#383842">部分正确</text>
+<path d="M-1 -8.5l108.3 0l0 25l-108.3 0Z" transform="translate(276.0556 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M2 0L14 0A2 2 0 0 1 16 2L16 6A2 2 0 0 1 14 8L2 8A2 2 0 0 1 0 6L0 2A2 2 0 0 1 2 0" transform="translate(398.3667 67.0253)" fill="#4A93C7" stroke="#4A93C7" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
+<path d="M21 -8.5l64.7 0l0 25l-64.7 0Z" transform="translate(398.3667 67.0253)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:21.577777777777776px;font-family:Arial;" x="21" y="4" transform="translate(398.3667 67.0253)" fill="#383842">未通过</text>
+<path d="M-1 -8.5l86.7 0l0 25l-86.7 0Z" transform="translate(398.3667 67.0253)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr12-cls-58"></path>
 <path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr12-cls-58"></path>
 <path d="M-129.8 0l259.5 0l0 28.5l-259.5 0Z" transform="translate(340 12)" fill="none" pointer-events="visible" class="zr12-cls-58"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.577777777777776px;font-family:Arial;font-weight:600;" xml:space="preserve" y="14.255111111111109" transform="translate(340 12)" fill="#383842">堆叠组成图 · 示例数据</text>
@@ -64,15 +64,15 @@ pointer-events:none;
 }
 .zr12-cls-59:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(69,181,99,1);
 }
 .zr12-cls-60:hover {
 cursor:pointer;
-fill:rgba(227,132,114,1);
+fill:rgba(255,151,66,1);
 }
 .zr12-cls-61:hover {
 cursor:pointer;
-fill:rgba(82,159,149,1);
+fill:rgba(81,161,218,1);
 }
 
 ]]>

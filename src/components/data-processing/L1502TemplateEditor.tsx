@@ -17,7 +17,9 @@ import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
 import L1502MatlabSource from "./L1502MatlabSource";
 import ChartPalettePicker from "./ChartPalettePicker";
-import { findChartPalette, getChartPalette } from "@/lib/data-processing/chart-palettes";
+import ScalarPalettePicker from "./ScalarPalettePicker";
+import PaletteComparison from "./PaletteComparison";
+import { findChartPalette, getChartPalette, getChartValueColors, type ChartPaletteId } from "@/lib/data-processing/chart-palettes";
 
 function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const spec = template.l1502!;
@@ -25,7 +27,7 @@ function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const table = parseTemplateTable(template.demo, true);
     const mapping = suggestL1502Mapping(table, spec);
     const layout = l1502DefaultLayout(spec);
-    const style = { ...l1502DefaultStyle(template.name, layout.width, layout.height), fontSize: 8, xLabel: template.xLabel, yLabel: template.yLabel,
+    const style = { ...l1502DefaultStyle(template.name, layout.width, layout.height, spec), fontSize: 8, xLabel: template.xLabel, yLabel: template.yLabel,
         annotationText: spec.annotation === "formula" ? "Δy = y₂ − y₁" : "参考位置",
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0 };
     return { kind: "l1502", version: 1, presetId: template.id, source, sheetIndex: 0, hasHeader: true, mapping, style,
@@ -40,6 +42,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     const [busy, setBusy] = useState(false), [exporting, setExporting] = useState(false), [error, setError] = useState("");
     const [activeTab, setActiveTab] = useState<"editor" | "matlab">("editor");
     const [actualPreview, setActualPreview] = useState(false);
+    const [comparePalettes, setComparePalettes] = useState(false);
     const tabId = useId();
     const chartRef = useRef<ReactECharts>(null);
     const previewRef = useRef<HTMLDivElement>(null);
@@ -77,6 +80,19 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }), error: "" };
         } catch (cause) { return { option: null, error: cause instanceof Error ? cause.message : "请检查数据和绘图参数。" }; }
     }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const palettePreview = useMemo(() => ({ width: editor.style.width, height: editor.style.height, revision: JSON.stringify([result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]),
+        createOption: (id: ChartPaletteId) => result.data ? createL1502Option(result.data, spec, { ...editor.style,
+            scalarColors: editor.style.scalarPalette ? editor.style.scalarColors : getChartValueColors(editor.style),
+            colors: [...getChartPalette(id).colors], title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
+            fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }) : null,
+    }), [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const scalarPreview = useMemo(() => ({ width: editor.style.width, height: editor.style.height, revision: JSON.stringify([result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]),
+        createOption: (scalarPalette: NonNullable<L1502Style["scalarPalette"]>) => result.data ? createL1502Option(result.data, spec, { ...editor.style,
+            scalarPalette, title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
+            fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }) : null,
+    }), [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const scalarOnly = ["heatmap", "bubble-matrix", "histogram2", "contour", "surface", "tri-surface", "implicit-surface"].includes(spec.kind);
+    const hasScalar = scalarOnly || !!spec.colorByValue || editor.mapping.color !== undefined;
     const roles = l1502Roles(spec), spatial = L1502_SPATIAL_KINDS.includes(spec.kind);
     const hasErrors = ["error-bar", "error-line"].includes(spec.kind), hasBounds = ["confidence", "error-line"].includes(spec.kind);
     const textFields: { key: keyof L1502Style; name: string }[] = [
@@ -86,6 +102,12 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     ];
     function changeStyle<K extends keyof L1502Style>(key: K, value: L1502Style[K]) {
         setEditor(current => ({ ...current, style: { ...current.style, [key]: value } })); setError("");
+    }
+    function changePalette(id: ChartPaletteId) {
+        setEditor(current => ({ ...current, style: { ...current.style,
+            scalarColors: current.style.scalarPalette ? current.style.scalarColors : getChartValueColors(current.style),
+            colors: [...getChartPalette(id).colors] } }));
+        setError("");
     }
     function changeMapping(update: Partial<L1502Mapping>) {
         setEditor(current => ({ ...current, mapping: { ...current.mapping, ...update } })); setError("");
@@ -169,7 +191,8 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 <details className="l1502-control-section l1502-style-section"><summary><span className="l1502-summary-title"><Palette size={15} />样式与标注</span><span>字号 · 画布 · 图注</span></summary><div>
                 <fieldset className="template-style-fields l1502-fieldset" disabled={locked}>
                     {textFields.map(field => <label className="template-field" key={field.key}>{field.name}<input aria-label={field.name} value={String(editor.style[field.key])} onChange={event => changeStyle(field.key, event.target.value as never)} /></label>)}
-                    <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} disabled={locked} onChange={id => changeStyle("colors", [...getChartPalette(id).colors])} />
+                    {!scalarOnly && <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} preview={palettePreview} disabled={locked} onChange={changePalette} />}
+                    {hasScalar && <ScalarPalettePicker value={editor.style.scalarPalette} preview={scalarPreview} disabled={locked} onChange={id => changeStyle("scalarPalette", id)} />}
                     <label className="template-field">字体<select aria-label="图表字体" value={editor.style.fontFamily} onChange={event => changeStyle("fontFamily", event.target.value)}><option>Arial</option><option>Times New Roman</option><option>sans-serif</option></select></label>
                     <label className="template-field">主体字号 (pt)<input aria-label="主体字号" type="number" min={5} max={16} step={0.5} value={editor.style.fontSize} onChange={event => { const value = Number(event.target.value); if (value >= 5 && value <= 16) changeStyle("fontSize", value); }} /></label>
                     <label className="template-field">画布宽度 (px)<input aria-label="画布宽度" type="number" min={420} max={1600} value={editor.style.width} onChange={event => { const value = Number(event.target.value); if (value >= 420 && value <= 1600) changeStyle("width", value); }} /></label>
@@ -190,10 +213,13 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 </div></details>
                 {onAddToComposition && <button type="button" className="resource-button is-primary l1502-composition" disabled={!rendered.option || locked} onClick={addToComposition}><Layers3 size={16} />{assetId ? "更新论文组图中的此图" : "加入论文组图"}</button>}
             </section>
-            <section className="template-preview-panel template-glass" aria-label="固定图表预览">
+            <section className={`template-preview-panel template-glass${comparePalettes && !scalarOnly ? " is-comparing" : ""}`} aria-label="固定图表预览">
                 <div className="l1502-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3>你的科研图表</h3></div><span className={`template-data-badge${editor.source.kind === "demo" ? " is-demo" : ""}`}><i />{editor.source.kind === "demo" ? "示例数据" : "你的实验数据"}</span></div>
-                <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button><span>{editor.style.width} × {editor.style.height} px</span></div>
-                <div ref={previewRef} className="template-chart-wrap l1502-chart-wrap">{rendered.option ? <div style={{ width: editor.style.width * previewScale, height: editor.style.height * previewScale, margin: "8px auto", overflow: "hidden" }}><div style={{ width: editor.style.width, height: editor.style.height, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={rendered.option} notMerge opts={{ renderer: "svg", width: editor.style.width, height: editor.style.height }} style={{ width: editor.style.width, height: editor.style.height }} /></div></div> : <div className="template-chart-empty">完成字段绑定后，图表将在这里生成。</div>}</div>
+                <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button>{!scalarOnly && <button type="button" aria-pressed={comparePalettes} disabled={locked || !rendered.option} onClick={() => setComparePalettes(value => !value)}><Palette size={12} />配色对照</button>}<span>{editor.style.width} × {editor.style.height} px</span></div>
+                <div ref={previewRef} className={`template-chart-wrap l1502-chart-wrap${comparePalettes ? " is-comparing" : ""}`}>
+                    <PaletteComparison open={comparePalettes && !scalarOnly} onClose={() => setComparePalettes(false)} value={findChartPalette(editor.style.colors)?.id ?? null} currentOption={rendered.option} preview={palettePreview} disabled={locked} onApply={id => { changePalette(id); setComparePalettes(false); }} />
+                    {rendered.option ? <div style={{ display: comparePalettes && !scalarOnly ? "none" : undefined, width: editor.style.width * previewScale, height: editor.style.height * previewScale, margin: "8px auto", overflow: "hidden" }}><div style={{ width: editor.style.width, height: editor.style.height, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={rendered.option} notMerge opts={{ renderer: "svg", width: editor.style.width, height: editor.style.height }} style={{ width: editor.style.width, height: editor.style.height }} /></div></div> : <div className="template-chart-empty">完成字段绑定后，图表将在这里生成。</div>}
+                </div>
                 <div className="l1502-canvas-note"><span>图表固定预览 · 参数可独立滚动</span><span>{table.rows.length} 行数据 · {editor.mapping.ys.length} 组数值</span></div>
 
             </section>

@@ -1,22 +1,22 @@
 <svg width="760" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 760 500"><desc>填充箱线图; independently rendered demonstration data; L1502 issue 35; independent web implementation</desc>
 <rect width="760" height="500" x="0" y="0" fill="#fff"></rect>
-<path d="M0 0l583.4 0l0 27.1l-583.4 0Z" transform="translate(88.2901 466.8745)" fill="none" pointer-events="visible" class="zr77-cls-866"></path>
+<path d="M0 0l583.4 0l0 27.1l-583.4 0Z" transform="translate(88.2901 466.8745)" fill="none" pointer-events="visible" class="zr77-cls-879"></path>
 <text dominant-baseline="central" text-anchor="start" style="font: 22.233986928104574px Arial" xml:space="preserve" y="13.56273202614379" transform="translate(88.2901 466.8745)" fill="#505763">原始样本全保留；Q1 / 中位数 / Q3；须线 = 1.5 IQR 内观测</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="-12.616993464052287" transform="matrix(0,-1,1,0,51.571,219.8203)" fill="#74808b">Y</text>
-<path d="M97.5 375.6L97.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr77-cls-867"></path>
+<path d="M97.5 375.6L97.5 64" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr77-cls-880"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:25.233986928104574px;font-family:Arial;" y="12.616993464052287" transform="translate(408.7855 415.6405)" fill="#74808b">X</text>
-<path d="M97.6 375.5L720 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr77-cls-867"></path>
-<path d="M97.6 375.5L92.6 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 323.5L92.6 323.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 272.5L92.6 272.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 220.5L92.6 220.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 168.5L92.6 168.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 116.5L92.6 116.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.6 64.5L92.6 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M97.5 375.6L97.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M305.5 375.6L305.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M512.5 375.6L512.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
-<path d="M720.5 375.6L720.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-867"></path>
+<path d="M97.6 375.5L720 375.5" fill="none" pointer-events="visible" stroke="#74808b" stroke-linecap="round" class="zr77-cls-880"></path>
+<path d="M97.6 375.5L92.6 375.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 323.5L92.6 323.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 272.5L92.6 272.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 220.5L92.6 220.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 168.5L92.6 168.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 116.5L92.6 116.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.6 64.5L92.6 64.5" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M97.5 375.6L97.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M305.5 375.6L305.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M512.5 375.6L512.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
+<path d="M720.5 375.6L720.5 380.6" fill="none" pointer-events="visible" stroke="#74808b" class="zr77-cls-880"></path>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 375.6405)" fill="#54555a">3</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 323.7005)" fill="#54555a">4</text>
 <text dominant-baseline="central" text-anchor="end" style="font-size:24.233986928104574px;font-family:Arial;" transform="translate(89.571 271.7604)" fill="#54555a">5</text>
@@ -27,77 +27,77 @@
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(201.3092 383.6405)" fill="#54555a">Category 1</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(408.7855 383.6405)" fill="#54555a">Category 2</text>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:24.233986928104574px;font-family:Arial;" xml:space="preserve" y="12.116993464052287" transform="translate(616.2618 383.6405)" fill="#54555a">Category 3</text>
-<path d="M201.3 337.3L201.3 142.1" fill="#000" stroke="#3B6E9E" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M175.3 236.8l52 0l0 70.5l-52 0Z" fill="#3B6E9E65" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-869"></path>
-<path d="M175.3 337.3L227.3 337.3" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M175.3 285L227.3 285" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M175.3 142.1L227.3 142.1" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<circle cx="183.1" cy="322" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="196.6" cy="296" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="210" cy="337.3" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="186.7" cy="326.3" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="200.2" cy="274.9" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="213.7" cy="295.1" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="190.4" cy="302.5" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="203.9" cy="239.7" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="217.3" cy="228.2" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="194" cy="246.9" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="207.5" cy="187.9" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="184.2" cy="142.1" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<path d="M408.8 303.5L408.8 108.3" fill="#000" stroke="#3B6E9E" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M382.8 203.1l52 0l0 70.5l-52 0Z" fill="#3B6E9E65" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-869"></path>
-<path d="M382.8 303.5L434.8 303.5" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M382.8 251.2L434.8 251.2" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M382.8 108.3L434.8 108.3" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<circle cx="390.6" cy="288.3" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="404.1" cy="262.2" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="417.5" cy="303.5" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="394.2" cy="292.6" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="407.7" cy="241.1" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="421.2" cy="261.3" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="397.9" cy="268.7" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="411.3" cy="206" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="424.8" cy="194.4" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="401.5" cy="213.1" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="415" cy="154.2" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="391.7" cy="108.3" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<path d="M616.3 269.8L616.3 74.5" fill="#000" stroke="#3B6E9E" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M590.3 169.3l52 0l0 70.5l-52 0Z" fill="#3B6E9E65" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-869"></path>
-<path d="M590.3 269.8L642.3 269.8" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M590.3 217.5L642.3 217.5" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<path d="M590.3 74.5L642.3 74.5" fill="#000" stroke="#3B6E9E" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-868"></path>
-<circle cx="598.1" cy="254.5" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="611.5" cy="228.4" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="625" cy="269.8" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="601.7" cy="258.8" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="615.2" cy="207.4" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="628.6" cy="227.5" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="605.3" cy="235" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="618.8" cy="172.2" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="632.3" cy="160.7" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="609" cy="179.4" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="622.4" cy="120.4" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<circle cx="599.2" cy="74.5" r="2.4" fill="#3B6E9E" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-870"></circle>
-<path d="M-154.1 -5l308.2 0l0 38.2l-308.2 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr77-cls-867"></path>
+<path d="M201.3 337.3L201.3 142.1" fill="#000" stroke="#7C5CC4" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M175.3 236.8l52 0l0 70.5l-52 0Z" fill="#7C5CC465" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-882"></path>
+<path d="M175.3 337.3L227.3 337.3" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M175.3 285L227.3 285" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M175.3 142.1L227.3 142.1" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<circle cx="183.1" cy="322" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="196.6" cy="296" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="210" cy="337.3" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="186.7" cy="326.3" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="200.2" cy="274.9" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="213.7" cy="295.1" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="190.4" cy="302.5" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="203.9" cy="239.7" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="217.3" cy="228.2" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="194" cy="246.9" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="207.5" cy="187.9" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="184.2" cy="142.1" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<path d="M408.8 303.5L408.8 108.3" fill="#000" stroke="#7C5CC4" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M382.8 203.1l52 0l0 70.5l-52 0Z" fill="#7C5CC465" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-882"></path>
+<path d="M382.8 303.5L434.8 303.5" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M382.8 251.2L434.8 251.2" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M382.8 108.3L434.8 108.3" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<circle cx="390.6" cy="288.3" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="404.1" cy="262.2" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="417.5" cy="303.5" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="394.2" cy="292.6" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="407.7" cy="241.1" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="421.2" cy="261.3" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="397.9" cy="268.7" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="411.3" cy="206" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="424.8" cy="194.4" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="401.5" cy="213.1" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="415" cy="154.2" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="391.7" cy="108.3" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<path d="M616.3 269.8L616.3 74.5" fill="#000" stroke="#7C5CC4" stroke-width="1.2" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M590.3 169.3l52 0l0 70.5l-52 0Z" fill="#7C5CC465" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-882"></path>
+<path d="M590.3 269.8L642.3 269.8" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M590.3 217.5L642.3 217.5" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<path d="M590.3 74.5L642.3 74.5" fill="#000" stroke="#7C5CC4" stroke-width="1.5" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-881"></path>
+<circle cx="598.1" cy="254.5" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="611.5" cy="228.4" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="625" cy="269.8" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="601.7" cy="258.8" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="615.2" cy="207.4" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="628.6" cy="227.5" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="605.3" cy="235" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="618.8" cy="172.2" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="632.3" cy="160.7" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="609" cy="179.4" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="622.4" cy="120.4" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<circle cx="599.2" cy="74.5" r="2.4" fill="#7C5CC4" fill-opacity="0.65" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr77-cls-883"></circle>
+<path d="M-154.1 -5l308.2 0l0 38.2l-308.2 0Z" transform="translate(380 14)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#3c3c41" stroke-width="0" class="zr77-cls-880"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:28.233986928104574px;font-family:Arial;font-weight:bold;" xml:space="preserve" y="14.116993464052287" transform="translate(380 14)" fill="#202b35">填充箱线图 · 示例数据</text>
 <style ><![CDATA[
-.zr77-cls-866:hover {
+.zr77-cls-879:hover {
 cursor:pointer;
 }
-.zr77-cls-867:hover {
+.zr77-cls-880:hover {
 pointer-events:none;
 }
-.zr77-cls-868:hover {
+.zr77-cls-881:hover {
 cursor:pointer;
 fill:rgba(0,0,0,1);
 }
-.zr77-cls-869:hover {
+.zr77-cls-882:hover {
 cursor:pointer;
-fill:rgba(64,121,173,0.396078431372549);
+fill:rgba(136,101,215,0.396078431372549);
 }
-.zr77-cls-870:hover {
+.zr77-cls-883:hover {
 cursor:pointer;
-fill:rgba(64,121,173,1);
+fill:rgba(136,101,215,1);
 }
 
 ]]>

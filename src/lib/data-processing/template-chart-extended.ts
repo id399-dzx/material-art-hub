@@ -4,6 +4,7 @@ import type { TemplateData, TemplateId } from "./templates.ts";
 import { createSpatialOption } from "./template-chart-spatial.ts";
 import { createRadarOption } from "./radar-chart.ts";
 import { createGroupedScatterOption, createVariantHeatmapOption } from "./template-chart-variants.ts";
+import { createExtendedGalleryOption } from "./extended-gallery-chart.ts";
 
 type BaseFactory = (id: "line" | "grouped-bar") => EChartsOption;
 
@@ -13,6 +14,8 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
         title: { text: style.title, top: 16, left: "center", textStyle: { ...axisText, fontSize: style.fontSize + 2 } },
         tooltip: { renderMode: "richText", confine: true },
     };
+    const galleryOption = createExtendedGalleryOption(data, template, style, palette, shell);
+    if (galleryOption) return galleryOption;
     if (template === "sphere" || template === "surface") return createSpatialOption(data, template, style, palette, shell);
     if (template === "network" || template === "schematic") {
         const edges = data.edges!;

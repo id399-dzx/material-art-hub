@@ -13,13 +13,14 @@ const structure = template => template.chartId === 'error-bar'
     : template.chartId === 'trend' && template.paper?.region.kind === 'area' ? 'stacked-area' : template.chartId;
 
 test('library keeps distinct paper data structures even when they share an engine', () => {
-    assert.equal(DRAWING_TEMPLATES.length, 182);
-    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 182);
+    assert.equal(DRAWING_TEMPLATES.length, 190);
+    assert.equal(new Set(DRAWING_TEMPLATES.map(t => t.id)).size, 190);
     assert.equal(DRAWING_TYPES.length, 14);
     const paper = DRAWING_TEMPLATES.filter(t => t.paper);
     assert.equal(paper.length, 18);
     assert.equal(new Set(paper.map(t => t.variant)).size, 18);
-    assert.equal(DRAWING_TEMPLATES.filter(t => !t.paper && !t.electrochemical && !t.l1502).length, 17);
+    assert.equal(DRAWING_TEMPLATES.filter(t => !t.paper && !t.electrochemical && !t.l1502 && !t.echarts).length, 17);
+    assert.equal(DRAWING_TEMPLATES.filter(t => t.echarts).length, 8);
     assert.equal(DRAWING_TEMPLATES.filter(t => t.electrochemical).length, 8);
     assert.equal(DRAWING_TEMPLATES.filter(t => t.l1502).length, 139);
     // A density heatmap, a sparse attention matrix and a frequency matrix are not interchangeable.

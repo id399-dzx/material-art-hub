@@ -1,12 +1,14 @@
 import { buildDistributionData, type SampleGroup } from './distributions.ts';
+import { buildExtendedGalleryData, type HierarchyDatum } from './extended-gallery-data.ts';
 
-export type TemplateId = "line" | "grouped-bar" | "error-bar" | "horizontal-bar" | "stacked-bar" | "percent-bar" | "radar" | "heatmap" | "scatter" | "trend" | "dual-axis" | "multi-panel" | "concept" | "sphere" | "surface" | "trajectory" | "network" | "schematic" | "box" | "violin" | "histogram";
+export type TemplateId = "line" | "grouped-bar" | "error-bar" | "horizontal-bar" | "stacked-bar" | "percent-bar" | "radar" | "heatmap" | "scatter" | "trend" | "dual-axis" | "multi-panel" | "concept" | "sphere" | "surface" | "trajectory" | "network" | "schematic" | "box" | "violin" | "histogram" | "waterfall-2d" | "sankey" | "funnel" | "treemap" | "sunburst" | "correlation-matrix" | "confusion-matrix" | "calendar-heatmap";
 export type TemplateCategory = "比较" | "组成" | "曲线" | "矩阵" | "空间" | "示意";
 export const TEMPLATE_CATEGORIES: TemplateCategory[] = ["比较", "组成", "曲线", "矩阵", "空间", "示意"];
 export const isNumericX = (id: TemplateId) => ["line", "scatter", "dual-axis", "concept", "sphere", "surface", "trajectory"].includes(id);
 export const isSpatial = (id: TemplateId) => id === "sphere" || id === "surface";
-export const isGraph = (id: TemplateId) => id === "network" || id === "schematic";
-export const isBar = (id: TemplateId) => ["grouped-bar", "error-bar", "horizontal-bar", "stacked-bar", "percent-bar", "multi-panel"].includes(id);
+export const isGraph = (id: TemplateId) => id === "network" || id === "schematic" || id === "sankey";
+export const isBar = (id: TemplateId) => ["grouped-bar", "error-bar", "horizontal-bar", "stacked-bar", "percent-bar", "multi-panel", "waterfall-2d"].includes(id);
+export const isMatrix = (id: TemplateId) => id === "heatmap" || id === "correlation-matrix" || id === "confusion-matrix";
 export type ErrorMeasure = "SD" | "SEM";
 export type ErrorInput = "replicates" | "summary";
 export type TableCell = string | number | null;
@@ -19,6 +21,7 @@ export type TemplateData = {
     matrixCells?: [number, number, number][]; skippedCells?: number;
     pointGroups?: { name: string; points: [number | string, number][] }[];
     comparisonGroups?: { name: string; x: (number | string)[]; series: TemplateSeries[] }[];
+    hierarchy?: HierarchyDatum[];
 };
 export type TemplateResult = { data: TemplateData | null; error: string | null };
 
@@ -139,6 +142,54 @@ export const CHART_TEMPLATES: {
         guide: "每行一条有向连接，由表格中的步骤名称自动生成节点。无环流程从左到右分层，有环关系采用圆形布局。", reference: "assets/ImmunoStruct_schematic.png; assets/RNAGenScape_schematic.png",
         xLabel: "起始步骤", yLabel: "后续步骤", demo: [["起始步骤", "后续步骤"], ["实验数据", "质量检查"], ["质量检查", "特征提取"], ["特征提取", "分析 A"], ["特征提取", "分析 B"], ["分析 A", "结果核验"], ["分析 B", "结果核验"]],
     },
+    {
+        id: "waterfall-2d", name: "二维增减瀑布图", english: "WATERFALL", tag: "逐步增减", category: "比较",
+        description: "按步骤展示正负变化及累计结果，适合能量、质量或成本收支。", requirement: "步骤名称 ＋ 一列增减量",
+        guide: "从零开始累计，每行是该步骤的变化量，正值增加、负值减少。若首行是初始总量，请直接填写它；后续填写变化量，不要再次填累计值。", reference: "ECharts bar-waterfall2",
+        xLabel: "步骤", yLabel: "累计量", demo: [["步骤", "增减量"], ["原始投入", 100], ["增加活性", 35], ["处理损失", -20], ["循环回收", 15]],
+    },
+    {
+        id: "sankey", name: "桑基流向图", english: "SANKEY", tag: "流量与路径", category: "示意",
+        description: "用连接宽度表达能量、物质或样本在不同环节之间的流动。", requirement: "起点、终点 ＋ 正数流量",
+        guide: "每行是一条真实连接，填写起点、终点及流量，不能存在循环路径。流量单位应一致；图表不会自动补齐收支差额。", reference: "ECharts sankey-simple",
+        xLabel: "起点", yLabel: "流量", demo: [["起点", "终点", "流量"], ["输入电能", "有效反应", 70], ["输入电能", "热损耗", 30], ["有效反应", "目标产物", 55], ["有效反应", "副反应", 15]],
+    },
+    {
+        id: "funnel", name: "样本筛选漏斗图", english: "FUNNEL", tag: "阶段留存", category: "组成",
+        description: "比较各阶段的样本量或完成数量，保留实际流程顺序。", requirement: "阶段名称 ＋ 一列非负数量",
+        guide: "每行一个阶段，按你的流程顺序填写。图表不按大小重排，也不将数量自动换算成百分比。", reference: "ECharts funnel",
+        xLabel: "阶段", yLabel: "样本数", demo: [["阶段", "样本数"], ["收集样本", 120], ["初筛通过", 94], ["质控通过", 82], ["完整数据", 75]],
+    },
+    {
+        id: "treemap", name: "层级组成矩形树图", english: "TREEMAP", tag: "层级占比", category: "组成",
+        description: "以矩形面积表达分类数量，同时保留多级分类关系。", requirement: "斜杠分隔的分类路径 ＋ 非负数值",
+        guide: "只填写最末级分类，如 材料/碳材料/石墨。上级总量自动求和，不要同时填写上级和下级，以免重复统计；同一路径只能出现一次。", reference: "ECharts treemap-simple",
+        xLabel: "分类路径", yLabel: "样本数", demo: [["分类路径", "样本数"], ["材料/碳材料/石墨", 28], ["材料/碳材料/碳纳米管", 17], ["材料/金属氧化物/氧化铁", 22], ["材料/金属氧化物/氧化锌", 13], ["材料/聚合物/聚苯胺", 20]],
+    },
+    {
+        id: "sunburst", name: "层级组成旭日图", english: "SUNBURST", tag: "环形层级", category: "组成",
+        description: "以同心环表达层级，以扇区大小比较各分类的数量。", requirement: "斜杠分隔的分类路径 ＋ 非负数值",
+        guide: "只填写最末级分类，如 材料/碳材料/石墨。每层的总量由叶节点求和，同一路径只能出现一次，不能同时填写父分类和子分类。", reference: "ECharts sunburst-simple",
+        xLabel: "分类路径", yLabel: "样本数", demo: [["分类路径", "样本数"], ["材料/碳材料/石墨", 28], ["材料/碳材料/碳纳米管", 17], ["材料/金属氧化物/氧化铁", 22], ["材料/金属氧化物/氧化锌", 13], ["材料/聚合物/聚苯胺", 20]],
+    },
+    {
+        id: "correlation-matrix", name: "相关系数矩阵", english: "CORRELATION MATRIX", tag: "变量相关性", category: "矩阵",
+        description: "以对称色阶表达变量之间的正负相关，单元格标注系数。", requirement: "行列同名的方阵，系数范围 −1～1",
+        guide: "上传已计算的相关系数方阵，首列是变量名称，其他列是同一组变量。对角线应为 1，矩阵需对称；不会将原始观测值自动计算成相关系数。", reference: "ECharts matrix-correlation-heatmap",
+        xLabel: "变量", yLabel: "变量", demo: [["变量", "A", "B", "C"], ["A", 1, 0.72, -0.28], ["B", 0.72, 1, -0.45], ["C", -0.28, -0.45, 1]],
+    },
+    {
+        id: "confusion-matrix", name: "分类混淆矩阵", english: "CONFUSION MATRIX", tag: "分类结果", category: "矩阵",
+        description: "对照真实类别与预测类别，展示分类结果的计数分布。", requirement: "行列同名的方阵，非负整数计数",
+        guide: "首列填写真实类别，其他列的表头填写预测类别。每个单元格填写样本数量，不填百分比；图表保持原始计数，不自动归一化。", reference: "ECharts matrix-confusion",
+        xLabel: "预测类别", yLabel: "真实类别", demo: [["真实类别", "A", "B", "C"], ["A", 45, 3, 2], ["B", 4, 39, 7], ["C", 1, 5, 44]],
+    },
+    {
+        id: "calendar-heatmap", name: "日历观测热图", english: "CALENDAR HEATMAP", tag: "按日观测", category: "矩阵",
+        description: "将逐日测量值放到日历上，快速比较时间变化与缺失日期。", requirement: "YYYY-MM-DD 日期 ＋ 一列数值",
+        guide: "每天最多一条观测，日期跨度最多 366 天。缺失日期保持为空，不补零；日历颜色表达真实测量值，不代表实验频次。", reference: "ECharts calendar-heatmap",
+        xLabel: "日期", yLabel: "测量值", demo: [["日期", "测量值"], ["2026-01-01", 12], ["2026-01-02", 18], ["2026-01-05", 21], ["2026-01-06", 14], ["2026-01-07", 28], ["2026-01-09", 34], ["2026-01-12", 24], ["2026-01-13", 31], ["2026-01-15", 17], ["2026-01-16", 26], ["2026-01-19", 38], ["2026-01-21", 29], ["2026-01-23", 42], ["2026-01-26", 35], ["2026-01-30", 23]],
+    },
 ];
 
 export function numericCell(value: unknown): number | null {
@@ -174,11 +225,14 @@ export function parseTemplateTable(matrix: unknown[][], hasHeader = true): DataT
 export function suggestMapping(table: DataTable, template: TemplateId, panelChart: "bar" | "line" = "bar"): ColumnMapping {
     const numeric = table.columns.map((_, index) => index).filter(index => table.rows.some(row => numericCell(row[index]) !== null));
     if (template === "histogram") return { x: numeric[0] ?? 0, ys: [], errors: {} };
+    if (isMatrix(template)) return { x: 0, ys: numeric.filter(index => index !== 0), errors: {} };
     const x = (isNumericX(template) || template === "multi-panel" && panelChart === "line") ? numeric[0] ?? 0 : 0;
     const errorIndices = table.columns.map((name, index) => /\b(?:sd|sem|std|error)\b|标准差|标准误|误差/i.test(name) ? index : -1).filter(index => index >= 0);
     const ys = numeric.filter(index => index !== x && !errorIndices.includes(index));
     if (template === "box" || template === "violin") return { x, ys: ys.slice(0, 1), errors: {} };
+    if (template === "sankey") return { x: 0, ys: [1, numeric.find(index => index !== 0 && index !== 1) ?? -1], errors: {} };
     if (isGraph(template)) return { x: 0, ys: [1, ...(template === "network" && numeric.includes(2) ? [2] : [])], errors: {} };
+    if (["waterfall-2d", "funnel", "treemap", "sunburst", "calendar-heatmap"].includes(template)) return { x, ys: ys.slice(0, 1), errors: {} };
     if (isSpatial(template)) return { x, ys: numeric.filter(index => index !== x).slice(0, 2), errors: {} };
     if (template === "dual-axis") return { x, ys: ys.slice(0, 2), errors: {} };
     const errors: Record<number, number> = {};
@@ -194,6 +248,8 @@ export function sampleStatistics(values: number[], measure: ErrorMeasure) {
 }
 
 export function buildTemplateData(table: DataTable, mapping: ColumnMapping, template: TemplateId, input: ErrorInput = "replicates", measure: ErrorMeasure = "SD", panelChart: "bar" | "line" = "bar"): TemplateResult {
+    const extended = buildExtendedGalleryData(table, mapping, template);
+    if (extended) return extended;
     const fail = (error: string): TemplateResult => ({ data: null, error });
     const numericX = isNumericX(template) || template === "multi-panel" && panelChart === "line";
     if (!table.rows.length) return fail("表格中没有数据，请导入文件或载入示例。");

@@ -14,7 +14,7 @@ import { isOriginalColorCategory, originalL1502Colors, originalTemplateColors } 
 
 const originalL1502 = ['#147a8b', '#e3a438', '#9a5b90', '#4566ac', '#62a889', '#d86864', '#7a70b4', '#7f939d'];
 const originalField = ['#244d8b', '#64bbc5', '#f5e6a7', '#cc4943'];
-const targets = DRAWING_TEMPLATES.filter(template => isOriginalColorCategory(template.category));
+const targets = DRAWING_TEMPLATES.filter(template => !template.echarts && isOriginalColorCategory(template.category));
 
 function prepare(template) {
     const table = parseTemplateTable(template.demo);
@@ -59,7 +59,7 @@ function renderGeometry(option, style) {
 test('restoring original colors is restricted to all 56 requested templates and leaves the other 126 unchanged', () => {
     assert.equal(targets.length, 56);
     assert.deepEqual(Object.fromEntries(['热图', '三维图', '等高线与场图'].map(category => [category, targets.filter(template => template.category === category).length])), { 热图: 9, 三维图: 36, 等高线与场图: 11 });
-    const unaffected = DRAWING_TEMPLATES.filter(template => !isOriginalColorCategory(template.category));
+    const unaffected = DRAWING_TEMPLATES.filter(template => !template.echarts && !isOriginalColorCategory(template.category));
     assert.equal(unaffected.length, 126);
     for (const template of unaffected) {
         assert.equal(originalL1502Colors(template.category), null, template.id);

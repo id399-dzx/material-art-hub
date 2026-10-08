@@ -13,6 +13,7 @@ export type DrawingTemplate = {
     description: string; requirement: string; tag: string; guide: string; xLabel: string; yLabel: string;
     demo: TableCell[][]; preview: string;
     electrochemical?: ElectrochemicalChartSpec;
+    echarts?: { exampleId: string; url: string };
     l1502?: L1502Spec;
     variant?: PaperChartVariant;
     paper?: { figureId: string; regionId: string; project: string; figureName: string; source: string; region: FigureRegion };
@@ -22,7 +23,13 @@ const TYPES: Record<TemplateId, DrawingType> = {
     'stacked-bar': '组成图', 'percent-bar': '组成图', line: '折线图', trend: '折线图', 'dual-axis': '折线图', concept: '折线图',
     scatter: '散点图', trajectory: '散点图', heatmap: '热图', box: '分布图', violin: '分布图', histogram: '分布图',
     radar: '雷达图', sphere: '三维图', surface: '三维图', network: '网络与流程', schematic: '网络与流程',
+    'waterfall-2d': '柱状图', sankey: '网络与流程', funnel: '组成图', treemap: '组成图', sunburst: '组成图',
+    'correlation-matrix': '热图', 'confusion-matrix': '热图', 'calendar-heatmap': '热图',
 };
+const ECHARTS_EXAMPLES: Partial<Record<TemplateId, { exampleId: string; url: string }>> = Object.fromEntries(
+    Object.entries({ 'waterfall-2d': 'bar-waterfall2', sankey: 'sankey-simple', funnel: 'funnel', treemap: 'treemap-simple', sunburst: 'sunburst-simple', 'correlation-matrix': 'matrix-correlation-heatmap', 'confusion-matrix': 'matrix-confusion', 'calendar-heatmap': 'calendar-heatmap' })
+        .map(([id, exampleId]) => [id, { exampleId, url: `https://echarts.apache.org/examples/zh/editor.html?c=${exampleId}` }]),
+);
 export function panelTemplateId(figureId: string, regionId: string) { return `paper-${figureId}-${regionId}`; }
 
 /** Group only matching data semantics and structure, never merely a shared chart engine. */
@@ -261,7 +268,7 @@ const replacedEngines = new Set<string>(REPRESENTATIVES.map(item => item.engine)
 export const DRAWING_TEMPLATES: DrawingTemplate[] = [
     ...ELECTROCHEMICAL_TEMPLATES,
     ...CHART_TEMPLATES.filter(template => !replacedEngines.has(template.id)).map(template => ({
-        ...template, chartId: template.id, category: TYPES[template.id], preview: `/drawing-previews/${template.id}.svg`,
+        ...template, chartId: template.id, category: TYPES[template.id], preview: `/drawing-previews/${template.id}.svg`, echarts: ECHARTS_EXAMPLES[template.id],
     })),
     ...paperTemplates,
     ...L1502_TEMPLATES,

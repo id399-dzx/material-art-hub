@@ -23,6 +23,8 @@ export function originalL1502Colors(category: string): {
 export function originalTemplateColors(template: {
     category: string; chartId: string; paper?: { region: { colors?: readonly string[] } }; variant?: string;
 }): { customColors: string[]; scalarColors?: string[]; scalarPalette: undefined } | null {
+    // Newly added chart types have no earlier palette to restore.
+    if (['correlation-matrix', 'confusion-matrix', 'calendar-heatmap'].includes(template.chartId)) return null;
     if (!isOriginalColorCategory(template.category)) return null;
     const customColors = template.paper?.region.colors?.length ? [...template.paper.region.colors] : [...ORIGINAL_JOURNAL_COLORS];
     return {

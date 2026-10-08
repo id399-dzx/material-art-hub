@@ -71,7 +71,8 @@ export function getScalarPalette(id: ScalarPaletteId = 'viridis'): ScalarPalette
 }
 
 export function getRecommendedPalette(kind: string): { palette: ChartPaletteId; scalarPalette: ScalarPaletteId } {
-    if (kind === 'attention-heatmap' || kind === 'correlation-heatmap') return { palette: 'journal', scalarPalette: 'blue-red' };
+    if (kind === 'attention-heatmap' || kind === 'correlation-heatmap' || kind === 'correlation-matrix') return { palette: 'journal', scalarPalette: 'blue-red' };
+    if (kind === 'confusion-matrix' || kind === 'calendar-heatmap') return { palette: 'journal', scalarPalette: 'blue' };
     if (['heatmap', 'contour', 'surface', 'tri-surface', 'tri-mesh', 'implicit-surface', 'bubble-matrix'].includes(kind)) return { palette: 'ocean', scalarPalette: 'viridis' };
     if (['histogram', 'histogram2', 'polar-histogram', 'density-heatmap', 'frequency-heatmap'].includes(kind)) return { palette: 'earth', scalarPalette: 'blue' };
     if (['box', 'grouped-box', 'jitter', 'multi-panel', 'inset', 'local-range-radar', 'dual-correlation', 'paired-correlation', 'filled-distribution'].includes(kind)) return { palette: 'berry', scalarPalette: 'blue-pink' };

@@ -75,6 +75,26 @@ export function fitTemplateLayout(option: EChartsOption, data: TemplateData, tem
     }
     // Heatmap color scales occupy the lower band in addition to category labels.
     if (option.visualMap) footer = Math.max(footer, 22 + 20 + size + 12);
+    if (['sankey', 'funnel', 'treemap', 'sunburst'].includes(template)) {
+        const series = array(option.series)[0];
+        if (series?.type === 'sankey') {
+            const nameWidth = Math.min(110, Math.max(30, ...data.x.map(name => textWidth(wrapChartText(String(name), 100, size, family), size, family))));
+            Object.assign(series, { left: padding + nameWidth, right: padding + nameWidth, top: top + size, bottom: footer + size });
+        } else if (series?.type === 'funnel') {
+            Object.assign(series, { left: width * .18, right: width * .18, top, bottom: footer + 8 });
+        } else if (series?.type === 'treemap') {
+            Object.assign(series, { left: padding, right: padding, top, bottom: footer });
+        } else if (series?.type === 'sunburst') {
+            const usableHeight = height - top - footer;
+            Object.assign(series, { center: [width / 2, top + usableHeight / 2], radius: [0, Math.max(25, Math.min(width / 2 - padding, usableHeight / 2 - size))] });
+        }
+        return option;
+    }
+    if (template === 'calendar-heatmap') {
+        const calendar = array(option.calendar)[0];
+        if (calendar) Object.assign(calendar, { left: padding + size * 2.8, right: padding + size * 1.5, top: top + size * 2.5, bottom: footer + size * 2, orient: 'horizontal' });
+        return option;
+    }
     if (template === "network" || template === "schematic") {
         const graph = array(option.series)[0] as GraphSeriesOption;
         const labelSize = Math.max(10, size - 1);

@@ -15,6 +15,8 @@ import { downloadFigureBlob, initialExportSettings } from "@/lib/data-processing
 import { prepareChartSvg, type FigureAsset } from "@/lib/data-processing/figure-composition";
 import PublicationExport from "./PublicationExport";
 import TemplateEditorDialog from "./TemplateEditorDialog";
+import ChartCodePlayground from "./ChartCodePlayground";
+import { canExportChartCode } from "@/lib/data-processing/chart-code-export";
 import L1502MatlabSource from "./L1502MatlabSource";
 import ChartPalettePicker from "./ChartPalettePicker";
 import ScalarPalettePicker from "./ScalarPalettePicker";
@@ -46,6 +48,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     const [activeTab, setActiveTab] = useState<"editor" | "matlab">("editor");
     const [actualPreview, setActualPreview] = useState(false);
     const [comparePalettes, setComparePalettes] = useState(false);
+    const [codeEditorOpen, setCodeEditorOpen] = useState(false);
     const tabId = useId();
     const chartRef = useRef<ReactECharts>(null);
     const previewRef = useRef<HTMLDivElement>(null);
@@ -193,7 +196,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     }
     const columns = table.columns.map((name, index) => <option key={index} value={index}>{name}</option>);
     const locked = busy || exporting;
-    return <TemplateEditorDialog open={open} title={template.name} eyebrow={templateNumber === undefined ? "归档模板 / 单图编辑" : `模板 ${String(templateNumber).padStart(3, "0")} / 单图编辑`} description={`${template.category} · 导入表格、选择字段，生成你自己的数据图。`} busy={locked} contentClassName="l1502-dialog-content" onClose={() => onClose(editor)}>
+    return <><TemplateEditorDialog open={open && !codeEditorOpen} title={template.name} eyebrow={templateNumber === undefined ? "归档模板 / 单图编辑" : `模板 ${String(templateNumber).padStart(3, "0")} / 单图编辑`} description={`${template.category} · 导入表格、选择字段，生成你自己的数据图。`} busy={locked} contentClassName="l1502-dialog-content" onClose={() => onClose(editor)}>
         <div className="l1502-dialog-tabs" role="tablist" aria-label="图例详情">
             {([{ key: "editor", label: "图表编辑", icon: ChartNoAxesCombined }, { key: "matlab", label: "MATLAB 代码", icon: Code2 }] as const).map(tab => <button key={tab.key} id={`${tabId}-${tab.key}-tab`} type="button" role="tab" aria-selected={activeTab === tab.key} aria-controls={`${tabId}-${tab.key}-panel`} tabIndex={activeTab === tab.key ? 0 : -1} disabled={locked} onClick={() => setActiveTab(tab.key)} onKeyDown={event => { if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) { event.preventDefault(); const next = event.key === "Home" ? "editor" : event.key === "End" ? "matlab" : activeTab === "editor" ? "matlab" : "editor"; setActiveTab(next); document.getElementById(`${tabId}-${next}-tab`)?.focus(); } }}><tab.icon size={16} />{tab.label}</button>)}
             <span>编辑即时保留，切换不丢失</span>
@@ -251,7 +254,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
             </section>
             <section className={`template-preview-panel template-glass${comparePalettes && !scalarOnly ? " is-comparing" : ""}`} aria-label="固定图表预览">
                 <div className="l1502-preview-heading"><div><span className="template-eyebrow">PUBLICATION CANVAS</span><h3>你的科研图表</h3></div><span className={`template-data-badge${editor.source.kind === "demo" ? " is-demo" : ""}`}><i />{editor.source.kind === "demo" ? "示例数据" : "你的实验数据"}</span></div>
-                <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button>{!scalarOnly && <button type="button" aria-pressed={comparePalettes} disabled={locked || !rendered.option} onClick={() => setComparePalettes(value => !value)}><Palette size={12} />配色对照</button>}<span>{editor.style.width} × {editor.style.height} px</span></div>
+                <div className="template-preview-controls"><button type="button" aria-pressed={!actualPreview} onClick={() => setActualPreview(false)}>适应窗口</button><button type="button" aria-pressed={actualPreview} onClick={() => setActualPreview(true)}>原始尺寸</button>{!scalarOnly && <button type="button" aria-pressed={comparePalettes} disabled={locked || !rendered.option} onClick={() => setComparePalettes(value => !value)}><Palette size={12} />配色对照</button>}{canExportChartCode(rendered.option) && <button type="button" disabled={locked} onClick={() => setCodeEditorOpen(true)}><Code2 size={13} />代码编辑</button>}<span>{editor.style.width} × {editor.style.height} px</span></div>
                 <div ref={previewRef} className={`template-chart-wrap l1502-chart-wrap${comparePalettes ? " is-comparing" : ""}`}>
                     <PaletteComparison open={comparePalettes && !scalarOnly} onClose={() => setComparePalettes(false)} value={findChartPalette(editor.style.colors)?.id ?? null} currentOption={rendered.option} preview={palettePreview} disabled={locked} onApply={id => { changePalette(id); setComparePalettes(false); }} />
                     {rendered.option ? <div style={{ display: comparePalettes && !scalarOnly ? "none" : undefined, width: editor.style.width * previewScale, height: editor.style.height * previewScale, margin: "8px auto", overflow: "hidden" }}><div style={{ width: editor.style.width, height: editor.style.height, transform: `scale(${previewScale})`, transformOrigin: "top left" }}><ReactECharts ref={chartRef} option={rendered.option} notMerge opts={{ renderer: "svg", width: editor.style.width, height: editor.style.height }} style={{ width: editor.style.width, height: editor.style.height }} /></div></div> : <div className="template-chart-empty">完成字段绑定后，图表将在这里生成。</div>}
@@ -262,5 +265,5 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
         </div>
         </div>
         <div id={`${tabId}-matlab-panel`} className="l1502-code-panel" role="tabpanel" aria-labelledby={`${tabId}-matlab-tab`} hidden={activeTab !== "matlab"}><L1502MatlabSource issue={spec.issue} active={open && activeTab === "matlab"} /></div>
-    </TemplateEditorDialog>;
+    </TemplateEditorDialog><ChartCodePlayground open={open && codeEditorOpen} onClose={() => setCodeEditorOpen(false)} option={rendered.option} width={editor.style.width} height={editor.style.height} title={editor.style.title} sourceLabel={editor.source.kind === "demo" ? "示例数据" : editor.source.name} /></>;
 }

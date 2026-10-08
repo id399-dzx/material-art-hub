@@ -1,5 +1,5 @@
 import * as echarts from 'echarts';
-import { CHART_TEMPLATES, parseTemplateTable, numericCell, isSpatial } from '../src/lib/data-processing/templates.ts';
+import { CHART_TEMPLATES, parseTemplateTable, numericCell, isSpatial, isMatrix } from '../src/lib/data-processing/templates.ts';
 import { createTemplateOption } from '../src/lib/data-processing/template-chart.ts';
 import { suggestElectrochemicalMapping } from '../src/lib/data-processing/electrochemical-mapping.ts';
 import { prepareElectrochemicalData } from '../src/lib/data-processing/electrochemistry.ts';
@@ -43,10 +43,10 @@ export function drawingPreviewOption(template) {
     const recommendedColors = getRecommendedPalette(template.variant ?? id);
     const style = {
         title: `${template.name} · 示例数据`,
-        xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
+        xLabel: isMatrix(id) ? template.xLabel : table.columns[mapping.x] || 'X',
         yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
-        ...recommendedColors, ...originalColors, palette: originalColors ? 'journal' : recommendedColors.palette, showGrid: id === 'radar', showValues: false,
+        ...recommendedColors, ...originalColors, palette: originalColors ? 'journal' : recommendedColors.palette, showGrid: id === 'radar', showValues: id === 'correlation-matrix' || id === 'confusion-matrix',
         errorMeasure, panelChart: 'bar', cumulative: false,
         secondaryYLabel: template.electrochemical?.secondaryYLabel || table.columns[mapping.ys[1]] || '右轴指标',
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0.6,

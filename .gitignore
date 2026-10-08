@@ -19,6 +19,7 @@
 
 # production
 /build
+/public/chart-runtime/
 
 # misc
 .DS_Store

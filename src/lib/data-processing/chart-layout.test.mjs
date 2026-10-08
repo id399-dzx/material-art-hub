@@ -29,7 +29,7 @@ function withChart(data, id, style, check) {
     } finally { chart.dispose(); }
 }
 
-test('all 21 drawing engines contain their complete default text at the editor publication font size', () => {
+test('all 29 drawing engines contain their complete default text at the editor publication font size', () => {
     for (const template of CHART_TEMPLATES) {
         const width = ['multi-panel', 'schematic'].includes(template.id) ? 900 : 680;
         const height = template.id === 'multi-panel' ? 620 : 420;

@@ -1,0 +1,9 @@
+echarts-stat@1.2.0
+
+Official package: https://registry.npmjs.org/echarts-stat/-/echarts-stat-1.2.0.tgz
+Verified package integrity: sha512-zLd7Kgs+tuTSeaK0VQEMNmnMivEkhvHIk1gpBtLzpRerfcIQ+Bd5XudOMmtwpaTc1WDZbA7d1V//iiBccR46Qg==
+Official repository: git+https://github.com/ecomfe/echarts-stat.git
+Published source revision: d15312ff66058114a7b5160de47e8514400abf55
+Publisher-declared license: "BSD"
+
+The official published package and its source revision provide the declaration in package.json, but no standalone LICENSE or full license text. Original package.json and README.md are retained; no license terms or copyright holder have been invented.

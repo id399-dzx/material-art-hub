@@ -1,0 +1,3762 @@
+{
+  "packages": [
+    {
+      "name": "ace-builds",
+      "version": "1.4.12",
+      "directory": "ace-builds@1.4.12",
+      "url": "https://registry.npmjs.org/ace-builds/-/ace-builds-1.4.12.tgz",
+      "integrity": "sha512-G+chJctFPiiLGvs3+/Mly3apXTcfgE45dT5yp12BcWZ1kUs+gm0qd3/fv4gsz6fVag4mM0moHVpjHDIgph6Psg=="
+    },
+    {
+      "name": "acorn",
+      "version": "8.7.1",
+      "directory": "acorn@8.7.1",
+      "url": "https://registry.npmjs.org/acorn/-/acorn-8.7.1.tgz",
+      "integrity": "sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A=="
+    },
+    {
+      "name": "bootstrap",
+      "version": "3.3.7",
+      "directory": "bootstrap@3.3.7",
+      "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz",
+      "integrity": "sha512-qcFaisBrcBhTFkz1IUnGDYnX6ZWfFzH8zOixUDtHW9Ip+r+7MfMFav2rzy7cIHc7rgIg7xjhWBoo1mS/U26j4g=="
+    },
+    {
+      "name": "dat.gui",
+      "version": "0.6.5",
+      "directory": "dat.gui@0.6.5",
+      "url": "https://registry.npmjs.org/dat.gui/-/dat.gui-0.6.5.tgz",
+      "integrity": "sha512-5+Q+ujHtHMtdqiR2nC2/jLAHUASHKKlWVNefj3goBj0rJB5vfOscRChBrmrxe9i4p66VfbGEK/cHt2tT8Ox9Ag=="
+    },
+    {
+      "name": "echarts",
+      "version": "6.1.0",
+      "directory": "echarts",
+      "url": "https://registry.npmjs.org/echarts/-/echarts-6.1.0.tgz",
+      "integrity": "sha512-q0yaFPggC9FUdsWH4blavRWFmxdrIodbkoKNAjJudAI6CA9gNPxHtV2RcZNEepZVlk4yvBYkOkbk6HIVpIyHZA=="
+    },
+    {
+      "name": "echarts-gl",
+      "version": "2.0.9",
+      "directory": "echarts-gl",
+      "url": "https://registry.npmjs.org/echarts-gl/-/echarts-gl-2.0.9.tgz",
+      "integrity": "sha512-oKeMdkkkpJGWOzjgZUsF41DOh6cMsyrGGXimbjK2l6Xeq/dBQu4ShG2w2Dzrs/1bD27b2pLTGSaUzouY191gzA=="
+    },
+    {
+      "name": "echarts-graph-modularity",
+      "version": "2.1.0",
+      "directory": "echarts-graph-modularity",
+      "url": "https://registry.npmjs.org/echarts-graph-modularity/-/echarts-graph-modularity-2.1.0.tgz",
+      "integrity": "sha512-FQg8xLT14aRSN/j8E7ZOCzsn7IJC371aK8fgOcGJvwkKqUO41fkdMeWvgkPV9rCJ+upZlpdoa0I7xKdPwW1A+A==",
+      "licensing": {
+        "declared": "ISC",
+        "sourceRevision": "5a6802a71692424f6746b25b9a5068fa5b78d863",
+        "evidenceFiles": [
+          "package.json",
+          "README.md",
+          "UPSTREAM-LICENSE-NOTICE.txt"
+        ],
+        "note": "The official published package and its source revision provide the declaration in package.json, but no standalone LICENSE or full license text. Original package.json and README.md are retained; no license terms or copyright holder have been invented.",
+        "packageJsonSha256": "48b90592820a87c6c1566de0dc1255a0bc346cd74889eeec546674956963b6b5",
+        "readmeSha256": "2ae49cdcd46d91800df61738ee3e4e925fe59871b62a37dafe1a1c2515eefa77"
+      }
+    },
+    {
+      "name": "echarts-stat",
+      "version": "1.2.0",
+      "directory": "echarts-stat",
+      "url": "https://registry.npmjs.org/echarts-stat/-/echarts-stat-1.2.0.tgz",
+      "integrity": "sha512-zLd7Kgs+tuTSeaK0VQEMNmnMivEkhvHIk1gpBtLzpRerfcIQ+Bd5XudOMmtwpaTc1WDZbA7d1V//iiBccR46Qg==",
+      "licensing": {
+        "declared": "BSD",
+        "sourceRevision": "d15312ff66058114a7b5160de47e8514400abf55",
+        "evidenceFiles": [
+          "package.json",
+          "README.md",
+          "UPSTREAM-LICENSE-NOTICE.txt"
+        ],
+        "note": "The official published package and its source revision provide the declaration in package.json, but no standalone LICENSE or full license text. Original package.json and README.md are retained; no license terms or copyright holder have been invented.",
+        "packageJsonSha256": "1a278bc0789928f897802b96a0a294556982151e33c8251c17c03eaf9de39ece",
+        "readmeSha256": "0aa7f517e727bc7624256a9f3ab7588110d125f5b839a820d6f07573c6ce6fd3"
+      }
+    },
+    {
+      "name": "element-ui",
+      "version": "2.15.14",
+      "directory": "element-ui@2.15.14",
+      "url": "https://registry.npmjs.org/element-ui/-/element-ui-2.15.14.tgz",
+      "integrity": "sha512-2v9fHL0ZGINotOlRIAJD5YuVB8V7WKxrE9Qy7dXhRipa035+kF7WuU/z+tEmLVPBcJ0zt8mOu1DKpWcVzBK8IA=="
+    },
+    {
+      "name": "jquery",
+      "version": "3.7.1",
+      "directory": "jquery@3.7.1",
+      "url": "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz",
+      "integrity": "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="
+    },
+    {
+      "name": "monaco-editor",
+      "version": "0.27.0",
+      "directory": "monaco-editor@0.27.0",
+      "url": "https://registry.npmjs.org/monaco-editor/-/monaco-editor-0.27.0.tgz",
+      "integrity": "sha512-UhwP78Wb8w0ZSYoKXQNTV/0CHObp6NS3nCt51QfKE6sKyBo5PBsvuDOHoI2ooBakc6uIwByRLHVeT7+yXQe2fQ=="
+    },
+    {
+      "name": "official-echarts-runtime",
+      "version": "6.1.0",
+      "url": "https://echarts.apache.org/zh/js/vendors/echarts/dist/echarts.min.js",
+      "sha256": "b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0"
+    },
+    {
+      "name": "official-world-map",
+      "url": "https://echarts.apache.org/en/asset/map/js/world.js",
+      "sha256": "81fb963c0a057e73ecca32247162e2076224d9de3f60e628450e81ce1fe90e4e"
+    },
+    {
+      "name": "prettier",
+      "version": "2.3.2",
+      "directory": "prettier@2.3.2",
+      "url": "https://registry.npmjs.org/prettier/-/prettier-2.3.2.tgz",
+      "integrity": "sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ=="
+    },
+    {
+      "name": "seedrandom",
+      "version": "3.0.5",
+      "directory": "seedrandom@3.0.5",
+      "url": "https://registry.npmjs.org/seedrandom/-/seedrandom-3.0.5.tgz",
+      "integrity": "sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==",
+      "licensing": {
+        "declared": "MIT",
+        "sourceRevision": "4460ad325a0a15273a211e509f03ae0beb99511a",
+        "evidenceFiles": [
+          "package.json",
+          "README.md",
+          "UPSTREAM-LICENSE-NOTICE.txt",
+          "LICENSE"
+        ],
+        "note": "The complete MIT license in LICENSE is extracted verbatim from the original package README.md.",
+        "packageJsonSha256": "f93348642af783cca495e5a31a22df5613ccf24ca167c9c4347416627a015a09",
+        "readmeSha256": "4f42a296eee4f5ae3a8dadba94c2b0b5fb57662b96b8749f4d5288d4629b6240"
+      }
+    },
+    {
+      "name": "vue",
+      "version": "2.6.14",
+      "directory": "vue@2.6.14",
+      "url": "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz",
+      "integrity": "sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ=="
+    }
+  ],
+  "files": [
+    {
+      "path": "ace-builds@1.4.12/LICENSE",
+      "size": 1490,
+      "sha256": "850f545c5254e8c08204edb2a6d50bbb72727c38a82982c17a84bebf6064cdf8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ace.js",
+      "size": 370746,
+      "sha256": "3b192909faacccd40d1c43ecc949b8aa8dae7905c29eba6162e86031089dd47f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-beautify.js",
+      "size": 4259,
+      "sha256": "ddee5a37a6cce76b8f006f558970c32556e3dc22eabcc2a4f1b5f855e91791b6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-code_lens.js",
+      "size": 4032,
+      "sha256": "352e75cc497ae831bddeca9d72d30080cee2878dd11366093454bb19ea160e94"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-elastic_tabstops_lite.js",
+      "size": 4032,
+      "sha256": "bece3d10debfb955eb05e388f7d742a6b770b20c98f3fded93e4d80b88c787b7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-emmet.js",
+      "size": 24739,
+      "sha256": "03a92a1c326a537d799be7affbfcea28a2c7bb21135a7840813147c91bb761db"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-error_marker.js",
+      "size": 332,
+      "sha256": "63305ce4625c757c41500b6884c776c4eb1b1b67039a27e3ea4a7084bfafa8de"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-keybinding_menu.js",
+      "size": 3961,
+      "sha256": "34993751c2ab766ea1b36efac9fffe0785a80e880436431377335657bc06eb4e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-language_tools.js",
+      "size": 39484,
+      "sha256": "16aa654a8c6d40a5afd6b3e4742648831c2f09d4f534437df5c3e384b019f519"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-linking.js",
+      "size": 1222,
+      "sha256": "72bb5b13524dc74fdc8998168a234dc9c3a04223193a225bc1154e7b238d0bf3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-modelist.js",
+      "size": 4713,
+      "sha256": "1689a1f7e0f0a0e721443488e3a943f24e0524ee4067f3e480deedba1da6e594"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-options.js",
+      "size": 14890,
+      "sha256": "c9788f9c5d243ea039242bce294a5e85849c17eab1fcb454ffce3d6489967a12"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-prompt.js",
+      "size": 50190,
+      "sha256": "788a3e4a33b5cf95145f4779b11c0abc027728c03c99d4fb12f7e041452c7b6d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-rtl.js",
+      "size": 2587,
+      "sha256": "0e9f843e917c7c3fd75b4a16058fbc85bfd053005ca8017a984f48e993d1ee18"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-searchbox.js",
+      "size": 11908,
+      "sha256": "fb939ab472c82a06f18cc7d80102746bed493babd768ee47dfa42b9ebb303b50"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-settings_menu.js",
+      "size": 15447,
+      "sha256": "5b0e24ce30bc3a42a5b751c99bf8653b7df068e58f2b371a72608f5405260e3f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-spellcheck.js",
+      "size": 1589,
+      "sha256": "683079c4151ea0a60cf4543ba95deb3d2f099bc9e139e262ff28dc78166d8dfe"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-split.js",
+      "size": 3871,
+      "sha256": "89afbbb2c14020011ff73da301e47c3268cefc116561f9a625ac2b6df85d69e1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-static_highlight.js",
+      "size": 4017,
+      "sha256": "8365d9f9052c6990f5b134dd13a7086726a2cb1740ac7fb1e5728efe1eaec763"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-statusbar.js",
+      "size": 1278,
+      "sha256": "a6da83b5961fd7f6bdb3d6a033fb04ac9ec4078966e901e708f4914c2dd193b1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-textarea.js",
+      "size": 9337,
+      "sha256": "b161b0e83aa7105e709f4167de6b09b5bf1a908ae14b49b80e4b5fc5615b7bd6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-themelist.js",
+      "size": 1696,
+      "sha256": "f1f227f646474aa882b2d174fcb8eff9a7f6aeead13ca098f9253a30e0df9bfb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/ext-whitespace.js",
+      "size": 3246,
+      "sha256": "4e34a79a1fafcd0af4e0fd1059d60ffd0558b071908fbb0412668c78b3d74790"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/keybinding-emacs.js",
+      "size": 24142,
+      "sha256": "a60df75bdecb6178c4047781986015da852cafb5d21e241a61730181844d6c36"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/keybinding-sublime.js",
+      "size": 7875,
+      "sha256": "254a04c65bad00009c7822044cb65ea60a566eb7046629b6637627791a0b10b9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/keybinding-vim.js",
+      "size": 102852,
+      "sha256": "81bbc5f3ded8d98c55049a09372f282b05868e4c72a2f0727687ccc7b8eabd44"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/keybinding-vscode.js",
+      "size": 5822,
+      "sha256": "c6e819c8df569476e0647b9b729aa5b9994c753d0ff072deb8463feb8a5fa45a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-abap.js",
+      "size": 6135,
+      "sha256": "aea134339ce70fe1ad2f919318a8d8bca6f7db51fcf4b6a3833d536d81200544"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-abc.js",
+      "size": 5107,
+      "sha256": "95122ace28c0e12c9402df87dbeb7f55c53c9275e6060b1c5b6418eb4e13a7a5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-actionscript.js",
+      "size": 20935,
+      "sha256": "8ec1d2fc1974c0394b22c8f9eecf524c9c31b61aca41c1dac158578269e1222a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ada.js",
+      "size": 2628,
+      "sha256": "1c4270b839c1d1a7656e926531b0f95fbeb47541d6d19b3b45051fc980c12a5d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-alda.js",
+      "size": 5399,
+      "sha256": "6b7c42a4b6abcadbabc49af68614ff1629502e8e4b18629e541cb0fd886dfa78"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-apache_conf.js",
+      "size": 14251,
+      "sha256": "926b0e19fc2519033cd7c46fa7f102ce9fd69178c8cae269997a881992064b0e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-apex.js",
+      "size": 8714,
+      "sha256": "7cc53c158e0a322e4d417c280e1884badce2401b0b56ffe860257ab367045266"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-applescript.js",
+      "size": 5741,
+      "sha256": "204622db5bb649f66b3a5a1709162535384e4896c9c8200ec83eba9cf9c382ac"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-aql.js",
+      "size": 3440,
+      "sha256": "0b871d032247fc252c24927bacaf97888194eb160b22484a9ce8b322e312108d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-asciidoc.js",
+      "size": 8488,
+      "sha256": "5b744d46681af8fc4701377b3d84dc68bcc259c80e8df50330886a712010da5f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-asl.js",
+      "size": 8967,
+      "sha256": "5365b3f8f29cf3537c9e517467d30c5977059401ce9c47e9edc03c4647ff995b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-assembly_x86.js",
+      "size": 9233,
+      "sha256": "368e67ed0e83f0544e660c6ab28ecc356d506f58c8290d49c182fa583480e975"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-autohotkey.js",
+      "size": 63994,
+      "sha256": "0057b52d2e742b5647486b80c620111fe00d6b1145847a86ef91f63e2ed9b523"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-batchfile.js",
+      "size": 5196,
+      "sha256": "5b8c17801799408eefbd46861c321fcc38aaf863896a68028f6b61df6ceaf136"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-c9search.js",
+      "size": 4411,
+      "sha256": "a0e03c9827cda75ec00d24b0710397787c7c71cdbaffbbfcc91b1b033b47da44"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-c_cpp.js",
+      "size": 11429,
+      "sha256": "6f5b06690781e8e61e89a3973aebaecb484389aafa9eaf95cd82256b6cbfc944"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-cirru.js",
+      "size": 3341,
+      "sha256": "aacb403f94b85a6a7c3e342f15428f960fe3cddd82c5dd42ed42a6f67c6b9637"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-clojure.js",
+      "size": 8398,
+      "sha256": "a10465505a4fdea367af7b96808a0f859e0a20f97927ddb5045a57590c4aebe6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-cobol.js",
+      "size": 2639,
+      "sha256": "e16ae83fa951289f0c4174a75189c7540eb5ffae10f530187ff9ef6c103589de"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-coffee.js",
+      "size": 7791,
+      "sha256": "29f368fa7e9f771f7e6d3e216ecca9fb69f85c3a7c81122a6057438d544794d4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-coldfusion.js",
+      "size": 63414,
+      "sha256": "fa9dfabf46a04ff79f95a36c50492c2c0f09cb36019bf14b37f0dc4a6eb41060"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-crystal.js",
+      "size": 10336,
+      "sha256": "655a854ca08f85edd48750e4d5a77bce8b6a51f48b29d25a94daf1cedb262b04"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-csharp.js",
+      "size": 9191,
+      "sha256": "bb8a04b74c1b14e4cfceae8a0896fbe60ce37011c51ba0d1781d200623f65a00"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-csound_document.js",
+      "size": 72423,
+      "sha256": "704dd6f82a0922ff66373d6532f3963fe056822bc8b925a235db6493d2663c23"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-csound_orchestra.js",
+      "size": 40992,
+      "sha256": "92991cf50209b09016456beea3e3b92f70efa4a883c0d8dbe64255fec460fc6b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-csound_score.js",
+      "size": 7968,
+      "sha256": "c2af6a449b36868079b8977ffade96aaab44a4b70a416c07cdc227d5ab5bc583"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-csp.js",
+      "size": 1573,
+      "sha256": "eebe52adf74329816de6dfe2c7ce3927d8ac6d0ea5b79b650b9eca6bf8db6398"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-css.js",
+      "size": 20850,
+      "sha256": "aa86c09d401ed352025f783a32df9b3829df102884ae8cd9b8dc6f556005d967"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-curly.js",
+      "size": 61903,
+      "sha256": "e87d2e4b5d4ae66ce8f48c9b13db53f50b3f331ed5fea5c6f51bc4d5d6688f45"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-d.js",
+      "size": 9282,
+      "sha256": "4c8bd7ed55d0da019ed70f5aa00d02840393e4ce66d046ded8f2ff803c7706ae"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-dart.js",
+      "size": 14881,
+      "sha256": "a52c86b13eb1edaae4d227aa6dc1c036a3f12d6790de5de55b6fdb95c4f18f3b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-diff.js",
+      "size": 2749,
+      "sha256": "25dbbf91b121a874672465373e4e02704abc06f52b2411a4ad80d5722afa8851"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-django.js",
+      "size": 62243,
+      "sha256": "8605f1416156018f7598d530216bf969b5bdc1944e1983199cc15d72d07e22b9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-dockerfile.js",
+      "size": 8608,
+      "sha256": "0ad9182577b44c9d08ed331b6e37d6037c5e5f706d90ffa3f3879bab6e8f6390"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-dot.js",
+      "size": 7904,
+      "sha256": "9203320decbef1a1bc934ae3ad7e0df55e8c1fb370f8ef4b6d3904fc2873f4ae"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-drools.js",
+      "size": 11562,
+      "sha256": "c2b0f01fd071a67c66905a839f2d144635721dfcd350f233742b5131023f9be4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-edifact.js",
+      "size": 3157,
+      "sha256": "449319a3642d515de8588ab21d59f56be0cc1d75f4bd9c88ec15326d3a3b004e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-eiffel.js",
+      "size": 3171,
+      "sha256": "bb278a983f3dddb70d187d473a2235afe33470e03b5fb9855b9c2d401cb8ed69"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ejs.js",
+      "size": 81073,
+      "sha256": "05612c5c87ee113386d65191b7be7bb614f24ced20d80c0adfb7a706bef18cd1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-elixir.js",
+      "size": 16080,
+      "sha256": "7afbb98e7910c1e1331e1e760e59e8a5c049355ff7cf2b9aa34006c40d21e311"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-elm.js",
+      "size": 5267,
+      "sha256": "1ccf1edd11b0614fdf7dbc52b1ec3644e0cdd0476745bd92f14b0d5569344524"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-erlang.js",
+      "size": 30089,
+      "sha256": "f3eb861fa1b92acc130bccfc585bad76305d6945dd67779283cb10fb7a865454"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-forth.js",
+      "size": 7325,
+      "sha256": "fe31227de65c91ed1d69b787313628dff369d881b83ecc2fb7a21dbf5ceb24df"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-fortran.js",
+      "size": 8766,
+      "sha256": "2ea2d78aeeade309134b53637ec31087e92811555ee95fea5fac8d2a2a4c61e0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-fsharp.js",
+      "size": 5774,
+      "sha256": "e3661a4a3a9ef92f0914879459632223979ff73a6d10aba51b411776b7c4dd56"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-fsl.js",
+      "size": 5046,
+      "sha256": "acc1bdfd61e11daf0c3426ad79cbf1f2dbfc3fd934b961ef4000b469328c1561"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ftl.js",
+      "size": 32981,
+      "sha256": "18b4316c6ab0c22640a729ed984fb76f7019356c7ba04f2b79e5fca1b5d8f40c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-gcode.js",
+      "size": 1790,
+      "sha256": "ead433a73efe77aa1adb54896ba11e3b0848b0160a918dc4c04e61f8f8500878"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-gherkin.js",
+      "size": 2693,
+      "sha256": "09d1429ff0f2737919c2a21b25aff57514d4d56498c87c4dcb446545efc23bd5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-gitignore.js",
+      "size": 1229,
+      "sha256": "46a46556a20e7d950a1e2bbd6b2c9bc52c986fe69feca179eed877f80682eceb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-glsl.js",
+      "size": 13596,
+      "sha256": "4a4c14890c557f155bfcd21d166604ab022a495eec54c2e5e05d58cd6680c988"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-gobstones.js",
+      "size": 28207,
+      "sha256": "5e888568aec6489a4ec1b8241727b28e73118671023a21b198311b17502c0e3d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-golang.js",
+      "size": 7250,
+      "sha256": "98442b3fa9dd3b02176e5644ee04dc01de18a4c141a6e43e6bbc0b9e6548c635"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-graphqlschema.js",
+      "size": 3824,
+      "sha256": "6171102fe7c6ae4909b3ae43a6653c99950b2d5255b79922251defb7900ed4c3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-groovy.js",
+      "size": 22959,
+      "sha256": "dc3f207f60d479f6b56f0c53147e78300921996b1023d9934d3aa79d6c837429"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-haml.js",
+      "size": 46334,
+      "sha256": "24413545672d89bf48ab6dc5fb03583955fba47c20d3097493c12cf98b07f60b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-handlebars.js",
+      "size": 62768,
+      "sha256": "c3f8c2ead468e478ac099ffd66f2b4235ea50779cf2e98f3708874516eda0dd5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-haskell.js",
+      "size": 11860,
+      "sha256": "fa00f2587fab2fc53b5455f725a3bd2c3b4a565afce376ca6dfef034cdca8b2a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-haskell_cabal.js",
+      "size": 2616,
+      "sha256": "908d8d96d515f1070f5077466b6dc615ee0d57af80b45088c1a8c27b5128b648"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-haxe.js",
+      "size": 6868,
+      "sha256": "a34de5c498e9d283f28ff888ba40b751a634826eaf6c0ae904eb4c5f1ddb02b4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-hjson.js",
+      "size": 6306,
+      "sha256": "5e00e0d73d7c2f7c1d77211b5f0d1d0da1dda9491a16858f76bcf4ace53edfb6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-html.js",
+      "size": 60883,
+      "sha256": "ae708c046e896b29af0f0a26bf6df5bd048ecd18221516cc9f935f8aebec8dd7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-html_elixir.js",
+      "size": 78093,
+      "sha256": "489ad443879adb2c7d3cf2efdf95fec67f07f4a533cd7020261f7f3c35279bd7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-html_ruby.js",
+      "size": 81408,
+      "sha256": "c18df1460295a69ed2f5f34673f64f359d9cacbaf41527e09dcd36785a229a97"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ini.js",
+      "size": 3034,
+      "sha256": "a1f0a1d7fddb758db2cc18b2c5bc1a110f2f11ed885d750c95e42e0502fc2919"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-io.js",
+      "size": 5675,
+      "sha256": "71858133ad840b091460fc5901ee3b7d497e19c68df2e05082ee989d6f71cf24"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jack.js",
+      "size": 6099,
+      "sha256": "99bdd69b5ff0e6a8d265c024b02c711b0347bf654f987817a3e24bb01140fece"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jade.js",
+      "size": 47747,
+      "sha256": "f02363353c5207bdf49ea34da58a212cd446975c20a55495e2af82fde886c7db"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-java.js",
+      "size": 23848,
+      "sha256": "0f1b185d94280e703afcce8b43c5309ab9d1f642fded8b8b77d5e51032c89eb8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-javascript.js",
+      "size": 18590,
+      "sha256": "dc5d20aff7c25a998e033a1a5da270c8e39b4f405e30102e493a71df4c6b5926"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-json.js",
+      "size": 5571,
+      "sha256": "50fee523c0cd68d4947678d08f2349068e241fc9e68d5cc07c256087ec9c059c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-json5.js",
+      "size": 6220,
+      "sha256": "a458f1562266cc3430b5e8baae6c8b0a62612f7c052cc11fb955698d36caabd6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jsoniq.js",
+      "size": 233688,
+      "sha256": "2f5f1c802dc4ae5263fa35e53207da5bb10af1a10a5a0b9be0ac30aa9366691b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jsp.js",
+      "size": 37517,
+      "sha256": "df617835f168e74a6c949d37f263583c057ad385343e5ba616c7651389264d5e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jssm.js",
+      "size": 6229,
+      "sha256": "b5be026a4bf7ea17258b9653a30eb6ffdb0d7e1b172b1050c4fed57a6808f396"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-jsx.js",
+      "size": 7292,
+      "sha256": "3d1215e707a5a7f1388cab43a690e3d1f0f0cee5207d21d4dd80d9ece3e0f5a5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-julia.js",
+      "size": 7875,
+      "sha256": "1ad59c48c9bc383df2d24e6283d071e1d66aaa026217f7a5eeb1ed2469898805"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-kotlin.js",
+      "size": 12333,
+      "sha256": "974e42c41c9c007df9a64e159bca3b19a33ca17c273dd582abf4978a59767abd"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-latex.js",
+      "size": 5366,
+      "sha256": "7c6d46b8c38f40e39d3776c8d609f8d1c3eaedea47da9bc67dac1f50858828c7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-less.js",
+      "size": 22845,
+      "sha256": "9f8b086caf992e1e008886eef0b6ba211c4a0344465e18eb18db64d63be0c471"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-liquid.js",
+      "size": 65500,
+      "sha256": "edf6d0fbbe9698f166fd12cc4f23673052a3266b35445726b8ba025e15263d95"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-lisp.js",
+      "size": 2286,
+      "sha256": "667a04851194da81fd2c8827f82825d55e68ed70fd83ca3f6421e9138fd6662a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-livescript.js",
+      "size": 5404,
+      "sha256": "8c8a37a364a7c3ddf6ba25536bac47c857e2e5a697e57db5cdd3b5af62c365bc"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-logiql.js",
+      "size": 6039,
+      "sha256": "32a2be4cf2da5bb97c4ad730790b9fbda4db8e0a5169b30529ec9781e3e1be11"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-logtalk.js",
+      "size": 10929,
+      "sha256": "954b6d4339fce6f60e467b64a470a2f74089b7cf5ed286e770db9e0b4bd09e0a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-lsl.js",
+      "size": 26992,
+      "sha256": "3cf5dab91050e88480c6bc538497e1ce1b75f645294b9e5ca0f512adb2d95bb5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-lua.js",
+      "size": 7912,
+      "sha256": "b043dc0ed0cb5e297894e29a6c233d9c65d4d27d599c48e58abb49dab035ccc2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-luapage.js",
+      "size": 69637,
+      "sha256": "515732f0f3bdba3e7bfb91b55d8c1f32e8c229739d311269c63b7c971e1f92f0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-lucene.js",
+      "size": 2778,
+      "sha256": "84e6f8add1b4f0e53f266bd7503ec0ce45971269d9421855afcddfe91b42c96e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-makefile.js",
+      "size": 6930,
+      "sha256": "237d450e2f5dfc6c5b0f1db73e8c44512c3f4a6e810e61c921da6a0383d8a8d3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-markdown.js",
+      "size": 72663,
+      "sha256": "628267be78939cd61e3b493e771299960e315e99214182f50787216eea8640a3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mask.js",
+      "size": 42619,
+      "sha256": "06f11e5f1eceb761b8616949c2a0e97d2900d23648bf378ba887c3d47c3a3463"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-matlab.js",
+      "size": 20894,
+      "sha256": "3c0e897028dd8d7384751872069c2bb6a22a2509eceee7a696996f77d9b0b0ff"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-maze.js",
+      "size": 5255,
+      "sha256": "b8490c52ef4d2f7c837dbb748cd76b19e58c97df549f7e8a7e981a0ae7b8d09b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mediawiki.js",
+      "size": 9696,
+      "sha256": "5c304e8129041119e23b8d2956e41cfbc55c8ae3fda9ef853c7a3b3f096a2eb3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mel.js",
+      "size": 25273,
+      "sha256": "2ce3c3548174c4c95c21687019c64efc6e5e9206af620eca2472b3b91fcdef6a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mixal.js",
+      "size": 3170,
+      "sha256": "08601971f963edad19c39d57875b20233e6e4d4c31947fca02346026c0328edd"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mushcode.js",
+      "size": 7041,
+      "sha256": "40eca1a6dc719355c2e975af750cfacf9328b7a3cc5edeef635c98ef8cbdbce2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-mysql.js",
+      "size": 6849,
+      "sha256": "9440bc7ec4ae4b635745cebad6542bb204ca4e3aa97c2174b77a99f80d935d73"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-nginx.js",
+      "size": 16223,
+      "sha256": "b22fde73277e992bdd2e78972c9ec58415c89a22e5c2b69a5f809269f3536ff4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-nim.js",
+      "size": 6946,
+      "sha256": "e2511a4134a9bb813b34f0aab635b0ca9de2011b56842732851c99dfb9e5ed01"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-nix.js",
+      "size": 13709,
+      "sha256": "f9510aa29a34efa7e362687a03291e29cc3c59895bfa9376a51d64599a82b279"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-nsis.js",
+      "size": 10661,
+      "sha256": "6c1321f005ef339b5955ff77f3f4fc062c53dbe3ba44b40984272fb0ea6eb48a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-nunjucks.js",
+      "size": 64329,
+      "sha256": "9ce881b094427deaae2bea0fe3d0fc708f38db1f360df35aea91d121da6b0189"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-objectivec.js",
+      "size": 55062,
+      "sha256": "36219164b7b1c5aebe6fe913139341e91e0fdf929a24a5d891e3cb241fe49103"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ocaml.js",
+      "size": 15919,
+      "sha256": "8c685500268bcfa4b64e88139e1a6265d996f7d84d33c538512869c39c73826b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-pascal.js",
+      "size": 4514,
+      "sha256": "38377ed536051f45af817fea15aff258a85182d297b47ef25f03f31500d1ead7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-perl.js",
+      "size": 7756,
+      "sha256": "e3f38a3e40f2b3ec066e24abb1c9c755256592fb75e89ff780bb7d0e2df4bb74"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-perl6.js",
+      "size": 17990,
+      "sha256": "edef6ff72c37f7413919dea7f546d050db45bd463e22ee3c8fbb07b65f31a818"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-pgsql.js",
+      "size": 59482,
+      "sha256": "50b4ec01ed867573c400f1b9cfc1386bcd81e2dae2933324cf7e35032f30e1cf"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-php.js",
+      "size": 473820,
+      "sha256": "3f6c324adceedc0f89e02fcd07cca900e3973638baed7f646bb101a7c6268146"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-php_laravel_blade.js",
+      "size": 478292,
+      "sha256": "524fd38ca4abef2fce15c4abb597872513db4e4c0792659ab47d81324662dc64"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-pig.js",
+      "size": 6646,
+      "sha256": "eea85eb40fc0770f6c92c2e1d3e1b431c731f1e826ad5b9aa108b0e50fa23f17"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-plain_text.js",
+      "size": 837,
+      "sha256": "72bc45e08fa0bb010362884a1837a7122fd4da1a64ecc9ec92d48e50dce7900d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-powershell.js",
+      "size": 33033,
+      "sha256": "1ee73c3cbc65da6e0ff8479bc0eb0fc01badfdbf701eac62fdc97b6e30d4f191"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-praat.js",
+      "size": 10731,
+      "sha256": "bb1b72e2d4f528f3a9e8fe4c391104cabb5bdc82dc0d632b017f3a2bee405199"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-prisma.js",
+      "size": 8582,
+      "sha256": "38071daec04988bcf89abacb4686e10ae6cf2994e520f078b6d6209960620958"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-prolog.js",
+      "size": 8704,
+      "sha256": "17879a820147f992b69921c2c28a347e861448814f69118c4cd1c09d2c56dd71"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-properties.js",
+      "size": 1430,
+      "sha256": "9fc865f1a6c27f7626bc9aab03733981eab2cf824fcabd9dc1bb53a02a451069"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-protobuf.js",
+      "size": 13131,
+      "sha256": "05768764e24bc45f18139bfc28726c8994f8566c4cc02d44b614cd2f146a237f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-puppet.js",
+      "size": 7439,
+      "sha256": "b8c14b8ab0367d12c439718efd1267cda71f93b4cdb51e6ae422f99381fe763c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-python.js",
+      "size": 8139,
+      "sha256": "d99b7d2c8750bac065e2dce6163ae53497231d35e54243d7cbab53975bdc2226"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-qml.js",
+      "size": 16423,
+      "sha256": "b4f4f892c109740f225632d161236fabea90379e882a54e7afff91abaf7e686a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-r.js",
+      "size": 5512,
+      "sha256": "bb6d8cdc25cb7888d68ff6297a73c4309cae994d31128fd62e304799a95ecc0d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-razor.js",
+      "size": 68006,
+      "sha256": "2ccfd78bb1b5205bc0f02893a8e0f2c5044701e17a9bcec1f674ecddc0ce4f0a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-rdoc.js",
+      "size": 5017,
+      "sha256": "45af094336e898c34d869b4f8e18b115d20424b6f574296803bb378d33691cc7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-red.js",
+      "size": 12937,
+      "sha256": "b7e533ee4c81b9c63bba72bb0eadde64ae3bdd0b9bf1836cf0f8dc88556c8dde"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-redshift.js",
+      "size": 8330,
+      "sha256": "0b6de4a845a06b51fa11c77d2cae57b7eb8a8b045bd6dbff56129a6e91927d7e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-rhtml.js",
+      "size": 65949,
+      "sha256": "5bf84b1b8cc330bfc3c3b4a59edde434b13229a6c97c044fce96fd2360209560"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-rst.js",
+      "size": 3386,
+      "sha256": "1bfaad06469b4929c6438d47e4581846f1470de4a3dcd0b12c98f606267161f2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-ruby.js",
+      "size": 20019,
+      "sha256": "89d5be3c1792dccfb69f5bef4dad0e0b43e2a8911ad26da68de29847484573b0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-rust.js",
+      "size": 6959,
+      "sha256": "c96186cf7a49870b029fb9589484401b254c6481aa99255c79a533e07d8c1018"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sass.js",
+      "size": 15990,
+      "sha256": "36dcb3bdc7e9a3c7a96c1eff1ecc1e7fd8e23ea1a8c9efe8c73c2ae155dba785"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-scad.js",
+      "size": 6848,
+      "sha256": "1a497b19ea9ded5973b58a6943d9e4ccf9a7415fce0b5820eb7c77db30f0cc65"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-scala.js",
+      "size": 23137,
+      "sha256": "4becc63b34c47b77150eb3c22f72968bcc42f1e5218f608721eac112f206c43a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-scheme.js",
+      "size": 3985,
+      "sha256": "70f2ac138bf0a979c3da0b4e174697c970d529ce581db0d8219f9ae44db793cf"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-scss.js",
+      "size": 24032,
+      "sha256": "7366870e90699d28649a7191af7c22d7c1510b752b97ebb95b21459f6646410c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sh.js",
+      "size": 7563,
+      "sha256": "2bbaaf76d6a1fb31fe43d81badd62e9f3afd2e239f0095346fd965ce25a004d5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sjs.js",
+      "size": 21796,
+      "sha256": "ebcf2fe897d20817fdbbb0afae6fcd737880039adeb35e2ab0381eb5b7f6667a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-slim.js",
+      "size": 112734,
+      "sha256": "447e190f723f55533315e33c97f1696512c44f5646c94bd699cc6cf7bfe8ee00"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-smarty.js",
+      "size": 64351,
+      "sha256": "01cf4504b7e5706c7dfa2e086b8889183e37ef0ce42b61514a4c686cbc35b26f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-snippets.js",
+      "size": 4059,
+      "sha256": "22ae69d6ebeccddb6d3bcc9f898787255987e3c72048f8c8981384b7fa4ea99b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-soy_template.js",
+      "size": 69386,
+      "sha256": "5fba47d065d188b7442a066145cae02cc5bbc5b415d84a31e905fae9251f68a8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-space.js",
+      "size": 2562,
+      "sha256": "17953b769bc440e191ca8948d2a60f0994abeea9b3b455701c891a95474642c4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sparql.js",
+      "size": 8192,
+      "sha256": "6fee1fb03ee20693fc680e4ce7197e739c79a1fa22ca338389e01054ff0ec484"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sql.js",
+      "size": 2209,
+      "sha256": "802d1f4620f4cc44b929082055f3c7020e4c4089bf4b039726277daa5f8dd6d2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-sqlserver.js",
+      "size": 16805,
+      "sha256": "1014e54baf5462434b84a1dce98e59f9e9bc4e6b95c6c93b9ff5ac0d125e7e63"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-stylus.js",
+      "size": 14746,
+      "sha256": "e258e9c9591ef163d3de224790bd3698791aec1019ce4476ddb25ecce1c5df1d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-svg.js",
+      "size": 32523,
+      "sha256": "cd1ed10fa2d6dc262a7b9f5da73aa16ca6c53580f4fd42036001eae14fdccdc4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-swift.js",
+      "size": 7396,
+      "sha256": "1140fcea05caf77188aeb380dca8d402d412b95277ed0bfaf4d7069f41070d84"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-tcl.js",
+      "size": 6529,
+      "sha256": "9c8d289c089e549fc26f2f98e1b8999502a24a810ac6bd9ecfe9f65a2b81828f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-terraform.js",
+      "size": 7188,
+      "sha256": "a2d7d4c5b2d566af3c913e37f53eed92c904bc5dcf280f3fae3fa2e1673e8cc0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-tex.js",
+      "size": 3123,
+      "sha256": "6815c814cf09426212f3b3609d8443e26d0342a715494bb25c8031a30a8e653e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-text.js",
+      "size": 325,
+      "sha256": "075a664f8a886a947294bb56ae32b8a9908bf8716f600ec2710213c60db5de19"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-textile.js",
+      "size": 2457,
+      "sha256": "7699034ef63e18e189304105792ba72bd9d700dc634a622b65a37ca1d845e58d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-toml.js",
+      "size": 2529,
+      "sha256": "ed5009b479e8a9ff438d89fb790925f1bda9b36400cd7380b7bc4281da7b99fa"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-tsx.js",
+      "size": 20677,
+      "sha256": "3b9244014f38cd434b7de9300082f9f51ffea02a4c20a083c859f33a15a1fbe9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-turtle.js",
+      "size": 5361,
+      "sha256": "415d2b2b93623c33dc2fd7d408d3b17bd5813a3635b4e628176e24afc8caf10d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-twig.js",
+      "size": 64518,
+      "sha256": "a5d280531e8bd1289c040084f502526c0028e67aeea78ab3180551b773a1ff5b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-typescript.js",
+      "size": 20372,
+      "sha256": "efee831dd276b11b349cf04c6a83af19d603d6d4ffdad55e20fbd67cda280ad0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-vala.js",
+      "size": 16952,
+      "sha256": "c8fed02aabb8c9aca02b5269ce5518ea76a2b28c1906f8dd91f3df95eb12d45d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-vbscript.js",
+      "size": 12004,
+      "sha256": "8e95f5719201eba0a0baf3364056fd02a7f843a5a5b17d6ca5297325b73efe98"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-velocity.js",
+      "size": 65670,
+      "sha256": "569b4f358712214f86794a9f2bbf19cff0e4b98ae98d192121028802175bb4ae"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-verilog.js",
+      "size": 3228,
+      "sha256": "ebb00fd556b2b1321beb5e28f4994c26d97b1cc2820b410c369b917fe477c496"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-vhdl.js",
+      "size": 2413,
+      "sha256": "80318d9a4c61901e60bfbeab3e022d89b93217f7244fedb16158e7ca45aee7e3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-visualforce.js",
+      "size": 63549,
+      "sha256": "3a4a3e1624eb7292d079f6ab28d16c0255a67c1ae9d3365e4edd73ddd8900ee1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-wollok.js",
+      "size": 20865,
+      "sha256": "ac1d11d22f9053cfa3212c1b2dedc35b687df40579826b46fe82cf71af87b7fe"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-xml.js",
+      "size": 12183,
+      "sha256": "50ebffdf71d5cebd46a72b9fb5af7ca438d73c13a947e71c32b3cfaa237c4389"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-xquery.js",
+      "size": 231071,
+      "sha256": "c4bb28f48b896d1b623ce006aac9574ced9d5e8bd2b4d06bf5ab9ebd52aed0f6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-yaml.js",
+      "size": 5089,
+      "sha256": "35bfd2cc47791d2968a3a0b987b5e3a6ba16c8120a274c69bfb0d9b123209c5f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/mode-zeek.js",
+      "size": 9420,
+      "sha256": "8b5f2c668abd7ba0fa124f78a24b4b57ef674267e36c33dd01e737d30401d22b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/abap.js",
+      "size": 329,
+      "sha256": "43a31568752273b0a4296b7485f180a4d176a601300eab923b73e5f073b4ec89"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/abc.js",
+      "size": 1275,
+      "sha256": "dfe6a1cae15de30746c78ed0eb6f1e02c687cff54ed5df1a1b8ec6c3f6dccdea"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/actionscript.js",
+      "size": 3310,
+      "sha256": "565a82215c88441e056085d39695f7c26b8c3327ef3edba8879d03d98f83adfb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ada.js",
+      "size": 328,
+      "sha256": "f32cef83bc7027b2324a27ef6abb916f560bb9733b6a7ad75fdd26e2c799f4c6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/alda.js",
+      "size": 329,
+      "sha256": "aa2f702ce72d26bc4331f84be330cf090afd93504c96c91ca02b53d1ee4f0e13"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/apache_conf.js",
+      "size": 336,
+      "sha256": "71d4debbc41150a882f79c40a5edf0ee874d50382738c7a7f569e6831b8a3f07"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/apex.js",
+      "size": 329,
+      "sha256": "e7f1e1286ff6dd5569f2b9d04c60596179462fab8148988d2d8552c6e5db41a1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/applescript.js",
+      "size": 336,
+      "sha256": "c3b336762e6c6638132add663809d981f64b1e045907b15d9a39325aa7a0a04f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/aql.js",
+      "size": 328,
+      "sha256": "f97970dbee8e477028f5c5ae3d7e84eb1ab2b525e51342984d21786fc901a3f3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/asciidoc.js",
+      "size": 333,
+      "sha256": "d7b913e713518a4fbc9d4123b233e3eea92b815d6ffc9065cd167087ad2eef71"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/asl.js",
+      "size": 328,
+      "sha256": "d1e1320f29617bfc9a6bd4c8c9867e67f6ba20b36c45143f382e8111c0ac1cd6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/assembly_x86.js",
+      "size": 337,
+      "sha256": "38d10b960c6336ba2edb95603825b96799e31b3a59838c0c19cd4ad937efdf2c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/autohotkey.js",
+      "size": 335,
+      "sha256": "de624d54895ee8fa3ddbc46442b98fcb8a625f22ece29823cdf71cfb64823179"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/batchfile.js",
+      "size": 334,
+      "sha256": "d51b1eee1ad8d0ba45a085f37a41192b4adefc17324a29e9d271a33846eb284f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/c9search.js",
+      "size": 333,
+      "sha256": "0390b161868a36b6afa443e4f788ad5196a71eb14615041f625062617d9af05a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/c_cpp.js",
+      "size": 2993,
+      "sha256": "dcae8989df4842eb40c8c2133acccf33a9d91dcc7d352fd4328c39dd7f432159"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/cirru.js",
+      "size": 330,
+      "sha256": "dc0de753d149f3ef87d54a6bfb3640e8cb7ba4254a79a228d4aa354c0b790190"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/clojure.js",
+      "size": 2372,
+      "sha256": "5114a515d6b0b62aa060b235e9bff2350857f6881bf64f1bcb9b8efeab87665a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/cobol.js",
+      "size": 330,
+      "sha256": "46146ad7ae36bf2357633090152dfdb63f4210c63ccc49b6d619b3ab424c072e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/coffee.js",
+      "size": 2564,
+      "sha256": "98051cd2f9ce8ba147f8448a03f824affce27904a8df9a4db91238acf999278f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/coldfusion.js",
+      "size": 335,
+      "sha256": "9a37187fab5a4b118d10456e639735e9f65754fefcc4122986995f09b4ab974c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/crystal.js",
+      "size": 332,
+      "sha256": "a6102e4706ca0d4a7177ed8e7761f24d452f21b4b2ca235b154d11332c466209"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/csharp.js",
+      "size": 331,
+      "sha256": "b308f434a40a7534eb9b434582ffd6a433d5f9cda1b1a9e201e172f05a95c08f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/csound_document.js",
+      "size": 642,
+      "sha256": "ef93e7ba4034a0253f9d267646c00036b61d9c48706e8595b033f73db69bfd51"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/csound_orchestra.js",
+      "size": 1414,
+      "sha256": "e683bb181fbc1698944f6943f13555e385094d55422af8608bd5f42015edc366"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/csound_score.js",
+      "size": 337,
+      "sha256": "8544e239a3138173c147d8238de5d4824bb0dabf3484f91b00b6702d5816f948"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/csp.js",
+      "size": 328,
+      "sha256": "fd9330e84435ec01c76e360a52b7a5c2c242b7fe50b6d3d1e552aae2222d0938"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/css.js",
+      "size": 19978,
+      "sha256": "b2d64d1daaed8e728b4758361791d8de0b29288f8ea8fe93f9b5b9eddcdea1a8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/curly.js",
+      "size": 330,
+      "sha256": "9a211a8d88d2781100fc0144220124bd2e6fd9b2d5101538aaa8075eddc1b64b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/d.js",
+      "size": 326,
+      "sha256": "41a1fe60aa9034e967d4401d778b9f37a417e461ad55d4047daa503a773d3a0d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/dart.js",
+      "size": 1648,
+      "sha256": "f8196746978a1d4fc9c821f79afaf7b96144c9ad30c5b6b8bae80e0fe0dac096"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/diff.js",
+      "size": 880,
+      "sha256": "ee2d06997c7781a92b9027622962a5eb65ba6c090a0d4f99eeddbbabed04b4c8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/django.js",
+      "size": 4331,
+      "sha256": "8bbb583dd4488af655e600102e8d9c33926a56601d0a9ce5cecdb081701f64df"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/dockerfile.js",
+      "size": 335,
+      "sha256": "6ddf90ad30aa5127136441394703aa0b213a60e94657c5e70fa282cc60efed0f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/dot.js",
+      "size": 328,
+      "sha256": "bf2df16544bec0b2b77563ecc6502942b7df56b9ed455dfc5bfe4965ec94a6a9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/drools.js",
+      "size": 701,
+      "sha256": "dc54050dae76c86382df065b686619f4fd2561cf1b578daad83d109ee14ded96"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/edifact.js",
+      "size": 4649,
+      "sha256": "c5fa8e49520e2a5adadba6cfed6e4cd1da73ebadd8ce1d1c1a5b4578fc02352f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/eiffel.js",
+      "size": 331,
+      "sha256": "a5b85d26b003eee05646732d5aa1d425a53ae69de6f949d1df370a6b04475970"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ejs.js",
+      "size": 328,
+      "sha256": "4364c58f22b339e8165ab45b7eaf4df19f4d40eebe4bf0a74ae30c8d7ee67407"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/elixir.js",
+      "size": 331,
+      "sha256": "4209dbe198095881f1ba7fa6f8375ee6a33a79a939898d38e5c84269aaeba99d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/elm.js",
+      "size": 328,
+      "sha256": "c4305d36e02e0db2dd6d26b04784f279f276e1b26bb89e73aac99966b0a892f8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/erlang.js",
+      "size": 3905,
+      "sha256": "7cd1f44fbd808781cfc9241deace94cb9de32ce0fe80d793493cc6066e63e698"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/forth.js",
+      "size": 330,
+      "sha256": "73e7dccd35e0123939d97b363b3a63815dff73514930536fac9d86e9dd9edd73"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/fortran.js",
+      "size": 332,
+      "sha256": "1850808b21e84bf17931b1f06ec871a4403cce9a0f81b2271a6ec6e8d6dbd0d6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/fsharp.js",
+      "size": 331,
+      "sha256": "3a081c5912f7be8da83e556652e267019f80cb3318e021effefd8c61ddddef69"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/fsl.js",
+      "size": 454,
+      "sha256": "e81458a6b298d4fcd62724a8a34db1b3ad99991a66e25916b7dac6273bba69f7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ftl.js",
+      "size": 328,
+      "sha256": "32a596fb9c9133006676032e0610a2ca21e14149fc86434714470af68f12a8ca"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/gcode.js",
+      "size": 330,
+      "sha256": "50c878fec73175928926e68786cd57888b34324bd21eae81b916068cf33a30ba"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/gherkin.js",
+      "size": 332,
+      "sha256": "a07cfe0effd939d3210f220b9d8826a0f79d9ef0b50f9f8171e03685a5190598"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/gitignore.js",
+      "size": 334,
+      "sha256": "2bbdf7c13470dcc5d5ac22fdd7c4527a76434c721cab204fa8ede63f4c7ca4ce"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/glsl.js",
+      "size": 329,
+      "sha256": "89a47127aa29f8d1ef2bcfaae0151cf55b736c8d57dbb3491bd37815a861fad0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/gobstones.js",
+      "size": 39442,
+      "sha256": "69c931d23e41f9494cc412de13415b6739f56c32f5a257c2304c530ccd80f1d0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/golang.js",
+      "size": 331,
+      "sha256": "155e7adddb57ab4f9007b9a5cfbf0816605dceccd41c0334184ab3f36873a32c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/graphqlschema.js",
+      "size": 1000,
+      "sha256": "a5d2112a274bd48b0fae425afead2ec8cfe2abda6fb7881125695e6578a7bbad"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/groovy.js",
+      "size": 331,
+      "sha256": "aad6daf379bbab898cd626f9af11adb09b492e2db68c1fd8bc21c5289ee3d9e7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/haml.js",
+      "size": 777,
+      "sha256": "3270852c1830f84832eec6cc3d9cb14158f45a4ae427fcf5ad51bbcc8e8edd5f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/handlebars.js",
+      "size": 335,
+      "sha256": "438717f7cc56f3f8a9c7d017c08995e433c1696e952e8acf4ea935d34f512be1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/haskell.js",
+      "size": 2307,
+      "sha256": "82245d193ba26a7b0b488b322364e28bbf992e3e9f0dffc053ba678f9525a49e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/haskell_cabal.js",
+      "size": 338,
+      "sha256": "64dca4b49faa58c1981b1241e3217a6f2c9cd052af227580200141881270f692"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/haxe.js",
+      "size": 329,
+      "sha256": "618bbb635c28040ede7c613e0240fd36f1255b225d5a665e0102e86e69d6d34b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/hjson.js",
+      "size": 330,
+      "sha256": "6684d72b4b0e9a9b5ee99a6793579fffbcf68b981bfb7ee8c6c6bd37c226f243"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/html.js",
+      "size": 19477,
+      "sha256": "eaf0139f72418c23b47d919d165ad036d1c375fe2eb4edbeddd39312e4a6618d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/html_elixir.js",
+      "size": 336,
+      "sha256": "b0273c2243dec5bf271a11384f86e1b0ae1605ce2ccf8aab1cf7ffeade13b9a3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/html_ruby.js",
+      "size": 334,
+      "sha256": "131f656f1e40ec94b943e26c031bfaea425dfa9dece7c87396d86ee3c082eebb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ini.js",
+      "size": 328,
+      "sha256": "38db67b92bdc11915bc18fbf99b1ef97b881a4438c1a26dd9c3bafbdc7c89bce"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/io.js",
+      "size": 1546,
+      "sha256": "6cd60ab95eb1e51c171a1d3a806a9efbc845b3a57ac6a314aafbfbef646e42c6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jack.js",
+      "size": 329,
+      "sha256": "a81fbf0257299275067d103750124a7ada6433d260fad0ef388a3606af8716f3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jade.js",
+      "size": 329,
+      "sha256": "3f084c445aa57b18b4da2f193e1da5a2492bf2cc58d37e31cc867e716903ece6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/java.js",
+      "size": 4651,
+      "sha256": "e15f4832c941f0bfd703e7067db677a6aabb1411e5817be91ac29428ba5f0ead"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/javascript.js",
+      "size": 4175,
+      "sha256": "93603f2db2ba4c3c88502bf46da67992bfad37a5b1c40568b4719e3729658d1c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/json.js",
+      "size": 329,
+      "sha256": "238a0bd54eb1b4c1a0801bdedd2ea4eb0c28b6987bf4311b9eccaaba3bd776d1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/json5.js",
+      "size": 330,
+      "sha256": "14b374d748fccbc6c6210b257c74d53b5f1ed62ed8be0e04b7b69b8958cd259a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jsoniq.js",
+      "size": 2047,
+      "sha256": "700c8ce7960faab03c252985348faab599552c8934098f9b537a0f45032c291b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jsp.js",
+      "size": 3106,
+      "sha256": "a6c19c49cb05144d23dc9209ca233f58b03981077534283f9167785fcdd8deba"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jssm.js",
+      "size": 329,
+      "sha256": "b596fefa983043602832d35105d95abb39bdb6ac69732eed6b54145e49031506"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/jsx.js",
+      "size": 328,
+      "sha256": "a3c0bd1bd26865981e40565d1b4180a778ac6f56a0264b9c46f3be0221d2005b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/julia.js",
+      "size": 330,
+      "sha256": "9a09cb18a44cfd1dd8421dc2c90ddc8de2ac7b5c5f2ea53b98294918a46002b8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/kotlin.js",
+      "size": 331,
+      "sha256": "44fbaddee7fe97c6260f2f0a550846e3f89cbc0329d76dcbbb4418aa70911e9b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/latex.js",
+      "size": 330,
+      "sha256": "bcd4ceddf13fc24946555b950ec1452283a66231ec3640f4960eee2512a8f3a8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/less.js",
+      "size": 329,
+      "sha256": "d7c09d39f8df08ca90dd9ce34ff7bd274fa43ff285ad58cf93f89d681c954a0e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/liquid.js",
+      "size": 19853,
+      "sha256": "9ce0de78e47d26bb24b6f7bc7ca325b32b4face102f5ed1e354a7badb2412b3e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/lisp.js",
+      "size": 329,
+      "sha256": "aa6be0a7a8cf7b1092a3bae4907abb0670d1530376c4f0b45cb8cbb5026dc183"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/livescript.js",
+      "size": 335,
+      "sha256": "857fc1bedb68e62693ab38c0646e073990eecef6f8329f99f4c1745405c0d931"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/logiql.js",
+      "size": 331,
+      "sha256": "f967d6a413ea7d53e8483b2e55a73473e053dc1f76e9567ccb817c3dc46a974c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/logtalk.js",
+      "size": 332,
+      "sha256": "5a7931e9da330d4e59b8416aca0496f8f3eefb38c2ddc4ed768f63c7324179d8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/lsl.js",
+      "size": 35751,
+      "sha256": "5ac58006fc9e8e8f8af184b2fdf80b0e4175be993b7021d0ec54b49be035ede0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/lua.js",
+      "size": 836,
+      "sha256": "ffb5f57cd62c4dccffe179d72b53bde79e33b72a2a6fcd22dba9ed251f3458cd"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/luapage.js",
+      "size": 332,
+      "sha256": "5d647de7e3214c0d31ee210be1465da6ecfa94b500ce595c52e826d65de37960"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/lucene.js",
+      "size": 331,
+      "sha256": "44fcc5c37e456cf1ad44e33f0ef71edf034c3ad19d3b8ec34f0ccbd88c418cf7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/makefile.js",
+      "size": 531,
+      "sha256": "3c5a22b006b2b1b3a53374fee5bf2e031a3de3637390fefc0b7469f59698616b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/markdown.js",
+      "size": 2306,
+      "sha256": "5637caabd57bf931b8baf5b518d45048f00c20903bab679101991d02dacc6f14"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mask.js",
+      "size": 329,
+      "sha256": "b21bd78c0180f02d23f3a298f2cef8ba6f7009c982467fba9e1dd3f7a028d5f9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/matlab.js",
+      "size": 331,
+      "sha256": "2122561911f2854a911ef1f14fb6461af1600bd23a7ca62f5999899ce0f6eb58"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/maze.js",
+      "size": 599,
+      "sha256": "4d1397cdf176830429fe3d57f522bbd06a1acd28b27fb4950c65261d1988bb9f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mediawiki.js",
+      "size": 334,
+      "sha256": "0d916e8da33210f3a971cfd342581be135ccc477546d6f439c16db9e8125967f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mel.js",
+      "size": 328,
+      "sha256": "68200dfd8fd34a0b98d327fe833b401015ac746cd912513d4ba8b145893a9ee8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mixal.js",
+      "size": 330,
+      "sha256": "44aa304b1c3214def79a69978dd6caaed37e481fd0d604f6cf761b406f172a77"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mushcode.js",
+      "size": 333,
+      "sha256": "994edce57e28d5bfdff9ee07f8be8ed99245b76053f903614741fbe42223bc92"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/mysql.js",
+      "size": 330,
+      "sha256": "b3499609ce4d142a3429c06693e8bea64f19d7d887e98e4d38fb2620e01e38ff"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/nginx.js",
+      "size": 330,
+      "sha256": "4a03a08a8397a6186287ec8b3d5e45011e2e384e15530607b388a9cbbf339df3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/nim.js",
+      "size": 328,
+      "sha256": "a2f9e66a5cc1cd71bbd8fd982203496bb5a2366dac36e907ad8b7df7a3d1643e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/nix.js",
+      "size": 328,
+      "sha256": "2324cbbb0be393a8065d47073622040902e08ea743dcc61a9642a51b1f710ed9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/nsis.js",
+      "size": 329,
+      "sha256": "2036ffec461fd4d007f94ac685eb6fc4ab1c7cdb933ef61809a9a820c3cf983d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/nunjucks.js",
+      "size": 333,
+      "sha256": "b0d0b769503e02389b5208aae0612fe8cf99426bb9c427959f4f1cbbc250a49d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/objectivec.js",
+      "size": 335,
+      "sha256": "b9395286bfa030667f2156321ee1cd7968a5b70449f991b74dab109fc0c2f313"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ocaml.js",
+      "size": 330,
+      "sha256": "a57fbd3e18f0315d0edbd52d56748b34f7c621bcdb2b4fa13893f781e5f40934"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/pascal.js",
+      "size": 331,
+      "sha256": "94d508eca0b04ce34cd3bd62f43e9be65f3dd8dd71ca6454ce990989538e789e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/perl.js",
+      "size": 5842,
+      "sha256": "f1867416d88f50b44fe0a4c2a92e10d828d65fb201e2f5e392d3da4adfb9e5f1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/perl6.js",
+      "size": 330,
+      "sha256": "9570af7039f5980dd11e35ad66567a4387282c2a7c17381a493071a62d5fbd8e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/pgsql.js",
+      "size": 330,
+      "sha256": "38283fad463f9d5b0909d3a48a496cc454e98edf49168f110a08d32d0752cf45"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/php.js",
+      "size": 7281,
+      "sha256": "9adac338431d5610b4606976226dfe801b4a0f74b189fab35a14a9ac6fbb2e40"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/php_laravel_blade.js",
+      "size": 342,
+      "sha256": "f7847033e234376e255515b1d029f2ce44907a04fe821eda0b1b95065f5ef701"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/pig.js",
+      "size": 328,
+      "sha256": "6e6e3ce2e96d91eb749affdf23ca60e329dbf2c6e5c09b8e36e03459471657ae"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/plain_text.js",
+      "size": 335,
+      "sha256": "6791a53bff37f807ec24953014e1a1c7140ba2e293111457a3b8f8f2a04e6c42"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/powershell.js",
+      "size": 335,
+      "sha256": "e2f7f3ecaab9696d6744a144057c05e3e867767e87fbc6d5b552132616efc590"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/praat.js",
+      "size": 330,
+      "sha256": "3ca5efaf0fcce83eee2beb780911e9f4e0a673e48c374e88aa0b3f38f0181f9a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/prisma.js",
+      "size": 331,
+      "sha256": "ccdcdd9d4b1f45f4faadaaff35ddb8f8c46fe345860c64e0a5e056f1c11fd0dd"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/prolog.js",
+      "size": 331,
+      "sha256": "778fbae9de6d7573e13bcce9c3007e816ad5061083e76cb4990e4a190b6b9acc"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/properties.js",
+      "size": 335,
+      "sha256": "d05d23026060ef635da437aef510646ca432bad7d3bc0c0d4c9a9335c8906820"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/protobuf.js",
+      "size": 333,
+      "sha256": "f90332608f2ceb444264240cb48c021f78d0c9c1dfa32f254730e758d96ff6cb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/puppet.js",
+      "size": 331,
+      "sha256": "3131f107840428f8135d20bb4c8339d2c34f63d3eaf09ea1d83bb26dbb772247"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/python.js",
+      "size": 4003,
+      "sha256": "1a0e48ad414ca4ecaf0cd13c7e52ddbcfa0e3de27107750dad665e8b86cb7fe8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/qml.js",
+      "size": 328,
+      "sha256": "a2d161c989942fa62a53683a00bd4d2b350bb47e585667c4a05f7ed328e77233"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/r.js",
+      "size": 2956,
+      "sha256": "5e579ad16b7c4134ba320e8d9d5f81d39ff8fb637b92370a27dbcb6514b18a6e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/razor.js",
+      "size": 494,
+      "sha256": "59b247fad7f9c1dc539d3ee10515cf3141b1dc36c18badf6628ab7f09c57bece"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/rdoc.js",
+      "size": 329,
+      "sha256": "8560eb02718ba8ea569d0a24341cd436d605044e2c9d4887fda56fd9d0a9a402"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/red.js",
+      "size": 328,
+      "sha256": "56667584f394c3f388fce790bc1d0157027d15dd853dcf13e2a454ee79be6d3b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/redshift.js",
+      "size": 333,
+      "sha256": "eade8aa6dff7ba622b1674a122a6205887f4418e4246faa5e74b5f4e43c19757"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/rhtml.js",
+      "size": 330,
+      "sha256": "fa42b9239e6310eadded29060a0b794fa6a35adaa7cab7c09c072b7235ac1bf0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/rst.js",
+      "size": 770,
+      "sha256": "d354b504766e525c9572195802eb4806a3a704c249bfa4af75e74764aeb0d2e8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/ruby.js",
+      "size": 21608,
+      "sha256": "f7e26da41d046948a3ce9e703fb1107aa5dcb258a97252315347ff10f73c49e8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/rust.js",
+      "size": 329,
+      "sha256": "244f82f368e65149abd0cc143ce4137c93d8bb5ca497db004d5326683df9ead5"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sass.js",
+      "size": 329,
+      "sha256": "c7f74d1f5cb94e0ce14a468b46a066c4962d76ba38aae2615044d358bb111678"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/scad.js",
+      "size": 329,
+      "sha256": "a87477eae63401ae30d75bb32e107817971b79d0b5bf7916bb3bc3dafe4a20bb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/scala.js",
+      "size": 330,
+      "sha256": "b7b8fb4fafe934c2ee0c34b315bcf542d4e5ca0d3275c46eb0c61baf4a0976af"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/scheme.js",
+      "size": 331,
+      "sha256": "ba8a6b14144bec37a094dd37664cbe2cb7647be66e98e61e676baccfb635b938"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/scss.js",
+      "size": 329,
+      "sha256": "bd4bdce6a6153959d11d677b4ed941a403817a494dc4bcc77d510e46a833178d"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sh.js",
+      "size": 2380,
+      "sha256": "7e65f63540ff3b9b0ab4fa45c6f35cbf2812df9c210e6d7917b50931a6413668"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sjs.js",
+      "size": 328,
+      "sha256": "3ad35fac35a8a4ebcebd2e0a6cb37f61936d3d89bbb6cf53ad89575e2e8deba1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/slim.js",
+      "size": 329,
+      "sha256": "eb810343579c5d1a111a0fa433125a0484342109c76848634d4cc62a8bda8947"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/smarty.js",
+      "size": 331,
+      "sha256": "645b0fd232d270d692f294e10b227f679bd12b2629cedfcd9aae65abb12dba8f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/snippets.js",
+      "size": 630,
+      "sha256": "d4d08d3aebbc4597464b00a501aad519b03abb28dae0e6f06d71cd8822de21df"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/soy_template.js",
+      "size": 337,
+      "sha256": "0f74c2c953a6bb988236c95fecb7faa937b8dfd4dffec1cc1822cc9b0f8ac9b4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/space.js",
+      "size": 330,
+      "sha256": "ebfe73f2da97525ae7c8ee8fa8f957ff0491b8c19130852d6689ad14c987104c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sparql.js",
+      "size": 331,
+      "sha256": "d6058a2a6e072cf34ead0769235da5f3c63b98bd9f8a410b1f83ffb29c1dfbd1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sql.js",
+      "size": 1270,
+      "sha256": "62f5108025480494334a824bbc644358bd935b625d3519a1d5975614315081cf"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/sqlserver.js",
+      "size": 2473,
+      "sha256": "723cec5bed94708d8d0ce6f1af898f6f660afe2b4922bd268e7f9c8b2af550d9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/stylus.js",
+      "size": 331,
+      "sha256": "23e4cb2bc707950e2ff879434c7a8defee7b33bf0e7d66de11d8a0d65dc91042"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/svg.js",
+      "size": 328,
+      "sha256": "57d7560990da29dd93197aae402606bda619e3a53b13d922002ea74d00cecf3a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/swift.js",
+      "size": 330,
+      "sha256": "e34c3689ff1b1c5b3ec6d2586055891088335a5581aa66a3323a5c31b6ba7814"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/tcl.js",
+      "size": 2018,
+      "sha256": "82174036befff40ab5fb02d730c98d8044b98ef20bfaacaab8e1121565c9a7ad"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/terraform.js",
+      "size": 334,
+      "sha256": "b88fbbc82196c019122b0d1d2cb5e021b00f1a07646bc5eaf8a674469b146639"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/tex.js",
+      "size": 3964,
+      "sha256": "7a9fd0de82d736dd0377c88b3d2d3d6b9be812d4c40e276144481d7dbf04487e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/text.js",
+      "size": 329,
+      "sha256": "129e041636e78250edc68e351c2e0f9e2288bcbf737c5f7f0d11bde982d8fe71"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/textile.js",
+      "size": 872,
+      "sha256": "51f40772c17068adfe6ff62e763e89d6927fc7699ab885f90f2a85260dbc9b75"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/toml.js",
+      "size": 329,
+      "sha256": "30f4553f47998c662b817711fcbe936c962264eb1410bcd70465c1deb29b566a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/tsx.js",
+      "size": 328,
+      "sha256": "1fc4bad25e4e16a3d84080d4dec05c1304ec458c0eaaff1f47e2620ff9e11d54"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/turtle.js",
+      "size": 331,
+      "sha256": "9380e1441f6348b7ff4b51a7faf7751728ef4399d5dab898ad5917318dbd8ec1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/twig.js",
+      "size": 329,
+      "sha256": "96dc018ec6658ca96377eae6cc0849a1239d7741afacfdc2f4654266c0d5ede6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/typescript.js",
+      "size": 335,
+      "sha256": "ff23466921c4ddb59aea3662e2107189257c7ffd4e958c39187a47cc7601c3c2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/vala.js",
+      "size": 3456,
+      "sha256": "139ae029f4acbb766e9b518f466b466ebfc87848e9182e0ad209f97a90d16be2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/vbscript.js",
+      "size": 333,
+      "sha256": "7d90235f58ca6bcf99b1aa614610bfef0a8fed1cae0f0932d45bd9ae1536652b"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/velocity.js",
+      "size": 984,
+      "sha256": "e93e680a7a9cca08365ac7f264bdf35ffb47658928ca717cd619ebadc5c343b9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/verilog.js",
+      "size": 332,
+      "sha256": "1dcbf796cfc75f0e0a6fde1701362da41859d0657c458779da127c8f5d11ebcb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/vhdl.js",
+      "size": 329,
+      "sha256": "16fc60dfdffe97aaf1fb816c043666ecf6c89d9a169a46c4078d96f3048b33e8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/visualforce.js",
+      "size": 336,
+      "sha256": "051d8f250950e498935409a33b8e5ddfac0b129a927768d87bea7a21cc4f6f17"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/wollok.js",
+      "size": 1594,
+      "sha256": "f1efacfc1ee0f96cbb9e335eb62452bb915d1b24833434d6bfbc8706f4a927e7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/xml.js",
+      "size": 328,
+      "sha256": "e28ce2af9861ad6b4c74c18c469d778fc5217adcb3bfa6c44e82d123af151db0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/xquery.js",
+      "size": 2047,
+      "sha256": "cc163ac225c5d4e322fa855dfef0d5d85066bff4c010d494c1c69cb8934f1e94"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/yaml.js",
+      "size": 329,
+      "sha256": "11494b350637708e6702b1dc58540679ba22f46d1ec1b5e7b9d7b0658b67d2e4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/snippets/zeek.js",
+      "size": 329,
+      "sha256": "17ca9ce76ab050a2569dca69f15df03b726a33d709df0967ee33754b6beb21a7"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-ambiance.js",
+      "size": 27799,
+      "sha256": "41c05b2c99daafa76e1c7b4ce5b72c7cb10ddd6a2fe22f2c0211f4276b9031c9"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-chaos.js",
+      "size": 3180,
+      "sha256": "9026fa262ebecd9c77ea2288ce4dde1adc59c1ac0fedd9c23fdbbaa567588a9e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-chrome.js",
+      "size": 3040,
+      "sha256": "6d36fb1c2bd492943d271248110889a914d31d68c9771361f39936804368c10c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-clouds.js",
+      "size": 2409,
+      "sha256": "565e6ea8c6ca84f855681f22d955b3b30e550686d58ea1b10d4979644e054949"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-clouds_midnight.js",
+      "size": 2769,
+      "sha256": "ceee4a999b7ff4a34edd011b740573e752be20ea8a3c22295575120f9acbba95"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-cobalt.js",
+      "size": 2681,
+      "sha256": "4715f0bb24f91a8f3647b68f446abc0d30d4828f34dd855fd8c5eb450505a8eb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-crimson_editor.js",
+      "size": 3148,
+      "sha256": "1ca53badae1fd44c9cce3a63fff1f8680b7be905e1cf2e97e8d35764baf100eb"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-dawn.js",
+      "size": 2566,
+      "sha256": "52e69806a6291b04e48898b3a5736197c518527163b61ebed275dcab2769eb63"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-dracula.js",
+      "size": 2913,
+      "sha256": "716fdacfdb289b113547e21449aa6cedf0a68d85378749c7cf16a0de26a73e64"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-dreamweaver.js",
+      "size": 3471,
+      "sha256": "75e16f2844e053450b03d6b8150924be1229851c394adc967716b96e280adb1a"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-eclipse.js",
+      "size": 2454,
+      "sha256": "17dfef30a4fe393693a7d39c1c7c7ca5d4d6a37e63fb11cbd48c6d4296de9f7e"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-github.js",
+      "size": 2504,
+      "sha256": "a80554a594bb667abe84ae3fdb70dadac27a6030102d07a41423e4e355ba8b21"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-gob.js",
+      "size": 2706,
+      "sha256": "5af223d0990785dcda1626e7c2648351390816a6e04a04372386deb57438ed98"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-gruvbox.js",
+      "size": 1996,
+      "sha256": "d8e13f89e4c5a010ea841e62fb0764de9bfd24123d200a2509a5c3b21539c026"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-idle_fingers.js",
+      "size": 2582,
+      "sha256": "71610f48882c22d2281f29bf34b167bb91f3a15ae0524873cb3509a8d4ed93ec"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-iplastic.js",
+      "size": 6806,
+      "sha256": "ac767385f47db136f9367c103af5f7fe009943176ec9c8b19c49bf1a3da2db8c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-katzenmilch.js",
+      "size": 3459,
+      "sha256": "799384d429aba545913961b1883766efc743bb005ff023184e98d35959f54409"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-kr_theme.js",
+      "size": 2626,
+      "sha256": "c31f7b0f76ec63902dcfafce021b0e32483792933f99940a0b32a1f47431b07f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-kuroir.js",
+      "size": 2382,
+      "sha256": "b6b6c4b27fcb1c4d33e344982fa99a3f68032197622ca0da38bed4ef5229a105"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-merbivore.js",
+      "size": 2567,
+      "sha256": "fcc57a3a688cc8d146c0375307159306e8766ceae027647c574b5a4194f22ca2"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-merbivore_soft.js",
+      "size": 2784,
+      "sha256": "f00a0df87c47a32dff990d0d87b9c8a21ec103226cd8181bef20916f79349fd1"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-mono_industrial.js",
+      "size": 3128,
+      "sha256": "0138505a626f72b88a1b99da93e54477d19a3ee712c4b07d04210c05db6f1269"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-monokai.js",
+      "size": 2704,
+      "sha256": "d2f148d36f74037c36fb480969131c96fb1440a9eb6243b0ea8c03e2c6000052"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-nord_dark.js",
+      "size": 2413,
+      "sha256": "711f2cf3dcf899bbe4b03f514f9b3c0610c02167029bb315b7657553e8893931"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-pastel_on_dark.js",
+      "size": 2969,
+      "sha256": "2b361115c6ca16abea2a4f4193d7602b75b9c96f3d9758d81b1a7bc784582712"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-solarized_dark.js",
+      "size": 2648,
+      "sha256": "484cfbed9c00015742724af9a8ecc3f37dc4ca44aeac8dee57d8ecc8842daed4"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-solarized_light.js",
+      "size": 2697,
+      "sha256": "8df63733b35ebe15a8359b1ee26f1e290069af0bdc56e6691c8c5f78a0c01a8f"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-sqlserver.js",
+      "size": 3223,
+      "sha256": "60b7d9fd28dd61b8535a178143955102695fdc6818aec6a4b8c6ed5461cc8cf6"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-terminal.js",
+      "size": 3243,
+      "sha256": "6bc332ef06fed64c646ae5a046920771a2da772306cdc2041fb5b168a7f84014"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-textmate.js",
+      "size": 2942,
+      "sha256": "4e6ab64e9256b3622bde24deacbb8f07867b5ca7335c4b6cd3761bbf1b0e4b96"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-tomorrow.js",
+      "size": 2886,
+      "sha256": "fec45d89f3e466f27754c9cd3c7207eca27aca418b2b4a409cec37758cf6bcde"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-tomorrow_night.js",
+      "size": 3156,
+      "sha256": "31547cee4fbdef5ef92b1672758f8a86679e8a9b303215698231ccbb1bfaadfa"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-tomorrow_night_blue.js",
+      "size": 3372,
+      "sha256": "c92f50b7c2b7e87887536e555ebf460903f5ed6efa29ef42a50e5c53bbcc662c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-tomorrow_night_bright.js",
+      "size": 3839,
+      "sha256": "31d630e9f8dc563d39644e34a55bae2de165c295684c4cc7c7100db55dd19075"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-tomorrow_night_eighties.js",
+      "size": 3566,
+      "sha256": "9031de6c6cf4fddddb263fdd63913403dc2c473c1d87e65dcc313446dc040fab"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-twilight.js",
+      "size": 2829,
+      "sha256": "26401f259bd2e6e7ffdced932e15369292791493f9935744f1a913b44be0fdf8"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-vibrant_ink.js",
+      "size": 2537,
+      "sha256": "8e2099a02c8eed0db3d44794214d51e270e95e51adcc73503524b24632486966"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/theme-xcode.js",
+      "size": 2245,
+      "sha256": "dd5ef394cb28562234f5e27580c7ac51069cf8dac00fe6583666dec0b62caeb0"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-base.js",
+      "size": 21274,
+      "sha256": "9cae81bb42b60e9b396cef1bc90eed636fa3ec9ced03ff65b3dd3e4e59e439b3"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-coffee.js",
+      "size": 322728,
+      "sha256": "37d7c7b3a7becb8416d7f69b75dff844c13efaa8438098372138d7646f116c93"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-css.js",
+      "size": 131831,
+      "sha256": "9cf73b1a2d78444f4a30d01961e9a1ad5fbc0ff15fbe8128d5ec510851fab823"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-html.js",
+      "size": 208096,
+      "sha256": "3559c77ecaeace4e01aa59f65094510218bc1066e93b5947a1b12b394328a286"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-javascript.js",
+      "size": 506890,
+      "sha256": "8003c0b86b9f6f557f90eccff61d13302438db9a8bac28d86cacf25778d37c14"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-json.js",
+      "size": 23641,
+      "sha256": "fee35a0413b7a4fc9d44b30ed1f8ffbbde78e6226f3c3ab1b48b642b7dc7bd53"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-lua.js",
+      "size": 37849,
+      "sha256": "ed20a82b0c862bc2fd69300e80d6b328e28eb45b789ae506bda66360c063f097"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-php.js",
+      "size": 71181,
+      "sha256": "3a1deb2a2ebf62d3a61868640587a6a97e7a63ac87d74529589562c28c479e82"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-xml.js",
+      "size": 46171,
+      "sha256": "32fd826ad410172b2823373844707fdc51fdc2799d0a787da396f5bf64dcbb0c"
+    },
+    {
+      "path": "ace-builds@1.4.12/src-min-noconflict/worker-xquery.js",
+      "size": 1624214,
+      "sha256": "66a28fbc6981ae351b7460388f6ebc0c08d80f7b9ddb60e0b418943116cf4f44"
+    },
+    {
+      "path": "acorn@8.7.1/LICENSE",
+      "size": 1099,
+      "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+    },
+    {
+      "path": "acorn@8.7.1/dist/acorn.js",
+      "size": 217950,
+      "sha256": "42a5a94c9d6efe570ae54b649d16fc5aefdbe0ba471e5a6598190708d348a528"
+    },
+    {
+      "path": "acorn@8.7.1/dist/acorn.min.js",
+      "size": 217950,
+      "sha256": "42a5a94c9d6efe570ae54b649d16fc5aefdbe0ba471e5a6598190708d348a528"
+    },
+    {
+      "path": "bootstrap@3.3.7/LICENSE",
+      "size": 1085,
+      "sha256": "8a68c27ad022244b78dc5c9adb4cc5a4c92a994e3e11d356b291f227b2b04eaf"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap-theme.css",
+      "size": 26132,
+      "sha256": "c4ea52f9efdd111f33ef6c3eaabc8289e386cac408f1c10b015b773071b4a616"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap-theme.css.map",
+      "size": 47706,
+      "sha256": "71941b253b8942374cd57b8a85d473489f21311438ba9e3dd4fefa22adbf0f53"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap-theme.min.css",
+      "size": 23409,
+      "sha256": "653e073e97423adda5bc3917a241ee8497dd38a48f14bcde0098a4e54fd0fa5e"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap-theme.min.css.map",
+      "size": 25648,
+      "sha256": "9851e169f044bfc0d5e4a8a761ded531d415ceb7febc1ea585fab070b846d738"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap.css",
+      "size": 146010,
+      "sha256": "7e630d90c7234b0df1729f62b8f9e4bbfaf293d91a5a0ac46df25f2a6759e39a"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap.css.map",
+      "size": 389287,
+      "sha256": "9cd84a2a5162c816a8bbbd79cf9dc0605bc0ea86e4cd2bab43aee069bb83d266"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap.min.css",
+      "size": 121200,
+      "sha256": "f75e846cc83bd11432f4b1e21a45f31bc85283d11d372f7b19accd1bf6a2635c"
+    },
+    {
+      "path": "bootstrap@3.3.7/css/bootstrap.min.css.map",
+      "size": 542194,
+      "sha256": "b4a35d19793de445f4622f4d28db279c0242b60228ef304340aad833d012a77d"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap-theme.css",
+      "size": 26132,
+      "sha256": "c4ea52f9efdd111f33ef6c3eaabc8289e386cac408f1c10b015b773071b4a616"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap-theme.css.map",
+      "size": 47706,
+      "sha256": "71941b253b8942374cd57b8a85d473489f21311438ba9e3dd4fefa22adbf0f53"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap-theme.min.css",
+      "size": 23409,
+      "sha256": "653e073e97423adda5bc3917a241ee8497dd38a48f14bcde0098a4e54fd0fa5e"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap-theme.min.css.map",
+      "size": 25648,
+      "sha256": "9851e169f044bfc0d5e4a8a761ded531d415ceb7febc1ea585fab070b846d738"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap.css",
+      "size": 146010,
+      "sha256": "7e630d90c7234b0df1729f62b8f9e4bbfaf293d91a5a0ac46df25f2a6759e39a"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap.css.map",
+      "size": 389287,
+      "sha256": "9cd84a2a5162c816a8bbbd79cf9dc0605bc0ea86e4cd2bab43aee069bb83d266"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap.min.css",
+      "size": 121200,
+      "sha256": "f75e846cc83bd11432f4b1e21a45f31bc85283d11d372f7b19accd1bf6a2635c"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/css/bootstrap.min.css.map",
+      "size": 542194,
+      "sha256": "b4a35d19793de445f4622f4d28db279c0242b60228ef304340aad833d012a77d"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/fonts/glyphicons-halflings-regular.eot",
+      "size": 20127,
+      "sha256": "13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/fonts/glyphicons-halflings-regular.svg",
+      "size": 108738,
+      "sha256": "42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/fonts/glyphicons-halflings-regular.ttf",
+      "size": 45404,
+      "sha256": "e395044093757d82afcb138957d06a1ea9361bdcf0b442d06a18a8051af57456"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/fonts/glyphicons-halflings-regular.woff",
+      "size": 23424,
+      "sha256": "a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/fonts/glyphicons-halflings-regular.woff2",
+      "size": 18028,
+      "sha256": "fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/js/bootstrap.js",
+      "size": 69707,
+      "sha256": "0abe8deb334de1ba743b04d0399e99eba336afed9da72fc4c0a302c99f9238c8"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/js/bootstrap.min.js",
+      "size": 37045,
+      "sha256": "53964478a7c634e8dad34ecc303dd8048d00dce4993906de1bacf67f663486ef"
+    },
+    {
+      "path": "bootstrap@3.3.7/dist/js/npm.js",
+      "size": 484,
+      "sha256": "c7aa82a1aa7d45224a38d926d2adaff7fe4aef5bcdafa2a47bdac057f4422c2d"
+    },
+    {
+      "path": "bootstrap@3.3.7/fonts/glyphicons-halflings-regular.eot",
+      "size": 20127,
+      "sha256": "13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407"
+    },
+    {
+      "path": "bootstrap@3.3.7/fonts/glyphicons-halflings-regular.svg",
+      "size": 108738,
+      "sha256": "42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5"
+    },
+    {
+      "path": "bootstrap@3.3.7/fonts/glyphicons-halflings-regular.ttf",
+      "size": 45404,
+      "sha256": "e395044093757d82afcb138957d06a1ea9361bdcf0b442d06a18a8051af57456"
+    },
+    {
+      "path": "bootstrap@3.3.7/fonts/glyphicons-halflings-regular.woff",
+      "size": 23424,
+      "sha256": "a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742"
+    },
+    {
+      "path": "bootstrap@3.3.7/fonts/glyphicons-halflings-regular.woff2",
+      "size": 18028,
+      "sha256": "fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c"
+    },
+    {
+      "path": "bootstrap@3.3.7/js/bootstrap.js",
+      "size": 69707,
+      "sha256": "0abe8deb334de1ba743b04d0399e99eba336afed9da72fc4c0a302c99f9238c8"
+    },
+    {
+      "path": "bootstrap@3.3.7/js/bootstrap.min.js",
+      "size": 37045,
+      "sha256": "53964478a7c634e8dad34ecc303dd8048d00dce4993906de1bacf67f663486ef"
+    },
+    {
+      "path": "bootstrap@3.3.7/js/npm.js",
+      "size": 484,
+      "sha256": "c7aa82a1aa7d45224a38d926d2adaff7fe4aef5bcdafa2a47bdac057f4422c2d"
+    },
+    {
+      "path": "dat.gui@0.6.5/LICENSE",
+      "size": 11343,
+      "sha256": "47754d3064047c300714af25258efa782e144fdf1e835bfd1edbeb7f8f4ef9e4"
+    },
+    {
+      "path": "dat.gui@0.6.5/build/dat.gui.min.js",
+      "size": 56992,
+      "sha256": "4b8fd08e85dee083a95347f44a3e631102d358fa17f6e465d68841f758f286ec"
+    },
+    {
+      "path": "echarts/LICENSE",
+      "size": 11990,
+      "sha256": "634293835b43a6dd2094fa39182a3d9a6b9ca43b7fdb9ac354e8037af2a3093a"
+    },
+    {
+      "path": "echarts/NOTICE",
+      "size": 168,
+      "sha256": "d491d358344f842685c1b1585970999db65fe30ecf7ef3867af8814f4016c016"
+    },
+    {
+      "path": "echarts/dist/echarts.min.js",
+      "size": 1121883,
+      "sha256": "b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0"
+    },
+    {
+      "path": "echarts/dist/extension/bmap.min.js",
+      "size": 6240,
+      "sha256": "c317a79bc8da28f3de7d5ba11cea6f13f9ebac1e6adc3c99c54703750e8981d8"
+    },
+    {
+      "path": "echarts/licenses/LICENSE-d3",
+      "size": 1475,
+      "sha256": "e1211892da0b0e0585b7aebe8f98c1274fba15bafe47fa1f4ee8a7a502c06304"
+    },
+    {
+      "path": "echarts/map/js/world.js",
+      "size": 147885,
+      "sha256": "81fb963c0a057e73ecca32247162e2076224d9de3f60e628450e81ce1fe90e4e"
+    },
+    {
+      "path": "echarts/theme/azul.js",
+      "size": 4399,
+      "sha256": "41491dec1247ef2c105f0c18d1ad8ed3e00fbf7b5122311470a481b6e0122220"
+    },
+    {
+      "path": "echarts/theme/bee-inspired.js",
+      "size": 4787,
+      "sha256": "ed76482854ce586d977bd8b26cb620cf9926b214b7738d25bbb91002eda00415"
+    },
+    {
+      "path": "echarts/theme/blue.js",
+      "size": 4776,
+      "sha256": "4774156787c1d61c7808a45896137cc08e9a23b86e22a3c87fd87dd1e5aaa272"
+    },
+    {
+      "path": "echarts/theme/caravan.js",
+      "size": 4779,
+      "sha256": "db06a5e9913e67c8474a43d9905a39ccc6a6e2a52b1c363f7a1a2bca165024c5"
+    },
+    {
+      "path": "echarts/theme/carp.js",
+      "size": 4399,
+      "sha256": "8e92baff0469ea5886e71da9eff421b268929e944e29a44000351979ad8645d2"
+    },
+    {
+      "path": "echarts/theme/cool.js",
+      "size": 4813,
+      "sha256": "bacd5ffa68a383fec3d6d62883ced4f9be151c4a6a17fdf521e89bb39ea13eef"
+    },
+    {
+      "path": "echarts/theme/dark-blue.js",
+      "size": 4385,
+      "sha256": "4f65d9f4b98cbe8906e769c321c0feca591d99eb45f1cc33e4abe73325cc979d"
+    },
+    {
+      "path": "echarts/theme/dark-bold.js",
+      "size": 4385,
+      "sha256": "55efa9d7ec966bdcb7bb8453446475be2afd12469ec52162c70826270d2336d8"
+    },
+    {
+      "path": "echarts/theme/dark-digerati.js",
+      "size": 4389,
+      "sha256": "2750d50ef652c287546bad3982f993fd3475a29583a2565c7b7122abb3db7a43"
+    },
+    {
+      "path": "echarts/theme/dark-fresh-cut.js",
+      "size": 4390,
+      "sha256": "b26e948bdc38d7ef990969885832c2d7c6ba922ef6150a560e26130f110f5f05"
+    },
+    {
+      "path": "echarts/theme/dark-mushroom.js",
+      "size": 4389,
+      "sha256": "7201beffe93491a874e3fcbcd8d4b6de584e8e42499fa2f82804d3ece3915dde"
+    },
+    {
+      "path": "echarts/theme/dark.js",
+      "size": 5981,
+      "sha256": "ae60e563617cb87514690c1946ee202e78c9f1487820490614b58934ed037458"
+    },
+    {
+      "path": "echarts/theme/eduardo.js",
+      "size": 4779,
+      "sha256": "ffc732da34647870067d031983d3caf3fe1a485d0cca0864a14e2ce810aa11a9"
+    },
+    {
+      "path": "echarts/theme/forest.js",
+      "size": 4400,
+      "sha256": "c44da0efbb1ce2b2b11f1adc232c7181d4ff658789a2ebc702e8518bb6ce9d7b"
+    },
+    {
+      "path": "echarts/theme/fresh-cut.js",
+      "size": 4404,
+      "sha256": "a7d6dbd6d92dfb734478b3a119973808edd96e0c21de5e785c02c8172e315d37"
+    },
+    {
+      "path": "echarts/theme/fruit.js",
+      "size": 4777,
+      "sha256": "d6ad0b541d161fc872777833cb7b1f811ac0a5485b8a14030db32e1247064fa1"
+    },
+    {
+      "path": "echarts/theme/gray.js",
+      "size": 5976,
+      "sha256": "4291b4bf23409e53c1eaa25440e87f09f2aa45b8bf065c5cea6f2477f55e5f9e"
+    },
+    {
+      "path": "echarts/theme/green.js",
+      "size": 6010,
+      "sha256": "dc2f7d2ca001426895ee48813a9e5fdbc8396e07f704c9a678e488172defd695"
+    },
+    {
+      "path": "echarts/theme/helianthus.js",
+      "size": 7061,
+      "sha256": "edf843ddb56efb26414b466e8f6f7db9ee4aaab550e5dc87cfba67a827ee0d3b"
+    },
+    {
+      "path": "echarts/theme/infographic.js",
+      "size": 5829,
+      "sha256": "43f803926e8625a1f1cbf6b6189d1735c0526e3e9e7e12aa8531a8296550c1b4"
+    },
+    {
+      "path": "echarts/theme/inspired.js",
+      "size": 4402,
+      "sha256": "43ec2d33dc4e099e76a54d7beba9b0797f5f7526b9acdac1f5246c30c10009de"
+    },
+    {
+      "path": "echarts/theme/jazz.js",
+      "size": 4399,
+      "sha256": "4cd53889942b70f10c863d5bc42959e6d495a9a4c9b801d832c124d6841f9a47"
+    },
+    {
+      "path": "echarts/theme/london.js",
+      "size": 4401,
+      "sha256": "25d0680270df55620c0760963ff7f62136c0af5d918ee2a03918c0525dc2a418"
+    },
+    {
+      "path": "echarts/theme/macarons.js",
+      "size": 5869,
+      "sha256": "1aa73f933f0fd92b02e3e1de18299b15a2d536eb29c4b9755b8ab25d54f5640d"
+    },
+    {
+      "path": "echarts/theme/macarons2.js",
+      "size": 7968,
+      "sha256": "df62fd97be3ac8721260708ed8fa4ef579e2de94cb4c68a9945ee934261dd1ca"
+    },
+    {
+      "path": "echarts/theme/mint.js",
+      "size": 4218,
+      "sha256": "3aacbf703f3170585bf955f46f02ee819f4c2ac75f75494653b8fbfd8dbea3e4"
+    },
+    {
+      "path": "echarts/theme/package.json",
+      "size": 26,
+      "sha256": "6392b0b0c1a4294137c5ef23f9d9e25b92c45bf3dafcc3e30008d1f3a2aadcf1"
+    },
+    {
+      "path": "echarts/theme/rainbow.js",
+      "size": 2092,
+      "sha256": "0f875b89edda5383c1eb1f25f215c5f3ffe3387a116d19f76438629d04a3e0b2"
+    },
+    {
+      "path": "echarts/theme/red-velvet.js",
+      "size": 4408,
+      "sha256": "c8a9ce4cf5dc85eb2a38c4a8df69f1603c3213a3cb576820e960c928492b8689"
+    },
+    {
+      "path": "echarts/theme/red.js",
+      "size": 6071,
+      "sha256": "3e09d976edc0718b4aa4bc0eb467c82bcc7bc9c04d86988979d8bd58c921a006"
+    },
+    {
+      "path": "echarts/theme/roma.js",
+      "size": 3044,
+      "sha256": "01303d34787f242664d5ad35bb1d535bb21d701ff60f6f1412e8c872008b5a05"
+    },
+    {
+      "path": "echarts/theme/royal.js",
+      "size": 4400,
+      "sha256": "8ad231fa254187c01915509c5b3739a74b04d57308ec3702db9d77ece74a9da9"
+    },
+    {
+      "path": "echarts/theme/sakura.js",
+      "size": 3614,
+      "sha256": "ba03e8ba5eadc62480e69f5331ee382a88da129fa8cd618102b923e06092ab8b"
+    },
+    {
+      "path": "echarts/theme/shine.js",
+      "size": 4412,
+      "sha256": "33f28aaec40952dbad84de2d8cb3d58f49ea131806fad9497f06ad4d46f2a8f3"
+    },
+    {
+      "path": "echarts/theme/tech-blue.js",
+      "size": 4898,
+      "sha256": "eb7a5b53bb4965e436a17365306f870b07b7bd4964775de033fedad3713ec4d4"
+    },
+    {
+      "path": "echarts/theme/v5.js",
+      "size": 15922,
+      "sha256": "47cff55c8f8756667eba135cb61694798b63284ae32dece7388d742768e597b5"
+    },
+    {
+      "path": "echarts/theme/vintage.js",
+      "size": 1922,
+      "sha256": "15c22b1f26961f972d23a9297362d42c4e59764e4b38025364f341cf144fb84f"
+    },
+    {
+      "path": "echarts/types/dist/echarts.d.ts",
+      "size": 472249,
+      "sha256": "17b52825e438c4a187e85ee8a55f787ce262d81b8c63796533f18c56976de6ba"
+    },
+    {
+      "path": "echarts-gl/LICENSE",
+      "size": 1510,
+      "sha256": "55ea01207028f76d844678511f29fc800f8a1e67a8a0fe80470128677847ad32"
+    },
+    {
+      "path": "echarts-gl/dist/echarts-gl.min.js",
+      "size": 640694,
+      "sha256": "bfba1b87b8c3c06e5c7ed7741002586c747b00e4efdaa92077d15c2dc721bda0"
+    },
+    {
+      "path": "echarts-graph-modularity/README.md",
+      "size": 1087,
+      "sha256": "2ae49cdcd46d91800df61738ee3e4e925fe59871b62a37dafe1a1c2515eefa77"
+    },
+    {
+      "path": "echarts-graph-modularity/UPSTREAM-LICENSE-NOTICE.txt",
+      "size": 697,
+      "sha256": "bae0f8d9fa65da0814db6e02e85f8b101a2d89a5ff8cc70281843abe7015da95"
+    },
+    {
+      "path": "echarts-graph-modularity/dist/echarts-graph-modularity.min.js",
+      "size": 15067,
+      "sha256": "2b91b696db358fad2d0c81d6a5f0cce2c52ee1d7140d01d3a891b55a7815222e"
+    },
+    {
+      "path": "echarts-graph-modularity/package.json",
+      "size": 759,
+      "sha256": "48b90592820a87c6c1566de0dc1255a0bc346cd74889eeec546674956963b6b5"
+    },
+    {
+      "path": "echarts-stat/README.md",
+      "size": 21237,
+      "sha256": "0aa7f517e727bc7624256a9f3ab7588110d125f5b839a820d6f07573c6ce6fd3"
+    },
+    {
+      "path": "echarts-stat/UPSTREAM-LICENSE-NOTICE.txt",
+      "size": 649,
+      "sha256": "9d26661711f13ef648e9397fa250794b9717a7f709c3720e10b163eb7b3aa25a"
+    },
+    {
+      "path": "echarts-stat/dist/ecStat.min.js",
+      "size": 16061,
+      "sha256": "ff12e3dd24e811e95daf11f4b3e929064003e6c330a3603c52d2e6529a6a578b"
+    },
+    {
+      "path": "echarts-stat/package.json",
+      "size": 573,
+      "sha256": "1a278bc0789928f897802b96a0a294556982151e33c8251c17c03eaf9de39ece"
+    },
+    {
+      "path": "element-ui@2.15.14/LICENSE",
+      "size": 1082,
+      "sha256": "e9133c89038ed0089da92abbc833312c82c35f9be5e3eeb0f42f26937f8c11ec"
+    },
+    {
+      "path": "element-ui@2.15.14/index.js",
+      "size": 664912,
+      "sha256": "89d3c55e8fa03f177b1cc3824aede7c94b2ce4143f6a30f54ebb96e20eb42bc2"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/index.js",
+      "size": 664912,
+      "sha256": "89d3c55e8fa03f177b1cc3824aede7c94b2ce4143f6a30f54ebb96e20eb42bc2"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/alert.css",
+      "size": 1869,
+      "sha256": "3a92d0a177655a2ec12660798506503f3000efae8a2edd79d43cbc7d4cc2f69a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/aside.css",
+      "size": 110,
+      "sha256": "a60a11a84dc19e63b58d9e1483c4e8795911fa7547ab9621b8a38164d4939ace"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/autocomplete.css",
+      "size": 10688,
+      "sha256": "1ad03bdfae2b948a358142ff5dff77a3c6498d572355d2c86f2fe235438f6e82"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/avatar.css",
+      "size": 547,
+      "sha256": "6463505f5b30fd45584f5f33682ef9128c33292468afe2f52afc19a1671a087e"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/backtop.css",
+      "size": 452,
+      "sha256": "c129f3d48fbccecc9b9cfd1e24b2499185cf9a9548f22deadbe208991ec212e8"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/badge.css",
+      "size": 831,
+      "sha256": "27e3be528f52d56be0b0ea08360ac28bc9e6782ad52ff3ef7be1acb859e60c38"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/base.css",
+      "size": 16480,
+      "sha256": "d5738765eb9fd5468957996bf8578147c37ad318e3f730d0299d67b8974441d8"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/breadcrumb-item.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/breadcrumb.css",
+      "size": 1009,
+      "sha256": "ea4f80df1387ef711578bb58c14bc64e807558c6fd02ef537f5b00c19e9a8d7d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/button-group.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/button.css",
+      "size": 10375,
+      "sha256": "d84fba6badd5a88ff80a6af85cc35ddb59d3832ea47faeec8ca3fac277e85bbc"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/calendar.css",
+      "size": 11619,
+      "sha256": "a2f33d0f9964c9d46575675830793d7821d25f210639adb49e2038bc0ff43f3e"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/card.css",
+      "size": 463,
+      "sha256": "7fc049a247a73cdc3a39c574ab4cfefcc19968a19d00974c8eeba70e793566ff"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/carousel-item.css",
+      "size": 1024,
+      "sha256": "49b6e7cef8289dbaf47c47df36fefc0dbbd3debaa67ba7a7020ad92853592680"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/carousel.css",
+      "size": 2453,
+      "sha256": "1e4042d473fa362e07d44ef9848354572a3070a260061655c78432615f087635"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/cascader-panel.css",
+      "size": 13023,
+      "sha256": "da0e5e14fd649e7b493f002f91bea3c000badaad296dc6365cb61de30cf4f5ed"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/cascader.css",
+      "size": 29619,
+      "sha256": "2e9cc891be07b06efdbf6bb3553ca3f9e2fe1d74d6e3138aae957738637a4f3b"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/checkbox-button.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/checkbox-group.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/checkbox.css",
+      "size": 6945,
+      "sha256": "3df9334c885ec959b3007b9c4442bd9cf405b70e5dab7957ee0797b3dc34fcd3"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/col.css",
+      "size": 25258,
+      "sha256": "81d784d1b38f04ba01b179742a2c55b964866c29d6d8cb726d14b8575c7ea465"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/collapse-item.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/collapse.css",
+      "size": 5141,
+      "sha256": "cfc3458a811b4f40703cd2213d10ea65fa1c46300d01ee3e29bbe5d28b34049c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/color-picker.css",
+      "size": 7552,
+      "sha256": "a2af494e1c1586cb0e7f13e486f5c4cd98ea244a84fe9ca875632e1b18fa891a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/container.css",
+      "size": 445,
+      "sha256": "717823ec557a65e17ffbedd94c5c203675f611bf88c1251b3424b81b8fdd00bd"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/date-picker.css",
+      "size": 28745,
+      "sha256": "7d96c7944a1bbf61400117d038dbd0eb5db8096bf2c7de4071c189aa5300c5ed"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/descriptions-item.css",
+      "size": 831,
+      "sha256": "903a0d4d83dd9cc415dc3a6b02e63276e0ab8d332982982a41537a067c4ccf6a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/descriptions.css",
+      "size": 2665,
+      "sha256": "50991a240563763b73cd359ab5bc4662c198e90089c9fedbc36ffb9fc6188c7b"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/dialog.css",
+      "size": 2638,
+      "sha256": "d173b4a6b333b347008dd4849343f9e6165497ecaac166f306fda3235f38b352"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/display.css",
+      "size": 982,
+      "sha256": "10451b01ead5e286ee4dd7fba2a18aeae2a0ecc31035fa9eeed6130865bd514a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/divider.css",
+      "size": 695,
+      "sha256": "08c35a8cb3c1dcad3e443dd6bf108b67ab4ab1261d592a58d8779a14decca31e"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/drawer.css",
+      "size": 5050,
+      "sha256": "850d828a23ea47ccbba3eea4c201a708a20a4aaba08746a2b77fdc611c174016"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/dropdown-item.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/dropdown-menu.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/dropdown.css",
+      "size": 14708,
+      "sha256": "7858cebc9bfe007f61d42d236c61339de3ebcc2a384306f13561f3908d9d5010"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/empty.css",
+      "size": 817,
+      "sha256": "c2b682b5c262e029afe44b23d0497ada28800be031810cdcbcda40782dc9142a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/fonts/element-icons.ttf",
+      "size": 55956,
+      "sha256": "a30f5b3ba6a48822eae041e0ca5412a289125e4ba661d047dae565ac43b4a6b2"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/fonts/element-icons.woff",
+      "size": 28200,
+      "sha256": "ab40a58972be2ceab32e7e35dab3131b959aae63835d7bda1a79ae51f9a73c17"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/footer.css",
+      "size": 112,
+      "sha256": "ccb43019f9e87e60eb682730cff220cf0f24654c176023c97c520092b81b5532"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/form-item.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/form.css",
+      "size": 2651,
+      "sha256": "6478874fce6b2a1b983f86db04293b96c90e646c725665799880f536f890e23c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/header.css",
+      "size": 112,
+      "sha256": "87f90fe39f2d79ef8aab03fef8331aaa4b348c7fe681874495ad724175c3848e"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/icon.css",
+      "size": 12627,
+      "sha256": "394743249910791c5cba25d279ff61fa77726c4ffc16958dc1a3399b8678230a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/image.css",
+      "size": 3455,
+      "sha256": "376014d91cd926a864fcb5e3a29d14d1698007368485b69c5abea4f2b5ffb56c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/index.css",
+      "size": 240033,
+      "sha256": "dc86d4797565d05e88d63598128328e2ed6f02f7f6d950a36a1c4ca9eb9c8057"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/infinite-scroll.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/infiniteScroll.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/input-number.css",
+      "size": 10514,
+      "sha256": "053dc15c404b7e3c97c0e3f15f88e02a5c4e339ff6fe73c99328ba13d707d5af"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/input.css",
+      "size": 6682,
+      "sha256": "b00f517558ff515a3f8a8211b7bd1dbc45b5fbbf9d203035f8e596c2ea036fac"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/link.css",
+      "size": 2021,
+      "sha256": "7529f81b3d617bdceba2015ca3d98969fac11f68463b52e72650f2e097a530e0"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/loading.css",
+      "size": 1683,
+      "sha256": "f10fa02749537e1d4cfecc8eb0c04d8711384199d19c3cb2b8ffa707379dec80"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/main.css",
+      "size": 184,
+      "sha256": "0a7a30c853c0964fe3883f43817bee3f7a9c3bfce3951f33ccbf3efc47e37bbb"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/menu-item-group.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/menu-item.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/menu.css",
+      "size": 9547,
+      "sha256": "75553b17ca3f1192e835ecffe616cc2187fa107d5575197eeb7fdbca630ac614"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/message-box.css",
+      "size": 21593,
+      "sha256": "7b385016ff718b4d0efa5b525cc90765f8deaf3329692626645279818a89eb8d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/message.css",
+      "size": 1951,
+      "sha256": "3d979b05cddd3960594f60ea14ed58e3866ac4b4cbf46ded73fff168188f8288"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/notification.css",
+      "size": 1692,
+      "sha256": "97ab4b0a8edd69cf6835a6308c6f60165c5ad94bbce84fb917c8b1c4e19fa744"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/option-group.css",
+      "size": 478,
+      "sha256": "382bfa506dc79ea087248a0ec9b586afddc4c8af38d911a47f41e38d3bbcb892"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/option.css",
+      "size": 533,
+      "sha256": "e1e5b6d47838fb9de2304dc8b6bfab2f4adf91c64bde49ba91984d6059132a9d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/page-header.css",
+      "size": 620,
+      "sha256": "30e0839d4d2e6b81d023892cf724294a53b31632403a7aeae6325a3cccd647e8"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/pagination.css",
+      "size": 23710,
+      "sha256": "2f60529a50b462478d30fac04391c713325ede67472365d93d4bd638e86f0dac"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/popconfirm.css",
+      "size": 227,
+      "sha256": "716a3417b48cb4337005a2c357c7267cc6cc102ef0ee41be6c6880dc06484b7c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/popover.css",
+      "size": 2130,
+      "sha256": "9da0f6f2221d797279589702441c44a51803cdeb9b5fc5b33a2ebc4e1633675a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/popper.css",
+      "size": 1572,
+      "sha256": "3b9e7d5d66335624161ff595b22b80193879d60d1d033fb0db02baa052b34d12"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/progress.css",
+      "size": 2138,
+      "sha256": "df25384befb945efe9ac4befc80ca2d2ff8128480fe678bc5e07a1b843c6837c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/radio-button.css",
+      "size": 2300,
+      "sha256": "ef0b52b0cc6e68e50db4610cee3792127dbc27e611d8faf60451b2a2a295dfaa"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/radio-group.css",
+      "size": 85,
+      "sha256": "a8d1b635a397a3d77e6857c4df70188a08c25a9bc960f69e996382a3ea82c7e7"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/radio.css",
+      "size": 3242,
+      "sha256": "3d66d3717a045e3604b5614e214993e30698e6528d017f80b5da6bf221a6f9e4"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/rate.css",
+      "size": 550,
+      "sha256": "49fb5914b6d0b69b2a0af93e0b5f35439ab7d77ec4c38e006f56b46399cff801"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/reset.css",
+      "size": 811,
+      "sha256": "4718ffc9af1ae217b004ccbc0cea33a03bd4143c3717ade9a15cc447eaeed0e4"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/result.css",
+      "size": 838,
+      "sha256": "5f45a4365bed27704dda61b05d75b483dc80c7baa0d1e6f07a3616c78d9ed3e2"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/row.css",
+      "size": 965,
+      "sha256": "b90fef55053d9acae42796699c8e6c39354b36b39f99389bd2addfbdce67dde7"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/scrollbar.css",
+      "size": 1080,
+      "sha256": "b6fcca675c5156a3233d9b43f18c6643f58d08ddf208ad7d8b9bd08b732fb9ad"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/select-dropdown.css",
+      "size": 2696,
+      "sha256": "f0abcdf4e572044e916093fd79ea17b0f36e4af82ebe8556da3ec750ab92374d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/select.css",
+      "size": 18995,
+      "sha256": "8387898a644d4cc68bed0cd56d5f18482efbaa0aefaa2c9df29550cd3df19389"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/skeleton-item.css",
+      "size": 923,
+      "sha256": "0e68a559cd473ed09859c00ff9ce4e106035c8f43315c5a44829b021bbb9713c"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/skeleton.css",
+      "size": 1614,
+      "sha256": "9187c68cf2719b0ca2ff372b7b79afceb52f2e415aa0621118074ce8b60be543"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/slider.css",
+      "size": 17991,
+      "sha256": "01d5316c85314644dd516233420e743f33d11e9b9db9fadc9ee568e07cd7495a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/spinner.css",
+      "size": 883,
+      "sha256": "6a00c7ce0c413370fc9f5620c41d4b6dc214b7de8e842910f69110c1cbca2681"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/statistic.css",
+      "size": 670,
+      "sha256": "25cc32c86c51a420594369469488c04a7971b115c444778353f6a5375452a8e4"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/step.css",
+      "size": 5162,
+      "sha256": "d09636cfa437b8c94a8d338289fedee32c6934acb1e3eb2a6708050848d3989a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/steps.css",
+      "size": 302,
+      "sha256": "779a2e99c50fa67298142d4bbd3bf2160ce09215022e38733e059acdeff3e2bb"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/submenu.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/switch.css",
+      "size": 1702,
+      "sha256": "cfa99ad2d95b5efb835aa67d1b6362a449111b9f1a06fccbe358c4f222c0012d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/tab-pane.css",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/table-column.css",
+      "size": 13119,
+      "sha256": "03bceb728c87b3469748545b642a938c1713fb108ec071377718716cf722988f"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/table.css",
+      "size": 23359,
+      "sha256": "af7edfdc41638ff4f5e842b7c88340fd488bca624199c05b4eb0c0c9c7328176"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/tabs.css",
+      "size": 16481,
+      "sha256": "1d9967fb408dc8439081b75aee38f88084eae63f29090e4666087f209b47811b"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/tag.css",
+      "size": 4875,
+      "sha256": "6f885d4a3562a6be7e82443a913166c7a9d2188f4129c26da4e813f4ce82b4dc"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/time-picker.css",
+      "size": 21780,
+      "sha256": "13b7d85787d3956917ebd91b9dafda13342f5e67eff696b7e39fee79fb30a739"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/time-select.css",
+      "size": 13217,
+      "sha256": "21cb2ae68ba40bb92c623703e0224195efd2f81837adb1cae1cfbb75c5a6784b"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/timeline-item.css",
+      "size": 1423,
+      "sha256": "480d3c07a7ab68ceca32f1918d34c7425d0f93ccd27c598ef0981cfe2b23f181"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/timeline.css",
+      "size": 132,
+      "sha256": "7f0356dc5ada99a33eafc5c5a2ce152ac1eac1929e64b8fbec15ebbb2c24acee"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/tooltip.css",
+      "size": 2602,
+      "sha256": "cf80267da167cedefc3036b780d8d7336f04ca008e21f5af0ab0dd3ebef14b4d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/transfer.css",
+      "size": 27622,
+      "sha256": "12253377361b996f433393f9f289e5f949236c622da4d45c846e890087b5257a"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/tree.css",
+      "size": 12878,
+      "sha256": "92078a7a7aab5297de6ac63957811b2a42118fc5061491871b9e9efc8747fa1d"
+    },
+    {
+      "path": "element-ui@2.15.14/lib/theme-chalk/upload.css",
+      "size": 12814,
+      "sha256": "42dd517c8e3d71ecd684c551865b4a87f4102ff9d7e92226639e4b8abb099ad5"
+    },
+    {
+      "path": "jquery@3.7.1/LICENSE.txt",
+      "size": 1097,
+      "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d"
+    },
+    {
+      "path": "jquery@3.7.1/dist/jquery.min.js",
+      "size": 87533,
+      "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a"
+    },
+    {
+      "path": "monaco-editor@0.27.0/LICENSE",
+      "size": 1098,
+      "sha256": "33e4ff1a06ef62ba21788ea162564ee8165269a24a9ce6ef301837447eab0ac6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/ThirdPartyNotices.txt",
+      "size": 27236,
+      "sha256": "1c0a8b9a746472ed0678259befdadef3f23e2fe7af0fc88b462e907a2750144d"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/base/browser/ui/codicons/codicon/codicon.ttf",
+      "size": 66044,
+      "sha256": "6c92101cf99c83f87f8b8aeb43389703618115951bdfbb12bcb4a32a040c6455"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/base/worker/workerMain.js",
+      "size": 181549,
+      "sha256": "384d8e88fcd262846b289b3dff7446dc71085bd2ff732438c8c44fe940d611f2"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/abap/abap.js",
+      "size": 12076,
+      "sha256": "53a1ae80af16b2db402d0466978151529e81ba10266fdb71e7fedc517f7a176f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/apex/apex.js",
+      "size": 4380,
+      "sha256": "a73f263c7b48740d766e23bd20fa69611ea5c29cec3fb6f78d7418231e52ba2f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/azcli/azcli.js",
+      "size": 1259,
+      "sha256": "bbf98b2d1ccbabfb7d99978faf9d21578fefcdc9c3a7cb145e9cc53adb0cdc29"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/bat/bat.js",
+      "size": 2252,
+      "sha256": "eee4b8d061761fdc971847377d27b98aa4cb8d089aae02f89071d1846ce44201"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/bicep/bicep.js",
+      "size": 2910,
+      "sha256": "199c6d40fb9416463b29846ab1833546ba5a24776a478c586ee89d01ff6767bb"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/cameligo/cameligo.js",
+      "size": 2602,
+      "sha256": "ce8c0365aa0e505f65e9ababe9e6f11286c8d98387ff9230bb9777e41e2f3392"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/clojure/clojure.js",
+      "size": 10058,
+      "sha256": "323d9a945f4018305e56508194721eaa626fc989afd1bccd62ad8ad09c55fb04"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/coffee/coffee.js",
+      "size": 4003,
+      "sha256": "9e536145f225b6327c2f06a8e98f236295c484d32d7984e6cdc0535c8a95b26e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/cpp/cpp.js",
+      "size": 5852,
+      "sha256": "7ffb884e10555882238690d3edc454660ee1185dc419916dc58824cd3f1e7df6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/csharp/csharp.js",
+      "size": 4937,
+      "sha256": "cf5e698db4e91c8ec545734fbbb7d4eefc38e58ae3541670270fe3faee0df0e6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/csp/csp.js",
+      "size": 1826,
+      "sha256": "cc5a606c8e3b856378846e988ecf98c83013ddb1bc569b6fe38d64ac9d71240f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/css/css.js",
+      "size": 4917,
+      "sha256": "d048095fa54c48f6bd4088ac7fa2eb30d5b6bf6e295fa7ca304fd0e30de8b825"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/dart/dart.js",
+      "size": 4659,
+      "sha256": "75031eb6c3f9b58318350c3e2a4fb686fd427d34094be1ff1fe5b2d13f8b0a8f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/dockerfile/dockerfile.js",
+      "size": 2290,
+      "sha256": "81b6428ee6468372e2d41cb02a9b5bea351d54cc0b0d879aa6e0f0ad276cfbf7"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/ecl/ecl.js",
+      "size": 5749,
+      "sha256": "311ba2aa3906b451bc3183314b5c80b15dd6e1860dd828536e3f3093bc84e62c"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/elixir/elixir.js",
+      "size": 10101,
+      "sha256": "e70fed81aad8d3702af7b8fe0716908eb2187e06fe0ea9c7f0e9bd041afd3ae5"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/fsharp/fsharp.js",
+      "size": 3396,
+      "sha256": "e473cee0baaa432ceece51232d152b36425dc447c15ee26f30a7874ec381a29c"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/go/go.js",
+      "size": 3062,
+      "sha256": "391a26e85426205527e4b40fcd20edc3f8b253d18174a8a89394980dd74ea8a5"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/graphql/graphql.js",
+      "size": 2675,
+      "sha256": "c3f3dac5527e279a4127a932174a0a75a7f0ff44b81b77c2601e67162d8652a4"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/handlebars/handlebars.js",
+      "size": 6875,
+      "sha256": "7abd94fb2f6db396117ebcda4d30d011147a5725567739a09fcece3fb8bfe553"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/hcl/hcl.js",
+      "size": 3998,
+      "sha256": "136143a3515c25d463996f66f7e35161bf2ce9a132453bfcb4d048197a27b15e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/html/html.js",
+      "size": 4945,
+      "sha256": "d7301d1cbec62e05c05fda1dc71c2258f8e762c3c8289918356362dc17d843c2"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/ini/ini.js",
+      "size": 1508,
+      "sha256": "216a2b5b58ca1d832a7dcf020fdb6f46f1300ff522e22ea360e05a7a0f50e45e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/java/java.js",
+      "size": 3378,
+      "sha256": "5ba07d3035a0fcf6977648bfc025b948f7fcb83346f9945caaa8ac25385a899b"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/javascript/javascript.js",
+      "size": 6455,
+      "sha256": "17252daf0a3dd9f33de4122abf413357ad737162f816984ed992a39929944346"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/julia/julia.js",
+      "size": 7560,
+      "sha256": "cf8b1afbc390da9f913ad9af1fde5d6de5e0508b07dcedd451b1992a9ca9eb8d"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/kotlin/kotlin.js",
+      "size": 3852,
+      "sha256": "789061a9692e038977fd752acc382966fcbca38a99c13bf29c7dc2e5b2ccb908"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/less/less.js",
+      "size": 4305,
+      "sha256": "085fbf4aaf5af4c218809e648138b9f0d8daa8369b625737228c15aee619167d"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/lexon/lexon.js",
+      "size": 2848,
+      "sha256": "66b84630f9dfeb49b28dd01164fb5523b99290879d122d508d7a2ff170f3132d"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/liquid/liquid.js",
+      "size": 4053,
+      "sha256": "6ce14dcc4a5ecb0f3618ef64c89841a0cf96bf2e30f075add6ba6a9ae617e590"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/lua/lua.js",
+      "size": 2530,
+      "sha256": "b1d27c6aeb49cce4796a1244902b01cbac81d408e859d51fd7231db790008392"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/m3/m3.js",
+      "size": 3222,
+      "sha256": "4082aa3620122d3796841489cbbe5128d9c440d7affd24edf0a76294f001923e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/markdown/markdown.js",
+      "size": 4207,
+      "sha256": "4659110df1f62203f34ab602ae113fa049b9d8c6b270434215377361a8080e20"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/mips/mips.js",
+      "size": 2988,
+      "sha256": "af67edac65ead46a5ba9327ad7085b2919f50ffa2876f03164af777e2722baef"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/msdax/msdax.js",
+      "size": 5323,
+      "sha256": "b650169c3460d60b7d589a6e27d902c87131c9438f87e8516a8fad47c4ff4b98"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/mysql/mysql.js",
+      "size": 14909,
+      "sha256": "88df7737f1738e73a3e87c8efcba6185467619558e6125977ec3a4d3a038eef2"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/objective-c/objective-c.js",
+      "size": 2825,
+      "sha256": "db2d82d0e32c04b8404bcf8dfe91aa206b6b18b6eb7fa770d55c9c5f1d6a2cec"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/pascal/pascal.js",
+      "size": 3408,
+      "sha256": "b1cd38837f76eb319b13a3a12a28eaa91d97d26d5d5ae121d1c1b0fbcfeef3df"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/pascaligo/pascaligo.js",
+      "size": 2419,
+      "sha256": "adbb2560018ba4d187e6bbaba973241812eed90fd2aeb6b3af2ff0fb90445fee"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/perl/perl.js",
+      "size": 8664,
+      "sha256": "8b83d4af0b18ce9602f122d70926077f75f828650beef5b0e887d6e383cc449a"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/pgsql/pgsql.js",
+      "size": 18041,
+      "sha256": "cdac8d507d8e54e809fd0ada621d9bcdd2257863c9b5ab8feed51dccb84624ea"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/php/php.js",
+      "size": 8434,
+      "sha256": "ddfdd4c106eaf2cfa1ffe1f05ec686660d29882b12f27d32acfe6757d0059d63"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/postiats/postiats.js",
+      "size": 8273,
+      "sha256": "3b1ac0c485383c97ccb23a55fc2e9ccf669ea2ba60f51011fa9bb00f4b31fb2e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/powerquery/powerquery.js",
+      "size": 17360,
+      "sha256": "4db993aa870997f2142dc4cf52dd61e4a95ea05ac5b116d118a17dba585c44e7"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/powershell/powershell.js",
+      "size": 3690,
+      "sha256": "ef9e047b8407ded7ae473987a5f48c59927b7ca33f474dee7468583a846d9a42"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/pug/pug.js",
+      "size": 5235,
+      "sha256": "0c21e7af53b3b4b0e8bcedf53fa0d0c18edf091beac1fe80de7af461ece3ec7f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/python/python.js",
+      "size": 3668,
+      "sha256": "53faa7530a561e3b774fef065be71df35d9b16a4d9892b9d51e87ea7fdbb94f6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/qsharp/qsharp.js",
+      "size": 3337,
+      "sha256": "b9004059c2a6dae4aa2fbc11e6f30e2611ae4b671f623c6cfea70179070a74ef"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/r/r.js",
+      "size": 3534,
+      "sha256": "9846ce022302c399d3e79da79f5e1f3d029d074635c7dd52bdff2289cdbfa8b5"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/razor/razor.js",
+      "size": 8875,
+      "sha256": "cefb1d3acf079d48715c6c1cf04e125da78a637f8b8f1ff637ecb2c05e08bbb5"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/redis/redis.js",
+      "size": 3967,
+      "sha256": "95528d07734abade27f391ca07996af62a3a551e2b6bd0fef83dc4611ed3f98e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/redshift/redshift.js",
+      "size": 12204,
+      "sha256": "c8406838dc9d46033ac90fce25e42d5f14b31cc71273b4d55a4f33c2cec11b1e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/restructuredtext/restructuredtext.js",
+      "size": 4338,
+      "sha256": "492fd4db00ab4dad44e36d83d56d59abd7f88aeb7e512c830538546f823a986f"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/ruby/ruby.js",
+      "size": 8914,
+      "sha256": "3732a410ff395932ffe626fd8c5b629a758aad707b28a8edcaa61d11c9df21bc"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/rust/rust.js",
+      "size": 4311,
+      "sha256": "03d4d6cf7ee21ce8955cb8b87d5ce2e3ba34df0fa69c65974cf92306a469ad38"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/sb/sb.js",
+      "size": 2234,
+      "sha256": "e1f8bf0b2b5eed5a4f4eb63369f2c0d2797958668e69e69d5617de4e47faedb7"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/scala/scala.js",
+      "size": 7729,
+      "sha256": "01823a5e9ee8481eddd154f910172b75fdf09c8c57eb4be56984ad90cbad5e1c"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/scheme/scheme.js",
+      "size": 2180,
+      "sha256": "c1e2cc443b1824760fde9b2fe75a102bc1c64f02ad4e9ecd088df271da3d4730"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/scss/scss.js",
+      "size": 6818,
+      "sha256": "d3dd18b8d167ed266635fed16f5558fae9e841034173cad97698fefd6472cf90"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/shell/shell.js",
+      "size": 3337,
+      "sha256": "dfa2711abe335d5125e98b61b5260ba570bd6effe602cea6409e14455bf012e6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/solidity/solidity.js",
+      "size": 19014,
+      "sha256": "feb283bbdddfff236653de91543561a42ea76bf7be7113c3c94feac1c75bde79"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/sophia/sophia.js",
+      "size": 3177,
+      "sha256": "616b768d9f21b949ff13871097b9a6baf4b09d50a88eef9c119a781bad2f9098"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/sparql/sparql.js",
+      "size": 2965,
+      "sha256": "dbccb8999dacb6427ec34c4ab8c74a15308f939fd17fb77417e2eb30580743ce"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/sql/sql.js",
+      "size": 18646,
+      "sha256": "1c837c698cb72ef354b49800d4cd707d0ecaec149afbd5a917b74894b67778fc"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/st/st.js",
+      "size": 7791,
+      "sha256": "1e245cf0ab3af993b9e1b2931634f5b4f8ec5b8285f18d4e1d86c7b82aaa1ea9"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/swift/swift.js",
+      "size": 4761,
+      "sha256": "d0728561fc40822ea0d1e5640e19125fdce086c7dbb8f9fdd046a0ea203fa205"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/systemverilog/systemverilog.js",
+      "size": 7829,
+      "sha256": "81325fed223022ca42730727d113c064df8e09ebfb9edf5998b0e055bcaf8207"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/tcl/tcl.js",
+      "size": 3978,
+      "sha256": "dea2032f5bbf9eedf87856a0a70e1dddf2850a55cb4368a4b40f8144193531c4"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/twig/twig.js",
+      "size": 6387,
+      "sha256": "8655466d52fad410eb59693e302101b606434555247a076a3fc49e61b865be34"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/typescript/typescript.js",
+      "size": 5476,
+      "sha256": "8849e2f099e7b0ec76464ec37e79ebd14b02ac8e41238684d2d191b82d20161e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/vb/vb.js",
+      "size": 6196,
+      "sha256": "28a6ae3dc0cf2763405a1fa793a227fecf2e6b353cbc5c92aa624f3ddff7d973"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/xml/xml.js",
+      "size": 2494,
+      "sha256": "5e1c734305b3f8f9d6f2c00645c46ba6ae1e015ee80ba145fde589f7d2060313"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/basic-languages/yaml/yaml.js",
+      "size": 3953,
+      "sha256": "8e6a04d65c360b7fb6621f49cc84f27f6944ab15aa71262d7e494ad1577a9e1e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.css",
+      "size": 71502,
+      "sha256": "28409081dd77aa94a7866a90678e616fd2b5c3a456bcac321bea2d40878f6db6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.js",
+      "size": 2662013,
+      "sha256": "147e4eb7ffbe430fbda3feef2c989d4ee1192149126bb6cc473c892ada29f441"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.de.js",
+      "size": 82744,
+      "sha256": "5d9138702ab366c45c4ef255d0162e2d35546bac1d6e7c94412b37f6b46970de"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.es.js",
+      "size": 83616,
+      "sha256": "e3ba1ae4aedb34968708dd6580abe84ffdb33a4700d636d8ac93210be391c7bb"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.fr.js",
+      "size": 90564,
+      "sha256": "a2a765a92323d8b24cad2f58d91f815a5d2bd3a5f5611f9dc792dff2d5282e16"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.it.js",
+      "size": 85142,
+      "sha256": "d95368e62f494e16fc3f814b4b3173f038a1df1591974215b4ccab2b583ebc4e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.ja.js",
+      "size": 171825,
+      "sha256": "39e6c8a34bf4b5b5559f0eeaf87f27a6029e42b6d2fb7c8cfe91b6f8abf79c33"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.js",
+      "size": 66490,
+      "sha256": "0837e9cbf147229d855982cb6df5c70c493902283a6fbb2ddd935919a86bc755"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.ko.js",
+      "size": 142003,
+      "sha256": "22abd25121be0b635b309372559cef9b72d3f0b5cceef96df0786560133994f8"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.ru.js",
+      "size": 357567,
+      "sha256": "1832bc6c0b45376db6b41338536a4b5a1b61931117a1e96a3420b64c40b70da6"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.zh-cn.js",
+      "size": 108751,
+      "sha256": "6d38b15e8bf3225ee602e5124d6a290b89fad32a975112fc4c305d2addf0af88"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/editor/editor.main.nls.zh-tw.js",
+      "size": 110753,
+      "sha256": "8abc9aab1f6aba7aa52f7446682889b615fd6b80d8dfee526bfbbe6a50295e8e"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/css/cssMode.js",
+      "size": 799389,
+      "sha256": "2e1b06f7640f29bb08ba60cc24f743aa3ae51bb022d0f17df9667a32692a845b"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/css/cssWorker.js",
+      "size": 792416,
+      "sha256": "99bf125401281e4033432c9d2265927f885e4061ece2870a0b7f90c22dce9406"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/html/htmlMode.js",
+      "size": 472323,
+      "sha256": "139bfbd62328cd7969b2b10ecd9338f9854862746c03d96917c50f5168126308"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/html/htmlWorker.js",
+      "size": 465459,
+      "sha256": "3974c0cdc08fb1ad500e4b00136b439be8937d0507060f93b7d43052fd4c7579"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/json/jsonMode.js",
+      "size": 166809,
+      "sha256": "d090c7f36aff7bb1735eb2751be9f9c65534f50836762cf1b52a57fe07f46eb2"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/json/jsonWorker.js",
+      "size": 156895,
+      "sha256": "0718fef6ff8a6695e40ae648940ec991fe3f53ce9caec429f997f2c33c4f309b"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/typescript/tsMode.js",
+      "size": 31441,
+      "sha256": "1319d131c7ed452a364320f9619da8100fe8c744a41da3244b665ca60aec14b3"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/language/typescript/tsWorker.js",
+      "size": 4479389,
+      "sha256": "8544778efdcc09e7a4babd2af1a86bd80cc6feb0a1d2f8e316495cc5c1326676"
+    },
+    {
+      "path": "monaco-editor@0.27.0/min/vs/loader.js",
+      "size": 32173,
+      "sha256": "a02114f3d30c0211115bfce3d8cc35622aa1d940e12558c7b79e39dac7a5aeeb"
+    },
+    {
+      "path": "prettier@2.3.2/LICENSE",
+      "size": 1065,
+      "sha256": "b0f2417199889f1c0d28ec4e0244eacf1a15de5819d61f641dd7d8f45153ac9c"
+    },
+    {
+      "path": "prettier@2.3.2/parser-babel.js",
+      "size": 371653,
+      "sha256": "ac246cce6db583170dba92120465b567787f1e33386326ae859463b7c84c7a5a"
+    },
+    {
+      "path": "prettier@2.3.2/parser-typescript.js",
+      "size": 3287207,
+      "sha256": "eaef1f22504da779f87cce2ab1b79f633599fc948270f1cede088ec840a35bc8"
+    },
+    {
+      "path": "prettier@2.3.2/standalone.js",
+      "size": 544419,
+      "sha256": "9926a6ff53a08b7a5cd194efe70c0dfdb725f85769ad0e2ef506b7ff3b929ce6"
+    },
+    {
+      "path": "seedrandom@3.0.5/LICENSE",
+      "size": 1080,
+      "sha256": "00a535a10988a76c7d5f7f0c9d04e7995cf85591a6623566ef2dcb46aeac4038"
+    },
+    {
+      "path": "seedrandom@3.0.5/README.md",
+      "size": 11854,
+      "sha256": "4f42a296eee4f5ae3a8dadba94c2b0b5fb57662b96b8749f4d5288d4629b6240"
+    },
+    {
+      "path": "seedrandom@3.0.5/UPSTREAM-LICENSE-NOTICE.txt",
+      "size": 481,
+      "sha256": "d7a2412360fa17c269f9cb3e2745097ec4b056ddadbcdce52121a39c4d7672c3"
+    },
+    {
+      "path": "seedrandom@3.0.5/package.json",
+      "size": 1433,
+      "sha256": "f93348642af783cca495e5a31a22df5613ccf24ca167c9c4347416627a015a09"
+    },
+    {
+      "path": "seedrandom@3.0.5/seedrandom.min.js",
+      "size": 1631,
+      "sha256": "d2eb17a05ada2abf19c8bcb1f0f1ae62bb6da5d59a69dc6414ced08704a88cd1"
+    },
+    {
+      "path": "vue@2.6.14/LICENSE",
+      "size": 1091,
+      "sha256": "17fb24bc303763f3fe1911ee24e5225c7ad59f0e3a5d8123e9b730c100a306a6"
+    },
+    {
+      "path": "vue@2.6.14/dist/vue.min.js",
+      "size": 94151,
+      "sha256": "9174c425c445377df4562ad9165ea08fdf9433a808296d7de5f619791df10e17"
+    },
+    {
+      "path": "vue@2.6.14/vue.min.js",
+      "size": 94151,
+      "sha256": "9174c425c445377df4562ad9165ea08fdf9433a808296d7de5f619791df10e17"
+    }
+  ]
+}

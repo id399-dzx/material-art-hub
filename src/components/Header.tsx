@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart2, Box, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
+import { BarChart2, Box, ChartNoAxesCombined, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -34,6 +34,7 @@ export default function Header() {
     const isAdmin = session?.user.email === "id19991016@gmail.com";
     const isDiscovery = pathname === "/" || pathname.startsWith("/asset/");
     const workspaces = [
+        { href: "/chart-examples", label: "数据图示例", icon: ChartNoAxesCombined },
         { href: "/data-processing", label: "数据处理", icon: BarChart2 },
         { href: "/research-skills", label: "科研 Skill", icon: GraduationCap },
         { href: "/paper-formatting", label: "论文排版", icon: FileText },

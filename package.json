@@ -8,7 +8,9 @@
     "prebuild": "node scripts/prepare-chart-runtime.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:chart-examples": "node --experimental-strip-types --test src/lib/chart-examples/*.test.mjs",
+    "build:chart-examples-editor": "node scripts/build-echarts-editor.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",

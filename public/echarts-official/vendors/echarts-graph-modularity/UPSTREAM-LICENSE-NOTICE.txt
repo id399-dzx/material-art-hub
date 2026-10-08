@@ -1,0 +1,9 @@
+echarts-graph-modularity@2.1.0
+
+Official package: https://registry.npmjs.org/echarts-graph-modularity/-/echarts-graph-modularity-2.1.0.tgz
+Verified package integrity: sha512-FQg8xLT14aRSN/j8E7ZOCzsn7IJC371aK8fgOcGJvwkKqUO41fkdMeWvgkPV9rCJ+upZlpdoa0I7xKdPwW1A+A==
+Official repository: git+https://github.com/ecomfe/echarts-graph-modularity.git
+Published source revision: 5a6802a71692424f6746b25b9a5068fa5b78d863
+Publisher-declared license: "ISC"
+
+The official published package and its source revision provide the declaration in package.json, but no standalone LICENSE or full license text. Original package.json and README.md are retained; no license terms or copyright holder have been invented.

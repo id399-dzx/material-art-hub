@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>数据图示例编辑器 · Fesilent Reverie</title>
+    <script>
+      document.documentElement.dataset.embedded = window.self !== window.top ? 'true' : 'false';
+      window.ECHARTS_WWW_VENDORS_CDN_ROOT = new URL('/echarts-official/vendors/', location.href).href;
+    </script>
+    <link rel="stylesheet" href="../vendors/bootstrap@3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../vendors/element-ui@2.15.14/lib/theme-chalk/index.css" />
+    <link rel="stylesheet" href="../css/example-bundle.css" />
+    <link rel="stylesheet" href="../css/fesilent-editor.css" />
+    <script src="../vendors/vue@2.6.14/vue.min.js"></script>
+    <script src="../vendors/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="../vendors/bootstrap@3.3.7/js/bootstrap.min.js"></script>
+    <script src="../vendors/element-ui@2.15.14/index.js"></script>
+  </head>
+  <body>
+    <header class="fesilent-editor-header">
+      <a class="fesilent-editor-back" href="/chart-examples">← 数据图示例</a>
+      <div><strong>Fesilent Reverie</strong><span>示例代码与实时预览</span></div>
+      <a class="fesilent-editor-source" href="https://github.com/apache/echarts-examples" target="_blank" rel="noopener noreferrer">Apache ECharts ↗</a>
+    </header>
+    <nav class="fesilent-editor-mobile-nav" aria-label="编辑器视图">
+      <button type="button" data-editor-view="chart" aria-pressed="true">图表预览</button>
+      <button type="button" data-editor-view="code" aria-pressed="false">编辑代码</button>
+    </nav>
+    <main id="main" aria-label="ECharts 示例编辑器"></main>
+    <script src="../js/example-bundle.js"></script>
+    <script src="../js/fesilent-editor.js"></script>
+  </body>
+</html>

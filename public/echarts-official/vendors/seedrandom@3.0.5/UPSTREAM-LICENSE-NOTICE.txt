@@ -1,0 +1,9 @@
+seedrandom@3.0.5
+
+Official package: https://registry.npmjs.org/seedrandom/-/seedrandom-3.0.5.tgz
+Verified package integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
+Official repository: git://github.com/davidbau/seedrandom.git
+Published source revision: 4460ad325a0a15273a211e509f03ae0beb99511a
+Publisher-declared license: "MIT"
+
+The complete MIT license in LICENSE is extracted verbatim from the original package README.md.

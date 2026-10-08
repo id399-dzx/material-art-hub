@@ -1,0 +1,562 @@
+[
+  {
+    "category": "line",
+    "ids": [
+      "line-simple",
+      "line-smooth",
+      "area-basic",
+      "line-stack",
+      "area-stack",
+      "area-stack-gradient",
+      "bump-chart",
+      "line-marker",
+      "area-pieces",
+      "data-transform-filter",
+      "line-gradient",
+      "line-sections",
+      "area-simple",
+      "confidence-band",
+      "grid-multiple",
+      "line-aqi",
+      "multiple-x-axis",
+      "area-rainfall",
+      "area-time-axis",
+      "dynamic-data2",
+      "line-function",
+      "line-race",
+      "line-markline",
+      "line-style",
+      "line-in-cartesian-coordinate-system",
+      "line-log",
+      "line-step",
+      "line-easing",
+      "line-fisheye-lens",
+      "line-y-category",
+      "line-graphic",
+      "line-pen",
+      "line-polar",
+      "line-polar2",
+      "line-tooltip-touch",
+      "line-draggable",
+      "intraday-breaks-1",
+      "intraday-breaks-2",
+      "dataset-link",
+      "matrix-sparkline"
+    ]
+  },
+  {
+    "category": "bar",
+    "ids": [
+      "bar-simple",
+      "bar-tick-align",
+      "bar-background",
+      "bar-data-color",
+      "bar-waterfall",
+      "bar-negative2",
+      "bar-polar-label-radial",
+      "bar-polar-label-tangential",
+      "bar-y-category",
+      "polar-endAngle",
+      "bar-breaks-simple",
+      "bar-gradient",
+      "bar-label-rotation",
+      "bar-stack",
+      "bar-stack-borderRadius",
+      "bar-stack-normalization",
+      "bar-stack-normalization-and-variation",
+      "bar-waterfall2",
+      "bar-y-category-stack",
+      "bar-brush",
+      "bar-negative",
+      "bar1",
+      "mix-line-bar",
+      "mix-zoom-on-value",
+      "multiple-y-axis",
+      "bar-animation-delay",
+      "bar-drilldown",
+      "bar-large",
+      "bar-race",
+      "bar-multi-drilldown",
+      "bar-race-country",
+      "bar-rich-text",
+      "dynamic-data",
+      "mix-timeline-finance",
+      "watermark",
+      "bar-polar-real-estate",
+      "bar-polar-stack",
+      "bar-polar-stack-radial",
+      "polar-roundCap",
+      "bar-breaks-brush",
+      "data-transform-sort-bar",
+      "dataset-encode0",
+      "dataset-series-layout-by",
+      "dataset-simple0",
+      "dataset-simple1",
+      "matrix-mini-bar-geo"
+    ]
+  },
+  {
+    "category": "pie",
+    "ids": [
+      "pie-simple",
+      "pie-borderRadius",
+      "pie-doughnut",
+      "pie-half-donut",
+      "pie-padAngle",
+      "pie-custom",
+      "pie-pattern",
+      "pie-roseType",
+      "pie-roseType-simple",
+      "pie-alignTo",
+      "pie-labelLine-adjust",
+      "pie-legend",
+      "pie-rich-text",
+      "pie-nest",
+      "data-transform-multiple-pie",
+      "dataset-default",
+      "map-iceland-pie",
+      "calendar-pie",
+      "dataset-link"
+    ]
+  },
+  {
+    "category": "scatter",
+    "ids": [
+      "scatter-simple",
+      "scatter-anscombe-quartet",
+      "scatter-clustering",
+      "scatter-clustering-process",
+      "scatter-exponential-regression",
+      "scatter-effect",
+      "scatter-linear-regression",
+      "scatter-polynomial-regression",
+      "scatter-jitter",
+      "scatter-punchCard",
+      "scatter-single-axis",
+      "scatter-weight",
+      "scatter-aggregate-bar",
+      "scatter-label-align-right",
+      "scatter-label-align-top",
+      "scatter-symbol-morph",
+      "scatter-large",
+      "scatter-nebula",
+      "scatter-stream-visual",
+      "bubble-gradient",
+      "scatter-aqi-color",
+      "scatter-nutrients",
+      "scatter-nutrients-matrix",
+      "scatter-polar-punchCard",
+      "scatter-life-expectancy-timeline",
+      "scatter-painter-choice",
+      "scatter-logarithmic-regression",
+      "geo-choropleth-scatter",
+      "scatter-matrix",
+      "calendar-charts"
+    ]
+  },
+  {
+    "category": "map",
+    "ids": [
+      "geo-graph",
+      "geo-choropleth-scatter",
+      "map-iceland-pie",
+      "geo-beef-cuts",
+      "geo-organ",
+      "geo-seatmap-flight",
+      "geo-svg-lines",
+      "geo-svg-map",
+      "geo-svg-scatter-simple",
+      "geo-svg-traffic",
+      "lines-ny",
+      "map-bar-morph",
+      "map-HK",
+      "map-usa",
+      "map-usa-projection",
+      "custom-hexbin"
+    ]
+  },
+  {
+    "category": "candlestick",
+    "ids": [
+      "candlestick-simple",
+      "custom-ohlc",
+      "candlestick-sh",
+      "candlestick-large",
+      "candlestick-touch",
+      "intraday-breaks-1",
+      "intraday-breaks-2",
+      "candlestick-brush",
+      "candlestick-sh-2015",
+      "matrix-stock"
+    ]
+  },
+  {
+    "category": "radar",
+    "ids": [
+      "radar",
+      "radar-aqi",
+      "radar-custom",
+      "radar2",
+      "radar-multiple"
+    ]
+  },
+  {
+    "category": "boxplot",
+    "ids": [
+      "data-transform-aggregate",
+      "boxplot-light-velocity",
+      "boxplot-light-velocity2",
+      "boxplot-multi"
+    ]
+  },
+  {
+    "category": "heatmap",
+    "ids": [
+      "heatmap-cartesian",
+      "heatmap-large",
+      "heatmap-large-piecewise",
+      "calendar-heatmap",
+      "calendar-vertical"
+    ]
+  },
+  {
+    "category": "graph",
+    "ids": [
+      "graph-force2",
+      "graph-grid",
+      "graph-simple",
+      "graph-force",
+      "graph-label-overlap",
+      "graph",
+      "graph-circular-layout",
+      "graph-force-dynamic",
+      "graph-life-expectancy",
+      "graph-webkit-dep",
+      "graph-npm",
+      "geo-graph",
+      "calendar-graph"
+    ]
+  },
+  {
+    "category": "lines",
+    "ids": [
+      "lines-ny"
+    ]
+  },
+  {
+    "category": "tree",
+    "ids": [
+      "tree-basic",
+      "tree-legend",
+      "tree-orient-bottom-top",
+      "tree-orient-right-left",
+      "tree-polyline",
+      "tree-radial",
+      "tree-vertical"
+    ]
+  },
+  {
+    "category": "treemap",
+    "ids": [
+      "treemap-sunburst-transition",
+      "treemap-disk",
+      "treemap-drill-down",
+      "treemap-obama",
+      "treemap-show-parent",
+      "treemap-simple",
+      "treemap-visual"
+    ]
+  },
+  {
+    "category": "sunburst",
+    "ids": [
+      "sunburst-simple",
+      "sunburst-borderRadius",
+      "sunburst-label-rotate",
+      "sunburst-monochrome",
+      "sunburst-visualMap",
+      "sunburst-drink",
+      "sunburst-book"
+    ]
+  },
+  {
+    "category": "parallel",
+    "ids": [
+      "parallel-simple",
+      "parallel-aqi",
+      "parallel-nutrients",
+      "scatter-matrix"
+    ]
+  },
+  {
+    "category": "sankey",
+    "ids": [
+      "sankey-simple",
+      "sankey-vertical",
+      "sankey-itemstyle",
+      "sankey-levels",
+      "sankey-energy",
+      "sankey-nodeAlign-left",
+      "sankey-nodeAlign-right"
+    ]
+  },
+  {
+    "category": "funnel",
+    "ids": [
+      "funnel",
+      "funnel-align",
+      "funnel-customize",
+      "funnel-mutiple"
+    ]
+  },
+  {
+    "category": "gauge",
+    "ids": [
+      "gauge",
+      "gauge-simple",
+      "gauge-speed",
+      "gauge-progress",
+      "gauge-stage",
+      "gauge-grade",
+      "gauge-multi-title",
+      "gauge-temperature",
+      "gauge-ring",
+      "gauge-barometer",
+      "gauge-clock",
+      "gauge-car"
+    ]
+  },
+  {
+    "category": "pictorialBar",
+    "ids": [
+      "pictorialBar-bar-transition",
+      "pictorialBar-body-fill",
+      "pictorialBar-dotted",
+      "pictorialBar-forest",
+      "pictorialBar-hill",
+      "pictorialBar-spirit",
+      "pictorialBar-vehicle",
+      "pictorialBar-velocity"
+    ]
+  },
+  {
+    "category": "themeRiver",
+    "ids": [
+      "themeRiver-basic",
+      "themeRiver-lastfm"
+    ]
+  },
+  {
+    "category": "calendar",
+    "ids": [
+      "calendar-simple",
+      "calendar-heatmap",
+      "calendar-vertical",
+      "calendar-horizontal",
+      "calendar-graph",
+      "calendar-lunar",
+      "calendar-pie",
+      "calendar-charts",
+      "custom-calendar-icon"
+    ]
+  },
+  {
+    "category": "matrix",
+    "ids": [
+      "matrix-simple",
+      "matrix-correlation-heatmap",
+      "matrix-correlation-scatter",
+      "matrix-covariance",
+      "matrix-graph",
+      "matrix-pie",
+      "matrix-confusion",
+      "matrix-grid-layout",
+      "matrix-stock",
+      "matrix-sparkline",
+      "matrix-mini-bar-geo",
+      "matrix-periodic-table",
+      "matrix-mbti"
+    ]
+  },
+  {
+    "category": "chord",
+    "ids": [
+      "chord-simple",
+      "chord-minAngle",
+      "chord-lineStyle-color",
+      "chord-style"
+    ]
+  },
+  {
+    "category": "custom",
+    "ids": [
+      "bar-histogram",
+      "custom-profit",
+      "custom-error-scatter",
+      "custom-bar-trend",
+      "custom-cartesian-polygon",
+      "custom-error-bar",
+      "custom-profile",
+      "cycle-plot",
+      "custom-gantt-flight",
+      "custom-polar-heatmap",
+      "flame-graph",
+      "wind-barb",
+      "custom-hexbin",
+      "custom-calendar-icon",
+      "custom-wind",
+      "custom-gauge",
+      "geo-svg-custom-effect",
+      "pie-parliament-transition",
+      "circle-packing-with-d3",
+      "custom-spiral-race"
+    ]
+  },
+  {
+    "category": "dataset",
+    "ids": [
+      "data-transform-sort-bar",
+      "dataset-encode0",
+      "data-transform-multiple-pie",
+      "dataset-default",
+      "dataset-encode1",
+      "dataset-link",
+      "dataset-series-layout-by",
+      "dataset-simple0",
+      "dataset-simple1"
+    ]
+  },
+  {
+    "category": "dataZoom",
+    "ids": [
+      "custom-error-scatter",
+      "area-simple",
+      "custom-gantt-flight",
+      "wind-barb",
+      "line-tooltip-touch"
+    ]
+  },
+  {
+    "category": "graphic",
+    "ids": [
+      "graphic-stroke-animation",
+      "graphic-loading",
+      "graphic-wave-animation",
+      "line-graphic",
+      "line-draggable"
+    ]
+  },
+  {
+    "category": "rich",
+    "ids": [
+      "pie-rich-text",
+      "pie-nest",
+      "bar-rich-text"
+    ]
+  },
+  {
+    "category": "globe",
+    "ids": [
+      "globe-echarts-gl-hello-world",
+      "globe-atmosphere",
+      "globe-layers",
+      "animating-contour-on-globe",
+      "globe-contour-paint",
+      "globe-displacement",
+      "globe-moon",
+      "iron-globe"
+    ]
+  },
+  {
+    "category": "bar3D",
+    "ids": [
+      "bar3d-dataset",
+      "bar3d-global-population",
+      "bar3d-myth",
+      "bar3d-noise-modified-from-marpi-demo",
+      "bar3d-punch-card",
+      "bar3d-simplex-noise",
+      "bar3d-voxelize-image",
+      "global-population-bar3d-on-globe",
+      "image-to-bar3d",
+      "metal-bar3d",
+      "stacked-bar3d",
+      "transparent-bar3d"
+    ]
+  },
+  {
+    "category": "scatter3D",
+    "ids": [
+      "scatter3d",
+      "scatter3D-dataset",
+      "scatter3d-globe-population",
+      "scatter3d-orthographic",
+      "scatter3d-scatter",
+      "scatter3d-simplex-noise"
+    ]
+  },
+  {
+    "category": "surface",
+    "ids": [
+      "image-surface-sushuang",
+      "metal-surface",
+      "parametric-surface-rose",
+      "simple-surface",
+      "sphere-parametric-surface",
+      "surface-breather",
+      "surface-golden-rose",
+      "surface-leather",
+      "surface-mollusc-shell",
+      "surface-theme-roses",
+      "surface-wave"
+    ]
+  },
+  {
+    "category": "map3D",
+    "ids": [
+      "map3d-buildings",
+      "map3d-wood-city"
+    ]
+  },
+  {
+    "category": "lines3D",
+    "ids": [
+      "lines3d-airline-on-globe",
+      "lines3d-flights",
+      "lines3d-flights-gl",
+      "lines3d-flights-on-geo3d"
+    ]
+  },
+  {
+    "category": "line3D",
+    "ids": [
+      "line3d-orthographic"
+    ]
+  },
+  {
+    "category": "scatterGL",
+    "ids": [
+      "scatterGL-gps"
+    ]
+  },
+  {
+    "category": "linesGL",
+    "ids": [
+      "linesGL-ny"
+    ]
+  },
+  {
+    "category": "flowGL",
+    "ids": [
+      "flowGL-noise"
+    ]
+  },
+  {
+    "category": "graphGL",
+    "ids": [
+      "graphgl-gpu-layout",
+      "graphgl-large-internet",
+      "graphgl-npm-dep"
+    ]
+  }
+]

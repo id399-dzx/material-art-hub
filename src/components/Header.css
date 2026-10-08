@@ -56,6 +56,9 @@
   padding-left: 24px;
   border-left: 1px solid #e9e5eb;
   min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d8ceea transparent;
 }
 
 .site-header__nav-link {
@@ -187,7 +190,7 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1360px) {
   .site-header__inner {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

@@ -191,3 +191,17 @@ test('original constant-value color survives a snapshot round trip and rejects e
     const old = fixture();
     assert.equal('scalarConstantColor' in validateL1502EditSnapshot(old).style, false);
 });
+
+test('individual series appearance survives an editable snapshot, older records stay valid and invalid styles are rejected', () => {
+    const state = fixture();
+    state.style.seriesAppearances = { Treatment: { color: '#123456', lineWidth: 2.5, symbol: 'diamond', symbolSize: 9, fillOpacity: .2 } };
+    const restored = validateL1502EditSnapshot(JSON.parse(JSON.stringify(state)));
+    assert.deepEqual(restored.style.seriesAppearances, state.style.seriesAppearances);
+    restored.style.seriesAppearances.Treatment.color = '#ffffff';
+    assert.equal(state.style.seriesAppearances.Treatment.color, '#123456');
+    assert.equal('seriesAppearances' in validateL1502EditSnapshot(fixture()).style, false);
+    for (const invalid of [null, [], { Treatment: { color: 'red' } }, { Treatment: { lineWidth: Infinity } }, { Treatment: { fillOpacity: 2 } }, { Treatment: { unknown: 1 } }]) {
+        const broken = fixture(); broken.style.seriesAppearances = invalid;
+        assert.throws(() => validateL1502EditSnapshot(broken), /系列样式格式无效/);
+    }
+});

@@ -6,6 +6,8 @@ import type { ErrorMeasure, TemplateData, TemplateId } from "./templates.ts";
 import type { PaperChartVariant } from "./drawing-spec.ts";
 import { createPairedCorrelationOption, observedCurveDifference } from "./template-chart-variants.ts";
 import { getChartPalette, type ChartPaletteId, type ScalarPaletteId } from "./chart-palettes.ts";
+import type { RadarSettings, SeriesAppearances } from "./chart-style-settings.ts";
+import { applySeriesAppearances } from "./series-appearance.ts";
 
 export type PublicationStyle = ChartPaletteId;
 export type TemplateChartStyle = {
@@ -13,6 +15,8 @@ export type TemplateChartStyle = {
     palette: PublicationStyle; showGrid: boolean; showValues: boolean; errorMeasure: ErrorMeasure;
     scalarPalette?: ScalarPaletteId;
     scalarColors?: string[];
+    radarSettings?: RadarSettings;
+    seriesAppearances?: SeriesAppearances;
     panelChart?: "bar" | "line"; cumulative?: boolean; secondaryYLabel?: string; annotationX?: number; annotationText?: string; yaw?: number; pitch?: number; width?: number; height?: number;
     customColors?: string[]; horizontal?: boolean; colorByCategory?: boolean; stackedArea?: boolean; hatching?: boolean; fillLines?: boolean; sphereGuide?: boolean;
     xLog?: boolean; yLog?: boolean; equalAxes?: boolean;
@@ -22,6 +26,7 @@ export type TemplateChartStyle = {
 export function createTemplateOption(data: TemplateData, template: TemplateId, style: TemplateChartStyle): EChartsOption {
     const option = buildTemplateOption(data, template, style);
     applyCartesianScales(option, data, style);
+    applySeriesAppearances(option, style.seriesAppearances);
     fitTemplateLayout(option, data, template, style);
     if (style.equalAxes) fitEqualUnitGrid(option, style);
     return option;

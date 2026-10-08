@@ -21,6 +21,8 @@ import ScalarPalettePicker from "./ScalarPalettePicker";
 import PaletteComparison from "./PaletteComparison";
 import { findChartPalette, getChartPalette, getChartValueColors, type ChartPaletteId } from "@/lib/data-processing/chart-palettes";
 import { originalL1502Colors } from "@/lib/data-processing/original-chart-colors";
+import { appearanceCapabilities, withoutSeriesColors } from "@/lib/data-processing/series-appearance";
+import SeriesAppearanceEditor from "./SeriesAppearanceEditor";
 
 function initialEditor(template: DrawingTemplate): L1502EditSnapshot {
     const spec = template.l1502!;
@@ -82,10 +84,11 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }), error: "" };
         } catch (cause) { return { option: null, error: cause instanceof Error ? cause.message : "请检查数据和绘图参数。" }; }
     }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]);
+    const seriesControls = useMemo(() => rendered.option ? appearanceCapabilities(rendered.option) : [], [rendered.option]);
     const originalOption = useMemo(() => {
         if (!result.data || !originalColors) return null;
         try {
-            return createL1502Option(result.data, spec, { ...editor.style, ...originalColors,
+            return createL1502Option(result.data, spec, { ...editor.style, ...originalColors, seriesAppearances: withoutSeriesColors(editor.style.seriesAppearances),
                 title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
                 fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm });
         } catch { return null; }
@@ -101,6 +104,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     }, [result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm, originalColors]);
     const palettePreview = useMemo(() => ({ width: editor.style.width, height: editor.style.height, revision: JSON.stringify([result.data, spec, editor.style, editor.source.kind, editor.exportSettings.widthMm]),
         createOption: (id: ChartPaletteId) => result.data ? createL1502Option(result.data, spec, { ...editor.style,
+            seriesAppearances: withoutSeriesColors(editor.style.seriesAppearances),
             scalarColors: editor.style.scalarPalette ? editor.style.scalarColors : getChartValueColors(editor.style),
             colors: [...getChartPalette(id).colors], title: `${editor.style.title}${editor.source.kind === "demo" ? " · 示例数据" : ""}`,
             fontSize: editor.style.fontSize * 25.4 / 72 * editor.style.width / editor.exportSettings.widthMm }) : null,
@@ -125,12 +129,13 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
     function changePalette(id: ChartPaletteId) {
         setEditor(current => ({ ...current, style: { ...current.style,
             scalarColors: current.style.scalarPalette ? current.style.scalarColors : getChartValueColors(current.style),
+            seriesAppearances: withoutSeriesColors(current.style.seriesAppearances),
             colors: [...getChartPalette(id).colors] } }));
         setError("");
     }
     function restoreOriginalColors() {
         if (!originalColors) return;
-        setEditor(current => ({ ...current, style: { ...current.style, ...originalColors } }));
+        setEditor(current => ({ ...current, style: { ...current.style, ...originalColors, seriesAppearances: withoutSeriesColors(current.style.seriesAppearances) } }));
         setError("");
     }
     function restoreOriginalScale() {
@@ -221,6 +226,7 @@ export default function L1502TemplateEditor({ template, templateNumber, open, in
                 <details className="l1502-control-section l1502-style-section"><summary><span className="l1502-summary-title"><Palette size={15} />样式与标注</span><span>字号 · 画布 · 图注</span></summary><div>
                 <fieldset className="template-style-fields l1502-fieldset" disabled={locked}>
                     {textFields.map(field => <label className="template-field" key={field.key}>{field.name}<input aria-label={field.name} value={String(editor.style[field.key])} onChange={event => changeStyle(field.key, event.target.value as never)} /></label>)}
+                    {seriesControls.length > 0 && <SeriesAppearanceEditor series={seriesControls} value={editor.style.seriesAppearances} onChange={next => changeStyle("seriesAppearances", next)} disabled={locked} />}
                     {!scalarOnly && <ChartPalettePicker value={findChartPalette(editor.style.colors)?.id ?? null} currentColors={editor.style.colors} preview={palettePreview} disabled={locked} onChange={changePalette} extraPalette={originalColors ? { name: "初始配色", description: "恢复此图式最初的系列颜色", colors: originalColors.colors, option: originalOption, selected: JSON.stringify(editor.style.colors) === JSON.stringify(originalColors.colors), onSelect: restoreOriginalColors } : undefined} />}
                     {hasScalar && <ScalarPalettePicker value={editor.style.scalarPalette} preview={scalarPreview} disabled={locked} onChange={id => changeStyle("scalarPalette", id)} extraPalette={originalColors ? { name: "初始色阶", description: "恢复此图式最初的数值渐变", colors: originalColors.scalarColors, option: originalScalarOption, selected: !editor.style.scalarPalette && JSON.stringify(editor.style.scalarColors) === JSON.stringify(originalColors.scalarColors), onSelect: restoreOriginalScale } : undefined} />}
                     <label className="template-field">字体<select aria-label="图表字体" value={editor.style.fontFamily} onChange={event => changeStyle("fontFamily", event.target.value)}><option>Arial</option><option>Times New Roman</option><option>sans-serif</option></select></label>

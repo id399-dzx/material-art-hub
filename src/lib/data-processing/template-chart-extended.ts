@@ -2,7 +2,8 @@ import type { BarSeriesOption, DefaultLabelFormatterCallbackParams, CustomSeries
 import type { TemplateChartStyle } from "./template-chart";
 import type { TemplateData, TemplateId } from "./templates.ts";
 import { createSpatialOption } from "./template-chart-spatial.ts";
-import { createGroupedScatterOption, createVariantHeatmapOption, localRadarBounds } from "./template-chart-variants.ts";
+import { createRadarOption } from "./radar-chart.ts";
+import { createGroupedScatterOption, createVariantHeatmapOption } from "./template-chart-variants.ts";
 
 type BaseFactory = (id: "line" | "grouped-bar") => EChartsOption;
 
@@ -24,29 +25,7 @@ export function createExtendedTemplateOption(data: TemplateData, template: Templ
             edgeLabel: { show: style.showValues && template === "network", fontSize: 11, formatter: "{c}" },
         }], graphic: [{ type: "text", bottom: 16, left: "center", style: { text: template === "schematic" ? "箭头对应输入的步骤连接" : "圆形布局不代表节点距离", fill: "#787580", font: `11px ${style.fontFamily}` } }] };
     }
-    if (template === "radar") {
-        const local = style.variant === "local-range-radar";
-        const ranges = data.x.map((_, row) => localRadarBounds(data.series.map(item => item.values[row])));
-        const maxima = data.x.map((_, row) => {
-            const maximum = Math.max(...data.series.map(item => item.values[row])) || 1;
-            const target = maximum / 5;
-            const magnitude = 10 ** Math.floor(Math.log10(target));
-            const interval = [1, 2, 3, 5, 10].find(value => value * magnitude >= target)! * magnitude;
-            return Number((interval * 5).toPrecision(8));
-        });
-        return { ...shell, legend: { type: "scroll", top: 49, left: "center", textStyle: axisText },
-            radar: { center: ["50%", "57%"], radius: "57%", splitNumber: 5,
-                indicator: data.x.map((name, i) => local ? ({ name: `${name}\n范围 ${ranges[i][0]}–${ranges[i][1]}`, min: 0, max: 1 }) : ({ name: `${name}\n上限 ${Number(maxima[i].toPrecision(3))}`, min: 0, max: maxima[i] })),
-                axisName: { ...axisText, fontSize: Math.max(10, style.fontSize - 1) }, splitArea: { show: false },
-                splitLine: { lineStyle: { color: "#e0dfe8" } }, axisLine: { lineStyle: { color: "#d4d2de" } },
-            }, ...(local ? { tooltip: { renderMode: "richText" as const, confine: true, formatter: (params: unknown) => {
-                const name = (params as { name?: string }).name, series = data.series.find(item => item.name === name);
-                return series ? `${series.name}\n${data.x.map((indicator, row) => `${indicator}: ${series.values[row]}`).join("\n")}` : "";
-            } } } : {}), series: [{ type: "radar", symbolSize: 5, data: data.series.map((item, i) => ({ name: item.name, value: local ? item.values.map((value, row) => (value - ranges[row][0]) / (ranges[row][1] - ranges[row][0])) : item.values,
-                lineStyle: { color: palette[i % palette.length], width: 2, type: style.palette === "mono" && i % 2 ? "dashed" : "solid" },
-                areaStyle: { color: palette[i % palette.length], opacity: 0.08 },
-            })) }] };
-    }
+    if (template === "radar") return createRadarOption(data, style, palette, shell);
     if (template === "heatmap") {
         return createVariantHeatmapOption(data, style, palette);
     }

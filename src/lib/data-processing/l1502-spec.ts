@@ -1,5 +1,6 @@
 import type { DataTable, TableCell } from './templates.ts';
 import { getChartPalette, getRecommendedPalette, type ScalarPaletteId } from './chart-palettes.ts';
+import type { SeriesAppearances } from './chart-style-settings.ts';
 
 export type L1502Kind =
     | 'line' | 'bar' | 'dual-axis' | 'stacked-bar' | 'area' | 'scatter' | 'bubble' | 'bubble-cloud'
@@ -53,6 +54,7 @@ export type L1502Style = {
     scalarPalette?: ScalarPaletteId;
     scalarColors?: string[];
     scalarConstantColor?: string;
+    seriesAppearances?: SeriesAppearances;
     showGrid: boolean; showValues: boolean; yaw: number; pitch: number;
     annotationX: number; annotationText: string; intervalLabel: string; bins: number; isoLevel: number;
 };

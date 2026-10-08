@@ -3,6 +3,7 @@ import { L1502_SPATIAL_KINDS, type L1502Data, type L1502Spec, type L1502Style } 
 import { createL1502TwoDimensionalOption } from './l1502-render-2d.ts';
 import { createL1502SpatialOption } from './l1502-render-spatial.ts';
 import { findChartPalette } from './chart-palettes.ts';
+import { applySeriesAppearances } from './series-appearance.ts';
 
 type SeriesPart = Record<string, unknown>;
 function finishClassificationStyle(option: EChartsOption, style: L1502Style): void {
@@ -29,5 +30,6 @@ export function createL1502Option(data: L1502Data, spec: L1502Spec, style: L1502
         ? createL1502SpatialOption(data, resolved, style)
         : createL1502TwoDimensionalOption(data, resolved, style);
     finishClassificationStyle(option, style);
+    applySeriesAppearances(option, style.seriesAppearances);
     return option;
 }

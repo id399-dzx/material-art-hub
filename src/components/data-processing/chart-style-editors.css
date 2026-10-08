@@ -1,0 +1,64 @@
+.chart-style-editor { grid-column: 1 / -1; min-width: 0; margin: 0 0 12px; overflow: hidden; border: 1px solid #e6dfed; border-radius: 11px; background: #fffdfd9e; color: #655670; }
+.chart-style-editor > summary { display: flex; align-items: center; gap: 7px; min-width: 0; padding: 12px 11px; list-style: none; cursor: pointer; }
+.chart-style-editor summary::-webkit-details-marker { display: none; }
+.chart-style-editor > summary > strong { color: #5c4c68; font-size: 12px; font-weight: 650; }
+.chart-style-editor > summary > span { margin-left: auto; color: #998ba4; font-size: 10px; white-space: nowrap; }
+.chart-style-editor summary::after { content: "+"; flex: none; margin-left: 3px; color: #9885ad; font-size: 15px; font-weight: 400; }
+.chart-style-editor details[open] > summary::after, .chart-style-editor[open] > summary::after { content: "−"; }
+.chart-style-editor summary:focus-visible { outline: 2px solid #957aac; outline-offset: -3px; border-radius: 8px; }
+.chart-style-editor__body { min-width: 0; padding: 0 10px 10px; border-top: 1px solid #eee8f34d; }
+.chart-style-editor .chart-style-editor__hint { margin: 8px 0 10px; color: #94859f; font-size: 10px; line-height: 1.6; }
+.chart-style-editor .chart-style-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.chart-style-editor .chart-style-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; margin: 0; color: #776581; font-size: 10px; line-height: 1.4; font-weight: 500; }
+.chart-style-editor .chart-style-field--wide { grid-column: 1 / -1; }
+.chart-style-editor .chart-style-field > input, .chart-style-editor .chart-style-field > select { box-sizing: border-box; width: 100%; min-width: 0; min-height: 32px; padding: 6px 7px; border: 1px solid #e4dcebd6; border-radius: 7px; background: #fffeffd9; color: #665170; font: inherit; font-size: 11px; }
+.chart-style-editor input:focus-visible, .chart-style-editor select:focus-visible, .chart-style-editor button:focus-visible { outline: 2px solid #9477ac; outline-offset: 2px; }
+.chart-style-editor input[aria-invalid="true"] { border-color: #bd7c82; }
+.chart-style-editor :is(input, select, button):disabled { opacity: .42; cursor: default; }
+.chart-style-editor .chart-style-range { display: grid; grid-template-columns: minmax(0, 1fr) 34px; align-items: center; gap: 6px; min-height: 32px; }
+.chart-style-editor .chart-style-range > input { width: 100%; min-width: 0; height: 18px; margin: 0; padding: 0; accent-color: #a387b8; cursor: pointer; }
+.chart-style-editor .chart-style-range > output { color: #897297; text-align: right; font-size: 10px; font-variant-numeric: tabular-nums; }
+.chart-style-editor .chart-style-color-field { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 7px; min-width: 0; color: #776581; font-size: 10px; }
+.chart-style-editor .chart-style-color-field > div { display: flex; align-items: center; gap: 7px; color: #a093a9; font-size: 10px; font-variant-numeric: tabular-nums; }
+.chart-style-editor input[type="color"] { width: 32px; min-width: 32px; height: 28px; padding: 3px; border: 1px solid #ddd3e7; border-radius: 7px; background: #fff; cursor: pointer; }
+.chart-style-editor input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+.chart-style-editor input[type="color"]::-webkit-color-swatch { border: 0; border-radius: 4px; }
+.chart-style-editor .chart-style-reset { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 28px; padding: 5px 7px; border: 0; border-radius: 6px; background: #f1ecf580; color: #937d9f; font-family: inherit; font-size: 10px; font-weight: 500; cursor: pointer; }
+.chart-style-editor .chart-style-reset:hover:not(:disabled) { background: #ede4f6; color: #735583; }
+.chart-style-editor .chart-style-reset--all { width: 100%; margin-top: 10px; }
+.chart-style-series-list { display: flex; flex-direction: column; gap: 6px; }
+.chart-style-editor .chart-style-series { min-width: 0; padding: 0 8px; border: 1px solid #e7dfedb3; border-radius: 8px; background: #fffefd8c; }
+.chart-style-series > summary { display: flex; align-items: center; gap: 7px; min-width: 0; padding: 9px 0; cursor: pointer; list-style: none; }
+.chart-style-series__swatch { display: block; flex: none; width: 9px; height: 9px; border: 1px solid #36244114; border-radius: 3px; }
+.chart-style-series__name { overflow: hidden; min-width: 0; color: #6d5879; font-size: 11px; font-weight: 550; text-overflow: ellipsis; white-space: nowrap; }
+.chart-style-series > summary > small { flex: none; margin-left: auto; color: #a194ab; font-size: 9px; }
+.chart-style-series__edited { flex: none; width: 5px; height: 5px; border-radius: 50%; background: #b399c5; }
+.chart-style-editor .chart-style-series > .chart-style-fields { margin-bottom: 8px; padding-top: 4px; }
+.chart-style-presets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin: 9px 0 2px; }
+.chart-style-editor .chart-style-preset { display: flex; align-items: center; justify-content: center; gap: 5px; min-width: 0; min-height: 60px; padding: 5px; border: 1px solid #e6dced; border-radius: 8px; background: #ffffffa3; color: #a28bb4; font-family: inherit; font-size: 10px; cursor: pointer; }
+.chart-style-preset > svg { flex: none; width: 34px; height: 34px; }
+.chart-style-preset > span { line-height: 1.4; }
+.chart-style-editor .chart-style-preset.is-selected { border-color: #b498c7; background: #f3eafa9e; color: #816492; }
+.chart-style-editor .chart-style-preset:hover:not(:disabled) { border-color: #baa3cd; }
+.chart-style-subsection { min-width: 0; margin-top: 10px; border-top: 1px solid #e7deed; }
+.chart-style-subsection > summary { display: flex; align-items: center; gap: 5px; min-width: 0; padding: 11px 0 5px; list-style: none; cursor: pointer; }
+.chart-style-subsection > summary > strong { color: #7c658a; font-size: 11px; font-weight: 550; }
+.chart-style-subsection > summary > span { margin-left: auto; color: #a294ab; font-size: 9px; }
+.chart-style-indicators { display: flex; flex-direction: column; gap: 9px; }
+.chart-style-editor .chart-style-indicator { box-sizing: border-box; min-width: 0; width: 100%; margin: 0; padding: 7px 8px 8px; border: 1px solid #e7deed; border-radius: 8px; background: #fffdfca3; }
+.chart-style-indicator > legend { max-width: 100%; padding: 0 4px; color: #705d7e; font-size: 10px; font-weight: 600; }
+.chart-style-indicator > legend > span { overflow-wrap: anywhere; }
+.chart-style-indicator > legend > small { margin-left: 6px; color: #a294ab; font-size: 9px; font-weight: 400; white-space: nowrap; }
+.chart-style-editor .chart-style-indicator__data { overflow-wrap: anywhere; margin: 0 0 8px; color: #a394ab; font-size: 9px; line-height: 1.5; }
+.chart-style-indicator__actions { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px; margin-top: 8px; }
+.chart-style-editor .chart-style-apply { min-height: 28px; padding: 5px 8px; border: 1px solid #d1bcdf; border-radius: 6px; background: #eee3f59e; color: #7c598f; font-family: inherit; font-size: 10px; font-weight: 500; cursor: pointer; }
+.chart-style-editor .chart-style-apply:hover:not(:disabled) { background: #e9dcef; }
+.chart-style-editor .chart-style-editor__error { overflow-wrap: anywhere; margin: 7px 0 0; color: #ad616e; font-size: 10px; line-height: 1.5; }
+.chart-style-order { display: flex; flex-direction: column; gap: 5px; padding: 0; margin: 0; list-style: none; }
+.chart-style-order > li { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 5px 6px; border: 1px solid #e9e0ef; border-radius: 7px; background: #fffdfd9e; }
+.chart-style-order > li > small { flex: none; min-width: 13px; color: #b1a0bd; font-size: 10px; font-variant-numeric: tabular-nums; }
+.chart-style-order > li > span { overflow: hidden; min-width: 0; color: #887094; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.chart-style-order > li > div { display: flex; gap: 4px; margin-left: auto; }
+.chart-style-editor .chart-style-order button { display: flex; align-items: center; justify-content: center; width: 27px; height: 27px; padding: 0; border: 0; border-radius: 5px; background: #f1eaf580; color: #8f739f; cursor: pointer; }
+.chart-style-editor .chart-style-order button:hover:not(:disabled) { background: #e9dcf1; }
+@media (max-width: 360px) { .chart-style-editor .chart-style-preset { flex-direction: column; gap: 0; } }

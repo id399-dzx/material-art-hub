@@ -46,7 +46,7 @@ export function drawingPreviewOption(template) {
         xLabel: id === 'heatmap' ? template.xLabel : table.columns[mapping.x] || 'X',
         yLabel: isSpatial(id) ? table.columns[mapping.ys[0]] || 'Y' : template.yLabel || base.yLabel,
         fontFamily: 'Arial', fontSize: 8 * 25.4 / 72 * width / 85,
-        ...recommendedColors, ...originalColors, palette: originalColors ? 'journal' : recommendedColors.palette, showGrid: false, showValues: false,
+        ...recommendedColors, ...originalColors, palette: originalColors ? 'journal' : recommendedColors.palette, showGrid: id === 'radar', showValues: false,
         errorMeasure, panelChart: 'bar', cumulative: false,
         secondaryYLabel: template.electrochemical?.secondaryYLabel || table.columns[mapping.ys[1]] || '右轴指标',
         annotationX: numericCell(table.rows[Math.floor(table.rows.length / 2)]?.[mapping.x]) ?? 0.6,

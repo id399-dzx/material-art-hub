@@ -48,7 +48,7 @@ export function createExtendedGalleryOption(data: TemplateData, id: TemplateId, 
         return { ...shell,
             visualMap: min === max
                 ? { type: 'piecewise', pieces: [{ value: min, label: String(min), color: interpolateChartColor(valueColors, .5) }], orient: 'horizontal', left: 'center', bottom: 10, textStyle: font }
-                : { min, max, calculable: true, orient: 'horizontal', left: 'center', bottom: 10, itemWidth: 12, itemHeight: 160, text: [String(max), String(min)], inRange: { color: valueColors }, textStyle: font },
+                : { min, max, calculable: true, orient: 'horizontal', left: 'center', bottom: 10, itemWidth: 12, itemHeight: 160, inRange: { color: valueColors }, textStyle: font },
             calendar: { range: [dates[0], dates.at(-1)!], cellSize: ['auto', 'auto'], yearLabel: { show: false }, monthLabel: { nameMap: 'en', margin: 12, ...font }, dayLabel: { firstDay: 1, nameMap: 'en', margin: 10, ...font }, splitLine: { show: style.showGrid, lineStyle: { color: '#d5d5df', width: 1 } }, itemStyle: { color: '#fafafd', borderWidth: 1, borderColor: '#fff' } },
             series: [{ type: 'heatmap', name: data.series[0].name, coordinateSystem: 'calendar', data: data.x.map((date, index) => [date, values[index]]), label: { show: style.showValues, fontFamily: style.fontFamily, fontSize: Math.max(8, style.fontSize - 3), formatter: '{@[1]}' } }],
         };
@@ -65,7 +65,7 @@ export function createExtendedGalleryOption(data: TemplateData, id: TemplateId, 
         grid: { left: 85, right: 30, top: 85, bottom: 100 },
         xAxis: { type: 'category', data: data.series.map(item => item.name), name: style.xLabel, axisLabel: font, splitArea: { show: false } },
         yAxis: { type: 'category', data: data.x, inverse: true, name: style.yLabel, axisLabel: font, splitArea: { show: false } },
-        visualMap: { min, max, calculable: true, orient: 'horizontal', left: 'center', bottom: 8, itemWidth: 12, itemHeight: 160, text: [String(max), String(min)], inRange: { color: getChartValueColors(style, correlation ? 'diverging' : 'sequential') }, textStyle: font },
+        visualMap: { min, max, calculable: true, orient: 'horizontal', left: 'center', bottom: 8, itemWidth: 12, itemHeight: 160, inRange: { color: getChartValueColors(style, correlation ? 'diverging' : 'sequential') }, textStyle: font },
         series: [series],
     };
 }

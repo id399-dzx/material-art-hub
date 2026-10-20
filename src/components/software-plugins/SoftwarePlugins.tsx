@@ -7,6 +7,7 @@ import { AlertCircle, ArrowUpRight, Box, Download, Layers3, Loader2, Monitor, Or
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { useContentAdmin } from "@/components/admin/ContentProvider";
 import { SOFTWARE_HOSTS, formatPackageSize, type SoftwareHost, type SoftwarePlugin } from "@/lib/software-plugins/catalog";
+import { findSoftwareProduct, groupSoftwareProducts, matchesSoftwareProduct, type SoftwareProduct } from "@/lib/software-plugins/products";
 import { loadSoftwarePlugins } from "@/lib/software-plugins/storage";
 import { downloadPluginPackage, PluginDownloadLoginRequiredError, type PluginDownloadProgress } from "@/lib/software-plugins/download";
 import { getSupabaseErrorMessage, isSupabaseConnectionError } from "@/lib/supabase";
@@ -86,7 +87,12 @@ export default function SoftwarePlugins() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
-  const [selected, setSelected] = useState<SoftwarePlugin | null>(null);
+  const [selected, setSelected] = useState<SoftwareProduct | null>(null);
+  const [documentPackageId, setDocumentPackageId] = useState("");
+  const [choosingVersion, setChoosingVersion] = useState(false);
+  const [downloadPackageId, setDownloadPackageId] = useState("");
+  const versionOptionsRef = useRef<HTMLFieldSetElement>(null);
+  const downloadButtonRef = useRef<HTMLButtonElement>(null);
   const [publishing, setPublishing] = useState(false);
   const [editingPlugin, setEditingPlugin] = useState<SoftwarePlugin | undefined>();
   const [publishingBusy, setPublishingBusy] = useState(false);
@@ -110,7 +116,15 @@ export default function SoftwarePlugins() {
       if (alive) {
         setPlugins(data); setLoadError(null); setLoading(false);
         const requested = new URLSearchParams(window.location.search).get("plugin");
-        if (requested) setSelected(data.find(plugin => plugin.id === requested) ?? null);
+        if (requested) {
+          const product = findSoftwareProduct(groupSoftwareProducts(data), requested);
+          setSelected(product ?? null);
+          setDocumentPackageId(requested);
+          const download = new URLSearchParams(window.location.search).get("download");
+          if (product && product.variants.some(({ plugin }) => plugin.id === download)) {
+            setDownloadPackageId(download!); setChoosingVersion(true);
+          }
+        }
       }
     }).catch(error => {
       if (alive) { setLoadError(isSupabaseConnectionError(error) ? "暂时无法连接插件库，请稍后重试。" : (getSupabaseErrorMessage(error) ?? "插件库读取失败，请稍后重试。")); setLoading(false); }
@@ -125,30 +139,61 @@ export default function SoftwarePlugins() {
     return () => window.removeEventListener("hashchange", readHash);
   }, [isAdmin]);
 
-  const filtered = useMemo(() => plugins.filter(plugin =>
-    (host === "全部" || plugin.host === host) && `${plugin.name} ${plugin.host} ${plugin.summary} ${plugin.outputs.join(" ")}`.toLowerCase().includes(query.trim().toLowerCase())), [plugins, host, query]);
-  const softwareCount = new Set(plugins.map(plugin => plugin.host)).size;
+  const products = useMemo(() => groupSoftwareProducts(plugins), [plugins]);
+  const filtered = useMemo(() => products.filter(product => matchesSoftwareProduct(product, host, query)), [products, host, query]);
+  const softwareCount = new Set(products.map(product => product.host)).size;
+  const documentVariant = selected?.variants.find(({ plugin }) => plugin.id === documentPackageId) ?? selected?.variants[0];
+  const downloadVariant = selected?.variants.find(({ plugin }) => plugin.id === downloadPackageId);
+  const hasEditions = Boolean(selected?.variants.some(variant => variant.platform !== "default"));
+
+  useEffect(() => {
+    if (selected && choosingVersion) versionOptionsRef.current?.querySelector<HTMLInputElement>("input:checked, input")?.focus();
+  }, [selected, choosingVersion]);
+
   const retry = () => { setLoading(true); setLoadError(null); setReloadKey(key => key + 1); };
   const closePublisher = () => { if (publishingBusy) return; setPublishing(false); setEditingPlugin(undefined); if (window.location.hash === "#publish") window.history.replaceState(null, "", window.location.pathname); };
-  const closeDetails = () => {
+  const cancelDownload = () => {
     const controller = downloadController.current;
     downloadController.current = null;
     controller?.abort();
-    setSelected(null); setDownloadBusy(false); setDownloadError(""); setDownloadProgress(null);
+    setDownloadBusy(false); setDownloadError(""); setDownloadProgress(null);
+  };
+  const closeDetails = () => {
+    cancelDownload(); setSelected(null); setChoosingVersion(false); setDownloadPackageId("");
+    const url = new URL(window.location.href);
+    url.searchParams.delete("plugin"); url.searchParams.delete("download");
+    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+  };
+  const openDetails = (product: SoftwareProduct) => {
+    closeDetails(); setSelected(product); setDocumentPackageId(product.variants[0].plugin.id);
+  };
+  const returnToDetails = () => {
+    cancelDownload(); setChoosingVersion(false);
+    requestAnimationFrame(() => downloadButtonRef.current?.focus());
+  };
+  const beginDownload = () => {
+    if (!selected) return;
+    if (hasEditions) {
+      setDownloadPackageId(""); setDownloadError(""); setDownloadProgress(null); setChoosingVersion(true);
+    } else void downloadPlugin(selected.variants[0].plugin);
   };
 
   const downloadPlugin = async (plugin: SoftwarePlugin) => {
     if (checking || downloadBusy || downloadController.current) return;
+    const product = selected;
+    if (!product || !product.variants.some(variant => variant.plugin.id === plugin.id)) return;
     const controller = new AbortController();
     downloadController.current = controller;
     const isCurrent = () => downloadController.current === controller && !controller.signal.aborted;
     setDownloadError("");
     setDownloadProgress(null);
+    setDownloadBusy(true);
+    const returnPath = `/software-plugins?plugin=${encodeURIComponent(plugin.id)}&download=${encodeURIComponent(plugin.id)}`;
     // Close the detail dialog before displaying the shared login dialog.
     flushSync(() => setSelected(null));
     try {
-      if (!await requestLogin("下载软件插件", `/software-plugins?plugin=${encodeURIComponent(plugin.id)}`, controller.signal) || !isCurrent()) return;
-      setSelected(plugin);
+      if (!await requestLogin("下载软件插件", returnPath, controller.signal) || !isCurrent()) return;
+      setSelected(product);
       setDownloadBusy(true);
       const bytes = await downloadPluginPackage(plugin, { signal: controller.signal, onProgress: progress => { if (isCurrent()) setDownloadProgress(progress); } });
       if (!isCurrent()) return;
@@ -161,7 +206,7 @@ export default function SoftwarePlugins() {
       setDownloadProgress(null);
       if (error instanceof PluginDownloadLoginRequiredError) {
         flushSync(() => setSelected(null));
-        showLogin("下载软件插件", `/software-plugins?plugin=${encodeURIComponent(plugin.id)}`);
+        showLogin("下载软件插件", returnPath);
       } else setDownloadError(getSupabaseErrorMessage(error) ?? "安装包下载失败，请稍后重试。");
     } finally {
       if (downloadController.current === controller) {
@@ -179,7 +224,7 @@ export default function SoftwarePlugins() {
       </section>
 
       <section className="resource-stats" aria-label="插件库概览">
-        <div className="resource-stat" style={{ "--stat-wash": "#d3c5f4" } as CSSProperties}><span>已发布插件</span><strong>{loading || loadError ? "—" : plugins.length}</strong><small>由管理员上传发布</small></div>
+        <div className="resource-stat" style={{ "--stat-wash": "#d3c5f4" } as CSSProperties}><span>已发布插件</span><strong>{loading || loadError ? "—" : products.length}</strong><small>由管理员上传发布</small></div>
         <div className="resource-stat" style={{ "--stat-wash": "#bfd8f7" } as CSSProperties}><span>覆盖软件</span><strong>{loading || loadError ? "—" : softwareCount}<em> 类</em></strong><small>按适用软件选择工具</small></div>
         <div className="resource-stat" style={{ "--stat-wash": "#f0ccd9" } as CSSProperties}><span>使用方式</span><strong>本地安装</strong><small>中文介绍 · 安装说明 · 下载包</small></div>
       </section>
@@ -197,26 +242,50 @@ export default function SoftwarePlugins() {
           : plugins.length === 0 ? <div className="software-catalog-state software-catalog-state--empty"><div className="software-empty-orbit" aria-hidden="true"><span><Box size={23} /></span><span><PackageOpen size={38} strokeWidth={1.3} /></span><span><Layers3 size={23} /></span></div><p className="resource-eyebrow">FESILENT ORIGINALS</p><h3>新的科研工具，正在准备中</h3><p>自研插件发布后会在这里展示。<br />功能介绍可自由浏览，登录后下载对应安装包。</p>{isAdmin && <button type="button" className="resource-button resource-button--primary" onClick={() => { setEditingPlugin(undefined); setPublishing(true); }}><Upload size={16} /> 上传第一个插件</button>}</div>
           : <><div className="resource-grid software-plugin-grid">{filtered.map(plugin => {
               const Icon = hostIcons[plugin.host];
-              return <button key={plugin.id} type="button" className={`resource-card software-plugin-card software-plugin-card--${plugin.host.toLowerCase()}`} onClick={() => { closeDetails(); setSelected(plugin); }} aria-label={`查看${plugin.name}的功能与下载`}>
+              return <button key={plugin.id} type="button" className={`resource-card software-plugin-card software-plugin-card--${plugin.host.toLowerCase()}`} onClick={() => openDetails(plugin)} aria-label={`查看${plugin.name}的功能与下载`}>
                 <div className="software-card-top"><span className="software-host-name"><Icon size={14} strokeWidth={1.7} aria-hidden="true" />{plugin.host}</span><span className="software-package-type">自研插件</span></div>
-                <PluginPreview plugin={plugin} />
+                <PluginPreview plugin={plugin.variants[0].plugin} />
                 <div className="software-card-content"><h3>{plugin.name}</h3><p className="software-plugin-subtitle">版本 {plugin.version}</p><p className="software-plugin-summary">{plugin.summary}</p></div>
-                <div className="software-output-chips">{plugin.outputs.slice(0, 2).map((output, index) => <span key={index}>{output}</span>)}</div>
+                <div className="software-output-chips">{(plugin.variants.some(variant => variant.platform !== "default") ? plugin.variants.map(variant => variant.label) : plugin.variants[0].plugin.outputs.slice(0, 2)).map((output, index) => <span key={index}>{output}</span>)}</div>
                 <div className="resource-card-footer"><span>查看功能与下载</span><ArrowUpRight size={17} aria-hidden="true" /></div>
               </button>;
             })}</div>{filtered.length === 0 && <div className="resource-empty"><Search size={28} aria-hidden="true" /><h2>暂未找到匹配的插件</h2><p>换一个关键词，或选择其他软件。</p><button type="button" className="resource-button" onClick={() => { setQuery(""); setHost("全部"); }}>显示全部插件</button></div>}</>}
       </section>
 
-      <ResourceDialog open={selected !== null} onClose={closeDetails} title={selected?.name ?? "插件详情"} eyebrow={selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button>{isAdmin && <><Link href={`/admin?section=plugins&item=${encodeURIComponent(selected.id)}`} className="resource-button"><Settings2 size={15} /> 编辑介绍 / 下架</Link><button type="button" className="resource-button" disabled={checking || downloadBusy} onClick={() => { const plugin = selected; closeDetails(); setEditingPlugin(plugin); setPublishing(true); }}>更新安装包</button></>}<button type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={() => downloadPlugin(selected)}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>}>
-        {selected && <div className="software-plugin-detail"><div className="software-detail-summary"><PluginPreview plugin={selected} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>ZIP 安装包</span><span>版本 {selected.version}</span><span>{formatPackageSize(selected.packageBytes)}</span></div></div></div>
+      <ResourceDialog open={selected !== null} onClose={closeDetails} title={choosingVersion ? "选择下载版本" : selected?.name ?? "插件详情"} eyebrow={choosingVersion ? selected?.name : selected ? `${selected.host} · Fesilent 自研插件` : undefined} footer={selected && (choosingVersion ? <>
+        <button type="button" className="resource-button" onClick={returnToDetails}>{downloadBusy ? "取消下载并返回" : "返回产品详情"}</button>
+        <button type="button" className="resource-button resource-button--primary" disabled={!downloadVariant || checking || downloadBusy} onClick={() => { if (downloadVariant) void downloadPlugin(downloadVariant.plugin); }}>
+          {downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : downloadVariant ? `下载 ${downloadVariant.label} 版` : "请先选择版本"}
+          {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}
+        </button>
+      </> : <><button type="button" className="resource-button" onClick={closeDetails}>返回插件库</button>{isAdmin && documentVariant && <><Link href={`/admin?section=plugins&item=${encodeURIComponent(documentVariant.plugin.id)}`} className="resource-button"><Settings2 size={15} />编辑{hasEditions ? documentVariant.label : "介绍"} / 下架</Link><button type="button" className="resource-button" disabled={checking || downloadBusy} onClick={() => { const plugin = documentVariant.plugin; closeDetails(); setEditingPlugin(plugin); setPublishing(true); }}>更新{hasEditions ? documentVariant.label : "安装包"}</button></>}<button ref={downloadButtonRef} type="button" className="resource-button resource-button--primary" disabled={checking || downloadBusy} onClick={beginDownload}>{downloadBusy ? downloadProgress?.stage === "verifying" ? "正在校验…" : "正在下载…" : "下载安装包"} {downloadBusy ? <Loader2 size={16} className="software-spin" /> : <Download size={16} aria-hidden="true" />}</button></>)}>
+        {selected && (choosingVersion ? <div className="software-version-picker">
+          <p className="software-version-intro">请选择要安装软件的电脑系统。多台电脑请分别下载对应版本。</p>
+          <fieldset ref={versionOptionsRef} className="software-version-options" disabled={downloadBusy || checking}>
+            <legend className="software-sr-only">选择操作系统和芯片版本</legend>
+            {selected.variants.map(({ plugin, platform, label, hint }) => <label key={plugin.id} className={`software-version-option${downloadPackageId === plugin.id ? " is-selected" : ""}`}>
+              <input type="radio" name="software-download-version" value={plugin.id} checked={downloadPackageId === plugin.id} onChange={() => { setDownloadPackageId(plugin.id); setDownloadError(""); setDownloadProgress(null); }} />
+              <span className="software-version-icon" aria-hidden="true"><Monitor size={25} /></span>
+              <span className="software-version-copy"><strong>{label}</strong><span>{hint}</span><small>版本 {plugin.version} · ZIP · {formatPackageSize(plugin.packageBytes)}</small></span>
+              <span className="software-version-tag">{platform === "windows" ? "Windows" : platform === "mac" ? "macOS" : "安装包"}</span>
+            </label>)}
+          </fieldset>
+          {downloadVariant && <p className="software-version-confirmation" role="status">将下载：{downloadVariant.plugin.packageName}</p>}
+        </div> : <div className="software-plugin-detail"><div className="software-detail-summary"><PluginPreview plugin={selected.variants[0].plugin} /><div><p className="software-detail-intro">{selected.summary}</p><div className="software-download-meta"><span>版本 {selected.version}</span>{hasEditions ? selected.variants.map(variant => <span key={variant.plugin.id}>{variant.label}</span>) : <span>{formatPackageSize(selected.variants[0].plugin.packageBytes)}</span>}</div></div></div>
           {selected.features.length > 0 && <DetailList title="能做什么" items={selected.features} />}
-          <div className="software-detail-grid">{selected.environment.length > 0 && <DetailList title="运行环境" items={selected.environment} />}{selected.installation.length > 0 && <DetailList title="安装与使用" items={selected.installation} ordered />}</div>
-          {selected.outputs.length > 0 && <DetailList title="输出内容" items={selected.outputs} />}
+          {hasEditions && <div className="software-platform-docs"><h3>选择系统，查看安装说明</h3><div className="software-host-filter" role="group" aria-label="按系统查看安装说明">{selected.variants.map(variant => <button key={variant.plugin.id} type="button" className={`resource-chip${documentVariant?.plugin.id === variant.plugin.id ? " is-active" : ""}`} aria-pressed={documentVariant?.plugin.id === variant.plugin.id} onClick={() => setDocumentPackageId(variant.plugin.id)}>{variant.label}</button>)}</div></div>}
+          {documentVariant && <section aria-label={`${hasEditions ? documentVariant.label : selected.name}安装说明`}>
+            {hasEditions && <p className="resource-meta">{documentVariant.label} · 版本 {documentVariant.plugin.version} · {formatPackageSize(documentVariant.plugin.packageBytes)}</p>}
+            <div className="software-detail-grid">{documentVariant.plugin.environment.length > 0 && <DetailList title="运行环境" items={documentVariant.plugin.environment} />}{documentVariant.plugin.installation.length > 0 && <DetailList title="安装与使用" items={documentVariant.plugin.installation} ordered />}</div>
+            {documentVariant.plugin.outputs.length > 0 && <DetailList title="包含内容" items={documentVariant.plugin.outputs} />}
+          </section>}
           <p className="resource-meta software-package-provenance">Fesilent Reverie 自研项目 · 由管理员上传发布</p>
+        </div>)}
+        {selected && <>
           <p className="resource-meta">安装包下载需要登录账号。</p>
           {downloadProgress && <p className="resource-meta" role="status" aria-live="polite">{downloadProgress.stage === "ready" ? "校验完成，请查看浏览器下载。" : <>{downloadProgress.stage === "verifying" ? "正在校验完整安装包" : `已下载 ${downloadProgress.completedParts}/${downloadProgress.totalParts} 块`} · {downloadProgress.downloadedBytes === 0 ? "0 KB" : formatPackageSize(downloadProgress.downloadedBytes)} / {formatPackageSize(downloadProgress.totalBytes)}</>}</p>}
           {downloadError && <p className="plugin-publisher-error" role="alert">{downloadError}</p>}
-        </div>}
+        </>}
       </ResourceDialog>
       {LoginPrompt}
       <ResourceDialog open={isAdmin && publishing} onClose={closePublisher} title={editingPlugin ? "更新软件插件" : "发布软件插件"} eyebrow="FESILENT REVERIE / PUBLISH">

@@ -63,3 +63,21 @@
 .software-publication-notice { padding: 14px 18px; border: 1px solid #dce8dd; border-radius: 14px; color: #50715b; background: #f2f8f1; font-size: 13px; }
 .software-spin { animation: software-spin 1s linear infinite; }
 @keyframes software-spin { to { transform: rotate(360deg); } }
+.software-platform-docs { margin: 0 0 15px; }
+.software-platform-docs h3 { margin: 0 0 10px; color: #403648; font-size: 13px; }
+.software-version-intro { margin: 0 0 20px; color: #77717d; font-size: 13px; line-height: 1.8; }
+.software-version-options { display: grid; gap: 12px; padding: 0; margin: 0; border: 0; min-width: 0; }
+.software-version-option { display: flex; align-items: center; gap: 14px; padding: 20px; border: 1px solid #e9e3ef; border-radius: 17px; background: #fff; cursor: pointer; }
+.software-version-option:hover { border-color: #b6a1d5; }
+.software-version-option:focus-within { outline: 2px solid #9e80cb; outline-offset: 3px; }
+.software-version-option.is-selected { border-color: #9e80cb; background: #f8f5fd; box-shadow: 0 4px 16px rgb(117 91 198 / 6%); }
+.software-version-option input { flex: none; width: 17px; height: 17px; margin: 0; accent-color: #755bc6; }
+.software-version-icon { display: grid; place-items: center; flex: none; width: 48px; height: 48px; border: 1px solid #eee8f4; border-radius: 13px; color: #796394; background: #f6f2fa; }
+.software-version-copy { display: grid; gap: 7px; flex: 1; min-width: 0; }
+.software-version-copy strong { color: #2d2932; font-size: 16px; }
+.software-version-copy > span { color: #77717d; font-size: 12px; line-height: 1.7; }
+.software-version-copy small { color: #8d819b; font-size: 11px; }
+.software-version-tag { flex: none; padding: 5px 8px; border: 1px solid #e9e3ef; border-radius: 99px; color: #8d819b; font-size: 10px; }
+.software-version-confirmation { margin: 15px 0 0; overflow-wrap: anywhere; color: #75658a; font-size: 11px; line-height: 1.7; }
+.software-version-options:disabled .software-version-option { cursor: wait; opacity: .7; }
+@media (max-width: 600px) { .software-version-option { gap: 10px; padding: 15px 12px; } .software-version-icon { display: none; } .software-version-tag { display: none; } .software-version-copy strong { font-size: 15px; } }

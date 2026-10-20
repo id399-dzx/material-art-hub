@@ -147,7 +147,10 @@ export default function SoftwarePlugins() {
   const hasEditions = Boolean(selected?.variants.some(variant => variant.platform !== "default"));
 
   useEffect(() => {
-    if (selected && choosingVersion) versionOptionsRef.current?.querySelector<HTMLInputElement>("input:checked, input")?.focus();
+    if (selected && choosingVersion) {
+      const options = versionOptionsRef.current;
+      (options?.querySelector<HTMLInputElement>("input:checked") ?? options?.querySelector<HTMLInputElement>("input"))?.focus();
+    }
   }, [selected, choosingVersion]);
 
   const retry = () => { setLoading(true); setLoadError(null); setReloadKey(key => key + 1); };

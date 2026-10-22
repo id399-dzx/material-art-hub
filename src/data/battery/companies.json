@@ -1,0 +1,1949 @@
+{
+  "updatedAt": "2026-10-22",
+  "companies": [
+    {
+      "id": "catl",
+      "name": "宁德时代",
+      "aliases": [
+        "CATL"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力及储能电池、电池系统。",
+      "website": "https://www.catl.com/",
+      "locations": [
+        {
+          "city": "宁德",
+          "kind": "总部",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        },
+        {
+          "city": "上海",
+          "kind": "瑞庭时代公开联系地址",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        },
+        {
+          "city": "常州",
+          "kind": "溧阳江苏时代公开联系地址",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        },
+        {
+          "city": "宜宾",
+          "kind": "四川时代公开联系地址",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        },
+        {
+          "city": "肇庆",
+          "kind": "瑞庆时代公开联系地址",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        },
+        {
+          "city": "西宁",
+          "kind": "青海时代公开联系地址",
+          "source": "https://www.catl.com/contactus/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "eve",
+      "name": "亿纬锂能",
+      "aliases": [
+        "EVE",
+        "亿纬储能"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "消费、动力与储能电池。",
+      "website": "https://www.evebattery.com/",
+      "locations": [
+        {
+          "city": "惠州",
+          "kind": "公开联系地址",
+          "source": "https://www.evebattery.com/contact",
+          "photoNames": [
+            "亿纬储能"
+          ]
+        },
+        {
+          "city": "荆门",
+          "kind": "公开联系地址",
+          "source": "https://www.evebattery.com/contact",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "calb",
+      "name": "中创新航",
+      "aliases": [
+        "CALB"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力及储能电池与系统解决方案。",
+      "website": "https://www.calb-tech.com/",
+      "locations": [
+        {
+          "city": "常州",
+          "kind": "总部、研发及产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "深圳",
+          "kind": "研发中心",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "上海",
+          "kind": "研发中心",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "成都",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": [
+            "中创新航成都"
+          ]
+        },
+        {
+          "city": "厦门",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "眉山",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "自贡",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "武汉",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "合肥",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "江门",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "邯郸",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "信阳",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "滕州",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "金华",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        },
+        {
+          "city": "扬州",
+          "kind": "产业基地",
+          "source": "https://www.calb-tech.com/AboutUs.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "gotion",
+      "name": "国轩高科",
+      "aliases": [
+        "Gotion"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力锂电池、储能电池及系统。",
+      "website": "https://www.gotion.com.cn/",
+      "locations": [
+        {
+          "city": "合肥",
+          "kind": "中国研发总部",
+          "source": "https://en.gotion.com.cn/contact-us.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "hithium",
+      "name": "海辰储能",
+      "aliases": [
+        "HiTHIUM"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "储能电池及一体化储能系统。",
+      "website": "https://cn.hithium.com/",
+      "locations": [
+        {
+          "city": "厦门",
+          "kind": "总部及制造基地",
+          "source": "https://cn.hithium.com/about/plants.html",
+          "photoNames": [
+            "海辰储能总部"
+          ]
+        },
+        {
+          "city": "重庆",
+          "kind": "西南智能制造中心",
+          "source": "https://cn.hithium.com/about/plants.html",
+          "photoNames": []
+        },
+        {
+          "city": "深圳",
+          "kind": "应用创新基地",
+          "source": "https://cn.hithium.com/about/plants.html",
+          "photoNames": []
+        },
+        {
+          "city": "菏泽",
+          "kind": "官方披露布局（含规划）",
+          "source": "https://cn.hithium.com/about/plants.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "sunwoda",
+      "name": "欣旺达",
+      "aliases": [
+        "Sunwoda"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "消费、动力与储能电池及系统。",
+      "website": "https://www.sunwoda.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "储能业务联系地址",
+          "source": "https://www.sunwoda.com/energy_storge",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "svolt",
+      "name": "蜂巢能源",
+      "aliases": [
+        "SVOLT"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力与储能电池、储能系统。",
+      "website": "https://www.svolt.cn/",
+      "locations": [
+        {
+          "city": "常州",
+          "kind": "总部",
+          "source": "https://www.svolt.cn/about/contact",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "rept",
+      "name": "瑞浦兰钧",
+      "aliases": [
+        "REPT BATTERO"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力与储能锂离子电池。",
+      "website": "https://cn.reptbattero.com/",
+      "locations": [
+        {
+          "city": "温州",
+          "kind": "公司联系地址",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "嘉兴",
+          "kind": "嘉善研发与制造基地",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "柳州",
+          "kind": "制造基地",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "佛山",
+          "kind": "制造基地",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "重庆",
+          "kind": "制造基地",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "上海",
+          "kind": "国内机构联系地址",
+          "source": "https://cn.reptbattero.com/contact/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "byd",
+      "name": "比亚迪",
+      "aliases": [
+        "BYD",
+        "弗迪电池"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "电池研发制造及储能等新能源业务。",
+      "website": "https://www.byd.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "公司公开联系地址",
+          "source": "https://ess-cdn.byd.com/招聘/门户/校招招聘简章/比亚迪2025届秋季博士招聘简章-20240829.pdf",
+          "photoNames": [
+            "比亚迪储能"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "greatpower",
+      "name": "鹏辉能源",
+      "aliases": [
+        "Great Power"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "消费、动力与储能电池及储能系统。",
+      "website": "https://www.greatpower.net/",
+      "locations": [
+        {
+          "city": "广州",
+          "kind": "工业园总部",
+          "source": "https://www.greatpower.net/about/",
+          "photoNames": []
+        },
+        {
+          "city": "衢州",
+          "kind": "园区联系地址",
+          "source": "https://www.greatpower.net/about/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "pylontech",
+      "name": "派能科技",
+      "aliases": [
+        "Pylontech"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "储能电池及储能系统。",
+      "website": "https://www.pylontech.com.cn/",
+      "locations": [
+        {
+          "city": "上海",
+          "kind": "公司公开联系地址",
+          "source": "https://www.pylontech.com.cn/ir",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "hyperstrong",
+      "name": "海博思创",
+      "aliases": [
+        "HyperStrong"
+      ],
+      "segments": [
+        "储能与电力电子",
+        "BMS与测试"
+      ],
+      "description": "储能系统研发、制造与技术服务。",
+      "website": "https://www.hyperstrong.com/",
+      "locations": [
+        {
+          "city": "北京",
+          "kind": "公司公开联系地址",
+          "source": "https://www.hyperstrong.com/contact-us/customer",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "sungrow",
+      "name": "阳光电源",
+      "aliases": [
+        "Sungrow"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "储能系统、变流器及新能源电力电子。",
+      "website": "https://cn.sungrowpower.com/",
+      "locations": [
+        {
+          "city": "合肥",
+          "kind": "总部",
+          "source": "https://www.sungrowpower.com/demo/zh/about-us/contact-us",
+          "photoNames": [
+            "阳光电源总部"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "goodwe",
+      "name": "固德威",
+      "aliases": [
+        "GoodWe"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "储能逆变器及光储解决方案。",
+      "website": "https://cn.goodwe.com/",
+      "locations": [
+        {
+          "city": "苏州",
+          "kind": "公司公开联系地址",
+          "source": "https://cn.goodwe.com/contact/contact-us",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "ginlong",
+      "name": "锦浪科技",
+      "aliases": [
+        "Solis",
+        "锦浪"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "光伏与储能逆变器。",
+      "website": "https://www.ginlong.com/",
+      "locations": [
+        {
+          "city": "宁波",
+          "kind": "象山总部",
+          "source": "https://www.ginlong.com/contactus.html",
+          "photoNames": [
+            "锦浪宁波"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kstar",
+      "name": "科士达",
+      "aliases": [
+        "KSTAR"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "储能、电源、电池及相关电力电子设备。",
+      "website": "https://kstar.com.cn/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "总部及研发制造基地",
+          "source": "https://kstar.com.cn/index.php/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "宁德",
+          "kind": "研发制造基地",
+          "source": "https://kstar.com.cn/index.php/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "宜春",
+          "kind": "研发制造基地",
+          "source": "https://kstar.com.cn/index.php/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "惠州",
+          "kind": "研发制造基地",
+          "source": "https://kstar.com.cn/index.php/contact/",
+          "photoNames": []
+        },
+        {
+          "city": "无锡",
+          "kind": "研发制造基地",
+          "source": "https://kstar.com.cn/index.php/contact/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "btr",
+      "name": "贝特瑞",
+      "aliases": [
+        "BTR"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂离子电池负极、正极及新型材料。",
+      "website": "https://www.btrchina.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "总部",
+          "source": "https://www.btrchina.com/ContactUs/",
+          "photoNames": []
+        },
+        {
+          "city": "惠州",
+          "kind": "子公司联系地址",
+          "source": "https://www.btrchina.com/ContactUs/",
+          "photoNames": [
+            "贝特瑞储能"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ronbay",
+      "name": "容百科技",
+      "aliases": [
+        "Ronbay"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂离子电池正极材料研发与制造。",
+      "website": "https://www.ronbaymat.com/",
+      "locations": [
+        {
+          "city": "宁波",
+          "kind": "余姚公开联系地址",
+          "source": "https://www.ronbaymat.com/Job/jobSchool",
+          "photoNames": [
+            "容百科技储能"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "capchem",
+      "name": "新宙邦",
+      "aliases": [
+        "Capchem"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "电池电解液及电池化学品。",
+      "website": "https://www.capchem.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "总部",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "惠州",
+          "kind": "宙邦化工联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": [
+            "新宙邦储能电解液"
+          ]
+        },
+        {
+          "city": "荆门",
+          "kind": "子公司联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "衡阳",
+          "kind": "福邦新材料联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "天津",
+          "kind": "子公司联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "南通",
+          "kind": "托普电子材料联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "重庆",
+          "kind": "子公司联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        },
+        {
+          "city": "宜昌",
+          "kind": "子公司联系地址",
+          "source": "https://www.capchem.com/Content.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "tinci",
+      "name": "天赐材料",
+      "aliases": [
+        "Tinci"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "电池电解液及相关材料。",
+      "website": "https://cn.tinci.com/",
+      "locations": [
+        {
+          "city": "广州",
+          "kind": "公司公开联系地址",
+          "source": "https://cn.tinci.com/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "semcorp",
+      "name": "恩捷股份",
+      "aliases": [
+        "SEMCORP"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂离子电池隔膜等材料。",
+      "website": "https://www.semcorp.com/",
+      "locations": [
+        {
+          "city": "玉溪",
+          "kind": "公司公开联系地址",
+          "source": "https://www.semcorp.com/about/contact/contact-us",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "yuneng",
+      "name": "湖南裕能",
+      "aliases": [],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂离子电池正极材料研发、生产及销售。",
+      "website": "https://www.hunanyuneng.com/",
+      "locations": [
+        {
+          "city": "湘潭",
+          "kind": "公司公开联系地址",
+          "source": "https://www.hunanyuneng.com/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "klclear",
+      "name": "科列技术",
+      "aliases": [
+        "KLClear",
+        "科列"
+      ],
+      "segments": [
+        "BMS与测试"
+      ],
+      "description": "电池管理系统 BMS、主动均衡及电池标定测试。",
+      "website": "https://www.klclear.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "总部",
+          "source": "https://www.klclear.com/index.php?a=index&c=Lists&m=home&tid=9",
+          "photoNames": []
+        },
+        {
+          "city": "上海",
+          "kind": "子公司联系地址",
+          "source": "https://www.klclear.com/index.php?a=index&c=Lists&m=home&tid=9",
+          "photoNames": []
+        },
+        {
+          "city": "南京",
+          "kind": "子公司联系地址",
+          "source": "https://www.klclear.com/index.php?a=index&c=Lists&m=home&tid=9",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "hina",
+      "name": "中科海钠",
+      "aliases": [
+        "HiNa"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "电极与电池材料"
+      ],
+      "description": "钠离子电池及相关材料与应用。",
+      "website": "https://www.hinabattery.com/",
+      "locations": [
+        {
+          "city": "北京",
+          "kind": "公开联系地址",
+          "source": "https://www.hinabattery.com/index.php?catid=23",
+          "photoNames": []
+        },
+        {
+          "city": "常州",
+          "kind": "溧阳公开联系地址",
+          "source": "https://www.hinabattery.com/index.php?catid=23",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "tianqi",
+      "name": "天齐锂业",
+      "aliases": [
+        "Tianqi Lithium"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂资源开发及锂化工材料。",
+      "website": "https://www.tianqilithium.com/",
+      "locations": [
+        {
+          "city": "成都",
+          "kind": "公司公开联系地址",
+          "source": "https://en.tianqilithium.com/connection/contact.html",
+          "photoNames": [
+            "天齐锂业储能"
+          ]
+        },
+        {
+          "city": "重庆",
+          "kind": "子公司联系地址",
+          "source": "https://en.tianqilithium.com/connection/contact.html",
+          "photoNames": []
+        },
+        {
+          "city": "苏州",
+          "kind": "张家港子公司联系地址",
+          "source": "https://en.tianqilithium.com/connection/contact.html",
+          "photoNames": []
+        },
+        {
+          "city": "遂宁",
+          "kind": "射洪子公司联系地址",
+          "source": "https://en.tianqilithium.com/connection/contact.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "nebula",
+      "name": "星云股份",
+      "aliases": [
+        "Nebula"
+      ],
+      "segments": [
+        "BMS与测试",
+        "制造设备与回收"
+      ],
+      "description": "电池测试设备、检测及相关储能技术。",
+      "website": "https://www.e-nebula.com/",
+      "locations": [
+        {
+          "city": "福州",
+          "kind": "总部及检测机构",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "北京",
+          "kind": "子公司联系地址",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "苏州",
+          "kind": "昆山分公司",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "东莞",
+          "kind": "分公司",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "天津",
+          "kind": "分公司",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "西安",
+          "kind": "分公司",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        },
+        {
+          "city": "宁德",
+          "kind": "检测子公司联系地址",
+          "source": "https://www.e-nebula.com/contact-us-2",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "name": "先导智能",
+      "aliases": [
+        "LEAD"
+      ],
+      "segments": [
+        "制造设备与回收"
+      ],
+      "description": "锂电池智能制造、化成分容等装备。",
+      "website": "https://www.leadintelligent.com/",
+      "locations": [
+        {
+          "city": "无锡",
+          "kind": "总部",
+          "source": "https://leadintelligent.com/contact",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "land",
+      "name": "武汉蓝电",
+      "aliases": [
+        "蓝电",
+        "LAND"
+      ],
+      "segments": [
+        "BMS与测试"
+      ],
+      "description": "电池充放电测试设备。",
+      "website": "https://www.whland.com/",
+      "locations": [
+        {
+          "city": "武汉",
+          "kind": "公司公开联系地址",
+          "source": "https://www.whland.com/bk_25498434.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "neware",
+      "name": "新威",
+      "aliases": [
+        "NEWARE",
+        "新威尔"
+      ],
+      "segments": [
+        "BMS与测试"
+      ],
+      "description": "电池测试系统、环境试验及实验室管理工具。",
+      "website": "https://www.neware.com.cn/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "公司所在地",
+          "source": "https://www.neware.com.cn/about/map",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "ganfeng",
+      "name": "赣锋锂业",
+      "aliases": [
+        "Ganfeng"
+      ],
+      "segments": [
+        "电极与电池材料",
+        "电芯与电池包",
+        "制造设备与回收"
+      ],
+      "description": "锂资源、锂化合物、电池及资源循环。",
+      "website": "https://www.ganfenglithium.com/",
+      "locations": [
+        {
+          "city": "新余",
+          "kind": "公司及电池业务联系地址",
+          "source": "https://www.ganfenglithium.com/location.html",
+          "photoNames": []
+        },
+        {
+          "city": "宜春",
+          "kind": "子公司联系地址",
+          "source": "https://www.ganfenglithium.com/location.html",
+          "photoNames": []
+        },
+        {
+          "city": "赣州",
+          "kind": "宁都子公司联系地址",
+          "source": "https://www.ganfenglithium.com/location.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "gem",
+      "name": "格林美",
+      "aliases": [
+        "GEM"
+      ],
+      "segments": [
+        "电极与电池材料",
+        "制造设备与回收"
+      ],
+      "description": "电池材料及废旧电池资源循环利用。",
+      "website": "https://www.gem.com.cn/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "公司联系地址",
+          "source": "https://en.gem.com.cn/ContactMe/index.html",
+          "photoNames": []
+        },
+        {
+          "city": "荆门",
+          "kind": "新材料子公司联系地址",
+          "source": "https://en.gem.com.cn/ContactMe/index.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "shanshan",
+      "name": "杉杉科技",
+      "aliases": [
+        "上海杉杉科技"
+      ],
+      "segments": [
+        "电极与电池材料"
+      ],
+      "description": "锂离子电池负极材料。",
+      "website": "https://www.shanshantech.com/",
+      "locations": [
+        {
+          "city": "上海",
+          "kind": "公司公开联系地址",
+          "source": "https://www.shanshantech.com/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "sineng",
+      "name": "上能电气",
+      "aliases": [
+        "Sineng"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "储能变流器 PCS 及储能系统集成。",
+      "website": "https://www.si-neng.com/",
+      "locations": [
+        {
+          "city": "无锡",
+          "kind": "研发及储能产业布局",
+          "source": "https://www.si-neng.com/about/news/235",
+          "photoNames": []
+        },
+        {
+          "city": "深圳",
+          "kind": "研发中心",
+          "source": "https://www.si-neng.com/about/news/235",
+          "photoNames": []
+        },
+        {
+          "city": "苏州",
+          "kind": "研发中心",
+          "source": "https://www.si-neng.com/about/news/235",
+          "photoNames": []
+        },
+        {
+          "city": "成都",
+          "kind": "研发中心",
+          "source": "https://www.si-neng.com/about/news/235",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "bmser",
+      "name": "协能科技",
+      "aliases": [
+        "杭州协能",
+        "BMSER"
+      ],
+      "segments": [
+        "BMS与测试",
+        "储能与电力电子"
+      ],
+      "description": "电池管理系统 BMS、主动均衡及储能解决方案。",
+      "website": "https://bmser.com/",
+      "locations": [
+        {
+          "city": "杭州",
+          "kind": "公司公开联系地址",
+          "source": "https://bmser.com/about",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "ligoo",
+      "name": "力高新能",
+      "aliases": [
+        "力高新能源",
+        "Ligoo"
+      ],
+      "segments": [
+        "BMS与测试",
+        "储能与电力电子"
+      ],
+      "description": "动力与储能电池管理系统及储能系统集成。",
+      "website": "https://www.ligoo.com/",
+      "locations": [
+        {
+          "city": "烟台",
+          "kind": "公司公开联系地址",
+          "source": "https://www.ligoo.com/",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "zenergy",
+      "name": "正力新能",
+      "aliases": [
+        "Zenergy"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力、储能及多场景电池。",
+      "website": "https://www.zenergy.cn/",
+      "locations": [
+        {
+          "city": "苏州",
+          "kind": "常熟总部",
+          "source": "https://www.zenergy.cn/contact_us.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "lishen",
+      "name": "力神电池",
+      "aliases": [
+        "Lishen"
+      ],
+      "segments": [
+        "电芯与电池包"
+      ],
+      "description": "锂离子电池及相关电池系统。",
+      "website": "https://www.lishen.com.cn/",
+      "locations": [
+        {
+          "city": "天津",
+          "kind": "总部",
+          "source": "https://www.lishen.com.cn/category/contact.html",
+          "photoNames": []
+        },
+        {
+          "city": "苏州",
+          "kind": "子公司联系地址",
+          "source": "https://www.lishen.com.cn/category/contact.html",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "cosmx",
+      "name": "珠海冠宇",
+      "aliases": [
+        "CosMX"
+      ],
+      "segments": [
+        "电芯与电池包"
+      ],
+      "description": "聚合物锂离子电池研发、制造及销售。",
+      "website": "https://www.cosmx.com/",
+      "locations": [
+        {
+          "city": "珠海",
+          "kind": "总部",
+          "source": "https://www.cosmx.com/uploadfile/2026/0319/20260319053819218.pdf",
+          "photoNames": []
+        },
+        {
+          "city": "重庆",
+          "kind": "生产基地",
+          "source": "https://www.cosmx.com/uploadfile/2026/0319/20260319053819218.pdf",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "sinexcel",
+      "name": "盛弘股份",
+      "aliases": [
+        "盛弘",
+        "Sinexcel"
+      ],
+      "segments": [
+        "储能与电力电子",
+        "BMS与测试"
+      ],
+      "description": "储能变流、电池测试及相关电力电子产品。",
+      "website": "https://www.sinexcel.com/",
+      "locations": [
+        {
+          "city": "深圳",
+          "kind": "总部",
+          "source": "https://www.sinexcel.com/contact/index.php",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "kehua",
+      "name": "科华数据",
+      "aliases": [
+        "Kehua"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "电源、电力电子及储能相关解决方案。",
+      "website": "https://www.kehua.com.cn/",
+      "locations": [
+        {
+          "city": "厦门",
+          "kind": "总部",
+          "source": "https://www.kehua.com.cn/contact",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "hnac",
+      "name": "华自科技",
+      "aliases": [
+        "HNAC"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "自动化、能源控制及储能系统相关业务。",
+      "website": "https://www.cshnac.com/",
+      "locations": [
+        {
+          "city": "长沙",
+          "kind": "公司公开联系地址",
+          "source": "https://www.cshnac.com/service/index.aspx",
+          "photoNames": [
+            "华自科技储能系统"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cornex",
+      "name": "楚能新能源",
+      "aliases": [
+        "CORNEX"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "动力与储能电池相关产品。",
+      "website": "https://www.cn-np.com/",
+      "locations": [
+        {
+          "city": "武汉",
+          "kind": "公开服务联系地址",
+          "source": "https://cn-ne.cn/Index/service_surpport.html",
+          "photoNames": [
+            "楚能储能"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sdee",
+      "name": "山东电工时代",
+      "aliases": [
+        "山东电工时代能源科技有限公司"
+      ],
+      "segments": [
+        "储能与电力电子",
+        "BMS与测试"
+      ],
+      "description": "储能设备研发、生产、系统集成及服务。",
+      "website": null,
+      "locations": [
+        {
+          "city": "济南",
+          "kind": "政府公共资源平台登记地址",
+          "source": "https://ggzy.qingdao.gov.cn/PortalQDManage/ShareResources/CorpInfo?corpGuid=0e271446-0160-459e-8566-4f51ec117f40",
+          "photoNames": [
+            "山东电工储能"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "baofeng",
+      "name": "宝丰昱能",
+      "aliases": [
+        "宁夏宝丰昱能科技有限公司"
+      ],
+      "segments": [
+        "电芯与电池包",
+        "储能与电力电子"
+      ],
+      "description": "储能电芯及储能系统；依据银川政府产业资料列示。",
+      "website": null,
+      "locations": [
+        {
+          "city": "银川",
+          "kind": "政府产业资料列示",
+          "source": "https://www.yinchuan.gov.cn/zhuanti/scjhqd/202503/P020250418573190630388.pdf",
+          "photoNames": []
+        }
+      ]
+    },
+    {
+      "id": "lanshi",
+      "name": "兰石集团",
+      "aliases": [
+        "兰州兰石集团"
+      ],
+      "segments": [
+        "储能与电力电子"
+      ],
+      "description": "集团旗下设兰州兰石储能技术有限公司，业务及子公司信息见集团资料。",
+      "website": "https://www.lansland.com/",
+      "locations": [
+        {
+          "city": "兰州",
+          "kind": "集团总部",
+          "source": "https://www.lansland.com/lsgroup/lsgroup/lianxiwomen/lianxifangshi/index.html",
+          "photoNames": []
+        }
+      ]
+    }
+  ],
+  "cities": [
+    {
+      "name": "北京",
+      "province": "北京",
+      "region": "华北"
+    },
+    {
+      "name": "上海",
+      "province": "上海",
+      "region": "华东"
+    },
+    {
+      "name": "深圳",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "惠州",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "宁德",
+      "province": "福建",
+      "region": "华东"
+    },
+    {
+      "name": "合肥",
+      "province": "安徽",
+      "region": "华东"
+    },
+    {
+      "name": "无锡",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "苏州",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "杭州",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "南京",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "武汉",
+      "province": "湖北",
+      "region": "华中"
+    },
+    {
+      "name": "成都",
+      "province": "四川",
+      "region": "西南"
+    },
+    {
+      "name": "重庆",
+      "province": "重庆",
+      "region": "西南"
+    },
+    {
+      "name": "西安",
+      "province": "陕西",
+      "region": "西北"
+    },
+    {
+      "name": "宁波",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "厦门",
+      "province": "福建",
+      "region": "华东"
+    },
+    {
+      "name": "长沙",
+      "province": "湖南",
+      "region": "华中"
+    },
+    {
+      "name": "济南",
+      "province": "山东",
+      "region": "华东"
+    },
+    {
+      "name": "银川",
+      "province": "宁夏",
+      "region": "西北"
+    },
+    {
+      "name": "乌鲁木齐",
+      "province": "新疆",
+      "region": "西北"
+    },
+    {
+      "name": "兰州",
+      "province": "甘肃",
+      "region": "西北"
+    },
+    {
+      "name": "常州",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "宜宾",
+      "province": "四川",
+      "region": "西南"
+    },
+    {
+      "name": "肇庆",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "西宁",
+      "province": "青海",
+      "region": "西北"
+    },
+    {
+      "name": "荆门",
+      "province": "湖北",
+      "region": "华中"
+    },
+    {
+      "name": "眉山",
+      "province": "四川",
+      "region": "西南"
+    },
+    {
+      "name": "自贡",
+      "province": "四川",
+      "region": "西南"
+    },
+    {
+      "name": "江门",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "邯郸",
+      "province": "河北",
+      "region": "华北"
+    },
+    {
+      "name": "信阳",
+      "province": "河南",
+      "region": "华中"
+    },
+    {
+      "name": "滕州",
+      "province": "山东",
+      "region": "华东"
+    },
+    {
+      "name": "金华",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "扬州",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "菏泽",
+      "province": "山东",
+      "region": "华东"
+    },
+    {
+      "name": "温州",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "嘉兴",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "柳州",
+      "province": "广西",
+      "region": "华南"
+    },
+    {
+      "name": "佛山",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "广州",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "衢州",
+      "province": "浙江",
+      "region": "华东"
+    },
+    {
+      "name": "宜春",
+      "province": "江西",
+      "region": "华东"
+    },
+    {
+      "name": "衡阳",
+      "province": "湖南",
+      "region": "华中"
+    },
+    {
+      "name": "天津",
+      "province": "天津",
+      "region": "华北"
+    },
+    {
+      "name": "南通",
+      "province": "江苏",
+      "region": "华东"
+    },
+    {
+      "name": "宜昌",
+      "province": "湖北",
+      "region": "华中"
+    },
+    {
+      "name": "玉溪",
+      "province": "云南",
+      "region": "西南"
+    },
+    {
+      "name": "湘潭",
+      "province": "湖南",
+      "region": "华中"
+    },
+    {
+      "name": "遂宁",
+      "province": "四川",
+      "region": "西南"
+    },
+    {
+      "name": "福州",
+      "province": "福建",
+      "region": "华东"
+    },
+    {
+      "name": "东莞",
+      "province": "广东",
+      "region": "华南"
+    },
+    {
+      "name": "新余",
+      "province": "江西",
+      "region": "华东"
+    },
+    {
+      "name": "赣州",
+      "province": "江西",
+      "region": "华东"
+    },
+    {
+      "name": "烟台",
+      "province": "山东",
+      "region": "华东"
+    },
+    {
+      "name": "珠海",
+      "province": "广东",
+      "region": "华南"
+    }
+  ],
+  "references": [
+    {
+      "city": "北京",
+      "names": [
+        "海博思创",
+        "国家电网储能研究院",
+        "中国华电储能",
+        "国电投储能",
+        "阳光电源北京研发",
+        "宁德时代北京研究院",
+        "亿华通",
+        "英利储能",
+        "清能股份",
+        "融科储能",
+        "北京卫蓝新能源",
+        "中电建储能",
+        "奇点能源",
+        "中科海钠",
+        "国轩高科北京分部",
+        "南瑞集团北京中心"
+      ]
+    },
+    {
+      "city": "上海",
+      "names": [
+        "上海电气储能",
+        "派能科技",
+        "阳光电源上海",
+        "固德威",
+        "锦浪科技上海",
+        "恩捷股份",
+        "远景储能",
+        "卫斯理储能",
+        "上汽储能",
+        "中科荣誉",
+        "轩邑能源",
+        "融和元储",
+        "钠创能源",
+        "上海航天储能",
+        "上能电气上海研发",
+        "拓普储能"
+      ]
+    },
+    {
+      "city": "深圳",
+      "names": [
+        "比亚迪储能",
+        "华为数字能源",
+        "欣旺达",
+        "拓邦股份",
+        "盛弘股份",
+        "科士达",
+        "古瑞瓦特",
+        "鹏辉能源",
+        "德赛电池",
+        "汇川储能",
+        "欧陆电气",
+        "禾迈股份深圳",
+        "阳光电源深圳",
+        "派能深圳分部",
+        "瑞浦兰钧深圳研究院"
+      ]
+    },
+    {
+      "city": "惠州",
+      "names": [
+        "亿纬锂能",
+        "德赛西威储能",
+        "贝特瑞储能",
+        "新宙邦储能电解液",
+        "亿纬储能",
+        "赢合科技储能设备",
+        "道氏技术",
+        "丰元股份",
+        "蓝威储能",
+        "海辰储能惠州基地"
+      ]
+    },
+    {
+      "city": "宁德",
+      "names": [
+        "宁德时代",
+        "邦普循环",
+        "星云股份",
+        "宁德储能研究院",
+        "永太科技",
+        "科达利",
+        "容百科技",
+        "格林美宁德基地",
+        "先导智能宁德储能产线",
+        "正力新能"
+      ]
+    },
+    {
+      "city": "合肥",
+      "names": [
+        "国轩高科",
+        "蔚来储能",
+        "阳光电源总部",
+        "派能合肥",
+        "中创新航",
+        "华晟储能",
+        "钠道储能",
+        "中科海钠合肥",
+        "晶科储能",
+        "合盛储能",
+        "安信储能",
+        "国盾量子长时储能",
+        "道氏技术合肥分部"
+      ]
+    },
+    {
+      "city": "无锡",
+      "names": [
+        "上能电气",
+        "为恒智能",
+        "果下科技",
+        "远景动力无锡",
+        "阳光电源无锡",
+        "固德威无锡",
+        "锦浪无锡",
+        "星云股份无锡",
+        "瑞浦兰钧无锡",
+        "中科储源",
+        "海辰储能无锡基地"
+      ]
+    },
+    {
+      "city": "苏州",
+      "names": [
+        "中天储能",
+        "东方日升",
+        "星源材质",
+        "正力新能",
+        "赛伍储能",
+        "阿特斯储能",
+        "汇川苏州储能",
+        "南都电源苏州",
+        "华宝新能",
+        "德方纳米苏州",
+        "先导智能苏州储能设备"
+      ]
+    },
+    {
+      "city": "杭州",
+      "names": [
+        "南都电源",
+        "海康储能",
+        "万向储能",
+        "杭锅股份（熔盐储能）",
+        "汇能科技",
+        "智光储能杭州",
+        "阳光电源杭州",
+        "锦浪科技总部",
+        "古瑞瓦特杭州",
+        "储瑞能源",
+        "中恒电气",
+        "西子洁能"
+      ]
+    },
+    {
+      "city": "南京",
+      "names": [
+        "南瑞继保",
+        "国电南自",
+        "灿维储能",
+        "子午创力",
+        "英纳吉储能",
+        "远景南京研发",
+        "中天科技储能",
+        "大全储能",
+        "金帆储能",
+        "国轩高科南京",
+        "能思储能",
+        "菲尼克斯储能电气"
+      ]
+    },
+    {
+      "city": "武汉",
+      "names": [
+        "亿纬锂能武汉",
+        "华星储能",
+        "长飞储能",
+        "盛弘武汉",
+        "中科储电",
+        "楚能储能",
+        "锐科储能",
+        "金盘科技武汉",
+        "阳光电源武汉",
+        "华工储能",
+        "钒钛液流储能研究院",
+        "融科储能武汉分部"
+      ]
+    },
+    {
+      "city": "成都",
+      "names": [
+        "特锐德川开电气",
+        "华体科技储能",
+        "宁德时代成都储能基地",
+        "亿纬成都",
+        "通合电子成都",
+        "川能储能",
+        "天齐锂业储能",
+        "特变电工储能",
+        "中创新航成都",
+        "海辰储能成都"
+      ]
+    },
+    {
+      "city": "重庆",
+      "names": [
+        "海辰储能",
+        "超威镁储能研究院",
+        "宁德时代重庆",
+        "亿纬重庆",
+        "清安能源",
+        "三安储能",
+        "西南铝储能配套",
+        "中科芯亿达储能",
+        "万国储能",
+        "美利信储能结构件"
+      ]
+    },
+    {
+      "city": "西安",
+      "names": [
+        "通合电子",
+        "航天储能",
+        "隆基储能",
+        "阳光电源西安",
+        "卫蓝新能源西安",
+        "西电储能研究院",
+        "国电投西北储能",
+        "瑞浦兰钧西安",
+        "钒液流储能研发中心",
+        "铂力特储能装备"
+      ]
+    },
+    {
+      "city": "宁波",
+      "names": [
+        "容百科技储能",
+        "均胜储能",
+        "舜宇储能配套",
+        "激智储能膜",
+        "锦浪宁波",
+        "拓普储能结构件",
+        "东方日升宁波",
+        "汇能储能",
+        "赛力储能",
+        "中电科宁波储能所"
+      ]
+    },
+    {
+      "city": "厦门",
+      "names": [
+        "海辰储能总部",
+        "科华数据",
+        "盛弘厦门",
+        "法拉电子储能电容",
+        "三安储能配套",
+        "盈趣储能设备",
+        "宏发储能继电器",
+        "厦钨储能材料",
+        "瀚天成",
+        "智光储能厦门"
+      ]
+    },
+    {
+      "city": "长沙",
+      "names": [
+        "中车时代储能",
+        "国科微储能电源",
+        "威胜储能",
+        "三一储能",
+        "岱勒储能材料",
+        "银河储能电气",
+        "湘电储能",
+        "创芯海微储能BMS",
+        "远大储能",
+        "华自科技储能系统"
+      ]
+    },
+    {
+      "city": "济南",
+      "names": [
+        "圣阳股份",
+        "山东电工储能",
+        "恒信储能",
+        "弘阳新能源",
+        "鲁阳熔盐储能",
+        "金盘科技济南",
+        "阳光电源济南",
+        "国电投山东储能",
+        "万华储能电解液",
+        "中材储能"
+      ]
+    },
+    {
+      "city": "银川",
+      "names": [
+        "宝丰储能",
+        "阳光电源宁夏基地",
+        "华能储能电站",
+        "国电投储能",
+        "远景储能西北中心",
+        "融科储能液流电池",
+        "隆基储能配套",
+        "天净储能",
+        "中车储能西北分部"
+      ]
+    },
+    {
+      "city": "乌鲁木齐",
+      "names": [
+        "新疆新华水电储能",
+        "金风储能",
+        "特变电工储能",
+        "国电投新疆储能",
+        "华电储能电站",
+        "中广核储能",
+        "远景储能新疆基地",
+        "新特能源储能",
+        "天富储能",
+        "昆仑储能"
+      ]
+    },
+    {
+      "city": "兰州",
+      "names": [
+        "国家电投西北储能研究院",
+        "兰石储能装备",
+        "阳光电源兰州",
+        "融科储能西北",
+        "华能储能电站",
+        "金川储能材料",
+        "特变电工兰州储能",
+        "陇能储能",
+        "绿能储能",
+        "中核储能甘肃分部"
+      ]
+    }
+  ]
+}

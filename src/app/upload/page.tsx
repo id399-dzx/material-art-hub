@@ -191,7 +191,7 @@ export default function UploadPage() {
             if (insertError) throw insertError;
 
             setStatus({ type: "success", message: "作品上传成功，正在返回首页…" });
-            setTimeout(() => router.push("/"), 2000);
+            setTimeout(() => router.push("/reverie"), 2000);
         } catch (error) {
             const message = isSupabaseConnectionError(error)
                 ? "素材服务暂时无法连接，请稍后重试；管理员请检查 Supabase 项目配置。"
@@ -232,7 +232,7 @@ export default function UploadPage() {
     return (
         <main className="asset-upload-workbench">
             <div className="asset-upload-shell">
-                <div className="flex items-center justify-between gap-4 flex-wrap"><Link href="/" className="asset-upload-back"><ArrowLeft size={17} /> 返回首页</Link><Link href="/software-plugins#publish" className="asset-upload-back"><FileArchive size={17} /> 发布软件插件 <ArrowRight size={15} /></Link></div>
+                <div className="flex items-center justify-between gap-4 flex-wrap"><Link href="/reverie" className="asset-upload-back"><ArrowLeft size={17} /> 返回首页</Link><Link href="/software-plugins#publish" className="asset-upload-back"><FileArchive size={17} /> 发布软件插件 <ArrowRight size={15} /></Link></div>
                 <header className="asset-upload-heading">
                     <div>
                         <span className="asset-upload-eyebrow"><span /> FESILENT REVERIE / PUBLISH</span>

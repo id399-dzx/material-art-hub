@@ -123,7 +123,7 @@ export default function AssetDetailsPage() {
                             重新加载素材
                         </button>
                     ) : (
-                        <button className="asset-detail__button asset-detail__button--dark" onClick={() => router.push("/")}>
+                        <button className="asset-detail__button asset-detail__button--dark" onClick={() => router.push("/reverie")}>
                             <ArrowLeft size={17} /> 返回发现页
                         </button>
                     )}
@@ -143,7 +143,7 @@ export default function AssetDetailsPage() {
         <main className="asset-detail">
             <div className="asset-detail__shell">
                 <div className="asset-detail__topline">
-                    <button className="asset-detail__back" onClick={() => router.push("/")}>
+                    <button className="asset-detail__back" onClick={() => router.push("/reverie")}>
                         <ArrowLeft size={17} /> 返回发现页
                     </button>
                     <span className="asset-detail__location"><Box size={15} /> 科研素材库 <span>/</span> 素材档案</span>

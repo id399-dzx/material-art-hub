@@ -1,12 +1,13 @@
 "use client";
 
-import { BarChart2, Box, ChartNoAxesCombined, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
+import { BarChart2, BatteryCharging, Building2, ChartNoAxesCombined, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import "./Header.css";
+import ProductSwitcher from "./ProductSwitcher";
 
 export default function Header() {
     const pathname = usePathname();
@@ -32,7 +33,8 @@ export default function Header() {
     }, []);
 
     const isAdmin = session?.user.email === "id19991016@gmail.com";
-    const isDiscovery = pathname === "/" || pathname.startsWith("/asset/");
+    const isBattery = pathname.startsWith("/battery");
+    const isDiscovery = pathname === "/reverie" || pathname.startsWith("/asset/");
     const workspaces = [
         { href: "/chart-examples", label: "数据图示例", icon: ChartNoAxesCombined },
         { href: "/data-processing", label: "数据处理", icon: BarChart2 },
@@ -49,20 +51,23 @@ export default function Header() {
     return (
         <header className="site-header">
             <div className="site-header__inner">
-                <Link href="/" className="site-header__brand" aria-label="Fesilent Reverie 首页">
-                    <span className="site-header__brand-icon"><Box size={23} strokeWidth={2} /></span>
-                    <span>Fesilent Reverie</span>
-                </Link>
+                <ProductSwitcher />
 
                 <nav className="site-header__nav" aria-label="主导航">
-                    <Link href="/" className="site-header__nav-link" aria-current={isDiscovery ? "page" : undefined}>
+                    {isBattery ? <>
+                        <Link href="/battery" className="site-header__nav-link" aria-current={pathname === '/battery' ? 'page' : undefined}><BatteryCharging size={15} />资讯收录</Link>
+                        <Link href="/battery?category=electrode-materials" className="site-header__nav-link">电极材料</Link>
+                        <Link href="/battery?category=bms" className="site-header__nav-link">BMS</Link>
+                        <Link href="/battery?category=methods-tools" className="site-header__nav-link">方法与开源</Link>
+                        <Link href="/battery/companies" className="site-header__nav-link" aria-current={pathname === '/battery/companies' ? 'page' : undefined}><Building2 size={15} />电池企业</Link>
+                    </> : <><Link href="/reverie" className="site-header__nav-link" aria-current={isDiscovery ? "page" : undefined}>
                         发现探索
                     </Link>
                     {workspaces.map(({ href, label, icon: Icon }) => (
                         <Link key={href} href={href} className="site-header__nav-link" aria-current={pathname.startsWith(href) ? "page" : undefined}>
                             <Icon size={15} /> {label}
                         </Link>
-                    ))}
+                    ))}</>}
                 </nav>
 
                 <div className="site-header__actions">

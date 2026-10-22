@@ -2,7 +2,6 @@
 
 import { useId } from 'react';
 import { BatteryCharging, Box, Check, ChevronDown } from 'lucide-react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './product-switcher.css';
 
@@ -18,13 +17,13 @@ export default function ProductSwitcher() {
       <nav aria-label="Fesilent 产品切换">
         <p>FESILENT / 工作空间</p>
         {[{ href: '/battery', title: '电池资讯', note: '论文、BMS、方法与开源', icon: BatteryCharging, active: battery },
-          { href: '/reverie', title: 'Fesilent Reverie', note: '科研素材、数据处理与工具', icon: Box, active: !battery }].map(product => <Link
+          { href: '/reverie', title: 'Fesilent Reverie', note: '科研素材、数据处理与工具', icon: Box, active: !battery }].map(product => <a
             href={product.href} key={product.href} aria-current={product.active ? 'page' : undefined}
             onClick={event => event.currentTarget.closest<HTMLElement>('[popover]')?.hidePopover()}>
           <span className="product-switcher__icon"><product.icon size={23} /></span>
           <span className="product-switcher__copy"><strong>{product.title}</strong><small>{product.note}</small></span>
           {product.active && <Check size={17} aria-label="当前产品" />}
-        </Link>)}
+        </a>)}
       </nav>
     </div>
   </div>;

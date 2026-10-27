@@ -10,3 +10,21 @@ export function batteryAppLocation(origin: string, incoming: string, parts: stri
   target.search = source.search;
   return target;
 }
+
+/** Keep an unavailable external app from taking the main site offline. */
+export async function batteryAppIsAvailable(origin: string, incoming: string, fetcher: typeof fetch = fetch): Promise<boolean> {
+  try {
+    const target = batteryAppLocation(origin, incoming);
+    if (!target) return false;
+    target.search = '';
+    const response = await fetcher(target, {
+      method: 'HEAD',
+      cache: 'no-store',
+      redirect: 'manual',
+      signal: AbortSignal.timeout(2500),
+    });
+    return response.status >= 200 && response.status < 400;
+  } catch {
+    return false;
+  }
+}

@@ -3,7 +3,7 @@ import ElectrochemistryLibrary from "@/components/electrochemistry/Electrochemis
 
 export const metadata: Metadata = {
   title: "电化学知识 · Fesilent Reverie",
-  description: "电化学基础概念、常用测试方法与数据判读，涵盖 CV、恒流充放电、EIS 与微分容量曲线，提供中文入门说明和参考来源。",
+  description: "通过法拉第嵌锂与非法拉第双电层充电动画理解电极过程，学习电化学基础、CV、恒流充放电与 EIS，提供中文讲解、MP4 下载和参考来源。",
 };
 
 export default function ElectrochemistryPage() {

@@ -9,6 +9,12 @@
 - [电化学测试专栏](docs/electrochemical-templates.md)：CV、GCD、电压–比容量、倍率、循环与可选库仑效率、Nyquist、Bode、LSV；支持表头字段建议、显式虚部符号选择及对数坐标输入校验。新增模板和演示数据独立编写。
 - [两项目对比与优化记录](docs/research-workbench-comparison.md)：实际覆盖、验证结果与剩余能力差距。
 
+## 电化学知识
+
+公开知识库位于 `/electrochemistry`，支持主题筛选、全文搜索、中文讲解与参考来源。法拉第嵌锂和非法拉第双电层充电各提供一段 16 秒的 1080p 无声动画，可在线播放或下载 MP4；文章同时说明两种过程的作用和实际可并存的边界。
+
+视频和封面保存在 `public/animations/electrochemistry/`。原交互页面位于 `/animations/battery-interface.html`，保留沙盒 iframe 与 CSP；通过 `.gitattributes` 禁止对该文件进行换行转换，保持原始字节。知识条目与媒体信息统一维护在 `src/lib/electrochemistry/catalog.ts`。
+
 ## 本地运行
 
 ```bash

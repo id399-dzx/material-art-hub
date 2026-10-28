@@ -5,6 +5,13 @@ export type ElectrochemistryArticle = {
   summary: string;
   tags: readonly string[];
   readingMinutes: number;
+  animation?: {
+    src: string;
+    poster: string;
+    durationSeconds: number;
+    interactiveUrl: string;
+    caption: string;
+  };
   sections: readonly { heading: string; paragraphs: readonly string[]; equation?: string }[];
   sources: readonly { title: string; url: string }[];
 };
@@ -16,6 +23,124 @@ export const ELECTROCHEMISTRY_CATEGORIES = [
 ] as const;
 
 export const ELECTROCHEMISTRY_ARTICLES: readonly ElectrochemistryArticle[] = [
+  {
+    id: "faradaic-process",
+    title: "法拉第过程：锂离子住进去了，电极也变了",
+    category: "basics",
+    summary: "从石墨负极的嵌锂动画，看电子怎样参与反应、主要容量从哪里来，以及为什么形成 SEI、析锂和赝电容也要放进同一张机制地图。",
+    tags: ["法拉第过程", "嵌锂", "氧化还原", "石墨负极", "SEI", "赝电容"],
+    readingMinutes: 4,
+    animation: {
+      src: "/animations/electrochemistry/faradaic-process.mp4",
+      poster: "/animations/electrochemistry/faradaic-process.jpg",
+      durationSeconds: 16,
+      interactiveUrl: "/animations/battery-interface.html",
+      caption: "石墨负极充电时的局部嵌锂示意：电子进入石墨电子态，Li⁺嵌入层间，形成 LiₓC₆。非按比例，省略溶剂与 SEI。",
+    },
+    sections: [
+      {
+        heading: "充进去的电，总得有个去处",
+        paragraphs: [
+          "给手机插上充电线，电量从 20% 往上爬。很容易把它想成往桶里灌电子，灌满了就拔线。可把石墨负极放大看，事情多了一层：电子沿外电路和导电电极过来，Li⁺沿电解液过来，两拨各走各的路，在电极界面附近共同完成嵌锂反应。正常工作时，电子不会在电解液里自由穿行。",
+          "动画只截取了石墨负极充电时的局部界面。Li⁺进入石墨层间，电子进入石墨的电子态，材料的组成和电子状态一起改变。这里发生了带电子转移的氧化还原反应，这就是法拉第过程。完整电池还要有另一电极的配套反应，才能把回路接起来。",
+        ],
+      },
+      {
+        heading: "把嵌锂想成办理入住",
+        paragraphs: [
+          "先把一层层碳片想成楼层，层间有可以容纳锂的位置。Li⁺从电解液赶来，进屋、入住；与此同时，电子进入材料，电极的状态跟着变。放电时再反过来，锂从石墨中脱出，电子经外电路去做功，像住客退房。这比单纯记住一个名词好理解。",
+          "但比喻讲到这就够了，别真给每个锂安排一个抱在怀里的电子。正常嵌锂形成的是 LiₓC₆，不能画成 Li⁺先变成金属锂，再塞进石墨。动画里的“Li”表示嵌入态锂；金属锂在表面沉积，是另外一件事。入住这个比喻也只对应这里的嵌锂，法拉第过程还包括沉积、溶解等许多反应。",
+        ],
+        equation: "C₆ + xLi⁺ + xe⁻ ⇌ LiₓC₆",
+      },
+      {
+        heading: "电池的主要容量，从这些反应里来",
+        paragraphs: [
+          "对常规石墨锂离子电池来说，嵌锂、脱锂等可逆法拉第反应承担了主要可逆容量。材料能容纳多少锂、能转移多少电子、在规定条件下能反应到什么程度，都会影响实际能放出多少电。充电时，外部输入的电能使整个电池处于能释放更多能量的化学状态；放电时，反应把这部分能量交给外电路。",
+          "所以看容量不能只盯着电子小球有没有跑过去，还得看材料能否持续、可逆地参与反应。反应位点、离子输运、结构变化、截止电压，都可能限制可用容量。看上去房间不少，住客能否顺利入住、退房，才是实际使用时的事。",
+        ],
+      },
+      {
+        heading: "发生反应，也可能是在添乱",
+        paragraphs: [
+          "一听“法拉第负责容量”，很容易顺手给它颁个好人证。先等等。电解液被还原分解、石墨表面析锂，也可能属于法拉第过程。分类看的是有没有相应的氧化还原电荷转移，不看这次反应有没有帮电池干正事。",
+          "SEI 就很能说明问题：它的形成涉及电解液的法拉第还原分解，会消耗活性锂和电解液；形成合适的界面膜后，又能抑制进一步分解、帮助电池稳定工作。最初成膜与后续持续长膜，代价和结果不一样。不能把“保护膜”三个字一看到，就把成膜划给非法拉第。",
+        ],
+      },
+      {
+        heading: "别拿快慢，替机制分队",
+        paragraphs: [
+          "法拉第过程不一定慢。赝电容就是容易认错的例子：响应可以很快，也呈现电容特征，但储荷仍包含法拉第氧化还原过程。反过来，双电层充电也会受到孔道、离子输运和电阻影响。名字里有“电容”，或者曲线看着像电容，都不足以直接判定它是非法拉第。",
+          "动画把嵌锂和双电层拆成两段，是为了让眼睛跟得上。真实电极可以一边发生法拉第反应，一边调整界面电荷分布；并没有规定先把队排完，才允许办理入住。读图时抓住这两个动作：材料通过反应改变状态，界面通过电荷重排改变状态。它们可以同时忙。",
+        ],
+      },
+    ],
+    sources: [
+      { title: "IUPAC Gold Book：faradaic current", url: "https://goldbook.iupac.org/terms/view/F02321" },
+      { title: "美国能源部：DOE Explains…Batteries", url: "https://www.energy.gov/science/doe-explainsbatteries" },
+      { title: "Bang 等：双电层调控与石墨 SEI 形成（2024）", url: "https://doi.org/10.1039/D4TA03703K" },
+      { title: "Augustyn 等：Li⁺嵌入赝电容的高倍率储能（2013）", url: "https://www.nature.com/articles/nmat3601" },
+    ],
+  },
+  {
+    id: "nonfaradaic-process",
+    title: "非法拉第过程：隔着界面排队，也能存电",
+    category: "basics",
+    summary: "电子留在电极侧，离子在电解液侧重新排列。双电层怎样储能、怎样影响反应，为什么它不是白忙，也不能直接等同于保护电池。",
+    tags: ["非法拉第过程", "双电层", "界面电场", "超级电容器", "储荷", "赝电容"],
+    readingMinutes: 4,
+    animation: {
+      src: "/animations/electrochemistry/nonfaradaic-process.mp4",
+      poster: "/animations/electrochemistry/nonfaradaic-process.jpg",
+      durationSeconds: 16,
+      interactiveUrl: "/animations/battery-interface.html",
+      caption: "单独展示双电层充电分量：电子在电极侧积累，Li⁺在液相近界面富集，没有相应的氧化还原电荷转移。实际可与法拉第过程并存。",
+    },
+    sections: [
+      {
+        heading: "电子来了，离子隔着界面站好",
+        paragraphs: [
+          "还是动画中的石墨负极，但这次只看双电层这一分量。电极侧的负电荷增加，电解液侧的离子分布随之调整：Li⁺在近界面富集，同号的阴离子相对排开。两边电荷隔着界面相互影响，这就是双电层充电的直观画面。它没有发生对应的氧化还原电荷转移，是非法拉第过程的典型例子。",
+          "可以想成玻璃两侧分别站着电子和离子，隔着界面排队。玻璃只是比喻，没有一块真玻璃堵在电池里，也不能把它直接当成 SEI。这里的关键是电子留在导电电极一侧，Li⁺仍在液相一侧；不需要随后一定进屋，双电层本身就可以完成储荷、放电。",
+        ],
+      },
+      {
+        heading: "只是排队，怎么也能储能",
+        paragraphs: [
+          "把正、负电荷分开，需要外部做功；建立起来的电荷分离和电场可以储存电能。条件反过来，电荷重新分布，就能向外电路释放这部分能量。和普通电容器有相通之处，只是在电极—电解液界面上，液相一侧有会移动的离子，也有会取向的溶剂。",
+          "所以“没有氧化还原”不等于“没有电流”，更不等于“没有存电”。双电层充电时，外电路照样有电子移动，电解液中也有离子重排。电子有没有动，不能拿来区分这两个过程；要看这部分电流是否对应氧化还原反应。",
+        ],
+      },
+      {
+        heading: "在电池里是一个分量，在超级电容器里能挑大梁",
+        paragraphs: [
+          "常规石墨锂离子电池的主要可逆容量，通常来自嵌锂、脱锂等法拉第反应。双电层储荷当然存在，但不能把手机的主要续航都记到它账上。换成双电层超级电容器，事情就变了：利用较大的可接触表面积，界面电荷分离可以成为主要储能方式，用来提供功率脉冲、短时能量缓冲或能量回收。",
+          "同一个机制，换个器件就换个分工。也别顺手把“超级电容器”都归成纯非法拉第，里面还可能有赝电容或混合储能机制。赝电容虽有电容响应，仍涉及法拉第过程；名称很像，干的事未必一样。",
+        ],
+      },
+      {
+        heading: "排在哪儿，还会影响后面的反应",
+        paragraphs: [
+          "界面不是空荡荡的门口。离子、溶剂排在哪里，局部电场和电位降怎样分布，都会影响反应物所处的环境，进而影响脱溶剂化、反应速率或分解路径。排队的人变了，门口的条件也跟着变；但这不能简单说成“排队越整齐，电池越好”。具体效果要看材料、电解液和工作条件。",
+          "一项石墨负极研究通过 CoP 涂层改变双电层中的阴离子分布，进一步影响了 SEI 的形成，并改善快充表现。这正好把两件事连起来：双电层改变了反应环境，而形成 SEI 的电解液还原分解仍属于法拉第过程。保护效果是这些具体变化共同带来的，不能给非法拉第过程包办。",
+        ],
+      },
+      {
+        heading: "队排好了，不代表电场下班了",
+        paragraphs: [
+          "动画末尾粒子停下来，表示在固定电位、理想双电层这一简化条件下，充电逐渐趋于完成，相关电流衰减。已经形成的电荷分离和界面电场仍可存在。电位再次变化，双电层又会调整；不能把画面理解成电一接上，双电层忙几秒，以后永远没它的事。实际电池还可能同时有持续的法拉第电流。",
+          "这两种过程可以同时发生，不必按顺序交班。动画分别播放，只是把不同的动作拆开看；真实界面还有溶剂化、SEI 和更复杂的离子分层。至于快慢，孔道、电阻、输运都能插一脚。先看电荷是通过反应储存，还是通过界面分离储存，再讨论它快不快、对这个器件有没有用。",
+        ],
+      },
+    ],
+    sources: [
+      { title: "IUPAC Gold Book：double-layer current", url: "https://goldbook.iupac.org/terms/view/D01847" },
+      { title: "IUPAC Gold Book：faradaic current", url: "https://goldbook.iupac.org/terms/view/F02321" },
+      { title: "Merlet 等：纳米多孔碳中的双电层储能机制（2012）", url: "https://www.nature.com/articles/nmat3260" },
+      { title: "Bang 等：Regulating electric double-layer dynamics…（2024）", url: "https://doi.org/10.1039/D4TA03703K" },
+      { title: "Augustyn 等：Li⁺嵌入赝电容的高倍率储能（2013）", url: "https://www.nature.com/articles/nmat3601" },
+    ],
+  },
   {
     id: "electrode-and-potential",
     title: "三电极体系与电位：先明确测量对象",

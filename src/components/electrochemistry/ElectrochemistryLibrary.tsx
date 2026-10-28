@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, type CSSProperties } from "react";
-import { ArrowUpRight, BookOpen, ChartNoAxesCombined, Clock3, FlaskConical, Search, Sparkles, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, BookOpen, ChartNoAxesCombined, Clock3, Download, FlaskConical, PlayCircle, Search, Sparkles, type LucideIcon } from "lucide-react";
 import ResourceDialog from "@/components/resources/ResourceDialog";
 import { ELECTROCHEMISTRY_ARTICLES, ELECTROCHEMISTRY_CATEGORIES, type ElectrochemistryArticle } from "@/lib/electrochemistry/catalog";
 import "./electrochemistry.css";
@@ -41,7 +41,7 @@ export default function ElectrochemistryLibrary() {
       <div>
         <span className="resource-eyebrow"><Sparkles size={15} aria-hidden="true" /> ELECTROCHEMISTRY / KNOWLEDGE</span>
         <h1 id="electrochemistry-heading">电化学知识</h1>
-        <p>从基础概念到常用测试，理解曲线背后的电化学。按主题阅读、查找关键词，随时回看公式与参考资料。</p>
+        <p>从基础概念到常用测试，理解曲线背后的电化学。看动画、读讲解，按主题查找公式、实验问题与参考资料。</p>
       </div>
       <span className="electrochemistry-hero-note"><BookOpen size={17} aria-hidden="true" /> 从概念到数据判读</span>
     </section>
@@ -49,7 +49,7 @@ export default function ElectrochemistryLibrary() {
     <section className="resource-stats" aria-label="电化学知识概览">
       <div className="resource-stat" style={{ "--stat-wash": "#d9ccff" } as CSSProperties}><span>知识条目</span><strong>{ELECTROCHEMISTRY_ARTICLES.length}</strong><small>围绕实验与数据的阅读笔记</small></div>
       <div className="resource-stat" style={{ "--stat-wash": "#bfd8f7" } as CSSProperties}><span>学习主题</span><strong>{ELECTROCHEMISTRY_CATEGORIES.length}</strong><small>基础概念 · 测试方法 · 数据判读</small></div>
-      <div className="resource-stat" style={{ "--stat-wash": "#f0d3e7" } as CSSProperties}><span>阅读方式</span><strong>开放阅读</strong><small>无需登录 · 中文讲解 · 参考来源</small></div>
+      <div className="resource-stat" style={{ "--stat-wash": "#f0d3e7" } as CSSProperties}><span>阅读方式</span><strong>开放阅读</strong><small>无需登录 · 动画演示 · 中文讲解</small></div>
     </section>
 
     <section className="resource-catalog" aria-labelledby="electrochemistry-catalog-heading">
@@ -73,13 +73,13 @@ export default function ElectrochemistryLibrary() {
       <div id="electrochemistry-articles">
         {filtered.length ? <div className="resource-grid electrochemistry-grid">
           {filtered.map(article => {
-            const Icon = categoryIcons[article.category] ?? BookOpen;
+            const Icon = article.animation ? PlayCircle : categoryIcons[article.category] ?? BookOpen;
             return <article key={article.id} className={`resource-card electrochemistry-card electrochemistry-card--${article.category}`}>
-              <div className="electrochemistry-card-top"><span className="resource-card-icon"><Icon size={23} aria-hidden="true" /></span><span className="resource-chip">{categoryLabel(article.category)}</span></div>
+              <div className="electrochemistry-card-top"><span className="resource-card-icon"><Icon size={23} aria-hidden="true" /></span>{article.animation && <span className="electrochemistry-animation-badge">{article.animation.durationSeconds} 秒动画</span>}<span className="resource-chip">{categoryLabel(article.category)}</span></div>
               <h3>{article.title}</h3>
               <p>{article.summary}</p>
               <div className="electrochemistry-tags">{article.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-              <div className="resource-card-footer"><span className="electrochemistry-reading-time"><Clock3 size={13} aria-hidden="true" />约 {article.readingMinutes} 分钟</span><button type="button" className="electrochemistry-read" onClick={() => setSelected(article)} aria-label={`阅读${article.title}`}>阅读全文<ArrowUpRight size={15} aria-hidden="true" /></button></div>
+              <div className="resource-card-footer"><span className="electrochemistry-reading-time"><Clock3 size={13} aria-hidden="true" />约 {article.readingMinutes} 分钟</span><button type="button" className="electrochemistry-read" onClick={() => setSelected(article)} aria-label={`阅读${article.title}`}>{article.animation ? "看动画与讲解" : "阅读全文"}<ArrowUpRight size={15} aria-hidden="true" /></button></div>
             </article>;
           })}
         </div> : <div className="resource-empty electrochemistry-empty"><BookOpen size={30} aria-hidden="true" /><h3>没有找到相关知识条目</h3><p>换一个关键词，或清除筛选后浏览全部主题。</p><button type="button" className="resource-button" onClick={clearFilters}>清除筛选</button></div>}
@@ -91,6 +91,17 @@ export default function ElectrochemistryLibrary() {
       <article className="electrochemistry-article">
         <p className="electrochemistry-article-intro">{selected.summary}</p>
         <div className="electrochemistry-tags">{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+        {selected.animation && <figure className="electrochemistry-animation">
+          <video key={selected.animation.src} controls playsInline muted preload="metadata" poster={selected.animation.poster} width={1920} height={1080} aria-label={`${selected.title}，${selected.animation.durationSeconds} 秒无声动画`}>
+            <source src={selected.animation.src} type="video/mp4" />
+            当前浏览器不支持视频播放，请使用下方链接下载 MP4。
+          </video>
+          <figcaption><span>{selected.animation.durationSeconds} 秒 · 无声动画</span>{selected.animation.caption}<span className="electrochemistry-animation-mobile-hint">手机建议打开交互演示，文字会随屏幕调整。</span></figcaption>
+          <div className="electrochemistry-animation-actions">
+            <a className="resource-button" href={selected.animation.interactiveUrl} target="_blank" rel="noopener noreferrer"><PlayCircle size={15} aria-hidden="true" />交互演示 · 切换两种过程<ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a className="resource-button" href={selected.animation.src} download><Download size={15} aria-hidden="true" />下载 MP4</a>
+          </div>
+        </figure>}
         {selected.sections.map(section => <section className="electrochemistry-article-section" key={section.heading}>
           <h3>{section.heading}</h3>
           {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}

@@ -66,10 +66,17 @@ const hooks = registerHooks({ resolve(specifier, context, nextResolve) {
 const { checkPluginPublicationStorage, loadSoftwarePlugins, publishSoftwarePlugin } = await import('./storage.ts');
 const originalCreateImageBitmap = globalThis.createImageBitmap;
 const originalStorageUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-after(() => { hooks.deregister(); delete globalThis[stubKey]; if (originalCreateImageBitmap) globalThis.createImageBitmap = originalCreateImageBitmap; else delete globalThis.createImageBitmap; if (originalStorageUrl === undefined) delete process.env.NEXT_PUBLIC_SUPABASE_URL; else process.env.NEXT_PUBLIC_SUPABASE_URL = originalStorageUrl; });
+const originalFetch = globalThis.fetch;
+after(() => { hooks.deregister(); delete globalThis[stubKey]; globalThis.fetch = originalFetch; if (originalCreateImageBitmap) globalThis.createImageBitmap = originalCreateImageBitmap; else delete globalThis.createImageBitmap; if (originalStorageUrl === undefined) delete process.env.NEXT_PUBLIC_SUPABASE_URL; else process.env.NEXT_PUBLIC_SUPABASE_URL = originalStorageUrl; });
 beforeEach(() => {
     state = { user: { email: PLUGIN_ADMIN_EMAIL }, authError: null, authCalls: 0, buckets: [], uploads: [], removals: [], inserts: [], updates: [], publicUrlCalls: [], queries: [], rows: [], readError: null, uploadErrorAt: -1, uploadError: new Error('Storage rejected upload'), insertError: null, updateError: null, cleanupError: null, cleanupThrow: null, bitmapClosed: 0 };
-    Object.assign(state, { bucketReads: [], bucketDefinition: { id: PLUGIN_PACKAGE_BUCKET, public: false, file_size_limit: PLUGIN_PACKAGE_CHUNK_BYTES, allowed_mime_types: ['application/zip', 'application/octet-stream'] }, bucketError: null, storageLists: [], listError: null });
+    Object.assign(state, { catalogCalls: [], bucketReads: [], bucketDefinition: { id: PLUGIN_PACKAGE_BUCKET, public: false, file_size_limit: PLUGIN_PACKAGE_CHUNK_BYTES, allowed_mime_types: ['application/zip', 'application/octet-stream'] }, bucketError: null, storageLists: [], listError: null });
+    globalThis.fetch = async (target, options) => {
+        state.catalogCalls.push({ target, options });
+        assert.equal(target, '/api/software-plugins');
+        if (state.catalogThrow) throw state.catalogThrow;
+        return Response.json(state.catalogPayload ?? { plugins: [] }, { status: state.catalogStatus ?? 200 });
+    };
     process.env.NEXT_PUBLIC_SUPABASE_URL = storageOrigin;
     globalThis.createImageBitmap = async () => ({ width: 800, height: 600, close() { state.bitmapClosed++; } });
 });
@@ -400,19 +407,22 @@ test('anonymous visitors can read catalog metadata without receiving public URLs
     const publication = await input();
     const id = '37b37a8b-6ad4-40b9-a7e0-7746fb2bc311', packageId = 'ba706e1c-ec1e-44bb-83eb-253671951124';
     state.rows = [{ hidden: false, id, title: publication.name.trim(), description: JSON.stringify({ schema: 'fesilent-plugin-v1', host: publication.host, summary: publication.summary.trim(), version: publication.version, features: publication.features, environment: publication.environment, installation: publication.installation, outputs: publication.outputs, packageName: publication.packageFile.name, packageBytes: publication.packageFile.size }), image_url: '/plugin-placeholder.svg', source_file_url: `storage://${PLUGIN_PACKAGE_BUCKET}/${packageId}/package.zip`, tags_style: [PLUGIN_ASSET_TAG], created_at: '2026-10-04T00:00:00.000Z' }];
+    state.catalogPayload = { plugins: state.rows.map(row => pluginFromAsset(row, storageOrigin)) };
     const plugins = await loadSoftwarePlugins();
     assert.equal(plugins[0].downloadUrl, `/api/software-plugins/${id}/download`);
     assert.equal(plugins[0].packagePath, `${packageId}/package.zip`);
     assert.equal(state.authCalls, 0); assert.equal(state.buckets.length, 0); assert.equal(state.publicUrlCalls.length, 0);
-    assert.deepEqual(state.queries[0].filter, { column: 'tags_style', tags: [PLUGIN_ASSET_TAG] });
-    assert.deepEqual(state.queries[0].filters, [{ column: 'hidden', value: false }]);
-    state.rows[0].hidden = true;
+    assert.equal(state.queries.length, 0, 'the browser catalog never queries the database directly');
+    assert.equal(state.catalogCalls[0].target, '/api/software-plugins');
+    assert.equal(state.catalogCalls[0].options.cache, 'no-store');
+    assert.equal(state.catalogCalls[0].options.credentials, 'same-origin');
+    state.catalogPayload = { plugins: [] };
     assert.deepEqual(await loadSoftwarePlugins(), []);
 });
 
-test('old public package records are refused with an explicit migration message', async () => {
-    state.rows = [{ hidden: false, tags_style: [PLUGIN_ASSET_TAG], source_file_url: `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/old/package.zip` }];
-    await assert.rejects(loadSoftwarePlugins(), /公开链接.*迁移到私有存储/);
+test('invalid catalog responses are rejected instead of being rendered as an empty library', async () => {
+    state.catalogPayload = { plugins: [{ source_file_url: `${storageOrigin}/storage/v1/object/public/materials/uploads/plugins/old/package.zip` }] };
+    await assert.rejects(loadSoftwarePlugins(), /响应格式有误/);
     assert.equal(state.buckets.length, 0);
 });
 
@@ -468,12 +478,14 @@ test('a thrown account network error is visible before any persistent write', as
     assert.deepEqual(stages, ['checking']); noWrites();
 });
 
-test('the cancellable catalog query reports timeout and permission failures without exposing storage', async () => {
-    state.readError = { message: 'TimeoutError: signal timed out', code: '' };
+test('the cancellable website catalog request reports timeout and service failure without database details', async () => {
+    state.catalogThrow = new DOMException('signal timed out', 'TimeoutError');
     await assert.rejects(loadSoftwarePlugins(), /加载插件目录超时/);
-    assert.ok(state.queries[0].signal instanceof AbortSignal);
-    state.readError = { message: 'permission denied for table assets', code: '42501' };
-    await assert.rejects(loadSoftwarePlugins(), /assets.*读取权限/);
+    assert.ok(state.catalogCalls[0].options.signal instanceof AbortSignal);
+    state.catalogThrow = null;
+    state.catalogStatus = 503; state.catalogPayload = { error: 'permission denied for table assets' };
+    await assert.rejects(loadSoftwarePlugins(), /插件目录服务暂时无法读取/);
+    assert.equal(state.queries.length, 0);
     assert.equal(state.buckets.length, 0);
 });
 

@@ -1,5 +1,6 @@
 import { isSupabaseConnectionError, supabase } from "@/lib/supabase";
-import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, getPluginPackageObjects, getPluginPackagePath, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost, type SoftwarePlugin } from "./catalog";
+import { PLUGIN_ADMIN_EMAIL, PLUGIN_ASSET_TAG, PLUGIN_PACKAGE_BUCKET, PLUGIN_PACKAGE_MAX_BYTES, PLUGIN_PACKAGE_CHUNK_BYTES, getPluginPackageObjects, pluginFromAsset, validatePluginDetails, type PluginAssetRow, type SoftwareHost, type SoftwarePlugin } from "./catalog";
+import { loadPluginCatalog } from "./client-catalog.ts";
 
 export type PluginPublicationInput = {
   name: string; host: SoftwareHost; summary: string; version: string;
@@ -95,17 +96,7 @@ export async function checkPluginPublicationStorage(): Promise<void> {
   if (listError) throw pluginServiceError(listError, "readiness");
 }
 
-export async function loadSoftwarePlugins() {
-  const { data, error } = await supabase.from("assets").select("id,title,description,image_url,source_file_url,tags_style,created_at")
-    .eq("hidden", false).contains("tags_style", [PLUGIN_ASSET_TAG]).order("created_at", { ascending: false }).abortSignal(AbortSignal.timeout(15_000));
-  if (error) throw pluginServiceError(error, "loading");
-  const origin = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).origin;
-  const rows = (data as PluginAssetRow[] | null) ?? [];
-  if (rows.some(row => !getPluginPackagePath(row.source_file_url) && typeof row.source_file_url === "string" && /^https?:\/\//i.test(row.source_file_url))) throw new Error("部分插件安装包仍使用公开链接，需要管理员迁移到私有存储后再发布。");
-  const plugins = rows.map(row => pluginFromAsset(row, origin));
-  if (plugins.some(plugin => plugin === null)) throw new Error("部分插件信息不完整，请联系管理员检查发布内容。");
-  return plugins.filter(plugin => plugin !== null);
-}
+export const loadSoftwarePlugins = loadPluginCatalog;
 
 async function sha256(bytes: ArrayBuffer | Uint8Array<ArrayBuffer>): Promise<string> {
   try {

@@ -78,14 +78,17 @@ function PluginPreview({ plugin }: { plugin: SoftwarePlugin }) {
   return <div className="software-preview software-preview--cover"><img src={plugin.coverUrl} alt={`${plugin.name}预览`} loading="lazy" /></div>;
 }
 
-export default function SoftwarePlugins() {
+export default function SoftwarePlugins({ initialPlugins, initialLoadError }: {
+  initialPlugins?: SoftwarePlugin[];
+  initialLoadError?: string;
+}) {
   const { isAdmin } = useContentAdmin();
   const { requestLogin, showLogin, checking, LoginPrompt } = useActionLogin();
   const [host, setHost] = useState<SoftwareHost | "全部">("全部");
   const [query, setQuery] = useState("");
-  const [plugins, setPlugins] = useState<SoftwarePlugin[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState<string | null>(null);
+  const [plugins, setPlugins] = useState<SoftwarePlugin[]>(initialPlugins ?? []);
+  const [loading, setLoading] = useState(initialPlugins === undefined && !initialLoadError);
+  const [loadError, setLoadError] = useState<string | null>(initialLoadError ?? null);
   const [reloadKey, setReloadKey] = useState(0);
   const [selected, setSelected] = useState<SoftwareProduct | null>(null);
   const [documentPackageId, setDocumentPackageId] = useState("");
@@ -111,8 +114,10 @@ export default function SoftwarePlugins() {
   useEffect(() => { if (!isAdmin) { setPublishing(false); setEditingPlugin(undefined); } }, [isAdmin]);
 
   useEffect(() => {
+    if (reloadKey === 0 && initialLoadError) return;
     let alive = true;
-    loadSoftwarePlugins().then(data => {
+    const request = reloadKey === 0 && initialPlugins !== undefined ? Promise.resolve(initialPlugins) : loadSoftwarePlugins();
+    request.then(data => {
       if (alive) {
         setPlugins(data); setLoadError(null); setLoading(false);
         const requested = new URLSearchParams(window.location.search).get("plugin");
@@ -130,7 +135,7 @@ export default function SoftwarePlugins() {
       if (alive) { setLoadError(isSupabaseConnectionError(error) ? "暂时无法连接插件库，请稍后重试。" : (getSupabaseErrorMessage(error) ?? "插件库读取失败，请稍后重试。")); setLoading(false); }
     });
     return () => { alive = false; };
-  }, [reloadKey]);
+  }, [reloadKey, initialPlugins, initialLoadError]);
 
   useEffect(() => {
     const readHash = () => { if (isAdmin && window.location.hash === "#publish") { setEditingPlugin(undefined); setPublishing(true); } };

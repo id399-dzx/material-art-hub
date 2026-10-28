@@ -33,6 +33,7 @@
 - 发布表单先只读检查管理员会话和私有安装包存储；配置未完成时在顶部显示原因与重试入口，填写内容及本机文件仍可保留。必填项错误可定位到字段，实际发布显示账号核验、ZIP 上传、封面上传及介绍保存阶段。
 - 必填插件名、适用软件、中文简介、版本及 ZIP 安装包；可选封面、功能、环境、安装步骤、输出说明。完整安装包最大 200 MiB，封面最大 5 MiB；大于 32 MiB 的安装包自动分片，各私有对象不超过 32 MiB，兼容免费存储的单文件限额。原 ZIP 的字节和目录结构保持不变。
 - 发布后自动以卡片展示，卡片及中文详情可匿名浏览；安装包仅供已登录用户下载。未发布时显示空状态。
+- 插件目录由网站服务器匿名读取并随页面返回，浏览器不再直接查询 Supabase 的插件表。重试和发布后刷新使用本站 `/api/software-plugins`；服务端仅查询已公开、未隐藏的插件，沿用记录校验，不接收用户登录会话，也不使用管理员密钥。成功与失败响应均不缓存，读取超时或失败时显示重试提示。
 - 复用现有 `assets` 表，以 `tags_style` 内部标记 `__fesilent_software_plugin_v1__` 分离插件与素材；`description` 保存版本化中文元数据。素材页过滤内部标记，插件不混入素材列表。
 - 安装包上传到私有 `plugin-packages` 桶。小包保留 v1 格式 `<UUID>/package.zip`；大包采用 v2 格式 `<UUID>/part-000.bin` 至 `part-006.bin`。v2 的 `source_file_url` 保存虚拟引用 `storage://plugin-packages/<UUID>/package.parts`，元数据保存每片及完整包的字节数、SHA-256，不保存公开下载链接。封面继续上传到公开的 `materials/uploads/plugins/<UUID>/cover.*`。
 - 首次使用或升级大包支持时，在 Supabase SQL Editor 执行 [`20261004010000_chunked_plugin_packages.sql`](../supabase/migrations/20261004010000_chunked_plugin_packages.sql)。该幂等迁移包含原私有桶设置，只配置桶和 Storage 策略，无新增业务表；管理员可只读检查桶配置，现有 `assets` 表、公开 `materials` 桶和素材权限仍需已配置。每对象限额为 50 MiB，允许 ZIP 与二进制 MIME 类型；已登录用户可读取合法包和分片路径，仅指定管理员可上传或删除，包不允许覆盖、改名或移动。

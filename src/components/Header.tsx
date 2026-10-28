@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart2, ChartNoAxesCombined, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
+import { BarChart2, BookOpen, ChartNoAxesCombined, FileText, GraduationCap, LogOut, Puzzle, Settings2, Upload } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -40,6 +40,7 @@ export default function Header() {
         { href: "/research-skills", label: "科研 Skill", icon: GraduationCap },
         { href: "/paper-formatting", label: "论文排版", icon: FileText },
         { href: "/software-plugins", label: "软件插件", icon: Puzzle },
+        { href: "/electrochemistry", label: "电化学知识", icon: BookOpen },
     ];
 
     const handleSignOut = async () => {

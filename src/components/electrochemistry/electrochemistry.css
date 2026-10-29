@@ -55,3 +55,90 @@
 @media (max-width: 820px) { .electrochemistry-hero { align-items: flex-start; flex-direction: column; gap: 15px; } .electrochemistry-search { flex: 1; min-width: min(100%, 220px); } }
 @media (max-width: 600px) { .electrochemistry-catalog-heading { align-items: flex-start; flex-direction: column; gap: 7px; } .electrochemistry-toolbar { gap: 13px; } .electrochemistry-search { flex-basis: 100%; } .electrochemistry-card { padding: 18px; } .electrochemistry-equation { padding: 12px; } }
 @media (max-width: 600px) { .electrochemistry-animation .electrochemistry-animation-mobile-hint { display: block; color: #72559e; font-size: 12px; } }
+
+.electrochemistry-hero { margin-bottom: 16px; }
+.electrochemistry-overview { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 0 0 26px; color: #7a7185; font-size: 12px; }
+.electrochemistry-overview span { display: inline-flex; align-items: baseline; gap: 5px; }
+.electrochemistry-overview strong { color: #57466e; font-size: 15px; font-weight: 700; }
+.electrochemistry-section-label { display: block; color: #796292; font-size: 10px; font-weight: 750; letter-spacing: .08em; }
+.electrochemistry-topic-card { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.15fr); gap: 28px; min-width: 0; padding: 20px; border: 1px solid #e4dbef; border-radius: 22px; background: radial-gradient(ellipse at 100% 0, #e9e0fa99, transparent 65%), #ffffffdf; box-shadow: 0 9px 25px #50326908; }
+.electrochemistry-topic-cover { position: relative; display: block; align-self: center; width: 100%; padding: 0; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #e6dfed; border-radius: 14px; background: #f7f6fb; cursor: pointer; }
+.electrochemistry-topic-cover img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.electrochemistry-topic-media-badge { position: absolute; top: 12px; left: 12px; padding: 6px 9px; border: 1px solid #ffffffbd; border-radius: 99px; background: #ffffffeb; color: #67517e; font-size: 10px; font-weight: 650; box-shadow: 0 3px 10px #4b35591c; }
+.electrochemistry-topic-play { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 57px; height: 57px; transform: translate(-50%, -50%); border: 1px solid #ffffffb0; border-radius: 50%; background: #30223edb; color: #fff; box-shadow: 0 7px 22px #30223e40; transition: background .15s, scale .15s; }
+.electrochemistry-topic-play svg { margin-left: 3px; }
+.electrochemistry-topic-cover:hover .electrochemistry-topic-play { background: #684d91; scale: 1.06; }
+.electrochemistry-topic-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 0; padding: 5px 5px 5px 0; }
+.electrochemistry-topic-copy h3 { margin: 9px 0 10px; color: #282031; font-size: 24px; font-weight: 750; letter-spacing: -.03em; line-height: 1.4; }
+.electrochemistry-topic-copy > p { margin: 0; color: #746a7e; font-size: 12px; line-height: 1.85; }
+.electrochemistry-topic-processes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 14px; margin: 18px 0; }
+.electrochemistry-topic-processes > span { display: grid; gap: 4px; padding-left: 10px; border-left: 2px solid #b6a0d4; }
+.electrochemistry-topic-processes > span + span { border-color: #9cb9dc; }
+.electrochemistry-topic-processes strong { color: #574568; font-size: 12px; font-weight: 700; }
+.electrochemistry-topic-processes small { color: #83768e; font-size: 11px; line-height: 1.7; }
+.electrochemistry-topic-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%; gap: 12px; }
+.electrochemistry-topic-footer > span { display: inline-flex; align-items: center; gap: 5px; color: #8a7c94; font-size: 11px; }
+.electrochemistry-topic-footer button { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; font-size: 12px; }
+.resource-dialog.electrochemistry-topic-dialog { width: min(1120px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); }
+.electrochemistry-topic-dialog .resource-dialog__header { padding: 19px 22px 17px; }
+.electrochemistry-topic-dialog .resource-dialog__header h2 { margin-top: 6px; font-size: 23px; }
+.electrochemistry-topic-dialog .resource-dialog__body { padding: 22px; }
+.electrochemistry-viewer { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(235px, .85fr); grid-template-areas: "video selector"; align-items: start; gap: 26px; margin-bottom: 25px; }
+.electrochemistry-process-selector { grid-area: selector; min-width: 0; padding-top: 4px; }
+.electrochemistry-process-selector h3 { margin: 8px 0 7px; color: #3e314d; font-size: 17px; }
+.electrochemistry-process-selector > p { margin: 0 0 17px; color: #86778e; font-size: 12px; line-height: 1.7; }
+.electrochemistry-process-buttons { display: grid; gap: 10px; }
+.electrochemistry-process-buttons button { display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 92px; padding: 13px 12px; border: 1px solid #e7dfed; border-radius: 13px; background: #fff; color: #8b7b98; text-align: left; cursor: pointer; }
+.electrochemistry-process-buttons button[aria-pressed="true"] { border-color: #b29bcf; background: linear-gradient(120deg, #ece3f9, #f5f1fb); color: #6d5090; box-shadow: 0 4px 12px #7356950b; }
+.electrochemistry-process-number { flex-shrink: 0; align-self: flex-start; font-size: 10px; font-weight: 700; line-height: 21px; }
+.electrochemistry-process-buttons button > span:nth-child(2) { flex: 1; min-width: 0; }
+.electrochemistry-process-buttons strong { display: block; margin-bottom: 5px; color: #51405f; font-size: 13px; }
+.electrochemistry-process-buttons small { display: block; color: #887992; font-size: 11px; line-height: 1.65; }
+.electrochemistry-process-buttons svg { flex-shrink: 0; }
+.electrochemistry-process-selector .electrochemistry-viewer-note { margin: 15px 0 0; font-size: 11px; line-height: 1.8; }
+.electrochemistry-viewer .electrochemistry-animation { grid-area: video; margin: 0; }
+.electrochemistry-animation figcaption { font-size: 11px; line-height: 1.7; }
+.electrochemistry-animation figcaption strong { color: #67517e; font-size: 12px; }
+.electrochemistry-animation-actions { margin-top: 11px; }
+.electrochemistry-animation-actions a { min-height: 36px; padding: 7px 11px; font-size: 11px; }
+.electrochemistry-animation-mobile-hint { display: none; }
+.electrochemistry-comparison { margin: 28px 0; }
+.electrochemistry-comparison h3 { margin: 7px 0 14px; color: #45334f; font-size: 18px; }
+.electrochemistry-comparison-scroll { overflow-x: auto; border: 1px solid #e5dced; border-radius: 13px; }
+.electrochemistry-comparison table { width: 100%; border-collapse: collapse; color: #73647f; font-size: 12px; line-height: 1.8; text-align: left; }
+.electrochemistry-comparison th, .electrochemistry-comparison td { padding: 13px 15px; vertical-align: top; }
+.electrochemistry-comparison th { color: #5b466d; font-weight: 650; }
+.electrochemistry-comparison thead { background: #eee7f6; }
+.electrochemistry-comparison thead th:first-child { width: 17%; min-width: 88px; }
+.electrochemistry-comparison thead th:not(:first-child) { width: 41.5%; }
+.electrochemistry-comparison tbody tr { border-top: 1px solid #e9e2ef; background: #fff; }
+.electrochemistry-comparison tbody tr:nth-child(even) { background: #f7f4fb; }
+.electrochemistry-comparison .electrochemistry-comparison-note { margin: 11px 0 0; color: #8a7894; font-size: 12px; line-height: 1.8; }
+.electrochemistry-topic-reading { max-width: 800px; margin: 34px auto 10px; padding-top: 25px; border-top: 1px solid #e7dfed; }
+@media (max-width: 960px) {
+  .electrochemistry-topic-card { gap: 20px; padding: 17px; }
+  .electrochemistry-topic-copy h3 { font-size: 21px; }
+  .electrochemistry-topic-processes { gap: 10px; margin: 13px 0; }
+  .electrochemistry-topic-footer { gap: 8px; }
+  .electrochemistry-viewer { grid-template-columns: minmax(0, 1.8fr) minmax(210px, 1fr); gap: 18px; }
+}
+@media (max-width: 720px) {
+  .electrochemistry-topic-card { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .electrochemistry-topic-copy { padding: 0 2px 3px; }
+  .electrochemistry-viewer { grid-template-columns: minmax(0, 1fr); grid-template-areas: "selector" "video"; gap: 18px; }
+  .electrochemistry-process-selector { padding-top: 0; }
+  .electrochemistry-process-selector h3 { margin: 7px 0 4px; font-size: 15px; }
+  .electrochemistry-process-selector > p { margin-bottom: 12px; font-size: 11px; }
+  .electrochemistry-process-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .electrochemistry-process-buttons button { min-height: 44px; gap: 5px; padding: 11px 8px; }
+  .electrochemistry-process-buttons strong { margin-bottom: 0; font-size: 12px; }
+  .electrochemistry-process-buttons small, .electrochemistry-process-buttons svg, .electrochemistry-process-selector .electrochemistry-viewer-note { display: none; }
+  .electrochemistry-process-number { align-self: auto; font-size: 9px; }
+  .electrochemistry-topic-dialog .resource-dialog__body { padding: 16px; }
+  .electrochemistry-topic-dialog .resource-dialog__header { padding: 17px 16px; }
+  .electrochemistry-topic-dialog .resource-dialog__header h2 { font-size: 20px; }
+  .electrochemistry-comparison table { min-width: 540px; }
+  .electrochemistry-comparison th, .electrochemistry-comparison td { padding: 11px; }
+  .electrochemistry-animation-mobile-hint { display: block; margin: 10px 0 0; color: #8a7894; font-size: 11px; line-height: 1.7; }
+}
+@media (prefers-reduced-motion: reduce) { .electrochemistry-topic-play { transition: none; } }

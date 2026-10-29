@@ -10,9 +10,10 @@ type ResourceDialogProps = {
     eyebrow?: string;
     children: ReactNode;
     footer?: ReactNode;
+    className?: string;
 };
 
-export default function ResourceDialog({ open, onClose, title, eyebrow, children, footer }: ResourceDialogProps) {
+export default function ResourceDialog({ open, onClose, title, eyebrow, children, footer, className }: ResourceDialogProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleId = useId();
 
@@ -28,7 +29,7 @@ export default function ResourceDialog({ open, onClose, title, eyebrow, children
         };
     }, [open]);
 
-    return <dialog ref={dialogRef} className="resource-dialog" aria-labelledby={titleId}
+    return <dialog ref={dialogRef} className={`resource-dialog${className ? ` ${className}` : ""}`} aria-labelledby={titleId}
         onCancel={event => { event.preventDefault(); onClose(); }}
         onClick={event => {
             if (event.target !== event.currentTarget) return;

@@ -11,7 +11,7 @@
 
 ## 电化学知识
 
-公开知识库位于 `/electrochemistry`，支持主题筛选、全文搜索、中文讲解与参考来源。法拉第嵌锂和非法拉第双电层充电各提供一段 16 秒的 1080p 无声动画，可在线播放或下载 MP4；文章同时说明两种过程的作用和实际可并存的边界。
+公开知识库位于 `/electrochemistry`，支持主题筛选、全文搜索、中文讲解与参考来源。“法拉第与非法拉第过程”作为一个知识主题展示，包含两段 16 秒的 1080p 无声动画；同一播放器可切换观看，下方提供机制对照表、整合讲解与参考来源。可打开原交互演示或下载当前动画的 MP4。
 
 视频和封面保存在 `public/animations/electrochemistry/`。原交互页面位于 `/animations/battery-interface.html`，保留沙盒 iframe 与 CSP；通过 `.gitattributes` 禁止对该文件进行换行转换，保持原始字节。知识条目与媒体信息统一维护在 `src/lib/electrochemistry/catalog.ts`。
 
